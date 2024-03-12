@@ -3,17 +3,16 @@ import SpriteKit
 import MetalKit
 
 class MTKRenderer: NSObject {
-    var rootView: UIView
     var scene: GameScene
     var device: MTLDevice
     var commandQueue: MTLCommandQueue
 
     var renderer: SKRenderer
 
-    var playerView: MTKView?
+    var sceneView: MTKView?
+    var controlView: UIView?
 
-    init?(rootView: UIView, scene: GameScene) {
-        self.rootView = rootView
+    init?(scene: GameScene) {
         self.scene = scene
 
         guard let device = MTLCreateSystemDefaultDevice(),
@@ -28,13 +27,17 @@ class MTKRenderer: NSObject {
         super.init()
     }
 
-    func createSinglePlayerView() {
-        let playerView = MTKView()
-        playerView.frame = rootView.frame
-        playerView.device = self.device
-        playerView.delegate = self
-        self.playerView = playerView
-        rootView.addSubview(playerView)
+    func createSinglePlayerView(rootView: UIView) {
+        let sceneView = MTKView()
+        sceneView.frame = rootView.frame
+        sceneView.device = self.device
+        sceneView.delegate = self
+        self.sceneView = sceneView
+        rootView.addSubview(sceneView)
+
+        let controlView = UIView(frame: rootView.frame)
+        controlView.setupActionControls()
+        rootView.addSubview(controlView)
     }
 }
 
