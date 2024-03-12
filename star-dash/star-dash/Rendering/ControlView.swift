@@ -5,7 +5,8 @@ class ControlView: UIView {
     var joystickControl: UIView?
     var joystickBackground: UIView?
     
-    let joystickRadius: CGFloat = 50
+    let buttonMargin: CGFloat = 50
+    let buttonSize: CGFloat = 100
     let joystickBackgroundWidth: CGFloat = 256
     let panThreshold: CGFloat = 15
 
@@ -17,10 +18,8 @@ class ControlView: UIView {
 
     private func setupMovementControls() {
         let joystickView = UIView()
-        
-        let buttonMargin: CGFloat = 50
-        let buttonY = frame.height - joystickRadius * 2 - buttonMargin
-        joystickView.frame = CGRect(x: buttonMargin, y: buttonY, width: joystickBackgroundWidth, height: joystickRadius * 2)
+        let buttonY = frame.height - buttonSize - buttonMargin
+        joystickView.frame = CGRect(x: buttonMargin, y: buttonY, width: joystickBackgroundWidth, height: buttonSize)
         
         let joystickBackground = UIImageView(image: #imageLiteral(resourceName: "JoystickBackground"))
         joystickBackground.frame = joystickView.bounds
@@ -30,10 +29,10 @@ class ControlView: UIView {
         
         let joystickControl = UIImageView(image: #imageLiteral(resourceName: "JoystickControl"))
         joystickControl.frame = CGRect(
-            x: joystickView.frame.width / 2 - joystickRadius,
-            y: joystickView.frame.height / 2 - joystickRadius,
-            width: joystickRadius * 2,
-            height: joystickRadius * 2
+            x: joystickView.frame.width / 2 - buttonSize / 2,
+            y: joystickView.frame.height / 2 - buttonSize / 2,
+            width: buttonSize,
+            height: buttonSize
         )
         joystickView.addSubview(joystickControl)
         self.joystickControl = joystickControl
@@ -43,9 +42,7 @@ class ControlView: UIView {
 
     private func setupActionControls() {
         let jumpButton = UIButton(type: .custom)
-        
-        let buttonSize: CGFloat = 100
-        let buttonMargin: CGFloat = 50
+
         let buttonX = frame.width - buttonSize - buttonMargin
         let buttonY = frame.height - buttonSize - buttonMargin
         jumpButton.frame = CGRect(x: buttonX, y: buttonY, width: buttonSize, height: buttonSize)
