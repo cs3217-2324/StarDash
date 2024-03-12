@@ -66,19 +66,20 @@ class ControlView: UIView {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         
-        guard let location = touches.first?.location(in: joystickBackground),
-              touches.count == 1,
-              touches.first?.location(in: self).x < self.frame.width / 2 else {
+        guard let firstTouch = touches.first,
+              firstTouch.location(in: self).x < self.frame.width / 2,
+              touches.count == 1 else {
             return
         }
 
-        moveJoystick(location: location)
+        moveJoystick(location: firstTouch.location(in: joystickBackground))
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         
-        guard let location = touches.first?.location(in: self) else {
+        guard let firstTouch = touches.first?.location(in: self),
+              firstTouch.x < self.frame.width / 2 else {
             return
         }
         
@@ -100,8 +101,7 @@ class ControlView: UIView {
         }
         
         UIView.cancelPreviousPerformRequests(withTarget: joystickControl)
-        
-        let midPoint = joystickBackground.center
+
         if shouldSendMoveEvent(location: location) {
             // send move event
         }
