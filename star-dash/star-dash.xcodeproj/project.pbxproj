@@ -16,6 +16,10 @@
 		4E630F0D2B9F7E090008F887 /* star_dashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F0C2B9F7E090008F887 /* star_dashTests.swift */; };
 		4E630F172B9F7E090008F887 /* star_dashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F162B9F7E090008F887 /* star_dashUITests.swift */; };
 		4E630F192B9F7E090008F887 /* star_dashUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F182B9F7E090008F887 /* star_dashUITestsLaunchTests.swift */; };
+		E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745112BA057040080C1BE /* MTKRenderer.swift */; };
+		E6A745172BA057040080C1BE /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745122BA057040080C1BE /* ControlView.swift */; };
+		E6A745182BA057040080C1BE /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745132BA057040080C1BE /* Renderer.swift */; };
+		E6A745192BA057040080C1BE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745152BA057040080C1BE /* GameScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		4E630F122B9F7E090008F887 /* star-dashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "star-dashUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E630F162B9F7E090008F887 /* star_dashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = star_dashUITests.swift; sourceTree = "<group>"; };
 		4E630F182B9F7E090008F887 /* star_dashUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = star_dashUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E6A745112BA057040080C1BE /* MTKRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKRenderer.swift; sourceTree = "<group>"; };
+		E6A745122BA057040080C1BE /* ControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
+		E6A745132BA057040080C1BE /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		E6A745152BA057040080C1BE /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,8 @@
 		4E630EF42B9F7E070008F887 /* star-dash */ = {
 			isa = PBXGroup;
 			children = (
+				E6A745142BA057040080C1BE /* GameScene */,
+				E6A745102BA057040080C1BE /* Rendering */,
 				4E630EF52B9F7E070008F887 /* AppDelegate.swift */,
 				4E630EF72B9F7E070008F887 /* SceneDelegate.swift */,
 				4E630EF92B9F7E070008F887 /* ViewController.swift */,
@@ -125,6 +135,24 @@
 				4E630F182B9F7E090008F887 /* star_dashUITestsLaunchTests.swift */,
 			);
 			path = "star-dashUITests";
+			sourceTree = "<group>";
+		};
+		E6A745102BA057040080C1BE /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				E6A745112BA057040080C1BE /* MTKRenderer.swift */,
+				E6A745122BA057040080C1BE /* ControlView.swift */,
+				E6A745132BA057040080C1BE /* Renderer.swift */,
+			);
+			path = Rendering;
+			sourceTree = "<group>";
+		};
+		E6A745142BA057040080C1BE /* GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				E6A745152BA057040080C1BE /* GameScene.swift */,
+			);
+			path = GameScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +289,10 @@
 				4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */,
 				4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */,
 				4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */,
+				E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */,
+				E6A745182BA057040080C1BE /* Renderer.swift in Sources */,
+				E6A745192BA057040080C1BE /* GameScene.swift in Sources */,
+				E6A745172BA057040080C1BE /* ControlView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,9 +489,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ruihan.star-dash";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -485,9 +521,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ruihan.star-dash";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

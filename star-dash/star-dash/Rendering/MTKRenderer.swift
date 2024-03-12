@@ -2,7 +2,7 @@ import UIKit
 import SpriteKit
 import MetalKit
 
-class MTKRenderer: NSObject {
+class MTKRenderer: NSObject, Renderer {
     var scene: GameScene
     var device: MTLDevice
     var commandQueue: MTLCommandQueue
@@ -27,7 +27,7 @@ class MTKRenderer: NSObject {
         super.init()
     }
 
-    func createSinglePlayerView(rootView: UIView) {
+    func createSinglePlayerView(at rootView: UIView) {
         let sceneView = createSceneView(frame: rootView.frame)
         self.sceneView = sceneView
         rootView.addSubview(sceneView)
@@ -45,8 +45,8 @@ class MTKRenderer: NSObject {
     }
 
     private func createControlView(frame: CGRect) -> UIView {
-        let controlView = UIView(frame: frame)
-        controlView.setupActionControls()
+        let controlView = ControlView(frame: frame)
+        controlView.setupSubviews()
         return controlView
     }
 }

@@ -19,10 +19,11 @@ class ViewController: UIViewController {
         scene.setupGame()
         self.scene = scene
         
-        guard let renderer = MTKRenderer(rootView: self.view, scene: scene) else {
+        guard let renderer = MTKRenderer(scene: scene) else {
             return
         }
 
+        renderer.createSinglePlayerView(at: self.view)
         self.renderer = renderer
     }
 

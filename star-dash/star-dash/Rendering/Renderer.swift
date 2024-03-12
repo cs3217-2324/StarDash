@@ -1,3 +1,5 @@
+import UIKit
+
 protocol Renderer {
-    func createSinglePlayerView()
+    func createSinglePlayerView(at rootView: UIView)
 }
