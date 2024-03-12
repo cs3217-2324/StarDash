@@ -9,8 +9,7 @@ class MTKRenderer: NSObject, Renderer {
 
     var renderer: SKRenderer
 
-    var sceneView: MTKView?
-    var controlView: UIView?
+    var playerView: PlayerView?
 
     init?(scene: GameScene) {
         self.scene = scene
@@ -28,26 +27,9 @@ class MTKRenderer: NSObject, Renderer {
     }
 
     func createSinglePlayerView(at rootView: UIView) {
-        let sceneView = createSceneView(frame: rootView.frame)
-        self.sceneView = sceneView
-        rootView.addSubview(sceneView)
-
-        let controlView = createControlView(frame: rootView.frame)
-        self.controlView = controlView
-        rootView.addSubview(controlView)
-    }
-
-    private func createSceneView(frame: CGRect) -> MTKView {
-        let sceneView = MTKView(frame: frame, device: self.device)
-        sceneView.delegate = self
-
-        return sceneView
-    }
-
-    private func createControlView(frame: CGRect) -> UIView {
-        let controlView = ControlView(frame: frame)
-        controlView.setupSubviews()
-        return controlView
+        let playerView = PlayerView(rootView: rootView, drawDelegate: self)
+        playerView.setupSubviews()
+        self.playerView = playerView
     }
 }
 
