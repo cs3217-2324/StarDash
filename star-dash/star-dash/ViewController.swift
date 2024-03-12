@@ -9,11 +9,22 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var scene: GameScene?
+    var renderer: Renderer?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
 
+        let scene = GameScene(size: self.view.bounds.size)
+        scene.setupGame()
+        self.scene = scene
+        
+        guard let renderer = MTKRenderer(rootView: self.view, scene: scene) else {
+            return
+        }
+
+        self.renderer = renderer
+    }
 
 }
 
