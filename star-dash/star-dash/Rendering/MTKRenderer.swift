@@ -28,17 +28,26 @@ class MTKRenderer: NSObject {
     }
 
     func createSinglePlayerView(rootView: UIView) {
-        let sceneView = MTKView()
-        sceneView.frame = rootView.frame
-        sceneView.device = self.device
-        sceneView.delegate = self
+        let sceneView = createSceneView(frame: rootView.frame)
         self.sceneView = sceneView
         rootView.addSubview(sceneView)
 
-        let controlView = UIView(frame: rootView.frame)
-        controlView.setupActionControls()
+        let controlView = createControlView(frame: rootView.frame)
         self.controlView = controlView
         rootView.addSubview(controlView)
+    }
+
+    private func createSceneView(frame: CGRect) -> MTKView {
+        let sceneView = MTKView(frame: frame, device: self.device)
+        sceneView.delegate = self
+
+        return sceneView
+    }
+
+    private func createControlView(frame: CGRect) -> UIView {
+        let controlView = UIView(frame: frame)
+        controlView.setupActionControls()
+        return controlView
     }
 }
 
