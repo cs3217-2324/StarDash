@@ -1,14 +1,17 @@
+import UIKit
+import MetalKit
+
 class PlayerView {
     var sceneView: MTKView
-    var controlView: UIView
+    var controlView: ControlView
 
-    init(rootView: UIView, drawDelegate: MTKViewDelegate) {
-        self.sceneView = MTKView(frame: frame, device: self.device)
+    init(superview: UIView, device: MTLDevice, drawDelegate: MTKViewDelegate) {
+        self.sceneView = MTKView(frame: superview.frame, device: device)
         self.sceneView.delegate = drawDelegate
-        rootView.addSubview(self.sceneView)
+        superview.addSubview(self.sceneView)
 
-        self.controlView = ControlView(frame: frame)
-        rootView.addSubview(self.controlView)
+        self.controlView = ControlView(frame: superview.frame)
+        superview.addSubview(self.controlView)
     }
 
     func setupSubviews() {

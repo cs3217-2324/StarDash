@@ -26,8 +26,8 @@ class MTKRenderer: NSObject, Renderer {
         super.init()
     }
 
-    func createSinglePlayerView(at rootView: UIView) {
-        let playerView = PlayerView(rootView: rootView, drawDelegate: self)
+    func createSinglePlayerView(at superview: UIView) {
+        let playerView = PlayerView(superview: superview, device: self.device, drawDelegate: self)
         playerView.setupSubviews()
         self.playerView = playerView
     }
