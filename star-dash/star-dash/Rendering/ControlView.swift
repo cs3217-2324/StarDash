@@ -22,12 +22,12 @@ class ControlView: UIView {
 
         jumpButton.addTarget(self, action: #selector(jumpButtonTapped), for: .touchUpInside)
 
-        jumpButton.setImage(#imageLiteral(named: "JumpButton"), for: .normal)
-        jumpButton.setImage(#imageLiteral(named: "JumpButtonDown"), for: .highlighted)
+        jumpButton.setImage(#imageLiteral(resourceName: "JumpButton"), for: .normal)
+        jumpButton.setImage(#imageLiteral(resourceName: "JumpButtonDown"), for: .highlighted)
         addSubview(jumpButton)
     }
 
-    func jumpButtonTapped() {
+    @objc func jumpButtonTapped() {
         print("Tapped")
     }
 }
