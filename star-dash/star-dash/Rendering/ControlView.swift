@@ -14,7 +14,7 @@ class ControlView: UIView {
     private func setupActionControls() {
         let jumpButton = UIButton(type: .custom)
         
-        let buttonSize: CGFloat = 50
+        let buttonSize: CGFloat = 100
         let buttonMargin: CGFloat = 50
         let buttonX = frame.width - buttonSize - buttonMargin
         let buttonY = frame.height - buttonSize - buttonMargin
