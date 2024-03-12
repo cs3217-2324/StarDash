@@ -2,7 +2,7 @@ import UIKit
 
 class ControlView: UIView {
     
-    var joystickView: JoystickView
+    var joystickView: JoystickView?
     
     let buttonMargin: CGFloat = 50
     let buttonSize: CGFloat = 100
@@ -22,7 +22,7 @@ class ControlView: UIView {
             y: joystickY,
             width: joystickBackgroundWidth,
             height: buttonSize
-        ))
+        ), buttonSize: buttonSize)
         
         addSubview(joystickView)
         self.joystickView = joystickView
@@ -60,7 +60,7 @@ class ControlView: UIView {
             return
         }
 
-        joystickView.moveJoystick(location: firstTouch.location(in: joystickBackground))
+        joystickView?.moveJoystick(location: firstTouch.location(in: joystickView))
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -71,14 +71,14 @@ class ControlView: UIView {
             return
         }
         
-        joystickView.returnJoystick()
+        joystickView?.returnJoystick()
     }
     
     @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
         if (gesture.state == .ended) {
-            joystickView.returnJoystick()
+            joystickView?.returnJoystick()
         } else if gesture.location(in: self).x < self.frame.width / 2 {
-            joystickView.moveJoystick(location: gesture.location(in: joystickBackground))
+            joystickView?.moveJoystick(location: gesture.location(in: joystickView))
         }
     }
     

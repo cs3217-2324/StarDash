@@ -1,30 +1,38 @@
+import UIKit
+
 class JoystickView: UIView {
 
     let joystickBackground: UIView
     let joystickControl: UIView
 
-    init(frame: CGRect) {
+    init(frame: CGRect, buttonSize: CGFloat) {
         self.joystickBackground = UIImageView(image: #imageLiteral(resourceName: "JoystickBackground"))
-        joystickBackground.frame = frame
+        joystickBackground.frame = CGRect(
+            x: 0, y: 0, width: frame.width, height: frame.height
+        )
         joystickBackground.alpha = 0.5
-        addSubview(joystickBackground)
         
         self.joystickControl = UIImageView(image: #imageLiteral(resourceName: "JoystickControl"))
         joystickControl.frame = CGRect(
-            x: joystickView.frame.width / 2 - buttonSize / 2,
-            y: joystickView.frame.height / 2 - buttonSize / 2,
+            x: frame.width / 2 - buttonSize / 2,
+            y: frame.height / 2 - buttonSize / 2,
             width: buttonSize,
             height: buttonSize
         )
+        
+        super.init(frame: frame)
+        
+        addSubview(joystickBackground)
         addSubview(joystickControl)
+    }
+    
+    required init?(coder: NSCoder) {
+        self.joystickBackground = UIImageView(image: #imageLiteral(resourceName: "JoystickBackground"))
+        self.joystickControl = UIImageView(image: #imageLiteral(resourceName: "JoystickControl"))
+        super.init(coder: coder)
     }
 
     func moveJoystick(location: CGPoint) {
-        guard let joystickControl = self.joystickControl,
-              let joystickBackground = self.joystickBackground else {
-            return
-        }
-        
         UIView.cancelPreviousPerformRequests(withTarget: joystickControl)
 
         if shouldSendMoveEvent(location: location) {
@@ -41,13 +49,12 @@ class JoystickView: UIView {
     }
     
     func returnJoystick() {
-        guard let joystickControl = joystickControl,
-              let joystickBackground = joystickBackground else {
-            return
-        }
-
         UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseOut, animations: {
-            joystickControl.center = joystickBackground.center
+            self.joystickControl.center = self.joystickBackground.center
         })
+    }
+    
+    private func shouldSendMoveEvent(location: CGPoint) -> Bool {
+        false
     }
 }
