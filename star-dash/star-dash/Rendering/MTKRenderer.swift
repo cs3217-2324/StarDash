@@ -37,6 +37,7 @@ class MTKRenderer: NSObject {
 
         let controlView = UIView(frame: rootView.frame)
         controlView.setupActionControls()
+        self.controlView = controlView
         rootView.addSubview(controlView)
     }
 }
