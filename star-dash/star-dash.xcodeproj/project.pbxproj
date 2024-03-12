@@ -25,6 +25,11 @@
 		4E630F342B9F8FC00008F887 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F332B9F8FC00008F887 /* Player.swift */; };
 		4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F362B9F91DE0008F887 /* PlayerSprite.swift */; };
 		4E630F392B9F943B0008F887 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F382B9F943B0008F887 /* EntityManager.swift */; };
+		4E86605C2BA095460035530D /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86605B2BA095460035530D /* Monster.swift */; };
+		4E86605F2BA095E30035530D /* Collectible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86605E2BA095E30035530D /* Collectible.swift */; };
+		4E8660622BA0964A0035530D /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660612BA0964A0035530D /* Obstacle.swift */; };
+		4E8660642BA096600035530D /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660632BA096600035530D /* Tool.swift */; };
+		4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660652BA097D40035530D /* PhysicsConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +72,11 @@
 		4E630F332B9F8FC00008F887 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4E630F362B9F91DE0008F887 /* PlayerSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSprite.swift; sourceTree = "<group>"; };
 		4E630F382B9F943B0008F887 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
+		4E86605B2BA095460035530D /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
+		4E86605E2BA095E30035530D /* Collectible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collectible.swift; sourceTree = "<group>"; };
+		4E8660612BA0964A0035530D /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
+		4E8660632BA096600035530D /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		4E8660652BA097D40035530D /* PhysicsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +127,7 @@
 		4E630EF42B9F7E070008F887 /* star-dash */ = {
 			isa = PBXGroup;
 			children = (
+				4E86605D2BA095CC0035530D /* Constants */,
 				4E630F352B9F91C20008F887 /* Enums */,
 				4E630F252B9F7E500008F887 /* Entities */,
 				4E630EF52B9F7E070008F887 /* AppDelegate.swift */,
@@ -150,9 +161,9 @@
 		4E630F252B9F7E500008F887 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				4E8660602BA0961F0035530D /* GameEntities */,
 				4E630F282B9F7EC20008F887 /* Components */,
 				4E630F262B9F7E770008F887 /* Entity.swift */,
-				4E630F332B9F8FC00008F887 /* Player.swift */,
 				4E630F382B9F943B0008F887 /* EntityManager.swift */,
 			);
 			path = Entities;
@@ -176,6 +187,26 @@
 				4E630F362B9F91DE0008F887 /* PlayerSprite.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		4E86605D2BA095CC0035530D /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				4E8660652BA097D40035530D /* PhysicsConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		4E8660602BA0961F0035530D /* GameEntities */ = {
+			isa = PBXGroup;
+			children = (
+				4E630F332B9F8FC00008F887 /* Player.swift */,
+				4E86605B2BA095460035530D /* Monster.swift */,
+				4E86605E2BA095E30035530D /* Collectible.swift */,
+				4E8660612BA0964A0035530D /* Obstacle.swift */,
+				4E8660632BA096600035530D /* Tool.swift */,
+			);
+			path = GameEntities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,8 +342,12 @@
 			files = (
 				4E630F272B9F7E770008F887 /* Entity.swift in Sources */,
 				4E630F2C2B9F7F460008F887 /* Component.swift in Sources */,
+				4E8660622BA0964A0035530D /* Obstacle.swift in Sources */,
+				4E8660642BA096600035530D /* Tool.swift in Sources */,
 				4E630F392B9F943B0008F887 /* EntityManager.swift in Sources */,
 				4E630F302B9F83DE0008F887 /* SpriteComponent.swift in Sources */,
+				4E86605F2BA095E30035530D /* Collectible.swift in Sources */,
+				4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */,
 				4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */,
 				4E630F322B9F887C0008F887 /* PhysicsComponent.swift in Sources */,
 				4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */,
@@ -321,6 +356,7 @@
 				4E630F342B9F8FC00008F887 /* Player.swift in Sources */,
 				4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */,
 				4E630F2E2B9F81850008F887 /* HealthComponent.swift in Sources */,
+				4E86605C2BA095460035530D /* Monster.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
