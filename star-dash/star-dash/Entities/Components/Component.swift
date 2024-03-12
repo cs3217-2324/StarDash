@@ -8,10 +8,10 @@
 import Foundation
 typealias ComponentId = UUID
 class Component {
-    var entityId: UUID
-    var id: UUID
+    var entityId: EntityId
+    var id: ComponentId
     
-    init(id: UUID, entityId: UUID) {
+    init(id: ComponentId, entityId: EntityId) {
         self.id = id
         self.entityId = entityId
 

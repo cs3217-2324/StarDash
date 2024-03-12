@@ -7,11 +7,14 @@
 
 import Foundation
 typealias ComponentSet = Set<ComponentId>
+typealias ComponentMap = [ComponentId: Component]
+typealias EntityMap = [EntityId: Entity]
+typealias EntityComponentMap = [EntityId: ComponentSet]
 class EntityManager {
-    var componentMap: [ComponentId: Component]
-    var entityMap: [EntityId: Entity]
-    var entityComponentMap: [EntityId: ComponentSet]
-    init(componentMap: [ComponentId : Component], entityMap: [EntityId : Entity], entityComponentMap: [EntityId: ComponentSet]) {
+    var componentMap: ComponentMap
+    var entityMap: EntityMap
+    var entityComponentMap: EntityComponentMap
+    init(componentMap: ComponentMap, entityMap: EntityMap, entityComponentMap: EntityComponentMap) {
         self.componentMap = componentMap
         self.entityMap = entityMap
         self.entityComponentMap = entityComponentMap
