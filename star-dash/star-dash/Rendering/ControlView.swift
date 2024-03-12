@@ -2,8 +2,7 @@ import UIKit
 
 class ControlView: UIView {
     
-    var joystickControl: UIView?
-    var joystickBackground: UIView?
+    var joystickView: JoystickView
     
     let buttonMargin: CGFloat = 50
     let buttonSize: CGFloat = 100
@@ -17,27 +16,16 @@ class ControlView: UIView {
     }
 
     private func setupMovementControls() {
-        let joystickView = UIView()
-        let buttonY = frame.height - buttonSize - buttonMargin
-        joystickView.frame = CGRect(x: buttonMargin, y: buttonY, width: joystickBackgroundWidth, height: buttonSize)
-        
-        let joystickBackground = UIImageView(image: #imageLiteral(resourceName: "JoystickBackground"))
-        joystickBackground.frame = joystickView.bounds
-        joystickBackground.alpha = 0.5
-        joystickView.addSubview(joystickBackground)
-        self.joystickBackground = joystickBackground
-        
-        let joystickControl = UIImageView(image: #imageLiteral(resourceName: "JoystickControl"))
-        joystickControl.frame = CGRect(
-            x: joystickView.frame.width / 2 - buttonSize / 2,
-            y: joystickView.frame.height / 2 - buttonSize / 2,
-            width: buttonSize,
+        let joystickY = frame.height - buttonSize - buttonMargin
+        let joystickView = JoystickView(frame: CGRect(
+            x: buttonMargin,
+            y: joystickY,
+            width: joystickBackgroundWidth,
             height: buttonSize
-        )
-        joystickView.addSubview(joystickControl)
-        self.joystickControl = joystickControl
+        ))
         
         addSubview(joystickView)
+        self.joystickView = joystickView
     }
 
     private func setupActionControls() {
@@ -72,7 +60,7 @@ class ControlView: UIView {
             return
         }
 
-        moveJoystick(location: firstTouch.location(in: joystickBackground))
+        joystickView.moveJoystick(location: firstTouch.location(in: joystickBackground))
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -83,47 +71,15 @@ class ControlView: UIView {
             return
         }
         
-        returnJoystick()
+        joystickView.returnJoystick()
     }
     
     @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
         if (gesture.state == .ended) {
-            returnJoystick()
+            joystickView.returnJoystick()
         } else if gesture.location(in: self).x < self.frame.width / 2 {
-            moveJoystick(location: gesture.location(in: joystickBackground))
+            joystickView.moveJoystick(location: gesture.location(in: joystickBackground))
         }
-    }
-    
-    private func moveJoystick(location: CGPoint) {
-        guard let joystickControl = self.joystickControl,
-              let joystickBackground = self.joystickBackground else {
-            return
-        }
-        
-        UIView.cancelPreviousPerformRequests(withTarget: joystickControl)
-
-        if shouldSendMoveEvent(location: location) {
-            // send move event
-        }
-        
-        let maxX = joystickBackground.frame.width - joystickControl.frame.width / 2
-        let minX = joystickControl.frame.width / 2
-        
-        joystickControl.center = CGPoint(
-            x: min(max(location.x, minX), maxX),
-            y: joystickControl.center.y
-        )
-    }
-    
-    private func returnJoystick() {
-        guard let joystickControl = joystickControl,
-              let joystickBackground = joystickBackground else {
-            return
-        }
-
-        UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseOut, animations: {
-            joystickControl.center = joystickBackground.center
-        })
     }
     
     private func shouldSendMoveEvent(location: CGPoint) -> Bool {
