@@ -45,7 +45,7 @@ extension MTKRenderer: MTKViewDelegate {
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         return
     }
-    
+
     func draw(in view: MTKView) {
         guard let renderPassDescriptor = view.currentRenderPassDescriptor,
             let commandBuffer = commandQueue.makeCommandBuffer(),
@@ -53,10 +53,10 @@ extension MTKRenderer: MTKViewDelegate {
             return
         }
         renderer.update(atTime: CACurrentMediaTime())
-        
+
         let viewport = CGRect(x: 0, y: 0, width: view.drawableSize.width, height: view.drawableSize.height)
         renderer.render(withViewport: viewport, commandBuffer: commandBuffer, renderPassDescriptor: renderPassDescriptor)
-        
+
         commandBuffer.present(drawable)
         commandBuffer.commit()
     }

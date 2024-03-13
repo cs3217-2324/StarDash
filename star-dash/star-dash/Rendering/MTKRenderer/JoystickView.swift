@@ -17,7 +17,7 @@ class JoystickView: UIView {
         addSubview(joystickBackground)
         addSubview(joystickControl)
     }
-    
+
     required init?(coder: NSCoder) {
         self.joystickBackground = UIImageView(image: #imageLiteral(resourceName: "JoystickBackground"))
         self.joystickControl = UIImageView(image: #imageLiteral(resourceName: "JoystickControl"))
@@ -40,7 +40,7 @@ class JoystickView: UIView {
             y: joystickControl.center.y
         )
     }
-    
+
     /// Returns the joystick to its original position.
     func returnJoystick() {
         UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseOut, animations: {
@@ -71,7 +71,7 @@ class JoystickView: UIView {
 
         return view
     }
-    
+
     /// Returns true if the joystick has moved significantly enough
     /// from its original position.
     private func shouldSendMoveEvent(location: CGPoint) -> Bool {

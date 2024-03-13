@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         scene.scaleMode = .aspectFill
         scene.setupGame()
         self.scene = scene
-        
+
         guard let renderer = MTKRenderer(scene: scene) else {
             return
         }
@@ -29,4 +29,3 @@ class ViewController: UIViewController {
     }
 
 }
-

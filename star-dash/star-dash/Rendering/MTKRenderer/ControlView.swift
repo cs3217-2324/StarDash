@@ -5,9 +5,9 @@ import UIKit
  such as jump button and joystick.
  */
 class ControlView: UIView {
-    
+
     var joystickView: JoystickView?
-    
+
     let buttonMargin: CGFloat = 50
     let buttonSize: CGFloat = 100
     let joystickBackgroundWidth: CGFloat = 256
@@ -27,7 +27,7 @@ class ControlView: UIView {
             width: joystickBackgroundWidth,
             height: buttonSize
         ), buttonSize: buttonSize)
-        
+
         addSubview(joystickView)
         self.joystickView = joystickView
     }
@@ -45,7 +45,7 @@ class ControlView: UIView {
         jumpButton.setImage(#imageLiteral(resourceName: "JumpButtonDown"), for: .highlighted)
         addSubview(jumpButton)
     }
-    
+
     private func setupGestureRecognizers() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         addGestureRecognizer(panGesture)
@@ -54,10 +54,10 @@ class ControlView: UIView {
     @objc func jumpButtonTapped() {
         print("Tapped")
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        
+
         guard let firstTouch = touches.first,
               firstTouch.location(in: self).x < self.frame.width / 2,
               touches.count == 1 else {
@@ -66,26 +66,26 @@ class ControlView: UIView {
 
         joystickView?.moveJoystick(location: firstTouch.location(in: joystickView))
     }
-    
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        
+
         guard let firstTouch = touches.first?.location(in: self),
               firstTouch.x < self.frame.width / 2 else {
             return
         }
-        
+
         joystickView?.returnJoystick()
     }
-    
+
     @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
-        if (gesture.state == .ended) {
+        if gesture.state == .ended {
             joystickView?.returnJoystick()
         } else if gesture.location(in: self).x < self.frame.width / 2 {
             joystickView?.moveJoystick(location: gesture.location(in: joystickView))
         }
     }
-    
+
     private func shouldSendMoveEvent(location: CGPoint) -> Bool {
         false
     }
