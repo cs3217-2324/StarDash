@@ -10,18 +10,32 @@ class JoystickView: UIView {
     let joystickControl: UIView
 
     init(frame: CGRect, buttonSize: CGFloat) {
-        self.joystickBackground = createJoystickBackgroundView(frame: frame)
-        self.joystickControl = createJoystickControlView(frame: frame, buttonSize: buttonSize)
-        super.init(frame: frame)
+        joystickBackground = UIImageView(image: #imageLiteral(resourceName: "JoystickBackground"))
+        joystickControl = UIImageView(image: #imageLiteral(resourceName: "JoystickControl"))
 
-        addSubview(joystickBackground)
-        addSubview(joystickControl)
+        super.init(frame: frame)
     }
 
     required init?(coder: NSCoder) {
         self.joystickBackground = UIImageView(image: #imageLiteral(resourceName: "JoystickBackground"))
         self.joystickControl = UIImageView(image: #imageLiteral(resourceName: "JoystickControl"))
         super.init(coder: coder)
+    }
+
+    func setupSubviews() {
+        joystickBackground.frame = CGRect(
+            x: 0, y: 0, width: frame.width, height: frame.height
+        )
+        joystickBackground.alpha = 0.5
+        addSubview(joystickBackground)
+
+        joystickControl.frame = CGRect(
+            x: frame.width / 2 - buttonSize / 2,
+            y: frame.height / 2 - buttonSize / 2,
+            width: buttonSize,
+            height: buttonSize
+        )
+        addSubview(joystickControl)
     }
 
     /// Translates the joystick control towards the location.
@@ -49,28 +63,6 @@ class JoystickView: UIView {
     }
 
     // MARK: private methods
-
-    private func createJoystickBackgroundView(frame: CGRect) -> UIView {
-        let view = UIImageView(image: #imageLiteral(resourceName: "JoystickBackground"))
-        joystickBackground.frame = CGRect(
-            x: 0, y: 0, width: frame.width, height: frame.height
-        )
-        joystickBackground.alpha = 0.5
-
-        return view
-    }
-
-    private func createJoystickControlView(frame: CGRect, buttonSize: CGFloat) -> UIView {
-        let view = UIImageView(image: #imageLiteral(resourceName: "JoystickControl"))
-        joystickControl.frame = CGRect(
-            x: frame.width / 2 - buttonSize / 2,
-            y: frame.height / 2 - buttonSize / 2,
-            width: buttonSize,
-            height: buttonSize
-        )
-
-        return view
-    }
 
     /// Returns true if the joystick has moved significantly enough
     /// from its original position.
