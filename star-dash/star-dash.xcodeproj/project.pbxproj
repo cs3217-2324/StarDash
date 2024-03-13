@@ -17,6 +17,13 @@
 		4E630F0D2B9F7E090008F887 /* star_dashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F0C2B9F7E090008F887 /* star_dashTests.swift */; };
 		4E630F172B9F7E090008F887 /* star_dashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F162B9F7E090008F887 /* star_dashUITests.swift */; };
 		4E630F192B9F7E090008F887 /* star_dashUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F182B9F7E090008F887 /* star_dashUITestsLaunchTests.swift */; };
+		E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745112BA057040080C1BE /* MTKRenderer.swift */; };
+		E6A745172BA057040080C1BE /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745122BA057040080C1BE /* ControlView.swift */; };
+		E6A745182BA057040080C1BE /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745132BA057040080C1BE /* Renderer.swift */; };
+		E6A745192BA057040080C1BE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745152BA057040080C1BE /* GameScene.swift */; };
+		E6A7451B2BA0C1890080C1BE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451A2BA0C1890080C1BE /* PlayerView.swift */; };
+		E6A7451D2BA0CAD90080C1BE /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */; };
+		E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B550A02BA15E9C00DC7396 /* OverlayView.swift */; };
 		4E630F272B9F7E770008F887 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F262B9F7E770008F887 /* Entity.swift */; };
 		4E630F2A2B9F7EF60008F887 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F292B9F7EF60008F887 /* PositionComponent.swift */; };
 		4E630F2C2B9F7F460008F887 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F2B2B9F7F460008F887 /* Component.swift */; };
@@ -65,6 +72,13 @@
 		4E630F122B9F7E090008F887 /* star-dashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "star-dashUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E630F162B9F7E090008F887 /* star_dashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = star_dashUITests.swift; sourceTree = "<group>"; };
 		4E630F182B9F7E090008F887 /* star_dashUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = star_dashUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E6A745112BA057040080C1BE /* MTKRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKRenderer.swift; sourceTree = "<group>"; };
+		E6A745122BA057040080C1BE /* ControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
+		E6A745132BA057040080C1BE /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		E6A745152BA057040080C1BE /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		E6A7451A2BA0C1890080C1BE /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
+		E6B550A02BA15E9C00DC7396 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		4E630F262B9F7E770008F887 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		4E630F292B9F7EF60008F887 /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		4E630F2B2B9F7F460008F887 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
@@ -130,6 +144,8 @@
 		4E630EF42B9F7E070008F887 /* star-dash */ = {
 			isa = PBXGroup;
 			children = (
+				E6A745142BA057040080C1BE /* GameScene */,
+				E6A745102BA057040080C1BE /* Rendering */,
 				4E86605D2BA095CC0035530D /* Constants */,
 				4E630F352B9F91C20008F887 /* Enums */,
 				4E630F252B9F7E500008F887 /* Entities */,
@@ -159,6 +175,35 @@
 				4E630F182B9F7E090008F887 /* star_dashUITestsLaunchTests.swift */,
 			);
 			path = "star-dashUITests";
+			sourceTree = "<group>";
+		};
+		E6A745102BA057040080C1BE /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				E6B5509F2BA15D2000DC7396 /* MTKRenderer */,
+				E6A745132BA057040080C1BE /* Renderer.swift */,
+			);
+			path = Rendering;
+			sourceTree = "<group>";
+		};
+		E6A745142BA057040080C1BE /* GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				E6A745152BA057040080C1BE /* GameScene.swift */,
+			);
+			path = GameScene;
+			sourceTree = "<group>";
+		};
+		E6B5509F2BA15D2000DC7396 /* MTKRenderer */ = {
+			isa = PBXGroup;
+			children = (
+				E6A745112BA057040080C1BE /* MTKRenderer.swift */,
+				E6A7451A2BA0C1890080C1BE /* PlayerView.swift */,
+				E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */,
+				E6A745122BA057040080C1BE /* ControlView.swift */,
+				E6B550A02BA15E9C00DC7396 /* OverlayView.swift */,
+			);
+			path = MTKRenderer;
 			sourceTree = "<group>";
 		};
 		4E630F252B9F7E500008F887 /* Entities */ = {
@@ -379,6 +424,13 @@
 				4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */,
 				4E630F2A2B9F7EF60008F887 /* PositionComponent.swift in Sources */,
 				4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */,
+				E6A7451B2BA0C1890080C1BE /* PlayerView.swift in Sources */,
+				E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */,
+				E6A745182BA057040080C1BE /* Renderer.swift in Sources */,
+				E6A745192BA057040080C1BE /* GameScene.swift in Sources */,
+				E6A745172BA057040080C1BE /* ControlView.swift in Sources */,
+				E6A7451D2BA0CAD90080C1BE /* JoystickView.swift in Sources */,
+				E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */,
 				4E630F342B9F8FC00008F887 /* Player.swift in Sources */,
 				4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */,
 				4E630F2E2B9F81850008F887 /* HealthComponent.swift in Sources */,
@@ -571,18 +623,23 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ruihan.star-dash";
+				PRODUCT_BUNDLE_IDENTIFIER = "junyi-star-dash";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -600,18 +657,23 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ruihan.star-dash";
+				PRODUCT_BUNDLE_IDENTIFIER = "junyi-star-dash";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
