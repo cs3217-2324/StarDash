@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		142D9F8F2BA15FBB005FE9E0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 142D9F8E2BA15FBB005FE9E0 /* .swiftlint.yml */; };
 		4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF52B9F7E070008F887 /* AppDelegate.swift */; };
 		4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF72B9F7E070008F887 /* SceneDelegate.swift */; };
 		4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF92B9F7E070008F887 /* ViewController.swift */; };
@@ -16,6 +17,20 @@
 		4E630F0D2B9F7E090008F887 /* star_dashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F0C2B9F7E090008F887 /* star_dashTests.swift */; };
 		4E630F172B9F7E090008F887 /* star_dashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F162B9F7E090008F887 /* star_dashUITests.swift */; };
 		4E630F192B9F7E090008F887 /* star_dashUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F182B9F7E090008F887 /* star_dashUITestsLaunchTests.swift */; };
+		4E630F272B9F7E770008F887 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F262B9F7E770008F887 /* Entity.swift */; };
+		4E630F2A2B9F7EF60008F887 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F292B9F7EF60008F887 /* PositionComponent.swift */; };
+		4E630F2C2B9F7F460008F887 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F2B2B9F7F460008F887 /* Component.swift */; };
+		4E630F2E2B9F81850008F887 /* HealthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F2D2B9F81850008F887 /* HealthComponent.swift */; };
+		4E630F302B9F83DE0008F887 /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F2F2B9F83DE0008F887 /* SpriteComponent.swift */; };
+		4E630F322B9F887C0008F887 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F312B9F887C0008F887 /* PhysicsComponent.swift */; };
+		4E630F342B9F8FC00008F887 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F332B9F8FC00008F887 /* Player.swift */; };
+		4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F362B9F91DE0008F887 /* PlayerSprite.swift */; };
+		4E630F392B9F943B0008F887 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F382B9F943B0008F887 /* EntityManager.swift */; };
+		4E86605C2BA095460035530D /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86605B2BA095460035530D /* Monster.swift */; };
+		4E86605F2BA095E30035530D /* Collectible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86605E2BA095E30035530D /* Collectible.swift */; };
+		4E8660622BA0964A0035530D /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660612BA0964A0035530D /* Obstacle.swift */; };
+		4E8660642BA096600035530D /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660632BA096600035530D /* Tool.swift */; };
+		4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660652BA097D40035530D /* PhysicsConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		142D9F8E2BA15FBB005FE9E0 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		4E630EF22B9F7E070008F887 /* star-dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "star-dash.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E630EF52B9F7E070008F887 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E630EF72B9F7E070008F887 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +65,20 @@
 		4E630F122B9F7E090008F887 /* star-dashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "star-dashUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E630F162B9F7E090008F887 /* star_dashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = star_dashUITests.swift; sourceTree = "<group>"; };
 		4E630F182B9F7E090008F887 /* star_dashUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = star_dashUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4E630F262B9F7E770008F887 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		4E630F292B9F7EF60008F887 /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
+		4E630F2B2B9F7F460008F887 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		4E630F2D2B9F81850008F887 /* HealthComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthComponent.swift; sourceTree = "<group>"; };
+		4E630F2F2B9F83DE0008F887 /* SpriteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
+		4E630F312B9F887C0008F887 /* PhysicsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsComponent.swift; sourceTree = "<group>"; };
+		4E630F332B9F8FC00008F887 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		4E630F362B9F91DE0008F887 /* PlayerSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSprite.swift; sourceTree = "<group>"; };
+		4E630F382B9F943B0008F887 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
+		4E86605B2BA095460035530D /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
+		4E86605E2BA095E30035530D /* Collectible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collectible.swift; sourceTree = "<group>"; };
+		4E8660612BA0964A0035530D /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
+		4E8660632BA096600035530D /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		4E8660652BA097D40035530D /* PhysicsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +112,7 @@
 				4E630EF42B9F7E070008F887 /* star-dash */,
 				4E630F0B2B9F7E090008F887 /* star-dashTests */,
 				4E630F152B9F7E090008F887 /* star-dashUITests */,
+				142D9F8E2BA15FBB005FE9E0 /* .swiftlint.yml */,
 				4E630EF32B9F7E070008F887 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,6 +130,9 @@
 		4E630EF42B9F7E070008F887 /* star-dash */ = {
 			isa = PBXGroup;
 			children = (
+				4E86605D2BA095CC0035530D /* Constants */,
+				4E630F352B9F91C20008F887 /* Enums */,
+				4E630F252B9F7E500008F887 /* Entities */,
 				4E630EF52B9F7E070008F887 /* AppDelegate.swift */,
 				4E630EF72B9F7E070008F887 /* SceneDelegate.swift */,
 				4E630EF92B9F7E070008F887 /* ViewController.swift */,
@@ -127,6 +161,57 @@
 			path = "star-dashUITests";
 			sourceTree = "<group>";
 		};
+		4E630F252B9F7E500008F887 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				4E8660602BA0961F0035530D /* GameEntities */,
+				4E630F282B9F7EC20008F887 /* Components */,
+				4E630F262B9F7E770008F887 /* Entity.swift */,
+				4E630F382B9F943B0008F887 /* EntityManager.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		4E630F282B9F7EC20008F887 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4E630F292B9F7EF60008F887 /* PositionComponent.swift */,
+				4E630F2B2B9F7F460008F887 /* Component.swift */,
+				4E630F2D2B9F81850008F887 /* HealthComponent.swift */,
+				4E630F2F2B9F83DE0008F887 /* SpriteComponent.swift */,
+				4E630F312B9F887C0008F887 /* PhysicsComponent.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		4E630F352B9F91C20008F887 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				4E630F362B9F91DE0008F887 /* PlayerSprite.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		4E86605D2BA095CC0035530D /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				4E8660652BA097D40035530D /* PhysicsConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		4E8660602BA0961F0035530D /* GameEntities */ = {
+			isa = PBXGroup;
+			children = (
+				4E630F332B9F8FC00008F887 /* Player.swift */,
+				4E86605B2BA095460035530D /* Monster.swift */,
+				4E86605E2BA095E30035530D /* Collectible.swift */,
+				4E8660612BA0964A0035530D /* Obstacle.swift */,
+				4E8660632BA096600035530D /* Tool.swift */,
+			);
+			path = GameEntities;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,6 +222,7 @@
 				4E630EEE2B9F7E070008F887 /* Sources */,
 				4E630EEF2B9F7E070008F887 /* Frameworks */,
 				4E630EF02B9F7E070008F887 /* Resources */,
+				142D9F8D2BA15F91005FE9E0 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -231,6 +317,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				142D9F8F2BA15FBB005FE9E0 /* .swiftlint.yml in Resources */,
 				4E630F022B9F7E090008F887 /* LaunchScreen.storyboard in Resources */,
 				4E630EFF2B9F7E090008F887 /* Assets.xcassets in Resources */,
 				4E630EFD2B9F7E070008F887 /* Main.storyboard in Resources */,
@@ -253,14 +340,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		142D9F8D2BA15F91005FE9E0 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4E630EEE2B9F7E070008F887 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E630F272B9F7E770008F887 /* Entity.swift in Sources */,
+				4E630F2C2B9F7F460008F887 /* Component.swift in Sources */,
+				4E8660622BA0964A0035530D /* Obstacle.swift in Sources */,
+				4E8660642BA096600035530D /* Tool.swift in Sources */,
+				4E630F392B9F943B0008F887 /* EntityManager.swift in Sources */,
+				4E630F302B9F83DE0008F887 /* SpriteComponent.swift in Sources */,
+				4E86605F2BA095E30035530D /* Collectible.swift in Sources */,
+				4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */,
 				4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */,
+				4E630F322B9F887C0008F887 /* PhysicsComponent.swift in Sources */,
 				4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */,
+				4E630F2A2B9F7EF60008F887 /* PositionComponent.swift in Sources */,
 				4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */,
+				4E630F342B9F8FC00008F887 /* Player.swift in Sources */,
+				4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */,
+				4E630F2E2B9F81850008F887 /* HealthComponent.swift in Sources */,
+				4E86605C2BA095460035530D /* Monster.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +565,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VFS4882B2L;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "star-dash/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -471,6 +594,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VFS4882B2L;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "star-dash/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
