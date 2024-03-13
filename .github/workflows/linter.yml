@@ -15,7 +15,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
       - name: Check swiftlint version
         run: swiftlint version
+
       - name: Run SwiftLint
         run: swiftlint --reporter github-actions-logging --strict
