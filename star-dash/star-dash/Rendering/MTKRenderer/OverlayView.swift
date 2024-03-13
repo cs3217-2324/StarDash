@@ -1,5 +1,9 @@
 import UIKit
 
+/**
+ `OverlayView` is responsible for displaying game information
+ such as points and the minimap for the player.
+ */
 class OverlayView: UIView {
 
     let margin: CGFloat = 50

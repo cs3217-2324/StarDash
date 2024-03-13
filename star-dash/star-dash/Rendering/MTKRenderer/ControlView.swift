@@ -1,5 +1,9 @@
 import UIKit
 
+/**
+ `ControlView` is responsible for displaying the controls
+ such as jump button and joystick.
+ */
 class ControlView: UIView {
     
     var joystickView: JoystickView?

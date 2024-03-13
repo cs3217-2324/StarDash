@@ -1,5 +1,9 @@
 import UIKit
 
+/**
+ `JoystickView` is represents the joystick which the user drags with
+ to move the character.
+ */
 class JoystickView: UIView {
 
     let joystickBackground: UIView
@@ -32,6 +36,7 @@ class JoystickView: UIView {
         super.init(coder: coder)
     }
 
+    /// Translates the joystick control towards the location.
     func moveJoystick(location: CGPoint) {
         UIView.cancelPreviousPerformRequests(withTarget: joystickControl)
 
@@ -48,12 +53,15 @@ class JoystickView: UIView {
         )
     }
     
+    /// Returns the joystick to its original position.
     func returnJoystick() {
         UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseOut, animations: {
             self.joystickControl.center = self.joystickBackground.center
         })
     }
     
+    /// Returns true if the joystick has moved significantly enough
+    /// from its original position.
     private func shouldSendMoveEvent(location: CGPoint) -> Bool {
         false
     }

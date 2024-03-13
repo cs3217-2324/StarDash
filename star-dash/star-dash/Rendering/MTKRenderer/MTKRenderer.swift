@@ -2,6 +2,13 @@ import UIKit
 import SpriteKit
 import MetalKit
 
+/**
+ `MTKRenderer` is a `Renderer` that uses MetalKit and SpriteKit to render
+ the game on to the iOS device.
+
+ The `GameScene` is rendered through a MetalKit while the controls
+ and game information overlay is rendered throuhg UIKit.
+ */
 class MTKRenderer: NSObject, Renderer {
     var scene: GameScene
     var device: MTLDevice
@@ -26,6 +33,7 @@ class MTKRenderer: NSObject, Renderer {
         super.init()
     }
 
+    /// Set ups the views for a single player game.
     func createSinglePlayerView(at superview: UIView) {
         let playerView = PlayerView(superview: superview, device: self.device, drawDelegate: self)
         playerView.setupSubviews()

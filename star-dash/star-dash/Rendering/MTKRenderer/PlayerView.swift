@@ -1,6 +1,15 @@
 import UIKit
 import MetalKit
 
+/**
+ `PlayerView` is responsible for creating and coordinating the views
+ for a specific player.
+
+ It consists of 3 views:
+ 1. Scene View: The game from the player's perspective
+ 2. Control View: The controls the player interacts with
+ 3. Overlay View: The game overlay to show information such as points
+ */
 class PlayerView {
     var sceneView: MTKView
     var controlView: ControlView
