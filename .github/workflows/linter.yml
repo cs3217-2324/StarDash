@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/realm/swiftlint:5.5-latest  build:
+      image: ghcr.io/realm/swiftlint:5.5-latest
     runs-on: ubuntu-latest
 
     steps:
