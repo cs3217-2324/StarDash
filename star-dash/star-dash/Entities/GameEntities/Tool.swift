@@ -10,17 +10,16 @@ import Foundation
 class Tool: Entity {
     let id: EntityId
     private let position: CGPoint
-    
+
     init(id: EntityId, position: CGPoint) {
         self.id = id
         self.position = position
     }
-    
+
     convenience init(position: CGPoint) {
         self.init(id: UUID(), position: position)
     }
-    
-    
+
     func setUpAndAdd(to: EntityManager) {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
         let physicsComponent = PhysicsComponent(
@@ -30,7 +29,7 @@ class Tool: Entity {
             force: .zero,
             collisionMask: PhysicsConstants.CollisionMask.toolCollisionMask,
             affectedByGravity: false)
-        
+
         to.add(entity: self)
         to.add(component: positionComponent)
         to.add(component: physicsComponent)

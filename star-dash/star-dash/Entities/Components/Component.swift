@@ -6,15 +6,15 @@
 //
 
 import Foundation
+
 typealias ComponentId = UUID
+
 class Component {
     var entityId: EntityId
     var id: ComponentId
-    
+
     init(id: ComponentId, entityId: EntityId) {
         self.id = id
         self.entityId = entityId
-
     }
-    
 }

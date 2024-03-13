@@ -6,21 +6,22 @@
 //
 
 import Foundation
+
 class Player: Entity {
     let id: EntityId
     private let position: CGPoint
     private let playerSprite: PlayerSprite
+
     init(id: EntityId, position: CGPoint, playerSprite: PlayerSprite) {
         self.id = id
         self.position = position
         self.playerSprite = playerSprite
     }
-    
+
     convenience init(position: CGPoint, playerSprite: PlayerSprite) {
         self.init(id: UUID(), position: position, playerSprite: playerSprite)
     }
-    
-    
+
     func setUpAndAdd(to: EntityManager) {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
         let healthComponent = HealthComponent(entityId: self.id, health: 100)
@@ -31,9 +32,9 @@ class Player: Entity {
             force: .zero,
             collisionMask: PhysicsConstants.CollisionMask.playerCollisionMask,
             affectedByGravity: true)
-        
+
         let spriteComponent = SpriteComponent(entityId: self.id, image: "", size: .zero)
-        
+
         to.add(entity: self)
         to.add(component: positionComponent)
         to.add(component: healthComponent)

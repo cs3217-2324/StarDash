@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 enum PlayerSprite: String {
     case RedNose = "red-nose"
 }

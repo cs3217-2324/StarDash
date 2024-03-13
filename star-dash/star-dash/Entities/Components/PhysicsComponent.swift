@@ -13,8 +13,9 @@ class PhysicsComponent: Component {
     var force: CGVector
     var collisionMask: UInt32
     var affectedByGravity: Bool
-    
-    init(id: ComponentId, entityId: EntityId, mass: CGFloat, velocity: CGVector, force: CGVector, collisionMask: UInt32, affectedByGravity: Bool) {
+
+    init(id: ComponentId, entityId: EntityId, mass: CGFloat, velocity: CGVector,
+         force: CGVector, collisionMask: UInt32, affectedByGravity: Bool) {
         self.mass = mass
         self.velocity = velocity
         self.force = force
@@ -22,8 +23,10 @@ class PhysicsComponent: Component {
         self.affectedByGravity = affectedByGravity
         super.init(id: id, entityId: entityId)
     }
-    
-    convenience init(entityId: EntityId, mass: CGFloat, velocity: CGVector, force: CGVector, collisionMask: UInt32, affectedByGravity: Bool) {
-        self.init(id: UUID(), entityId: entityId, mass: mass, velocity: velocity, force: force, collisionMask: collisionMask, affectedByGravity: affectedByGravity)
+
+    convenience init(entityId: EntityId, mass: CGFloat, velocity: CGVector,
+                     force: CGVector, collisionMask: UInt32, affectedByGravity: Bool) {
+        self.init(id: UUID(), entityId: entityId, mass: mass, velocity: velocity,
+                  force: force, collisionMask: collisionMask, affectedByGravity: affectedByGravity)
     }
 }

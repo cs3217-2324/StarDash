@@ -15,15 +15,17 @@ struct PhysicsConstants {
         static let obstacle: UInt32 = 0b01000
         static let tool: UInt32 = 0b10000
     }
+
     struct CollisionMask {
-        static let playerCollisionMask = CollisionCategory.monster | CollisionCategory.collectible | CollisionCategory.obstacle | CollisionCategory.tool
-        
+        static let playerCollisionMask = CollisionCategory.monster
+            | CollisionCategory.collectible | CollisionCategory.obstacle | CollisionCategory.tool
+
         static let monsterCollisionMask = CollisionCategory.player | CollisionCategory.tool
-        
+
         static let collectibleCollisionMask = CollisionCategory.player
-        
+
         static let obstacleCollisionMask = CollisionCategory.player
-        
+
         static let toolCollisionMask = CollisionCategory.player | CollisionCategory.monster
     }
 }
