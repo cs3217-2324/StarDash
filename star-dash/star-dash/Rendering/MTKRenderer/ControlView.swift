@@ -26,7 +26,7 @@ class ControlView: UIView {
             y: joystickY,
             width: joystickBackgroundWidth,
             height: buttonSize
-        ), buttonSize: buttonSize)
+        ))
         joystickView.setupSubviews()
 
         addSubview(joystickView)

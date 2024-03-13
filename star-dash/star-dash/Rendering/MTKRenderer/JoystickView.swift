@@ -9,7 +9,9 @@ class JoystickView: UIView {
     let joystickBackground: UIView
     let joystickControl: UIView
 
-    init(frame: CGRect, buttonSize: CGFloat) {
+    let joystickSize: CGFloat = 100
+
+    override init(frame: CGRect) {
         joystickBackground = UIImageView(image: #imageLiteral(resourceName: "JoystickBackground"))
         joystickControl = UIImageView(image: #imageLiteral(resourceName: "JoystickControl"))
 
@@ -30,10 +32,10 @@ class JoystickView: UIView {
         addSubview(joystickBackground)
 
         joystickControl.frame = CGRect(
-            x: frame.width / 2 - buttonSize / 2,
-            y: frame.height / 2 - buttonSize / 2,
-            width: buttonSize,
-            height: buttonSize
+            x: frame.width / 2 - joystickSize / 2,
+            y: frame.height / 2 - joystickSize / 2,
+            width: joystickSize,
+            height: joystickSize
         )
         addSubview(joystickControl)
     }
