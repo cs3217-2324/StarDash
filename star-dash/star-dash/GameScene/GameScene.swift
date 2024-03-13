@@ -2,8 +2,8 @@ import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var ball: SKShapeNode?
-    var platform: SKShapeNode?
+    var ball: SKNode?
+    var platform: SKNode?
     
     var camBall: SKCameraNode?
     var camPlatform: SKCameraNode?
@@ -29,17 +29,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.physicsWorld.gravity = CGVector(dx: physicsWorld.gravity.dx, dy: physicsWorld.gravity.dy * 0.3)
         
-        let ball = SKShapeNode(circleOfRadius: 10)
-        ball.physicsBody = SKPhysicsBody(circleOfRadius: 10)
+        let background  = SKSpriteNode(imageNamed: "GameBackground")
+        background.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        background.zPosition = -1
+        addChild(background)
+        
+        let ball = SKSpriteNode(imageNamed: "PlayerRedNose")
+        ball.size = CGSize(width: 100, height: 140)
+        ball.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 60, height: 110))
         ball.position = CGPoint(x: size.width / 2, y: size.height / 2 + 200)
-        //ball.fillColor = .blue
         self.ball = ball
+        
+        let textureAtlas = SKTextureAtlas(named: "PlayerRedNoseRun")
+        var frames = [SKTexture]()
+        for i in 0..<textureAtlas.textureNames.count {
+            frames.append(textureAtlas.textureNamed(textureAtlas.textureNames[i]))
+        }
+        ball.run(SKAction.repeatForever(SKAction.animate(with: frames, timePerFrame: TimeInterval(0.2), resize: false, restore: true)))
         
         let platform = SKShapeNode(rectOf: CGSize(width: 200, height: 50))
         platform.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 200, height: 50))
         platform.physicsBody?.isDynamic = false
-        platform.position = CGPoint(x: size.width / 2, y: size.height / 2 - 200)
-        // platform.fillColor = .black
+        platform.position = CGPoint(x: size.width / 2, y: size.height / 2 - 400)
         self.platform = platform
         
         addChild(ball)
