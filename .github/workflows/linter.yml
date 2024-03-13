@@ -1,0 +1,24 @@
+name: linter
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install SwiftLint
+      run: |
+        curl -sL https://gist.githubusercontent.com/guillermomuntaner/4c6d0ff0354c40a3f92e2ce2be477566/raw/install-swiftlint.sh | bash
+
+    - name: Run SwiftLint
+      run: swiftlint
