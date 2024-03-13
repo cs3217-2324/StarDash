@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		142D9F8F2BA15FBB005FE9E0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 142D9F8E2BA15FBB005FE9E0 /* .swiftlint.yml */; };
+		461148912BA1CDBF0073E7E1 /* SystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148902BA1CDBF0073E7E1 /* SystemManager.swift */; };
+		461148932BA1D04B0073E7E1 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148922BA1D04B0073E7E1 /* System.swift */; };
+		461148962BA1D53D0073E7E1 /* PositionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148952BA1D53D0073E7E1 /* PositionSystem.swift */; };
+		461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */; };
 		4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF52B9F7E070008F887 /* AppDelegate.swift */; };
 		4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF72B9F7E070008F887 /* SceneDelegate.swift */; };
 		4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF92B9F7E070008F887 /* ViewController.swift */; };
@@ -52,6 +56,10 @@
 
 /* Begin PBXFileReference section */
 		142D9F8E2BA15FBB005FE9E0 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		461148902BA1CDBF0073E7E1 /* SystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemManager.swift; sourceTree = "<group>"; };
+		461148922BA1D04B0073E7E1 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		461148952BA1D53D0073E7E1 /* PositionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSystem.swift; sourceTree = "<group>"; };
+		461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsSystem.swift; sourceTree = "<group>"; };
 		4E630EF22B9F7E070008F887 /* star-dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "star-dash.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E630EF52B9F7E070008F887 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E630EF72B9F7E070008F887 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +114,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4611488F2BA1CD9E0073E7E1 /* Systems */ = {
+			isa = PBXGroup;
+			children = (
+				461148902BA1CDBF0073E7E1 /* SystemManager.swift */,
+				461148922BA1D04B0073E7E1 /* System.swift */,
+				461148952BA1D53D0073E7E1 /* PositionSystem.swift */,
+				461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */,
+			);
+			path = Systems;
+			sourceTree = "<group>";
+		};
 		4E630EE92B9F7E070008F887 = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +149,8 @@
 		4E630EF42B9F7E070008F887 /* star-dash */ = {
 			isa = PBXGroup;
 			children = (
+				4611488F2BA1CD9E0073E7E1 /* Systems */,
+				4E630F282B9F7EC20008F887 /* Components */,
 				4E86605D2BA095CC0035530D /* Constants */,
 				4E630F352B9F91C20008F887 /* Enums */,
 				4E630F252B9F7E500008F887 /* Entities */,
@@ -165,7 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				4E8660602BA0961F0035530D /* GameEntities */,
-				4E630F282B9F7EC20008F887 /* Components */,
 				4E630F262B9F7E770008F887 /* Entity.swift */,
 				4E630F382B9F943B0008F887 /* EntityManager.swift */,
 			);
@@ -369,18 +389,22 @@
 				4E630F272B9F7E770008F887 /* Entity.swift in Sources */,
 				4E630F2C2B9F7F460008F887 /* Component.swift in Sources */,
 				4E8660622BA0964A0035530D /* Obstacle.swift in Sources */,
+				461148932BA1D04B0073E7E1 /* System.swift in Sources */,
 				4E8660642BA096600035530D /* Tool.swift in Sources */,
 				4E630F392B9F943B0008F887 /* EntityManager.swift in Sources */,
 				4E630F302B9F83DE0008F887 /* SpriteComponent.swift in Sources */,
 				4E86605F2BA095E30035530D /* Collectible.swift in Sources */,
 				4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */,
+				461148912BA1CDBF0073E7E1 /* SystemManager.swift in Sources */,
 				4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */,
 				4E630F322B9F887C0008F887 /* PhysicsComponent.swift in Sources */,
 				4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */,
+				461148962BA1D53D0073E7E1 /* PositionSystem.swift in Sources */,
 				4E630F2A2B9F7EF60008F887 /* PositionComponent.swift in Sources */,
 				4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */,
 				4E630F342B9F8FC00008F887 /* Player.swift in Sources */,
 				4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */,
+				461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */,
 				4E630F2E2B9F81850008F887 /* HealthComponent.swift in Sources */,
 				4E86605C2BA095460035530D /* Monster.swift in Sources */,
 			);
