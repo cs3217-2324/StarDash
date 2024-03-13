@@ -6,12 +6,20 @@ import UIKit
  */
 class JoystickView: UIView {
 
+    static let DEFAULT_JOYSTICK_SIZE: CGFloat = 100
+
     let joystickBackground: UIView
     let joystickControl: UIView
 
-    let joystickSize: CGFloat = 100
+    let joystickSize: CGFloat
 
     override init(frame: CGRect) {
+        init(frame: frame, joystickSize: JoystickView.DEFAULT_JOYSTICK_SIZE)
+
+        super.init(frame: frame)
+    }
+
+    init(frame: CGRect, joystickSize: CGFloat) {
         joystickBackground = UIImageView(image: #imageLiteral(resourceName: "JoystickBackground"))
         joystickControl = UIImageView(image: #imageLiteral(resourceName: "JoystickControl"))
 
