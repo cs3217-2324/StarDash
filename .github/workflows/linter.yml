@@ -17,4 +17,4 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Run SwiftLint
-      run: swiftlint
+      run: swiftlint --reporter github-actions-logging --strict
