@@ -29,7 +29,7 @@ class JoystickView: UIView {
         self.joystickBackground = UIImageView(image: #imageLiteral(resourceName: "JoystickBackground"))
         self.joystickControl = UIImageView(image: #imageLiteral(resourceName: "JoystickControl"))
         joystickSize = JoystickView.DEFAULT_JOYSTICK_SIZE
-        
+
         super.init(coder: coder)
     }
 

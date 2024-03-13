@@ -22,14 +22,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        return
+
     }
 
     func setupGame() {
 
         self.physicsWorld.gravity = CGVector(dx: physicsWorld.gravity.dx, dy: physicsWorld.gravity.dy * 0.3)
 
-        let background  = SKSpriteNode(imageNamed: "GameBackground")
+        let background = SKSpriteNode(imageNamed: "GameBackground")
         background.position = CGPoint(x: size.width / 2, y: size.height / 2)
         background.zPosition = -1
         addChild(background)

@@ -8,7 +8,7 @@ class OverlayView: UIView {
 
     let margin: CGFloat = 50
 
-    let scoreLabel: UILabel = UILabel()
+    let scoreLabel = UILabel()
 
     func setupSubviews() {
         scoreLabel.text = "Score: 0"

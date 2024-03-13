@@ -43,7 +43,7 @@ class MTKRenderer: NSObject, Renderer {
 
 extension MTKRenderer: MTKViewDelegate {
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        return
+
     }
 
     func draw(in view: MTKView) {

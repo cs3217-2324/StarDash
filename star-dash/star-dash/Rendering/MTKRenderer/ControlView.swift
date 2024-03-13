@@ -18,7 +18,7 @@ class ControlView: UIView {
         setupActionControls()
         setupGestureRecognizers()
     }
-    
+
     // MARK: Private methods for setup
 
     private func setupMovementControls() {
