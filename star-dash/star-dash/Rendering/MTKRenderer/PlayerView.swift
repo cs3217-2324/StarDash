@@ -20,5 +20,6 @@ class PlayerView {
 
     func setupSubviews() {
         self.controlView.setupSubviews()
+        self.overlayView.setupSubviews()
     }
 }

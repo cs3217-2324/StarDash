@@ -10,6 +10,7 @@ class OverlayView: UIView {
         scoreLabel.text = "Score: 0"
         scoreLabel.numberOfLines = 1
         scoreLabel.translatesAutoresizingMaskIntoConstraints = false
+        scoreLabel.textColor = .white
         addSubview(scoreLabel)
 
         NSLayoutConstraint.activate([
