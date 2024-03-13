@@ -18,6 +18,8 @@ class ControlView: UIView {
         setupActionControls()
         setupGestureRecognizers()
     }
+    
+    // MARK: Private methods for setup
 
     private func setupMovementControls() {
         let joystickY = frame.height - buttonSize - buttonMargin
@@ -51,6 +53,8 @@ class ControlView: UIView {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         addGestureRecognizer(panGesture)
     }
+
+    // MARK: Gesture handler methods
 
     @objc func jumpButtonTapped() {
         print("Tapped")
