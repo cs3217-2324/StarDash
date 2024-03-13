@@ -42,10 +42,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         let textureAtlas = SKTextureAtlas(named: "PlayerRedNoseRun")
         var frames = [SKTexture]()
-        for i in 0..<textureAtlas.textureNames.count {
-            frames.append(textureAtlas.textureNamed(textureAtlas.textureNames[i]))
+        for idx in 0..<textureAtlas.textureNames.count {
+            frames.append(textureAtlas.textureNamed(textureAtlas.textureNames[idx]))
         }
-        ball.run(SKAction.repeatForever(SKAction.animate(with: frames, timePerFrame: TimeInterval(0.2), resize: false, restore: true)))
+        ball.run(SKAction.repeatForever(
+            SKAction.animate(with: frames, timePerFrame: TimeInterval(0.2), resize: false, restore: true)
+        ))
 
         let platform = SKShapeNode(rectOf: CGSize(width: 200, height: 50))
         platform.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 200, height: 50))

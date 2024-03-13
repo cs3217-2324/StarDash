@@ -55,7 +55,11 @@ extension MTKRenderer: MTKViewDelegate {
         renderer.update(atTime: CACurrentMediaTime())
 
         let viewport = CGRect(x: 0, y: 0, width: view.drawableSize.width, height: view.drawableSize.height)
-        renderer.render(withViewport: viewport, commandBuffer: commandBuffer, renderPassDescriptor: renderPassDescriptor)
+        renderer.render(
+            withViewport: viewport,
+            commandBuffer: commandBuffer,
+            renderPassDescriptor: renderPassDescriptor
+        )
 
         commandBuffer.present(drawable)
         commandBuffer.commit()
