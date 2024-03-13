@@ -13,15 +13,14 @@ class JoystickView: UIView {
 
     let joystickSize: CGFloat
 
-    override init(frame: CGRect) {
-        init(frame: frame, joystickSize: JoystickView.DEFAULT_JOYSTICK_SIZE)
-
-        super.init(frame: frame)
+    override convenience init(frame: CGRect) {
+        self.init(frame: frame, joystickSize: JoystickView.DEFAULT_JOYSTICK_SIZE)
     }
 
     init(frame: CGRect, joystickSize: CGFloat) {
         joystickBackground = UIImageView(image: #imageLiteral(resourceName: "JoystickBackground"))
         joystickControl = UIImageView(image: #imageLiteral(resourceName: "JoystickControl"))
+        self.joystickSize = JoystickView.DEFAULT_JOYSTICK_SIZE
 
         super.init(frame: frame)
     }
@@ -29,6 +28,8 @@ class JoystickView: UIView {
     required init?(coder: NSCoder) {
         self.joystickBackground = UIImageView(image: #imageLiteral(resourceName: "JoystickBackground"))
         self.joystickControl = UIImageView(image: #imageLiteral(resourceName: "JoystickControl"))
+        joystickSize = JoystickView.DEFAULT_JOYSTICK_SIZE
+        
         super.init(coder: coder)
     }
 
