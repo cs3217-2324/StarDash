@@ -8,7 +8,7 @@
 import Foundation
 
 protocol Event {
-    var timestamp: TimeInterval { get }
+    var timestamp: Date { get }
     var entityId: EntityId { get }
 
     func execute(on target: EventModifiable)
