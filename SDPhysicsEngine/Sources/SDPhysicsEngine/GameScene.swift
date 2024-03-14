@@ -6,14 +6,14 @@ public class GameScene: SKScene, SDScene {
 
     private var lastUpdateTime: TimeInterval?
 
-    override func update(_ currentTime: TimeInterval) {
+    override public func update(_ currentTime: TimeInterval) {
         guard let lastUpdateTime = lastUpdateTime else {
             lastUpdateTime = currentTime
             return
         }
 
         let deltaTime = currentTime - lastUpdateTime
-        lastUpdateTime = currentTime
+        self.lastUpdateTime = currentTime
 
         sceneDelegate?.update(self, deltaTime: deltaTime)
     }
