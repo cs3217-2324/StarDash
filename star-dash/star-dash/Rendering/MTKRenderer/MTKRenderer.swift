@@ -1,6 +1,7 @@
 import UIKit
 import SpriteKit
 import MetalKit
+import SDPhysicsEngine
 
 /**
  `MTKRenderer` is a `Renderer` that uses MetalKit and SpriteKit to render

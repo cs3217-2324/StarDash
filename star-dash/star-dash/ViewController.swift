@@ -18,8 +18,8 @@ class ViewController: UIViewController {
 
         let scene = GameScene(size: CGSize(width: 4_842, height: 1_040))
         scene.scaleMode = .aspectFill
-        setupGame()
         self.scene = scene
+        setupGame()
 
         guard let renderer = MTKRenderer(scene: scene) else {
             return
@@ -30,17 +30,20 @@ class ViewController: UIViewController {
     }
 
     func setupGame() {
+        guard let scene = self.scene else {
+            return
+        }
 
-        let background = GameSpriteObject(imageNamed: "GameBackground")
-        background.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        let background = SDSpriteObject(imageNamed: "GameBackground")
+        background.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
         background.zPosition = -1
-        scene.addGameObject(background)
+        scene.addObject(background)
 
-        let ball = GameSpriteObject(imageNamed: "PlayerRedNose")
+        let ball = SDSpriteObject(imageNamed: "PlayerRedNose")
         ball.size = CGSize(width: 100, height: 140)
-        ball.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 60, height: 110))
-        ball.position = CGPoint(x: size.width / 2, y: size.height / 2 + 200)
-        scene.addGameObject(ball)
+        ball.physicsBody = SDPhysicsBody(rectangleOf: CGSize(width: 60, height: 110))
+        ball.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 + 200)
+        scene.addObject(ball)
 
         // let textureAtlas = SKTextureAtlas(named: "PlayerRedNoseRun")
         // var frames = [SKTexture]()
@@ -51,10 +54,10 @@ class ViewController: UIViewController {
         //     SKAction.animate(with: frames, timePerFrame: TimeInterval(0.2), resize: false, restore: true)
         // ))
 
-        let platform = SKShapeNode(rectOf: CGSize(width: 200, height: 50))
-        platform.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 200, height: 50))
+        let platform = SDObject()
+        platform.physicsBody = SDPhysicsBody(rectangleOf: CGSize(width: 200, height: 50))
         platform.physicsBody?.isDynamic = false
-        platform.position = CGPoint(x: size.width / 2, y: size.height / 2 - 400)
-        scene.addGameObject(platform)
+        platform.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400)
+        scene.addObject(platform)
     }
 }

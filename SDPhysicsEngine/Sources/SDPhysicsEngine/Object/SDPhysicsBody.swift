@@ -1,14 +1,14 @@
 import SpriteKit
 
-public class GameBody {
-    let body: PhysicsBodyCore
+public class SDPhysicsBody {
+    let body: SKPhysicsBody
 
-    public init(rectangleOf size: CGSize, center: CGPoint) {
-        body = PhysicsBodyCore(rectangleOf: size, center: center)
+    public init(rectangleOf size: CGSize) {
+        body = SKPhysicsBody(rectangleOf: size)
     }
 
-    public init(circleOf radius: CGFloat, center: CGPoint) {
-        body = PhysicsBodyCore(circleOfRadius: radius, center: center)
+    public init(circleOf radius: CGFloat) {
+        body = SKPhysicsBody(circleOfRadius: radius)
     }
 
     public var mass: CGFloat {

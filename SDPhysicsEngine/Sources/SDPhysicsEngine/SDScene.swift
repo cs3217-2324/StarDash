@@ -1,4 +1,8 @@
-protocol SDScene {
+import CoreGraphics
 
-    func addGameObject(_ gameObject: GameObject)
+public protocol SDScene {
+    
+    var size: CGSize { get }
+
+    func addObject(_ object: SDObject)
 }

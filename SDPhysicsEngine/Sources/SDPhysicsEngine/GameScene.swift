@@ -1,8 +1,8 @@
-import Spritekit
+import SpriteKit
 
-class GameScene: SKScene {
+public class GameScene: SKScene, SDScene {
 
-    func addGameObject(_ gameObject: GameObject) {
-        addChild(gameObject.node)
+    public func addObject(_ object: SDObject) {
+        addChild(object.node)
     }
 }
