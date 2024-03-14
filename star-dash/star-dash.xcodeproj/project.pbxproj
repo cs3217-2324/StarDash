@@ -12,6 +12,11 @@
 		461148932BA1D04B0073E7E1 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148922BA1D04B0073E7E1 /* System.swift */; };
 		461148962BA1D53D0073E7E1 /* PositionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148952BA1D53D0073E7E1 /* PositionSystem.swift */; };
 		461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */; };
+		145F2C802BA203B400457549 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F2C7F2BA203B400457549 /* Event.swift */; };
+		145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F2C832BA22CA300457549 /* EventModifiable.swift */; };
+		14E2478E2BA22FCE0071FFC0 /* MoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */; };
+		14E247932BA2CA920071FFC0 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 14E247922BA2CA920071FFC0 /* DequeModule */; };
+		14E247952BA2CB480071FFC0 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E247942BA2CB480071FFC0 /* EventManager.swift */; };
 		4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF52B9F7E070008F887 /* AppDelegate.swift */; };
 		4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF72B9F7E070008F887 /* SceneDelegate.swift */; };
 		4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF92B9F7E070008F887 /* ViewController.swift */; };
@@ -67,6 +72,10 @@
 		461148922BA1D04B0073E7E1 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		461148952BA1D53D0073E7E1 /* PositionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSystem.swift; sourceTree = "<group>"; };
 		461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsSystem.swift; sourceTree = "<group>"; };
+		145F2C7F2BA203B400457549 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		145F2C832BA22CA300457549 /* EventModifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModifiable.swift; sourceTree = "<group>"; };
+		14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveEvent.swift; sourceTree = "<group>"; };
+		14E247942BA2CB480071FFC0 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		4E630EF22B9F7E070008F887 /* star-dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "star-dash.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E630EF52B9F7E070008F887 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E630EF72B9F7E070008F887 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14E247932BA2CA920071FFC0 /* DequeModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +147,17 @@
 				461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */,
 			);
 			path = Systems;
+			sourceTree = "<group>";
+		};
+		145F2C7E2BA2039700457549 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				145F2C7F2BA203B400457549 /* Event.swift */,
+				14E247942BA2CB480071FFC0 /* EventManager.swift */,
+				145F2C832BA22CA300457549 /* EventModifiable.swift */,
+				14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */,
+			);
+			path = Events;
 			sourceTree = "<group>";
 		};
 		4E630EE92B9F7E070008F887 = {
@@ -170,6 +191,7 @@
 				4E86605D2BA095CC0035530D /* Constants */,
 				4E630F352B9F91C20008F887 /* Enums */,
 				4E630F252B9F7E500008F887 /* Entities */,
+				145F2C7E2BA2039700457549 /* Events */,
 				4E630EF52B9F7E070008F887 /* AppDelegate.swift */,
 				4E630EF72B9F7E070008F887 /* SceneDelegate.swift */,
 				4E630EF92B9F7E070008F887 /* ViewController.swift */,
@@ -294,6 +316,9 @@
 			dependencies = (
 			);
 			name = "star-dash";
+			packageProductDependencies = (
+				14E247922BA2CA920071FFC0 /* DequeModule */,
+			);
 			productName = "star-dash";
 			productReference = 4E630EF22B9F7E070008F887 /* star-dash.app */;
 			productType = "com.apple.product-type.application";
@@ -366,6 +391,9 @@
 				Base,
 			);
 			mainGroup = 4E630EE92B9F7E070008F887;
+			packageReferences = (
+				14E247912BA2CA920071FFC0 /* XCRemoteSwiftPackageReference "swift-collections" */,
+			);
 			productRefGroup = 4E630EF32B9F7E070008F887 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -433,6 +461,7 @@
 			files = (
 				4E630F272B9F7E770008F887 /* Entity.swift in Sources */,
 				4E630F2C2B9F7F460008F887 /* Component.swift in Sources */,
+				14E2478E2BA22FCE0071FFC0 /* MoveEvent.swift in Sources */,
 				4E8660622BA0964A0035530D /* Obstacle.swift in Sources */,
 				461148932BA1D04B0073E7E1 /* System.swift in Sources */,
 				4E8660642BA096600035530D /* Tool.swift in Sources */,
@@ -441,11 +470,13 @@
 				4E86605F2BA095E30035530D /* Collectible.swift in Sources */,
 				4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */,
 				461148912BA1CDBF0073E7E1 /* SystemManager.swift in Sources */,
+				145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */,
 				4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */,
 				4E630F322B9F887C0008F887 /* PhysicsComponent.swift in Sources */,
 				4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */,
 				461148962BA1D53D0073E7E1 /* PositionSystem.swift in Sources */,
 				4E630F2A2B9F7EF60008F887 /* PositionComponent.swift in Sources */,
+				14E247952BA2CB480071FFC0 /* EventManager.swift in Sources */,
 				4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */,
 				E6A7451B2BA0C1890080C1BE /* PlayerView.swift in Sources */,
 				E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */,
@@ -459,6 +490,7 @@
 				461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */,
 				4E630F2E2B9F81850008F887 /* HealthComponent.swift in Sources */,
 				4E86605C2BA095460035530D /* Monster.swift in Sources */,
+				145F2C802BA203B400457549 /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -817,6 +849,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		14E247912BA2CA920071FFC0 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		14E247922BA2CA920071FFC0 /* DequeModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 14E247912BA2CA920071FFC0 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = DequeModule;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4E630EEA2B9F7E070008F887 /* Project object */;
 }
