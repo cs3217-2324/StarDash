@@ -9,11 +9,13 @@ import Foundation
 
 class PositionSystem: System {
     var isActive: Bool
+    var dispatcher: EventModifiable
     var entityManager: EntityManager
 
-    init(_ entityManager: EntityManager) {
+    init(_ entityManager: EntityManager, dispatcher: EventModifiable) {
         self.isActive = true
         self.entityManager = entityManager
+        self.dispatcher = dispatcher
     }
 
     func move(entityId: EntityId, to newPosition: CGPoint) {

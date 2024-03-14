@@ -9,10 +9,12 @@ import Foundation
 
 class PhysicsSystem: System {
     var isActive: Bool
+    var dispatcher: EventModifiable
     var entityManager: EntityManager
 
-    init(_ entityManager: EntityManager) {
+    init(_ entityManager: EntityManager, dispatcher: EventModifiable) {
         self.isActive = true
+        self.dispatcher = dispatcher
         self.entityManager = entityManager
     }
 
