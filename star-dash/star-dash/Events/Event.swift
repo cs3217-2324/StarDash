@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Event: Comparable {
+protocol Event {
     var timestamp: TimeInterval { get }
     var entityId: EntityId { get }
 
