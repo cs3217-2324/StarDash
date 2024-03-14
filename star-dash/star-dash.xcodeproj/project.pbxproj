@@ -22,6 +22,13 @@
 		4E630F0D2B9F7E090008F887 /* star_dashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F0C2B9F7E090008F887 /* star_dashTests.swift */; };
 		4E630F172B9F7E090008F887 /* star_dashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F162B9F7E090008F887 /* star_dashUITests.swift */; };
 		4E630F192B9F7E090008F887 /* star_dashUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F182B9F7E090008F887 /* star_dashUITestsLaunchTests.swift */; };
+		E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745112BA057040080C1BE /* MTKRenderer.swift */; };
+		E6A745172BA057040080C1BE /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745122BA057040080C1BE /* ControlView.swift */; };
+		E6A745182BA057040080C1BE /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745132BA057040080C1BE /* Renderer.swift */; };
+		E6A745192BA057040080C1BE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745152BA057040080C1BE /* GameScene.swift */; };
+		E6A7451B2BA0C1890080C1BE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451A2BA0C1890080C1BE /* PlayerView.swift */; };
+		E6A7451D2BA0CAD90080C1BE /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */; };
+		E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B550A02BA15E9C00DC7396 /* OverlayView.swift */; };
 		4E630F272B9F7E770008F887 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F262B9F7E770008F887 /* Entity.swift */; };
 		4E630F2A2B9F7EF60008F887 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F292B9F7EF60008F887 /* PositionComponent.swift */; };
 		4E630F2C2B9F7F460008F887 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F2B2B9F7F460008F887 /* Component.swift */; };
@@ -36,13 +43,6 @@
 		4E8660622BA0964A0035530D /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660612BA0964A0035530D /* Obstacle.swift */; };
 		4E8660642BA096600035530D /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660632BA096600035530D /* Tool.swift */; };
 		4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660652BA097D40035530D /* PhysicsConstants.swift */; };
-		E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745112BA057040080C1BE /* MTKRenderer.swift */; };
-		E6A745172BA057040080C1BE /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745122BA057040080C1BE /* ControlView.swift */; };
-		E6A745182BA057040080C1BE /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745132BA057040080C1BE /* Renderer.swift */; };
-		E6A745192BA057040080C1BE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745152BA057040080C1BE /* GameScene.swift */; };
-		E6A7451B2BA0C1890080C1BE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451A2BA0C1890080C1BE /* PlayerView.swift */; };
-		E6A7451D2BA0CAD90080C1BE /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */; };
-		E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B550A02BA15E9C00DC7396 /* OverlayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +81,13 @@
 		4E630F122B9F7E090008F887 /* star-dashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "star-dashUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E630F162B9F7E090008F887 /* star_dashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = star_dashUITests.swift; sourceTree = "<group>"; };
 		4E630F182B9F7E090008F887 /* star_dashUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = star_dashUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E6A745112BA057040080C1BE /* MTKRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKRenderer.swift; sourceTree = "<group>"; };
+		E6A745122BA057040080C1BE /* ControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
+		E6A745132BA057040080C1BE /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		E6A745152BA057040080C1BE /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		E6A7451A2BA0C1890080C1BE /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
+		E6B550A02BA15E9C00DC7396 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		4E630F262B9F7E770008F887 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		4E630F292B9F7EF60008F887 /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		4E630F2B2B9F7F460008F887 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
@@ -95,13 +102,6 @@
 		4E8660612BA0964A0035530D /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		4E8660632BA096600035530D /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		4E8660652BA097D40035530D /* PhysicsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsConstants.swift; sourceTree = "<group>"; };
-		E6A745112BA057040080C1BE /* MTKRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKRenderer.swift; sourceTree = "<group>"; };
-		E6A745122BA057040080C1BE /* ControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
-		E6A745132BA057040080C1BE /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
-		E6A745152BA057040080C1BE /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		E6A7451A2BA0C1890080C1BE /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
-		E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
-		E6B550A02BA15E9C00DC7396 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +199,35 @@
 			path = "star-dashUITests";
 			sourceTree = "<group>";
 		};
+		E6A745102BA057040080C1BE /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				E6B5509F2BA15D2000DC7396 /* MTKRenderer */,
+				E6A745132BA057040080C1BE /* Renderer.swift */,
+			);
+			path = Rendering;
+			sourceTree = "<group>";
+		};
+		E6A745142BA057040080C1BE /* GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				E6A745152BA057040080C1BE /* GameScene.swift */,
+			);
+			path = GameScene;
+			sourceTree = "<group>";
+		};
+		E6B5509F2BA15D2000DC7396 /* MTKRenderer */ = {
+			isa = PBXGroup;
+			children = (
+				E6A745112BA057040080C1BE /* MTKRenderer.swift */,
+				E6A7451A2BA0C1890080C1BE /* PlayerView.swift */,
+				E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */,
+				E6A745122BA057040080C1BE /* ControlView.swift */,
+				E6B550A02BA15E9C00DC7396 /* OverlayView.swift */,
+			);
+			path = MTKRenderer;
+			sourceTree = "<group>";
+		};
 		4E630F252B9F7E500008F887 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,35 +277,6 @@
 				4E8660632BA096600035530D /* Tool.swift */,
 			);
 			path = GameEntities;
-			sourceTree = "<group>";
-		};
-		E6A745102BA057040080C1BE /* Rendering */ = {
-			isa = PBXGroup;
-			children = (
-				E6B5509F2BA15D2000DC7396 /* MTKRenderer */,
-				E6A745132BA057040080C1BE /* Renderer.swift */,
-			);
-			path = Rendering;
-			sourceTree = "<group>";
-		};
-		E6A745142BA057040080C1BE /* GameScene */ = {
-			isa = PBXGroup;
-			children = (
-				E6A745152BA057040080C1BE /* GameScene.swift */,
-			);
-			path = GameScene;
-			sourceTree = "<group>";
-		};
-		E6B5509F2BA15D2000DC7396 /* MTKRenderer */ = {
-			isa = PBXGroup;
-			children = (
-				E6A745112BA057040080C1BE /* MTKRenderer.swift */,
-				E6A7451A2BA0C1890080C1BE /* PlayerView.swift */,
-				E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */,
-				E6A745122BA057040080C1BE /* ControlView.swift */,
-				E6B550A02BA15E9C00DC7396 /* OverlayView.swift */,
-			);
-			path = MTKRenderer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

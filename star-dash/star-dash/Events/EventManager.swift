@@ -12,15 +12,15 @@ typealias EventQueue = Deque<Event>
 
 class EventManager {
     private var events: EventQueue
-    
+
     init() {
         events = EventQueue()
     }
-    
+
     func add(event: Event) {
         events.append(event)
     }
-    
+
     func executeAll(on target: EventModifiable) {
         while let event = events.popFirst() {
             event.execute(on: target)
