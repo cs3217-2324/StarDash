@@ -1,4 +1,4 @@
-protocol SDSceneDelegate: AnyObject {
+public protocol SDSceneDelegate: AnyObject {
     
-    func update(_ SDScene: scene, deltaTime: TimeInterval)
+    func update(_ scene: SDScene, deltaTime: Double)
 }

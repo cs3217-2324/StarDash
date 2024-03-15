@@ -70,7 +70,7 @@ class ViewController: UIViewController {
 
 extension ViewController: SDSceneDelegate {
     
-    func update(_ SDScene: scene, deltaTime: TimeInterval) {
+    func update(_ scene: SDScene, deltaTime: Double) {
         // TODO: Sync SDObjects into Entities
         // TODO: Update Game Logic
         // TODO: Sync Entities into SDObjects
