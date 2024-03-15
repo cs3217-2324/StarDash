@@ -47,10 +47,15 @@ class PhysicsSystem: System {
             return
         }
 
-        let newForce = CGVector(dx: physicsComponent.force.dx + newForce.dx,
-                                dy: physicsComponent.force.dy + newForce.dy)
+        physicsComponent.force += newForce
+    }
+    
+    func applyImpulse(to entityId: EntityId, impulse: CGVector) {
+        guard let physicsComponent = getPhysicsComponent(of: entityId) else {
+            return
+        }
 
-        physicsComponent.force = newForce
+        physicsComponent.velocity += (impulse / physicsComponent.mass)
     }
 
     func sync(entityVelocityMap: [EntityId: CGVector]) {
