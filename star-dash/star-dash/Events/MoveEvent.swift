@@ -23,7 +23,6 @@ class MoveEvent: Event {
         guard let positionSystem = target.system(ofType: PositionSystem.self) else {
             return
         }
-        
         positionSystem.move(entityId: entityId, to: destination)
     }
 }

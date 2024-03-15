@@ -19,7 +19,7 @@ class SystemManager {
             system.update(by: deltaTime)
         }
     }
-    
+
     func system<T: System>(ofType type: T.Type) -> T? {
         systems.first(where: { $0 is T }) as? T
     }
