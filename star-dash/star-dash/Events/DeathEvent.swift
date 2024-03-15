@@ -1,5 +1,5 @@
 //
-//  PlayerDeathEvent.swift
+//  DeathEvent.swift
 //  star-dash
 //
 //  Created by Jason Qiu on 16/3/24.
