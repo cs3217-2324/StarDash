@@ -922,6 +922,9 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 14E247912BA2CA920071FFC0 /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = DequeModule;
+		};
+/* End XCSwiftPackageProductDependency section */
+
 	};
 	rootObject = 4E630EEA2B9F7E070008F887 /* Project object */;
 }
