@@ -48,8 +48,8 @@ extension MTKRenderer: MTKViewDelegate {
 
     func draw(in view: MTKView) {
         guard let renderPassDescriptor = view.currentRenderPassDescriptor,
-            let commandBuffer = commandQueue.makeCommandBuffer(),
-            let drawable = view.currentDrawable else {
+              let commandBuffer = commandQueue.makeCommandBuffer(),
+              let drawable = view.currentDrawable else {
             return
         }
         renderer.update(atTime: CACurrentMediaTime())
