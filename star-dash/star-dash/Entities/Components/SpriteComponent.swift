@@ -8,7 +8,7 @@
 import Foundation
 
 class SpriteComponent: Component {
-    // TODO: sprite could be single image or sprite set, could use enum to seperate, 
+    // TODO: sprite could be single image or sprite set, could use enum to seperate,
     // for sprite set will need to discuss how to rep animation
     var image: String
     var size: CGSize

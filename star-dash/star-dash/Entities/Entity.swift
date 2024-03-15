@@ -10,7 +10,7 @@ import Foundation
 typealias EntityId = UUID
 
 protocol Entity {
-    var id: EntityId {get}
+    var id: EntityId { get }
 
     func setUpAndAdd(to: EntityManager)
 }
