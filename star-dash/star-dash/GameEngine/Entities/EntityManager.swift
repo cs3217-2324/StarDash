@@ -41,4 +41,16 @@ class EntityManager {
         }
         self.entityMap[entity.id] = entity
     }
+
+    func component<T: Component>(ofType type: T.Type, of entityId: EntityId) -> T? {
+        guard let components = entityComponentMap[entityId] else {
+            return nil
+        }
+
+        guard let componentId = components.first(where: { componentMap[$0] is T }) else {
+            return nil
+        }
+
+        return componentMap[componentId] as? T
+    }
 }

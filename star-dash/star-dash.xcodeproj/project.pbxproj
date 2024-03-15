@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		142D9F8F2BA15FBB005FE9E0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 142D9F8E2BA15FBB005FE9E0 /* .swiftlint.yml */; };
+		145F2C802BA203B400457549 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F2C7F2BA203B400457549 /* Event.swift */; };
+		145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F2C832BA22CA300457549 /* EventModifiable.swift */; };
+		14E2478E2BA22FCE0071FFC0 /* MoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */; };
+		14E247932BA2CA920071FFC0 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 14E247922BA2CA920071FFC0 /* DequeModule */; };
+		14E247952BA2CB480071FFC0 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E247942BA2CB480071FFC0 /* EventManager.swift */; };
+		461148912BA1CDBF0073E7E1 /* SystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148902BA1CDBF0073E7E1 /* SystemManager.swift */; };
+		461148932BA1D04B0073E7E1 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148922BA1D04B0073E7E1 /* System.swift */; };
+		461148962BA1D53D0073E7E1 /* PositionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148952BA1D53D0073E7E1 /* PositionSystem.swift */; };
+		461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */; };
+		46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B8C0992BA328D900498705 /* GameEngine.swift */; };
 		4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF52B9F7E070008F887 /* AppDelegate.swift */; };
 		4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF72B9F7E070008F887 /* SceneDelegate.swift */; };
 		4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF92B9F7E070008F887 /* ViewController.swift */; };
@@ -17,13 +27,6 @@
 		4E630F0D2B9F7E090008F887 /* star_dashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F0C2B9F7E090008F887 /* star_dashTests.swift */; };
 		4E630F172B9F7E090008F887 /* star_dashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F162B9F7E090008F887 /* star_dashUITests.swift */; };
 		4E630F192B9F7E090008F887 /* star_dashUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F182B9F7E090008F887 /* star_dashUITestsLaunchTests.swift */; };
-		E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745112BA057040080C1BE /* MTKRenderer.swift */; };
-		E6A745172BA057040080C1BE /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745122BA057040080C1BE /* ControlView.swift */; };
-		E6A745182BA057040080C1BE /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745132BA057040080C1BE /* Renderer.swift */; };
-		E6A745192BA057040080C1BE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745152BA057040080C1BE /* GameScene.swift */; };
-		E6A7451B2BA0C1890080C1BE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451A2BA0C1890080C1BE /* PlayerView.swift */; };
-		E6A7451D2BA0CAD90080C1BE /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */; };
-		E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B550A02BA15E9C00DC7396 /* OverlayView.swift */; };
 		4E630F272B9F7E770008F887 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F262B9F7E770008F887 /* Entity.swift */; };
 		4E630F2A2B9F7EF60008F887 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F292B9F7EF60008F887 /* PositionComponent.swift */; };
 		4E630F2C2B9F7F460008F887 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F2B2B9F7F460008F887 /* Component.swift */; };
@@ -38,6 +41,13 @@
 		4E8660622BA0964A0035530D /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660612BA0964A0035530D /* Obstacle.swift */; };
 		4E8660642BA096600035530D /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660632BA096600035530D /* Tool.swift */; };
 		4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660652BA097D40035530D /* PhysicsConstants.swift */; };
+		E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745112BA057040080C1BE /* MTKRenderer.swift */; };
+		E6A745172BA057040080C1BE /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745122BA057040080C1BE /* ControlView.swift */; };
+		E6A745182BA057040080C1BE /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745132BA057040080C1BE /* Renderer.swift */; };
+		E6A745192BA057040080C1BE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745152BA057040080C1BE /* GameScene.swift */; };
+		E6A7451B2BA0C1890080C1BE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451A2BA0C1890080C1BE /* PlayerView.swift */; };
+		E6A7451D2BA0CAD90080C1BE /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */; };
+		E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B550A02BA15E9C00DC7396 /* OverlayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +69,15 @@
 
 /* Begin PBXFileReference section */
 		142D9F8E2BA15FBB005FE9E0 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		145F2C7F2BA203B400457549 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		145F2C832BA22CA300457549 /* EventModifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModifiable.swift; sourceTree = "<group>"; };
+		14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveEvent.swift; sourceTree = "<group>"; };
+		14E247942BA2CB480071FFC0 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
+		461148902BA1CDBF0073E7E1 /* SystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemManager.swift; sourceTree = "<group>"; };
+		461148922BA1D04B0073E7E1 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		461148952BA1D53D0073E7E1 /* PositionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSystem.swift; sourceTree = "<group>"; };
+		461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsSystem.swift; sourceTree = "<group>"; };
+		46B8C0992BA328D900498705 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		4E630EF22B9F7E070008F887 /* star-dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "star-dash.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E630EF52B9F7E070008F887 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E630EF72B9F7E070008F887 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,13 +91,6 @@
 		4E630F122B9F7E090008F887 /* star-dashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "star-dashUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E630F162B9F7E090008F887 /* star_dashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = star_dashUITests.swift; sourceTree = "<group>"; };
 		4E630F182B9F7E090008F887 /* star_dashUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = star_dashUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		E6A745112BA057040080C1BE /* MTKRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKRenderer.swift; sourceTree = "<group>"; };
-		E6A745122BA057040080C1BE /* ControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
-		E6A745132BA057040080C1BE /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
-		E6A745152BA057040080C1BE /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		E6A7451A2BA0C1890080C1BE /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
-		E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
-		E6B550A02BA15E9C00DC7396 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		4E630F262B9F7E770008F887 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		4E630F292B9F7EF60008F887 /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		4E630F2B2B9F7F460008F887 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
@@ -93,6 +105,13 @@
 		4E8660612BA0964A0035530D /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		4E8660632BA096600035530D /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		4E8660652BA097D40035530D /* PhysicsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsConstants.swift; sourceTree = "<group>"; };
+		E6A745112BA057040080C1BE /* MTKRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKRenderer.swift; sourceTree = "<group>"; };
+		E6A745122BA057040080C1BE /* ControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
+		E6A745132BA057040080C1BE /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		E6A745152BA057040080C1BE /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		E6A7451A2BA0C1890080C1BE /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
+		E6B550A02BA15E9C00DC7396 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14E247932BA2CA920071FFC0 /* DequeModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +140,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		145F2C7E2BA2039700457549 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				145F2C7F2BA203B400457549 /* Event.swift */,
+				14E247942BA2CB480071FFC0 /* EventManager.swift */,
+				145F2C832BA22CA300457549 /* EventModifiable.swift */,
+				14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		4611488F2BA1CD9E0073E7E1 /* Systems */ = {
+			isa = PBXGroup;
+			children = (
+				461148902BA1CDBF0073E7E1 /* SystemManager.swift */,
+				461148922BA1D04B0073E7E1 /* System.swift */,
+				461148952BA1D53D0073E7E1 /* PositionSystem.swift */,
+				461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */,
+			);
+			path = Systems;
+			sourceTree = "<group>";
+		};
+		46B8C0982BA328BF00498705 /* GameEngine */ = {
+			isa = PBXGroup;
+			children = (
+				4611488F2BA1CD9E0073E7E1 /* Systems */,
+				4E630F282B9F7EC20008F887 /* Components */,
+				4E630F252B9F7E500008F887 /* Entities */,
+				46B8C0992BA328D900498705 /* GameEngine.swift */,
+			);
+			path = GameEngine;
+			sourceTree = "<group>";
+		};
 		4E630EE92B9F7E070008F887 = {
 			isa = PBXGroup;
 			children = (
@@ -144,11 +197,12 @@
 		4E630EF42B9F7E070008F887 /* star-dash */ = {
 			isa = PBXGroup;
 			children = (
+				46B8C0982BA328BF00498705 /* GameEngine */,
 				E6A745142BA057040080C1BE /* GameScene */,
 				E6A745102BA057040080C1BE /* Rendering */,
 				4E86605D2BA095CC0035530D /* Constants */,
 				4E630F352B9F91C20008F887 /* Enums */,
-				4E630F252B9F7E500008F887 /* Entities */,
+				145F2C7E2BA2039700457549 /* Events */,
 				4E630EF52B9F7E070008F887 /* AppDelegate.swift */,
 				4E630EF72B9F7E070008F887 /* SceneDelegate.swift */,
 				4E630EF92B9F7E070008F887 /* ViewController.swift */,
@@ -177,40 +231,10 @@
 			path = "star-dashUITests";
 			sourceTree = "<group>";
 		};
-		E6A745102BA057040080C1BE /* Rendering */ = {
-			isa = PBXGroup;
-			children = (
-				E6B5509F2BA15D2000DC7396 /* MTKRenderer */,
-				E6A745132BA057040080C1BE /* Renderer.swift */,
-			);
-			path = Rendering;
-			sourceTree = "<group>";
-		};
-		E6A745142BA057040080C1BE /* GameScene */ = {
-			isa = PBXGroup;
-			children = (
-				E6A745152BA057040080C1BE /* GameScene.swift */,
-			);
-			path = GameScene;
-			sourceTree = "<group>";
-		};
-		E6B5509F2BA15D2000DC7396 /* MTKRenderer */ = {
-			isa = PBXGroup;
-			children = (
-				E6A745112BA057040080C1BE /* MTKRenderer.swift */,
-				E6A7451A2BA0C1890080C1BE /* PlayerView.swift */,
-				E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */,
-				E6A745122BA057040080C1BE /* ControlView.swift */,
-				E6B550A02BA15E9C00DC7396 /* OverlayView.swift */,
-			);
-			path = MTKRenderer;
-			sourceTree = "<group>";
-		};
 		4E630F252B9F7E500008F887 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				4E8660602BA0961F0035530D /* GameEntities */,
-				4E630F282B9F7EC20008F887 /* Components */,
 				4E630F262B9F7E770008F887 /* Entity.swift */,
 				4E630F382B9F943B0008F887 /* EntityManager.swift */,
 			);
@@ -257,6 +281,35 @@
 			path = GameEntities;
 			sourceTree = "<group>";
 		};
+		E6A745102BA057040080C1BE /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				E6B5509F2BA15D2000DC7396 /* MTKRenderer */,
+				E6A745132BA057040080C1BE /* Renderer.swift */,
+			);
+			path = Rendering;
+			sourceTree = "<group>";
+		};
+		E6A745142BA057040080C1BE /* GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				E6A745152BA057040080C1BE /* GameScene.swift */,
+			);
+			path = GameScene;
+			sourceTree = "<group>";
+		};
+		E6B5509F2BA15D2000DC7396 /* MTKRenderer */ = {
+			isa = PBXGroup;
+			children = (
+				E6A745112BA057040080C1BE /* MTKRenderer.swift */,
+				E6A7451A2BA0C1890080C1BE /* PlayerView.swift */,
+				E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */,
+				E6A745122BA057040080C1BE /* ControlView.swift */,
+				E6B550A02BA15E9C00DC7396 /* OverlayView.swift */,
+			);
+			path = MTKRenderer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -274,6 +327,9 @@
 			dependencies = (
 			);
 			name = "star-dash";
+			packageProductDependencies = (
+				14E247922BA2CA920071FFC0 /* DequeModule */,
+			);
 			productName = "star-dash";
 			productReference = 4E630EF22B9F7E070008F887 /* star-dash.app */;
 			productType = "com.apple.product-type.application";
@@ -346,6 +402,9 @@
 				Base,
 			);
 			mainGroup = 4E630EE92B9F7E070008F887;
+			packageReferences = (
+				14E247912BA2CA920071FFC0 /* XCRemoteSwiftPackageReference "swift-collections" */,
+			);
 			productRefGroup = 4E630EF32B9F7E070008F887 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -413,16 +472,22 @@
 			files = (
 				4E630F272B9F7E770008F887 /* Entity.swift in Sources */,
 				4E630F2C2B9F7F460008F887 /* Component.swift in Sources */,
+				14E2478E2BA22FCE0071FFC0 /* MoveEvent.swift in Sources */,
 				4E8660622BA0964A0035530D /* Obstacle.swift in Sources */,
+				461148932BA1D04B0073E7E1 /* System.swift in Sources */,
 				4E8660642BA096600035530D /* Tool.swift in Sources */,
 				4E630F392B9F943B0008F887 /* EntityManager.swift in Sources */,
 				4E630F302B9F83DE0008F887 /* SpriteComponent.swift in Sources */,
 				4E86605F2BA095E30035530D /* Collectible.swift in Sources */,
 				4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */,
+				461148912BA1CDBF0073E7E1 /* SystemManager.swift in Sources */,
+				145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */,
 				4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */,
 				4E630F322B9F887C0008F887 /* PhysicsComponent.swift in Sources */,
 				4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */,
+				461148962BA1D53D0073E7E1 /* PositionSystem.swift in Sources */,
 				4E630F2A2B9F7EF60008F887 /* PositionComponent.swift in Sources */,
+				14E247952BA2CB480071FFC0 /* EventManager.swift in Sources */,
 				4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */,
 				E6A7451B2BA0C1890080C1BE /* PlayerView.swift in Sources */,
 				E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */,
@@ -433,8 +498,11 @@
 				E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */,
 				4E630F342B9F8FC00008F887 /* Player.swift in Sources */,
 				4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */,
+				46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */,
+				461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */,
 				4E630F2E2B9F81850008F887 /* HealthComponent.swift in Sources */,
 				4E86605C2BA095460035530D /* Monster.swift in Sources */,
+				145F2C802BA203B400457549 /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,6 +861,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		14E247912BA2CA920071FFC0 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		14E247922BA2CA920071FFC0 /* DequeModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 14E247912BA2CA920071FFC0 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = DequeModule;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4E630EEA2B9F7E070008F887 /* Project object */;
 }
