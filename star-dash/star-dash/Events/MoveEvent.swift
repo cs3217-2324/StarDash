@@ -8,18 +8,22 @@
 import Foundation
 
 class MoveEvent: Event {
-    var entityId: EntityId
-    var timestamp: Date
+    let entityId: EntityId
+    let timestamp: Date
 
-    var displacement: CGVector
+    let destination: CGPoint
 
-    init(entityId: EntityId, displacement: CGVector, timestamp: Date = Date.now) {
+    init(entityId: EntityId, destination: CGPoint, timestamp: Date = Date.now) {
         self.entityId = entityId
         self.timestamp = timestamp
-        self.displacement = displacement
+        self.destination = destination
     }
 
     func execute(on target: EventModifiable) {
-        // TODO: Use PositionSystem from target to modify entity of entityId
+        guard let positionSystem = target.system(ofType: PositionSystem.self) else {
+            return
+        }
+        
+        positionSystem.move(entityId: entityId, to: destination)
     }
 }
