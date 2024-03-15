@@ -12,6 +12,8 @@ class ViewController: UIViewController {
 
     var scene: SDScene?
     var renderer: Renderer?
+    var renderSynchronizer: RenderSynchronizer?
+    var gameEngine: GameEngine?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +21,10 @@ class ViewController: UIViewController {
         let scene = GameScene(size: CGSize(width: 4_842, height: 1_040))
         scene.scaleMode = .aspectFill
         self.scene = scene
+        let gameEngine = GameEngine(scene: scene)
+        self.gameEngine = gameEngine
+        self.renderSynchronizer = RenderSynchronizer(entitiesManager: gameEngine.entitiesManager)
+
         setupGame()
 
         guard let renderer = MTKRenderer(scene: scene) else {
