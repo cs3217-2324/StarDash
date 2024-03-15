@@ -9,7 +9,7 @@ import Foundation
 
 protocol System {
     var isActive: Bool { get set }
-    var dispatcher: EventModifiable { get set }
+    var dispatcher: EventModifiable? { get set }
     var entityManager: EntityManager { get set }
 
     func update(by deltaTime: TimeInterval)

@@ -9,10 +9,10 @@ import Foundation
 
 class PositionSystem: System {
     var isActive: Bool
-    var dispatcher: EventModifiable
+    var dispatcher: EventModifiable?
     var entityManager: EntityManager
 
-    init(_ entityManager: EntityManager, dispatcher: EventModifiable) {
+    init(_ entityManager: EntityManager, dispatcher: EventModifiable? = nil) {
         self.isActive = true
         self.entityManager = entityManager
         self.dispatcher = dispatcher
@@ -45,16 +45,6 @@ class PositionSystem: System {
     }
 
     private func getPositionComponent(of entityId: EntityId) -> PositionComponent? {
-        guard let componentSet = entityManager.entityComponentMap[entityId] else {
-            return nil
-        }
-
-        guard let positionComponentId = componentSet.first(
-            where: { entityManager.componentMap[$0] is PositionComponent }
-        ) else {
-            return nil
-        }
-
-        return entityManager.componentMap[positionComponentId] as? PositionComponent
+        entityManager.component(ofType: PositionComponent.self, of: entityId)
     }
 }

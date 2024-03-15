@@ -9,10 +9,10 @@ import Foundation
 
 class PhysicsSystem: System {
     var isActive: Bool
-    var dispatcher: EventModifiable
+    var dispatcher: EventModifiable?
     var entityManager: EntityManager
 
-    init(_ entityManager: EntityManager, dispatcher: EventModifiable) {
+    init(_ entityManager: EntityManager, dispatcher: EventModifiable? = nil) {
         self.isActive = true
         self.dispatcher = dispatcher
         self.entityManager = entityManager
@@ -64,16 +64,6 @@ class PhysicsSystem: System {
     }
 
     private func getPhysicsComponent(of entityId: EntityId) -> PhysicsComponent? {
-        guard let componentSet = entityManager.entityComponentMap[entityId] else {
-            return nil
-        }
-
-        guard let physicsComponentId = componentSet.first(
-            where: { entityManager.componentMap[$0] is PhysicsComponent }
-        ) else {
-            return nil
-        }
-
-        return entityManager.componentMap[physicsComponentId] as? PhysicsComponent
+        entityManager.component(ofType: PhysicsComponent.self, of: entityId)
     }
  }
