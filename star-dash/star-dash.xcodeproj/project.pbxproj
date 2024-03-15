@@ -10,6 +10,7 @@
 		142D9F8F2BA15FBB005FE9E0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 142D9F8E2BA15FBB005FE9E0 /* .swiftlint.yml */; };
 		143AA38C2BA4D3E3009C28E7 /* JumpEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA38B2BA4D3E3009C28E7 /* JumpEvent.swift */; };
 		143AA38F2BA4D61A009C28E7 /* CGVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA38E2BA4D61A009C28E7 /* CGVector.swift */; };
+		143AA3912BA4D7AC009C28E7 /* DeathEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3902BA4D7AC009C28E7 /* DeathEvent.swift */; };
 		145F2C802BA203B400457549 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F2C7F2BA203B400457549 /* Event.swift */; };
 		145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F2C832BA22CA300457549 /* EventModifiable.swift */; };
 		14E2478E2BA22FCE0071FFC0 /* MoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */; };
@@ -73,6 +74,7 @@
 		142D9F8E2BA15FBB005FE9E0 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		143AA38B2BA4D3E3009C28E7 /* JumpEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpEvent.swift; sourceTree = "<group>"; };
 		143AA38E2BA4D61A009C28E7 /* CGVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGVector.swift; sourceTree = "<group>"; };
+		143AA3902BA4D7AC009C28E7 /* DeathEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathEvent.swift; sourceTree = "<group>"; };
 		145F2C7F2BA203B400457549 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		145F2C832BA22CA300457549 /* EventModifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModifiable.swift; sourceTree = "<group>"; };
 		14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveEvent.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				145F2C832BA22CA300457549 /* EventModifiable.swift */,
 				14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */,
 				143AA38B2BA4D3E3009C28E7 /* JumpEvent.swift */,
+				143AA3902BA4D7AC009C28E7 /* DeathEvent.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */,
 				4E630F342B9F8FC00008F887 /* Player.swift in Sources */,
 				4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */,
+				143AA3912BA4D7AC009C28E7 /* DeathEvent.swift in Sources */,
 				46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */,
 				461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */,
 				4E630F2E2B9F81850008F887 /* HealthComponent.swift in Sources */,
