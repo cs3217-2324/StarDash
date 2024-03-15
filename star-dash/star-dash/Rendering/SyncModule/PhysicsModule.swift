@@ -1,10 +1,10 @@
 import SDPhysicsEngine
 
 protocol ObjectModule {
-    let entitiesManager: EntitiesManager
+    let entityManager: EntityManager
 
-    init(entitiesManager: EntitiesManager) {
-        self.entitiesManager = entitiesManager
+    init(entityManager: EntityManager) {
+        self.entityManager = entityManager
     }
     
     func sync(entity: Entity, into object: SDObject) {

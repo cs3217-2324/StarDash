@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         self.scene = scene
         let gameEngine = GameEngine(scene: scene)
         self.gameEngine = gameEngine
-        self.renderSynchronizer = RenderSynchronizer(entitiesManager: gameEngine.entitiesManager)
+        self.renderSynchronizer = RenderSynchronizer(entityManager: gameEngine.entityManager)
 
         setupGame()
 
