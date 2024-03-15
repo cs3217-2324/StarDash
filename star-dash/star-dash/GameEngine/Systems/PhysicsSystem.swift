@@ -49,7 +49,7 @@ class PhysicsSystem: System {
 
         physicsComponent.force += newForce
     }
-    
+
     func applyImpulse(to entityId: EntityId, impulse: CGVector) {
         guard let physicsComponent = getPhysicsComponent(of: entityId) else {
             return
