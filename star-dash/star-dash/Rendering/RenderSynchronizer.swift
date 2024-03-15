@@ -1,10 +1,10 @@
 import SDPhysicsEngine
 
-class RenderSyncronizer() {
+class RenderSynchronizer {
 
     var entityManager: EntityManager
 
-    var entitiesMap: [Entity: SDObject]
+    var entitiesMap: [EntityId: SDObject]
     var modules: [SyncModule]
     var creationModule: CreationModule?
 
@@ -19,21 +19,21 @@ class RenderSyncronizer() {
     func sync() {
         var toRemove = Set(entitiesMap.keys)
         
-        for entity in entityManager.entitiesMap.values {
-            toRemove.remove(entity)
-            if let object = entitiesMap[entity] {
+        for entity in entityManager.entityMap.values {
+            toRemove.remove(entity.id)
+            if let object = entitiesMap[entity.id] {
                 update(object: object, from: entity)
             } else {
                 createObject(from: entity)
             }
         }
 
-        for entity in toRemove {
-            removeObject(from: entity)
+        for entityId in toRemove {
+            removeObject(from: entityId)
         }
     }
 
-    func registerModule(module: SyncModule) {
+    func registerModule(_ module: SyncModule) {
         modules.append(module)
     }
 
@@ -57,14 +57,12 @@ class RenderSyncronizer() {
             return
         }
 
-        module.forEach {
+        modules.forEach {
             $0.create(for: newObject, from: entity)
         }
     }
 
-    private func removeObject(from entity: Entity) {
-        module.forEach {
-            $0.remove(entity: entity)
-        }
+    private func removeObject(from entityId: EntityId) {
+        return
     }
 }

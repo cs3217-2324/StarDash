@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         let scene = GameScene(size: CGSize(width: 4_842, height: 1_040))
         scene.scaleMode = .aspectFill
         self.scene = scene
-        let gameEngine = GameEngine(scene: scene)
+        let gameEngine = GameEngine()
         self.gameEngine = gameEngine
         self.renderSynchronizer = RenderSynchronizer(entityManager: gameEngine.entityManager)
 

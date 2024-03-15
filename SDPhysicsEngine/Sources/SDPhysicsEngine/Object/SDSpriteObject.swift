@@ -3,7 +3,7 @@ import SpriteKit
 public class SDSpriteObject: SDObject {
     let spriteNode: SKSpriteNode
 
-    var activeTexture: String?
+    public var activeTexture: String?
     
     public init(imageNamed: String) {
         self.spriteNode = SKSpriteNode(imageNamed: imageNamed)
@@ -15,7 +15,7 @@ public class SDSpriteObject: SDObject {
         set { spriteNode.size = newValue }
     }
 
-    public var runTexture(named: String) {
+    public func runTexture(named: String) {
         let texture = loadTexture(named: named)
         spriteNode.run(SKAction.repeatForever(
             SKAction.animate(with: texture, timePerFrame: TimeInterval(0.1), resize: false, restore: true)
@@ -24,7 +24,7 @@ public class SDSpriteObject: SDObject {
         activeTexture = named
     }
 
-    private var loadTexture(named: String) -> [SKTexture] {
+    private func loadTexture(named: String) -> [SKTexture] {
         let textureAtlas = SKTextureAtlas(named: named)
         var frames = [SKTexture]()
         for idx in 0..<textureAtlas.textureNames.count {

@@ -41,14 +41,19 @@
 		4E8660622BA0964A0035530D /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660612BA0964A0035530D /* Obstacle.swift */; };
 		4E8660642BA096600035530D /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660632BA096600035530D /* Tool.swift */; };
 		4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660652BA097D40035530D /* PhysicsConstants.swift */; };
+		E64361102BA4C2CD003850FD /* SpriteModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610A2BA4C2CC003850FD /* SpriteModule.swift */; };
+		E64361112BA4C2CD003850FD /* SyncModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610B2BA4C2CC003850FD /* SyncModule.swift */; };
+		E64361122BA4C2CD003850FD /* ObjectModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610C2BA4C2CC003850FD /* ObjectModule.swift */; };
+		E64361132BA4C2CD003850FD /* PhysicsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610D2BA4C2CC003850FD /* PhysicsModule.swift */; };
+		E64361142BA4C2CD003850FD /* CreationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610E2BA4C2CC003850FD /* CreationModule.swift */; };
+		E64361152BA4C2CD003850FD /* RenderSynchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610F2BA4C2CC003850FD /* RenderSynchronizer.swift */; };
 		E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745112BA057040080C1BE /* MTKRenderer.swift */; };
 		E6A745172BA057040080C1BE /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745122BA057040080C1BE /* ControlView.swift */; };
 		E6A745182BA057040080C1BE /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745132BA057040080C1BE /* Renderer.swift */; };
-		E6B1DC902BA34A4800473563 /* SDPhysicsEngine in Sources */ = {isa = PBXBuildFile; fileRef = E6B1DC8D2BA32BC700473563 /* SDPhysicsEngine */; };
-		E6B1DC932BA34A5E00473563 /* SDPhysicsEngine in Frameworks */ = {isa = PBXBuildFile; productRef = E6B1DC922BA34A5E00473563 /* SDPhysicsEngine */; };
-		E6A745192BA057040080C1BE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745152BA057040080C1BE /* GameScene.swift */; };
 		E6A7451B2BA0C1890080C1BE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451A2BA0C1890080C1BE /* PlayerView.swift */; };
 		E6A7451D2BA0CAD90080C1BE /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */; };
+		E6B1DC902BA34A4800473563 /* SDPhysicsEngine in Sources */ = {isa = PBXBuildFile; fileRef = E6B1DC8D2BA32BC700473563 /* SDPhysicsEngine */; };
+		E6B1DC932BA34A5E00473563 /* SDPhysicsEngine in Frameworks */ = {isa = PBXBuildFile; productRef = E6B1DC922BA34A5E00473563 /* SDPhysicsEngine */; };
 		E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B550A02BA15E9C00DC7396 /* OverlayView.swift */; };
 /* End PBXBuildFile section */
 
@@ -120,13 +125,18 @@
 		4E8660612BA0964A0035530D /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		4E8660632BA096600035530D /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		4E8660652BA097D40035530D /* PhysicsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsConstants.swift; sourceTree = "<group>"; };
+		E643610A2BA4C2CC003850FD /* SpriteModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteModule.swift; sourceTree = "<group>"; };
+		E643610B2BA4C2CC003850FD /* SyncModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncModule.swift; sourceTree = "<group>"; };
+		E643610C2BA4C2CC003850FD /* ObjectModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectModule.swift; sourceTree = "<group>"; };
+		E643610D2BA4C2CC003850FD /* PhysicsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsModule.swift; sourceTree = "<group>"; };
+		E643610E2BA4C2CC003850FD /* CreationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationModule.swift; sourceTree = "<group>"; };
+		E643610F2BA4C2CC003850FD /* RenderSynchronizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderSynchronizer.swift; sourceTree = "<group>"; };
 		E6A745112BA057040080C1BE /* MTKRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKRenderer.swift; sourceTree = "<group>"; };
 		E6A745122BA057040080C1BE /* ControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
 		E6A745132BA057040080C1BE /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
-		E6B1DC8D2BA32BC700473563 /* SDPhysicsEngine */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SDPhysicsEngine; path = ../SDPhysicsEngine; sourceTree = "<group>"; };
-		E6A745152BA057040080C1BE /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		E6A7451A2BA0C1890080C1BE /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
+		E6B1DC8D2BA32BC700473563 /* SDPhysicsEngine */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SDPhysicsEngine; path = ../SDPhysicsEngine; sourceTree = "<group>"; };
 		E6B550A02BA15E9C00DC7396 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -217,7 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				46B8C0982BA328BF00498705 /* GameEngine */,
-				E6A745142BA057040080C1BE /* GameScene */,
 				E6A745102BA057040080C1BE /* Rendering */,
 				4E86605D2BA095CC0035530D /* Constants */,
 				4E630F352B9F91C20008F887 /* Enums */,
@@ -300,9 +309,23 @@
 			path = GameEntities;
 			sourceTree = "<group>";
 		};
+		E64361092BA4C2CC003850FD /* SyncModule */ = {
+			isa = PBXGroup;
+			children = (
+				E643610A2BA4C2CC003850FD /* SpriteModule.swift */,
+				E643610B2BA4C2CC003850FD /* SyncModule.swift */,
+				E643610C2BA4C2CC003850FD /* ObjectModule.swift */,
+				E643610D2BA4C2CC003850FD /* PhysicsModule.swift */,
+				E643610E2BA4C2CC003850FD /* CreationModule.swift */,
+			);
+			path = SyncModule;
+			sourceTree = "<group>";
+		};
 		E6A745102BA057040080C1BE /* Rendering */ = {
 			isa = PBXGroup;
 			children = (
+				E643610F2BA4C2CC003850FD /* RenderSynchronizer.swift */,
+				E64361092BA4C2CC003850FD /* SyncModule */,
 				E6B5509F2BA15D2000DC7396 /* MTKRenderer */,
 				E6A745132BA057040080C1BE /* Renderer.swift */,
 			);
@@ -314,14 +337,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E6A745142BA057040080C1BE /* GameScene */ = {
-			isa = PBXGroup;
-			children = (
-				E6A745152BA057040080C1BE /* GameScene.swift */,
-			);
-			path = GameScene;
 			sourceTree = "<group>";
 		};
 		E6B5509F2BA15D2000DC7396 /* MTKRenderer */ = {
@@ -509,17 +524,22 @@
 				4E630F392B9F943B0008F887 /* EntityManager.swift in Sources */,
 				4E630F302B9F83DE0008F887 /* SpriteComponent.swift in Sources */,
 				4E86605F2BA095E30035530D /* Collectible.swift in Sources */,
+				E64361122BA4C2CD003850FD /* ObjectModule.swift in Sources */,
 				4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */,
 				461148912BA1CDBF0073E7E1 /* SystemManager.swift in Sources */,
 				145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */,
 				4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */,
+				E64361132BA4C2CD003850FD /* PhysicsModule.swift in Sources */,
 				4E630F322B9F887C0008F887 /* PhysicsComponent.swift in Sources */,
 				4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */,
 				461148962BA1D53D0073E7E1 /* PositionSystem.swift in Sources */,
 				4E630F2A2B9F7EF60008F887 /* PositionComponent.swift in Sources */,
+				E64361152BA4C2CD003850FD /* RenderSynchronizer.swift in Sources */,
 				14E247952BA2CB480071FFC0 /* EventManager.swift in Sources */,
 				4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */,
+				E64361112BA4C2CD003850FD /* SyncModule.swift in Sources */,
 				E6A7451B2BA0C1890080C1BE /* PlayerView.swift in Sources */,
+				E64361142BA4C2CD003850FD /* CreationModule.swift in Sources */,
 				E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */,
 				E6A745182BA057040080C1BE /* Renderer.swift in Sources */,
 				E6A745172BA057040080C1BE /* ControlView.swift in Sources */,
@@ -527,6 +547,7 @@
 				E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */,
 				4E630F342B9F8FC00008F887 /* Player.swift in Sources */,
 				4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */,
+				E64361102BA4C2CD003850FD /* SpriteModule.swift in Sources */,
 				46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */,
 				461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */,
 				4E630F2E2B9F81850008F887 /* HealthComponent.swift in Sources */,
@@ -895,17 +916,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCSwiftPackageProductDependency section */
-		E6B1DC8E2BA3459600473563 /* SDPhysicsEngine */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SDPhysicsEngine;
-		};
-		E6B1DC922BA34A5E00473563 /* SDPhysicsEngine */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SDPhysicsEngine;
-		};
-/* End XCSwiftPackageProductDependency section */
-
 /* Begin XCRemoteSwiftPackageReference section */
 		14E247912BA2CA920071FFC0 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -923,8 +933,15 @@
 			package = 14E247912BA2CA920071FFC0 /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = DequeModule;
 		};
+		E6B1DC8E2BA3459600473563 /* SDPhysicsEngine */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SDPhysicsEngine;
+		};
+		E6B1DC922BA34A5E00473563 /* SDPhysicsEngine */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SDPhysicsEngine;
+		};
 /* End XCSwiftPackageProductDependency section */
-
 	};
 	rootObject = 4E630EEA2B9F7E070008F887 /* Project object */;
 }

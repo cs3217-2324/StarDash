@@ -1,6 +1,7 @@
+import CoreGraphics
 import SDPhysicsEngine
 
-protocol ObjectModule {
+class PhysicsModule: SyncModule {
     let entityManager: EntityManager
 
     init(entityManager: EntityManager) {
@@ -8,7 +9,7 @@ protocol ObjectModule {
     }
     
     func sync(entity: Entity, into object: SDObject) {
-        guard let physicsComponent = entityManager.component(ofType: PhysicsComponent.self, of: entity),
+        guard let physicsComponent = entityManager.component(ofType: PhysicsComponent.self, of: entity.id),
               let body = object.physicsBody else {
             return
         }
@@ -19,19 +20,15 @@ protocol ObjectModule {
         body.affectedByGravity = physicsComponent.affectedByGravity
     }
 
-    func create(for: object: SDObject, from entity: Entity) {
-        guard let physicsComponent = entityManager.component(ofType: PhysicsComponent.self, of: entity) else {
+    func create(for object: SDObject, from entity: Entity) {
+        guard let physicsComponent = entityManager.component(ofType: PhysicsComponent.self, of: entity.id) else {
             return
         }
 
-        object.physicsBody = createRectanglePhysicsBody(physicsComponent)
+        object.physicsBody = createRectanglePhysicsBody(physicsComponent: physicsComponent)
     }
 
-    private func createRectanglePhysicsBody(physicsComponent: PhysicsComponent) {
-        guard let size = physicsComponent.size else {
-            fatalError("Rectangle PhysicsComponent does not have a size")
-        }
-
-        return PhysicsBody(rectangleOf: CGSize(width: 50, height: 50))
+    private func createRectanglePhysicsBody(physicsComponent: PhysicsComponent) -> SDPhysicsBody {
+        return SDPhysicsBody(rectangleOf: CGSize(width: 50, height: 50))
     }
 }

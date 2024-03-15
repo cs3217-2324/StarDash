@@ -2,6 +2,8 @@ import SpriteKit
 
 public class SDObject {
     let node: SKNode
+    
+    var innerRotation: CGFloat = 0
 
     public init() {
         node = SKNode()
@@ -19,6 +21,14 @@ public class SDObject {
     public var zPosition: CGFloat {
         get { node.zPosition }
         set { node.zPosition = newValue }
+    }
+    
+    public var rotation: CGFloat {
+        get { innerRotation }
+        set {
+            innerRotation = newValue
+            node.run(SKAction.rotate(toAngle: newValue, duration: 1))
+        }
     }
 
     public var physicsBody: SDPhysicsBody? {

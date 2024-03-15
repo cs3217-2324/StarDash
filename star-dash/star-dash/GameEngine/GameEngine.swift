@@ -9,10 +9,10 @@ import Foundation
 
 class GameEngine {
     private let systemManager: SystemManager
-    private let entityManager: EntityManager
+    let entityManager: EntityManager // TODO: Set to private
     private let eventManager: EventManager
 
-    init(scene: GameScene) {
+    init() {
         self.systemManager = SystemManager()
         self.entityManager = EntityManager()
         self.eventManager = EventManager()
