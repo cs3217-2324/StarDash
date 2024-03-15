@@ -8,12 +8,12 @@
 import Foundation
 
 class DeathEvent: Event {
-    let entityId: EntityId
     let timestamp: Date
+    let entityId: EntityId
 
-    init(on entityId: EntityId, timestamp: Date = Date.now) {
+    init(on entityId: EntityId) {
+        self.timestamp = Date.now
         self.entityId = entityId
-        self.timestamp = timestamp
     }
 
     func execute(on target: EventModifiable) {
