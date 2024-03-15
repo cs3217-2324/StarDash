@@ -33,5 +33,7 @@ class GameEngine {
 }
 
 extension GameEngine: EventModifiable {
-    // TODO: functions of event modifiable
+    func system<T: System>(ofType type: T.Type) -> T? {
+        systemManager.system(ofType: type)
+    }
 }
