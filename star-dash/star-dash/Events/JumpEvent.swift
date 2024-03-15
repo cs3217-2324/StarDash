@@ -13,7 +13,7 @@ class JumpEvent: Event {
 
     let jumpImpulse: CGVector
 
-    init(entityId: EntityId, jumpImpulse: CGVector, timestamp: Date = Date.now) {
+    init(on entityId: EntityId, jumpImpulse: CGVector, timestamp: Date = Date.now) {
         self.entityId = entityId
         self.timestamp = timestamp
         self.jumpImpulse = jumpImpulse

@@ -13,7 +13,7 @@ class MoveEvent: Event {
 
     let destination: CGPoint
 
-    init(entityId: EntityId, destination: CGPoint, timestamp: Date = Date.now) {
+    init(on entityId: EntityId, to destination: CGPoint, timestamp: Date = Date.now) {
         self.entityId = entityId
         self.timestamp = timestamp
         self.destination = destination
