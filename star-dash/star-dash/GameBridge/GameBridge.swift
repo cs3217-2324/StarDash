@@ -21,7 +21,7 @@ class GameBridge {
     func syncFromEntities() {
         var toRemove = Set(entitiesMap.keys)
 
-        for entity in entityManager.entities() {
+        for entity in entityManager.entities {
             toRemove.remove(entity.id)
             if let object = entitiesMap[entity.id] {
                 // update(object: object, from: entity)
