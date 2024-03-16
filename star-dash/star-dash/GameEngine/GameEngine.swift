@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SpriteKit // To remove after replacing with appropriate node class mapping
 
 class GameEngine {
     private let systemManager: SystemManager
@@ -25,6 +26,15 @@ class GameEngine {
         systemManager.update(by: deltaTime)
         eventManager.executeAll(on: self)
     }
+
+    // TODO: after events are ready
+    func handleCollision(_ entityOne: EntityId, _ entityTwo: EntityId) {}
+
+    func handleSeparation(_ entityOne: EntityId, _ entityTwo: EntityId) {}
+    // TODO: Replace SKNode with the appropriate 1 - 1 mapping when created
+    func syncEntities(withNodes nodes: [SKNode]) {}
+
+    func syncEntitiesToNodes(toNodes nodes: [SKNode]) {}
 
     private func setUpSystems() {
         systemManager.add(PositionSystem(entityManager, dispatcher: self))
