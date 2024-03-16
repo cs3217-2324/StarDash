@@ -10,4 +10,5 @@ import Foundation
 /// EventModifiable represents objects that can be modified by events.
 protocol EventModifiable {
     func system<T: System>(ofType type: T.Type) -> T?
+    func remove(entityWithId entityId: EntityId)
 }

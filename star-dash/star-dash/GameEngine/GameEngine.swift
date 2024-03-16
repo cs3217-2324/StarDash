@@ -36,4 +36,8 @@ extension GameEngine: EventModifiable {
     func system<T: System>(ofType type: T.Type) -> T? {
         systemManager.system(ofType: type)
     }
+    
+    func remove(entityWithId entityId: EntityId) {
+        entityManager.remove(entityWithId: entityId)
+    }
 }
