@@ -20,6 +20,16 @@
 		46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B8C0992BA328D900498705 /* GameEngine.swift */; };
 		46D418112BA5C88B0091A38B /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418102BA5C88B0091A38B /* Wall.swift */; };
 		46D418132BA5C9930091A38B /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418122BA5C9930091A38B /* Floor.swift */; };
+		46D418162BA5CBD60091A38B /* Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418152BA5CBD60091A38B /* Collidable.swift */; };
+		46D418182BA5CD840091A38B /* Player+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418172BA5CD840091A38B /* Player+Collidable.swift */; };
+		46D4181A2BA5CDBD0091A38B /* CollisionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418192BA5CDBD0091A38B /* CollisionHandler.swift */; };
+		46D4181C2BA5CDC70091A38B /* SeparationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D4181B2BA5CDC70091A38B /* SeparationHandler.swift */; };
+		46D4181E2BA5D2620091A38B /* Monster+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D4181D2BA5D2620091A38B /* Monster+Collidable.swift */; };
+		46D418202BA5D3420091A38B /* Collectible+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D4181F2BA5D3420091A38B /* Collectible+Collidable.swift */; };
+		46D418222BA5D4E60091A38B /* Obstacle+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418212BA5D4E60091A38B /* Obstacle+Collidable.swift */; };
+		46D418242BA5D5280091A38B /* Tool+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418232BA5D5280091A38B /* Tool+Collidable.swift */; };
+		46D418262BA5D6500091A38B /* Wall+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418252BA5D6500091A38B /* Wall+Collidable.swift */; };
+		46D418282BA5D6800091A38B /* Floor+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418272BA5D6800091A38B /* Floor+Collidable.swift */; };
 		4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF52B9F7E070008F887 /* AppDelegate.swift */; };
 		4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF72B9F7E070008F887 /* SceneDelegate.swift */; };
 		4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF92B9F7E070008F887 /* ViewController.swift */; };
@@ -82,6 +92,16 @@
 		46B8C0992BA328D900498705 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		46D418102BA5C88B0091A38B /* Wall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
 		46D418122BA5C9930091A38B /* Floor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
+		46D418152BA5CBD60091A38B /* Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collidable.swift; sourceTree = "<group>"; };
+		46D418172BA5CD840091A38B /* Player+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+Collidable.swift"; sourceTree = "<group>"; };
+		46D418192BA5CDBD0091A38B /* CollisionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionHandler.swift; sourceTree = "<group>"; };
+		46D4181B2BA5CDC70091A38B /* SeparationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparationHandler.swift; sourceTree = "<group>"; };
+		46D4181D2BA5D2620091A38B /* Monster+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Monster+Collidable.swift"; sourceTree = "<group>"; };
+		46D4181F2BA5D3420091A38B /* Collectible+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collectible+Collidable.swift"; sourceTree = "<group>"; };
+		46D418212BA5D4E60091A38B /* Obstacle+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Obstacle+Collidable.swift"; sourceTree = "<group>"; };
+		46D418232BA5D5280091A38B /* Tool+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tool+Collidable.swift"; sourceTree = "<group>"; };
+		46D418252BA5D6500091A38B /* Wall+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wall+Collidable.swift"; sourceTree = "<group>"; };
+		46D418272BA5D6800091A38B /* Floor+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Floor+Collidable.swift"; sourceTree = "<group>"; };
 		4E630EF22B9F7E070008F887 /* star-dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "star-dash.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E630EF52B9F7E070008F887 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E630EF72B9F7E070008F887 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,12 +189,30 @@
 		46B8C0982BA328BF00498705 /* GameEngine */ = {
 			isa = PBXGroup;
 			children = (
+				46D418142BA5CB760091A38B /* Collision */,
 				4611488F2BA1CD9E0073E7E1 /* Systems */,
 				4E630F282B9F7EC20008F887 /* Components */,
 				4E630F252B9F7E500008F887 /* Entities */,
 				46B8C0992BA328D900498705 /* GameEngine.swift */,
 			);
 			path = GameEngine;
+			sourceTree = "<group>";
+		};
+		46D418142BA5CB760091A38B /* Collision */ = {
+			isa = PBXGroup;
+			children = (
+				46D418152BA5CBD60091A38B /* Collidable.swift */,
+				46D418172BA5CD840091A38B /* Player+Collidable.swift */,
+				46D418192BA5CDBD0091A38B /* CollisionHandler.swift */,
+				46D4181B2BA5CDC70091A38B /* SeparationHandler.swift */,
+				46D4181D2BA5D2620091A38B /* Monster+Collidable.swift */,
+				46D4181F2BA5D3420091A38B /* Collectible+Collidable.swift */,
+				46D418212BA5D4E60091A38B /* Obstacle+Collidable.swift */,
+				46D418232BA5D5280091A38B /* Tool+Collidable.swift */,
+				46D418252BA5D6500091A38B /* Wall+Collidable.swift */,
+				46D418272BA5D6800091A38B /* Floor+Collidable.swift */,
+			);
+			path = Collision;
 			sourceTree = "<group>";
 		};
 		4E630EE92B9F7E070008F887 = {
@@ -476,6 +514,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46D418182BA5CD840091A38B /* Player+Collidable.swift in Sources */,
+				46D4181E2BA5D2620091A38B /* Monster+Collidable.swift in Sources */,
 				4E630F272B9F7E770008F887 /* Entity.swift in Sources */,
 				4E630F2C2B9F7F460008F887 /* Component.swift in Sources */,
 				14E2478E2BA22FCE0071FFC0 /* MoveEvent.swift in Sources */,
@@ -484,8 +524,10 @@
 				4E8660642BA096600035530D /* Tool.swift in Sources */,
 				4E630F392B9F943B0008F887 /* EntityManager.swift in Sources */,
 				4E630F302B9F83DE0008F887 /* SpriteComponent.swift in Sources */,
+				46D4181A2BA5CDBD0091A38B /* CollisionHandler.swift in Sources */,
 				4E86605F2BA095E30035530D /* Collectible.swift in Sources */,
 				4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */,
+				46D418162BA5CBD60091A38B /* Collidable.swift in Sources */,
 				461148912BA1CDBF0073E7E1 /* SystemManager.swift in Sources */,
 				145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */,
 				4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */,
@@ -497,16 +539,22 @@
 				14E247952BA2CB480071FFC0 /* EventManager.swift in Sources */,
 				4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */,
 				E6A7451B2BA0C1890080C1BE /* PlayerView.swift in Sources */,
+				46D418282BA5D6800091A38B /* Floor+Collidable.swift in Sources */,
+				46D418222BA5D4E60091A38B /* Obstacle+Collidable.swift in Sources */,
 				E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */,
 				E6A745182BA057040080C1BE /* Renderer.swift in Sources */,
 				E6A745192BA057040080C1BE /* GameScene.swift in Sources */,
+				46D418242BA5D5280091A38B /* Tool+Collidable.swift in Sources */,
 				E6A745172BA057040080C1BE /* ControlView.swift in Sources */,
+				46D418202BA5D3420091A38B /* Collectible+Collidable.swift in Sources */,
 				E6A7451D2BA0CAD90080C1BE /* JoystickView.swift in Sources */,
 				E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */,
+				46D418262BA5D6500091A38B /* Wall+Collidable.swift in Sources */,
 				4E630F342B9F8FC00008F887 /* Player.swift in Sources */,
 				4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */,
 				46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */,
 				461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */,
+				46D4181C2BA5CDC70091A38B /* SeparationHandler.swift in Sources */,
 				4E630F2E2B9F81850008F887 /* HealthComponent.swift in Sources */,
 				4E86605C2BA095460035530D /* Monster.swift in Sources */,
 				145F2C802BA203B400457549 /* Event.swift in Sources */,

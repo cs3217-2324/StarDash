@@ -22,7 +22,7 @@ class Collectible: Entity {
 
     func setUpAndAdd(to: EntityManager) {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
-        let physicsComponent =  PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.collectible)
+        let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.collectible)
         physicsComponent.collisionMask = PhysicsConstants.CollisionMask.collectible
 
         to.add(entity: self)
