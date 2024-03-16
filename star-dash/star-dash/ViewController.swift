@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         self.scene = scene
         let gameEngine = GameEngine()
         self.gameEngine = gameEngine
-        self.gameBridge = GameBridge(entityManager: gameEngine.entityManager, scene: scene)
+        self.gameBridge = GameBridge(entityManager: gameEngine, scene: scene)
 
         // setupGame()
         setupGameEntities()

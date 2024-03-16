@@ -16,7 +16,6 @@ class GameEngine {
         self.systemManager = SystemManager()
         self.entityManager = EntityManager()
         self.eventManager = EventManager()
-        // TODO: link game engine to renderer
 
         setUpSystems()
     }
@@ -34,4 +33,19 @@ class GameEngine {
 
 extension GameEngine: EventModifiable {
     // TODO: functions of event modifiable
+}
+
+extension GameEngine: EntitySyncInterface {
+
+    func component<T: Component>(ofType type: T.Type, of entityId: EntityId) -> T? {
+        entityManager.component(ofType: type, of: entityId)
+    }
+
+    func entity(of entityId: EntityId) -> Entity {
+        entityManager.entityMap[entityId]
+    }
+
+    func entities() -> [Entity] {
+        entityManager.entityMap.values
+    }
 }

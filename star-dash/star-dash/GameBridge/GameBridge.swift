@@ -2,14 +2,14 @@ import SDPhysicsEngine
 
 class GameBridge {
 
-    var entityManager: EntityManager
+    var entityManager: EntitySyncInterface
     var scene: SDScene
 
     var entitiesMap: [EntityId: SDObject]
     var modules: [SyncModule]
     var creationModule: CreationModule?
 
-    init(entityManager: EntityManager, scene: SDScene) {
+    init(entityManager: EntitySyncInterface, scene: SDScene) {
         self.entityManager = entityManager
         self.scene = scene
         modules = []
@@ -21,7 +21,7 @@ class GameBridge {
     func syncFromEntities() {
         var toRemove = Set(entitiesMap.keys)
 
-        for entity in entityManager.entityMap.values {
+        for entity in entityManager.entities() {
             toRemove.remove(entity.id)
             if let object = entitiesMap[entity.id] {
                 // update(object: object, from: entity)
@@ -37,7 +37,7 @@ class GameBridge {
 
     func syncToEntities() {
         for (entityId, object) in entitiesMap {
-            if let entity = entityManager.entityMap[entityId] {
+            if let entity = entityManager.entity(of: entityId) {
                 update(entity: entity, from: object)
             }
         }

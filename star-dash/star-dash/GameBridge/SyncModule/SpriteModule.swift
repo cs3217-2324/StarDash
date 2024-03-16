@@ -2,9 +2,9 @@ import CoreGraphics
 import SDPhysicsEngine
 
 class SpriteModule: SyncModule {
-    let entityManager: EntityManager
+    let entityManager: EntitySyncInterface
 
-    init(entityManager: EntityManager) {
+    init(entityManager: EntitySyncInterface) {
         self.entityManager = entityManager
     }
 
