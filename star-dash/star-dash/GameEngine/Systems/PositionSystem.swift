@@ -26,7 +26,7 @@ class PositionSystem: System {
         positionComponent.setPosition(position: newPosition)
     }
 
-    func rotate(entityId: EntityId, to newRotation: Float) {
+    func rotate(entityId: EntityId, to newRotation: CGFloat) {
         guard let positionComponent = getPositionComponent(of: entityId) else {
             return
         }
@@ -34,7 +34,7 @@ class PositionSystem: System {
         positionComponent.setRotation(rotation: newRotation)
     }
 
-    func sync(entityPositionMap: [EntityId: CGPoint], entityRotationMap: [EntityId: Float]) {
+    func sync(entityPositionMap: [EntityId: CGPoint], entityRotationMap: [EntityId: CGFloat]) {
         for (entityId, newPosition) in entityPositionMap {
             move(entityId: entityId, to: newPosition)
         }
