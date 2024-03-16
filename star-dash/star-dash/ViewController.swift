@@ -25,7 +25,8 @@ class ViewController: UIViewController {
         self.gameEngine = gameEngine
         self.renderSynchronizer = RenderSynchronizer(entityManager: gameEngine.entityManager)
 
-        setupGame()
+        //setupGame()
+        setupGameEntities()
 
         guard let renderer = MTKRenderer(scene: scene) else {
             return
@@ -66,6 +67,14 @@ class ViewController: UIViewController {
         platform.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400)
         scene.addObject(platform)
     }
+
+    func setupGameEntities() {
+        let player = Player(
+            position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 + 200),
+            playerSprite: PlayerSprite.RedNose
+        )
+        player.setUpAndAdd(to: gameEngine.entityManager)
+    }
 }
 
 extension ViewController: SDSceneDelegate {
@@ -74,5 +83,6 @@ extension ViewController: SDSceneDelegate {
         // TODO: Sync SDObjects into Entities
         // TODO: Update Game Logic
         // TODO: Sync Entities into SDObjects
+        RenderSynchronizer.sync()
     }
 }
