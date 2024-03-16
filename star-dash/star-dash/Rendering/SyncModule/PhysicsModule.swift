@@ -7,7 +7,7 @@ class PhysicsModule: SyncModule {
     init(entityManager: EntityManager) {
         self.entityManager = entityManager
     }
-    
+
     func sync(entity: Entity, into object: SDObject) {
         guard let physicsComponent = entityManager.component(ofType: PhysicsComponent.self, of: entity.id),
               let body = object.physicsBody else {

@@ -20,12 +20,13 @@ class ViewController: UIViewController {
 
         let scene = GameScene(size: CGSize(width: 4_842, height: 1_040))
         scene.scaleMode = .aspectFill
+        scene.sceneDelegate = self
         self.scene = scene
         let gameEngine = GameEngine()
         self.gameEngine = gameEngine
-        self.renderSynchronizer = RenderSynchronizer(entityManager: gameEngine.entityManager)
+        self.renderSynchronizer = RenderSynchronizer(entityManager: gameEngine.entityManager, scene: scene)
 
-        //setupGame()
+        // setupGame()
         setupGameEntities()
 
         guard let renderer = MTKRenderer(scene: scene) else {
@@ -36,8 +37,9 @@ class ViewController: UIViewController {
         self.renderer = renderer
     }
 
-    func setupGame() {
-        guard let scene = self.scene else {
+    func setupGameEntities() {
+        guard let scene = self.scene,
+              let entityManager = gameEngine?.entityManager else {
             return
         }
 
@@ -46,43 +48,26 @@ class ViewController: UIViewController {
         background.zPosition = -1
         scene.addObject(background)
 
-        let ball = SDSpriteObject(imageNamed: "PlayerRedNose")
-        ball.size = CGSize(width: 100, height: 140)
-        ball.physicsBody = SDPhysicsBody(rectangleOf: CGSize(width: 60, height: 110))
-        ball.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 + 200)
-        scene.addObject(ball)
-
-        // let textureAtlas = SKTextureAtlas(named: "PlayerRedNoseRun")
-        // var frames = [SKTexture]()
-        // for idx in 0..<textureAtlas.textureNames.count {
-        //     frames.append(textureAtlas.textureNamed(textureAtlas.textureNames[idx]))
-        // }
-        // ball.run(SKAction.repeatForever(
-        //     SKAction.animate(with: frames, timePerFrame: TimeInterval(0.2), resize: false, restore: true)
-        // ))
-
         let platform = SDObject()
         platform.physicsBody = SDPhysicsBody(rectangleOf: CGSize(width: 200, height: 50))
         platform.physicsBody?.isDynamic = false
         platform.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400)
         scene.addObject(platform)
-    }
 
-    func setupGameEntities() {
         let player = Player(
             position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 + 200),
             playerSprite: PlayerSprite.RedNose
         )
-        player.setUpAndAdd(to: gameEngine.entityManager)
+        player.setUpAndAdd(to: entityManager)
     }
 }
 
 extension ViewController: SDSceneDelegate {
-    
+
     func update(_ scene: SDScene, deltaTime: Double) {
         // TODO: Sync SDObjects into Entities
         // TODO: Update Game Logic
         // TODO: Sync Entities into SDObjects
-        RenderSynchronizer.sync()
+        renderSynchronizer?.sync()
     }
 }

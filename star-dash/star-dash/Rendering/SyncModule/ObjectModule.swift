@@ -7,7 +7,7 @@ class ObjectModule: SyncModule {
     init(entityManager: EntityManager) {
         self.entityManager = entityManager
     }
-    
+
     func sync(entity: Entity, into object: SDObject) {
         guard let positionComponent = entityManager.component(ofType: PositionComponent.self, of: entity.id) else {
             return
@@ -18,6 +18,5 @@ class ObjectModule: SyncModule {
     }
 
     func create(for object: SDObject, from entity: Entity) {
-        return
     }
 }

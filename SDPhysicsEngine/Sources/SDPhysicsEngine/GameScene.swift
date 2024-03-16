@@ -2,11 +2,13 @@ import SpriteKit
 
 public class GameScene: SKScene, SDScene {
 
-    var sceneDelegate: SDSceneDelegate?
+    public var sceneDelegate: SDSceneDelegate?
 
     private var lastUpdateTime: TimeInterval?
 
     override public func update(_ currentTime: TimeInterval) {
+        super.update(currentTime)
+
         guard let lastUpdateTime = lastUpdateTime else {
             lastUpdateTime = currentTime
             return

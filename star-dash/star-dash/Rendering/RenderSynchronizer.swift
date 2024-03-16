@@ -3,13 +3,15 @@ import SDPhysicsEngine
 class RenderSynchronizer {
 
     var entityManager: EntityManager
+    var scene: SDScene
 
     var entitiesMap: [EntityId: SDObject]
     var modules: [SyncModule]
     var creationModule: CreationModule?
 
-    init(entityManager: EntityManager) {
+    init(entityManager: EntityManager, scene: SDScene) {
         self.entityManager = entityManager
+        self.scene = scene
         modules = []
         entitiesMap = [:]
 
@@ -18,11 +20,11 @@ class RenderSynchronizer {
 
     func sync() {
         var toRemove = Set(entitiesMap.keys)
-        
+
         for entity in entityManager.entityMap.values {
             toRemove.remove(entity.id)
             if let object = entitiesMap[entity.id] {
-                update(object: object, from: entity)
+                //update(object: object, from: entity)
             } else {
                 createObject(from: entity)
             }
@@ -56,13 +58,14 @@ class RenderSynchronizer {
         guard let newObject = creationModule?.createObject(from: entity) else {
             return
         }
+        entitiesMap[entity.id] = newObject
 
         modules.forEach {
             $0.create(for: newObject, from: entity)
         }
+        self.scene.addObject(newObject)
     }
 
     private func removeObject(from entityId: EntityId) {
-        return
     }
 }
