@@ -1,6 +1,6 @@
 import SDPhysicsEngine
 
-class RenderSynchronizer {
+class GameBridge {
 
     var entityManager: EntityManager
     var scene: SDScene
@@ -18,7 +18,7 @@ class RenderSynchronizer {
         registerModules()
     }
 
-    func sync() {
+    func syncFromEntities() {
         var toRemove = Set(entitiesMap.keys)
 
         for entity in entityManager.entityMap.values {
@@ -33,6 +33,10 @@ class RenderSynchronizer {
         for entityId in toRemove {
             removeObject(from: entityId)
         }
+    }
+    
+    func syncToEntities() {
+        
     }
 
     func registerModule(_ module: SyncModule) {

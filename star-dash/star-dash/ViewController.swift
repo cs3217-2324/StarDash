@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     var scene: SDScene?
     var renderer: Renderer?
-    var renderSynchronizer: RenderSynchronizer?
+    var gameBridge: GameBridge?
     var gameEngine: GameEngine?
 
     override func viewDidLoad() {
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         self.scene = scene
         let gameEngine = GameEngine()
         self.gameEngine = gameEngine
-        self.renderSynchronizer = RenderSynchronizer(entityManager: gameEngine.entityManager, scene: scene)
+        self.gameBridge = GameBridge(entityManager: gameEngine.entityManager, scene: scene)
 
         // setupGame()
         setupGameEntities()
@@ -65,9 +65,8 @@ class ViewController: UIViewController {
 extension ViewController: SDSceneDelegate {
 
     func update(_ scene: SDScene, deltaTime: Double) {
-        // TODO: Sync SDObjects into Entities
-        // TODO: Update Game Logic
-        // TODO: Sync Entities into SDObjects
-        renderSynchronizer?.sync()
+        gameBridge?.syncToEntities()
+        gameEngine?.update(by: deltaTime)
+        gameBridge?.syncFromEntities()
     }
 }
