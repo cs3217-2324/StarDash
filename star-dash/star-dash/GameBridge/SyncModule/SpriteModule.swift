@@ -8,15 +8,18 @@ class SpriteModule: SyncModule {
         self.entityManager = entityManager
     }
 
-    func sync(entity: Entity, into object: SDObject) {
+    func sync(entity: Entity, from object: SDObject) {
+    }
+
+    func sync(object: SDObject, from entity: Entity) {
         guard let spriteComponent = entityManager.component(ofType: SpriteComponent.self, of: entity.id),
               let spriteObject = object as? SDSpriteObject else {
             return
         }
 
-        //if spriteComponent.image != spriteObject.activeTexture {
-        //    spriteObject.runTexture(named: spriteComponent.image)
-        //}
+        // if spriteComponent.image != spriteObject.activeTexture {
+        //     spriteObject.runTexture(named: spriteComponent.image)
+        // }
     }
 
     func create(for object: SDObject, from entity: Entity) {

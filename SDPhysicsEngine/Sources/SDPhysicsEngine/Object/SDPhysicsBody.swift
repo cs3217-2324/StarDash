@@ -20,10 +20,10 @@ public class SDPhysicsBody {
         get { body.velocity }
         set { body.velocity = newValue }
     }
-    
+
     public var force: CGVector {
-        //get { body.force }
-        //set { body.force = newValue}
+        // get { body.force }
+        // set { body.force = newValue}
         get { CGVector(dx: 0, dy: 0) }
         set { }
     }

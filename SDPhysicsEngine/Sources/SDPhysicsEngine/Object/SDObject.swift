@@ -2,7 +2,7 @@ import SpriteKit
 
 public class SDObject {
     let node: SKNode
-    
+
     var innerRotation: CGFloat = 0
 
     public init() {
@@ -22,7 +22,7 @@ public class SDObject {
         get { node.zPosition }
         set { node.zPosition = newValue }
     }
-    
+
     public var rotation: CGFloat {
         get { innerRotation }
         set {

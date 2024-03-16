@@ -8,7 +8,19 @@ class PhysicsModule: SyncModule {
         self.entityManager = entityManager
     }
 
-    func sync(entity: Entity, into object: SDObject) {
+    func sync(entity: Entity, from object: SDObject) {
+        guard let physicsComponent = entityManager.component(ofType: PhysicsComponent.self, of: entity.id),
+              let body = object.physicsBody else {
+            return
+        }
+
+        physicsComponent.mass = body.mass
+        physicsComponent.velocity = body.velocity
+        physicsComponent.force = body.force
+        physicsComponent.affectedByGravity = body.affectedByGravity
+    }
+
+    func sync(object: SDObject, from entity: Entity) {
         guard let physicsComponent = entityManager.component(ofType: PhysicsComponent.self, of: entity.id),
               let body = object.physicsBody else {
             return
@@ -29,6 +41,6 @@ class PhysicsModule: SyncModule {
     }
 
     private func createRectanglePhysicsBody(physicsComponent: PhysicsComponent) -> SDPhysicsBody {
-        return SDPhysicsBody(rectangleOf: CGSize(width: 50, height: 50))
+        SDPhysicsBody(rectangleOf: CGSize(width: 50, height: 50))
     }
 }

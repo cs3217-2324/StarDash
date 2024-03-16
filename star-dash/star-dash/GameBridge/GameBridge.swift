@@ -24,7 +24,7 @@ class GameBridge {
         for entity in entityManager.entityMap.values {
             toRemove.remove(entity.id)
             if let object = entitiesMap[entity.id] {
-                //update(object: object, from: entity)
+                // update(object: object, from: entity)
             } else {
                 createObject(from: entity)
             }
@@ -34,9 +34,13 @@ class GameBridge {
             removeObject(from: entityId)
         }
     }
-    
+
     func syncToEntities() {
-        
+        for (entityId, object) in entitiesMap {
+            if let entity = entityManager.entityMap[entityId] {
+                update(entity: entity, from: object)
+            }
+        }
     }
 
     func registerModule(_ module: SyncModule) {
@@ -52,9 +56,15 @@ class GameBridge {
         registerModule(PhysicsModule(entityManager: entityManager))
     }
 
+    private func update(entity: Entity, from object: SDObject) {
+        modules.forEach {
+            $0.sync(entity: entity, from: object)
+        }
+    }
+
     private func update(object: SDObject, from entity: Entity) {
         modules.forEach {
-            $0.sync(entity: entity, into: object)
+            $0.sync(object: object, from: entity)
         }
     }
 

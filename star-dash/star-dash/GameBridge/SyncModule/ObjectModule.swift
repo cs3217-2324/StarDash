@@ -8,7 +8,16 @@ class ObjectModule: SyncModule {
         self.entityManager = entityManager
     }
 
-    func sync(entity: Entity, into object: SDObject) {
+    func sync(entity: Entity, from object: SDObject) {
+        guard let positionComponent = entityManager.component(ofType: PositionComponent.self, of: entity.id) else {
+            return
+        }
+
+        positionComponent.setPosition(position: object.position)
+        positionComponent.setRotation(rotation: Float(object.rotation))
+    }
+
+    func sync(object: SDObject, from entity: Entity) {
         guard let positionComponent = entityManager.component(ofType: PositionComponent.self, of: entity.id) else {
             return
         }
