@@ -36,7 +36,7 @@ class EntityManager {
     }
 
     func add(entity: Entity) {
-        guard self.entityMap[entity.id] != nil else {
+        guard self.entityMap[entity.id] == nil else {
             return
         }
         self.entityMap[entity.id] = entity

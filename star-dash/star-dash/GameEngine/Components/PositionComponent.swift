@@ -11,14 +11,10 @@ class PositionComponent: Component {
     var position: CGPoint
     var rotation: Float
 
-    init(id: UUID, entityId: UUID, position: CGPoint, rotation: Float) {
+    init(id: UUID = UUID(), entityId: UUID, position: CGPoint, rotation: Float) {
         self.position = position
         self.rotation = rotation
         super.init(id: id, entityId: entityId)
-    }
-
-    convenience init(entityId: UUID, position: CGPoint, rotation: Float) {
-        self.init(id: UUID(), entityId: entityId, position: position, rotation: rotation)
     }
 
     func setPosition(position: CGPoint) {

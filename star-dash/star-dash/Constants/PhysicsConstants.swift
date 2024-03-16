@@ -9,23 +9,35 @@ import Foundation
 
 struct PhysicsConstants {
     private struct CollisionCategory {
-        static let player: UInt32 = 0b00001
-        static let monster: UInt32 = 0b00010
-        static let collectible: UInt32 = 0b00100
-        static let obstacle: UInt32 = 0b01000
-        static let tool: UInt32 = 0b10000
+        static let none: UInt32 = 0
+        static let max: UInt32 = 0xFFFFFFFF
+        static let player: UInt32 = 0b1 << 0
+        static let monster: UInt32 = 0b1 << 1
+        static let collectible: UInt32 = 0b1 << 2
+        static let obstacle: UInt32 = 0b1 << 3
+        static let tool: UInt32 = 0b1 << 4
+        static let wall: UInt32 = 0b1 << 5
+        static let floor: UInt32 = 0b1 << 6
     }
 
     struct CollisionMask {
-        static let playerCollisionMask = CollisionCategory.monster
-            | CollisionCategory.collectible | CollisionCategory.obstacle | CollisionCategory.tool
+        static let player = CollisionCategory.max ^ CollisionCategory.player
+        static let monster = CollisionCategory.player | CollisionCategory.tool
+        static let collectible = CollisionCategory.player
+        static let obstacle = CollisionCategory.player
+        static let tool = CollisionCategory.player | CollisionCategory.monster
+        static let wall = CollisionCategory.player | CollisionCategory.monster
+        static let floor = CollisionCategory.player | CollisionCategory.monster
+    }
 
-        static let monsterCollisionMask = CollisionCategory.player | CollisionCategory.tool
-
-        static let collectibleCollisionMask = CollisionCategory.player
-
-        static let obstacleCollisionMask = CollisionCategory.player
-
-        static let toolCollisionMask = CollisionCategory.player | CollisionCategory.monster
+    struct Dimensions {
+        // TODO: determine appropriate size for each
+        static let player = CGSize(width: 60, height: 60)
+        static let monster = CGSize(width: 60, height: 60)
+        static let collectible = CGSize(width: 60, height: 60)
+        static let obstacle = CGSize(width: 60, height: 60)
+        static let tool = CGSize(width: 60, height: 60)
+        static let wall = CGSize(width: 60, height: 60)
+        static let floor = CGSize(width: 60, height: 60)
     }
 }

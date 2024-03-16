@@ -1,29 +1,25 @@
 //
-//  Collectible.swift
+//  Floor.swift
 //  star-dash
 //
-//  Created by Lau Rui han on 12/3/24.
+//  Created by Ho Jun Hao on 16/3/24.
 //
 
 import Foundation
 
-class Collectible: Entity {
+class Floor: Entity {
     let id: EntityId
     private let position: CGPoint
 
-    init(id: EntityId, position: CGPoint) {
+    init(id: EntityId = UUID(), position: CGPoint) {
         self.id = id
         self.position = position
     }
 
-    convenience init(position: CGPoint) {
-        self.init(id: UUID(), position: position)
-    }
-
     func setUpAndAdd(to: EntityManager) {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
-        let physicsComponent =  PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.collectible)
-        physicsComponent.collisionMask = PhysicsConstants.CollisionMask.collectible
+        let physicsComponent =  PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.floor)
+        physicsComponent.collisionMask = PhysicsConstants.CollisionMask.floor
 
         to.add(entity: self)
         to.add(component: positionComponent)
