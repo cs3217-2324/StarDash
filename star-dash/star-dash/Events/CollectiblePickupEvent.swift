@@ -20,6 +20,7 @@ class CollectiblePickupEvent: Event {
     }
 
     func execute(on target: EventModifiable) {
-        // TODO: Get inventory system/score system and update accordingly
+        // TODO: Add player score
+        target.add(event: RemoveEvent(on: collectibleEntityId))
     }
 }
