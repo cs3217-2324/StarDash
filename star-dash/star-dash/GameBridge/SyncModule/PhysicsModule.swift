@@ -16,7 +16,7 @@ class PhysicsModule: SyncModule {
 
         physicsComponent.mass = body.mass
         physicsComponent.velocity = body.velocity
-        physicsComponent.force = body.force
+        // physicsComponent.force = body.force
         physicsComponent.affectedByGravity = body.affectedByGravity
     }
 
@@ -28,7 +28,7 @@ class PhysicsModule: SyncModule {
 
         body.mass = physicsComponent.mass
         body.velocity = physicsComponent.velocity
-        body.force = physicsComponent.force
+        // body.force = physicsComponent.force
         body.affectedByGravity = physicsComponent.affectedByGravity
     }
 

@@ -36,9 +36,9 @@ extension GameEngine: EventModifiable {
 }
 
 extension GameEngine: EntitySyncInterface {
-    
+
     var entities: [Entity] {
-        get { Array(entityManager.entityMap.values) }
+        Array(entityManager.entityMap.values)
     }
 
     func component<T: Component>(ofType type: T.Type, of entityId: EntityId) -> T? {

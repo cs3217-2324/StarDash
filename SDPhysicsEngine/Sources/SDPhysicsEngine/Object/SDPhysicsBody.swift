@@ -23,9 +23,8 @@ public class SDPhysicsBody {
 
     public var force: CGVector {
         // get { body.force }
-        // set { body.force = newValue}
-        get { CGVector(dx: 0, dy: 0) }
-        set { }
+        // set { body.force = newValue }
+        CGVector(dx: 0, dy: 0)
     }
 
     public var affectedByGravity: Bool {
