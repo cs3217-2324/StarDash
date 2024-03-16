@@ -9,7 +9,7 @@ import Foundation
 
 class PositionComponent: Component {
     var position: CGPoint
-    var rotation: Float
+    var rotation: CGFloat
 
     init(id: UUID, entityId: UUID, position: CGPoint, rotation: Float) {
         self.position = position

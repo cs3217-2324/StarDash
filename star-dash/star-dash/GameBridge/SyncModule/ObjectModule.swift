@@ -14,7 +14,7 @@ class ObjectModule: SyncModule {
         }
 
         positionComponent.setPosition(position: object.position)
-        positionComponent.setRotation(rotation: Float(object.rotation))
+        positionComponent.setRotation(rotation: object.rotation)
     }
 
     func sync(object: SDObject, from entity: Entity) {
@@ -23,7 +23,7 @@ class ObjectModule: SyncModule {
         }
 
         object.position = positionComponent.position
-        object.rotation = CGFloat(positionComponent.rotation)
+        object.rotation = positionComponent.rotation
     }
 
     func create(for object: SDObject, from entity: Entity) {
