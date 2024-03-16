@@ -24,7 +24,7 @@ class GameBridge {
         for entity in entityManager.entities {
             toRemove.remove(entity.id)
             if let object = entitiesMap[entity.id] {
-                // update(object: object, from: entity)
+                update(object: object, from: entity)
             } else {
                 createObject(from: entity)
             }
