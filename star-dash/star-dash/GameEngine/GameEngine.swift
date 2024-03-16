@@ -32,9 +32,9 @@ class GameEngine {
 
     func handleSeparation(_ entityOne: EntityId, _ entityTwo: EntityId) {}
     // TODO: Replace SKNode with the appropriate 1 - 1 mapping when created
-    func syncEntities(withNodes nodes: [SKNode]) {}
+    func syncNodesWithEntities(_ nodes: [SKNode]) {}
 
-    func syncEntitiesToNodes(toNodes nodes: [SKNode]) {}
+    func syncEntitiesWithNodes(_ nodes: [SKNode]) {}
 
     private func setUpSystems() {
         systemManager.add(PositionSystem(entityManager, dispatcher: self))
