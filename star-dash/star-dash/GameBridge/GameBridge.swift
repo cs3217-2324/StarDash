@@ -43,7 +43,7 @@ class GameBridge {
         }
     }
 
-    func registerModule(_ module: SyncModule) {
+    private func registerModule(_ module: SyncModule) {
         modules.append(module)
     }
 
