@@ -42,15 +42,19 @@ class EntityManager {
         self.entityMap[entity.id] = entity
     }
 
-    func remove(entityWithId entityId: EntityId) {
-        entityMap[entityId] = nil
-        guard let componentIds = entityComponentMap[entityId] else {
+    func remove(entity: Entity) {
+        entityMap[entity.id] = nil
+        guard let componentIds = entityComponentMap[entity.id] else {
             return
         }
         for componentId in componentIds {
             componentMap[componentId] = nil
         }
-        entityComponentMap[entityId] = nil
+        entityComponentMap[entity.id] = nil
+    }
+
+    func entity(with entityId: EntityId) -> Entity? {
+        entityMap[entityId]
     }
 
     func component<T: Component>(ofType type: T.Type, of entityId: EntityId) -> T? {

@@ -17,6 +17,9 @@ class RemoveEvent: Event {
     }
 
     func execute(on target: EventModifiable) {
-        target.remove(entityWithId: entityId)
+        guard let entity = target.entity(with: entityId) else {
+            return
+        }
+        target.remove(entity: entity)
     }
 }
