@@ -17,6 +17,6 @@ class MonsterDeathEvent: Event {
     }
 
     func execute(on target: EventModifiable) {
-        // TODO: Check if entity is player. If so, add RespawnEvent to target
+        target.add(event: RemoveEvent(on: entityId))
     }
 }
