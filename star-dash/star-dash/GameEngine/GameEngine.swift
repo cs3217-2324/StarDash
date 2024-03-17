@@ -9,14 +9,13 @@ import Foundation
 
 class GameEngine {
     private let systemManager: SystemManager
-    private let entityManager: EntityManager
+    let entityManager: EntityManager // TODO: Set to private
     private let eventManager: EventManager
 
-    init(scene: GameScene) {
+    init() {
         self.systemManager = SystemManager()
         self.entityManager = EntityManager()
         self.eventManager = EventManager()
-        // TODO: link game engine to renderer
 
         setUpSystems()
     }
@@ -34,4 +33,19 @@ class GameEngine {
 
 extension GameEngine: EventModifiable {
     // TODO: functions of event modifiable
+}
+
+extension GameEngine: EntitySyncInterface {
+
+    var entities: [Entity] {
+        Array(entityManager.entityMap.values)
+    }
+
+    func component<T: Component>(ofType type: T.Type, of entityId: EntityId) -> T? {
+        entityManager.component(ofType: type, of: entityId)
+    }
+
+    func entity(of entityId: EntityId) -> Entity? {
+        entityManager.entityMap[entityId]
+    }
 }
