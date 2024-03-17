@@ -34,16 +34,6 @@ class PositionSystem: System {
         positionComponent.setRotation(rotation: newRotation)
     }
 
-    func sync(entityPositionMap: [EntityId: CGPoint], entityRotationMap: [EntityId: CGFloat]) {
-        for (entityId, newPosition) in entityPositionMap {
-            move(entityId: entityId, to: newPosition)
-        }
-
-        for (entityId, newRotation) in entityRotationMap {
-            rotate(entityId: entityId, to: newRotation)
-        }
-    }
-
     private func getPositionComponent(of entityId: EntityId) -> PositionComponent? {
         entityManager.component(ofType: PositionComponent.self, of: entityId)
     }

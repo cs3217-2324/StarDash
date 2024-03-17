@@ -53,16 +53,6 @@ class PhysicsSystem: System {
         physicsComponent.force = newForce
     }
 
-    func sync(entityVelocityMap: [EntityId: CGVector]) {
-        for (entityId, newVelocity) in entityVelocityMap {
-            guard let physicsComponent = getPhysicsComponent(of: entityId) else {
-                continue
-            }
-
-            physicsComponent.velocity = newVelocity
-        }
-    }
-
     private func getPhysicsComponent(of entityId: EntityId) -> PhysicsComponent? {
         entityManager.component(ofType: PhysicsComponent.self, of: entityId)
     }
