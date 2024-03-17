@@ -1,5 +1,5 @@
 //
-//  EntitiesTest.swift
+//  EntityManagerTests.swift
 //  star-dashTests
 //
 //  Created by Lau Rui han on 17/3/24.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import star_dash
 
-final class EntitiesTest: XCTestCase {
+final class EntityManagerTests: XCTestCase {
 
     func testEqual_addEntity() {
         let entityManager = createEntityManager()

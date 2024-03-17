@@ -1,5 +1,5 @@
 //
-//  SpriteComponent.swift
+//  SpriteComponentTests.swift
 //  star-dashTests
 //
 //  Created by Lau Rui han on 18/3/24.
@@ -9,7 +9,7 @@ import Foundation
 import XCTest
 @testable import star_dash
 
-final class SpriteComponentTest: XCTestCase {
+final class SpriteComponentTests: XCTestCase {
     func testEqual_initComponent() {
         let player = createPlayerEntity()
         let spriteComponent = SpriteComponent(entityId: player.id, image: "", textureAtlas: "", size: .zero)

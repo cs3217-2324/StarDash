@@ -1,5 +1,5 @@
 //
-//  PositionComponent.swift
+//  PositionComponentTests.swift
 //  star-dashTests
 //
 //  Created by Lau Rui han on 18/3/24.
@@ -9,7 +9,7 @@ import Foundation
 import XCTest
 @testable import star_dash
 
-final class PositionComponentTest: XCTestCase {
+final class PositionComponentTests: XCTestCase {
     func testEqual_initComponent() {
         let player = createPlayerEntity()
         let positionComponent = PositionComponent(entityId: player.id, position: .zero, rotation: .zero)
