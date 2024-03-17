@@ -20,7 +20,7 @@ class PlayerMonsterContactEvent: Event {
     }
 
     func execute(on target: EventModifiable) {
-        // TODO: Determine if it's player attacking monster or vice versa.
-        // Trigger HurtByMonsterEvent and AttackMonsterEvent correspondingly
+        // TODO: Determine if player is directly on top of monster.
+        // Trigger PlayerAttackMonsterEvent and MonsterAttackPlayerEvent accordingly
     }
 }
