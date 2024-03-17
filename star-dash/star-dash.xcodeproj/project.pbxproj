@@ -949,10 +949,6 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = SDPhysicsEngine;
 		};
-		E6B1DC922BA34A5E00473563 /* SDPhysicsEngine */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SDPhysicsEngine;
-		};
 /* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4E630EEA2B9F7E070008F887 /* Project object */;
