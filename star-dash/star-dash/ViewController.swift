@@ -51,6 +51,8 @@ class ViewController: UIViewController {
         let platform = SDObject()
         platform.physicsBody = SDPhysicsBody(rectangleOf: CGSize(width: 200, height: 50))
         platform.physicsBody?.isDynamic = false
+        platform.physicsBody?.categoryBitMask = 1 << 1
+        platform.physicsBody?.contactTestMask = 1 << 2
         platform.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400)
         scene.addObject(platform)
 
@@ -71,6 +73,12 @@ extension ViewController: SDSceneDelegate {
     }
 
     func contactOccured(objectA: SDObject, objectB: SDObject) {
+        guard let entityA = gameBridge?.entityId(of: objectA.id),
+              let entityB = gameBridge?.entityId(of: objectB.id) else {
+            return
+        }
+        
         print("contact \(objectA) - \(objectB)")
+        gameEngine?.handleCollision(entityA, entityB)
     }
 }

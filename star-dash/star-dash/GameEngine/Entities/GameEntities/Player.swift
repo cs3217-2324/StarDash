@@ -26,7 +26,9 @@ class Player: Entity {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
         let healthComponent = HealthComponent(entityId: self.id, health: 100)
         let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.player)
-        physicsComponent.collisionMask = PhysicsConstants.CollisionMask.player
+        physicsComponent.categoryBitMask = 1 << 2
+        physicsComponent.contactTestMask = 1 << 1
+        physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.player
         physicsComponent.affectedByGravity = true
         let spriteComponent = SpriteComponent(entityId: self.id, image: "", size: .zero)
 

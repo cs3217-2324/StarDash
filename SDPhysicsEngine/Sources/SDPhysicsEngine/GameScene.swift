@@ -8,7 +8,9 @@ public class GameScene: SKScene {
 
     private var objectMap: [SKNode: SDObject] = [:]
 
-    public func setup() {
+    override public func sceneDidLoad() {
+        super.sceneDidLoad()
+
         physicsWorld.contactDelegate = self
     }
 
@@ -39,7 +41,7 @@ extension GameScene: SDScene {
 }
 
 extension GameScene: SKPhysicsContactDelegate {
-    func didBegin(_ contact: SKPhysicsContact) {
+    public func didBegin(_ contact: SKPhysicsContact) {
         guard let skNodeA = contact.bodyA.node,
               let skNodeB = contact.bodyB.node else {
             return
@@ -55,6 +57,4 @@ extension GameScene: SKPhysicsContactDelegate {
             objectB: objectB
         )
     }
-
-    func didEnd(_ contact: SKPhysicsContact) {}
 }
