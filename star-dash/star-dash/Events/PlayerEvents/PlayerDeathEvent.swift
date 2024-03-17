@@ -1,13 +1,13 @@
 //
-//  HurtByMonsterEvent.swift
+//  PlayerDeathEvent.swift
 //  star-dash
 //
-//  Created by Jason Qiu on 16/3/24.
+//  Created by Jason Qiu on 17/3/24.
 //
 
 import Foundation
 
-class HurtByMonsterEvent: Event {
+class PlayerDeathEvent: Event {
     let timestamp: Date
     let entityId: EntityId
 
@@ -17,7 +17,7 @@ class HurtByMonsterEvent: Event {
     }
 
     func execute(on target: EventModifiable) {
-        // TODO: Get health system and decrease health of attacked player.
-        // If health below 0, trigger DeathEvent
+        // TODO: Where should player respawn to?
+        // target.add(event: RespawnEvent(on: entityId, to: ))
     }
 }

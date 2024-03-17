@@ -17,6 +17,14 @@ class HealthSystem: System {
         self.entityManager = entityManager
         self.dispatcher = dispatcher
     }
+    
+    func hasHealth(for entityId: EntityId) -> Bool {
+        guard let healthComponent = getHealthComponent(of: entityId) else {
+            return false
+        }
+
+        return healthComponent.health > 0
+    }
 
     func increaseHealth(of entityId: EntityId, by increment: Int) {
         guard let healthComponent = getHealthComponent(of: entityId) else {

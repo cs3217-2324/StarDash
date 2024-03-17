@@ -12,11 +12,14 @@
 		143AA38F2BA4D61A009C28E7 /* CGVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA38E2BA4D61A009C28E7 /* CGVector.swift */; };
 		143AA3912BA4D7AC009C28E7 /* MonsterDeathEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3902BA4D7AC009C28E7 /* MonsterDeathEvent.swift */; };
 		143AA3932BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3922BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift */; };
-		143AA3952BA4DF1C009C28E7 /* HurtByMonsterEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3942BA4DF1C009C28E7 /* HurtByMonsterEvent.swift */; };
+		143AA3952BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3942BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift */; };
 		143AA3972BA4E0D9009C28E7 /* PickupCollectibleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3962BA4E0D9009C28E7 /* PickupCollectibleEvent.swift */; };
 		145F2C802BA203B400457549 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F2C7F2BA203B400457549 /* Event.swift */; };
 		145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F2C832BA22CA300457549 /* EventModifiable.swift */; };
 		1471B0A02BA6A70600878B14 /* HealthSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471B09F2BA6A70600878B14 /* HealthSystem.swift */; };
+		1471B0A22BA6AA2200878B14 /* RespawnEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471B0A12BA6AA2200878B14 /* RespawnEvent.swift */; };
+		1471B0A42BA6AAF200878B14 /* PlayerDeathEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471B0A32BA6AAF200878B14 /* PlayerDeathEvent.swift */; };
+		1471B0A62BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471B0A52BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift */; };
 		14D14B732BA5A3CD00386C3B /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */; };
 		14E2478E2BA22FCE0071FFC0 /* MoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */; };
 		14E247932BA2CA920071FFC0 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 14E247922BA2CA920071FFC0 /* DequeModule */; };
@@ -81,11 +84,14 @@
 		143AA38E2BA4D61A009C28E7 /* CGVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGVector.swift; sourceTree = "<group>"; };
 		143AA3902BA4D7AC009C28E7 /* MonsterDeathEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterDeathEvent.swift; sourceTree = "<group>"; };
 		143AA3922BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMonsterContactEvent.swift; sourceTree = "<group>"; };
-		143AA3942BA4DF1C009C28E7 /* HurtByMonsterEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HurtByMonsterEvent.swift; sourceTree = "<group>"; };
+		143AA3942BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterAttackPlayerEvent.swift; sourceTree = "<group>"; };
 		143AA3962BA4E0D9009C28E7 /* PickupCollectibleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupCollectibleEvent.swift; sourceTree = "<group>"; };
 		145F2C7F2BA203B400457549 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		145F2C832BA22CA300457549 /* EventModifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModifiable.swift; sourceTree = "<group>"; };
 		1471B09F2BA6A70600878B14 /* HealthSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthSystem.swift; sourceTree = "<group>"; };
+		1471B0A12BA6AA2200878B14 /* RespawnEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespawnEvent.swift; sourceTree = "<group>"; };
+		1471B0A32BA6AAF200878B14 /* PlayerDeathEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDeathEvent.swift; sourceTree = "<group>"; };
+		1471B0A52BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAttackMonsterEvent.swift; sourceTree = "<group>"; };
 		14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveEvent.swift; sourceTree = "<group>"; };
 		14E247942BA2CB480071FFC0 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
@@ -182,7 +188,9 @@
 			isa = PBXGroup;
 			children = (
 				143AA3962BA4E0D9009C28E7 /* PickupCollectibleEvent.swift */,
-				143AA3942BA4DF1C009C28E7 /* HurtByMonsterEvent.swift */,
+				143AA3942BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift */,
+				1471B0A12BA6AA2200878B14 /* RespawnEvent.swift */,
+				1471B0A32BA6AAF200878B14 /* PlayerDeathEvent.swift */,
 			);
 			path = PlayerEvents;
 			sourceTree = "<group>";
@@ -199,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				143AA3902BA4D7AC009C28E7 /* MonsterDeathEvent.swift */,
+				1471B0A52BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift */,
 			);
 			path = MonsterEvents;
 			sourceTree = "<group>";
@@ -542,12 +551,13 @@
 				4E8660622BA0964A0035530D /* Obstacle.swift in Sources */,
 				1471B0A02BA6A70600878B14 /* HealthSystem.swift in Sources */,
 				461148932BA1D04B0073E7E1 /* System.swift in Sources */,
+				1471B0A62BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift in Sources */,
 				4E8660642BA096600035530D /* Tool.swift in Sources */,
 				4E630F392B9F943B0008F887 /* EntityManager.swift in Sources */,
 				4E630F302B9F83DE0008F887 /* SpriteComponent.swift in Sources */,
 				4E86605F2BA095E30035530D /* Collectible.swift in Sources */,
 				4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */,
-				143AA3952BA4DF1C009C28E7 /* HurtByMonsterEvent.swift in Sources */,
+				143AA3952BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift in Sources */,
 				143AA3932BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift in Sources */,
 				461148912BA1CDBF0073E7E1 /* SystemManager.swift in Sources */,
 				145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */,
@@ -565,6 +575,7 @@
 				143AA3972BA4E0D9009C28E7 /* PickupCollectibleEvent.swift in Sources */,
 				E6A745192BA057040080C1BE /* GameScene.swift in Sources */,
 				E6A745172BA057040080C1BE /* ControlView.swift in Sources */,
+				1471B0A42BA6AAF200878B14 /* PlayerDeathEvent.swift in Sources */,
 				E6A7451D2BA0CAD90080C1BE /* JoystickView.swift in Sources */,
 				E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */,
 				4E630F342B9F8FC00008F887 /* Player.swift in Sources */,
@@ -575,6 +586,7 @@
 				4E630F2E2B9F81850008F887 /* HealthComponent.swift in Sources */,
 				4E86605C2BA095460035530D /* Monster.swift in Sources */,
 				145F2C802BA203B400457549 /* Event.swift in Sources */,
+				1471B0A22BA6AA2200878B14 /* RespawnEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
