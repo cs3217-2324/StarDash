@@ -23,13 +23,9 @@ class Monster: Entity {
     func setUpAndAdd(to: EntityManager) {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
         let healthComponent = HealthComponent(entityId: self.id, health: 100)
-        let physicsComponent = PhysicsComponent(
-            entityId: self.id,
-            mass: .zero,
-            velocity: .zero,
-            force: .zero,
-            collisionMask: PhysicsConstants.CollisionMask.monsterCollisionMask,
-            affectedByGravity: false)
+        let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.monster)
+        physicsComponent.collisionMask = PhysicsConstants.CollisionMask.monster
+        physicsComponent.affectedByGravity = true
 
         to.add(entity: self)
         to.add(component: positionComponent)

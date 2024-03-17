@@ -6,11 +6,11 @@ import MetalKit
  `MTKRenderer` is a `Renderer` that uses MetalKit and SpriteKit to render
  the game on to the iOS device.
 
- The `GameScene` is rendered through a MetalKit while the controls
+ The `SKScene` is rendered through a MetalKit while the controls
  and game information overlay is rendered throuhg UIKit.
  */
 class MTKRenderer: NSObject, Renderer {
-    var scene: GameScene
+    var scene: SKScene
     var device: MTLDevice
     var commandQueue: MTLCommandQueue
 
@@ -18,7 +18,7 @@ class MTKRenderer: NSObject, Renderer {
 
     var playerView: PlayerView?
 
-    init?(scene: GameScene) {
+    init?(scene: SKScene) {
         self.scene = scene
 
         guard let device = MTLCreateSystemDefaultDevice(),

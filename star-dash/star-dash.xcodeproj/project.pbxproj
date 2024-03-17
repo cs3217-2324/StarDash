@@ -30,6 +30,18 @@
 		461148962BA1D53D0073E7E1 /* PositionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148952BA1D53D0073E7E1 /* PositionSystem.swift */; };
 		461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */; };
 		46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B8C0992BA328D900498705 /* GameEngine.swift */; };
+		46D418112BA5C88B0091A38B /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418102BA5C88B0091A38B /* Wall.swift */; };
+		46D418132BA5C9930091A38B /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418122BA5C9930091A38B /* Floor.swift */; };
+		46D418162BA5CBD60091A38B /* Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418152BA5CBD60091A38B /* Collidable.swift */; };
+		46D418182BA5CD840091A38B /* Player+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418172BA5CD840091A38B /* Player+Collidable.swift */; };
+		46D4181A2BA5CDBD0091A38B /* CollisionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418192BA5CDBD0091A38B /* CollisionHandler.swift */; };
+		46D4181C2BA5CDC70091A38B /* SeparationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D4181B2BA5CDC70091A38B /* SeparationHandler.swift */; };
+		46D4181E2BA5D2620091A38B /* Monster+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D4181D2BA5D2620091A38B /* Monster+Collidable.swift */; };
+		46D418202BA5D3420091A38B /* Collectible+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D4181F2BA5D3420091A38B /* Collectible+Collidable.swift */; };
+		46D418222BA5D4E60091A38B /* Obstacle+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418212BA5D4E60091A38B /* Obstacle+Collidable.swift */; };
+		46D418242BA5D5280091A38B /* Tool+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418232BA5D5280091A38B /* Tool+Collidable.swift */; };
+		46D418262BA5D6500091A38B /* Wall+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418252BA5D6500091A38B /* Wall+Collidable.swift */; };
+		46D418282BA5D6800091A38B /* Floor+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418272BA5D6800091A38B /* Floor+Collidable.swift */; };
 		4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF52B9F7E070008F887 /* AppDelegate.swift */; };
 		4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF72B9F7E070008F887 /* SceneDelegate.swift */; };
 		4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF92B9F7E070008F887 /* ViewController.swift */; };
@@ -53,13 +65,21 @@
 		4E8660622BA0964A0035530D /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660612BA0964A0035530D /* Obstacle.swift */; };
 		4E8660642BA096600035530D /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660632BA096600035530D /* Tool.swift */; };
 		4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660652BA097D40035530D /* PhysicsConstants.swift */; };
+		E64361102BA4C2CD003850FD /* SpriteModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610A2BA4C2CC003850FD /* SpriteModule.swift */; };
+		E64361112BA4C2CD003850FD /* SyncModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610B2BA4C2CC003850FD /* SyncModule.swift */; };
+		E64361122BA4C2CD003850FD /* ObjectModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610C2BA4C2CC003850FD /* ObjectModule.swift */; };
+		E64361132BA4C2CD003850FD /* PhysicsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610D2BA4C2CC003850FD /* PhysicsModule.swift */; };
+		E64361142BA4C2CD003850FD /* CreationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610E2BA4C2CC003850FD /* CreationModule.swift */; };
+		E64361152BA4C2CD003850FD /* GameBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610F2BA4C2CC003850FD /* GameBridge.swift */; };
+		E6A011172BA5F4AD006904D9 /* EntitySyncInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A011162BA5F4AD006904D9 /* EntitySyncInterface.swift */; };
 		E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745112BA057040080C1BE /* MTKRenderer.swift */; };
 		E6A745172BA057040080C1BE /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745122BA057040080C1BE /* ControlView.swift */; };
 		E6A745182BA057040080C1BE /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745132BA057040080C1BE /* Renderer.swift */; };
-		E6A745192BA057040080C1BE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745152BA057040080C1BE /* GameScene.swift */; };
 		E6A7451B2BA0C1890080C1BE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451A2BA0C1890080C1BE /* PlayerView.swift */; };
 		E6A7451D2BA0CAD90080C1BE /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */; };
+		E6B1DC902BA34A4800473563 /* SDPhysicsEngine in Sources */ = {isa = PBXBuildFile; fileRef = E6B1DC8D2BA32BC700473563 /* SDPhysicsEngine */; };
 		E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B550A02BA15E9C00DC7396 /* OverlayView.swift */; };
+		E6E4B8302BA6C8D4005ABAB1 /* SDPhysicsEngine in Frameworks */ = {isa = PBXBuildFile; productRef = E6E4B82F2BA6C8D4005ABAB1 /* SDPhysicsEngine */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +98,19 @@
 			remoteInfo = "star-dash";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E6B1DC862BA32B6700473563 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		142D9F8E2BA15FBB005FE9E0 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -102,6 +135,18 @@
 		461148952BA1D53D0073E7E1 /* PositionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSystem.swift; sourceTree = "<group>"; };
 		461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsSystem.swift; sourceTree = "<group>"; };
 		46B8C0992BA328D900498705 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
+		46D418102BA5C88B0091A38B /* Wall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
+		46D418122BA5C9930091A38B /* Floor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
+		46D418152BA5CBD60091A38B /* Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collidable.swift; sourceTree = "<group>"; };
+		46D418172BA5CD840091A38B /* Player+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+Collidable.swift"; sourceTree = "<group>"; };
+		46D418192BA5CDBD0091A38B /* CollisionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionHandler.swift; sourceTree = "<group>"; };
+		46D4181B2BA5CDC70091A38B /* SeparationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparationHandler.swift; sourceTree = "<group>"; };
+		46D4181D2BA5D2620091A38B /* Monster+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Monster+Collidable.swift"; sourceTree = "<group>"; };
+		46D4181F2BA5D3420091A38B /* Collectible+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collectible+Collidable.swift"; sourceTree = "<group>"; };
+		46D418212BA5D4E60091A38B /* Obstacle+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Obstacle+Collidable.swift"; sourceTree = "<group>"; };
+		46D418232BA5D5280091A38B /* Tool+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tool+Collidable.swift"; sourceTree = "<group>"; };
+		46D418252BA5D6500091A38B /* Wall+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wall+Collidable.swift"; sourceTree = "<group>"; };
+		46D418272BA5D6800091A38B /* Floor+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Floor+Collidable.swift"; sourceTree = "<group>"; };
 		4E630EF22B9F7E070008F887 /* star-dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "star-dash.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E630EF52B9F7E070008F887 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E630EF72B9F7E070008F887 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,12 +174,19 @@
 		4E8660612BA0964A0035530D /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		4E8660632BA096600035530D /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		4E8660652BA097D40035530D /* PhysicsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsConstants.swift; sourceTree = "<group>"; };
+		E643610A2BA4C2CC003850FD /* SpriteModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteModule.swift; sourceTree = "<group>"; };
+		E643610B2BA4C2CC003850FD /* SyncModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncModule.swift; sourceTree = "<group>"; };
+		E643610C2BA4C2CC003850FD /* ObjectModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectModule.swift; sourceTree = "<group>"; };
+		E643610D2BA4C2CC003850FD /* PhysicsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsModule.swift; sourceTree = "<group>"; };
+		E643610E2BA4C2CC003850FD /* CreationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationModule.swift; sourceTree = "<group>"; };
+		E643610F2BA4C2CC003850FD /* GameBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBridge.swift; sourceTree = "<group>"; };
+		E6A011162BA5F4AD006904D9 /* EntitySyncInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntitySyncInterface.swift; sourceTree = "<group>"; };
 		E6A745112BA057040080C1BE /* MTKRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKRenderer.swift; sourceTree = "<group>"; };
 		E6A745122BA057040080C1BE /* ControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
 		E6A745132BA057040080C1BE /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
-		E6A745152BA057040080C1BE /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		E6A7451A2BA0C1890080C1BE /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
+		E6B1DC8D2BA32BC700473563 /* SDPhysicsEngine */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SDPhysicsEngine; path = ../SDPhysicsEngine; sourceTree = "<group>"; };
 		E6B550A02BA15E9C00DC7396 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14E247932BA2CA920071FFC0 /* DequeModule in Frameworks */,
+				E6E4B8302BA6C8D4005ABAB1 /* SDPhysicsEngine in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +301,7 @@
 		46B8C0982BA328BF00498705 /* GameEngine */ = {
 			isa = PBXGroup;
 			children = (
+				46D418142BA5CB760091A38B /* Collision */,
 				4611488F2BA1CD9E0073E7E1 /* Systems */,
 				4E630F282B9F7EC20008F887 /* Components */,
 				4E630F252B9F7E500008F887 /* Entities */,
@@ -256,14 +310,33 @@
 			path = GameEngine;
 			sourceTree = "<group>";
 		};
+		46D418142BA5CB760091A38B /* Collision */ = {
+			isa = PBXGroup;
+			children = (
+				46D418152BA5CBD60091A38B /* Collidable.swift */,
+				46D418172BA5CD840091A38B /* Player+Collidable.swift */,
+				46D418192BA5CDBD0091A38B /* CollisionHandler.swift */,
+				46D4181B2BA5CDC70091A38B /* SeparationHandler.swift */,
+				46D4181D2BA5D2620091A38B /* Monster+Collidable.swift */,
+				46D4181F2BA5D3420091A38B /* Collectible+Collidable.swift */,
+				46D418212BA5D4E60091A38B /* Obstacle+Collidable.swift */,
+				46D418232BA5D5280091A38B /* Tool+Collidable.swift */,
+				46D418252BA5D6500091A38B /* Wall+Collidable.swift */,
+				46D418272BA5D6800091A38B /* Floor+Collidable.swift */,
+			);
+			path = Collision;
+			sourceTree = "<group>";
+		};
 		4E630EE92B9F7E070008F887 = {
 			isa = PBXGroup;
 			children = (
+				E6B1DC8D2BA32BC700473563 /* SDPhysicsEngine */,
 				4E630EF42B9F7E070008F887 /* star-dash */,
 				4E630F0B2B9F7E090008F887 /* star-dashTests */,
 				4E630F152B9F7E090008F887 /* star-dashUITests */,
 				142D9F8E2BA15FBB005FE9E0 /* .swiftlint.yml */,
 				4E630EF32B9F7E070008F887 /* Products */,
+				E6B1DC912BA34A5E00473563 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -280,8 +353,8 @@
 		4E630EF42B9F7E070008F887 /* star-dash */ = {
 			isa = PBXGroup;
 			children = (
+				E6A011152BA5D111006904D9 /* GameBridge */,
 				46B8C0982BA328BF00498705 /* GameEngine */,
-				E6A745142BA057040080C1BE /* GameScene */,
 				E6A745102BA057040080C1BE /* Rendering */,
 				4E86605D2BA095CC0035530D /* Constants */,
 				4E630F352B9F91C20008F887 /* Enums */,
@@ -361,8 +434,32 @@
 				4E86605E2BA095E30035530D /* Collectible.swift */,
 				4E8660612BA0964A0035530D /* Obstacle.swift */,
 				4E8660632BA096600035530D /* Tool.swift */,
+				46D418102BA5C88B0091A38B /* Wall.swift */,
+				46D418122BA5C9930091A38B /* Floor.swift */,
 			);
 			path = GameEntities;
+			sourceTree = "<group>";
+		};
+		E64361092BA4C2CC003850FD /* SyncModule */ = {
+			isa = PBXGroup;
+			children = (
+				E643610A2BA4C2CC003850FD /* SpriteModule.swift */,
+				E643610B2BA4C2CC003850FD /* SyncModule.swift */,
+				E643610C2BA4C2CC003850FD /* ObjectModule.swift */,
+				E643610D2BA4C2CC003850FD /* PhysicsModule.swift */,
+				E643610E2BA4C2CC003850FD /* CreationModule.swift */,
+			);
+			path = SyncModule;
+			sourceTree = "<group>";
+		};
+		E6A011152BA5D111006904D9 /* GameBridge */ = {
+			isa = PBXGroup;
+			children = (
+				E6A011162BA5F4AD006904D9 /* EntitySyncInterface.swift */,
+				E643610F2BA4C2CC003850FD /* GameBridge.swift */,
+				E64361092BA4C2CC003850FD /* SyncModule */,
+			);
+			path = GameBridge;
 			sourceTree = "<group>";
 		};
 		E6A745102BA057040080C1BE /* Rendering */ = {
@@ -374,12 +471,11 @@
 			path = Rendering;
 			sourceTree = "<group>";
 		};
-		E6A745142BA057040080C1BE /* GameScene */ = {
+		E6B1DC912BA34A5E00473563 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E6A745152BA057040080C1BE /* GameScene.swift */,
 			);
-			path = GameScene;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E6B5509F2BA15D2000DC7396 /* MTKRenderer */ = {
@@ -405,14 +501,17 @@
 				4E630EEF2B9F7E070008F887 /* Frameworks */,
 				4E630EF02B9F7E070008F887 /* Resources */,
 				142D9F8D2BA15F91005FE9E0 /* SwiftLint */,
+				E6B1DC862BA32B6700473563 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E6B1DC8F2BA3459600473563 /* PBXTargetDependency */,
 			);
 			name = "star-dash";
 			packageProductDependencies = (
 				14E247922BA2CA920071FFC0 /* DequeModule */,
+				E6E4B82F2BA6C8D4005ABAB1 /* SDPhysicsEngine */,
 			);
 			productName = "star-dash";
 			productReference = 4E630EF22B9F7E070008F887 /* star-dash.app */;
@@ -554,6 +653,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46D418182BA5CD840091A38B /* Player+Collidable.swift in Sources */,
+				46D4181E2BA5D2620091A38B /* Monster+Collidable.swift in Sources */,
+				E6B1DC902BA34A4800473563 /* SDPhysicsEngine in Sources */,
 				4E630F272B9F7E770008F887 /* Entity.swift in Sources */,
 				4E630F2C2B9F7F460008F887 /* Component.swift in Sources */,
 				143AA38F2BA4D61A009C28E7 /* CGVector.swift in Sources */,
@@ -566,39 +668,58 @@
 				4E8660642BA096600035530D /* Tool.swift in Sources */,
 				4E630F392B9F943B0008F887 /* EntityManager.swift in Sources */,
 				4E630F302B9F83DE0008F887 /* SpriteComponent.swift in Sources */,
+				46D4181A2BA5CDBD0091A38B /* CollisionHandler.swift in Sources */,
 				4E86605F2BA095E30035530D /* Collectible.swift in Sources */,
+				E64361122BA4C2CD003850FD /* ObjectModule.swift in Sources */,
 				4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */,
 				143AA3952BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift in Sources */,
 				143AA3932BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift in Sources */,
+				46D418162BA5CBD60091A38B /* Collidable.swift in Sources */,
 				461148912BA1CDBF0073E7E1 /* SystemManager.swift in Sources */,
 				145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */,
 				4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */,
+				E6A011172BA5F4AD006904D9 /* EntitySyncInterface.swift in Sources */,
+				E64361132BA4C2CD003850FD /* PhysicsModule.swift in Sources */,
 				4E630F322B9F887C0008F887 /* PhysicsComponent.swift in Sources */,
 				1471B0AD2BA6AE4E00878B14 /* UseGrappleHookEvent.swift in Sources */,
 				4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */,
 				461148962BA1D53D0073E7E1 /* PositionSystem.swift in Sources */,
 				143AA38C2BA4D3E3009C28E7 /* JumpEvent.swift in Sources */,
 				4E630F2A2B9F7EF60008F887 /* PositionComponent.swift in Sources */,
+				46D418132BA5C9930091A38B /* Floor.swift in Sources */,
+				E64361152BA4C2CD003850FD /* GameBridge.swift in Sources */,
 				14E247952BA2CB480071FFC0 /* EventManager.swift in Sources */,
 				4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */,
+				E64361112BA4C2CD003850FD /* SyncModule.swift in Sources */,
 				E6A7451B2BA0C1890080C1BE /* PlayerView.swift in Sources */,
+				46D418282BA5D6800091A38B /* Floor+Collidable.swift in Sources */,
+				46D418222BA5D4E60091A38B /* Obstacle+Collidable.swift in Sources */,
 				E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */,
 				E6A745182BA057040080C1BE /* Renderer.swift in Sources */,
 				143AA3972BA4E0D9009C28E7 /* PickupCollectibleEvent.swift in Sources */,
 				E6A745192BA057040080C1BE /* GameScene.swift in Sources */,
+				46D418242BA5D5280091A38B /* Tool+Collidable.swift in Sources */,
+				E64361142BA4C2CD003850FD /* CreationModule.swift in Sources */,
+				E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */,
+				E6A745182BA057040080C1BE /* Renderer.swift in Sources */,
 				E6A745172BA057040080C1BE /* ControlView.swift in Sources */,
 				1471B0A42BA6AAF200878B14 /* PlayerDeathEvent.swift in Sources */,
+				46D418202BA5D3420091A38B /* Collectible+Collidable.swift in Sources */,
 				E6A7451D2BA0CAD90080C1BE /* JoystickView.swift in Sources */,
 				E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */,
+				46D418262BA5D6500091A38B /* Wall+Collidable.swift in Sources */,
 				4E630F342B9F8FC00008F887 /* Player.swift in Sources */,
 				4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */,
 				143AA3912BA4D7AC009C28E7 /* MonsterDeathEvent.swift in Sources */,
+				E64361102BA4C2CD003850FD /* SpriteModule.swift in Sources */,
 				46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */,
 				461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */,
+				46D4181C2BA5CDC70091A38B /* SeparationHandler.swift in Sources */,
 				4E630F2E2B9F81850008F887 /* HealthComponent.swift in Sources */,
 				4E86605C2BA095460035530D /* Monster.swift in Sources */,
 				145F2C802BA203B400457549 /* Event.swift in Sources */,
 				1471B0A22BA6AA2200878B14 /* RespawnEvent.swift in Sources */,
+				46D418112BA5C88B0091A38B /* Wall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +752,10 @@
 			isa = PBXTargetDependency;
 			target = 4E630EF12B9F7E070008F887 /* star-dash */;
 			targetProxy = 4E630F132B9F7E090008F887 /* PBXContainerItemProxy */;
+		};
+		E6B1DC8F2BA3459600473563 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = E6B1DC8E2BA3459600473563 /* SDPhysicsEngine */;
 		};
 /* End PBXTargetDependency section */
 
@@ -974,6 +1099,14 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 14E247912BA2CA920071FFC0 /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = DequeModule;
+		};
+		E6B1DC8E2BA3459600473563 /* SDPhysicsEngine */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SDPhysicsEngine;
+		};
+		E6E4B82F2BA6C8D4005ABAB1 /* SDPhysicsEngine */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SDPhysicsEngine;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

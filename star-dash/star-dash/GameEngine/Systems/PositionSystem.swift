@@ -26,22 +26,12 @@ class PositionSystem: System {
         positionComponent.setPosition(position: newPosition)
     }
 
-    func rotate(entityId: EntityId, to newRotation: Float) {
+    func rotate(entityId: EntityId, to newRotation: CGFloat) {
         guard let positionComponent = getPositionComponent(of: entityId) else {
             return
         }
 
         positionComponent.setRotation(rotation: newRotation)
-    }
-
-    func sync(entityPositionMap: [EntityId: CGPoint], entityRotationMap: [EntityId: Float]) {
-        for (entityId, newPosition) in entityPositionMap {
-            move(entityId: entityId, to: newPosition)
-        }
-
-        for (entityId, newRotation) in entityRotationMap {
-            rotate(entityId: entityId, to: newRotation)
-        }
     }
 
     private func getPositionComponent(of entityId: EntityId) -> PositionComponent? {

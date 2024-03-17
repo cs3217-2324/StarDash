@@ -28,7 +28,7 @@ class EntityManager {
     }
 
     func add(component: Component) {
-        guard self.componentMap[component.id] != nil else {
+        guard self.componentMap[component.id] == nil else {
             return
         }
         self.componentMap[component.id] = component
@@ -36,10 +36,11 @@ class EntityManager {
     }
 
     func add(entity: Entity) {
-        guard self.entityMap[entity.id] != nil else {
+        guard self.entityMap[entity.id] == nil else {
             return
         }
         self.entityMap[entity.id] = entity
+        self.entityComponentMap[entity.id] = Set()
     }
 
     func remove(entity: Entity) {

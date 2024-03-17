@@ -22,5 +22,4 @@ class SpriteComponent: Component {
     convenience init(entityId: EntityId, image: String, size: CGSize) {
         self.init(id: UUID(), entityId: entityId, image: image, size: size)
     }
-
 }
