@@ -11,9 +11,9 @@
 		143AA38C2BA4D3E3009C28E7 /* JumpEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA38B2BA4D3E3009C28E7 /* JumpEvent.swift */; };
 		143AA38F2BA4D61A009C28E7 /* CGVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA38E2BA4D61A009C28E7 /* CGVector.swift */; };
 		143AA3912BA4D7AC009C28E7 /* MonsterDeathEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3902BA4D7AC009C28E7 /* MonsterDeathEvent.swift */; };
-		143AA3932BA4DBE7009C28E7 /* PlayerMonsterCollisionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3922BA4DBE7009C28E7 /* PlayerMonsterCollisionEvent.swift */; };
+		143AA3932BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3922BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift */; };
 		143AA3952BA4DF1C009C28E7 /* HurtByMonsterEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3942BA4DF1C009C28E7 /* HurtByMonsterEvent.swift */; };
-		143AA3972BA4E0D9009C28E7 /* CollectiblePickupEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3962BA4E0D9009C28E7 /* CollectiblePickupEvent.swift */; };
+		143AA3972BA4E0D9009C28E7 /* PickupCollectibleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3962BA4E0D9009C28E7 /* PickupCollectibleEvent.swift */; };
 		145F2C802BA203B400457549 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F2C7F2BA203B400457549 /* Event.swift */; };
 		145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F2C832BA22CA300457549 /* EventModifiable.swift */; };
 		14D14B732BA5A3CD00386C3B /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */; };
@@ -79,9 +79,9 @@
 		143AA38B2BA4D3E3009C28E7 /* JumpEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpEvent.swift; sourceTree = "<group>"; };
 		143AA38E2BA4D61A009C28E7 /* CGVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGVector.swift; sourceTree = "<group>"; };
 		143AA3902BA4D7AC009C28E7 /* MonsterDeathEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterDeathEvent.swift; sourceTree = "<group>"; };
-		143AA3922BA4DBE7009C28E7 /* PlayerMonsterCollisionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMonsterCollisionEvent.swift; sourceTree = "<group>"; };
+		143AA3922BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMonsterContactEvent.swift; sourceTree = "<group>"; };
 		143AA3942BA4DF1C009C28E7 /* HurtByMonsterEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HurtByMonsterEvent.swift; sourceTree = "<group>"; };
-		143AA3962BA4E0D9009C28E7 /* CollectiblePickupEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectiblePickupEvent.swift; sourceTree = "<group>"; };
+		143AA3962BA4E0D9009C28E7 /* PickupCollectibleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupCollectibleEvent.swift; sourceTree = "<group>"; };
 		145F2C7F2BA203B400457549 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		145F2C832BA22CA300457549 /* EventModifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModifiable.swift; sourceTree = "<group>"; };
 		14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
@@ -170,8 +170,7 @@
 				145F2C832BA22CA300457549 /* EventModifiable.swift */,
 				14D14B742BA5A72800386C3B /* PlayerEvents */,
 				14D14B782BA5ABAC00386C3B /* MonsterEvents */,
-				14D14B772BA5AB0700386C3B /* CollisionEvents */,
-				14D14B762BA5A79100386C3B /* PickupEvents */,
+				14D14B772BA5AB0700386C3B /* ContactEvents */,
 				14D14B792BA5AC1900386C3B /* CommonEvents */,
 			);
 			path = Events;
@@ -180,25 +179,18 @@
 		14D14B742BA5A72800386C3B /* PlayerEvents */ = {
 			isa = PBXGroup;
 			children = (
+				143AA3962BA4E0D9009C28E7 /* PickupCollectibleEvent.swift */,
 				143AA3942BA4DF1C009C28E7 /* HurtByMonsterEvent.swift */,
 			);
 			path = PlayerEvents;
 			sourceTree = "<group>";
 		};
-		14D14B762BA5A79100386C3B /* PickupEvents */ = {
+		14D14B772BA5AB0700386C3B /* ContactEvents */ = {
 			isa = PBXGroup;
 			children = (
-				143AA3962BA4E0D9009C28E7 /* CollectiblePickupEvent.swift */,
+				143AA3922BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift */,
 			);
-			path = PickupEvents;
-			sourceTree = "<group>";
-		};
-		14D14B772BA5AB0700386C3B /* CollisionEvents */ = {
-			isa = PBXGroup;
-			children = (
-				143AA3922BA4DBE7009C28E7 /* PlayerMonsterCollisionEvent.swift */,
-			);
-			path = CollisionEvents;
+			path = ContactEvents;
 			sourceTree = "<group>";
 		};
 		14D14B782BA5ABAC00386C3B /* MonsterEvents */ = {
@@ -552,7 +544,7 @@
 				4E86605F2BA095E30035530D /* Collectible.swift in Sources */,
 				4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */,
 				143AA3952BA4DF1C009C28E7 /* HurtByMonsterEvent.swift in Sources */,
-				143AA3932BA4DBE7009C28E7 /* PlayerMonsterCollisionEvent.swift in Sources */,
+				143AA3932BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift in Sources */,
 				461148912BA1CDBF0073E7E1 /* SystemManager.swift in Sources */,
 				145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */,
 				4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */,
@@ -566,7 +558,7 @@
 				E6A7451B2BA0C1890080C1BE /* PlayerView.swift in Sources */,
 				E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */,
 				E6A745182BA057040080C1BE /* Renderer.swift in Sources */,
-				143AA3972BA4E0D9009C28E7 /* CollectiblePickupEvent.swift in Sources */,
+				143AA3972BA4E0D9009C28E7 /* PickupCollectibleEvent.swift in Sources */,
 				E6A745192BA057040080C1BE /* GameScene.swift in Sources */,
 				E6A745172BA057040080C1BE /* ControlView.swift in Sources */,
 				E6A7451D2BA0CAD90080C1BE /* JoystickView.swift in Sources */,

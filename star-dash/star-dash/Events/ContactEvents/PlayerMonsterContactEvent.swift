@@ -1,5 +1,5 @@
 //
-//  PlayerMonsterCollisionEvent.swift
+//  PlayerMonsterContactEvent.swift
 //  star-dash
 //
 //  Created by Jason Qiu on 16/3/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PlayerMonsterCollisionEvent: Event {
+class PlayerMonsterContactEvent: Event {
     let timestamp: Date
     let entityId: EntityId
 
