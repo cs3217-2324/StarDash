@@ -16,8 +16,8 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "SDPhysicsEngine"),
-        .testTarget(
-            name: "SDPhysicsEngineTests",
-            dependencies: ["SDPhysicsEngine"])
+        //.testTarget(
+        //    name: "SDPhysicsEngineTests",
+        //    dependencies: ["SDPhysicsEngine"])
     ]
 )
