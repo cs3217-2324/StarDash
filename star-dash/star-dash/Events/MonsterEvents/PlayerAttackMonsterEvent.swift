@@ -23,7 +23,7 @@ class PlayerAttackMonsterEvent: Event {
             return
         }
         healthSystem.decreaseHealth(of: entityId, by: PlayerAttackMonsterEvent.monsterHealthDecrement)
-        
+
         if !healthSystem.hasHealth(for: entityId) {
             target.add(event: MonsterDeathEvent(on: entityId))
         }

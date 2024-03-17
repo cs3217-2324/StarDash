@@ -10,7 +10,7 @@ import Foundation
 class RespawnEvent: Event {
     let timestamp: Date
     let entityId: EntityId
-    
+
     let newPosition: CGPoint
 
     init(on entityId: EntityId, to newPosition: CGPoint) {

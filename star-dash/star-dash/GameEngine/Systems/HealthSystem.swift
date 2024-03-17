@@ -17,7 +17,7 @@ class HealthSystem: System {
         self.entityManager = entityManager
         self.dispatcher = dispatcher
     }
-    
+
     func hasHealth(for entityId: EntityId) -> Bool {
         guard let healthComponent = getHealthComponent(of: entityId) else {
             return false
@@ -33,7 +33,7 @@ class HealthSystem: System {
 
         healthComponent.health += increment
     }
-    
+
     func decreaseHealth(of entityId: EntityId, by decrement: Int) {
         guard let healthComponent = getHealthComponent(of: entityId) else {
             return
