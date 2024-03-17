@@ -69,4 +69,8 @@ extension ViewController: SDSceneDelegate {
         gameEngine?.update(by: deltaTime)
         gameBridge?.syncFromEntities()
     }
+
+    func contactOccured(objectA: SDObject, objectB: SDObject) {
+        print("contact \(objectA) - \(objectB)")
+    }
 }

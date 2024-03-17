@@ -1,10 +1,16 @@
 import SpriteKit
 
-public class GameScene: SKScene, SDScene {
+public class GameScene: SKScene {
 
     public var sceneDelegate: SDSceneDelegate?
 
     private var lastUpdateTime: TimeInterval?
+
+    private var objectMap: [SKNode: SDObject] = [:]
+
+    public func setup() {
+        physicsWorld.contactDelegate = self
+    }
 
     override public func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
@@ -19,8 +25,36 @@ public class GameScene: SKScene, SDScene {
 
         sceneDelegate?.update(self, deltaTime: deltaTime)
     }
+}
 
+extension GameScene: SDScene {
     public func addObject(_ object: SDObject) {
+        guard objectMap[object.node] == nil else {
+            return
+        }
+
+        objectMap[object.node] = object
         addChild(object.node)
     }
+}
+
+extension GameScene: SKPhysicsContactDelegate {
+    func didBegin(_ contact: SKPhysicsContact) {
+        guard let skNodeA = contact.bodyA.node,
+              let skNodeB = contact.bodyB.node else {
+            return
+        }
+
+        guard let objectA = objectMap[skNodeA],
+              let objectB = objectMap[skNodeB] else {
+            fatalError("Unknown node in game scene")
+        }
+
+        sceneDelegate?.contactOccured(
+            objectA: objectA,
+            objectB: objectB
+        )
+    }
+
+    func didEnd(_ contact: SKPhysicsContact) {}
 }
