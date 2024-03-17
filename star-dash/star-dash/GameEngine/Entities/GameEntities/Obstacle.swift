@@ -22,13 +22,8 @@ class Obstacle: Entity {
 
     func setUpAndAdd(to: EntityManager) {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
-        let physicsComponent = PhysicsComponent(
-            entityId: self.id,
-            mass: .zero,
-            velocity: .zero,
-            force: .zero,
-            collisionMask: PhysicsConstants.CollisionMask.obstacleCollisionMask,
-            affectedByGravity: false)
+        let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.obstacle)
+        physicsComponent.collisionMask = PhysicsConstants.CollisionMask.obstacle
 
         to.add(entity: self)
         to.add(component: positionComponent)

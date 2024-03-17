@@ -1,13 +1,13 @@
 //
-//  Tool.swift
+//  Wall.swift
 //  star-dash
 //
-//  Created by Lau Rui han on 12/3/24.
+//  Created by Ho Jun Hao on 16/3/24.
 //
 
 import Foundation
 
-class Tool: Entity {
+class Wall: Entity {
     let id: EntityId
     private let position: CGPoint
 
@@ -22,8 +22,8 @@ class Tool: Entity {
 
     func setUpAndAdd(to: EntityManager) {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
-        let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.tool)
-        physicsComponent.collisionMask = PhysicsConstants.CollisionMask.tool
+        let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.wall)
+        physicsComponent.collisionMask = PhysicsConstants.CollisionMask.wall
 
         to.add(entity: self)
         to.add(component: positionComponent)

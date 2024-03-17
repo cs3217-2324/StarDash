@@ -8,25 +8,27 @@
 import Foundation
 
 class PhysicsComponent: Component {
-    var mass: CGFloat
-    var velocity: CGVector
-    var force: CGVector
-    var collisionMask: UInt32
-    var affectedByGravity: Bool
+    var shape: Shape
+    var mass: CGFloat = .zero
+    var velocity: CGVector = .zero
+    var force: CGVector = .zero
+    var collisionMask: UInt32?
+    var affectedByGravity = false
+    var size: CGSize?
 
-    init(id: ComponentId, entityId: EntityId, mass: CGFloat, velocity: CGVector,
-         force: CGVector, collisionMask: UInt32, affectedByGravity: Bool) {
-        self.mass = mass
-        self.velocity = velocity
-        self.force = force
-        self.collisionMask = collisionMask
-        self.affectedByGravity = affectedByGravity
+    init(id: ComponentId, entityId: EntityId, size: CGSize) {
+        self.shape = .rectangle
+        self.size = size
         super.init(id: id, entityId: entityId)
     }
 
-    convenience init(entityId: EntityId, mass: CGFloat, velocity: CGVector,
-                     force: CGVector, collisionMask: UInt32, affectedByGravity: Bool) {
-        self.init(id: UUID(), entityId: entityId, mass: mass, velocity: velocity,
-                  force: force, collisionMask: collisionMask, affectedByGravity: affectedByGravity)
+    convenience init(entityId: EntityId, size: CGSize) {
+        self.init(id: UUID(), entityId: entityId, size: size)
+    }
+}
+
+extension PhysicsComponent {
+    enum Shape {
+        case rectangle
     }
 }
