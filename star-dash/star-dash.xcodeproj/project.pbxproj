@@ -54,8 +54,8 @@
 		E6A7451B2BA0C1890080C1BE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451A2BA0C1890080C1BE /* PlayerView.swift */; };
 		E6A7451D2BA0CAD90080C1BE /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */; };
 		E6B1DC902BA34A4800473563 /* SDPhysicsEngine in Sources */ = {isa = PBXBuildFile; fileRef = E6B1DC8D2BA32BC700473563 /* SDPhysicsEngine */; };
-		E6B1DC932BA34A5E00473563 /* SDPhysicsEngine in Frameworks */ = {isa = PBXBuildFile; productRef = E6B1DC922BA34A5E00473563 /* SDPhysicsEngine */; };
 		E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B550A02BA15E9C00DC7396 /* OverlayView.swift */; };
+		E6E4B8302BA6C8D4005ABAB1 /* SDPhysicsEngine in Frameworks */ = {isa = PBXBuildFile; productRef = E6E4B82F2BA6C8D4005ABAB1 /* SDPhysicsEngine */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,8 +147,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6B1DC932BA34A5E00473563 /* SDPhysicsEngine in Frameworks */,
 				14E247932BA2CA920071FFC0 /* DequeModule in Frameworks */,
+				E6E4B8302BA6C8D4005ABAB1 /* SDPhysicsEngine in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,8 +382,8 @@
 			);
 			name = "star-dash";
 			packageProductDependencies = (
-				E6B1DC922BA34A5E00473563 /* SDPhysicsEngine */,
 				14E247922BA2CA920071FFC0 /* DequeModule */,
+				E6E4B82F2BA6C8D4005ABAB1 /* SDPhysicsEngine */,
 			);
 			productName = "star-dash";
 			productReference = 4E630EF22B9F7E070008F887 /* star-dash.app */;
@@ -949,7 +949,7 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = SDPhysicsEngine;
 		};
-		E6B1DC922BA34A5E00473563 /* SDPhysicsEngine */ = {
+		E6E4B82F2BA6C8D4005ABAB1 /* SDPhysicsEngine */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SDPhysicsEngine;
 		};
