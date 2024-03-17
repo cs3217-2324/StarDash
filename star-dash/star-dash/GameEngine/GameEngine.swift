@@ -37,7 +37,25 @@ class GameEngine {
 }
 
 extension GameEngine: EventModifiable {
-    // TODO: functions of event modifiable
+    func entity(with entityId: EntityId) -> Entity? {
+        entityManager.entity(with: entityId)
+    }
+
+    func system<T: System>(ofType type: T.Type) -> T? {
+        systemManager.system(ofType: type)
+    }
+
+    func add(entity: Entity) {
+        entityManager.add(entity: entity)
+    }
+
+    func add(event: Event) {
+        eventManager.add(event: event)
+    }
+
+    func remove(entity: Entity) {
+        entityManager.remove(entity: entity)
+    }
 }
 
 extension GameEngine: EntitySyncInterface {

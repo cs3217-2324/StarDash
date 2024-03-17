@@ -8,8 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		142D9F8F2BA15FBB005FE9E0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 142D9F8E2BA15FBB005FE9E0 /* .swiftlint.yml */; };
+		143AA38C2BA4D3E3009C28E7 /* JumpEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA38B2BA4D3E3009C28E7 /* JumpEvent.swift */; };
+		143AA38F2BA4D61A009C28E7 /* CGVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA38E2BA4D61A009C28E7 /* CGVector.swift */; };
+		143AA3912BA4D7AC009C28E7 /* MonsterDeathEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3902BA4D7AC009C28E7 /* MonsterDeathEvent.swift */; };
+		143AA3932BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3922BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift */; };
+		143AA3952BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3942BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift */; };
+		143AA3972BA4E0D9009C28E7 /* PickupCollectibleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3962BA4E0D9009C28E7 /* PickupCollectibleEvent.swift */; };
 		145F2C802BA203B400457549 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F2C7F2BA203B400457549 /* Event.swift */; };
 		145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F2C832BA22CA300457549 /* EventModifiable.swift */; };
+		1471B0A02BA6A70600878B14 /* HealthSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471B09F2BA6A70600878B14 /* HealthSystem.swift */; };
+		1471B0A22BA6AA2200878B14 /* RespawnEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471B0A12BA6AA2200878B14 /* RespawnEvent.swift */; };
+		1471B0A42BA6AAF200878B14 /* PlayerDeathEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471B0A32BA6AAF200878B14 /* PlayerDeathEvent.swift */; };
+		1471B0A62BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471B0A52BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift */; };
+		1471B0AD2BA6AE4E00878B14 /* UseGrappleHookEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471B0AC2BA6AE4E00878B14 /* UseGrappleHookEvent.swift */; };
+		14D14B732BA5A3CD00386C3B /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */; };
 		14E2478E2BA22FCE0071FFC0 /* MoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */; };
 		14E247932BA2CA920071FFC0 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 14E247922BA2CA920071FFC0 /* DequeModule */; };
 		14E247952BA2CB480071FFC0 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E247942BA2CB480071FFC0 /* EventManager.swift */; };
@@ -102,8 +114,20 @@
 
 /* Begin PBXFileReference section */
 		142D9F8E2BA15FBB005FE9E0 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		143AA38B2BA4D3E3009C28E7 /* JumpEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpEvent.swift; sourceTree = "<group>"; };
+		143AA38E2BA4D61A009C28E7 /* CGVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGVector.swift; sourceTree = "<group>"; };
+		143AA3902BA4D7AC009C28E7 /* MonsterDeathEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterDeathEvent.swift; sourceTree = "<group>"; };
+		143AA3922BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMonsterContactEvent.swift; sourceTree = "<group>"; };
+		143AA3942BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterAttackPlayerEvent.swift; sourceTree = "<group>"; };
+		143AA3962BA4E0D9009C28E7 /* PickupCollectibleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupCollectibleEvent.swift; sourceTree = "<group>"; };
 		145F2C7F2BA203B400457549 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		145F2C832BA22CA300457549 /* EventModifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModifiable.swift; sourceTree = "<group>"; };
+		1471B09F2BA6A70600878B14 /* HealthSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthSystem.swift; sourceTree = "<group>"; };
+		1471B0A12BA6AA2200878B14 /* RespawnEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespawnEvent.swift; sourceTree = "<group>"; };
+		1471B0A32BA6AAF200878B14 /* PlayerDeathEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDeathEvent.swift; sourceTree = "<group>"; };
+		1471B0A52BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAttackMonsterEvent.swift; sourceTree = "<group>"; };
+		1471B0AC2BA6AE4E00878B14 /* UseGrappleHookEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseGrappleHookEvent.swift; sourceTree = "<group>"; };
+		14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveEvent.swift; sourceTree = "<group>"; };
 		14E247942BA2CB480071FFC0 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		461148902BA1CDBF0073E7E1 /* SystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemManager.swift; sourceTree = "<group>"; };
@@ -193,15 +217,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		143AA38D2BA4D600009C28E7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				143AA38E2BA4D61A009C28E7 /* CGVector.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		145F2C7E2BA2039700457549 /* Events */ = {
 			isa = PBXGroup;
 			children = (
 				145F2C7F2BA203B400457549 /* Event.swift */,
 				14E247942BA2CB480071FFC0 /* EventManager.swift */,
 				145F2C832BA22CA300457549 /* EventModifiable.swift */,
-				14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */,
+				1471B0AB2BA6AE4400878B14 /* ToolEvents */,
+				14D14B742BA5A72800386C3B /* PlayerEvents */,
+				14D14B782BA5ABAC00386C3B /* MonsterEvents */,
+				14D14B772BA5AB0700386C3B /* ContactEvents */,
+				14D14B792BA5AC1900386C3B /* CommonEvents */,
 			);
 			path = Events;
+			sourceTree = "<group>";
+		};
+		1471B0AB2BA6AE4400878B14 /* ToolEvents */ = {
+			isa = PBXGroup;
+			children = (
+				1471B0AC2BA6AE4E00878B14 /* UseGrappleHookEvent.swift */,
+			);
+			path = ToolEvents;
+			sourceTree = "<group>";
+		};
+		14D14B742BA5A72800386C3B /* PlayerEvents */ = {
+			isa = PBXGroup;
+			children = (
+				143AA3962BA4E0D9009C28E7 /* PickupCollectibleEvent.swift */,
+				1471B0A12BA6AA2200878B14 /* RespawnEvent.swift */,
+				1471B0A32BA6AAF200878B14 /* PlayerDeathEvent.swift */,
+			);
+			path = PlayerEvents;
+			sourceTree = "<group>";
+		};
+		14D14B772BA5AB0700386C3B /* ContactEvents */ = {
+			isa = PBXGroup;
+			children = (
+				143AA3922BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift */,
+			);
+			path = ContactEvents;
+			sourceTree = "<group>";
+		};
+		14D14B782BA5ABAC00386C3B /* MonsterEvents */ = {
+			isa = PBXGroup;
+			children = (
+				143AA3942BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift */,
+				1471B0A52BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift */,
+				143AA3902BA4D7AC009C28E7 /* MonsterDeathEvent.swift */,
+			);
+			path = MonsterEvents;
+			sourceTree = "<group>";
+		};
+		14D14B792BA5AC1900386C3B /* CommonEvents */ = {
+			isa = PBXGroup;
+			children = (
+				14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */,
+				143AA38B2BA4D3E3009C28E7 /* JumpEvent.swift */,
+				14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */,
+			);
+			path = CommonEvents;
 			sourceTree = "<group>";
 		};
 		4611488F2BA1CD9E0073E7E1 /* Systems */ = {
@@ -209,6 +291,7 @@
 			children = (
 				461148902BA1CDBF0073E7E1 /* SystemManager.swift */,
 				461148922BA1D04B0073E7E1 /* System.swift */,
+				1471B09F2BA6A70600878B14 /* HealthSystem.swift */,
 				461148952BA1D53D0073E7E1 /* PositionSystem.swift */,
 				461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */,
 			);
@@ -276,6 +359,7 @@
 				4E86605D2BA095CC0035530D /* Constants */,
 				4E630F352B9F91C20008F887 /* Enums */,
 				145F2C7E2BA2039700457549 /* Events */,
+				143AA38D2BA4D600009C28E7 /* Extensions */,
 				4E630EF52B9F7E070008F887 /* AppDelegate.swift */,
 				4E630EF72B9F7E070008F887 /* SceneDelegate.swift */,
 				4E630EF92B9F7E070008F887 /* ViewController.swift */,
@@ -574,9 +658,13 @@
 				E6B1DC902BA34A4800473563 /* SDPhysicsEngine in Sources */,
 				4E630F272B9F7E770008F887 /* Entity.swift in Sources */,
 				4E630F2C2B9F7F460008F887 /* Component.swift in Sources */,
+				143AA38F2BA4D61A009C28E7 /* CGVector.swift in Sources */,
 				14E2478E2BA22FCE0071FFC0 /* MoveEvent.swift in Sources */,
+				14D14B732BA5A3CD00386C3B /* RemoveEvent.swift in Sources */,
 				4E8660622BA0964A0035530D /* Obstacle.swift in Sources */,
+				1471B0A02BA6A70600878B14 /* HealthSystem.swift in Sources */,
 				461148932BA1D04B0073E7E1 /* System.swift in Sources */,
+				1471B0A62BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift in Sources */,
 				4E8660642BA096600035530D /* Tool.swift in Sources */,
 				4E630F392B9F943B0008F887 /* EntityManager.swift in Sources */,
 				4E630F302B9F83DE0008F887 /* SpriteComponent.swift in Sources */,
@@ -584,6 +672,8 @@
 				4E86605F2BA095E30035530D /* Collectible.swift in Sources */,
 				E64361122BA4C2CD003850FD /* ObjectModule.swift in Sources */,
 				4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */,
+				143AA3952BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift in Sources */,
+				143AA3932BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift in Sources */,
 				46D418162BA5CBD60091A38B /* Collidable.swift in Sources */,
 				461148912BA1CDBF0073E7E1 /* SystemManager.swift in Sources */,
 				145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */,
@@ -591,8 +681,10 @@
 				E6A011172BA5F4AD006904D9 /* EntitySyncInterface.swift in Sources */,
 				E64361132BA4C2CD003850FD /* PhysicsModule.swift in Sources */,
 				4E630F322B9F887C0008F887 /* PhysicsComponent.swift in Sources */,
+				1471B0AD2BA6AE4E00878B14 /* UseGrappleHookEvent.swift in Sources */,
 				4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */,
 				461148962BA1D53D0073E7E1 /* PositionSystem.swift in Sources */,
+				143AA38C2BA4D3E3009C28E7 /* JumpEvent.swift in Sources */,
 				4E630F2A2B9F7EF60008F887 /* PositionComponent.swift in Sources */,
 				46D418132BA5C9930091A38B /* Floor.swift in Sources */,
 				E64361152BA4C2CD003850FD /* GameBridge.swift in Sources */,
@@ -604,18 +696,21 @@
 				46D418222BA5D4E60091A38B /* Obstacle+Collidable.swift in Sources */,
 				E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */,
 				E6A745182BA057040080C1BE /* Renderer.swift in Sources */,
+				143AA3972BA4E0D9009C28E7 /* PickupCollectibleEvent.swift in Sources */,
 				E6A745192BA057040080C1BE /* GameScene.swift in Sources */,
 				46D418242BA5D5280091A38B /* Tool+Collidable.swift in Sources */,
 				E64361142BA4C2CD003850FD /* CreationModule.swift in Sources */,
 				E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */,
 				E6A745182BA057040080C1BE /* Renderer.swift in Sources */,
 				E6A745172BA057040080C1BE /* ControlView.swift in Sources */,
+				1471B0A42BA6AAF200878B14 /* PlayerDeathEvent.swift in Sources */,
 				46D418202BA5D3420091A38B /* Collectible+Collidable.swift in Sources */,
 				E6A7451D2BA0CAD90080C1BE /* JoystickView.swift in Sources */,
 				E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */,
 				46D418262BA5D6500091A38B /* Wall+Collidable.swift in Sources */,
 				4E630F342B9F8FC00008F887 /* Player.swift in Sources */,
 				4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */,
+				143AA3912BA4D7AC009C28E7 /* MonsterDeathEvent.swift in Sources */,
 				E64361102BA4C2CD003850FD /* SpriteModule.swift in Sources */,
 				46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */,
 				461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */,
@@ -623,6 +718,7 @@
 				4E630F2E2B9F81850008F887 /* HealthComponent.swift in Sources */,
 				4E86605C2BA095460035530D /* Monster.swift in Sources */,
 				145F2C802BA203B400457549 /* Event.swift in Sources */,
+				1471B0A22BA6AA2200878B14 /* RespawnEvent.swift in Sources */,
 				46D418112BA5C88B0091A38B /* Wall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
