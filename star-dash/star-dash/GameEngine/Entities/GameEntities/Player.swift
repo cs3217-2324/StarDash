@@ -29,11 +29,13 @@ class Player: Entity {
         physicsComponent.collisionMask = PhysicsConstants.CollisionMask.player
         physicsComponent.affectedByGravity = true
         let spriteComponent = SpriteComponent(entityId: self.id, image: "", textureAtlas: "", size: .zero)
+        let scoreComponent = ScoreComponent(entityId: self.id, score: 0)
 
         to.add(entity: self)
         to.add(component: positionComponent)
         to.add(component: healthComponent)
         to.add(component: physicsComponent)
         to.add(component: spriteComponent)
+        to.add(component: scoreComponent)
     }
 }
