@@ -14,8 +14,8 @@ struct GameConstants {
     }
 
     struct HealthChange {
-        static let attackedByMonster = -200
-        static let attackedByPlayer = -20
+        static let attackedByMonster = -20
+        static let attackedByPlayer = -200
     }
 
     struct ScoreChange {
