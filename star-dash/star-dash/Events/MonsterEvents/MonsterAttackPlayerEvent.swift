@@ -8,7 +8,6 @@
 import Foundation
 
 class MonsterAttackPlayerEvent: Event {
-    private static let playerHealthDecrement = 20
     private static let damageImpulse = CGVector(dx: 500, dy: 0)
 
     let timestamp: Date
@@ -33,7 +32,7 @@ class MonsterAttackPlayerEvent: Event {
             return
         }
 
-        healthSystem.decreaseHealth(of: entityId, by: MonsterAttackPlayerEvent.playerHealthDecrement)
+        healthSystem.applyHealthChange(to: entityId, healthChange: GameConstants.HealthChange.attackedByMonster)
 
         let isMonsterToRight = monsterPosition.x > playerPosition.x
         let impulse = isMonsterToRight

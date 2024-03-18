@@ -8,7 +8,6 @@
 import Foundation
 
 class PlayerAttackMonsterEvent: Event {
-    private static let monsterHealthDecrement = 200
     private static let attackImpulse = CGVector(dx: 0, dy: 400)
 
     let timestamp: Date
@@ -25,7 +24,7 @@ class PlayerAttackMonsterEvent: Event {
             return
         }
 
-        healthSystem.decreaseHealth(of: entityId, by: PlayerAttackMonsterEvent.monsterHealthDecrement)
+        healthSystem.applyHealthChange(to: entityId, healthChange: GameConstants.HealthChange.attackedByPlayer)
         physicSystem.applyImpulse(to: entityId, impulse: PlayerAttackMonsterEvent.attackImpulse)
 
         if !healthSystem.hasHealth(for: entityId) {

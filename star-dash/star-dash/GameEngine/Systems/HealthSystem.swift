@@ -26,20 +26,12 @@ class HealthSystem: System {
         return healthComponent.health > 0
     }
 
-    func increaseHealth(of entityId: EntityId, by increment: Int) {
+    func applyHealthChange(to entityId: EntityId, healthChange: Int) {
         guard let healthComponent = getHealthComponent(of: entityId) else {
             return
         }
 
-        healthComponent.health += increment
-    }
-
-    func decreaseHealth(of entityId: EntityId, by decrement: Int) {
-        guard let healthComponent = getHealthComponent(of: entityId) else {
-            return
-        }
-
-        healthComponent.health -= decrement
+        healthComponent.health += healthChange
     }
 
     private func getHealthComponent(of entityId: EntityId) -> HealthComponent? {

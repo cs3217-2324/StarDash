@@ -24,18 +24,20 @@ class Player: Entity {
 
     func setUpAndAdd(to: EntityManager) {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
-        let healthComponent = HealthComponent(entityId: self.id, health: 100)
+        let healthComponent = HealthComponent(entityId: self.id, health: GameConstants.InitialHealth.player)
         let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.player)
         physicsComponent.categoryBitMask = 1 << 2
         physicsComponent.contactTestMask = 1 << 1
         physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.player
         physicsComponent.affectedByGravity = true
-        let spriteComponent = SpriteComponent(entityId: self.id, image: "", size: .zero)
+        let spriteComponent = SpriteComponent(entityId: self.id, image: "", textureAtlas: "", size: .zero)
+        let scoreComponent = ScoreComponent(entityId: self.id, score: 0)
 
         to.add(entity: self)
         to.add(component: positionComponent)
         to.add(component: healthComponent)
         to.add(component: physicsComponent)
         to.add(component: spriteComponent)
+        to.add(component: scoreComponent)
     }
 }
