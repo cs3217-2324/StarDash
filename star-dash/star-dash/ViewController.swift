@@ -77,7 +77,7 @@ extension ViewController: SDSceneDelegate {
               let entityB = gameBridge?.entityId(of: objectB.id) else {
             return
         }
-        
+
         print("contact \(objectA) - \(objectB)")
         gameEngine?.handleCollision(entityA, entityB)
     }

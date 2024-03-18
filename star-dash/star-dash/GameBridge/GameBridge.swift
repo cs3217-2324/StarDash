@@ -44,7 +44,7 @@ class GameBridge {
             }
         }
     }
-    
+
     func entityId(of objectId: SDObjectId) -> EntityId? {
         objectMap[objectId]
     }

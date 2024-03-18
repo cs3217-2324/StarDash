@@ -37,36 +37,4 @@ extension Player: Collidable {
     func collideWithFloor(_ floor: Floor) -> Event? {
         CollisionHandler.between(player: self, floor: floor)
     }
-
-    func separates(from collidable: Collidable) -> Event? {
-        collidable.separatesFromPlayer(self)
-    }
-
-    func separatesFromPlayer(_ player: Player) -> Event? {
-        nil
-    }
-
-    func separatesFromMonster(_ monster: Monster) -> Event? {
-        SeparationHandler.between(player: self, monster: monster)
-    }
-
-    func separatesFromCollectible(_ collectible: Collectible) -> Event? {
-        SeparationHandler.between(player: self, collectible: collectible)
-    }
-
-    func separatesFromObstacle(_ obstacle: Obstacle) -> Event? {
-        SeparationHandler.between(player: self, obstacle: obstacle)
-    }
-
-    func separatesFromTool(_ tool: Tool) -> Event? {
-        SeparationHandler.between(player: self, tool: tool)
-    }
-
-    func separatesFromWall(_ wall: Wall) -> Event? {
-        SeparationHandler.between(player: self, wall: wall)
-    }
-
-    func separatesFromFloor(_ floor: Floor) -> Event? {
-        SeparationHandler.between(player: self, floor: floor)
-    }
 }
