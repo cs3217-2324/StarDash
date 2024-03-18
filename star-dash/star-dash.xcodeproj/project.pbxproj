@@ -21,6 +21,7 @@
 		1471B0A42BA6AAF200878B14 /* PlayerDeathEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471B0A32BA6AAF200878B14 /* PlayerDeathEvent.swift */; };
 		1471B0A62BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471B0A52BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift */; };
 		1471B0AD2BA6AE4E00878B14 /* UseGrappleHookEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471B0AC2BA6AE4E00878B14 /* UseGrappleHookEvent.swift */; };
+		14970F502BA814D500CC1E8A /* ScoreComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14970F4F2BA814D500CC1E8A /* ScoreComponent.swift */; };
 		14D14B732BA5A3CD00386C3B /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */; };
 		14E2478E2BA22FCE0071FFC0 /* MoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */; };
 		14E247932BA2CA920071FFC0 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 14E247922BA2CA920071FFC0 /* DequeModule */; };
@@ -133,6 +134,7 @@
 		1471B0A32BA6AAF200878B14 /* PlayerDeathEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDeathEvent.swift; sourceTree = "<group>"; };
 		1471B0A52BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAttackMonsterEvent.swift; sourceTree = "<group>"; };
 		1471B0AC2BA6AE4E00878B14 /* UseGrappleHookEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseGrappleHookEvent.swift; sourceTree = "<group>"; };
+		14970F4F2BA814D500CC1E8A /* ScoreComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreComponent.swift; sourceTree = "<group>"; };
 		14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveEvent.swift; sourceTree = "<group>"; };
 		14E247942BA2CB480071FFC0 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				4E630F292B9F7EF60008F887 /* PositionComponent.swift */,
+				14970F4F2BA814D500CC1E8A /* ScoreComponent.swift */,
 				4E630F2B2B9F7F460008F887 /* Component.swift */,
 				4E630F2D2B9F81850008F887 /* HealthComponent.swift */,
 				4E630F2F2B9F83DE0008F887 /* SpriteComponent.swift */,
@@ -743,6 +746,7 @@
 				46D418262BA5D6500091A38B /* Wall+Collidable.swift in Sources */,
 				4E630F342B9F8FC00008F887 /* Player.swift in Sources */,
 				4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */,
+				14970F502BA814D500CC1E8A /* ScoreComponent.swift in Sources */,
 				143AA3912BA4D7AC009C28E7 /* MonsterDeathEvent.swift in Sources */,
 				E64361102BA4C2CD003850FD /* SpriteModule.swift in Sources */,
 				46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */,
