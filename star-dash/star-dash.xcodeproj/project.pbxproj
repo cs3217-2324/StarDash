@@ -22,6 +22,7 @@
 		1471B0A62BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471B0A52BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift */; };
 		1471B0AD2BA6AE4E00878B14 /* UseGrappleHookEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471B0AC2BA6AE4E00878B14 /* UseGrappleHookEvent.swift */; };
 		14970F502BA814D500CC1E8A /* ScoreComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14970F4F2BA814D500CC1E8A /* ScoreComponent.swift */; };
+		14970F522BA8159800CC1E8A /* ScoreComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14970F512BA8159800CC1E8A /* ScoreComponentTests.swift */; };
 		14D14B732BA5A3CD00386C3B /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */; };
 		14E2478E2BA22FCE0071FFC0 /* MoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */; };
 		14E247932BA2CA920071FFC0 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 14E247922BA2CA920071FFC0 /* DequeModule */; };
@@ -135,6 +136,7 @@
 		1471B0A52BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAttackMonsterEvent.swift; sourceTree = "<group>"; };
 		1471B0AC2BA6AE4E00878B14 /* UseGrappleHookEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseGrappleHookEvent.swift; sourceTree = "<group>"; };
 		14970F4F2BA814D500CC1E8A /* ScoreComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreComponent.swift; sourceTree = "<group>"; };
+		14970F512BA8159800CC1E8A /* ScoreComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreComponentTests.swift; sourceTree = "<group>"; };
 		14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveEvent.swift; sourceTree = "<group>"; };
 		14E247942BA2CB480071FFC0 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 			children = (
 				4E3458E42BA75E6800E817C6 /* PositionComponentTests.swift */,
 				4E3458E62BA75E7100E817C6 /* HealthComponentTests.swift */,
+				14970F512BA8159800CC1E8A /* ScoreComponentTests.swift */,
 				4E3458E82BA75E7C00E817C6 /* SpriteComponentTests.swift */,
 				4E3458EA2BA75E8B00E817C6 /* PhysicsComponentTests.swift */,
 			);
@@ -770,6 +773,7 @@
 				4E3458DF2BA7490B00E817C6 /* EntityManagerTests.swift in Sources */,
 				4E3458ED2BA75F1200E817C6 /* Util.swift in Sources */,
 				4E630F0D2B9F7E090008F887 /* star_dashTests.swift in Sources */,
+				14970F522BA8159800CC1E8A /* ScoreComponentTests.swift in Sources */,
 				4E3458EB2BA75E8B00E817C6 /* PhysicsComponentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
