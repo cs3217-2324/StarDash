@@ -24,7 +24,7 @@ class Player: Entity {
 
     func setUpAndAdd(to: EntityManager) {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
-        let healthComponent = HealthComponent(entityId: self.id, health: 100)
+        let healthComponent = HealthComponent(entityId: self.id, health: GameConstants.InitialHealth.player)
         let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.player)
         physicsComponent.collisionMask = PhysicsConstants.CollisionMask.player
         physicsComponent.affectedByGravity = true

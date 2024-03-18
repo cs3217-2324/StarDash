@@ -23,7 +23,7 @@ class PickupCollectibleEvent: Event {
         guard let scoreSystem = target.system(ofType: ScoreSystem.self) else {
             return
         }
-        scoreSystem.increaseScore(of: entityId, by: 100)
+        scoreSystem.applyScoreChange(to: entityId, scoreChange: GameConstants.ScoreChange.pickupCollectible)
         target.add(event: RemoveEvent(on: collectibleEntityId))
     }
 }

@@ -8,8 +8,6 @@
 import Foundation
 
 class MonsterAttackPlayerEvent: Event {
-    private static let playerHealthDecrement = 20
-
     let timestamp: Date
     let entityId: EntityId
 
@@ -22,7 +20,7 @@ class MonsterAttackPlayerEvent: Event {
         guard let healthSystem = target.system(ofType: HealthSystem.self) else {
             return
         }
-        healthSystem.decreaseHealth(of: entityId, by: MonsterAttackPlayerEvent.playerHealthDecrement)
+        healthSystem.applyHealthChange(to: entityId, healthChange: GameConstants.HealthChange.attackedByMonster)
 
         if !healthSystem.hasHealth(for: entityId) {
             target.add(event: PlayerDeathEvent(on: entityId))

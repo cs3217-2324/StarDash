@@ -18,20 +18,12 @@ class ScoreSystem: System {
         self.dispatcher = dispatcher
     }
 
-    func increaseScore(of entityId: EntityId, by increment: Int) {
+    func applyScoreChange(to entityId: EntityId, scoreChange: Int) {
         guard let scoreComponent = getScoreComponent(of: entityId) else {
             return
         }
 
-        scoreComponent.score += increment
-    }
-
-    func decreaseScore(of entityId: EntityId, by decrement: Int) {
-        guard let scoreComponent = getScoreComponent(of: entityId) else {
-            return
-        }
-
-        scoreComponent.score -= decrement
+        scoreComponent.score += scoreChange
     }
 
     private func getScoreComponent(of entityId: EntityId) -> ScoreComponent? {
