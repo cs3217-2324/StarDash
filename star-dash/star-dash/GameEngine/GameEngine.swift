@@ -25,10 +25,15 @@ class GameEngine {
         eventManager.executeAll(on: self)
     }
 
-    // TODO: after events are ready
-    func handleCollision(_ entityOne: EntityId, _ entityTwo: EntityId) {}
+    func handleCollision(_ entityOneId: EntityId, _ entityTwoId: EntityId) {
+        guard let entityOne = entity(of: entityOneId) as? Collidable,
+              let entityTwo = entity(of: entityTwoId) as? Collidable,
+              let event = entityOne.collides(with: entityTwo) else {
+            return
+        }
 
-    func handleSeparation(_ entityOne: EntityId, _ entityTwo: EntityId) {}
+        eventManager.add(event: event)
+    }
 
     private func setUpSystems() {
         systemManager.add(PositionSystem(entityManager, dispatcher: self))
