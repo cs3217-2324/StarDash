@@ -13,8 +13,6 @@ class ControlView: UIView {
     let joystickBackgroundWidth: CGFloat = 256
     let panThreshold: CGFloat = 15
 
-    let controlViewDelegate: ControlViewDelegate?
-
     func setupSubviews() {
         setupMovementControls()
         setupActionControls()
@@ -44,7 +42,7 @@ class ControlView: UIView {
         let buttonY = frame.height - buttonSize - buttonMargin
         jumpButton.frame = CGRect(x: buttonX, y: buttonY, width: buttonSize, height: buttonSize)
 
-        jumpButton.addTarget(self, action: #selector(jumpButtonPressed), for: .touchUpInside)
+        jumpButton.addTarget(self, action: #selector(jumpButtonTapped), for: .touchUpInside)
 
         jumpButton.setImage(#imageLiteral(resourceName: "JumpButton"), for: .normal)
         jumpButton.setImage(#imageLiteral(resourceName: "JumpButtonDown"), for: .highlighted)
@@ -58,8 +56,8 @@ class ControlView: UIView {
 
     // MARK: Gesture handler methods
 
-    @objc func jumpButtonPressed() {
-        controlViewDelegate?.jumpButtonPressed()
+    @objc func jumpButtonTapped() {
+        print("Tapped")
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -69,11 +67,6 @@ class ControlView: UIView {
               firstTouch.location(in: self).x < self.frame.width / 2,
               touches.count == 1 else {
             return
-        }
-
-        if shouldSendMoveEvent(location: location) {
-            let isLeft = gesture.location(in: joystickView).x < joystickView.center.x
-            controlViewDelegate?.jumpButtonPressed(isLeft: isLeft)
         }
 
         joystickView?.moveJoystick(location: firstTouch.location(in: joystickView))
@@ -91,24 +84,14 @@ class ControlView: UIView {
     }
 
     @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
-        guard let joystickView = self.joystickView else {
-            return
-        }
-    
-        let location = gesture.location(in: self)
         if gesture.state == .ended {
-            joystickView.returnJoystick()
-        } else if location.x < self.frame.width / 2 {
-            joystickView.moveJoystick(location: gesture.location(in: joystickView))
-
-            if shouldSendMoveEvent(location: location) {
-                let isLeft = gesture.location(in: joystickView).x < joystickView.center.x
-                controlViewDelegate?.jumpButtonPressed(isLeft: isLeft)
-            }
+            joystickView?.returnJoystick()
+        } else if gesture.location(in: self).x < self.frame.width / 2 {
+            joystickView?.moveJoystick(location: gesture.location(in: joystickView))
         }
     }
 
     private func shouldSendMoveEvent(location: CGPoint) -> Bool {
-        true
+        false
     }
 }

@@ -70,14 +70,3 @@ extension ViewController: SDSceneDelegate {
         gameBridge?.syncFromEntities()
     }
 }
-
-extension ViewController: ViewDelegate {
-
-    func joystickMoved(isLeft: Bool) {
-
-    }
-
-    func jumpButtonPressed() {
-        gameEngine?.handlePlayerJump()
-    }
-}
