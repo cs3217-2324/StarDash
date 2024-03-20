@@ -56,6 +56,13 @@ extension GameEngine: EventModifiable {
     func remove(entity: Entity) {
         entityManager.remove(entity: entity)
     }
+
+    func remove(entity: EntityId) {
+        guard let entity = entityManager.entityMap[entity] else {
+            return
+        }
+        remove(entity: entity)
+    }
 }
 
 extension GameEngine: EntitySyncInterface {

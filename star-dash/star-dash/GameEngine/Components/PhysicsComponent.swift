@@ -17,11 +17,24 @@ class PhysicsComponent: Component {
     var collisionBitMask: UInt32 = 0xFFFFFFFF
     var affectedByGravity = false
     var size: CGSize?
+    var startPoint: CGPoint?
+    var endPoint: CGPoint?
 
     init(id: ComponentId, entityId: EntityId, size: CGSize) {
         self.shape = .rectangle
         self.size = size
         super.init(id: id, entityId: entityId)
+    }
+
+    init(id: ComponentId, entityId: EntityId, startPoint: CGPoint, endPoint: CGPoint) {
+        self.shape = .line
+        self.startPoint = startPoint
+        self.endPoint = endPoint
+        super.init(id: id, entityId: entityId)
+    }
+
+    convenience init(entityId: EntityId, startPoint: CGPoint, endPoint: CGPoint) {
+        self.init(id: UUID(), entityId: entityId, startPoint: startPoint, endPoint: endPoint)
     }
 
     convenience init(entityId: EntityId, size: CGSize) {
@@ -32,5 +45,6 @@ class PhysicsComponent: Component {
 extension PhysicsComponent {
     enum Shape {
         case rectangle
+        case line
     }
 }

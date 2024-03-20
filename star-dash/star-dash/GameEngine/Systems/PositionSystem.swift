@@ -23,7 +23,7 @@ class PositionSystem: System {
             return
         }
 
-        positionComponent.setPosition(position: newPosition)
+        positionComponent.position = newPosition
     }
 
     func rotate(entityId: EntityId, to newRotation: CGFloat) {
@@ -31,7 +31,7 @@ class PositionSystem: System {
             return
         }
 
-        positionComponent.setRotation(rotation: newRotation)
+        positionComponent.rotation = newRotation
     }
 
     func getPosition(of entityId: EntityId) -> CGPoint? {

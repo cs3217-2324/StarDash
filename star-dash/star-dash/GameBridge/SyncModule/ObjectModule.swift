@@ -13,8 +13,8 @@ class ObjectModule: SyncModule {
             return
         }
 
-        positionComponent.setPosition(position: object.position)
-        positionComponent.setRotation(rotation: object.rotation)
+        positionComponent.position = object.position
+        positionComponent.rotation = object.rotation
     }
 
     func sync(object: SDObject, from entity: Entity) {

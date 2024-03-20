@@ -57,6 +57,6 @@ struct CollisionHandler {
     }
 
     static func between(tool: Tool, obstacle: Obstacle) -> Event? {
-        nil
+        ToolObstacleCollisionEvent(betweenTool: tool.id, andObstacle: obstacle.id)
     }
 }

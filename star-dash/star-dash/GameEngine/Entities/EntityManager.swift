@@ -49,13 +49,17 @@ class EntityManager {
             return
         }
         for componentId in componentIds {
-            componentMap[componentId] = nil
+            componentMap.removeValue(forKey: componentId)
         }
-        entityComponentMap[entity.id] = nil
+        entityComponentMap.removeValue(forKey: entity.id)
     }
 
     func entity(with entityId: EntityId) -> Entity? {
         entityMap[entityId]
+    }
+
+    func components<T: Component>(ofType type: T.Type) -> [T] {
+        componentMap.values.compactMap { $0 as? T }
     }
 
     func component<T: Component>(ofType type: T.Type, of entityId: EntityId) -> T? {

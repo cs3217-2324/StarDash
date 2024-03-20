@@ -36,7 +36,6 @@ struct PhysicsConstants {
         static let monster = CGSize(width: 60, height: 60)
         static let collectible = CGSize(width: 60, height: 60)
         static let obstacle = CGSize(width: 60, height: 60)
-        static let tool = CGSize(width: 60, height: 60)
         static let wall = CGSize(width: 60, height: 60)
         static let floor = CGSize(width: 60, height: 60)
     }

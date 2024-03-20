@@ -17,6 +17,15 @@ class UseGrappleHookEvent: Event {
     }
 
     func execute(on target: EventModifiable) {
-        // TODO: Shoot graple hook from player position
+        guard let toolSystem = target.system(ofType: ToolSystem.self),
+              let positionSystem = target.system(ofType: PositionSystem.self) else {
+            return
+        }
+
+        guard let playerPosition = positionSystem.getPosition(of: entityId) else {
+            return
+        }
+
+        toolSystem.activateTool(at: playerPosition, ownedBy: entityId)
     }
 }

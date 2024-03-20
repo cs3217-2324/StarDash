@@ -14,4 +14,5 @@ protocol EventModifiable {
     func add(entity: Entity)
     func add(event: Event)
     func remove(entity: Entity)
+    func remove(entity: EntityId)
 }
