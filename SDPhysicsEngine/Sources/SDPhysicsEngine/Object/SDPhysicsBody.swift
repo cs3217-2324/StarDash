@@ -27,6 +27,11 @@ public class SDPhysicsBody {
         CGVector(dx: 0, dy: 0)
     }
 
+    public var restitution: CGFloat {
+        get { body.restitution }
+        set { body.restitution = newValue }
+    }
+
     public var affectedByGravity: Bool {
         get { body.affectedByGravity }
         set { body.affectedByGravity = newValue }
@@ -36,17 +41,17 @@ public class SDPhysicsBody {
         get { body.isDynamic }
         set { body.isDynamic = newValue }
     }
-    
+
     public var categoryBitMask: UInt32 {
         get { body.categoryBitMask }
         set { body.categoryBitMask = newValue }
     }
-    
+
     public var contactTestMask: UInt32 {
         get { body.contactTestBitMask }
         set { body.contactTestBitMask = newValue }
     }
-    
+
     public var collisionBitMask: UInt32 {
         get { body.collisionBitMask }
         set { body.collisionBitMask = newValue }

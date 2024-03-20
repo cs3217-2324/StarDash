@@ -58,6 +58,15 @@ class EntityManager {
         entityMap[entityId]
     }
 
+    func playerEntityId() -> EntityId? {
+        // TOODO: Add parameter to specify the player index 
+        for entityId in entityMap.keys where component(ofType: PlayerComponent.self, of: entityId) != nil {
+            return entityId
+        }
+
+        return nil
+    }
+
     func component<T: Component>(ofType type: T.Type, of entityId: EntityId) -> T? {
         guard let components = entityComponentMap[entityId] else {
             return nil

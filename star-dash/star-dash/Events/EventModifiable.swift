@@ -9,6 +9,7 @@ import Foundation
 
 /// EventModifiable represents instances with entities that can be modified by events through systems.
 protocol EventModifiable {
+    func component<T: Component>(ofType type: T.Type, ofEntity entityId: EntityId) -> T?
     func entity(with entityId: EntityId) -> Entity?
     func system<T: System>(ofType type: T.Type) -> T?
     func add(entity: Entity)
