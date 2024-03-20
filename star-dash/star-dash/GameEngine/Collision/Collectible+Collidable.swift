@@ -5,9 +5,11 @@
 //  Created by Ho Jun Hao on 16/3/24.
 //
 
+import CoreGraphics
+
 extension Collectible: Collidable {
     func collides(with collidable: Collidable, at contactPoint: CGPoint) -> Event? {
-        collidable.collideWithCollectible(self)
+        collidable.collideWithCollectible(self, at: contactPoint)
     }
 
     func collideWithPlayer(_ player: Player, at contactPoint: CGPoint) -> Event? {

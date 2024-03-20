@@ -88,9 +88,10 @@
 		E6A745182BA057040080C1BE /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745132BA057040080C1BE /* Renderer.swift */; };
 		E6A7451B2BA0C1890080C1BE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451A2BA0C1890080C1BE /* PlayerView.swift */; };
 		E6A7451D2BA0CAD90080C1BE /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */; };
+		E6B0AAD12BAAE3DC009CB939 /* ViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0AAD02BAAE3DC009CB939 /* ViewDelegate.swift */; };
+		E6B0AAD32BAAE438009CB939 /* ControlViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0AAD22BAAE438009CB939 /* ControlViewDelegate.swift */; };
+		E6B0AAD52BAAE4EC009CB939 /* PlayerFloorContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0AAD42BAAE4EC009CB939 /* PlayerFloorContactEvent.swift */; };
 		E6B1DC902BA34A4800473563 /* SDPhysicsEngine in Sources */ = {isa = PBXBuildFile; fileRef = E6B1DC8D2BA32BC700473563 /* SDPhysicsEngine */; };
-		E6B34A432BAA00E80009A60B /* ViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B34A422BAA00E80009A60B /* ViewDelegate.swift */; };
-		E6B34A452BAA00F20009A60B /* ControlViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B34A442BAA00F20009A60B /* ControlViewDelegate.swift */; };
 		E6B34A472BAA03AF0009A60B /* PlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B34A462BAA03AF0009A60B /* PlayerComponent.swift */; };
 		E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B550A02BA15E9C00DC7396 /* OverlayView.swift */; };
 		E6E4B8302BA6C8D4005ABAB1 /* SDPhysicsEngine in Frameworks */ = {isa = PBXBuildFile; productRef = E6E4B82F2BA6C8D4005ABAB1 /* SDPhysicsEngine */; };
@@ -211,9 +212,10 @@
 		E6A745132BA057040080C1BE /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		E6A7451A2BA0C1890080C1BE /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
+		E6B0AAD02BAAE3DC009CB939 /* ViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDelegate.swift; sourceTree = "<group>"; };
+		E6B0AAD22BAAE438009CB939 /* ControlViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewDelegate.swift; sourceTree = "<group>"; };
+		E6B0AAD42BAAE4EC009CB939 /* PlayerFloorContactEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerFloorContactEvent.swift; sourceTree = "<group>"; };
 		E6B1DC8D2BA32BC700473563 /* SDPhysicsEngine */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SDPhysicsEngine; path = ../SDPhysicsEngine; sourceTree = "<group>"; };
-		E6B34A422BAA00E80009A60B /* ViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDelegate.swift; sourceTree = "<group>"; };
-		E6B34A442BAA00F20009A60B /* ControlViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlViewDelegate.swift; sourceTree = "<group>"; };
 		E6B34A462BAA03AF0009A60B /* PlayerComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerComponent.swift; sourceTree = "<group>"; };
 		E6B550A02BA15E9C00DC7396 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -289,6 +291,7 @@
 		14D14B772BA5AB0700386C3B /* ContactEvents */ = {
 			isa = PBXGroup;
 			children = (
+				E6B0AAD42BAAE4EC009CB939 /* PlayerFloorContactEvent.swift */,
 				143AA3922BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift */,
 			);
 			path = ContactEvents;
@@ -521,10 +524,10 @@
 		E6A745102BA057040080C1BE /* Rendering */ = {
 			isa = PBXGroup;
 			children = (
-				E6B34A442BAA00F20009A60B /* ControlViewDelegate.swift */,
-				E6B34A422BAA00E80009A60B /* ViewDelegate.swift */,
 				E6B5509F2BA15D2000DC7396 /* MTKRenderer */,
 				E6A745132BA057040080C1BE /* Renderer.swift */,
+				E6B0AAD02BAAE3DC009CB939 /* ViewDelegate.swift */,
+				E6B0AAD22BAAE438009CB939 /* ControlViewDelegate.swift */,
 			);
 			path = Rendering;
 			sourceTree = "<group>";
@@ -722,13 +725,13 @@
 				4E8660622BA0964A0035530D /* Obstacle.swift in Sources */,
 				1471B0A02BA6A70600878B14 /* HealthSystem.swift in Sources */,
 				461148932BA1D04B0073E7E1 /* System.swift in Sources */,
+				E6B0AAD12BAAE3DC009CB939 /* ViewDelegate.swift in Sources */,
 				1471B0A62BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift in Sources */,
 				4E8660642BA096600035530D /* Tool.swift in Sources */,
 				4E630F392B9F943B0008F887 /* EntityManager.swift in Sources */,
 				4E630F302B9F83DE0008F887 /* SpriteComponent.swift in Sources */,
 				46D4181A2BA5CDBD0091A38B /* CollisionHandler.swift in Sources */,
 				4E86605F2BA095E30035530D /* Collectible.swift in Sources */,
-				E6B34A432BAA00E80009A60B /* ViewDelegate.swift in Sources */,
 				E64361122BA4C2CD003850FD /* ObjectModule.swift in Sources */,
 				4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */,
 				143AA3952BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift in Sources */,
@@ -738,6 +741,7 @@
 				145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */,
 				4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */,
 				E6A011172BA5F4AD006904D9 /* EntitySyncInterface.swift in Sources */,
+				E6B0AAD52BAAE4EC009CB939 /* PlayerFloorContactEvent.swift in Sources */,
 				E64361132BA4C2CD003850FD /* PhysicsModule.swift in Sources */,
 				4E630F322B9F887C0008F887 /* PhysicsComponent.swift in Sources */,
 				1471B0AD2BA6AE4E00878B14 /* UseGrappleHookEvent.swift in Sources */,
@@ -747,9 +751,9 @@
 				4E630F2A2B9F7EF60008F887 /* PositionComponent.swift in Sources */,
 				46D418132BA5C9930091A38B /* Floor.swift in Sources */,
 				E64361152BA4C2CD003850FD /* GameBridge.swift in Sources */,
+				E6B0AAD32BAAE438009CB939 /* ControlViewDelegate.swift in Sources */,
 				4604BBD92BA81C940078B84C /* InventorySystem.swift in Sources */,
 				14E247952BA2CB480071FFC0 /* EventManager.swift in Sources */,
-				E6B34A452BAA00F20009A60B /* ControlViewDelegate.swift in Sources */,
 				4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */,
 				14970F542BA8163300CC1E8A /* ScoreSystem.swift in Sources */,
 				E64361112BA4C2CD003850FD /* SyncModule.swift in Sources */,

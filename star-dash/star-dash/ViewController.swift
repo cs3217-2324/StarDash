@@ -26,7 +26,6 @@ class ViewController: UIViewController {
         self.gameEngine = gameEngine
         self.gameBridge = GameBridge(entityManager: gameEngine, scene: scene)
 
-        // setupGame()
         setupGameEntities()
 
         guard let renderer = MTKRenderer(scene: scene) else {
@@ -49,20 +48,15 @@ class ViewController: UIViewController {
         background.zPosition = -1
         scene.addObject(background)
 
-        let platform = SDObject()
-        platform.physicsBody = SDPhysicsBody(rectangleOf: CGSize(width: 200, height: 50))
-        platform.physicsBody?.isDynamic = false
-        platform.physicsBody?.categoryBitMask = 1 << 1
-        platform.physicsBody?.contactTestMask = 1 << 2
-        platform.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400)
-        scene.addObject(platform)
-
         let player = Player(
             playerIndex: 0,
             position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 + 200),
             playerSprite: PlayerSprite.RedNose
         )
         player.setUpAndAdd(to: entityManager)
+
+        let floor = Floor(position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400))
+        floor.setUpAndAdd(to: entityManager)
     }
 }
 
@@ -80,7 +74,17 @@ extension ViewController: SDSceneDelegate {
             return
         }
 
-        print("contact \(objectA) - \(objectB)")
         gameEngine?.handleCollision(entityA, entityB, at: contactPoint)
+    }
+}
+
+extension ViewController: ViewDelegate {
+
+    func joystickMoved(isLeft: Bool) {
+
+    }
+
+    func jumpButtonPressed() {
+        gameEngine?.handlePlayerJump()
     }
 }

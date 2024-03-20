@@ -59,7 +59,7 @@ class ControlView: UIView {
     // MARK: Gesture handler methods
 
     @objc func jumpButtonTapped() {
-        print("Tapped")
+        controlViewDelegate?.jumpButtonPressed()
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -86,6 +86,11 @@ class ControlView: UIView {
     }
 
     @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
+        guard let joystickView = self.joystickView else {
+            return
+        }
+
+        let location = gesture.location(in: self)
         if gesture.state == .ended {
             joystickView.returnJoystick()
         } else if location.x < self.frame.width / 2 {

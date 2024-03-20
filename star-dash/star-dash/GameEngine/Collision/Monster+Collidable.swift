@@ -5,9 +5,11 @@
 //  Created by Ho Jun Hao on 16/3/24.
 //
 
+import CoreGraphics
+
 extension Monster: Collidable {
     func collides(with collidable: Collidable, at contactPoint: CGPoint) -> Event? {
-        collidable.collideWithMonster(self)
+        collidable.collideWithMonster(self, at: contactPoint)
     }
 
     func collideWithPlayer(_ player: Player, at contactPoint: CGPoint) -> Event? {

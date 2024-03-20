@@ -18,6 +18,8 @@ class MTKRenderer: NSObject, Renderer {
 
     var playerView: PlayerView?
 
+    var viewDelegate: ViewDelegate?
+
     init?(scene: SKScene) {
         self.scene = scene
 
@@ -37,6 +39,7 @@ class MTKRenderer: NSObject, Renderer {
     func createSinglePlayerView(at superview: UIView) {
         let playerView = PlayerView(superview: superview, device: self.device, drawDelegate: self)
         playerView.setupSubviews()
+        playerView.setControlViewDelegate(self)
         self.playerView = playerView
     }
 }
@@ -65,3 +68,14 @@ extension MTKRenderer: MTKViewDelegate {
         commandBuffer.commit()
     }
 }
+
+extension MTKRenderer: ControlViewDelegate {
+    func joystickMoved(isLeft: Bool) {
+        viewDelegate?.joystickMoved(isLeft: isLeft)
+    }
+
+    func jumpButtonPressed() {
+        viewDelegate?.jumpButtonPressed()
+    }
+}
+

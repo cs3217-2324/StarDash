@@ -35,9 +35,16 @@ class GameEngine {
         eventManager.add(event: event)
     }
 
-    func handlePlayerMove() {
-        
+    func handlePlayerJump() {
+        guard let playerEntityId = entityManager.playerEntityId() else {
+            return
+        }
+
         eventManager.add(event: JumpEvent(on: playerEntityId, by: CGVector(dx: 0, dy: 50)))
+    }
+
+    func handlePlayerMove() {
+
     }
 
     private func setUpSystems() {

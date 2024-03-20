@@ -26,13 +26,13 @@ class JumpEvent: Event {
         //guard !physicsSystem.isJumping(entityId) else {
         //    return
         //}
-        
+
         guard let playerComponent = target.component(ofType: PlayerComponent.self, ofEntity: entityId),
               !playerComponent.isJumping else {
             return
         }
         playerComponent.isJumping = true
-        
+
         physicsSystem.applyImpulse(to: entityId, impulse: jumpImpulse)
     }
 }

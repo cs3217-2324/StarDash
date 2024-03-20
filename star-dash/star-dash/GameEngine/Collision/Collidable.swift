@@ -5,6 +5,8 @@
 //  Created by Ho Jun Hao on 16/3/24.
 //
 
+import CoreGraphics
+
 protocol Collidable {
     func collides(with collidable: Collidable, at contactPoint: CGPoint) -> Event?
     func collideWithPlayer(_ player: Player, at contactPoint: CGPoint) -> Event?

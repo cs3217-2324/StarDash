@@ -8,7 +8,7 @@
 import Foundation
 
 struct PhysicsConstants {
-    private struct CollisionCategory {
+    struct CollisionCategory {
         static let none: UInt32 = 0
         static let max: UInt32 = 0xFFFFFFFF
         static let player: UInt32 = 0b1 << 0
