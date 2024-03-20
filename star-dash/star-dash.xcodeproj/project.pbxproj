@@ -53,6 +53,9 @@
 		4E3458E92BA75E7C00E817C6 /* SpriteComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3458E82BA75E7C00E817C6 /* SpriteComponentTests.swift */; };
 		4E3458EB2BA75E8B00E817C6 /* PhysicsComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3458EA2BA75E8B00E817C6 /* PhysicsComponentTests.swift */; };
 		4E3458ED2BA75F1200E817C6 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3458EC2BA75F1200E817C6 /* Util.swift */; };
+		4E59E2512BAB2EAE007B3FA7 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59E2502BAB2EAE007B3FA7 /* StorageManager.swift */; };
+		4E59E2532BAB3061007B3FA7 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59E2522BAB3061007B3FA7 /* Database.swift */; };
+		4E59E2562BAB33EC007B3FA7 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 4E59E2552BAB33EC007B3FA7 /* SQLite */; };
 		4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF52B9F7E070008F887 /* AppDelegate.swift */; };
 		4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF72B9F7E070008F887 /* SceneDelegate.swift */; };
 		4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF92B9F7E070008F887 /* ViewController.swift */; };
@@ -169,6 +172,8 @@
 		4E3458E82BA75E7C00E817C6 /* SpriteComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteComponentTests.swift; sourceTree = "<group>"; };
 		4E3458EA2BA75E8B00E817C6 /* PhysicsComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsComponentTests.swift; sourceTree = "<group>"; };
 		4E3458EC2BA75F1200E817C6 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		4E59E2502BAB2EAE007B3FA7 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		4E59E2522BAB3061007B3FA7 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		4E630EF22B9F7E070008F887 /* star-dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "star-dash.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E630EF52B9F7E070008F887 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E630EF72B9F7E070008F887 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -217,6 +222,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E59E2562BAB33EC007B3FA7 /* SQLite in Frameworks */,
 				14E247932BA2CA920071FFC0 /* DequeModule in Frameworks */,
 				E6E4B8302BA6C8D4005ABAB1 /* SDPhysicsEngine in Frameworks */,
 			);
@@ -371,6 +377,15 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		4E59E24F2BAB2DBB007B3FA7 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				4E59E2502BAB2EAE007B3FA7 /* StorageManager.swift */,
+				4E59E2522BAB3061007B3FA7 /* Database.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		4E630EE92B9F7E070008F887 = {
 			isa = PBXGroup;
 			children = (
@@ -397,6 +412,7 @@
 		4E630EF42B9F7E070008F887 /* star-dash */ = {
 			isa = PBXGroup;
 			children = (
+				4E59E24F2BAB2DBB007B3FA7 /* Persistence */,
 				E6A011152BA5D111006904D9 /* GameBridge */,
 				46B8C0982BA328BF00498705 /* GameEngine */,
 				E6A745102BA057040080C1BE /* Rendering */,
@@ -561,6 +577,7 @@
 			packageProductDependencies = (
 				14E247922BA2CA920071FFC0 /* DequeModule */,
 				E6E4B82F2BA6C8D4005ABAB1 /* SDPhysicsEngine */,
+				4E59E2552BAB33EC007B3FA7 /* SQLite */,
 			);
 			productName = "star-dash";
 			productReference = 4E630EF22B9F7E070008F887 /* star-dash.app */;
@@ -636,6 +653,7 @@
 			mainGroup = 4E630EE92B9F7E070008F887;
 			packageReferences = (
 				14E247912BA2CA920071FFC0 /* XCRemoteSwiftPackageReference "swift-collections" */,
+				4E59E2542BAB33EC007B3FA7 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 			);
 			productRefGroup = 4E630EF32B9F7E070008F887 /* Products */;
 			projectDirPath = "";
@@ -720,11 +738,13 @@
 				46D4181A2BA5CDBD0091A38B /* CollisionHandler.swift in Sources */,
 				4E86605F2BA095E30035530D /* Collectible.swift in Sources */,
 				E64361122BA4C2CD003850FD /* ObjectModule.swift in Sources */,
+				4E59E2532BAB3061007B3FA7 /* Database.swift in Sources */,
 				4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */,
 				143AA3952BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift in Sources */,
 				143AA3932BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift in Sources */,
 				46D418162BA5CBD60091A38B /* Collidable.swift in Sources */,
 				461148912BA1CDBF0073E7E1 /* SystemManager.swift in Sources */,
+				4E59E2512BAB2EAE007B3FA7 /* StorageManager.swift in Sources */,
 				145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */,
 				4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */,
 				E6A011172BA5F4AD006904D9 /* EntitySyncInterface.swift in Sources */,
@@ -1151,6 +1171,14 @@
 				minimumVersion = 1.1.0;
 			};
 		};
+		4E59E2542BAB33EC007B3FA7 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.15.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1158,6 +1186,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 14E247912BA2CA920071FFC0 /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = DequeModule;
+		};
+		4E59E2552BAB33EC007B3FA7 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E59E2542BAB33EC007B3FA7 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
 		};
 		E6B1DC8E2BA3459600473563 /* SDPhysicsEngine */ = {
 			isa = XCSwiftPackageProductDependency;
