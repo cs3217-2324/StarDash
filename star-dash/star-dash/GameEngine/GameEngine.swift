@@ -40,7 +40,7 @@ class GameEngine {
             return
         }
 
-        eventManager.add(event: JumpEvent(on: playerEntityId, by: CGVector(dx: 0, dy: 50)))
+        eventManager.add(event: JumpEvent(on: playerEntityId, by: PhysicsConstants.jumpImpulse))
     }
 
     func handlePlayerMove() {
