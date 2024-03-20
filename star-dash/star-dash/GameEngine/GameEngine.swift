@@ -36,7 +36,7 @@ class GameEngine {
             return
         }
 
-        eventManager.add(JumpEvent(on: playerEntityId, by: CGVector(dx: 0, dy: 50)))
+        eventManager.add(event: JumpEvent(on: playerEntityId, by: CGVector(dx: 0, dy: 50)))
     }
 
     func handlePlayerMove() {
@@ -56,6 +56,10 @@ extension GameEngine: EventModifiable {
 
     func system<T: System>(ofType type: T.Type) -> T? {
         systemManager.system(ofType: type)
+    }
+    
+    func component<T: Component>(ofType type: T.Type, of entityId: EntityId) -> T? {
+        entityManager.component(ofType: type, of: entityId)
     }
 
     func add(entity: Entity) {
@@ -77,7 +81,7 @@ extension GameEngine: EntitySyncInterface {
         Array(entityManager.entityMap.values)
     }
 
-    func component<T: Component>(ofType type: T.Type, of entityId: EntityId) -> T? {
+    func component<T: Component>(ofType type: T.Type, ofEntity entityId: EntityId) -> T? {
         entityManager.component(ofType: type, of: entityId)
     }
 

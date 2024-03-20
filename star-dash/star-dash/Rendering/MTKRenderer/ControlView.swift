@@ -13,7 +13,7 @@ class ControlView: UIView {
     let joystickBackgroundWidth: CGFloat = 256
     let panThreshold: CGFloat = 15
 
-    let controlViewDelegate: ControlViewDelegate?
+    var controlViewDelegate: ControlViewDelegate?
 
     func setupSubviews() {
         setupMovementControls()
@@ -70,13 +70,17 @@ class ControlView: UIView {
               touches.count == 1 else {
             return
         }
-
-        if shouldSendMoveEvent(location: location) {
-            let isLeft = gesture.location(in: joystickView).x < joystickView.center.x
-            controlViewDelegate?.jumpButtonPressed(isLeft: isLeft)
+        
+        guard let joystickView = self.joystickView else {
+            return
+        }
+        
+        if shouldSendMoveEvent(location: firstTouch.location(in: self)) {
+            let isLeft = firstTouch.location(in: joystickView).x < joystickView.center.x
+            controlViewDelegate?.joystickMoved(isLeft: isLeft)
         }
 
-        joystickView?.moveJoystick(location: firstTouch.location(in: joystickView))
+        joystickView.moveJoystick(location: firstTouch.location(in: joystickView))
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -103,7 +107,7 @@ class ControlView: UIView {
 
             if shouldSendMoveEvent(location: location) {
                 let isLeft = gesture.location(in: joystickView).x < joystickView.center.x
-                controlViewDelegate?.jumpButtonPressed(isLeft: isLeft)
+                controlViewDelegate?.joystickMoved(isLeft: isLeft)
             }
         }
     }

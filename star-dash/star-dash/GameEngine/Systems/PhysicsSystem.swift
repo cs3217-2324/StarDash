@@ -38,7 +38,6 @@ class PhysicsSystem: System {
         guard let physicsComponent = getPhysicsComponent(of: entityId) else {
             return false
         }
-
         return physicsComponent.velocity.dy != .zero
     }
 
