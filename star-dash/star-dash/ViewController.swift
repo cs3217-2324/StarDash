@@ -80,8 +80,8 @@ extension ViewController: SDSceneDelegate {
 
 extension ViewController: ViewDelegate {
 
-    func joystickMoved(isLeft: Bool) {
-        gameEngine?.handlePlayerMove(isLeft: isLeft)
+    func joystickMoved(toLeft: Bool) {
+        gameEngine?.handlePlayerMove(toLeft: toLeft)
     }
 
     func jumpButtonPressed() {

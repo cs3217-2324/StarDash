@@ -20,6 +20,6 @@ class RespawnEvent: Event {
     }
 
     func execute(on target: EventModifiable) {
-        target.add(event: MoveEvent(on: entityId, to: newPosition))
+        target.add(event: TeleportEvent(on: entityId, to: newPosition))
     }
 }

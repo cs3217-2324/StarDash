@@ -70,8 +70,8 @@ extension MTKRenderer: MTKViewDelegate {
 }
 
 extension MTKRenderer: ControlViewDelegate {
-    func joystickMoved(isLeft: Bool) {
-        viewDelegate?.joystickMoved(isLeft: isLeft)
+    func joystickMoved(toLeft: Bool) {
+        viewDelegate?.joystickMoved(toLeft: toLeft)
     }
 
     func jumpButtonPressed() {
