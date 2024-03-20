@@ -78,4 +78,3 @@ extension MTKRenderer: ControlViewDelegate {
         viewDelegate?.jumpButtonPressed()
     }
 }
-

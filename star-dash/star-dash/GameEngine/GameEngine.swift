@@ -61,7 +61,7 @@ extension GameEngine: EventModifiable {
     func system<T: System>(ofType type: T.Type) -> T? {
         systemManager.system(ofType: type)
     }
-    
+
     func component<T: Component>(ofType type: T.Type, ofEntity entityId: EntityId) -> T? {
         entityManager.component(ofType: type, of: entityId)
     }

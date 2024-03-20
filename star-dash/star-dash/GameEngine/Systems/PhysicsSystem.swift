@@ -34,13 +34,6 @@ class PhysicsSystem: System {
         return physicsComponent.velocity != .zero
     }
 
-    func isJumping(_ entityId: EntityId) -> Bool {
-        guard let physicsComponent = getPhysicsComponent(of: entityId) else {
-            return false
-        }
-        return physicsComponent.velocity.dy != .zero
-    }
-
     func applyForce(to entityId: EntityId, newForce: CGVector) {
         guard let physicsComponent = getPhysicsComponent(of: entityId) else {
             return

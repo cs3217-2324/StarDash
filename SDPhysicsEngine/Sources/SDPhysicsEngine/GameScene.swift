@@ -55,7 +55,7 @@ extension GameScene: SKPhysicsContactDelegate {
         sceneDelegate?.contactOccured(
             objectA: objectA,
             objectB: objectB,
-            contactPoint: contact.contactPoint 
+            contactPoint: contact.contactPoint
         )
     }
 }
