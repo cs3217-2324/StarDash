@@ -17,6 +17,7 @@ class PhysicsComponent: Component {
     var collisionBitMask: UInt32 = 0xFFFFFFFF
     var isDynamic = true
     var affectedByGravity = false
+    var restitution: CGFloat = 0.2
     var size: CGSize?
 
     init(id: ComponentId, entityId: EntityId, size: CGSize) {

@@ -26,6 +26,11 @@ public class SDPhysicsBody {
         // set { body.force = newValue }
         CGVector(dx: 0, dy: 0)
     }
+    
+    public var restitution: CGFloat {
+        get { body.restitution }
+        set { body.restitution = newValue }
+    }
 
     public var affectedByGravity: Bool {
         get { body.affectedByGravity }
