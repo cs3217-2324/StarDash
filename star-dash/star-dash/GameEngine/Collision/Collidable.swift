@@ -14,13 +14,4 @@ protocol Collidable {
     func collideWithTool(_ tool: Tool) -> Event?
     func collideWithWall(_ wall: Wall) -> Event?
     func collideWithFloor(_ floor: Floor) -> Event?
-
-    func separates(from collidable: Collidable) -> Event?
-    func separatesFromPlayer(_ player: Player) -> Event?
-    func separatesFromMonster(_ monster: Monster) -> Event?
-    func separatesFromCollectible(_ collectible: Collectible) -> Event?
-    func separatesFromObstacle(_ obstacle: Obstacle) -> Event?
-    func separatesFromTool(_ tool: Tool) -> Event?
-    func separatesFromWall(_ wall: Wall) -> Event?
-    func separatesFromFloor(_ floor: Floor) -> Event?
 }

@@ -36,4 +36,19 @@ public class SDPhysicsBody {
         get { body.isDynamic }
         set { body.isDynamic = newValue }
     }
+    
+    public var categoryBitMask: UInt32 {
+        get { body.categoryBitMask }
+        set { body.categoryBitMask = newValue }
+    }
+    
+    public var contactTestMask: UInt32 {
+        get { body.contactTestBitMask }
+        set { body.contactTestBitMask = newValue }
+    }
+    
+    public var collisionBitMask: UInt32 {
+        get { body.collisionBitMask }
+        set { body.collisionBitMask = newValue }
+    }
 }

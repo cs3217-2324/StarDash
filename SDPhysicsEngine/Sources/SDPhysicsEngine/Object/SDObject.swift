@@ -1,15 +1,20 @@
 import SpriteKit
 
+public typealias SDObjectId = UUID
+
 public class SDObject {
+    public let id: SDObjectId
     let node: SKNode
 
     var innerRotation: CGFloat = 0
 
     public init() {
+        id = UUID()
         node = SKNode()
     }
 
     init(node: SKNode) {
+        self.id = UUID()
         self.node = node
     }
 

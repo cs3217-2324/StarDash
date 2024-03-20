@@ -23,7 +23,7 @@ extension Tool: Collidable {
     }
 
     func collideWithObstacle(_ obstacle: Obstacle) -> Event? {
-        nil
+        CollisionHandler.between(tool: self, obstacle: obstacle)
     }
 
     func collideWithTool(_ tool: Tool) -> Event? {
@@ -31,42 +31,10 @@ extension Tool: Collidable {
     }
 
     func collideWithWall(_ wall: Wall) -> Event? {
-        nil
+        CollisionHandler.between(tool: self, wall: wall)
     }
 
     func collideWithFloor(_ floor: Floor) -> Event? {
-        nil
-    }
-
-    func separates(from collidable: Collidable) -> Event? {
-        collidable.separatesFromTool(self)
-    }
-
-    func separatesFromPlayer(_ player: Player) -> Event? {
-        SeparationHandler.between(player: player, tool: self)
-    }
-
-    func separatesFromMonster(_ monster: Monster) -> Event? {
-        SeparationHandler.between(monster: monster, tool: self)
-    }
-
-    func separatesFromCollectible(_ collectible: Collectible) -> Event? {
-        nil
-    }
-
-    func separatesFromObstacle(_ obstacle: Obstacle) -> Event? {
-        nil
-    }
-
-    func separatesFromTool(_ tool: Tool) -> Event? {
-        nil
-    }
-
-    func separatesFromWall(_ wall: Wall) -> Event? {
-        nil
-    }
-
-    func separatesFromFloor(_ floor: Floor) -> Event? {
-        nil
+        CollisionHandler.between(tool: self, floor: floor)
     }
 }

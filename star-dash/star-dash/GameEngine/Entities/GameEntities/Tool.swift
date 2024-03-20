@@ -23,7 +23,7 @@ class Tool: Entity {
     func setUpAndAdd(to: EntityManager) {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
         let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.tool)
-        physicsComponent.collisionMask = PhysicsConstants.CollisionMask.tool
+        physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.tool
 
         to.add(entity: self)
         to.add(component: positionComponent)
