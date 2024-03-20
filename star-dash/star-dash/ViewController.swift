@@ -74,13 +74,13 @@ extension ViewController: SDSceneDelegate {
         gameBridge?.syncFromEntities()
     }
 
-    func contactOccured(objectA: SDObject, objectB: SDObject) {
+    func contactOccured(objectA: SDObject, objectB: SDObject, contactPoint: CGPoint) {
         guard let entityA = gameBridge?.entityId(of: objectA.id),
               let entityB = gameBridge?.entityId(of: objectB.id) else {
             return
         }
 
         print("contact \(objectA) - \(objectB)")
-        gameEngine?.handleCollision(entityA, entityB)
+        gameEngine?.handleCollision(entityA, entityB, at: contactPoint)
     }
 }

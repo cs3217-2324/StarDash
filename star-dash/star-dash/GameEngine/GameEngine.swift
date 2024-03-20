@@ -25,19 +25,19 @@ class GameEngine {
         eventManager.executeAll(on: self)
     }
 
-    func handleCollision(_ entityOneId: EntityId, _ entityTwoId: EntityId) {
+    func handleCollision(_ entityOneId: EntityId, _ entityTwoId: EntityId, at contactPoint: CGPoint) {
         guard let entityOne = entity(of: entityOneId) as? Collidable,
               let entityTwo = entity(of: entityTwoId) as? Collidable,
-              let event = entityOne.collides(with: entityTwo) else {
+              let event = entityOne.collides(with: entityTwo, at: contactPoint) else {
             return
         }
 
-        eventManager.add(event: JumpEvent(on: playerEntityId, by: CGVector(dx: 0, dy: 50)))
+        eventManager.add(event: event)
     }
 
     func handlePlayerMove() {
         
-        eventManager.add(event: event)
+        eventManager.add(event: JumpEvent(on: playerEntityId, by: CGVector(dx: 0, dy: 50)))
     }
 
     private func setUpSystems() {
@@ -55,7 +55,7 @@ extension GameEngine: EventModifiable {
         systemManager.system(ofType: type)
     }
     
-    func component<T: Component>(ofType type: T.Type, of entityId: EntityId) -> T? {
+    func component<T: Component>(ofType type: T.Type, ofEntity entityId: EntityId) -> T? {
         entityManager.component(ofType: type, of: entityId)
     }
 
@@ -78,7 +78,7 @@ extension GameEngine: EntitySyncInterface {
         Array(entityManager.entityMap.values)
     }
 
-    func component<T: Component>(ofType type: T.Type, ofEntity entityId: EntityId) -> T? {
+    func component<T: Component>(ofType type: T.Type, of entityId: EntityId) -> T? {
         entityManager.component(ofType: type, of: entityId)
     }
 
