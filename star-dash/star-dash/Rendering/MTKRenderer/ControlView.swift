@@ -44,7 +44,7 @@ class ControlView: UIView {
         let buttonY = frame.height - buttonSize - buttonMargin
         jumpButton.frame = CGRect(x: buttonX, y: buttonY, width: buttonSize, height: buttonSize)
 
-        jumpButton.addTarget(self, action: #selector(jumpButtonPressed), for: .touchUpInside)
+        jumpButton.addTarget(self, action: #selector(jumpButtonTapped), for: .touchUpInside)
 
         jumpButton.setImage(#imageLiteral(resourceName: "JumpButton"), for: .normal)
         jumpButton.setImage(#imageLiteral(resourceName: "JumpButtonDown"), for: .highlighted)
@@ -58,8 +58,8 @@ class ControlView: UIView {
 
     // MARK: Gesture handler methods
 
-    @objc func jumpButtonPressed() {
-        controlViewDelegate?.jumpButtonPressed()
+    @objc func jumpButtonTapped() {
+        print("Tapped")
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -70,17 +70,8 @@ class ControlView: UIView {
               touches.count == 1 else {
             return
         }
-        
-        guard let joystickView = self.joystickView else {
-            return
-        }
-        
-        if shouldSendMoveEvent(location: firstTouch.location(in: self)) {
-            let isLeft = firstTouch.location(in: joystickView).x < joystickView.center.x
-            controlViewDelegate?.joystickMoved(isLeft: isLeft)
-        }
 
-        joystickView.moveJoystick(location: firstTouch.location(in: joystickView))
+        joystickView?.moveJoystick(location: firstTouch.location(in: joystickView))
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -95,11 +86,6 @@ class ControlView: UIView {
     }
 
     @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
-        guard let joystickView = self.joystickView else {
-            return
-        }
-    
-        let location = gesture.location(in: self)
         if gesture.state == .ended {
             joystickView.returnJoystick()
         } else if location.x < self.frame.width / 2 {
@@ -113,6 +99,6 @@ class ControlView: UIView {
     }
 
     private func shouldSendMoveEvent(location: CGPoint) -> Bool {
-        true
+        false
     }
 }

@@ -31,8 +31,4 @@ class PlayerView {
         self.controlView.setupSubviews()
         self.overlayView.setupSubviews()
     }
-
-    func setControlViewDelegate(_ delegate: ControlViewDelegate) {
-        controlView.controlViewDelegate = delegate
-    }
 }

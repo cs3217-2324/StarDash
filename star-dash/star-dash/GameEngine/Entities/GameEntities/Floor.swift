@@ -24,7 +24,7 @@ class Floor: Entity {
     func setUpAndAdd(to: EntityManager) {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
         let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.floor)
-        physicsComponent.collisionMask = PhysicsConstants.CollisionMask.floor
+        physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.floor
 
         to.add(entity: self)
         to.add(component: positionComponent)

@@ -12,7 +12,9 @@ class PhysicsComponent: Component {
     var mass: CGFloat = .zero
     var velocity: CGVector = .zero
     var force: CGVector = .zero
-    var collisionMask: UInt32?
+    var categoryBitMask: UInt32 = 0xFFFFFFFF
+    var contactTestMask: UInt32 = 0x0
+    var collisionBitMask: UInt32 = 0xFFFFFFFF
     var affectedByGravity = false
     var size: CGSize?
 

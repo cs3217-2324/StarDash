@@ -34,6 +34,14 @@ class PositionSystem: System {
         positionComponent.setRotation(rotation: newRotation)
     }
 
+    func getPosition(of entityId: EntityId) -> CGPoint? {
+        guard let positionComponent = getPositionComponent(of: entityId) else {
+            return nil
+        }
+
+        return positionComponent.position
+    }
+
     private func getPositionComponent(of entityId: EntityId) -> PositionComponent? {
         entityManager.component(ofType: PositionComponent.self, of: entityId)
     }

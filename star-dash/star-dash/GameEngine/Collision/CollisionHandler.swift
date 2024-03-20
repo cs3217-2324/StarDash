@@ -9,11 +9,11 @@ import Foundation
 
 struct CollisionHandler {
     static func between(player: Player, monster: Monster) -> Event? {
-        nil
+        PlayerMonsterContactEvent(from: player.id, on: monster.id)
     }
 
     static func between(player: Player, collectible: Collectible) -> Event? {
-        nil
+        PickupCollectibleEvent(by: player.id, collectibleEntityId: collectible.id)
     }
 
     static func between(player: Player, obstacle: Obstacle) -> Event? {
@@ -41,6 +41,22 @@ struct CollisionHandler {
     }
 
     static func between(monster: Monster, floor: Floor) -> Event? {
+        nil
+    }
+
+    static func between(monster: Monster, obstacle: Obstacle) -> Event? {
+        nil
+    }
+
+    static func between(tool: Tool, floor: Floor) -> Event? {
+        nil
+    }
+
+    static func between(tool: Tool, wall: Wall) -> Event? {
+        nil
+    }
+
+    static func between(tool: Tool, obstacle: Obstacle) -> Event? {
         nil
     }
 }

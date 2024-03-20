@@ -8,19 +8,39 @@
 import Foundation
 
 class PlayerMonsterContactEvent: Event {
+    var entityId: EntityId
+
     let timestamp: Date
-    let entityId: EntityId
+    let monsterId: EntityId
 
-    let monsterEntityId: EntityId
-
-    init(from playerEntityId: EntityId, on monsterEntityId: EntityId) {
+    init(from playerId: EntityId, on monsterId: EntityId) {
         self.timestamp = Date.now
-        entityId = playerEntityId
-        self.monsterEntityId = monsterEntityId
+        self.entityId = playerId
+        self.monsterId = monsterId
     }
 
     func execute(on target: EventModifiable) {
-        // TODO: Determine if player is directly on top of monster.
-        // Trigger PlayerAttackMonsterEvent and MonsterAttackPlayerEvent accordingly
+        guard let positionSystem = target.system(ofType: PositionSystem.self),
+              let physicsSystem = target.system(ofType: PhysicsSystem.self) else {
+            return
+        }
+
+        guard let playerPosition = positionSystem.getPosition(of: entityId),
+              let monsterPosition = positionSystem.getPosition(of: monsterId) else {
+            return
+        }
+
+        guard let playerSize = physicsSystem.getSize(of: entityId),
+              let monsterSize = physicsSystem.getSize(of: monsterId) else {
+            return
+        }
+
+        let isPlayerAbove = playerPosition.y - (playerSize.height / 2) >= monsterPosition.y + (monsterSize.height / 2)
+
+        if isPlayerAbove {
+            target.add(event: PlayerAttackMonsterEvent(on: monsterId))
+        } else {
+            target.add(event: MonsterAttackPlayerEvent(from: monsterId, on: entityId))
+        }
     }
 }

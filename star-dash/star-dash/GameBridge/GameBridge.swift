@@ -6,6 +6,7 @@ class GameBridge {
     var scene: SDScene
 
     var entitiesMap: [EntityId: SDObject]
+    var objectsMap: [SDObjectId: EntityId]
     var modules: [SyncModule]
     var creationModule: CreationModule?
 
@@ -14,6 +15,7 @@ class GameBridge {
         self.scene = scene
         modules = []
         entitiesMap = [:]
+        objectsMap = [:]
 
         registerModules()
     }
@@ -41,6 +43,10 @@ class GameBridge {
                 update(entity: entity, from: object)
             }
         }
+    }
+
+    func entityId(of objectId: SDObjectId) -> EntityId? {
+        objectsMap[objectId]
     }
 
     private func registerModule(_ module: SyncModule) {
@@ -73,6 +79,7 @@ class GameBridge {
             return
         }
         entitiesMap[entity.id] = newObject
+        objectsMap[newObject.id] = entity.id
 
         modules.forEach {
             $0.create(for: newObject, from: entity)

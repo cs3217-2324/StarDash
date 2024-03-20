@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import CoreGraphics
 
 class GameEngine {
     private let systemManager: SystemManager
@@ -26,13 +25,10 @@ class GameEngine {
         eventManager.executeAll(on: self)
     }
 
-    // TODO: after events are ready
-    func handleCollision(_ entityOne: EntityId, _ entityTwo: EntityId) {}
-
-    func handleSeparation(_ entityOne: EntityId, _ entityTwo: EntityId) {}
-
-    func handlePlayerJump() {
-        guard let playerEntityId = entityManager.playerEntityId() else {
+    func handleCollision(_ entityOneId: EntityId, _ entityTwoId: EntityId) {
+        guard let entityOne = entity(of: entityOneId) as? Collidable,
+              let entityTwo = entity(of: entityTwoId) as? Collidable,
+              let event = entityOne.collides(with: entityTwo) else {
             return
         }
 
@@ -41,6 +37,7 @@ class GameEngine {
 
     func handlePlayerMove() {
         
+        eventManager.add(event: event)
     }
 
     private func setUpSystems() {

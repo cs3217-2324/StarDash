@@ -23,7 +23,7 @@ class Wall: Entity {
     func setUpAndAdd(to: EntityManager) {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
         let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.wall)
-        physicsComponent.collisionMask = PhysicsConstants.CollisionMask.wall
+        physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.wall
 
         to.add(entity: self)
         to.add(component: positionComponent)
