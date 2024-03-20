@@ -20,8 +20,8 @@ struct CollisionHandler {
         nil
     }
 
-    static func between(player: Player, floor: Floor) -> Event? {
-        nil
+    static func between(player: Player, floor: Floor, at contactPoint: CGPoint) -> Event? {
+        PlayerFloorContactEvent(from: player.id, at: contactPoint)
     }
 
     static func between(player: Player, wall: Wall) -> Event? {

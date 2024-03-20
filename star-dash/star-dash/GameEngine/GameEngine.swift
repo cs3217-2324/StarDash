@@ -25,14 +25,26 @@ class GameEngine {
         eventManager.executeAll(on: self)
     }
 
-    func handleCollision(_ entityOneId: EntityId, _ entityTwoId: EntityId) {
+    func handleCollision(_ entityOneId: EntityId, _ entityTwoId: EntityId, at contactPoint: CGPoint) {
         guard let entityOne = entity(of: entityOneId) as? Collidable,
               let entityTwo = entity(of: entityTwoId) as? Collidable,
-              let event = entityOne.collides(with: entityTwo) else {
+              let event = entityOne.collides(with: entityTwo, at: contactPoint) else {
             return
         }
 
         eventManager.add(event: event)
+    }
+
+    func handlePlayerJump() {
+        guard let playerEntityId = entityManager.playerEntityId() else {
+            return
+        }
+
+        eventManager.add(event: JumpEvent(on: playerEntityId, by: PhysicsConstants.jumpImpulse))
+    }
+
+    func handlePlayerMove() {
+
     }
 
     private func setUpSystems() {
@@ -48,6 +60,10 @@ extension GameEngine: EventModifiable {
 
     func system<T: System>(ofType type: T.Type) -> T? {
         systemManager.system(ofType: type)
+    }
+
+    func component<T: Component>(ofType type: T.Type, ofEntity entityId: EntityId) -> T? {
+        entityManager.component(ofType: type, of: entityId)
     }
 
     func add(entity: Entity) {
