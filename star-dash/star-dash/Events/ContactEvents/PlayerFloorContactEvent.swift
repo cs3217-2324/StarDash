@@ -19,6 +19,7 @@ class PlayerFloorContactEvent: Event {
             return
         }
 
-        playerComponent.isJumping = false
+        playerComponent.canJump = true
+        playerComponent.canMove = true
     }
 }

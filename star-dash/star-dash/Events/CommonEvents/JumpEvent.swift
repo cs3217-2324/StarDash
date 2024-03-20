@@ -25,10 +25,11 @@ class JumpEvent: Event {
         }
 
         guard let playerComponent = target.component(ofType: PlayerComponent.self, ofEntity: entityId),
-              !playerComponent.isJumping else {
+              playerComponent.canJump else {
             return
         }
-        playerComponent.isJumping = true
+        playerComponent.canJump = false
+        playerComponent.canMove = false
 
         physicsSystem.applyImpulse(to: entityId, impulse: jumpImpulse)
     }
