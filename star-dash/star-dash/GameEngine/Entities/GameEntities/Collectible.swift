@@ -28,8 +28,11 @@ class Collectible: Entity {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
         let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.collectible)
         physicsComponent.affectedByGravity = false
+        physicsComponent.isDynamic = false
+        physicsComponent.categoryBitMask = PhysicsConstants.CollisionCategory.collectible
+        physicsComponent.contactTestMask = PhysicsConstants.ContactMask.collectible
         physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.collectible
-        let spriteComponent = SpriteComponent(image: sprite, textureAtlas: nil, size: nil)
+        let spriteComponent = SpriteComponent(entityId: self.id, image: sprite, textureAtlas: nil, size: nil)
 
         to.add(entity: self)
         to.add(component: positionComponent)
@@ -37,7 +40,7 @@ class Collectible: Entity {
         to.add(component: spriteComponent)
     }
 
-    public static func createCoinCollectible(position: CGPoint) -> Collectible {
-        return Collectible(position: position, sprite: "Coin", points: 10)
+    static func createCoinCollectible(position: CGPoint) -> Collectible {
+        Collectible(position: position, sprite: "Coin", points: 10)
     }
 }

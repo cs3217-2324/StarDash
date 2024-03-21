@@ -69,6 +69,7 @@ class GameEngine {
     private func setUpSystems() {
         systemManager.add(PositionSystem(entityManager, dispatcher: self))
         systemManager.add(PhysicsSystem(entityManager, dispatcher: self))
+        systemManager.add(ScoreSystem(entityManager, dispatcher: self))
     }
 }
 
