@@ -39,7 +39,7 @@ public class SDObject {
     public var physicsBody: SDPhysicsBody? {
         willSet { node.physicsBody = newValue?.body }
     }
-    
+
     func removeFromParent() {
         node.removeFromParent()
     }
