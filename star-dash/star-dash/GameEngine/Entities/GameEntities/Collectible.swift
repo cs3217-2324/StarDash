@@ -12,27 +12,29 @@ class Collectible: Entity {
     private let position: CGPoint
     private let sprite: String
     private let points: Int
+    private let size: CGSize
 
-    init(id: EntityId, position: CGPoint, sprite: String, points: Int) {
+    init(id: EntityId, position: CGPoint, sprite: String, points: Int, size: CGSize) {
         self.id = id
         self.position = position
         self.sprite = sprite
         self.points = points
+        self.size = size
     }
 
-    convenience init(position: CGPoint, sprite: String, points: Int) {
-        self.init(id: UUID(), position: position, sprite: sprite, points: points)
+    convenience init(position: CGPoint, sprite: String, points: Int, size: CGSize) {
+        self.init(id: UUID(), position: position, sprite: sprite, points: points, size: size)
     }
 
     func setUpAndAdd(to: EntityManager) {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
-        let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.collectible)
+        let physicsComponent = PhysicsComponent(entityId: self.id, size: self.size)
         physicsComponent.affectedByGravity = false
         physicsComponent.isDynamic = false
         physicsComponent.categoryBitMask = PhysicsConstants.CollisionCategory.collectible
         physicsComponent.contactTestMask = PhysicsConstants.ContactMask.collectible
         physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.collectible
-        let spriteComponent = SpriteComponent(entityId: self.id, image: sprite, textureAtlas: nil, size: nil)
+        let spriteComponent = SpriteComponent(entityId: self.id, image: sprite, textureAtlas: nil, size: size)
 
         to.add(entity: self)
         to.add(component: positionComponent)
@@ -41,6 +43,6 @@ class Collectible: Entity {
     }
 
     static func createCoinCollectible(position: CGPoint) -> Collectible {
-        Collectible(position: position, sprite: "Coin", points: 10)
+        Collectible(position: position, sprite: "Coin", points: 10, size: CGSize(width: 50, height: 50))
     }
 }
