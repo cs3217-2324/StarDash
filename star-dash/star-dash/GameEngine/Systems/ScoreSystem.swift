@@ -17,12 +17,12 @@ class ScoreSystem: System {
         self.entityManager = entityManager
         self.dispatcher = dispatcher
     }
-    
+
     func score(of entityId: EntityId) -> Int? {
         guard let scoreComponent = getScoreComponent(of: entityId) else {
             return nil
         }
-        
+
         return scoreComponent.score
     }
 

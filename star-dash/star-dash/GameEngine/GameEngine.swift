@@ -25,7 +25,7 @@ class GameEngine {
               let playerEntityId = entityManager.playerEntityId(),
               let score = scoreSystem.score(of: playerEntityId) else {
             return nil
-        } 
+        }
 
         return GameInfo(
             playerScore: score

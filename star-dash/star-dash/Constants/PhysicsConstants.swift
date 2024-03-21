@@ -29,7 +29,7 @@ struct PhysicsConstants {
         static let wall = CollisionCategory.player | CollisionCategory.monster | CollisionCategory.tool
         static let floor = CollisionCategory.player | CollisionCategory.monster | CollisionCategory.tool
     }
-    
+
     struct ContactMask {
         static let player = CollisionCategory.floor | CollisionCategory.collectible
         static let monster = CollisionCategory.player
