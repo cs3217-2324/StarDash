@@ -34,7 +34,12 @@ class Player: Entity {
         physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.player
         physicsComponent.affectedByGravity = true
         physicsComponent.restitution = 0.0
-        let spriteComponent = SpriteComponent(entityId: self.id, image: "", textureAtlas: "", size: .zero)
+        let spriteComponent = SpriteComponent(
+            entityId: self.id,
+            image: "PlayerRedNose",
+            textureAtlas: "",
+            size: CGSize(width: 100, height: 140)
+        )
         let scoreComponent = ScoreComponent(entityId: self.id, score: 0)
 
         to.add(entity: self)
