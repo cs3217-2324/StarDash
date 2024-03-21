@@ -14,7 +14,7 @@ class OverlayView: UIView {
         scoreLabel.text = "Score: 0"
         scoreLabel.numberOfLines = 1
         scoreLabel.translatesAutoresizingMaskIntoConstraints = false
-        scoreLabel.textColor = .white
+        scoreLabel.textColor = .black
         addSubview(scoreLabel)
 
         NSLayoutConstraint.activate([
@@ -24,7 +24,7 @@ class OverlayView: UIView {
         ])
     }
 
-    func update(playerScore: Float) {
-        scoreLabel.text = "Score: \(playerScore)"
+    func update(score: Int) {
+        scoreLabel.text = "Score: \(score)"
     }
 }

@@ -35,8 +35,8 @@ class MTKRenderer: NSObject, Renderer {
         super.init()
     }
 
-    func updateOverlay(gameState: GameState) {
-        playerView?.updateOverlay(score: gameState.playerScore)
+    func updateOverlay(overlayInfo: OverlayInfo) {
+        playerView?.updateOverlay(score: overlayInfo.score)
     }
 
     /// Set ups the views for a single player game.

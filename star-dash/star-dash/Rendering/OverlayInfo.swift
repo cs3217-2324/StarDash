@@ -1,3 +1,3 @@
 struct OverlayInfo {
-    let score: Float
+    let score: Int
 }

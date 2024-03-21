@@ -20,15 +20,15 @@ class GameEngine {
         setUpSystems()
     }
 
-    func gameState() -> GameState? {
+    func gameInfo() -> GameInfo? {
         guard let scoreSystem = systemManager.system(ofType: ScoreSystem.self),
               let playerEntityId = entityManager.playerEntityId(),
-              let scoreComponent = scoreSystem.getScoreComponent(of: playerEntityId) else {
+              let score = scoreSystem.score(of: playerEntityId) else {
             return nil
         } 
 
-        return GameState(
-            playerScore: scoreComponent.score
+        return GameInfo(
+            playerScore: score
         )
     }
 

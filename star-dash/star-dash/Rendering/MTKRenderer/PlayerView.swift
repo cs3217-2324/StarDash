@@ -36,7 +36,7 @@ class PlayerView {
         controlView.controlViewDelegate = delegate
     }
 
-    func updateOverlay(playerScore: Float) {
-        
+    func updateOverlay(score: Int) {
+        overlayView.update(score: score)
     }
 }

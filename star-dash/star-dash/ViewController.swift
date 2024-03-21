@@ -72,12 +72,12 @@ extension ViewController: SDSceneDelegate {
         gameEngine?.update(by: deltaTime)
         gameBridge?.syncFromEntities()
 
-        guard let gameState = gameEngine?.gameState() else {
+        guard let gameInfo = gameEngine?.gameInfo() else {
             return
         }
 
-        renderer.updateOverlay(overlyInfo: OverlayInfo(
-            score: gameState.playerScore
+        renderer?.updateOverlay(overlayInfo: OverlayInfo(
+            score: gameInfo.playerScore
         ))
     }
 
