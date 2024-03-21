@@ -16,7 +16,6 @@ class EntityManager {
     var componentMap: ComponentMap
     var entityMap: EntityMap
     var entityComponentMap: EntityComponentMap
-
     init(componentMap: ComponentMap, entityMap: EntityMap, entityComponentMap: EntityComponentMap) {
         self.componentMap = componentMap
         self.entityMap = entityMap

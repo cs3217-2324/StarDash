@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     var renderer: Renderer?
     var gameBridge: GameBridge?
     var gameEngine: GameEngine?
-
+    var storageManager: StorageManager?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         let gameEngine = GameEngine()
         self.gameEngine = gameEngine
         self.gameBridge = GameBridge(entityManager: gameEngine, scene: scene)
-
+        self.storageManager = StorageManager()
         setupGameEntities()
 
         guard let renderer = MTKRenderer(scene: scene) else {
@@ -57,6 +57,14 @@ class ViewController: UIViewController {
 
         let floor = Floor(position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400))
         floor.setUpAndAdd(to: entityManager)
+        
+        if let level = self.storageManager?.getLevel(id: 0) {
+            for entity in  level.entities {
+                entity.setUpAndAdd(to: entityManager)
+            }
+        } else {
+            print("level not found")
+        }
     }
 }
 

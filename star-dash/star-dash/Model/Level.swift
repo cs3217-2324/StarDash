@@ -8,8 +8,14 @@
 import Foundation
 struct Level {
     var name: String
-    
+    var entities: [Entity]
     init(name: String, entities: [Entity]) {
         self.name = name
+        self.entities = entities
+    }
+    
+    init(levelPersistable: LevelPersistable, entityPersistables: [EntityPersistable]) {
+        let entities = entityPersistables.map { $0.toEntity() }
+        self.init(name: levelPersistable.name, entities: entities)
     }
 }

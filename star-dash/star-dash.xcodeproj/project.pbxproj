@@ -61,6 +61,7 @@
 		4E59E25D2BAB405A007B3FA7 /* EntityPersistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59E25C2BAB405A007B3FA7 /* EntityPersistable.swift */; };
 		4E59E25F2BAB4134007B3FA7 /* EntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59E25E2BAB4134007B3FA7 /* EntityType.swift */; };
 		4E59E2612BAB42FD007B3FA7 /* LevelPersistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59E2602BAB42FD007B3FA7 /* LevelPersistable.swift */; };
+		4E59E2632BACB9E2007B3FA7 /* LevelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59E2622BACB9E2007B3FA7 /* LevelData.swift */; };
 		4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF52B9F7E070008F887 /* AppDelegate.swift */; };
 		4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF72B9F7E070008F887 /* SceneDelegate.swift */; };
 		4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF92B9F7E070008F887 /* ViewController.swift */; };
@@ -189,6 +190,7 @@
 		4E59E25C2BAB405A007B3FA7 /* EntityPersistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityPersistable.swift; sourceTree = "<group>"; };
 		4E59E25E2BAB4134007B3FA7 /* EntityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityType.swift; sourceTree = "<group>"; };
 		4E59E2602BAB42FD007B3FA7 /* LevelPersistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPersistable.swift; sourceTree = "<group>"; };
+		4E59E2622BACB9E2007B3FA7 /* LevelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelData.swift; sourceTree = "<group>"; };
 		4E630EF22B9F7E070008F887 /* star-dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "star-dash.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E630EF52B9F7E070008F887 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E630EF72B9F7E070008F887 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 				4E59E2572BAB3B5B007B3FA7 /* data.json */,
 				4E59E25C2BAB405A007B3FA7 /* EntityPersistable.swift */,
 				4E59E2602BAB42FD007B3FA7 /* LevelPersistable.swift */,
+				4E59E2622BACB9E2007B3FA7 /* LevelData.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -837,6 +840,7 @@
 				461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */,
 				4E630F2E2B9F81850008F887 /* HealthComponent.swift in Sources */,
 				4E86605C2BA095460035530D /* Monster.swift in Sources */,
+				4E59E2632BACB9E2007B3FA7 /* LevelData.swift in Sources */,
 				145F2C802BA203B400457549 /* Event.swift in Sources */,
 				1471B0A22BA6AA2200878B14 /* RespawnEvent.swift in Sources */,
 				46D418112BA5C88B0091A38B /* Wall.swift in Sources */,

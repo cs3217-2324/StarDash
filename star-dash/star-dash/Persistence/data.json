@@ -1,6 +1,16 @@
 {
+"id": 0,
   "name": "1",
-  "obstacles": [],
-  "collectibles": [],
-  "monster": []
+  "entities": [
+    {
+      "levelId": 0,
+      "entityType": "obstacle",
+      "position": [100, 100]
+    },
+    {
+      "levelId": 0,
+      "entityType": "obstacle",
+      "position": [200, 200]
+    }
+  ]
 }

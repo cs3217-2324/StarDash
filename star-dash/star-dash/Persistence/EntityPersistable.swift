@@ -8,18 +8,16 @@
 import Foundation
 
 struct EntityPersistable: Encodable, Decodable {
-    var id: Int64
     var levelId: Int64
     var entityType: EntityType
     var position: CGPoint
-    
-    init(id: Int64, levelId: Int64, entityType: EntityType, position: CGPoint) {
-        self.id = id
+
+    init(levelId: Int64, entityType: EntityType, position: CGPoint) {
         self.levelId = levelId
         self.entityType = entityType
         self.position = position
     }
-    
+
     func toEntity() -> Entity {
         switch entityType {
         case .Monster:
