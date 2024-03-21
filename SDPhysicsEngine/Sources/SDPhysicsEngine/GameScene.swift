@@ -52,7 +52,7 @@ extension GameScene: SKPhysicsContactDelegate {
             fatalError("Unknown node in game scene")
         }
 
-        sceneDelegate?.contactOccured(
+        sceneDelegate?.contactOccurred(
             objectA: objectA,
             objectB: objectB,
             contactPoint: contact.contactPoint
