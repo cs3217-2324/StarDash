@@ -23,4 +23,8 @@ class OverlayView: UIView {
             scoreLabel.leadingAnchor.constraint(greaterThanOrEqualTo: self.leadingAnchor, constant: margin)
         ])
     }
+
+    func update(playerScore: Float) {
+        scoreLabel.text = "Score: \(playerScore)"
+    }
 }

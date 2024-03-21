@@ -71,6 +71,14 @@ extension ViewController: SDSceneDelegate {
         gameBridge?.syncToEntities()
         gameEngine?.update(by: deltaTime)
         gameBridge?.syncFromEntities()
+
+        guard let gameState = gameEngine?.gameState() else {
+            return
+        }
+
+        renderer.updateOverlay(overlyInfo: OverlayInfo(
+            score: gameState.playerScore
+        ))
     }
 
     func contactOccured(objectA: SDObject, objectB: SDObject, contactPoint: CGPoint) {

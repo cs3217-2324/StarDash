@@ -20,6 +20,18 @@ class GameEngine {
         setUpSystems()
     }
 
+    func gameState() -> GameState? {
+        guard let scoreSystem = systemManager.system(ofType: ScoreSystem.self),
+              let playerEntityId = entityManager.playerEntityId(),
+              let scoreComponent = scoreSystem.getScoreComponent(of: playerEntityId) else {
+            return nil
+        } 
+
+        return GameState(
+            playerScore: scoreComponent.score
+        )
+    }
+
     func update(by deltaTime: TimeInterval) {
         systemManager.update(by: deltaTime)
         eventManager.executeAll(on: self)
