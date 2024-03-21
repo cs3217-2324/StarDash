@@ -98,12 +98,12 @@ class ControlView: UIView {
 
             if shouldSendMoveEvent(location: location) {
                 let isLeft = gesture.location(in: joystickView).x < joystickView.center.x
-                controlViewDelegate?.joystickMoved(isLeft: isLeft)
+                controlViewDelegate?.joystickMoved(toLeft: isLeft)
             }
         }
     }
 
     private func shouldSendMoveEvent(location: CGPoint) -> Bool {
-        false
+        true
     }
 }

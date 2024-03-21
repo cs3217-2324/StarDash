@@ -43,8 +43,15 @@ class GameEngine {
         eventManager.add(event: JumpEvent(on: playerEntityId, by: PhysicsConstants.jumpImpulse))
     }
 
-    func handlePlayerMove() {
+    func handlePlayerMove(toLeft: Bool) {
+        guard let playerEntityId = entityManager.playerEntityId(),
+              let physicsComponent = entityManager.component(ofType: PhysicsComponent.self, of: playerEntityId),
+              let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: playerEntityId),
+              playerComponent.canMove else {
+            return
+        }
 
+        eventManager.add(event: MoveEvent(on: playerEntityId, toLeft: toLeft))
     }
 
     private func setUpSystems() {

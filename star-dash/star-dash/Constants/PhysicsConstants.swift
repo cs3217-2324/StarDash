@@ -38,8 +38,9 @@ struct PhysicsConstants {
         static let obstacle = CGSize(width: 60, height: 60)
         static let tool = CGSize(width: 60, height: 60)
         static let wall = CGSize(width: 60, height: 60)
-        static let floor = CGSize(width: 60, height: 60)
+        static let floor = CGSize(width: 300, height: 60)
     }
 
     static let jumpImpulse = CGVector(dx: 0, dy: 80)
+    static let runVelocity = CGVector(dx: 50, dy: 0)
 }

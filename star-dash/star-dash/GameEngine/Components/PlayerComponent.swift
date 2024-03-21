@@ -3,7 +3,8 @@ import Foundation
 class PlayerComponent: Component {
 
     let playerIndex: Int
-    var isJumping = false
+    var canJump = true
+    var canMove = true
 
     init(id: ComponentId, entityId: EntityId, playerIndex: Int) {
         self.playerIndex = playerIndex

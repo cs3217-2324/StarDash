@@ -1,5 +1,5 @@
 protocol ControlViewDelegate: AnyObject {
 
-    func joystickMoved(isLeft: Bool)
+    func joystickMoved(toLeft: Bool)
     func jumpButtonPressed()
 }
