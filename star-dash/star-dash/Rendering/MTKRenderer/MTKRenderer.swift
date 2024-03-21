@@ -7,7 +7,7 @@ import MetalKit
  the game on to the iOS device.
 
  The `SKScene` is rendered through a MetalKit while the controls
- and game information overlay is rendered throuhg UIKit.
+ and game information overlay is rendered through UIKit.
  */
 class MTKRenderer: NSObject, Renderer {
     var scene: SKScene
