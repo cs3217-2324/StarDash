@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct StorageManager {
+class StorageManager {
     
 }
