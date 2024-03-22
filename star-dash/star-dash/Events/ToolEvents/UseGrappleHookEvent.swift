@@ -18,7 +18,8 @@ class UseGrappleHookEvent: Event {
 
     func execute(on target: EventModifiable) {
         guard let hookSystem = target.system(ofType: GrappleHookSystem.self),
-              let positionSystem = target.system(ofType: PositionSystem.self) else {
+              let positionSystem = target.system(ofType: PositionSystem.self),
+              let playerComponent = target.component(ofType: PlayerComponent.self, ofEntity: entityId) else {
             return
         }
 
@@ -26,6 +27,8 @@ class UseGrappleHookEvent: Event {
             return
         }
 
+        playerComponent.canMove = false
+        playerComponent.canJump = false
         hookSystem.activateHook(at: playerPosition, ownedBy: entityId)
     }
 }

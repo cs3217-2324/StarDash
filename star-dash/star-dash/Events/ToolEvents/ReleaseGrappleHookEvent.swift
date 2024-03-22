@@ -22,10 +22,13 @@ class ReleaseGrappleHookEvent: Event {
         guard let hookSystem = target.system(ofType: GrappleHookSystem.self),
               let playerReleaseImpulse = hookSystem.getPlayerReleaseImpulse(of: entityId),
               let playerOwnerId = hookSystem.getHookOwner(of: entityId),
-              let physicsSystem = target.system(ofType: PhysicsSystem.self) else {
+              let physicsSystem = target.system(ofType: PhysicsSystem.self),
+              let playerComponent = target.component(ofType: PlayerComponent.self, ofEntity: playerOwnerId) else {
             return
         }
 
+        playerComponent.canJump = true
+        playerComponent.canMove = true
         physicsSystem.applyImpulse(to: playerOwnerId, impulse: playerReleaseImpulse)
         target.remove(entity: entityId)
     }
