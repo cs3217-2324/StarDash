@@ -3,7 +3,6 @@ import SpriteKit
 public class SDSpriteObject: SDObject {
     let spriteNode: SKSpriteNode
 
-    
     static let textureActionKey = "animation"
     public var activeTexture: String?
 
@@ -25,7 +24,7 @@ public class SDSpriteObject: SDObject {
 
         activeTexture = named
     }
-    
+
     public func cancelTexture() {
         spriteNode.removeAction(forKey: SDSpriteObject.textureActionKey)
         activeTexture = nil

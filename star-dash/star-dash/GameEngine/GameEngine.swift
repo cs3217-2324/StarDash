@@ -57,7 +57,6 @@ class GameEngine {
 
     func handlePlayerMove(toLeft: Bool) {
         guard let playerEntityId = entityManager.playerEntityId(),
-              let physicsComponent = entityManager.component(ofType: PhysicsComponent.self, of: playerEntityId),
               let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: playerEntityId),
               playerComponent.canMove else {
             return
@@ -67,6 +66,10 @@ class GameEngine {
     }
 
     func handlePlayerStoppedMoving() {
+        guard let playerEntityId = entityManager.playerEntityId() else {
+            return
+        }
+
         eventManager.add(event: StopMovingEvent(on: playerEntityId))
     }
 

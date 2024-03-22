@@ -35,6 +35,13 @@ class SpriteComponent: Component {
         textureAtlas: String?,
         size: CGSize?
     ) {
-        self.init(id: UUID(), entityId: entityId, image: image, textureSet: textureSet, textureAtlas: textureAtlas, size: size)
+        self.init(
+            id: UUID(),
+            entityId: entityId,
+            image: image,
+            textureSet: textureSet,
+            textureAtlas: textureAtlas,
+            size: size
+        )
     }
 }

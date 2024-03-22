@@ -1,6 +1,6 @@
 import Foundation
 
-class StopMoving: Event {
+class StopMovingEvent: Event {
     let timestamp: Date
     let entityId: EntityId
 
@@ -16,7 +16,7 @@ class StopMoving: Event {
             return
         }
 
-        physicsComponent.velocity = 0
+        physicsComponent.velocity = .zero
         spriteComponent.textureAtlas = nil
     }
 }

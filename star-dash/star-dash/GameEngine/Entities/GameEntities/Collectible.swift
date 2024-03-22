@@ -34,7 +34,13 @@ class Collectible: Entity {
         physicsComponent.categoryBitMask = PhysicsConstants.CollisionCategory.collectible
         physicsComponent.contactTestMask = PhysicsConstants.ContactMask.collectible
         physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.collectible
-        let spriteComponent = SpriteComponent(entityId: self.id, image: sprite, textureSet: nil, textureAtlas: nil, size: size)
+        let spriteComponent = SpriteComponent(
+            entityId: self.id,
+            image: sprite,
+            textureSet: nil,
+            textureAtlas: nil,
+            size: size
+        )
         let pointsComponent = PointsComponent(entityId: self.id, points: points)
 
         to.add(entity: self)
