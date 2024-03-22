@@ -239,9 +239,11 @@ extension Database {
                 let jsonData = try Data(contentsOf: fileURL)
                 // Decode JSON data into LevelData
                 let levelData = try JSONDecoder().decode(LevelData.self, from: jsonData)
-                let levelPersistable = LevelPersistable(id: levelData.id,
-                                                        name: levelData.name,
-                                                        size: levelData.size)
+                let levelPersistable = LevelPersistable(
+                    id: levelData.id,
+                    name: levelData.name,
+                    size: levelData.size
+                )
                 insert(persistable: levelPersistable)
                 for persistable in levelData.collectibles {
                     insert(persistable: persistable)

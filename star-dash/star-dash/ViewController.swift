@@ -70,7 +70,7 @@ class ViewController: UIViewController {
             print("level not found")
         }
 
-        let collectible = Collectible.createCoinCollectible(
+        let collectible = Collectible.createStarCollectible(
             position: CGPoint(x: scene.size.width / 2 + 30, y: scene.size.height / 2 - 100)
         )
         collectible.setUpAndAdd(to: entityManager)
@@ -119,6 +119,10 @@ extension ViewController: ViewDelegate {
 
     func joystickMoved(toLeft: Bool) {
         gameEngine?.handlePlayerMove(toLeft: toLeft)
+    }
+
+    func joystickReleased() {
+        gameEngine?.handlePlayerStoppedMoving()
     }
 
     func jumpButtonPressed() {

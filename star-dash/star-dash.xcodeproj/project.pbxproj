@@ -100,6 +100,8 @@
 		E69EE9342BAC6CC300033AB5 /* OverlayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69EE9332BAC6CC300033AB5 /* OverlayInfo.swift */; };
 		E69FDDE02BAD3DAD0089D5F3 /* PointsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69FDDDF2BAD3DAD0089D5F3 /* PointsComponent.swift */; };
 		E69FDDE22BAD3DC40089D5F3 /* EntityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69FDDE12BAD3DC40089D5F3 /* EntityConstants.swift */; };
+		E69FDDE42BADC2F10089D5F3 /* SpriteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69FDDE32BADC2F10089D5F3 /* SpriteConstants.swift */; };
+		E69FDDE62BADD11B0089D5F3 /* StopMovingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69FDDE52BADD11B0089D5F3 /* StopMovingEvent.swift */; };
 		E6A011172BA5F4AD006904D9 /* EntitySyncInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A011162BA5F4AD006904D9 /* EntitySyncInterface.swift */; };
 		E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745112BA057040080C1BE /* MTKRenderer.swift */; };
 		E6A745172BA057040080C1BE /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745122BA057040080C1BE /* ControlView.swift */; };
@@ -241,6 +243,8 @@
 		E69EE9332BAC6CC300033AB5 /* OverlayInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayInfo.swift; sourceTree = "<group>"; };
 		E69FDDDF2BAD3DAD0089D5F3 /* PointsComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointsComponent.swift; sourceTree = "<group>"; };
 		E69FDDE12BAD3DC40089D5F3 /* EntityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityConstants.swift; sourceTree = "<group>"; };
+		E69FDDE32BADC2F10089D5F3 /* SpriteConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteConstants.swift; sourceTree = "<group>"; };
+		E69FDDE52BADD11B0089D5F3 /* StopMovingEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopMovingEvent.swift; sourceTree = "<group>"; };
 		E6A011162BA5F4AD006904D9 /* EntitySyncInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntitySyncInterface.swift; sourceTree = "<group>"; };
 		E6A745112BA057040080C1BE /* MTKRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKRenderer.swift; sourceTree = "<group>"; };
 		E6A745122BA057040080C1BE /* ControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
@@ -346,6 +350,7 @@
 		14D14B792BA5AC1900386C3B /* CommonEvents */ = {
 			isa = PBXGroup;
 			children = (
+				E69FDDE52BADD11B0089D5F3 /* StopMovingEvent.swift */,
 				14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */,
 				143AA38B2BA4D3E3009C28E7 /* JumpEvent.swift */,
 				14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */,
@@ -554,6 +559,7 @@
 		4E86605D2BA095CC0035530D /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				E69FDDE32BADC2F10089D5F3 /* SpriteConstants.swift */,
 				E69FDDE12BAD3DC40089D5F3 /* EntityConstants.swift */,
 				4E8660652BA097D40035530D /* PhysicsConstants.swift */,
 				14970F552BA8177B00CC1E8A /* GameConstants.swift */,
@@ -862,6 +868,7 @@
 				E6A745172BA057040080C1BE /* ControlView.swift in Sources */,
 				14970F562BA8177B00CC1E8A /* GameConstants.swift in Sources */,
 				1471B0A42BA6AAF200878B14 /* PlayerDeathEvent.swift in Sources */,
+				E69FDDE62BADD11B0089D5F3 /* StopMovingEvent.swift in Sources */,
 				46D418202BA5D3420091A38B /* Collectible+Collidable.swift in Sources */,
 				E6A7451D2BA0CAD90080C1BE /* JoystickView.swift in Sources */,
 				E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */,
@@ -870,6 +877,7 @@
 				4E630F342B9F8FC00008F887 /* Player.swift in Sources */,
 				4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */,
 				14970F502BA814D500CC1E8A /* ScoreComponent.swift in Sources */,
+				E69FDDE42BADC2F10089D5F3 /* SpriteConstants.swift in Sources */,
 				143AA3912BA4D7AC009C28E7 /* MonsterDeathEvent.swift in Sources */,
 				E64361102BA4C2CD003850FD /* SpriteModule.swift in Sources */,
 				4604BBD52BA819C70078B84C /* InventoryComponent.swift in Sources */,
