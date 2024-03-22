@@ -6,13 +6,9 @@
 //
 
 import Foundation
-struct LevelPersistable: Encodable, Decodable {
+struct LevelPersistable: Codable {
     var id: Int64
     var name: String
-    
-    init(id: Int64, name: String) {
-        self.id = id
-        self.name = name
-    }
+    var size: CGSize
 
 }

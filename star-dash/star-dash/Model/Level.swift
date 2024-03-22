@@ -13,9 +13,9 @@ struct Level {
         self.name = name
         self.entities = entities
     }
-    
+
     init(levelPersistable: LevelPersistable, entityPersistables: [EntityPersistable]) {
-        let entities = entityPersistables.map { $0.toEntity() }
+        let entities = entityPersistables.compactMap { $0.toEntity() }
         self.init(name: levelPersistable.name, entities: entities)
     }
 }

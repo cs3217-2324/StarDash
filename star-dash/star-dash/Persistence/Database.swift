@@ -62,10 +62,12 @@ struct Database {
         }
         let id = Expression<Int64>("id")
         let name = Expression<String>("name")
+        let size = Expression<String>("size")
         do {
             try db.run( levelTable.create { table in
                 table.column(id, primaryKey: true)
                 table.column(name)
+                table.column(size)
             })
             print("Level table created")
         } catch {
@@ -132,7 +134,7 @@ extension Database {
                     let jsonData = try Data(contentsOf: fileURL)
                     // Decode JSON data into LevelData
                     let levelData = try JSONDecoder().decode(LevelData.self, from: jsonData)
-                    let levelPersistable = LevelPersistable(id: levelData.id, name: levelData.name)
+                    let levelPersistable = LevelPersistable(id: levelData.id, name: levelData.name, size: levelData.size)
                     insertLevelPersistable(levelPersistable: levelPersistable)
                     for entityPersistable in levelData.entities {
                         insertEntityPersistable(entityPersistable: entityPersistable)

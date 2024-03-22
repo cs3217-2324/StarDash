@@ -404,12 +404,11 @@
 		4E59E24F2BAB2DBB007B3FA7 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				4E59E2642BAD9A06007B3FA7 /* Data */,
 				4E59E2502BAB2EAE007B3FA7 /* StorageManager.swift */,
 				4E59E2522BAB3061007B3FA7 /* Database.swift */,
-				4E59E2572BAB3B5B007B3FA7 /* data.json */,
 				4E59E25C2BAB405A007B3FA7 /* EntityPersistable.swift */,
 				4E59E2602BAB42FD007B3FA7 /* LevelPersistable.swift */,
-				4E59E2622BACB9E2007B3FA7 /* LevelData.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -420,6 +419,15 @@
 				4E59E25A2BAB3FDB007B3FA7 /* Level.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		4E59E2642BAD9A06007B3FA7 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4E59E2572BAB3B5B007B3FA7 /* data.json */,
+				4E59E2622BACB9E2007B3FA7 /* LevelData.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		4E630EE92B9F7E070008F887 = {

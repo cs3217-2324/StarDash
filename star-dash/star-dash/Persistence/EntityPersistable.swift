@@ -7,27 +7,25 @@
 
 import Foundation
 
-struct EntityPersistable: Encodable, Decodable {
+struct EntityPersistable: Codable {
     var levelId: Int64
     var entityType: EntityType
     var position: CGPoint
 
-    init(levelId: Int64, entityType: EntityType, position: CGPoint) {
-        self.levelId = levelId
-        self.entityType = entityType
-        self.position = position
-    }
 
-    func toEntity() -> Entity {
-        switch entityType {
-        case .Monster:
-            return Monster(position: self.position)
-        case .Collectible:
-            return Collectible(position: self.position)
-        case .Obstacle:
-            return Obstacle(position: self.position)
-        case .Tool:
-            return Tool(position: self.position)
+    func toEntity() -> Entity? {
+        // Define a map to store the creation functions for each entity type
+        var entityMap: [EntityType: () -> Entity] = [:]
+
+        // Populate the map with creation functions for each entity type
+        entityMap[.Monster] = { Monster(position: self.position) }
+        entityMap[.Collectible] = { Collectible(position: self.position) }
+        entityMap[.Obstacle] = { Obstacle(position: self.position) }
+        entityMap[.Tool] = { Tool(position: self.position) }
+        
+        guard let entity = entityMap[self.entityType] else {
+            return nil
         }
+        return entity()
     }
 }
