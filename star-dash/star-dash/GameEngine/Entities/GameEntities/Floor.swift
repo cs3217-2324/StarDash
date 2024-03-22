@@ -27,7 +27,7 @@ class Floor: Entity {
         physicsComponent.restitution = 0.0
         physicsComponent.isDynamic = false
         physicsComponent.categoryBitMask = PhysicsConstants.CollisionCategory.floor
-        physicsComponent.contactTestMask = PhysicsConstants.CollisionCategory.player
+        physicsComponent.contactTestMask = PhysicsConstants.ContactMask.floor
         physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.floor
 
         to.add(entity: self)

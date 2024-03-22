@@ -38,6 +38,7 @@ class PhysicsModule: SyncModule {
         object.physicsBody = createRectanglePhysicsBody(physicsComponent: physicsComponent)
         object.physicsBody?.restitution = physicsComponent.restitution
         object.physicsBody?.isDynamic = physicsComponent.isDynamic
+        object.physicsBody?.affectedByGravity = physicsComponent.affectedByGravity
         object.physicsBody?.categoryBitMask = physicsComponent.categoryBitMask
         object.physicsBody?.contactTestMask = physicsComponent.contactTestMask
         object.physicsBody?.collisionBitMask = physicsComponent.collisionBitMask

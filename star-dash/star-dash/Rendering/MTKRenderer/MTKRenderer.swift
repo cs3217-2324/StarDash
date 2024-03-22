@@ -35,6 +35,10 @@ class MTKRenderer: NSObject, Renderer {
         super.init()
     }
 
+    func updateOverlay(overlayInfo: OverlayInfo) {
+        playerView?.updateOverlay(score: overlayInfo.score)
+    }
+
     /// Set ups the views for a single player game.
     func createSinglePlayerView(at superview: UIView) {
         let playerView = PlayerView(superview: superview, device: self.device, drawDelegate: self)

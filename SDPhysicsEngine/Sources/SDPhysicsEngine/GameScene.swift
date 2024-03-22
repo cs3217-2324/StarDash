@@ -39,6 +39,11 @@ extension GameScene: SDScene {
         addChild(object.node)
     }
     
+    public func removeObject(_ object: SDObject) {
+        objectMap[object.node] = nil
+        object.removeFromParent()
+    }
+
     public func addCameraObject(_ cameraObject: SDCameraObject) {
         addObject(cameraObject)
         camera = cameraObject.cameraNode
