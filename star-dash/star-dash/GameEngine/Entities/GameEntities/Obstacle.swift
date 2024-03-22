@@ -10,14 +10,17 @@ import Foundation
 class Obstacle: Entity {
     let id: EntityId
     private let position: CGPoint
-
-    init(id: EntityId, position: CGPoint) {
+    private let sprite: String
+    private let size: CGSize
+    init(id: EntityId, position: CGPoint, sprite: String, size: CGSize) {
         self.id = id
         self.position = position
+        self.sprite = sprite
+        self.size = size
     }
 
-    convenience init(position: CGPoint) {
-        self.init(id: UUID(), position: position)
+    convenience init(position: CGPoint, sprite: String, size: CGSize) {
+        self.init(id: UUID(), position: position, sprite: sprite, size: size)
     }
 
     func setUpAndAdd(to: EntityManager) {
