@@ -84,11 +84,11 @@ extension ViewController: SDSceneDelegate {
         gameEngine?.update(by: deltaTime)
         gameBridge?.syncFromEntities()
 
-        updateCameraObjectPosition()
+        updateCameraObjectPosition(scene)
         updateOverlay()
     }
 
-    private func updateCameraObjectPosition() {
+    private func updateCameraObjectPosition(_ scene: SDScene) {
         guard let playerPosition = gameEngine?.playerPosition() else {
             return
         }
