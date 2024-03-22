@@ -38,7 +38,7 @@ extension GameScene: SDScene {
         objectMap[object.node] = object
         addChild(object.node)
     }
-    
+
     public func removeObject(_ object: SDObject) {
         objectMap[object.node] = nil
         object.removeFromParent()
