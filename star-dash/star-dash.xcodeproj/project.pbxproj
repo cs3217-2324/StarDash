@@ -85,6 +85,7 @@
 		4E8660622BA0964A0035530D /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660612BA0964A0035530D /* Obstacle.swift */; };
 		4E8660642BA096600035530D /* GrappleHook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660632BA096600035530D /* GrappleHook.swift */; };
 		4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660652BA097D40035530D /* PhysicsConstants.swift */; };
+		E638B9CF2BAB3C5D00931CC2 /* TeleportEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638B9CE2BAB3C5D00931CC2 /* TeleportEvent.swift */; };
 		E64361102BA4C2CD003850FD /* SpriteModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610A2BA4C2CC003850FD /* SpriteModule.swift */; };
 		E64361112BA4C2CD003850FD /* SyncModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610B2BA4C2CC003850FD /* SyncModule.swift */; };
 		E64361122BA4C2CD003850FD /* ObjectModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610C2BA4C2CC003850FD /* ObjectModule.swift */; };
@@ -97,7 +98,11 @@
 		E6A745182BA057040080C1BE /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745132BA057040080C1BE /* Renderer.swift */; };
 		E6A7451B2BA0C1890080C1BE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451A2BA0C1890080C1BE /* PlayerView.swift */; };
 		E6A7451D2BA0CAD90080C1BE /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */; };
+		E6B0AAD12BAAE3DC009CB939 /* ViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0AAD02BAAE3DC009CB939 /* ViewDelegate.swift */; };
+		E6B0AAD32BAAE438009CB939 /* ControlViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0AAD22BAAE438009CB939 /* ControlViewDelegate.swift */; };
+		E6B0AAD52BAAE4EC009CB939 /* PlayerFloorContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0AAD42BAAE4EC009CB939 /* PlayerFloorContactEvent.swift */; };
 		E6B1DC902BA34A4800473563 /* SDPhysicsEngine in Sources */ = {isa = PBXBuildFile; fileRef = E6B1DC8D2BA32BC700473563 /* SDPhysicsEngine */; };
+		E6B34A472BAA03AF0009A60B /* PlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B34A462BAA03AF0009A60B /* PlayerComponent.swift */; };
 		E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B550A02BA15E9C00DC7396 /* OverlayView.swift */; };
 		E6E4B8302BA6C8D4005ABAB1 /* SDPhysicsEngine in Frameworks */ = {isa = PBXBuildFile; productRef = E6E4B82F2BA6C8D4005ABAB1 /* SDPhysicsEngine */; };
 /* End PBXBuildFile section */
@@ -214,6 +219,7 @@
 		4E8660612BA0964A0035530D /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		4E8660632BA096600035530D /* GrappleHook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrappleHook.swift; sourceTree = "<group>"; };
 		4E8660652BA097D40035530D /* PhysicsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsConstants.swift; sourceTree = "<group>"; };
+		E638B9CE2BAB3C5D00931CC2 /* TeleportEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleportEvent.swift; sourceTree = "<group>"; };
 		E643610A2BA4C2CC003850FD /* SpriteModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteModule.swift; sourceTree = "<group>"; };
 		E643610B2BA4C2CC003850FD /* SyncModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncModule.swift; sourceTree = "<group>"; };
 		E643610C2BA4C2CC003850FD /* ObjectModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectModule.swift; sourceTree = "<group>"; };
@@ -226,7 +232,11 @@
 		E6A745132BA057040080C1BE /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		E6A7451A2BA0C1890080C1BE /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
+		E6B0AAD02BAAE3DC009CB939 /* ViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDelegate.swift; sourceTree = "<group>"; };
+		E6B0AAD22BAAE438009CB939 /* ControlViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewDelegate.swift; sourceTree = "<group>"; };
+		E6B0AAD42BAAE4EC009CB939 /* PlayerFloorContactEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerFloorContactEvent.swift; sourceTree = "<group>"; };
 		E6B1DC8D2BA32BC700473563 /* SDPhysicsEngine */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SDPhysicsEngine; path = ../SDPhysicsEngine; sourceTree = "<group>"; };
+		E6B34A462BAA03AF0009A60B /* PlayerComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerComponent.swift; sourceTree = "<group>"; };
 		E6B550A02BA15E9C00DC7396 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -305,6 +315,7 @@
 		14D14B772BA5AB0700386C3B /* ContactEvents */ = {
 			isa = PBXGroup;
 			children = (
+				E6B0AAD42BAAE4EC009CB939 /* PlayerFloorContactEvent.swift */,
 				143AA3922BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift */,
 				4613943B2BAAB59700849804 /* HookObstacleCollisionEvent.swift */,
 			);
@@ -327,6 +338,7 @@
 				14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */,
 				143AA38B2BA4D3E3009C28E7 /* JumpEvent.swift */,
 				14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */,
+				E638B9CE2BAB3C5D00931CC2 /* TeleportEvent.swift */,
 			);
 			path = CommonEvents;
 			sourceTree = "<group>";
@@ -471,6 +483,7 @@
 		4E630F282B9F7EC20008F887 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E6B34A462BAA03AF0009A60B /* PlayerComponent.swift */,
 				4E630F292B9F7EF60008F887 /* PositionComponent.swift */,
 				14970F4F2BA814D500CC1E8A /* ScoreComponent.swift */,
 				4E630F2B2B9F7F460008F887 /* Component.swift */,
@@ -543,6 +556,8 @@
 			children = (
 				E6B5509F2BA15D2000DC7396 /* MTKRenderer */,
 				E6A745132BA057040080C1BE /* Renderer.swift */,
+				E6B0AAD02BAAE3DC009CB939 /* ViewDelegate.swift */,
+				E6B0AAD22BAAE438009CB939 /* ControlViewDelegate.swift */,
 			);
 			path = Rendering;
 			sourceTree = "<group>";
@@ -743,6 +758,7 @@
 				4613943A2BA9C85100849804 /* HookOwnerComponent.swift in Sources */,
 				1471B0A02BA6A70600878B14 /* HealthSystem.swift in Sources */,
 				461148932BA1D04B0073E7E1 /* System.swift in Sources */,
+				E6B0AAD12BAAE3DC009CB939 /* ViewDelegate.swift in Sources */,
 				1471B0A62BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift in Sources */,
 				4E8660642BA096600035530D /* GrappleHook.swift in Sources */,
 				4E630F392B9F943B0008F887 /* EntityManager.swift in Sources */,
@@ -759,6 +775,7 @@
 				145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */,
 				4E630EFA2B9F7E070008F887 /* ViewController.swift in Sources */,
 				E6A011172BA5F4AD006904D9 /* EntitySyncInterface.swift in Sources */,
+				E6B0AAD52BAAE4EC009CB939 /* PlayerFloorContactEvent.swift in Sources */,
 				E64361132BA4C2CD003850FD /* PhysicsModule.swift in Sources */,
 				4E630F322B9F887C0008F887 /* PhysicsComponent.swift in Sources */,
 				1471B0AD2BA6AE4E00878B14 /* UseGrappleHookEvent.swift in Sources */,
@@ -768,6 +785,7 @@
 				4E630F2A2B9F7EF60008F887 /* PositionComponent.swift in Sources */,
 				46D418132BA5C9930091A38B /* Floor.swift in Sources */,
 				E64361152BA4C2CD003850FD /* GameBridge.swift in Sources */,
+				E6B0AAD32BAAE438009CB939 /* ControlViewDelegate.swift in Sources */,
 				4604BBD92BA81C940078B84C /* InventorySystem.swift in Sources */,
 				14E247952BA2CB480071FFC0 /* EventManager.swift in Sources */,
 				46362B512BA85DF700FE88F7 /* GrappleHookSystem.swift in Sources */,
@@ -778,6 +796,7 @@
 				46362B592BA88ABA00FE88F7 /* SwingGrappleHookEvent.swift in Sources */,
 				46D418282BA5D6800091A38B /* Floor+Collidable.swift in Sources */,
 				46D418222BA5D4E60091A38B /* Obstacle+Collidable.swift in Sources */,
+				E638B9CF2BAB3C5D00931CC2 /* TeleportEvent.swift in Sources */,
 				E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */,
 				E6A745182BA057040080C1BE /* Renderer.swift in Sources */,
 				46362B552BA88A9B00FE88F7 /* ShootGrappleHookEvent.swift in Sources */,
@@ -802,6 +821,7 @@
 				E64361102BA4C2CD003850FD /* SpriteModule.swift in Sources */,
 				4604BBD52BA819C70078B84C /* InventoryComponent.swift in Sources */,
 				46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */,
+				E6B34A472BAA03AF0009A60B /* PlayerComponent.swift in Sources */,
 				461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */,
 				4E630F2E2B9F81850008F887 /* HealthComponent.swift in Sources */,
 				4E86605C2BA095460035530D /* Monster.swift in Sources */,
@@ -1000,7 +1020,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VFS4882B2L;
+				DEVELOPMENT_TEAM = EBN5NJJVSU;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "star-dash/Info.plist";
@@ -1015,7 +1035,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "junyi-star-dash";
+				PRODUCT_BUNDLE_IDENTIFIER = "junyi-sd";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1034,7 +1054,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VFS4882B2L;
+				DEVELOPMENT_TEAM = EBN5NJJVSU;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "star-dash/Info.plist";
@@ -1049,7 +1069,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "junyi-star-dash";
+				PRODUCT_BUNDLE_IDENTIFIER = "junyi-sd";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

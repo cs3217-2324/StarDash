@@ -25,10 +25,34 @@ class GameEngine {
         eventManager.executeAll(on: self)
     }
 
-    // TODO: after events are ready
-    func handleCollision(_ entityOne: EntityId, _ entityTwo: EntityId) {}
+    func handleCollision(_ entityOneId: EntityId, _ entityTwoId: EntityId, at contactPoint: CGPoint) {
+        guard let entityOne = entity(of: entityOneId) as? Collidable,
+              let entityTwo = entity(of: entityTwoId) as? Collidable,
+              let event = entityOne.collides(with: entityTwo, at: contactPoint) else {
+            return
+        }
 
-    func handleSeparation(_ entityOne: EntityId, _ entityTwo: EntityId) {}
+        eventManager.add(event: event)
+    }
+
+    func handlePlayerJump() {
+        guard let playerEntityId = entityManager.playerEntityId() else {
+            return
+        }
+
+        eventManager.add(event: JumpEvent(on: playerEntityId, by: PhysicsConstants.jumpImpulse))
+    }
+
+    func handlePlayerMove(toLeft: Bool) {
+        guard let playerEntityId = entityManager.playerEntityId(),
+              let physicsComponent = entityManager.component(ofType: PhysicsComponent.self, of: playerEntityId),
+              let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: playerEntityId),
+              playerComponent.canMove else {
+            return
+        }
+
+        eventManager.add(event: MoveEvent(on: playerEntityId, toLeft: toLeft))
+    }
 
     private func setUpSystems() {
         systemManager.add(PositionSystem(entityManager, dispatcher: self))
@@ -43,6 +67,10 @@ extension GameEngine: EventModifiable {
 
     func system<T: System>(ofType type: T.Type) -> T? {
         systemManager.system(ofType: type)
+    }
+
+    func component<T: Component>(ofType type: T.Type, ofEntity entityId: EntityId) -> T? {
+        entityManager.component(ofType: type, of: entityId)
     }
 
     func add(entity: Entity) {
