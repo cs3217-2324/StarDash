@@ -45,6 +45,11 @@ class Collectible: Entity {
     }
 
     static func createCoinCollectible(position: CGPoint) -> Collectible {
-        Collectible(position: position, sprite: "Coin", points: 10, size: CGSize(width: 50, height: 50))
+        Collectible(
+            position: position,
+            sprite: EntityConstants.CoinCollectible.sprite,
+            points: EntityConstants.CoinCollectible.points,
+            size: EntityConstants.CoinCollectible.size
+        )
     }
 }
