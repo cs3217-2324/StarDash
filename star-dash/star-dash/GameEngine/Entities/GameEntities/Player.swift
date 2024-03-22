@@ -36,8 +36,8 @@ class Player: Entity {
         physicsComponent.restitution = 0.0
         let spriteComponent = SpriteComponent(
             entityId: self.id,
-            image: "PlayerRedNose",
-            textureAtlas: "",
+            image: SpriteConstants.PlayerRedNose.stand,
+            textureAtlas: nil,
             size: CGSize(width: 100, height: 140)
         )
         let scoreComponent = ScoreComponent(entityId: self.id, score: 0)

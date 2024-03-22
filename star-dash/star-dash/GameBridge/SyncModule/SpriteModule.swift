@@ -17,9 +17,9 @@ class SpriteModule: SyncModule {
             return
         }
 
-        // if spriteComponent.image != spriteObject.activeTexture {
-        //     spriteObject.runTexture(named: spriteComponent.image)
-        // }
+        if spriteComponent.textureAtlas != spriteObject.activeTexture {
+            spriteObject.runTexture(named: spriteComponent.textureAtlas)
+        }
     }
 
     func create(for object: SDObject, from entity: Entity) {
@@ -30,7 +30,7 @@ extension SpriteModule: CreationModule {
     func createObject(from entity: Entity) -> SDObject? {
         var newObject = SDObject()
         if let spriteComponent = entityManager.component(ofType: SpriteComponent.self, of: entity.id) {
-            let spriteObject = SDSpriteObject(imageNamed: "PlayerRedNose")
+            let spriteObject = SDSpriteObject(imageNamed: spriteComponent.image)
 
             if let size = spriteComponent.size {
                 spriteObject.size = size

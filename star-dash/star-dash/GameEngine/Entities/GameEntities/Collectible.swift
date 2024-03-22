@@ -44,12 +44,12 @@ class Collectible: Entity {
         to.add(component: pointsComponent)
     }
 
-    static func createCoinCollectible(position: CGPoint) -> Collectible {
+    static func createStarCollectible(position: CGPoint) -> Collectible {
         Collectible(
             position: position,
-            sprite: EntityConstants.CoinCollectible.sprite,
-            points: EntityConstants.CoinCollectible.points,
-            size: EntityConstants.CoinCollectible.size
+            sprite: SpriteConstants.star,
+            points: EntityConstants.StarCollectible.points,
+            size: EntityConstants.StarCollectible.size
         )
     }
 }

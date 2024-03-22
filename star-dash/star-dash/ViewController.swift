@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         let floor = Floor(position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400))
         floor.setUpAndAdd(to: entityManager)
 
-        let collectible = Collectible.createCoinCollectible(
+        let collectible = Collectible.createStarCollectible(
             position: CGPoint(x: scene.size.width / 2 + 30, y: scene.size.height / 2 - 100)
         )
         collectible.setUpAndAdd(to: entityManager)
