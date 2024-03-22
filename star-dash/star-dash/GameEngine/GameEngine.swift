@@ -20,6 +20,18 @@ class GameEngine {
         setUpSystems()
     }
 
+    func gameInfo() -> GameInfo? {
+        guard let scoreSystem = systemManager.system(ofType: ScoreSystem.self),
+              let playerEntityId = entityManager.playerEntityId(),
+              let score = scoreSystem.score(of: playerEntityId) else {
+            return nil
+        }
+
+        return GameInfo(
+            playerScore: score
+        )
+    }
+
     func update(by deltaTime: TimeInterval) {
         systemManager.update(by: deltaTime)
         eventManager.executeAll(on: self)
@@ -57,6 +69,7 @@ class GameEngine {
     private func setUpSystems() {
         systemManager.add(PositionSystem(entityManager, dispatcher: self))
         systemManager.add(PhysicsSystem(entityManager, dispatcher: self))
+        systemManager.add(ScoreSystem(entityManager, dispatcher: self))
     }
 }
 

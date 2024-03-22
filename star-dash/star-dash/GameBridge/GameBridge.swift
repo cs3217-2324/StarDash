@@ -88,5 +88,13 @@ class GameBridge {
     }
 
     private func removeObject(from entityId: EntityId) {
+        guard let object = entitiesMap[entityId] else {
+            return
+        }
+
+        entitiesMap[entityId] = nil
+        objectsMap[object.id] = nil
+
+        self.scene.removeObject(object)
     }
 }

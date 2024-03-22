@@ -11,10 +11,9 @@ class OverlayView: UIView {
     let scoreLabel = UILabel()
 
     func setupSubviews() {
-        scoreLabel.text = "Score: 0"
         scoreLabel.numberOfLines = 1
         scoreLabel.translatesAutoresizingMaskIntoConstraints = false
-        scoreLabel.textColor = .white
+        scoreLabel.textColor = .black
         addSubview(scoreLabel)
 
         NSLayoutConstraint.activate([
@@ -22,5 +21,11 @@ class OverlayView: UIView {
             scoreLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -1 * margin),
             scoreLabel.leadingAnchor.constraint(greaterThanOrEqualTo: self.leadingAnchor, constant: margin)
         ])
+
+        update(score: 0)
+    }
+
+    func update(score: Int) {
+        scoreLabel.text = "Score: \(score)"
     }
 }
