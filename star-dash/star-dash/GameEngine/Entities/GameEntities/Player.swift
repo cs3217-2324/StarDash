@@ -30,11 +30,16 @@ class Player: Entity {
         let healthComponent = HealthComponent(entityId: self.id, health: GameConstants.InitialHealth.player)
         let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.player)
         physicsComponent.categoryBitMask = PhysicsConstants.CollisionCategory.player
-        physicsComponent.contactTestMask = PhysicsConstants.CollisionCategory.floor
+        physicsComponent.contactTestMask = PhysicsConstants.ContactMask.player
         physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.player
         physicsComponent.affectedByGravity = true
         physicsComponent.restitution = 0.0
-        let spriteComponent = SpriteComponent(entityId: self.id, image: "", textureAtlas: "", size: .zero)
+        let spriteComponent = SpriteComponent(
+            entityId: self.id,
+            image: "PlayerRedNose",
+            textureAtlas: "",
+            size: CGSize(width: 100, height: 140)
+        )
         let scoreComponent = ScoreComponent(entityId: self.id, score: 0)
 
         to.add(entity: self)

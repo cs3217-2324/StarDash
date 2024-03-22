@@ -16,7 +16,7 @@ class StorageManager {
 
     func getLevel(id: Int64) -> Level? {
         if let levelPersistable = self.database.getLevelPersistable(id: id) {
-            let entityPersistables = self.database.getEntityPersistables(levelId: id)
+            let entityPersistables = self.database.getAllEntities(levelId: id)
             return Level(levelPersistable: levelPersistable, entityPersistables: entityPersistables)
         }
         return nil

@@ -10,7 +10,9 @@ import Foundation
 struct LevelData: Codable {
     var id: Int64
     var name: String
-    var entities: [EntityPersistable]
     var size: CGSize
-
+    var monsters: [MonsterEntityPersistable]
+    var obstacles: [ObstacleEntityPersistable]
+    var collectibles: [CollectibleEntityPersistable]
+    var tools: [ToolEntityPersistable]
 }

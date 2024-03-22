@@ -2,16 +2,40 @@
 "id": 0,
   "name": "1",
   "size": [1000, 200],
-  "entities": [
+  "obstacles": [
     {
       "levelId": 0,
-      "entityType": "obstacle",
-      "position": [100, 100]
+      "sprite": "",
+      "position": [100, 200],
+      "size": [10,10]
     },
-    {
-      "levelId": 0,
-      "entityType": "obstacle",
-      "position": [200, 200]
-    }
+    
+  ],
+  "collectibles": [
+      {
+        "levelId": 0,
+        "sprite": "",
+        "position": [200, 200],
+        "size": [10,10],
+        "points": 10
+      }
+  ],
+  
+  "tools": [
+      {
+        "levelId": 0,
+        "sprite": "",
+        "position": [300, 200],
+        "size": [10,10]
+      },
+  ],
+  "monsters": [
+      {
+        "levelId": 0,
+        "sprite": "",
+        "position": [400, 100],
+        "size": [10,10],
+        "health": 100
+      },
   ]
 }

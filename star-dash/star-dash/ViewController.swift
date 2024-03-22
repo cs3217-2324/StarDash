@@ -57,7 +57,7 @@ class ViewController: UIViewController {
 
         let floor = Floor(position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400))
         floor.setUpAndAdd(to: entityManager)
-        
+
         if let level = self.storageManager?.getLevel(id: 0) {
             for entity in  level.entities {
                 entity.setUpAndAdd(to: entityManager)
@@ -65,6 +65,11 @@ class ViewController: UIViewController {
         } else {
             print("level not found")
         }
+
+        let collectible = Collectible.createCoinCollectible(
+            position: CGPoint(x: scene.size.width / 2 + 30, y: scene.size.height / 2 - 100)
+        )
+        collectible.setUpAndAdd(to: entityManager)
     }
 }
 
@@ -74,6 +79,14 @@ extension ViewController: SDSceneDelegate {
         gameBridge?.syncToEntities()
         gameEngine?.update(by: deltaTime)
         gameBridge?.syncFromEntities()
+
+        guard let gameInfo = gameEngine?.gameInfo() else {
+            return
+        }
+
+        renderer?.updateOverlay(overlayInfo: OverlayInfo(
+            score: gameInfo.playerScore
+        ))
     }
 
     func contactOccured(objectA: SDObject, objectB: SDObject, contactPoint: CGPoint) {
