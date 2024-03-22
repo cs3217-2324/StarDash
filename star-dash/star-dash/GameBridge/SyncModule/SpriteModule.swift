@@ -31,7 +31,11 @@ extension SpriteModule: CreationModule {
         var newObject = SDObject()
         if let spriteComponent = entityManager.component(ofType: SpriteComponent.self, of: entity.id) {
             let spriteObject = SDSpriteObject(imageNamed: "PlayerRedNose")
-            spriteObject.size = CGSize(width: 100, height: 140)
+
+            if let size = spriteComponent.size {
+                spriteObject.size = size
+            }
+
             newObject = spriteObject
         }
 
