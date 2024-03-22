@@ -54,6 +54,14 @@ class GameEngine {
         eventManager.add(event: MoveEvent(on: playerEntityId, toLeft: toLeft))
     }
 
+    func playerPosition() -> CGPoint? {
+        guard let playerEntityId = entityManager.playerEntityId(),
+              let positionComponent = entityManager.component(ofType: PositionComponent.self, of: playerEntityId) else {
+            return nil
+        }
+        return positionComponent.position
+    }
+
     private func setUpSystems() {
         systemManager.add(PositionSystem(entityManager, dispatcher: self))
         systemManager.add(PhysicsSystem(entityManager, dispatcher: self))

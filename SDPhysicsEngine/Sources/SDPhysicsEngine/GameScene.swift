@@ -38,6 +38,15 @@ extension GameScene: SDScene {
         objectMap[object.node] = object
         addChild(object.node)
     }
+    
+    public func addCameraObject(_ cameraObject: SDCameraObject) {
+        addObject(cameraObject)
+        camera = cameraObject.cameraNode
+    }
+
+    public func setCameraObjectXPosition(to x: CGFloat) {
+        camera?.position.x = x
+    }
 }
 
 extension GameScene: SKPhysicsContactDelegate {

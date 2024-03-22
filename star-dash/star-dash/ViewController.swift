@@ -43,6 +43,10 @@ class ViewController: UIViewController {
             return
         }
 
+        let camera = SDCameraObject()
+        camera.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
+        scene.addCameraObject(camera)
+
         let background = SDSpriteObject(imageNamed: "GameBackground")
         background.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
         background.zPosition = -1
@@ -66,6 +70,11 @@ extension ViewController: SDSceneDelegate {
         gameBridge?.syncToEntities()
         gameEngine?.update(by: deltaTime)
         gameBridge?.syncFromEntities()
+
+        guard let playerPosition = gameEngine?.playerPosition() else {
+            return
+        }
+        scene.setCameraObjectXPosition(to: playerPosition.x)
     }
 
     func contactOccurred(objectA: SDObject, objectB: SDObject, contactPoint: CGPoint) {
