@@ -11,7 +11,7 @@ protocol Collidable {
     func collideWithMonster(_ monster: Monster) -> Event?
     func collideWithCollectible(_ collectible: Collectible) -> Event?
     func collideWithObstacle(_ obstacle: Obstacle) -> Event?
-    func collideWithTool(_ tool: Tool) -> Event?
+    func collideWithHook(_ hook: GrappleHook) -> Event?
     func collideWithWall(_ wall: Wall) -> Event?
     func collideWithFloor(_ floor: Floor) -> Event?
 }

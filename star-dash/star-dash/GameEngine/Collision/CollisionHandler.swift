@@ -28,11 +28,11 @@ struct CollisionHandler {
         nil
     }
 
-    static func between(player: Player, tool: Tool) -> Event? {
+    static func between(player: Player, hook: GrappleHook) -> Event? {
         nil
     }
 
-    static func between(monster: Monster, tool: Tool) -> Event? {
+    static func between(monster: Monster, hook: GrappleHook) -> Event? {
         nil
     }
 
@@ -48,15 +48,15 @@ struct CollisionHandler {
         nil
     }
 
-    static func between(tool: Tool, floor: Floor) -> Event? {
+    static func between(hook: GrappleHook, floor: Floor) -> Event? {
         nil
     }
 
-    static func between(tool: Tool, wall: Wall) -> Event? {
+    static func between(hook: GrappleHook, wall: Wall) -> Event? {
         nil
     }
 
-    static func between(tool: Tool, obstacle: Obstacle) -> Event? {
-        ToolObstacleCollisionEvent(betweenTool: tool.id, andObstacle: obstacle.id)
+    static func between(hook: GrappleHook, obstacle: Obstacle) -> Event? {
+        HookObstacleCollisionEvent(betweenHook: hook.id, andObstacle: obstacle.id)
     }
 }

@@ -1,21 +1,21 @@
 //
-//  Tool+Collidable.swift
+//  GrappleHook+Collidable.swift
 //  star-dash
 //
 //  Created by Ho Jun Hao on 16/3/24.
 //
 
-extension Tool: Collidable {
+extension GrappleHook: Collidable {
     func collides(with collidable: Collidable) -> Event? {
-        collidable.collideWithTool(self)
+        collidable.collideWithHook(self)
     }
 
     func collideWithPlayer(_ player: Player) -> Event? {
-        CollisionHandler.between(player: player, tool: self)
+        CollisionHandler.between(player: player, hook: self)
     }
 
     func collideWithMonster(_ monster: Monster) -> Event? {
-        CollisionHandler.between(monster: monster, tool: self)
+        CollisionHandler.between(monster: monster, hook: self)
     }
 
     func collideWithCollectible(_ collectible: Collectible) -> Event? {
@@ -23,18 +23,18 @@ extension Tool: Collidable {
     }
 
     func collideWithObstacle(_ obstacle: Obstacle) -> Event? {
-        CollisionHandler.between(tool: self, obstacle: obstacle)
+        CollisionHandler.between(hook: self, obstacle: obstacle)
     }
 
-    func collideWithTool(_ tool: Tool) -> Event? {
+    func collideWithHook(_ hook: GrappleHook) -> Event? {
         nil
     }
 
     func collideWithWall(_ wall: Wall) -> Event? {
-        CollisionHandler.between(tool: self, wall: wall)
+        CollisionHandler.between(hook: self, wall: wall)
     }
 
     func collideWithFloor(_ floor: Floor) -> Event? {
-        CollisionHandler.between(tool: self, floor: floor)
+        CollisionHandler.between(hook: self, floor: floor)
     }
 }

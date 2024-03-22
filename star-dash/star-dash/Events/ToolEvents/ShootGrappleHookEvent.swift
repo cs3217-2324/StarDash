@@ -17,15 +17,15 @@ class ShootGrappleHookEvent: Event {
     }
 
     func execute(on target: EventModifiable) {
-        guard let toolSystem = target.system(ofType: ToolSystem.self) else {
+        guard let hookSystem = target.system(ofType: GrappleHookSystem.self) else {
             return
         }
 
-        guard toolSystem.length(of: entityId) >= Tool.DEFAULT_MAX_LENGTH else {
-            toolSystem.extendTool(of: entityId)
+        guard hookSystem.length(of: entityId) >= GrappleHook.DEFAULT_MAX_LENGTH else {
+            hookSystem.extendHook(of: entityId)
             return
         }
 
-        toolSystem.setToolState(of: entityId, to: .releasing)
+        hookSystem.setHookState(of: entityId, to: .releasing)
     }
 }

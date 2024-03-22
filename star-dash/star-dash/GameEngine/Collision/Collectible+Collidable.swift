@@ -26,7 +26,7 @@ extension Collectible: Collidable {
         nil
     }
 
-    func collideWithTool(_ tool: Tool) -> Event? {
+    func collideWithHook(_ hook: GrappleHook) -> Event? {
         nil
     }
 

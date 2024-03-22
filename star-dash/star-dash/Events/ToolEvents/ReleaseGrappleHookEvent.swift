@@ -18,10 +18,10 @@ class ReleaseGrappleHookEvent: Event {
 
     func execute(on target: EventModifiable) {
         // Give apply release impulse to player
-        // Delete tool entity
-        guard let toolSystem = target.system(ofType: ToolSystem.self),
-              let playerReleaseImpulse = toolSystem.getPlayerReleaseImpulse(of: entityId),
-              let playerOwnerId = toolSystem.getToolOwner(of: entityId),
+        // Delete hook entity
+        guard let hookSystem = target.system(ofType: GrappleHookSystem.self),
+              let playerReleaseImpulse = hookSystem.getPlayerReleaseImpulse(of: entityId),
+              let playerOwnerId = hookSystem.getHookOwner(of: entityId),
               let physicsSystem = target.system(ofType: PhysicsSystem.self) else {
             return
         }

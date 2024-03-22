@@ -20,24 +20,24 @@ class SwingGrappleHookEvent: Event {
         // swing from one point to another point about the end point (pivot)
         // move player along
         // once reached the end of arc set to release
-        guard let toolSystem = target.system(ofType: ToolSystem.self),
+        guard let hookSystem = target.system(ofType: GrappleHookSystem.self),
               let positionSystem = target.system(ofType: PositionSystem.self),
-              let toolOwnerId = toolSystem.getToolOwner(of: entityId) else {
+              let hookOwnerId = hookSystem.getHookOwner(of: entityId) else {
             return
         }
 
-        guard let angleRemaining = toolSystem.angleLeftToSwing(of: entityId),
+        guard let angleRemaining = hookSystem.angleLeftToSwing(of: entityId),
               angleRemaining > 0 else {
-            toolSystem.setToolState(of: entityId, to: .releasing)
+            hookSystem.setHookState(of: entityId, to: .releasing)
             return
         }
 
-        toolSystem.swing(using: entityId)
+        hookSystem.swing(using: entityId)
 
-        guard let startPointOfTool = toolSystem.getStartPoint(of: entityId) else {
+        guard let startPointOfHook = hookSystem.getStartPoint(of: entityId) else {
             return
         }
 
-        positionSystem.move(entityId: toolOwnerId, to: startPointOfTool)
+        positionSystem.move(entityId: hookOwnerId, to: startPointOfHook)
     }
 }

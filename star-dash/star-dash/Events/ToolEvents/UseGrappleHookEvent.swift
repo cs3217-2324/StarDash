@@ -17,7 +17,7 @@ class UseGrappleHookEvent: Event {
     }
 
     func execute(on target: EventModifiable) {
-        guard let toolSystem = target.system(ofType: ToolSystem.self),
+        guard let hookSystem = target.system(ofType: GrappleHookSystem.self),
               let positionSystem = target.system(ofType: PositionSystem.self) else {
             return
         }
@@ -26,6 +26,6 @@ class UseGrappleHookEvent: Event {
             return
         }
 
-        toolSystem.activateTool(at: playerPosition, ownedBy: entityId)
+        hookSystem.activateHook(at: playerPosition, ownedBy: entityId)
     }
 }

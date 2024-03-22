@@ -15,19 +15,19 @@ struct PhysicsConstants {
         static let monster: UInt32 = 0b1 << 1
         static let collectible: UInt32 = 0b1 << 2
         static let obstacle: UInt32 = 0b1 << 3
-        static let tool: UInt32 = 0b1 << 4
+        static let hook: UInt32 = 0b1 << 4
         static let wall: UInt32 = 0b1 << 5
         static let floor: UInt32 = 0b1 << 6
     }
 
     struct CollisionMask {
         static let player = CollisionCategory.max ^ CollisionCategory.player
-        static let monster = CollisionCategory.player | CollisionCategory.tool
+        static let monster = CollisionCategory.player | CollisionCategory.hook
         static let collectible = CollisionCategory.player
-        static let obstacle = CollisionCategory.player | CollisionCategory.monster | CollisionMask.tool
-        static let tool = CollisionCategory.max ^ CollisionCategory.collectible ^ CollisionCategory.tool
-        static let wall = CollisionCategory.player | CollisionCategory.monster | CollisionCategory.tool
-        static let floor = CollisionCategory.player | CollisionCategory.monster | CollisionCategory.tool
+        static let obstacle = CollisionCategory.player | CollisionCategory.monster | CollisionMask.hook
+        static let hook = CollisionCategory.max ^ CollisionCategory.collectible ^ CollisionCategory.hook
+        static let wall = CollisionCategory.player | CollisionCategory.monster | CollisionCategory.hook
+        static let floor = CollisionCategory.player | CollisionCategory.monster | CollisionCategory.hook
     }
 
     struct Dimensions {

@@ -17,27 +17,27 @@ class RetractGrappleHookEvent: Event {
     }
 
     func execute(on target: EventModifiable) {
-        // Retract the tool by moving start point towards endpoint
+        // Retract the hook by moving start point towards endpoint
         // Stop after a certain length
         // set to swing once length reached
-        guard let toolSystem = target.system(ofType: ToolSystem.self),
+        guard let hookSystem = target.system(ofType: GrappleHookSystem.self),
               let positionSystem = target.system(ofType: PositionSystem.self),
-              let toolOwnerId = toolSystem.getToolOwner(of: entityId) else {
+              let hookOwnerId = hookSystem.getHookOwner(of: entityId) else {
             return
         }
 
-        guard let lengthRemaining = toolSystem.lengthLeftToRetract(of: entityId),
+        guard let lengthRemaining = hookSystem.lengthLeftToRetract(of: entityId),
               lengthRemaining > 0 else {
-            toolSystem.setToolState(of: entityId, to: .swinging)
+            hookSystem.setHookState(of: entityId, to: .swinging)
             return
         }
 
-        toolSystem.retractTool(of: entityId)
+        hookSystem.retractHook(of: entityId)
 
-        guard let startPointOfTool = toolSystem.getStartPoint(of: entityId) else {
+        guard let startPointOfHook = hookSystem.getStartPoint(of: entityId) else {
             return
         }
 
-        positionSystem.move(entityId: toolOwnerId, to: startPointOfTool)
+        positionSystem.move(entityId: hookOwnerId, to: startPointOfHook)
     }
 }

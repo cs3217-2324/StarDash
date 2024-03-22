@@ -1,5 +1,5 @@
 //
-//  Tool.swift
+//  GrappleHook.swift
 //  star-dash
 //
 //  Created by Lau Rui han on 12/3/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Tool: Entity {
+class GrappleHook: Entity {
     static let DEFAULT_MAX_LENGTH: Double = 600
 
     let id: EntityId
@@ -27,14 +27,14 @@ class Tool: Entity {
     }
 
     func setUpAndAdd(to: EntityManager) {
-        let toolComponent = ToolComponent(entityId: self.id, maxLength: Tool.DEFAULT_MAX_LENGTH)
-        let toolOwnerComponent = ToolOwnerComponent(entityId: self.id, playerId: playerId)
+        let hookComponent = GrappleHookComponent(entityId: self.id, maxLength: GrappleHook.DEFAULT_MAX_LENGTH)
+        let hookOwnerComponent = HookOwnerComponent(entityId: self.id, playerId: playerId)
         let physicsComponent = PhysicsComponent(entityId: self.id, startPoint: startPoint, endPoint: endPoint)
-        physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.tool
+        physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.hook
 
         to.add(entity: self)
         to.add(component: physicsComponent)
-        to.add(component: toolComponent)
-        to.add(component: toolOwnerComponent)
+        to.add(component: hookComponent)
+        to.add(component: hookOwnerComponent)
     }
 }

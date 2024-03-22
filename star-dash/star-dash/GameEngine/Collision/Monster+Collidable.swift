@@ -26,8 +26,8 @@ extension Monster: Collidable {
         CollisionHandler.between(monster: self, obstacle: obstacle)
     }
 
-    func collideWithTool(_ tool: Tool) -> Event? {
-        CollisionHandler.between(monster: self, tool: tool)
+    func collideWithHook(_ hook: GrappleHook) -> Event? {
+        CollisionHandler.between(monster: self, hook: hook)
     }
 
     func collideWithWall(_ wall: Wall) -> Event? {

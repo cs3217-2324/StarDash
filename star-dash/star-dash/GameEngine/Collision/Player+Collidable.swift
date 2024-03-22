@@ -26,8 +26,8 @@ extension Player: Collidable {
         CollisionHandler.between(player: self, obstacle: obstacle)
     }
 
-    func collideWithTool(_ tool: Tool) -> Event? {
-        CollisionHandler.between(player: self, tool: tool)
+    func collideWithHook(_ hook: GrappleHook) -> Event? {
+        CollisionHandler.between(player: self, hook: hook)
     }
 
     func collideWithWall(_ wall: Wall) -> Event? {

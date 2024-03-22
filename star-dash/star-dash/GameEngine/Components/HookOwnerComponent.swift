@@ -1,5 +1,5 @@
 //
-//  ToolOwnerComponent.swift
+//  HookOwnerComponent.swift
 //  star-dash
 //
 //  Created by Ho Jun Hao on 19/3/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ToolOwnerComponent: Component {
+class HookOwnerComponent: Component {
     var playerId: EntityId
 
     init(id: ComponentId, entityId: EntityId, playerId: EntityId) {

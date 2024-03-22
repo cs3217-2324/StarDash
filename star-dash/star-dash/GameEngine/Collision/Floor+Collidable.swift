@@ -26,8 +26,8 @@ extension Floor: Collidable {
         nil
     }
 
-    func collideWithTool(_ tool: Tool) -> Event? {
-        CollisionHandler.between(tool: tool, floor: self)
+    func collideWithHook(_ hook: GrappleHook) -> Event? {
+        CollisionHandler.between(hook: hook, floor: self)
     }
 
     func collideWithWall(_ wall: Wall) -> Event? {

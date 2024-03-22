@@ -1,5 +1,5 @@
 //
-//  ToolComponent.swift
+//  GrappleHookComponent.swift
 //  star-dash
 //
 //  Created by Ho Jun Hao on 18/3/24.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-class ToolComponent: Component {
-    static let toolShootVector = CGVector(dx: 10, dy: -10)
+class GrappleHookComponent: Component {
+    static let hookShootVector = CGVector(dx: 10, dy: -10)
     static let angleMoved: Double = 3
     static let MIN_LENGTH: Double = 80
     static let releaseImpulseMagnitude: Double = 600
@@ -16,7 +16,7 @@ class ToolComponent: Component {
     let maxLength: Double
     var lengthToRetract: Double = 70
     var angleToSwing: Double = 90
-    var state: ToolState
+    var state: HookState
 
     init(id: ComponentId, entityId: EntityId, maxLength: Double) {
         self.maxLength = maxLength
@@ -29,7 +29,7 @@ class ToolComponent: Component {
     }
 }
 
-enum ToolState {
+enum HookState {
     case idle
     case shooting
     case retracting
