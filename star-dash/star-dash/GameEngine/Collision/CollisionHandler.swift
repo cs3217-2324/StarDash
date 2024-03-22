@@ -33,7 +33,7 @@ struct CollisionHandler {
     }
 
     static func between(monster: Monster, hook: GrappleHook) -> Event? {
-        nil
+        ReleaseGrappleHookEvent(using: hook.id)
     }
 
     static func between(monster: Monster, wall: Wall) -> Event? {
@@ -49,11 +49,11 @@ struct CollisionHandler {
     }
 
     static func between(hook: GrappleHook, floor: Floor) -> Event? {
-        nil
+        ReleaseGrappleHookEvent(using: hook.id)
     }
 
     static func between(hook: GrappleHook, wall: Wall) -> Event? {
-        nil
+        ReleaseGrappleHookEvent(using: hook.id)
     }
 
     static func between(hook: GrappleHook, obstacle: Obstacle) -> Event? {
