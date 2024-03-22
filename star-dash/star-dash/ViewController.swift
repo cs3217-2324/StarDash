@@ -97,6 +97,10 @@ extension ViewController: ViewDelegate {
         gameEngine?.handlePlayerMove(toLeft: toLeft)
     }
 
+    func joystickReleased() {
+        gameEngine?.handlePlayerStoppedMoving()
+    }
+
     func jumpButtonPressed() {
         gameEngine?.handlePlayerJump()
     }

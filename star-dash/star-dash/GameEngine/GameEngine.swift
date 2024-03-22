@@ -66,6 +66,10 @@ class GameEngine {
         eventManager.add(event: MoveEvent(on: playerEntityId, toLeft: toLeft))
     }
 
+    func handlePlayerStoppedMoving() {
+        eventManager.add(event: StopMovingEvent(on: playerEntityId))
+    }
+
     private func setUpSystems() {
         systemManager.add(PositionSystem(entityManager, dispatcher: self))
         systemManager.add(PhysicsSystem(entityManager, dispatcher: self))
