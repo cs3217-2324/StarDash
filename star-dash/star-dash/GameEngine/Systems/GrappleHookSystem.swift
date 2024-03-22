@@ -63,7 +63,7 @@ class GrappleHookSystem: System {
             return
         }
 
-        let vector = GrappleHookComponent.hookShootVector
+        let vector = GameConstants.Hook.deltaPositionVector
         let newEndPoint = CGPoint(x: oldEndPoint.x + vector.dx, y: oldEndPoint.y + vector.dy)
 
         hookPhysicsComponent.endPoint = newEndPoint
@@ -78,7 +78,7 @@ class GrappleHookSystem: System {
             return
         }
 
-        let vector = GrappleHookComponent.hookShootVector
+        let vector = GameConstants.Hook.deltaPositionVector
         let newStartPoint = CGPoint(x: oldStartPoint.x + vector.dx, y: oldStartPoint.y + vector.dy)
         let lengthRetracted = sqrt(pow(vector.dx, 2) + pow(vector.dy, 2))
 
@@ -124,7 +124,7 @@ class GrappleHookSystem: System {
         let length = hypot(normalX, normalY)
         let unitNormalX = normalX / length
         let unitNormalY = normalY / length
-        let impulseVector = CGVector(dx: unitNormalX, dy: unitNormalY) * GrappleHookComponent.releaseImpulseMagnitude
+        let impulseVector = CGVector(dx: unitNormalX, dy: unitNormalY) * GameConstants.Hook.releaseImpulseMagnitude
 
         return impulseVector
     }
@@ -175,7 +175,7 @@ class GrappleHookSystem: System {
         let dy = startPoint.y - endPoint.y
         let distance = hypot(dx, dy)
         let angle = atan2(dy, dx)
-        let newAngle = angle + GrappleHookComponent.angleMoved * .pi / 180.0
+        let newAngle = angle + GameConstants.Hook.deltaAngle * .pi / 180.0
         let newX = endPoint.x + distance * cos(newAngle)
         let newY = endPoint.y + distance * sin(newAngle)
         let newStartPoint = CGPoint(x: newX, y: newY)

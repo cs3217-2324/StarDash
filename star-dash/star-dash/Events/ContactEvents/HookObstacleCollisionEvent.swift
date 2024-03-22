@@ -28,7 +28,7 @@ class HookObstacleCollisionEvent: Event {
             return
         }
 
-        if hookState == .shooting && hookSystem.length(of: entityId) >= GrappleHookComponent.MIN_LENGTH {
+        if hookState == .shooting && hookSystem.length(of: entityId) >= GameConstants.Hook.minLength {
             hookSystem.setHookState(of: entityId, to: .retracting)
         } else {
             hookSystem.setHookState(of: entityId, to: .releasing)
