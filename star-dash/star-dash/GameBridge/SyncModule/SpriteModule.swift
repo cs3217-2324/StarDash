@@ -17,9 +17,22 @@ class SpriteModule: SyncModule {
             return
         }
 
-        if spriteComponent.textureAtlas != spriteObject.activeTexture {
-            spriteObject.runTexture(named: spriteComponent.textureAtlas)
+        if spriteComponent.textureAtlas == nil && spriteObject.activeTexture != nil {
+            spriteObject.cancelTexture()
+            return
         }
+
+        guard let textureAtlas = spriteComponent.textureAtlas else {
+            return // no texture to run
+        }
+
+        if let activeTexture = spriteObject.activeTexture,
+            activeTexture == textureAtlas {
+            return // correct texture is already running
+        }
+
+        spriteObject.cancelTexture()
+        spriteObject.runTexture(named: textureAtlas)
     }
 
     func create(for object: SDObject, from entity: Entity) {

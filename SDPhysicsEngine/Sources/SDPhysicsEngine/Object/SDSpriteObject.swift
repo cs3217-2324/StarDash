@@ -3,6 +3,8 @@ import SpriteKit
 public class SDSpriteObject: SDObject {
     let spriteNode: SKSpriteNode
 
+    
+    static let textureActionKey = "animation"
     public var activeTexture: String?
 
     public init(imageNamed: String) {
@@ -19,9 +21,14 @@ public class SDSpriteObject: SDObject {
         let texture = loadTexture(named: named)
         spriteNode.run(SKAction.repeatForever(
             SKAction.animate(with: texture, timePerFrame: TimeInterval(0.1), resize: false, restore: true)
-        ))
+        ), withKey: SDSpriteObject.textureActionKey)
 
         activeTexture = named
+    }
+    
+    public func cancelTexture() {
+        spriteNode.removeAction(forKey: SDSpriteObject.textureActionKey)
+        activeTexture = nil
     }
 
     private func loadTexture(named: String) -> [SKTexture] {
