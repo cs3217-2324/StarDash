@@ -11,21 +11,18 @@ struct EntityPersistable: Codable {
     var levelId: Int64
     var entityType: EntityType
     var position: CGPoint
-
+    static var entityMap: [EntityType: (CGPoint) -> Entity] = [
+        .Monster: { position in Monster(position: position) },
+        .Collectible: { position in Collectible(position: position) },
+        .Obstacle: { position in Obstacle(position: position) },
+        .Tool: { position in Tool(position: position) }
+    ]
 
     func toEntity() -> Entity? {
-        // Define a map to store the creation functions for each entity type
-        var entityMap: [EntityType: () -> Entity] = [:]
 
-        // Populate the map with creation functions for each entity type
-        entityMap[.Monster] = { Monster(position: self.position) }
-        entityMap[.Collectible] = { Collectible(position: self.position) }
-        entityMap[.Obstacle] = { Obstacle(position: self.position) }
-        entityMap[.Tool] = { Tool(position: self.position) }
-        
-        guard let entity = entityMap[self.entityType] else {
+        guard let entity = EntityPersistable.entityMap[self.entityType] else {
             return nil
         }
-        return entity()
+        return entity(self.position)
     }
 }

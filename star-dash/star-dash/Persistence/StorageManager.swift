@@ -9,15 +9,15 @@ import Foundation
 
 class StorageManager {
     let database: Database
-    
+
     init() {
         database = Database()
     }
-    
+
     func getLevel(id: Int64) -> Level? {
         if let levelPersistable = self.database.getLevelPersistable(id: id) {
-            let entityPersistabls = self.database.getEntityPersistables(levelId: id)
-            return Level(levelPersistable: levelPersistable, entityPersistables: entityPersistabls)
+            let entityPersistables = self.database.getEntityPersistables(levelId: id)
+            return Level(levelPersistable: levelPersistable, entityPersistables: entityPersistables)
         }
         return nil
     }
