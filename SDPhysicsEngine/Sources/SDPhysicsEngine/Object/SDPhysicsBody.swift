@@ -44,8 +44,8 @@ public class SDPhysicsBody {
     }
 
     public var linearDamping: CGFloat {
-        get {body.linearDamping}
-        set {body.linearDamping = newValue}
+        get { body.linearDamping }
+        set { body.linearDamping = newValue }
     }
 
     public var categoryBitMask: UInt32 {
