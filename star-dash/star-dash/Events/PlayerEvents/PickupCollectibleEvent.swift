@@ -18,13 +18,4 @@ class PickupCollectibleEvent: Event {
         self.entityId = entityId
         self.collectibleEntityId = collectibleEntityId
     }
-
-    func execute(on target: EventModifiable) {
-        guard let scoreSystem = target.system(ofType: ScoreSystem.self),
-              let pointsComponent = target.component(ofType: PointsComponent.self, ofEntity: collectibleEntityId) else {
-            return
-        }
-        scoreSystem.applyScoreChange(to: entityId, scoreChange: pointsComponent.points)
-        target.add(event: RemoveEvent(on: collectibleEntityId))
-    }
 }

@@ -15,9 +15,4 @@ class PlayerDeathEvent: Event {
         timestamp = Date.now
         self.entityId = entityId
     }
-
-    func execute(on target: EventModifiable) {
-        // TODO: Where should player respawn to?
-        // target.add(event: RespawnEvent(on: entityId, to: ))
-    }
 }

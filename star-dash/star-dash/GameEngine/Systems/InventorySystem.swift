@@ -11,11 +11,13 @@ class InventorySystem: System {
     var isActive: Bool
     var dispatcher: EventModifiable?
     var entityManager: EntityManager
+    var eventHandlers: [ObjectIdentifier: (Event) -> Void] = [:]
 
     init(_ entityManager: EntityManager, dispatcher: EventModifiable? = nil) {
         self.isActive = true
         self.entityManager = entityManager
         self.dispatcher = dispatcher
+        setUpEventHandlers()
     }
 
     func enqueueItem(for entityId: EntityId, with powerupEntityId: EntityId) {
@@ -33,6 +35,8 @@ class InventorySystem: System {
 
         return inventoryComponent.inventory.removeFirst()
     }
+
+    func setUpEventHandlers() {}
 
     private func getInventoryComponent(of entityId: EntityId) -> InventoryComponent? {
         entityManager.component(ofType: InventoryComponent.self, of: entityId)

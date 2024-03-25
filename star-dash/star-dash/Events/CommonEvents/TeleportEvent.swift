@@ -11,12 +11,4 @@ class TeleportEvent: Event {
         self.entityId = entityId
         self.destination = destination
     }
-
-    func execute(on target: EventModifiable) {
-        guard let positionSystem = target.system(ofType: PositionSystem.self) else {
-            return
-        }
-
-        positionSystem.move(entityId: entityId, to: destination)
-    }
 }

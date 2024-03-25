@@ -11,11 +11,13 @@ class HealthSystem: System {
     var isActive: Bool
     var dispatcher: EventModifiable?
     var entityManager: EntityManager
+    var eventHandlers: [ObjectIdentifier: (Event) -> Void] = [:]
 
     init(_ entityManager: EntityManager, dispatcher: EventModifiable? = nil) {
         self.isActive = true
         self.entityManager = entityManager
         self.dispatcher = dispatcher
+        setUpEventHandlers()
     }
 
     func hasHealth(for entityId: EntityId) -> Bool {
@@ -33,6 +35,8 @@ class HealthSystem: System {
 
         healthComponent.health += healthChange
     }
+
+    func setUpEventHandlers() {}
 
     private func getHealthComponent(of entityId: EntityId) -> HealthComponent? {
         entityManager.component(ofType: HealthComponent.self, of: entityId)

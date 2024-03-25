@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol System {
+protocol System: EventListener {
     var isActive: Bool { get set }
     var dispatcher: EventModifiable? { get set }
     var entityManager: EntityManager { get set }
