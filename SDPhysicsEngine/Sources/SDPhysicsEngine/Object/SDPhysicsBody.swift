@@ -42,7 +42,7 @@ public class SDPhysicsBody {
         get { body.isDynamic }
         set { body.isDynamic = newValue }
     }
-    
+
     public var linearDamping: CGFloat {
         get {body.linearDamping}
         set {body.linearDamping = newValue}

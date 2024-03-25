@@ -29,7 +29,11 @@ class Monster: Entity {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
         let healthComponent = HealthComponent(entityId: self.id, health: self.health)
         let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.monster)
-        let spriteComponent = SpriteComponent(entityId: self.id, image: self.sprite, textureSet: nil, textureAtlas: nil, size: self.size)
+        let spriteComponent = SpriteComponent(entityId: self.id,
+                                              image: self.sprite,
+                                              textureSet: nil,
+                                              textureAtlas: nil,
+                                              size: self.size)
         physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.monster
         physicsComponent.affectedByGravity = false
 
