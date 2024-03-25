@@ -13,6 +13,7 @@ protocol EventModifiable {
     func entity(with entityId: EntityId) -> Entity?
     func system<T: System>(ofType type: T.Type) -> T?
     func add(entity: Entity)
-    func add(event: Event)
     func remove(entity: Entity)
+    func add(event: Event)
+    func registerListener<T: Event>(for eventType: T.Type, listener: EventListener)
 }

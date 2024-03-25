@@ -21,6 +21,9 @@ class PlayerSystem: System {
     }
 
     func setUpEventHandlers() {
+        dispatcher?.registerListener(for: RespawnEvent.self, listener: self)
+        dispatcher?.registerListener(for: PlayerDeathEvent.self, listener: self)
+
         eventHandlers[ObjectIdentifier(RespawnEvent.self)] = { event in
             if let respawanEvent = event as? RespawnEvent {
                 self.handleRespawnEvent(event: respawanEvent)

@@ -21,6 +21,15 @@ class CollisionSystem: System {
     }
 
     func setUpEventHandlers() {
+        dispatcher?.registerListener(for: RemoveEvent.self, listener: self)
+        dispatcher?.registerListener(for: PlayerFloorContactEvent.self, listener: self)
+        dispatcher?.registerListener(for: PlayerMonsterContactEvent.self, listener: self)
+
+        eventHandlers[ObjectIdentifier(RemoveEvent.self)] = { event in
+            if let removeEvent = event as? RemoveEvent {
+                self.handleRemoveEvent(event: removeEvent)
+            }
+        }
         eventHandlers[ObjectIdentifier(PlayerFloorContactEvent.self)] = { event in
             if let playerFloorContactEvent = event as? PlayerFloorContactEvent {
                 self.handlePlayerFloorContactEvent(event: playerFloorContactEvent)
@@ -31,6 +40,13 @@ class CollisionSystem: System {
                 self.handlePlayerMonsterContactEvent(event: playerMonsterContactEvent)
             }
         }
+    }
+
+    private func handleRemoveEvent(event: RemoveEvent) {
+        guard let entity = dispatcher?.entity(with: event.entityId) else {
+            return
+        }
+        dispatcher?.remove(entity: entity)
     }
 
     private func handlePlayerFloorContactEvent(event: PlayerFloorContactEvent) {

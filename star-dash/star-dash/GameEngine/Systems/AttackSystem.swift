@@ -21,6 +21,9 @@ class AttackSystem: System {
     }
 
     func setUpEventHandlers() {
+        dispatcher?.registerListener(for: MonsterAttackPlayerEvent.self, listener: self)
+        dispatcher?.registerListener(for: PlayerAttackMonsterEvent.self, listener: self)
+
         eventHandlers[ObjectIdentifier(MonsterAttackPlayerEvent.self)] = { event in
             if let monsterAttackPlayerEvent = event as? MonsterAttackPlayerEvent {
                 self.handleMonsterAttackPlayerEvent(event: monsterAttackPlayerEvent)
