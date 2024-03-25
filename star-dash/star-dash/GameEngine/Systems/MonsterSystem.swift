@@ -17,10 +17,10 @@ class MonsterSystem: System {
         self.isActive = true
         self.entityManager = entityManager
         self.dispatcher = dispatcher
-        setUpEventHandlers()
+        setUp()
     }
 
-    func setUpEventHandlers() {
+    func setUp() {
         dispatcher?.registerListener(for: MonsterDeathEvent.self, listener: self)
 
         eventHandlers[ObjectIdentifier(MonsterDeathEvent.self)] = { event in

@@ -17,10 +17,10 @@ class PlayerSystem: System {
         self.isActive = true
         self.entityManager = entityManager
         self.dispatcher = dispatcher
-        setUpEventHandlers()
+        setUp()
     }
 
-    func setUpEventHandlers() {
+    func setUp() {
         dispatcher?.registerListener(for: RespawnEvent.self, listener: self)
         dispatcher?.registerListener(for: PlayerDeathEvent.self, listener: self)
 

@@ -17,7 +17,7 @@ class PhysicsSystem: System {
         self.isActive = true
         self.dispatcher = dispatcher
         self.entityManager = entityManager
-        setUpEventHandlers()
+        setUp()
     }
 
     func update(by deltaTime: TimeInterval) {
@@ -64,7 +64,7 @@ class PhysicsSystem: System {
         return physicsComponent.size
     }
 
-    func setUpEventHandlers() {
+    func setUp() {
         dispatcher?.registerListener(for: MoveEvent.self, listener: self)
         dispatcher?.registerListener(for: JumpEvent.self, listener: self)
         dispatcher?.registerListener(for: StopMovingEvent.self, listener: self)

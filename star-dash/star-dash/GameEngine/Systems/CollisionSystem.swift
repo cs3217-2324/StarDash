@@ -17,10 +17,10 @@ class CollisionSystem: System {
         self.isActive = true
         self.entityManager = entityManager
         self.dispatcher = dispatcher
-        setUpEventHandlers()
+        setUp()
     }
 
-    func setUpEventHandlers() {
+    func setUp() {
         dispatcher?.registerListener(for: RemoveEvent.self, listener: self)
         dispatcher?.registerListener(for: PlayerFloorContactEvent.self, listener: self)
         dispatcher?.registerListener(for: PlayerMonsterContactEvent.self, listener: self)

@@ -17,7 +17,7 @@ class ScoreSystem: System {
         self.isActive = true
         self.entityManager = entityManager
         self.dispatcher = dispatcher
-        setUpEventHandlers()
+        setUp()
     }
 
     func score(of entityId: EntityId) -> Int? {
@@ -36,7 +36,7 @@ class ScoreSystem: System {
         scoreComponent.score += scoreChange
     }
 
-    func setUpEventHandlers() {
+    func setUp() {
         dispatcher?.registerListener(for: PickupCollectibleEvent.self, listener: self)
 
         eventHandlers[ObjectIdentifier(PickupCollectibleEvent.self)] = { event in

@@ -17,7 +17,7 @@ class PositionSystem: System {
         self.isActive = true
         self.entityManager = entityManager
         self.dispatcher = dispatcher
-        setUpEventHandlers()
+        setUp()
     }
 
     func move(entityId: EntityId, to newPosition: CGPoint) {
@@ -44,7 +44,7 @@ class PositionSystem: System {
         return positionComponent.position
     }
 
-    func setUpEventHandlers() {
+    func setUp() {
         dispatcher?.registerListener(for: TeleportEvent.self, listener: self)
 
         eventHandlers[ObjectIdentifier(TeleportEvent.self)] = { event in
