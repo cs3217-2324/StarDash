@@ -15,9 +15,8 @@ class PlayerView {
     var controlView: ControlView
     var overlayView: OverlayView
 
-    init(superview: UIView, device: MTLDevice, drawDelegate: MTKViewDelegate) {
+    private init(superview: UIView, device: MTLDevice) {
         self.sceneView = MTKView(frame: superview.frame, device: device)
-        self.sceneView.delegate = drawDelegate
         superview.addSubview(self.sceneView)
 
         self.overlayView = OverlayView(frame: superview.frame)
@@ -36,7 +35,17 @@ class PlayerView {
         controlView.controlViewDelegate = delegate
     }
 
+    func setDrawDelegate(_ delegate: MTKViewDelegate) {
+        sceneView.delegate = drawDelegate
+    }
+
     func updateOverlay(score: Int) {
         overlayView.update(score: score)
+    }
+
+    static func createPlayerView(superview: UIView, device: MTLDevice) -> PlayerView {
+        let playerView = PlayerView(superview: superview, device: device)
+        playerView.setupSubviews()
+        return playerView
     }
 }

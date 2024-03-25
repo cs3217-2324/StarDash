@@ -41,9 +41,9 @@ class MTKRenderer: NSObject, Renderer {
 
     /// Set ups the views for a single player game.
     func createSinglePlayerView(at superview: UIView) {
-        let playerView = PlayerView(superview: superview, device: self.device, drawDelegate: self)
-        playerView.setupSubviews()
+        let playerView = PlayerView.createPlayerView(superview: superview, device: self.device)
         playerView.setControlViewDelegate(self)
+        playerView.setDrawDelegate(self)
         self.playerView = playerView
     }
 }
