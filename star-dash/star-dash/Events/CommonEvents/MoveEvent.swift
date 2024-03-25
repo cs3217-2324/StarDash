@@ -25,8 +25,11 @@ class MoveEvent: Event {
               let textureSet = spriteComponent.textureSet else {
             return
         }
-
-        physicsComponent.velocity = (toLeft ? -1 : 1) * PhysicsConstants.runVelocity
+        var newVelocity = physicsComponent.velocity + (toLeft ? -1 : 1) * PhysicsConstants.runVelocity
+        if newVelocity.dx > PhysicsConstants.maxRunVelocity.dx {
+            newVelocity = PhysicsConstants.maxRunVelocity * (toLeft ? -1 : 1)
+        }
+        physicsComponent.velocity = newVelocity
         spriteComponent.textureAtlas = textureSet.run
     }
 }

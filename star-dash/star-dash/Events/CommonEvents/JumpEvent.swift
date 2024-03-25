@@ -25,6 +25,7 @@ class JumpEvent: Event {
         }
 
         guard let playerComponent = target.component(ofType: PlayerComponent.self, ofEntity: entityId),
+              let physicsComponent = target.component(ofType: PhysicsComponent.self, ofEntity: entityId),
               playerComponent.canJump else {
             return
         }

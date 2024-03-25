@@ -6,6 +6,8 @@ public class SDPhysicsBody {
     public init(rectangleOf size: CGSize) {
         body = SKPhysicsBody(rectangleOf: size)
         body.friction = 0
+        body.linearDamping = 0
+        body.restitution = 0
     }
 
     public init(circleOf radius: CGFloat) {

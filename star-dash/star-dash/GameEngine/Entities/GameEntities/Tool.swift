@@ -32,6 +32,7 @@ class Tool: Entity {
                                               textureAtlas: nil,
                                               size: self.size)
         physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.tool
+        physicsComponent.isDynamic = false
 
         to.add(entity: self)
         to.add(component: positionComponent)

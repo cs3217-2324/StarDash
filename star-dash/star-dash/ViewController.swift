@@ -59,7 +59,7 @@ class ViewController: UIViewController {
         )
         player.setUpAndAdd(to: entityManager)
 
-        let floor = Floor(position: CGPoint(x: 0, y: scene.size.height / 2 - 400))
+        let floor = Floor(position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400))
         floor.setUpAndAdd(to: entityManager)
 
         if let level = self.storageManager?.getLevel(id: 0) {

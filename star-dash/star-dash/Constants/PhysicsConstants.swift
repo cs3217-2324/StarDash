@@ -42,8 +42,8 @@ struct PhysicsConstants {
 
     struct Dimensions {
         // TODO: determine appropriate size for each
-        static let player = CGSize(width: 60, height: 60)
-        static let monster = CGSize(width: 60, height: 60)
+        static let player = CGSize(width: 70, height: 110)
+        static let monster = CGSize(width: 100, height: 140)
         static let collectible = CGSize(width: 60, height: 60)
         static let obstacle = CGSize(width: 60, height: 60)
         static let tool = CGSize(width: 60, height: 60)
@@ -51,6 +51,7 @@ struct PhysicsConstants {
         static let floor = CGSize(width: 300, height: 60)
     }
 
-    static let jumpImpulse = CGVector(dx: 0, dy: 120)
-    static let runVelocity = CGVector(dx: 100, dy: 0)
+    static let jumpImpulse = CGVector(dx: 15, dy: 250)
+    static let runVelocity = CGVector(dx: 15, dy: 0)
+    static let maxRunVelocity = CGVector(dx: 250, dy: 0)
 }
