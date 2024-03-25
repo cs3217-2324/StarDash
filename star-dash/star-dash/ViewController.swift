@@ -43,6 +43,10 @@ class ViewController: UIViewController {
             return
         }
 
+        let camera = SDCameraObject()
+        camera.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
+        scene.addCameraObject(camera)
+
         let background = SDSpriteObject(imageNamed: "GameBackground")
         background.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
         background.zPosition = -1
@@ -80,6 +84,18 @@ extension ViewController: SDSceneDelegate {
         gameEngine?.update(by: deltaTime)
         gameBridge?.syncFromEntities()
 
+        updateCameraObjectPosition(scene)
+        updateOverlay()
+    }
+
+    private func updateCameraObjectPosition(_ scene: SDScene) {
+        guard let playerPosition = gameEngine?.playerPosition() else {
+            return
+        }
+        scene.setCameraObjectXPosition(to: playerPosition.x)
+    }
+
+    private func updateOverlay() {
         guard let gameInfo = gameEngine?.gameInfo() else {
             return
         }
@@ -89,7 +105,7 @@ extension ViewController: SDSceneDelegate {
         ))
     }
 
-    func contactOccured(objectA: SDObject, objectB: SDObject, contactPoint: CGPoint) {
+    func contactOccurred(objectA: SDObject, objectB: SDObject, contactPoint: CGPoint) {
         guard let entityA = gameBridge?.entityId(of: objectA.id),
               let entityB = gameBridge?.entityId(of: objectB.id) else {
             return

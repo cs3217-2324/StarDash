@@ -58,7 +58,8 @@ class ControlView: UIView {
 
     // MARK: Gesture handler methods
 
-    @objc func jumpButtonTapped() {
+    @objc
+    func jumpButtonTapped() {
         controlViewDelegate?.jumpButtonPressed()
     }
 
@@ -94,7 +95,8 @@ class ControlView: UIView {
         joystickView?.returnJoystick()
     }
 
-    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
+    @objc
+    func handlePan(_ gesture: UIPanGestureRecognizer) {
         guard let joystickView = self.joystickView else {
             return
         }
