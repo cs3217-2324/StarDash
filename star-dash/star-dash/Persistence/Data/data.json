@@ -6,19 +6,61 @@
     {
       "levelId": 0,
       "sprite": "Block",
-      "position": [2700, 150],
+      "position": [500, 150],
       "size": [100,100]
     },
     {
       "levelId": 0,
       "sprite": "Block",
-      "position": [2800, 150],
+      "position": [600, 150],
       "size": [100,100]
     },
     {
       "levelId": 0,
       "sprite": "Block",
-      "position": [2800, 250],
+      "position": [600, 250],
+      "size": [100,100]
+    },
+    {
+      "levelId": 0,
+      "sprite": "Block",
+      "position": [850, 350],
+      "size": [100,100]
+      },
+    {
+      "levelId": 0,
+      "sprite": "Block",
+      "position": [950, 350],
+      "size": [100,100]
+    },
+    {
+      "levelId": 0,
+      "sprite": "Block",
+      "position": [1100, 500],
+      "size": [100,100]
+    },
+    {
+      "levelId": 0,
+      "sprite": "Block",
+      "position": [1200, 500],
+      "size": [100,100]
+    },
+    {
+      "levelId": 0,
+      "sprite": "Block",
+      "position": [1300, 500],
+      "size": [100,100]
+    },
+    {
+      "levelId": 0,
+      "sprite": "Block",
+      "position": [1300, 500],
+      "size": [100,100]
+    },
+    {
+      "levelId": 0,
+      "sprite": "Block",
+      "position": [1300, 500],
       "size": [100,100]
     },
     
@@ -28,14 +70,14 @@
       {
         "levelId": 0,
         "sprite": "Star",
-        "position": [2600, 150],
+        "position": [400, 150],
         "size": [50,50],
         "points": 10
       },
       {
         "levelId": 0,
         "sprite": "Star",
-        "position": [2900, 450],
+        "position": [700, 450],
         "size": [50,50],
         "points": 10
       }
@@ -45,7 +87,7 @@
       {
         "levelId": 0,
         "sprite": "Tool",
-        "position": [2700, 250],
+        "position": [500, 250],
         "size": [50,50]
       },
   ],
@@ -53,7 +95,7 @@
       {
         "levelId": 0,
         "sprite": "Monster",
-        "position": [2900, 150],
+        "position": [700, 150],
         "size": [100,100],
         "health": 100
       },

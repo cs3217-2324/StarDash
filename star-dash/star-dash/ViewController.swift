@@ -54,12 +54,12 @@ class ViewController: UIViewController {
 
         let player = Player(
             playerIndex: 0,
-            position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 + 200),
+            position: CGPoint(x: 100, y: scene.size.height / 2 + 200),
             playerSprite: PlayerSprite.RedNose
         )
         player.setUpAndAdd(to: entityManager)
 
-        let floor = Floor(position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400))
+        let floor = Floor(position: CGPoint(x: 0, y: scene.size.height / 2 - 400))
         floor.setUpAndAdd(to: entityManager)
 
         if let level = self.storageManager?.getLevel(id: 0) {
@@ -92,7 +92,13 @@ extension ViewController: SDSceneDelegate {
         guard let playerPosition = gameEngine?.playerPosition() else {
             return
         }
-        scene.setCameraObjectXPosition(to: playerPosition.x)
+        let screenSize = UIScreen.main.bounds.size
+        let halfScreenWidth = screenSize.width / 2
+        if playerPosition.x >= halfScreenWidth + 200 {
+            scene.setCameraObjectXPosition(to: playerPosition.x)
+        } else {
+            scene.setCameraObjectXPosition(to: halfScreenWidth + 200)
+        }
     }
 
     private func updateOverlay() {
