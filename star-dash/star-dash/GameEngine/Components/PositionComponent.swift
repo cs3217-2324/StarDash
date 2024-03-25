@@ -22,6 +22,9 @@ class PositionComponent: Component {
     }
 
     func setPosition(position: CGPoint) {
+        if position == self.position {
+            return
+        }
         self.position = position
     }
 

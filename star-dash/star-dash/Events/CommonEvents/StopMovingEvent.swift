@@ -15,7 +15,6 @@ class StopMovingEvent: Event {
               let textureSet = spriteComponent.textureSet else {
             return
         }
-
         physicsComponent.velocity = .zero
         spriteComponent.textureAtlas = nil
     }

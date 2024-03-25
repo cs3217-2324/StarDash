@@ -41,6 +41,7 @@ class GameBridge {
         for (entityId, object) in entitiesMap {
             if let entity = entityManager.entity(of: entityId) {
                 update(entity: entity, from: object)
+
             }
         }
     }

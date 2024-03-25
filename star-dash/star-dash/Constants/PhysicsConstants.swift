@@ -51,6 +51,6 @@ struct PhysicsConstants {
         static let floor = CGSize(width: 300, height: 60)
     }
 
-    static let jumpImpulse = CGVector(dx: 0, dy: 80)
-    static let runVelocity = CGVector(dx: 50, dy: 0)
+    static let jumpImpulse = CGVector(dx: 0, dy: 120)
+    static let runVelocity = CGVector(dx: 100, dy: 0)
 }

@@ -5,18 +5,38 @@
   "obstacles": [
     {
       "levelId": 0,
-      "sprite": "",
-      "position": [100, 200],
-      "size": [10,10]
+      "sprite": "Block",
+      "position": [2700, 150],
+      "size": [100,100]
     },
+    {
+      "levelId": 0,
+      "sprite": "Block",
+      "position": [2800, 150],
+      "size": [100,100]
+    },
+    {
+      "levelId": 0,
+      "sprite": "Block",
+      "position": [2800, 250],
+      "size": [100,100]
+    },
+    
     
   ],
   "collectibles": [
       {
         "levelId": 0,
-        "sprite": "",
-        "position": [200, 200],
-        "size": [10,10],
+        "sprite": "Star",
+        "position": [2600, 150],
+        "size": [50,50],
+        "points": 10
+      },
+      {
+        "levelId": 0,
+        "sprite": "Star",
+        "position": [2900, 450],
+        "size": [50,50],
         "points": 10
       }
   ],
@@ -24,17 +44,17 @@
   "tools": [
       {
         "levelId": 0,
-        "sprite": "",
-        "position": [300, 200],
-        "size": [10,10]
+        "sprite": "Tool",
+        "position": [2700, 250],
+        "size": [50,50]
       },
   ],
   "monsters": [
       {
         "levelId": 0,
-        "sprite": "",
-        "position": [400, 100],
-        "size": [10,10],
+        "sprite": "Monster",
+        "position": [2900, 150],
+        "size": [100,100],
         "health": 100
       },
   ]

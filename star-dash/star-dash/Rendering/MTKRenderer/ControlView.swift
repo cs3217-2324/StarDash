@@ -72,10 +72,12 @@ class ControlView: UIView {
             return
         }
 
-        if shouldSendMoveEvent(location: firstTouch.location(in: self)) {
-            let isLeft = firstTouch.location(in: joystickView).x < joystickView.center.x
-            controlViewDelegate?.joystickMoved(toLeft: isLeft)
-        }
+//        if shouldSendMoveEvent(location: firstTouch.location(in: self)) {
+//            let isLeft = firstTouch.location(in: joystickView).x < joystickView.center.x
+//            controlViewDelegate?.joystickMoved(toLeft: isLeft)
+//        }
+        let isLeft = firstTouch.location(in: joystickView).x < joystickView.center.x
+        controlViewDelegate?.joystickMoved(toLeft: isLeft)
 
         joystickView.moveJoystick(location: firstTouch.location(in: joystickView))
     }

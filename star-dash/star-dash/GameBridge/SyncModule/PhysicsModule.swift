@@ -45,6 +45,10 @@ class PhysicsModule: SyncModule {
     }
 
     private func createRectanglePhysicsBody(physicsComponent: PhysicsComponent) -> SDPhysicsBody {
-        SDPhysicsBody(rectangleOf: CGSize(width: 50, height: 50))
+        if let size = physicsComponent.size {
+            return SDPhysicsBody(rectangleOf: size)
+        } else {
+            return SDPhysicsBody(rectangleOf: CGSize(width: 50, height: 50))
+        }
     }
 }

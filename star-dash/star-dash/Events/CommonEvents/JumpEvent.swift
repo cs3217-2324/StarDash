@@ -30,7 +30,6 @@ class JumpEvent: Event {
         }
         playerComponent.canJump = false
         playerComponent.canMove = false
-
         physicsSystem.applyImpulse(to: entityId, impulse: jumpImpulse)
     }
 }

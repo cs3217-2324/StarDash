@@ -51,7 +51,6 @@ extension SpriteModule: CreationModule {
 
             newObject = spriteObject
         }
-
         guard let positionComponent = entityManager.component(ofType: PositionComponent.self, of: entity.id) else {
             return nil
         }
