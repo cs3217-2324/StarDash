@@ -233,40 +233,36 @@ struct Database {
 
 extension Database {
     func insertJsonData() {
-        do {
-            if let fileURL = Bundle.main.url(forResource: "data", withExtension: "json") {
-                // Read JSON data from the file
-                do {
-                    let jsonData = try Data(contentsOf: fileURL)
-                    // Decode JSON data into LevelData
-                    let levelData = try JSONDecoder().decode(LevelData.self, from: jsonData)
-                    let levelPersistable = LevelPersistable(
-                        id: levelData.id,
-                        name: levelData.name,
-                        size: levelData.size
-                    )
-                    insert(persistable: levelPersistable)
-                    for persistable in levelData.collectibles {
-                        insert(persistable: persistable)
-                    }
-                    for persistable in levelData.tools {
-                        insert(persistable: persistable)
-                    }
-                    for persistable in levelData.obstacles {
-                        insert(persistable: persistable)
-                    }
-                    for persistable in levelData.monsters {
-                        insert(persistable: persistable)
-                    }
-
-                } catch {
-                    print("Error reading or decoding JSON: \(error)")
+        if let fileURL = Bundle.main.url(forResource: "data", withExtension: "json") {
+            // Read JSON data from the file
+            do {
+                let jsonData = try Data(contentsOf: fileURL)
+                // Decode JSON data into LevelData
+                let levelData = try JSONDecoder().decode(LevelData.self, from: jsonData)
+                let levelPersistable = LevelPersistable(
+                    id: levelData.id,
+                    name: levelData.name,
+                    size: levelData.size
+                )
+                insert(persistable: levelPersistable)
+                for persistable in levelData.collectibles {
+                    insert(persistable: persistable)
                 }
-            } else {
-                print("JSON file not found.")
+                for persistable in levelData.tools {
+                    insert(persistable: persistable)
+                }
+                for persistable in levelData.obstacles {
+                    insert(persistable: persistable)
+                }
+                for persistable in levelData.monsters {
+                    insert(persistable: persistable)
+                }
+
+            } catch {
+                print("Error reading or decoding JSON: \(error)")
             }
-           } catch {
-              print(error)
+        } else {
+            print("JSON file not found.")
         }
     }
 

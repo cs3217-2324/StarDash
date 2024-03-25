@@ -858,8 +858,6 @@
 				E69EE9322BAC6CBB00033AB5 /* GameInfo.swift in Sources */,
 				46D418222BA5D4E60091A38B /* Obstacle+Collidable.swift in Sources */,
 				E638B9CF2BAB3C5D00931CC2 /* TeleportEvent.swift in Sources */,
-				E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */,
-				E6A745182BA057040080C1BE /* Renderer.swift in Sources */,
 				143AA3972BA4E0D9009C28E7 /* PickupCollectibleEvent.swift in Sources */,
 				46D418242BA5D5280091A38B /* Tool+Collidable.swift in Sources */,
 				E64361142BA4C2CD003850FD /* CreationModule.swift in Sources */,
