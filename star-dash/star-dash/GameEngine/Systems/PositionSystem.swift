@@ -11,11 +11,13 @@ class PositionSystem: System {
     var isActive: Bool
     var dispatcher: EventModifiable?
     var entityManager: EntityManager
+    var eventHandlers: [ObjectIdentifier: (Event) -> Void] = [:]
 
     init(_ entityManager: EntityManager, dispatcher: EventModifiable? = nil) {
         self.isActive = true
         self.entityManager = entityManager
         self.dispatcher = dispatcher
+        setUp()
     }
 
     func move(entityId: EntityId, to newPosition: CGPoint) {
@@ -40,6 +42,20 @@ class PositionSystem: System {
         }
 
         return positionComponent.position
+    }
+
+    func setUp() {
+        dispatcher?.registerListener(for: TeleportEvent.self, listener: self)
+
+        eventHandlers[ObjectIdentifier(TeleportEvent.self)] = { event in
+            if let teleportEvent = event as? TeleportEvent {
+                self.handleTeleportEvent(event: teleportEvent)
+            }
+        }
+    }
+
+    private func handleTeleportEvent(event: TeleportEvent) {
+        move(entityId: event.entityId, to: event.destination)
     }
 
     private func getPositionComponent(of entityId: EntityId) -> PositionComponent? {

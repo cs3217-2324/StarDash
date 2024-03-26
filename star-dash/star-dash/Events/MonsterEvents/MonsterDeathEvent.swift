@@ -15,8 +15,4 @@ class MonsterDeathEvent: Event {
         self.timestamp = Date.now
         self.entityId = entityId
     }
-
-    func execute(on target: EventModifiable) {
-        target.add(event: RemoveEvent(on: entityId))
-    }
 }

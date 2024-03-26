@@ -11,15 +11,4 @@ class PlayerFloorContactEvent: Event {
         self.entityId = playerEntityId
         self.contactPoint = contactPoint
     }
-
-    func execute(on target: EventModifiable) {
-        guard let positionComponent = target.component(ofType: PositionComponent.self, ofEntity: entityId),
-              let playerComponent = target.component(ofType: PlayerComponent.self, ofEntity: entityId),
-              positionComponent.position.y > contactPoint.y else {
-            return
-        }
-
-        playerComponent.canJump = true
-        playerComponent.canMove = true
-    }
 }

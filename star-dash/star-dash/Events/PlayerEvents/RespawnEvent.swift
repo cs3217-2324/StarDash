@@ -18,8 +18,4 @@ class RespawnEvent: Event {
         self.entityId = entityId
         self.newPosition = newPosition
     }
-
-    func execute(on target: EventModifiable) {
-        target.add(event: TeleportEvent(on: entityId, to: newPosition))
-    }
 }
