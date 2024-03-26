@@ -43,8 +43,8 @@ class PlayerView {
         overlayView.update(score: score)
     }
 
-    static func createPlayerView(superview: UIView, device: MTLDevice) -> PlayerView {
-        let playerView = PlayerView(superview: superview, device: device)
+    static func createPlayerView(layout: PlayerViewLayout, device: MTLDevice) -> PlayerView {
+        let playerView = PlayerView(superview: layout.superview, device: device)
         playerView.setupSubviews()
         return playerView
     }

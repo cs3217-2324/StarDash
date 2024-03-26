@@ -8,6 +8,8 @@ public class GameScene: SKScene {
 
     private var objectMap: [SKNode: SDObject] = [:]
 
+    private cameraPlayerMap: [Int: SDCameraObject]
+
     override public func sceneDidLoad() {
         super.sceneDidLoad()
 
@@ -21,15 +23,31 @@ public class GameScene: SKScene {
             lastUpdateTime = currentTime
             return
         }
-
         let deltaTime = currentTime - lastUpdateTime
         self.lastUpdateTime = currentTime
 
+        self.updateCameras()
         sceneDelegate?.update(self, deltaTime: deltaTime)
+    }
+
+    func updateCameras() {
+        for camera in cameraPlayerMap.values {
+           camera.update()
+        }
+    }
+
+    func camera(of playerIndex: Int) -> SKCameraNode? {
+        cameraPlayerMap[playerIndex]?.node
     }
 }
 
 extension GameScene: SDScene {
+    public func addPlayerObject(_ playerObject: SDObject) {
+        let camera = SDCameraObject()
+        addObject(camera)
+        addObject(playerObject)
+    }
+
     public func addObject(_ object: SDObject) {
         guard objectMap[object.node] == nil else {
             return
@@ -42,15 +60,6 @@ extension GameScene: SDScene {
     public func removeObject(_ object: SDObject) {
         objectMap[object.node] = nil
         object.removeFromParent()
-    }
-
-    public func addCameraObject(_ cameraObject: SDCameraObject) {
-        addObject(cameraObject)
-        camera = cameraObject.cameraNode
-    }
-
-    public func setCameraObjectXPosition(to x: CGFloat) {
-        camera?.position.x = x
     }
 }
 

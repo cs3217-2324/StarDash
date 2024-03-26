@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         }
 
         renderer.viewDelegate = self
-        renderer.createSinglePlayerView(at: self.view)
+        renderer.setupViews(at: self.view, for: 1)
         self.renderer = renderer
     }
 
@@ -42,10 +42,6 @@ class ViewController: UIViewController {
               let entityManager = gameEngine?.entityManager else {
             return
         }
-
-        let camera = SDCameraObject()
-        camera.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
-        scene.addCameraObject(camera)
 
         let background = SDSpriteObject(imageNamed: "GameBackground")
         background.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
