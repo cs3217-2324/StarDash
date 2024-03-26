@@ -17,7 +17,6 @@ struct CollisionHandler {
     }
 
     static func between(player: Player, obstacle: Obstacle) -> Event? {
-        print("Obstacle contact")
         return PlayerObstacleContactEvent(from: player.id, on: obstacle.id)
     }
 
@@ -30,7 +29,6 @@ struct CollisionHandler {
     }
 
     static func between(player: Player, tool: Tool) -> Event? {
-        print("Tool contact")
         return PlayerToolContactEvent(from: player.id, on: tool.id)
     }
 

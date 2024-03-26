@@ -54,7 +54,7 @@ class ControlView: UIView {
     private func setupGestureRecognizers() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         panGesture.cancelsTouchesInView = false
-
+        
         addGestureRecognizer(panGesture)
     }
 
@@ -109,12 +109,14 @@ class ControlView: UIView {
             joystickView.returnJoystick()
         } else if location.x < self.frame.width / 2 {
             joystickView.moveJoystick(location: gesture.location(in: joystickView))
-
             if shouldSendMoveEvent(location: location) {
                 let isLeft = gesture.location(in: joystickView).x < joystickView.center.x
                 controlViewDelegate?.joystickMoved(toLeft: isLeft)
             }
+        } else {
+            print("123")
         }
+        
     }
 
     private func shouldSendMoveEvent(location: CGPoint) -> Bool {

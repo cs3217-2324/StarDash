@@ -19,18 +19,4 @@ class JumpEvent: Event {
         self.jumpImpulse = jumpImpulse
     }
 
-    func execute(on target: EventModifiable) {
-        guard let physicsSystem = target.system(ofType: PhysicsSystem.self) else {
-            return
-        }
-
-        guard let playerComponent = target.component(ofType: PlayerComponent.self, ofEntity: entityId),
-              let physicsComponent = target.component(ofType: PhysicsComponent.self, ofEntity: entityId),
-              playerComponent.canJump else {
-            return
-        }
-        playerComponent.canJump = false
-        playerComponent.canMove = false
-        physicsSystem.applyImpulse(to: entityId, impulse: jumpImpulse)
-    }
 }

@@ -21,4 +21,12 @@ struct GameConstants {
     struct ScoreChange {
         static let pickupCollectible = 100
     }
+
+    struct DamageImpulse {
+        static let attackedByMonster = CGVector(dx: 500, dy: 0)
+    }
+
+    struct AttackImpulse {
+        static let attackedByPlayer = CGVector(dx: 0, dy: 400)
+    }
 }

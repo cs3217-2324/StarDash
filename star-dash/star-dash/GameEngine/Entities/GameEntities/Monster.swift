@@ -35,7 +35,6 @@ class Monster: Entity {
                                               textureAtlas: nil,
                                               size: self.size)
         physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.monster
-        physicsComponent.affectedByGravity = false
 
         to.add(entity: self)
         to.add(component: positionComponent)

@@ -19,17 +19,4 @@ class MoveEvent: Event {
         self.toLeft = toLeft
     }
 
-    func execute(on target: EventModifiable) {
-        guard let physicsComponent = target.component(ofType: PhysicsComponent.self, ofEntity: entityId),
-              let spriteComponent = target.component(ofType: SpriteComponent.self, ofEntity: entityId),
-              let textureSet = spriteComponent.textureSet else {
-            return
-        }
-        var newVelocity = physicsComponent.velocity + (toLeft ? -1 : 1) * PhysicsConstants.runVelocity
-        if newVelocity.dx > PhysicsConstants.maxRunVelocity.dx {
-            newVelocity = PhysicsConstants.maxRunVelocity * (toLeft ? -1 : 1)
-        }
-        physicsComponent.velocity = newVelocity
-        spriteComponent.textureAtlas = textureSet.run
-    }
 }

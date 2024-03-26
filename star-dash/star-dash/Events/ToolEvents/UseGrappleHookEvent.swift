@@ -15,8 +15,4 @@ class UseGrappleHookEvent: Event {
         self.timestamp = Date.now
         entityId = playerEntityId
     }
-
-    func execute(on target: EventModifiable) {
-        // TODO: Shoot graple hook from player position
-    }
 }
