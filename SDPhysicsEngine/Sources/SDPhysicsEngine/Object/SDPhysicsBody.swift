@@ -5,6 +5,9 @@ public class SDPhysicsBody {
 
     public init(rectangleOf size: CGSize) {
         body = SKPhysicsBody(rectangleOf: size)
+        body.friction = 0
+        body.linearDamping = 0
+        body.restitution = 0
     }
 
     public init(circleOf radius: CGFloat) {
@@ -22,8 +25,8 @@ public class SDPhysicsBody {
     }
 
     public var force: CGVector {
-        // get { body.force }
-        // set { body.force = newValue }
+//         get { body.force }
+//         set { body.force = newValue }
         CGVector(dx: 0, dy: 0)
     }
 
@@ -40,6 +43,11 @@ public class SDPhysicsBody {
     public var isDynamic: Bool {
         get { body.isDynamic }
         set { body.isDynamic = newValue }
+    }
+
+    public var linearDamping: CGFloat {
+        get { body.linearDamping }
+        set { body.linearDamping = newValue }
     }
 
     public var categoryBitMask: UInt32 {
