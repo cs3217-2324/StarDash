@@ -15,11 +15,4 @@ class RemoveEvent: Event {
         timestamp = Date.now
         self.entityId = entityId
     }
-
-    func execute(on target: EventModifiable) {
-        guard let entity = target.entity(with: entityId) else {
-            return
-        }
-        target.remove(entity: entity)
-    }
 }

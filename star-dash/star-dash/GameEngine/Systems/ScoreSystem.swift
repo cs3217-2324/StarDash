@@ -11,11 +11,13 @@ class ScoreSystem: System {
     var isActive: Bool
     var dispatcher: EventModifiable?
     var entityManager: EntityManager
+    var eventHandlers: [ObjectIdentifier: (Event) -> Void] = [:]
 
     init(_ entityManager: EntityManager, dispatcher: EventModifiable? = nil) {
         self.isActive = true
         self.entityManager = entityManager
         self.dispatcher = dispatcher
+        setUp()
     }
 
     func score(of entityId: EntityId) -> Int? {
@@ -32,6 +34,26 @@ class ScoreSystem: System {
         }
 
         scoreComponent.score += scoreChange
+    }
+
+    func setUp() {
+        dispatcher?.registerListener(for: PickupCollectibleEvent.self, listener: self)
+
+        eventHandlers[ObjectIdentifier(PickupCollectibleEvent.self)] = { event in
+            if let pickupCollectibleEvent = event as? PickupCollectibleEvent {
+                self.handlePickupCollectibleEvent(event: pickupCollectibleEvent)
+            }
+        }
+    }
+
+    private func handlePickupCollectibleEvent(event: PickupCollectibleEvent) {
+        guard let pointsComponent = entityManager.component(ofType: PointsComponent.self,
+                                                            of: event.collectibleEntityId) else {
+            return
+        }
+
+        applyScoreChange(to: event.entityId, scoreChange: pointsComponent.points)
+        dispatcher?.add(event: RemoveEvent(on: event.collectibleEntityId))
     }
 
     private func getScoreComponent(of entityId: EntityId) -> ScoreComponent? {

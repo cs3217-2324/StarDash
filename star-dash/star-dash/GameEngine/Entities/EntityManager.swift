@@ -16,6 +16,7 @@ class EntityManager {
     var componentMap: ComponentMap
     var entityMap: EntityMap
     var entityComponentMap: EntityComponentMap
+
     init(componentMap: ComponentMap, entityMap: EntityMap, entityComponentMap: EntityComponentMap) {
         self.componentMap = componentMap
         self.entityMap = entityMap
@@ -58,7 +59,7 @@ class EntityManager {
     }
 
     func playerEntityId() -> EntityId? {
-        // TOODO: Add parameter to specify the player index 
+        // TODO: Add parameter to specify the player index 
         for entityId in entityMap.keys where component(ofType: PlayerComponent.self, of: entityId) != nil {
             return entityId
         }

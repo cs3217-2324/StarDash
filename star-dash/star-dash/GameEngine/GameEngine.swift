@@ -85,6 +85,12 @@ class GameEngine {
         systemManager.add(PositionSystem(entityManager, dispatcher: self))
         systemManager.add(PhysicsSystem(entityManager, dispatcher: self))
         systemManager.add(ScoreSystem(entityManager, dispatcher: self))
+        systemManager.add(HealthSystem(entityManager, dispatcher: self))
+        systemManager.add(InventorySystem(entityManager, dispatcher: self))
+        systemManager.add(AttackSystem(entityManager, dispatcher: self))
+        systemManager.add(PlayerSystem(entityManager, dispatcher: self))
+        systemManager.add(CollisionSystem(entityManager, dispatcher: self))
+        systemManager.add(MonsterSystem(entityManager, dispatcher: self))
     }
 }
 
@@ -111,6 +117,10 @@ extension GameEngine: EventModifiable {
 
     func remove(entity: Entity) {
         entityManager.remove(entity: entity)
+    }
+
+    func registerListener<T: Event>(for eventType: T.Type, listener: EventListener) {
+        eventManager.registerListener(for: eventType, listener: listener)
     }
 }
 
