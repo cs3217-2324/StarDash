@@ -21,7 +21,7 @@ class MTKRenderer: NSObject, Renderer {
 
     var viewDelegate: ViewDelegate?
 
-    init?(scene: GameScene, numberOfPlayers) {
+    init?(scene: GameScene) {
         self.scene = scene
 
         guard let device = MTLCreateSystemDefaultDevice(),
@@ -50,20 +50,12 @@ class MTKRenderer: NSObject, Renderer {
         }
     }
 
-    func camera(of view: MTKView) -> SKCameraNode? {
-        guard let playerIndex = playerIndex(from: view) {
-            return nil
-        }
-
-        return self.scene.camera(of: playerIndex)
-    }
-
     func updateOverlay(overlayInfo: OverlayInfo) {
-        playerViews[0]?.updateOverlay(score: overlayInfo.score)
+        playerViews[0].updateOverlay(score: overlayInfo.score)
     }
 
     private func playerIndex(from mtkView: MTKView) -> Int? {
-        for i in 0..<playerViews.length where playerViews[i]?.sceneView == mtkView {
+        for i in 0..<playerViews.count where playerViews[i].sceneView == mtkView {
             return i
         }
 
@@ -79,13 +71,14 @@ extension MTKRenderer: MTKViewDelegate {
     func draw(in view: MTKView) {
         guard let renderPassDescriptor = view.currentRenderPassDescriptor,
               let commandBuffer = commandQueue.makeCommandBuffer(),
-              let drawable = view.currentDrawable else {
+              let drawable = view.currentDrawable,
+              let playerIndex = playerIndex(from: view) else {
             return
         }
         let viewport = CGRect(x: 0, y: 0, width: view.drawableSize.width, height: view.drawableSize.height)
 
         renderer.update(atTime: CACurrentMediaTime())
-        renderer.camera = camera(of: view)        
+        scene.useCamera(of: playerIndex)
         renderer.render(
             withViewport: viewport,
             commandBuffer: commandBuffer,

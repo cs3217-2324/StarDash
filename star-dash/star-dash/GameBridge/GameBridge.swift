@@ -85,7 +85,7 @@ class GameBridge {
             $0.create(for: newObject, from: entity)
         }
 
-        if type(of: entity) == PlayerEntity.self {
+        if type(of: entity) == Player.self {
             self.scene.addPlayerObject(newObject)
         } else {
             self.scene.addObject(newObject)

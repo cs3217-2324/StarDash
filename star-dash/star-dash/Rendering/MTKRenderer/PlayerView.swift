@@ -36,7 +36,7 @@ class PlayerView {
     }
 
     func setDrawDelegate(_ delegate: MTKViewDelegate) {
-        sceneView.delegate = drawDelegate
+        sceneView.delegate = delegate
     }
 
     func updateOverlay(score: Int) {

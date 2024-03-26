@@ -8,7 +8,7 @@ public class GameScene: SKScene {
 
     private var objectMap: [SKNode: SDObject] = [:]
 
-    private cameraPlayerMap: [Int: SDCameraObject]
+    private var cameraPlayerMap: [Int: SDCameraObject] = [:]
 
     override public func sceneDidLoad() {
         super.sceneDidLoad()
@@ -36,8 +36,12 @@ public class GameScene: SKScene {
         }
     }
 
-    func camera(of playerIndex: Int) -> SKCameraNode? {
-        cameraPlayerMap[playerIndex]?.node
+    public func useCamera(of playerIndex: Int) {
+        guard let cameraObject = cameraPlayerMap[playerIndex] else {
+            return
+        }
+        
+        self.camera = cameraObject.cameraNode
     }
 }
 

@@ -108,6 +108,8 @@
 		E69FDDE42BADC2F10089D5F3 /* SpriteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69FDDE32BADC2F10089D5F3 /* SpriteConstants.swift */; };
 		E69FDDE62BADD11B0089D5F3 /* StopMovingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69FDDE52BADD11B0089D5F3 /* StopMovingEvent.swift */; };
 		E6A011172BA5F4AD006904D9 /* EntitySyncInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A011162BA5F4AD006904D9 /* EntitySyncInterface.swift */; };
+		E6A72FC52BB2E1E10015729E /* PlayerViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A72FC32BB2E1E10015729E /* PlayerViewLayout.swift */; };
+		E6A72FC62BB2E1E10015729E /* LayoutUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A72FC42BB2E1E10015729E /* LayoutUtils.swift */; };
 		E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745112BA057040080C1BE /* MTKRenderer.swift */; };
 		E6A745172BA057040080C1BE /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745122BA057040080C1BE /* ControlView.swift */; };
 		E6A745182BA057040080C1BE /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745132BA057040080C1BE /* Renderer.swift */; };
@@ -256,6 +258,8 @@
 		E69FDDE32BADC2F10089D5F3 /* SpriteConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteConstants.swift; sourceTree = "<group>"; };
 		E69FDDE52BADD11B0089D5F3 /* StopMovingEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopMovingEvent.swift; sourceTree = "<group>"; };
 		E6A011162BA5F4AD006904D9 /* EntitySyncInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntitySyncInterface.swift; sourceTree = "<group>"; };
+		E6A72FC32BB2E1E10015729E /* PlayerViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewLayout.swift; sourceTree = "<group>"; };
+		E6A72FC42BB2E1E10015729E /* LayoutUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutUtils.swift; sourceTree = "<group>"; };
 		E6A745112BA057040080C1BE /* MTKRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKRenderer.swift; sourceTree = "<group>"; };
 		E6A745122BA057040080C1BE /* ControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
 		E6A745132BA057040080C1BE /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
@@ -618,11 +622,21 @@
 			path = GameBridge;
 			sourceTree = "<group>";
 		};
+		E6A72FC22BB2E1E10015729E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E6A72FC32BB2E1E10015729E /* PlayerViewLayout.swift */,
+				E6A72FC42BB2E1E10015729E /* LayoutUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		E6A745102BA057040080C1BE /* Rendering */ = {
 			isa = PBXGroup;
 			children = (
-				E69EE9332BAC6CC300033AB5 /* OverlayInfo.swift */,
+				E6A72FC22BB2E1E10015729E /* Utils */,
 				E6B5509F2BA15D2000DC7396 /* MTKRenderer */,
+				E69EE9332BAC6CC300033AB5 /* OverlayInfo.swift */,
 				E6A745132BA057040080C1BE /* Renderer.swift */,
 				E6B0AAD02BAAE3DC009CB939 /* ViewDelegate.swift */,
 				E6B0AAD22BAAE438009CB939 /* ControlViewDelegate.swift */,
@@ -838,6 +852,7 @@
 				4E86605F2BA095E30035530D /* Collectible.swift in Sources */,
 				E64361122BA4C2CD003850FD /* ObjectModule.swift in Sources */,
 				4E59E2532BAB3061007B3FA7 /* Database.swift in Sources */,
+				E6A72FC52BB2E1E10015729E /* PlayerViewLayout.swift in Sources */,
 				4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */,
 				143AA3952BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift in Sources */,
 				143AA3932BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift in Sources */,
@@ -879,6 +894,7 @@
 				E64361142BA4C2CD003850FD /* CreationModule.swift in Sources */,
 				4E59E2612BAB42FD007B3FA7 /* LevelPersistable.swift in Sources */,
 				460A200B2BB1D04F002597B8 /* AttackSystem.swift in Sources */,
+				E6A72FC62BB2E1E10015729E /* LayoutUtils.swift in Sources */,
 				E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */,
 				E6A745182BA057040080C1BE /* Renderer.swift in Sources */,
 				4E59E25F2BAB4134007B3FA7 /* EntityType.swift in Sources */,
