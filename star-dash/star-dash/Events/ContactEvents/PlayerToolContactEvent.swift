@@ -16,8 +16,4 @@ class PlayerToolContactEvent: Event {
         self.entityId = playerEntityId
         self.toolId = toolEntityId
     }
-
-    func execute(on target: EventModifiable) {
-        target.add(event: RemoveEvent(on: self.toolId))
-    }
 }

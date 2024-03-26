@@ -17,7 +17,7 @@ class InventorySystem: System {
         self.isActive = true
         self.entityManager = entityManager
         self.dispatcher = dispatcher
-        setUp()
+        setup()
     }
 
     func enqueueItem(for entityId: EntityId, with powerupEntityId: EntityId) {
@@ -36,7 +36,7 @@ class InventorySystem: System {
         return inventoryComponent.inventory.removeFirst()
     }
 
-    func setUp() {}
+    func setup() {}
 
     private func getInventoryComponent(of entityId: EntityId) -> InventoryComponent? {
         entityManager.component(ofType: InventoryComponent.self, of: entityId)

@@ -11,5 +11,4 @@ class PlayerFloorContactEvent: Event {
         self.entityId = playerEntityId
         self.contactPoint = contactPoint
     }
-    
 }

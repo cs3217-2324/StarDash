@@ -54,7 +54,7 @@ class ControlView: UIView {
     private func setupGestureRecognizers() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         panGesture.cancelsTouchesInView = false
-        
+
         addGestureRecognizer(panGesture)
     }
 
@@ -116,7 +116,6 @@ class ControlView: UIView {
         } else {
             print("123")
         }
-        
     }
 
     private func shouldSendMoveEvent(location: CGPoint) -> Bool {

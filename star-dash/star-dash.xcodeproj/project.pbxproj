@@ -316,6 +316,7 @@
 				14E247942BA2CB480071FFC0 /* EventManager.swift */,
 				145F2C832BA22CA300457549 /* EventModifiable.swift */,
 				460A20082BB1B524002597B8 /* EventListener.swift */,
+				14D14B782BA5ABAC00386C3B /* MonsterEvents */,
 				1471B0AB2BA6AE4400878B14 /* ToolEvents */,
 				14D14B742BA5A72800386C3B /* PlayerEvents */,
 				14D14B772BA5AB0700386C3B /* ContactEvents */,
@@ -338,7 +339,6 @@
 				143AA3962BA4E0D9009C28E7 /* PickupCollectibleEvent.swift */,
 				1471B0A12BA6AA2200878B14 /* RespawnEvent.swift */,
 				1471B0A32BA6AAF200878B14 /* PlayerDeathEvent.swift */,
-				14D14B782BA5ABAC00386C3B /* MonsterEvents */,
 			);
 			path = PlayerEvents;
 			sourceTree = "<group>";

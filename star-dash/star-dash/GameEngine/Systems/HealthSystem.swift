@@ -17,7 +17,7 @@ class HealthSystem: System {
         self.isActive = true
         self.entityManager = entityManager
         self.dispatcher = dispatcher
-        setUp()
+        setup()
     }
 
     func hasHealth(for entityId: EntityId) -> Bool {
@@ -36,7 +36,7 @@ class HealthSystem: System {
         healthComponent.health += healthChange
     }
 
-    func setUp() {}
+    func setup() {}
 
     private func getHealthComponent(of entityId: EntityId) -> HealthComponent? {
         entityManager.component(ofType: HealthComponent.self, of: entityId)
