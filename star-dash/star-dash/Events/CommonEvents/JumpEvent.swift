@@ -18,4 +18,5 @@ class JumpEvent: Event {
         self.entityId = entityId
         self.jumpImpulse = jumpImpulse
     }
+
 }

@@ -8,4 +8,5 @@ class StopMovingEvent: Event {
         timestamp = Date.now
         self.entityId = entityId
     }
+
 }

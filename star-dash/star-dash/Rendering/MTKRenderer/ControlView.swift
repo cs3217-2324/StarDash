@@ -53,6 +53,8 @@ class ControlView: UIView {
 
     private func setupGestureRecognizers() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        panGesture.cancelsTouchesInView = false
+
         addGestureRecognizer(panGesture)
     }
 
@@ -73,10 +75,12 @@ class ControlView: UIView {
             return
         }
 
-        if shouldSendMoveEvent(location: firstTouch.location(in: self)) {
-            let isLeft = firstTouch.location(in: joystickView).x < joystickView.center.x
-            controlViewDelegate?.joystickMoved(toLeft: isLeft)
-        }
+//        if shouldSendMoveEvent(location: firstTouch.location(in: self)) {
+//            let isLeft = firstTouch.location(in: joystickView).x < joystickView.center.x
+//            controlViewDelegate?.joystickMoved(toLeft: isLeft)
+//        }
+        let isLeft = firstTouch.location(in: joystickView).x < joystickView.center.x
+        controlViewDelegate?.joystickMoved(toLeft: isLeft)
 
         joystickView.moveJoystick(location: firstTouch.location(in: joystickView))
     }
@@ -103,9 +107,11 @@ class ControlView: UIView {
         if gesture.state == .ended {
             controlViewDelegate?.joystickReleased()
             joystickView.returnJoystick()
-        } else if location.x < self.frame.width / 2 {
-            joystickView.moveJoystick(location: gesture.location(in: joystickView))
+            return
+        }
 
+        if location.x < self.frame.width / 2 {
+            joystickView.moveJoystick(location: gesture.location(in: joystickView))
             if shouldSendMoveEvent(location: location) {
                 let isLeft = gesture.location(in: joystickView).x < joystickView.center.x
                 controlViewDelegate?.joystickMoved(toLeft: isLeft)

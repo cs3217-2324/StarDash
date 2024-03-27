@@ -50,7 +50,7 @@ class ViewController: UIViewController {
 
         let player = Player(
             playerIndex: 0,
-            position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 + 200),
+            position: CGPoint(x: 100, y: scene.size.height / 2 + 200),
             playerSprite: PlayerSprite.RedNose
         )
         player.setUpAndAdd(to: entityManager)

@@ -17,13 +17,15 @@ class CollisionSystem: System {
         self.isActive = true
         self.entityManager = entityManager
         self.dispatcher = dispatcher
-        setUp()
+        setup()
     }
 
-    func setUp() {
+    func setup() {
         dispatcher?.registerListener(for: RemoveEvent.self, listener: self)
         dispatcher?.registerListener(for: PlayerFloorContactEvent.self, listener: self)
         dispatcher?.registerListener(for: PlayerMonsterContactEvent.self, listener: self)
+        dispatcher?.registerListener(for: PlayerObstacleContactEvent.self, listener: self)
+        dispatcher?.registerListener(for: PlayerToolContactEvent.self, listener: self)
 
         eventHandlers[ObjectIdentifier(RemoveEvent.self)] = { event in
             if let removeEvent = event as? RemoveEvent {
@@ -38,6 +40,16 @@ class CollisionSystem: System {
         eventHandlers[ObjectIdentifier(PlayerMonsterContactEvent.self)] = { event in
             if let playerMonsterContactEvent = event as? PlayerMonsterContactEvent {
                 self.handlePlayerMonsterContactEvent(event: playerMonsterContactEvent)
+            }
+        }
+        eventHandlers[ObjectIdentifier(PlayerObstacleContactEvent.self)] = { event in
+            if let playerObstacleContactEvent = event as? PlayerObstacleContactEvent {
+                self.handlePlayerObstacleContactEvent(event: playerObstacleContactEvent)
+            }
+        }
+        eventHandlers[ObjectIdentifier(PlayerToolContactEvent.self)] = { event in
+            if let playerToolContactEvent = event as? PlayerToolContactEvent {
+                self.handlePlayerToolContactEvent(event: playerToolContactEvent)
             }
         }
     }
@@ -83,5 +95,22 @@ class CollisionSystem: System {
         } else {
             dispatcher?.add(event: MonsterAttackPlayerEvent(from: event.monsterId, on: event.entityId))
         }
+    }
+
+    private func handlePlayerObstacleContactEvent(event: PlayerObstacleContactEvent) {
+        guard let playerPositionComponent = entityManager.component(ofType: PositionComponent.self, of: event.entityId),
+              let obstaclePositionComponent = entityManager.component(ofType: PositionComponent.self,
+                                                                      of: event.obstacleId),
+              let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: event.entityId),
+              playerPositionComponent.position.y > obstaclePositionComponent.position.y else {
+            return
+        }
+
+        playerComponent.canJump = true
+        playerComponent.canMove = true
+    }
+
+    private func handlePlayerToolContactEvent(event: PlayerToolContactEvent) {
+        dispatcher?.add(event: RemoveEvent(on: event.toolId))
     }
 }

@@ -25,11 +25,17 @@ class Obstacle: Entity {
 
     func setUpAndAdd(to: EntityManager) {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
-        let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.obstacle)
+        let physicsComponent = PhysicsComponent(entityId: self.id, size: self.size)
+        let spriteComponent = SpriteComponent(entityId: self.id,
+                                              image: self.sprite,
+                                              textureSet: nil,
+                                              textureAtlas: nil,
+                                              size: self.size)
         physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.obstacle
-
+        physicsComponent.isDynamic = false
         to.add(entity: self)
         to.add(component: positionComponent)
         to.add(component: physicsComponent)
+        to.add(component: spriteComponent)
     }
 }

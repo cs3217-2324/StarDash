@@ -39,7 +39,7 @@ class Player: Entity {
             image: SpriteConstants.PlayerRedNose,
             textureSet: SpriteConstants.PlayerRedNoseTexture,
             textureAtlas: nil,
-            size: CGSize(width: 100, height: 140)
+            size: PhysicsConstants.Dimensions.player
         )
         let scoreComponent = ScoreComponent(entityId: self.id, score: 0)
 

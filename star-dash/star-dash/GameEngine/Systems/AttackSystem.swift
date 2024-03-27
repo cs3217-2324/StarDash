@@ -17,10 +17,10 @@ class AttackSystem: System {
         self.isActive = true
         self.entityManager = entityManager
         self.dispatcher = dispatcher
-        setUp()
+        setup()
     }
 
-    func setUp() {
+    func setup() {
         dispatcher?.registerListener(for: MonsterAttackPlayerEvent.self, listener: self)
         dispatcher?.registerListener(for: PlayerAttackMonsterEvent.self, listener: self)
 
