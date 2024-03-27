@@ -621,6 +621,18 @@
 			path = SyncModule;
 			sourceTree = "<group>";
 		};
+		E64F31682BB400CB00EC5371 /* PlayerView */ = {
+			isa = PBXGroup;
+			children = (
+				E6A7451A2BA0C1890080C1BE /* PlayerView.swift */,
+				E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */,
+				E6A745122BA057040080C1BE /* ControlView.swift */,
+				E6B550A02BA15E9C00DC7396 /* OverlayView.swift */,
+				E6B0AAD22BAAE438009CB939 /* ControlViewDelegate.swift */,
+			);
+			path = PlayerView;
+			sourceTree = "<group>";
+		};
 		E6A011152BA5D111006904D9 /* GameBridge */ = {
 			isa = PBXGroup;
 			children = (
@@ -644,11 +656,11 @@
 			isa = PBXGroup;
 			children = (
 				E6A72FC22BB2E1E10015729E /* Utils */,
-				E6B5509F2BA15D2000DC7396 /* MTKRenderer */,
-				E69EE9332BAC6CC300033AB5 /* OverlayInfo.swift */,
+				E64F31682BB400CB00EC5371 /* PlayerView */,
 				E6A745132BA057040080C1BE /* Renderer.swift */,
+				E6A745112BA057040080C1BE /* MTKRenderer.swift */,
 				E6B0AAD02BAAE3DC009CB939 /* ViewDelegate.swift */,
-				E6B0AAD22BAAE438009CB939 /* ControlViewDelegate.swift */,
+				E69EE9332BAC6CC300033AB5 /* OverlayInfo.swift */,
 			);
 			path = Rendering;
 			sourceTree = "<group>";
@@ -658,18 +670,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E6B5509F2BA15D2000DC7396 /* MTKRenderer */ = {
-			isa = PBXGroup;
-			children = (
-				E6A745112BA057040080C1BE /* MTKRenderer.swift */,
-				E6A7451A2BA0C1890080C1BE /* PlayerView.swift */,
-				E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */,
-				E6A745122BA057040080C1BE /* ControlView.swift */,
-				E6B550A02BA15E9C00DC7396 /* OverlayView.swift */,
-			);
-			path = MTKRenderer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
