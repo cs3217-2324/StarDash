@@ -29,7 +29,8 @@ class Floor: Entity {
         physicsComponent.categoryBitMask = PhysicsConstants.CollisionCategory.floor
         physicsComponent.contactTestMask = PhysicsConstants.ContactMask.floor
         physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.floor
-
+        physicsComponent.affectedByGravity = false
+        physicsComponent.mass = CGFloat(100)
         to.add(entity: self)
         to.add(component: positionComponent)
         to.add(component: physicsComponent)

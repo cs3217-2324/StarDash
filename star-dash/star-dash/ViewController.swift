@@ -105,9 +105,9 @@ extension ViewController: SDSceneDelegate {
         guard let gameInfo = gameEngine?.gameInfo() else {
             return
         }
-
         renderer?.updateOverlay(overlayInfo: OverlayInfo(
-            score: gameInfo.playerScore
+            score: gameInfo.playerScore,
+            playersInfo: gameInfo.playersInfo
         ))
     }
 

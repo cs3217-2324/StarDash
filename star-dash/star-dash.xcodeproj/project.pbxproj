@@ -52,6 +52,8 @@
 		46D418242BA5D5280091A38B /* Tool+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418232BA5D5280091A38B /* Tool+Collidable.swift */; };
 		46D418262BA5D6500091A38B /* Wall+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418252BA5D6500091A38B /* Wall+Collidable.swift */; };
 		46D418282BA5D6800091A38B /* Floor+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418272BA5D6800091A38B /* Floor+Collidable.swift */; };
+		4E0905FD2BB4A15600DE666B /* MiniMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0905FC2BB4A15600DE666B /* MiniMapView.swift */; };
+		4E0905FF2BB4A4EB00DE666B /* PlayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0905FE2BB4A4EB00DE666B /* PlayerInfo.swift */; };
 		4E3458DF2BA7490B00E817C6 /* EntityManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3458DE2BA7490B00E817C6 /* EntityManagerTests.swift */; };
 		4E3458E52BA75E6800E817C6 /* PositionComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3458E42BA75E6800E817C6 /* PositionComponentTests.swift */; };
 		4E3458E72BA75E7100E817C6 /* HealthComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3458E62BA75E7100E817C6 /* HealthComponentTests.swift */; };
@@ -199,6 +201,8 @@
 		46D418232BA5D5280091A38B /* Tool+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tool+Collidable.swift"; sourceTree = "<group>"; };
 		46D418252BA5D6500091A38B /* Wall+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wall+Collidable.swift"; sourceTree = "<group>"; };
 		46D418272BA5D6800091A38B /* Floor+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Floor+Collidable.swift"; sourceTree = "<group>"; };
+		4E0905FC2BB4A15600DE666B /* MiniMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniMapView.swift; sourceTree = "<group>"; };
+		4E0905FE2BB4A4EB00DE666B /* PlayerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfo.swift; sourceTree = "<group>"; };
 		4E3458DE2BA7490B00E817C6 /* EntityManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerTests.swift; sourceTree = "<group>"; };
 		4E3458E42BA75E6800E817C6 /* PositionComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponentTests.swift; sourceTree = "<group>"; };
 		4E3458E62BA75E7100E817C6 /* HealthComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthComponentTests.swift; sourceTree = "<group>"; };
@@ -403,6 +407,7 @@
 				4E630F252B9F7E500008F887 /* Entities */,
 				46B8C0992BA328D900498705 /* GameEngine.swift */,
 				E69EE9312BAC6CBB00033AB5 /* GameInfo.swift */,
+				4E0905FE2BB4A4EB00DE666B /* PlayerInfo.swift */,
 			);
 			path = GameEngine;
 			sourceTree = "<group>";
@@ -651,6 +656,7 @@
 				E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */,
 				E6A745122BA057040080C1BE /* ControlView.swift */,
 				E6B550A02BA15E9C00DC7396 /* OverlayView.swift */,
+				4E0905FC2BB4A15600DE666B /* MiniMapView.swift */,
 			);
 			path = MTKRenderer;
 			sourceTree = "<group>";
@@ -844,11 +850,13 @@
 				46D4181A2BA5CDBD0091A38B /* CollisionHandler.swift in Sources */,
 				4E86605F2BA095E30035530D /* Collectible.swift in Sources */,
 				E64361122BA4C2CD003850FD /* ObjectModule.swift in Sources */,
+				4E0905FF2BB4A4EB00DE666B /* PlayerInfo.swift in Sources */,
 				4E59E2532BAB3061007B3FA7 /* Database.swift in Sources */,
 				4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */,
 				143AA3952BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift in Sources */,
 				143AA3932BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift in Sources */,
 				4E59E2682BADA7B6007B3FA7 /* CollectibleEntityPersistable.swift in Sources */,
+				4E0905FD2BB4A15600DE666B /* MiniMapView.swift in Sources */,
 				46D418162BA5CBD60091A38B /* Collidable.swift in Sources */,
 				461148912BA1CDBF0073E7E1 /* SystemManager.swift in Sources */,
 				460A20112BB1E6DF002597B8 /* MonsterSystem.swift in Sources */,

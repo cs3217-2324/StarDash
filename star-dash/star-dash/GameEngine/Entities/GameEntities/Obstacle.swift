@@ -33,6 +33,7 @@ class Obstacle: Entity {
                                               size: self.size)
         physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.obstacle
         physicsComponent.isDynamic = false
+        physicsComponent.mass = .infinity
         to.add(entity: self)
         to.add(component: positionComponent)
         to.add(component: physicsComponent)

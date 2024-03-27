@@ -34,6 +34,7 @@ class Player: Entity {
         physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.player
         physicsComponent.affectedByGravity = true
         physicsComponent.restitution = 0.0
+        physicsComponent.mass = PhysicsConstants.Mass.player
         let spriteComponent = SpriteComponent(
             entityId: self.id,
             image: SpriteConstants.PlayerRedNose,

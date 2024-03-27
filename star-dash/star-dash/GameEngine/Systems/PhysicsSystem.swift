@@ -104,7 +104,6 @@ class PhysicsSystem: System {
         }
         playerComponent.canJump = false
         playerComponent.canMove = false
-
         applyImpulse(to: event.entityId, impulse: event.jumpImpulse)
     }
 
@@ -113,7 +112,6 @@ class PhysicsSystem: System {
               let spriteComponent = entityManager.component(ofType: SpriteComponent.self, of: event.entityId) else {
             return
         }
-
         physicsComponent.velocity = .zero
         spriteComponent.textureAtlas = nil
     }
