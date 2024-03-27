@@ -11,6 +11,7 @@ class PowerUp: Entity {
         self.id = id
         self.position = position
         self.sprite = sprite
+        self.size = size
         self.type = type
     }
 
@@ -27,7 +28,7 @@ class PowerUp: Entity {
                                               textureAtlas: nil,
                                               size: self.size)
         physicsComponent.categoryBitMask = PhysicsConstants.CollisionCategory.powerUp
-        physicsComponent.contactTestMask = PhysicsConstants.contactTestMask.powerUp
+        physicsComponent.contactTestMask = PhysicsConstants.ContactMask.powerUp
         physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.powerUp
         physicsComponent.isDynamic = false
         physicsComponent.affectedByGravity = false

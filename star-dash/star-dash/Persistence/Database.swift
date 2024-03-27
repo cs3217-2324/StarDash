@@ -17,6 +17,7 @@ struct Database {
     private let obstacleTable = Table("obstacle")
     private let toolTable = Table("tool")
     private let monsterTable = Table("monster")
+    private let powerUpTable = Table("powerUp")
     private var db: Connection?
     // Define a dictionary to map entity types to tables
     let tableMap: [ObjectIdentifier: Table]
@@ -25,7 +26,8 @@ struct Database {
             ObjectIdentifier(CollectibleEntityPersistable.self): self.collectibleTable,
             ObjectIdentifier(ToolEntityPersistable.self): self.toolTable,
             ObjectIdentifier(ObstacleEntityPersistable.self): self.obstacleTable,
-            ObjectIdentifier(MonsterEntityPersistable.self): self.monsterTable
+            ObjectIdentifier(MonsterEntityPersistable.self): self.monsterTable,
+            ObjectIdentifier(PowerUpEntityPersistable.self): self.powerUpTable
         ]
 
         if let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
@@ -61,6 +63,7 @@ struct Database {
             try db.run(collectibleTable.drop())
             try db.run(toolTable.drop())
             try db.run(monsterTable.drop())
+            try db.run(powerUpTable.drop())
         } catch {
             print("Error deleting table \(error)")
         }
@@ -73,6 +76,7 @@ struct Database {
         createToolTable()
         createMonsterTable()
         createObstacleTable()
+        createPowerUpTable()
     }
 
     private func createLevelTable() {
@@ -210,7 +214,7 @@ struct Database {
         let type = Expression<String>("type")
 
         do {
-            try db.run( monsterTable.create { table in
+            try db.run( powerUpTable.create { table in
                 table.column(id, primaryKey: .autoincrement)
                 table.column(levelId)
                 table.column(position)
@@ -343,7 +347,7 @@ extension Database {
                 let persistable: MonsterEntityPersistable = try row.decode()
                 return persistable
             }
-            entities += try database.prepare(monsterTable.filter(levelId == levelIdColumn)).map { row in
+            entities += try database.prepare(powerUpTable.filter(levelId == levelIdColumn)).map { row in
                 let persistable: PowerUpEntityPersistable = try row.decode()
                 return persistable
             }

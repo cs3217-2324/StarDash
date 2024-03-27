@@ -1,4 +1,5 @@
 import Foundation
+
 struct PowerUpEntityPersistable: Codable, EntityPersistable {
 
     var levelId: Int64

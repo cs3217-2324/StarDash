@@ -103,6 +103,10 @@
 		E64361132BA4C2CD003850FD /* PhysicsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610D2BA4C2CC003850FD /* PhysicsModule.swift */; };
 		E64361142BA4C2CD003850FD /* CreationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610E2BA4C2CC003850FD /* CreationModule.swift */; };
 		E64361152BA4C2CD003850FD /* GameBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610F2BA4C2CC003850FD /* GameBridge.swift */; };
+		E64F316D2BB4861800EC5371 /* SpeedBoostPowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64F316B2BB4861800EC5371 /* SpeedBoostPowerUp.swift */; };
+		E64F316E2BB4861800EC5371 /* PowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64F316C2BB4861800EC5371 /* PowerUp.swift */; };
+		E64F31712BB4862700EC5371 /* SpeedBoostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64F31702BB4862700EC5371 /* SpeedBoostComponent.swift */; };
+		E64F31732BB4882D00EC5371 /* PowerUpEntityPersistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64F31722BB4882D00EC5371 /* PowerUpEntityPersistable.swift */; };
 		E69EE9322BAC6CBB00033AB5 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69EE9312BAC6CBB00033AB5 /* GameInfo.swift */; };
 		E69EE9342BAC6CC300033AB5 /* OverlayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69EE9332BAC6CC300033AB5 /* OverlayInfo.swift */; };
 		E69FDDE02BAD3DAD0089D5F3 /* PointsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69FDDDF2BAD3DAD0089D5F3 /* PointsComponent.swift */; };
@@ -253,6 +257,10 @@
 		E643610D2BA4C2CC003850FD /* PhysicsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsModule.swift; sourceTree = "<group>"; };
 		E643610E2BA4C2CC003850FD /* CreationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationModule.swift; sourceTree = "<group>"; };
 		E643610F2BA4C2CC003850FD /* GameBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBridge.swift; sourceTree = "<group>"; };
+		E64F316B2BB4861800EC5371 /* SpeedBoostPowerUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedBoostPowerUp.swift; sourceTree = "<group>"; };
+		E64F316C2BB4861800EC5371 /* PowerUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerUp.swift; sourceTree = "<group>"; };
+		E64F31702BB4862700EC5371 /* SpeedBoostComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedBoostComponent.swift; sourceTree = "<group>"; };
+		E64F31722BB4882D00EC5371 /* PowerUpEntityPersistable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerUpEntityPersistable.swift; sourceTree = "<group>"; };
 		E69EE9312BAC6CBB00033AB5 /* GameInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
 		E69EE9332BAC6CC300033AB5 /* OverlayInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayInfo.swift; sourceTree = "<group>"; };
 		E69FDDDF2BAD3DAD0089D5F3 /* PointsComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointsComponent.swift; sourceTree = "<group>"; };
@@ -456,6 +464,7 @@
 				4E59E26B2BADA7DD007B3FA7 /* ObstacleEntityPersistable.swift */,
 				4E59E2672BADA7B6007B3FA7 /* CollectibleEntityPersistable.swift */,
 				4E59E2692BADA7C7007B3FA7 /* ToolEntityPersistable.swift */,
+				E64F31722BB4882D00EC5371 /* PowerUpEntityPersistable.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -555,6 +564,7 @@
 		4E630F282B9F7EC20008F887 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E64F316F2BB4862700EC5371 /* PowerUps */,
 				E69FDDDF2BAD3DAD0089D5F3 /* PointsComponent.swift */,
 				E6B34A462BAA03AF0009A60B /* PlayerComponent.swift */,
 				4E630F292B9F7EF60008F887 /* PositionComponent.swift */,
@@ -591,6 +601,8 @@
 		4E8660602BA0961F0035530D /* GameEntities */ = {
 			isa = PBXGroup;
 			children = (
+				E64F316A2BB4861800EC5371 /* PowerUps */,
+				E64F316C2BB4861800EC5371 /* PowerUp.swift */,
 				4E630F332B9F8FC00008F887 /* Player.swift */,
 				4E86605B2BA095460035530D /* Monster.swift */,
 				4E86605E2BA095E30035530D /* Collectible.swift */,
@@ -612,6 +624,22 @@
 				E643610E2BA4C2CC003850FD /* CreationModule.swift */,
 			);
 			path = SyncModule;
+			sourceTree = "<group>";
+		};
+		E64F316A2BB4861800EC5371 /* PowerUps */ = {
+			isa = PBXGroup;
+			children = (
+				E64F316B2BB4861800EC5371 /* SpeedBoostPowerUp.swift */,
+			);
+			path = PowerUps;
+			sourceTree = "<group>";
+		};
+		E64F316F2BB4862700EC5371 /* PowerUps */ = {
+			isa = PBXGroup;
+			children = (
+				E64F31702BB4862700EC5371 /* SpeedBoostComponent.swift */,
+			);
+			path = PowerUps;
 			sourceTree = "<group>";
 		};
 		E6A011152BA5D111006904D9 /* GameBridge */ = {
@@ -828,6 +856,7 @@
 				E69EE9342BAC6CC300033AB5 /* OverlayInfo.swift in Sources */,
 				E6B1DC902BA34A4800473563 /* SDPhysicsEngine in Sources */,
 				4E630F272B9F7E770008F887 /* Entity.swift in Sources */,
+				E64F31712BB4862700EC5371 /* SpeedBoostComponent.swift in Sources */,
 				4E630F2C2B9F7F460008F887 /* Component.swift in Sources */,
 				4EC561E52BB1E9A300166DDC /* PlayerToolContactEvent.swift in Sources */,
 				143AA38F2BA4D61A009C28E7 /* CGVector.swift in Sources */,
@@ -859,6 +888,7 @@
 				E6B0AAD52BAAE4EC009CB939 /* PlayerFloorContactEvent.swift in Sources */,
 				E64361132BA4C2CD003850FD /* PhysicsModule.swift in Sources */,
 				4E630F322B9F887C0008F887 /* PhysicsComponent.swift in Sources */,
+				E64F316D2BB4861800EC5371 /* SpeedBoostPowerUp.swift in Sources */,
 				4E59E25D2BAB405A007B3FA7 /* EntityPersistable.swift in Sources */,
 				1471B0AD2BA6AE4E00878B14 /* UseGrappleHookEvent.swift in Sources */,
 				4E59E26C2BADA7DD007B3FA7 /* ObstacleEntityPersistable.swift in Sources */,
@@ -883,6 +913,7 @@
 				46D418222BA5D4E60091A38B /* Obstacle+Collidable.swift in Sources */,
 				E638B9CF2BAB3C5D00931CC2 /* TeleportEvent.swift in Sources */,
 				143AA3972BA4E0D9009C28E7 /* PickupCollectibleEvent.swift in Sources */,
+				E64F31732BB4882D00EC5371 /* PowerUpEntityPersistable.swift in Sources */,
 				46D418242BA5D5280091A38B /* Tool+Collidable.swift in Sources */,
 				E64361142BA4C2CD003850FD /* CreationModule.swift in Sources */,
 				4E59E2612BAB42FD007B3FA7 /* LevelPersistable.swift in Sources */,
@@ -899,6 +930,7 @@
 				46D418202BA5D3420091A38B /* Collectible+Collidable.swift in Sources */,
 				E6A7451D2BA0CAD90080C1BE /* JoystickView.swift in Sources */,
 				E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */,
+				E64F316E2BB4861800EC5371 /* PowerUp.swift in Sources */,
 				46D418262BA5D6500091A38B /* Wall+Collidable.swift in Sources */,
 				E69FDDE22BAD3DC40089D5F3 /* EntityConstants.swift in Sources */,
 				4E630F342B9F8FC00008F887 /* Player.swift in Sources */,
