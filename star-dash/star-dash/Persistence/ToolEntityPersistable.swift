@@ -6,8 +6,8 @@
 //
 
 import Foundation
-struct ToolEntityPersistable: Codable, EntityPersistable {
 
+struct ToolEntityPersistable: Codable, EntityPersistable {
     var levelId: Int64
     var position: CGPoint
     var sprite: String

@@ -13,6 +13,7 @@ class Monster: Entity {
     private let health: Int
     private let sprite: String
     private let size: CGSize
+
     init(id: EntityId, position: CGPoint, health: Int, sprite: String, size: CGSize) {
         self.id = id
         self.position = position
@@ -25,18 +26,17 @@ class Monster: Entity {
         self.init(id: UUID(), position: position, health: health, sprite: sprite, size: size)
     }
 
-    func setUpAndAdd(to: EntityManager) {
+    func addComponents(to: EntityManager) {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
         let healthComponent = HealthComponent(entityId: self.id, health: self.health)
-        let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.monster)
         let spriteComponent = SpriteComponent(entityId: self.id,
                                               image: self.sprite,
                                               textureSet: nil,
                                               textureAtlas: nil,
                                               size: self.size)
+        let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.monster)
         physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.monster
 
-        to.add(entity: self)
         to.add(component: positionComponent)
         to.add(component: healthComponent)
         to.add(component: physicsComponent)

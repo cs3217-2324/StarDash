@@ -55,10 +55,7 @@ class CollisionSystem: System {
     }
 
     private func handleRemoveEvent(event: RemoveEvent) {
-        guard let entity = entityManager.entity(with: event.entityId) else {
-            return
-        }
-        entityManager.remove(entity: entity)
+        entityManager.remove(entityId: event.entityId)
     }
 
     private func handlePlayerFloorContactEvent(event: PlayerFloorContactEvent) {

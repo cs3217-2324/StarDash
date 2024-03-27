@@ -6,9 +6,9 @@
 //
 
 import Foundation
+
 struct LevelPersistable: Codable {
     var id: Int64
     var name: String
     var size: CGSize
-
 }

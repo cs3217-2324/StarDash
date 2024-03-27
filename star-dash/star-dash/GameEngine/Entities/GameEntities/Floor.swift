@@ -21,7 +21,7 @@ class Floor: Entity {
         self.position = position
     }
 
-    func setUpAndAdd(to: EntityManager) {
+    func addComponents(to: EntityManager) {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
         let physicsComponent = PhysicsComponent(entityId: self.id, size: CGSize(width: 8_000, height: 10))
         physicsComponent.restitution = 0.0
@@ -30,7 +30,6 @@ class Floor: Entity {
         physicsComponent.contactTestMask = PhysicsConstants.ContactMask.floor
         physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.floor
 
-        to.add(entity: self)
         to.add(component: positionComponent)
         to.add(component: physicsComponent)
     }

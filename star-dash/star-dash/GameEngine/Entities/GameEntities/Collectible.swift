@@ -26,14 +26,8 @@ class Collectible: Entity {
         self.init(id: UUID(), position: position, sprite: sprite, points: points, size: size)
     }
 
-    func setUpAndAdd(to: EntityManager) {
+    func addComponents(to: EntityManager) {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
-        let physicsComponent = PhysicsComponent(entityId: self.id, size: self.size)
-        physicsComponent.affectedByGravity = false
-        physicsComponent.isDynamic = false
-        physicsComponent.categoryBitMask = PhysicsConstants.CollisionCategory.collectible
-        physicsComponent.contactTestMask = PhysicsConstants.ContactMask.collectible
-        physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.collectible
         let spriteComponent = SpriteComponent(
             entityId: self.id,
             image: sprite,
@@ -42,8 +36,13 @@ class Collectible: Entity {
             size: size
         )
         let pointsComponent = PointsComponent(entityId: self.id, points: points)
+        let physicsComponent = PhysicsComponent(entityId: self.id, size: self.size)
+        physicsComponent.affectedByGravity = false
+        physicsComponent.isDynamic = false
+        physicsComponent.categoryBitMask = PhysicsConstants.CollisionCategory.collectible
+        physicsComponent.contactTestMask = PhysicsConstants.ContactMask.collectible
+        physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.collectible
 
-        to.add(entity: self)
         to.add(component: positionComponent)
         to.add(component: physicsComponent)
         to.add(component: spriteComponent)

@@ -21,7 +21,7 @@ class PhysicsSystem: System {
     }
 
     func update(by deltaTime: TimeInterval) {
-        let physicsComponents = entityManager.componentMap.values.compactMap({ $0 as? PhysicsComponent })
+        let physicsComponents = entityManager.components(ofType: PhysicsComponent.self)
 
         for physicsComponent in physicsComponents {
             physicsComponent.force = .zero

@@ -9,7 +9,7 @@ import Foundation
 
 class GameEngine {
     private let systemManager: SystemManager
-    let entityManager: EntityManager // TODO: Set to private
+    private let entityManager: EntityManager
     private let eventManager: EventManager
 
     init() {
@@ -103,6 +103,10 @@ extension GameEngine: EventModifiable {
         eventManager.add(event: event)
     }
 
+    func add(entity: Entity) {
+        entityManager.add(entity: entity)
+    }
+
     func registerListener<T: Event>(for eventType: T.Type, listener: EventListener) {
         eventManager.registerListener(for: eventType, listener: listener)
     }
@@ -110,7 +114,7 @@ extension GameEngine: EventModifiable {
 
 extension GameEngine: EntitySyncInterface {
     var entities: [Entity] {
-        Array(entityManager.entityMap.values)
+        entityManager.entities
     }
 
     func component<T: Component>(ofType type: T.Type, of entityId: EntityId) -> T? {
@@ -118,6 +122,6 @@ extension GameEngine: EntitySyncInterface {
     }
 
     func entity(of entityId: EntityId) -> Entity? {
-        entityManager.entityMap[entityId]
+        entityManager.entity(with: entityId)
     }
 }

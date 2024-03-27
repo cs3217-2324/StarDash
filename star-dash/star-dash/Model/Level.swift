@@ -6,9 +6,11 @@
 //
 
 import Foundation
+
 struct Level {
     var name: String
     var entities: [Entity]
+
     init(name: String, entities: [Entity]) {
         self.name = name
         self.entities = entities

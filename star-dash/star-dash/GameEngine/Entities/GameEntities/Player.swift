@@ -24,16 +24,10 @@ class Player: Entity {
         self.init(id: UUID(), playerIndex: playerIndex, position: position, playerSprite: playerSprite)
     }
 
-    func setUpAndAdd(to: EntityManager) {
+    func addComponents(to: EntityManager) {
         let playerComponent = PlayerComponent(entityId: self.id, playerIndex: playerIndex)
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
         let healthComponent = HealthComponent(entityId: self.id, health: GameConstants.InitialHealth.player)
-        let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.player)
-        physicsComponent.categoryBitMask = PhysicsConstants.CollisionCategory.player
-        physicsComponent.contactTestMask = PhysicsConstants.ContactMask.player
-        physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.player
-        physicsComponent.affectedByGravity = true
-        physicsComponent.restitution = 0.0
         let spriteComponent = SpriteComponent(
             entityId: self.id,
             image: SpriteConstants.PlayerRedNose,
@@ -42,8 +36,13 @@ class Player: Entity {
             size: PhysicsConstants.Dimensions.player
         )
         let scoreComponent = ScoreComponent(entityId: self.id, score: 0)
+        let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.player)
+        physicsComponent.categoryBitMask = PhysicsConstants.CollisionCategory.player
+        physicsComponent.contactTestMask = PhysicsConstants.ContactMask.player
+        physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.player
+        physicsComponent.affectedByGravity = true
+        physicsComponent.restitution = 0.0
 
-        to.add(entity: self)
         to.add(component: playerComponent)
         to.add(component: positionComponent)
         to.add(component: healthComponent)

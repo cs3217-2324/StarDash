@@ -8,7 +8,6 @@
 import Foundation
 
 struct MonsterEntityPersistable: Codable, EntityPersistable {
-
     var levelId: Int64
     var position: CGPoint
     var sprite: String

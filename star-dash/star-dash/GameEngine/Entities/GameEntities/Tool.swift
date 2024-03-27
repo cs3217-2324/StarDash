@@ -12,6 +12,7 @@ class Tool: Entity {
     private let position: CGPoint
     private let sprite: String
     private let size: CGSize
+
     init(id: EntityId, position: CGPoint, sprite: String, size: CGSize) {
         self.id = id
         self.position = position
@@ -23,14 +24,14 @@ class Tool: Entity {
         self.init(id: UUID(), position: position, sprite: sprite, size: size)
     }
 
-    func setUpAndAdd(to: EntityManager) {
+    func addComponents(to: EntityManager) {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
-        let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.tool)
         let spriteComponent = SpriteComponent(entityId: self.id,
                                               image: self.sprite,
                                               textureSet: nil,
                                               textureAtlas: nil,
                                               size: self.size)
+        let physicsComponent = PhysicsComponent(entityId: self.id, size: self.size)
         physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.tool
         physicsComponent.isDynamic = false
 
