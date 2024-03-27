@@ -105,15 +105,15 @@ extension ViewController: SDSceneDelegate {
 
 extension ViewController: ViewDelegate {
 
-    func joystickMoved(toLeft: Bool) {
-        gameEngine?.handlePlayerMove(toLeft: toLeft)
+    func joystickMoved(toLeft: Bool, playerIndex: Int) {
+        gameEngine?.handlePlayerMove(toLeft: toLeft, playerIndex: playerIndex)
     }
 
-    func joystickReleased() {
-        gameEngine?.handlePlayerStoppedMoving()
+    func joystickReleased(playerIndex: Int) {
+        gameEngine?.handlePlayerStoppedMoving(playerIndex: playerIndex)
     }
 
-    func jumpButtonPressed() {
-        gameEngine?.handlePlayerJump()
+    func jumpButtonPressed(playerIndex: Int) {
+        gameEngine?.handlePlayerJump(playerIndex: playerIndex)
     }
 }

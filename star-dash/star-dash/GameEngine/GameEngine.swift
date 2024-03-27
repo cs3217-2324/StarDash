@@ -47,16 +47,16 @@ class GameEngine {
         eventManager.add(event: event)
     }
 
-    func handlePlayerJump() {
-        guard let playerEntityId = entityManager.playerEntityId() else {
+    func handlePlayerJump(playerIndex: playerIndex) {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
             return
         }
 
         eventManager.add(event: JumpEvent(on: playerEntityId, by: PhysicsConstants.jumpImpulse))
     }
 
-    func handlePlayerMove(toLeft: Bool) {
-        guard let playerEntityId = entityManager.playerEntityId(),
+    func handlePlayerMove(toLeft: Bool, playerIndex: playerIndex) {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex),
               let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: playerEntityId),
               playerComponent.canMove else {
             return
@@ -65,8 +65,8 @@ class GameEngine {
         eventManager.add(event: MoveEvent(on: playerEntityId, toLeft: toLeft))
     }
 
-    func handlePlayerStoppedMoving() {
-        guard let playerEntityId = entityManager.playerEntityId() else {
+    func handlePlayerStoppedMoving(playerIndex: playerIndex) {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
             return
         }
 

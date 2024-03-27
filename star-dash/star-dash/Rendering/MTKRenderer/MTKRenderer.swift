@@ -61,6 +61,14 @@ class MTKRenderer: NSObject, Renderer {
 
         return nil
     }
+    
+    private func playerIndex(from controlView: ControlView) -> Int? {
+        for i in 0..<playerViews.count where playerViews[i].controlView == controlView {
+            return i
+        }
+
+        return nil
+    }
 }
 
 extension MTKRenderer: MTKViewDelegate {
@@ -91,15 +99,27 @@ extension MTKRenderer: MTKViewDelegate {
 }
 
 extension MTKRenderer: ControlViewDelegate {
-    func joystickMoved(toLeft: Bool) {
+    func joystickMoved(toLeft: Bool, from view: ControlView) {
+        guard let playerIndex = playerIndex(from: view) else {
+            return
+        }
+
         viewDelegate?.joystickMoved(toLeft: toLeft)
     }
 
-    func joystickReleased() {
+    func joystickReleased(from view: ControlView) {
+        guard let playerIndex = playerIndex(from: view) else {
+            return
+        }
+
         viewDelegate?.joystickReleased()
     }
 
-    func jumpButtonPressed() {
+    func jumpButtonPressed(from view: ControlView) {
+        guard let playerIndex = playerIndex(from: view) else {
+            return
+        }
+
         viewDelegate?.jumpButtonPressed()
     }
 }
