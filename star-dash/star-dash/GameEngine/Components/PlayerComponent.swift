@@ -1,7 +1,6 @@
 import Foundation
 
 class PlayerComponent: Component {
-
     let playerIndex: Int
     var canJump = true
     var canMove = true

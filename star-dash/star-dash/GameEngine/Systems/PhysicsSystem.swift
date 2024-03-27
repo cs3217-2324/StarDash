@@ -36,14 +36,6 @@ class PhysicsSystem: System {
         return physicsComponent.velocity != .zero
     }
 
-    func applyForce(to entityId: EntityId, newForce: CGVector) {
-        guard let physicsComponent = getPhysicsComponent(of: entityId) else {
-            return
-        }
-
-        physicsComponent.force += newForce
-    }
-
     func applyImpulse(to entityId: EntityId, impulse: CGVector) {
         guard let physicsComponent = getPhysicsComponent(of: entityId) else {
             return

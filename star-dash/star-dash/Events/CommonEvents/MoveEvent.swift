@@ -17,5 +17,4 @@ class MoveEvent: Event {
         self.entityId = entityId
         self.toLeft = toLeft
     }
-
 }
