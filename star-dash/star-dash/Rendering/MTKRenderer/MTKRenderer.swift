@@ -61,7 +61,7 @@ class MTKRenderer: NSObject, Renderer {
 
         return nil
     }
-    
+
     private func playerIndex(from controlView: ControlView) -> Int? {
         for i in 0..<playerViews.count where playerViews[i].controlView == controlView {
             return i
@@ -85,8 +85,7 @@ extension MTKRenderer: MTKViewDelegate {
         }
         let viewport = CGRect(x: 0, y: 0, width: view.drawableSize.width, height: view.drawableSize.height)
 
-        renderer.update(atTime: CACurrentMediaTime())
-        scene.useCamera(of: playerIndex, rotatedBy: playerViews[playerIndex].rotation)
+        updateScene(forPlayer: playerIndex)
         renderer.render(
             withViewport: viewport,
             commandBuffer: commandBuffer,
@@ -95,6 +94,15 @@ extension MTKRenderer: MTKViewDelegate {
 
         commandBuffer.present(drawable)
         commandBuffer.commit()
+    }
+
+    func updateScene(forPlayer playerIndex: Int) {
+        if playerIndex == 0 {
+            // Ensures all views displays the game scene of the same state
+            // Assumption: The first view is always the start of the every cycle of updates
+            renderer.update(atTime: CACurrentMediaTime())
+        }
+        scene.useCamera(of: playerIndex, rotatedBy: playerViews[playerIndex].rotation)
     }
 }
 
