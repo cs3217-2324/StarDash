@@ -103,7 +103,7 @@
 		E64361132BA4C2CD003850FD /* PhysicsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610D2BA4C2CC003850FD /* PhysicsModule.swift */; };
 		E64361142BA4C2CD003850FD /* CreationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610E2BA4C2CC003850FD /* CreationModule.swift */; };
 		E64361152BA4C2CD003850FD /* GameBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610F2BA4C2CC003850FD /* GameBridge.swift */; };
-		E64F31672BB3D14600EC5371 /* UIVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64F31662BB3D14600EC5371 /* UIVIew.swift */; };
+		E64F31672BB3D14600EC5371 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64F31662BB3D14600EC5371 /* UIView.swift */; };
 		E69EE9322BAC6CBB00033AB5 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69EE9312BAC6CBB00033AB5 /* GameInfo.swift */; };
 		E69EE9342BAC6CC300033AB5 /* OverlayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69EE9332BAC6CC300033AB5 /* OverlayInfo.swift */; };
 		E69FDDE02BAD3DAD0089D5F3 /* PointsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69FDDDF2BAD3DAD0089D5F3 /* PointsComponent.swift */; };
@@ -256,7 +256,7 @@
 		E643610D2BA4C2CC003850FD /* PhysicsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsModule.swift; sourceTree = "<group>"; };
 		E643610E2BA4C2CC003850FD /* CreationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationModule.swift; sourceTree = "<group>"; };
 		E643610F2BA4C2CC003850FD /* GameBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBridge.swift; sourceTree = "<group>"; };
-		E64F31662BB3D14600EC5371 /* UIVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIew.swift; sourceTree = "<group>"; };
+		E64F31662BB3D14600EC5371 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		E69EE9312BAC6CBB00033AB5 /* GameInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
 		E69EE9332BAC6CC300033AB5 /* OverlayInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayInfo.swift; sourceTree = "<group>"; };
 		E69FDDDF2BAD3DAD0089D5F3 /* PointsComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointsComponent.swift; sourceTree = "<group>"; };
@@ -311,7 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				143AA38E2BA4D61A009C28E7 /* CGVector.swift */,
-				E64F31662BB3D14600EC5371 /* UIVIew.swift */,
+				E64F31662BB3D14600EC5371 /* UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -924,7 +924,7 @@
 				4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */,
 				14970F502BA814D500CC1E8A /* ScoreComponent.swift in Sources */,
 				E69FDDE42BADC2F10089D5F3 /* SpriteConstants.swift in Sources */,
-				E64F31672BB3D14600EC5371 /* UIVIew.swift in Sources */,
+				E64F31672BB3D14600EC5371 /* UIView.swift in Sources */,
 				143AA3912BA4D7AC009C28E7 /* MonsterDeathEvent.swift in Sources */,
 				E64361102BA4C2CD003850FD /* SpriteModule.swift in Sources */,
 				4604BBD52BA819C70078B84C /* InventoryComponent.swift in Sources */,

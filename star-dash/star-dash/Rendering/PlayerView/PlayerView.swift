@@ -47,8 +47,8 @@ class PlayerView {
         sceneView.delegate = delegate
     }
 
-    func updateOverlay(score: Int) {
-        overlayView.update(score: score)
+    func update(_ overlayInfo: OverlayInfo) {
+        overlayView.update(overlayInfo)
     }
 
     static func createPlayerView(layout: PlayerViewLayout, device: MTLDevice) -> PlayerView {

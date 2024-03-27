@@ -40,7 +40,7 @@ public class GameScene: SKScene {
         guard let cameraObject = cameraPlayerMap[playerIndex] else {
             return
         }
-        
+
         cameraObject.zRotation = rotation
         self.camera = cameraObject.cameraNode
     }
@@ -50,7 +50,7 @@ extension GameScene: SDScene {
     public func addPlayerObject(_ playerObject: SDObject, playerIndex: Int) {
         let camera = SDCameraObject(player: playerObject)
         cameraPlayerMap[playerIndex] = camera
-        
+
         addObject(camera)
         addObject(playerObject)
     }

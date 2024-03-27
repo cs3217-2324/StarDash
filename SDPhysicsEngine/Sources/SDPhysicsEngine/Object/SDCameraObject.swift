@@ -15,7 +15,7 @@ public class SDCameraObject: SDObject {
         cameraNode = SKCameraNode()
         super.init(node: cameraNode)
     }
-    
+
     var zRotation: CGFloat {
         get { cameraNode.zRotation }
         set { cameraNode.zRotation = newValue }
