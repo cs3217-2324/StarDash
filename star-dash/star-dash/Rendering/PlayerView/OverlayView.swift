@@ -25,7 +25,7 @@ class OverlayView: UIView {
         update(score: 0)
     }
 
-    func update(score: Int) {
-        scoreLabel.text = "Score: \(score)"
+    func update(_ overlayInfo: OverlayInfo) {
+        scoreLabel.text = "Score: \(overlayInfo.score)"
     }
 }

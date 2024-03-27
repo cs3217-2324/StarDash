@@ -50,10 +50,6 @@ class MTKRenderer: NSObject, Renderer {
         }
     }
 
-    func updateOverlay(overlayInfo: OverlayInfo) {
-        playerViews[0].updateOverlay(score: overlayInfo.score)
-    }
-
     private func playerIndex(from mtkView: MTKView) -> Int? {
         for i in 0..<playerViews.count where playerViews[i].sceneView == mtkView {
             return i
@@ -97,11 +93,16 @@ extension MTKRenderer: MTKViewDelegate {
     }
 
     func updateScene(forPlayer playerIndex: Int) {
+        guard let overlayInfo = viewDelegate?.overlayInfo(forPlayer: playerIndex) else {
+            return
+        }
+
         if playerIndex == 0 {
             // Ensures all views displays the game scene of the same state
             // Assumption: The first view is always the start of the every cycle of updates
             renderer.update(atTime: CACurrentMediaTime())
         }
+        playerViews[playerIndex].update(overlayInfo)
         scene.useCamera(of: playerIndex, rotatedBy: playerViews[playerIndex].rotation)
     }
 }

@@ -86,18 +86,6 @@ extension ViewController: SDSceneDelegate {
         gameBridge?.syncToEntities()
         gameEngine?.update(by: deltaTime)
         gameBridge?.syncFromEntities()
-
-        updateOverlay()
-    }
-
-    private func updateOverlay() {
-        guard let gameInfo = gameEngine?.gameInfo() else {
-            return
-        }
-
-        renderer?.updateOverlay(overlayInfo: OverlayInfo(
-            score: gameInfo.playerScore
-        ))
     }
 
     func contactOccurred(objectA: SDObject, objectB: SDObject, contactPoint: CGPoint) {
@@ -122,5 +110,15 @@ extension ViewController: ViewDelegate {
 
     func jumpButtonPressed(playerIndex: Int) {
         gameEngine?.handlePlayerJump(playerIndex: playerIndex)
+    }
+
+    func overlayInfo(forPlayer playerIndex: Int) -> OverlayInfo? {
+        guard let gameInfo = gameEngine?.gameInfo(forPlayer: playerIndex) else {
+            return nil
+        }
+
+        return OverlayInfo(
+            score: gameInfo.playerScore
+        )
     }
 }
