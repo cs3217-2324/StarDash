@@ -58,8 +58,8 @@ class EntityManager {
         entityMap[entityId]
     }
 
-    func playerEntityId(with: playerIndex) -> EntityId? {
-        // TODO: Add parameter to specify the player index 
+    func playerEntityId(with playerIndex: Int) -> EntityId? {
+        // TODO: Add parameter to specify the player index
         for entityId in entityMap.keys {
             if let playerComponent = component(ofType: PlayerComponent.self, of: entityId), 
                playerComponent.playerIndex == playerIndex {

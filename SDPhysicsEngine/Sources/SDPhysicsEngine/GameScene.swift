@@ -47,9 +47,9 @@ public class GameScene: SKScene {
 }
 
 extension GameScene: SDScene {
-    public func addPlayerObject(_ playerObject: SDObject) {
+    public func addPlayerObject(_ playerObject: SDObject, playerIndex: Int) {
         let camera = SDCameraObject(player: playerObject)
-        cameraPlayerMap[cameraPlayerMap.count] = camera
+        cameraPlayerMap[playerIndex] = camera
         
         addObject(camera)
         addObject(playerObject)

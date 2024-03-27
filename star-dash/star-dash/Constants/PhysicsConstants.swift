@@ -52,6 +52,6 @@ struct PhysicsConstants {
     }
 
     static let jumpImpulse = CGVector(dx: 15, dy: 250)
-    static let runVelocity = CGVector(dx: 15, dy: 0)
+    static let runVelocity = CGVector(dx: 60, dy: 0)
     static let maxRunVelocity = CGVector(dx: 250, dy: 0)
 }

@@ -22,7 +22,7 @@ class GameEngine {
 
     func gameInfo() -> GameInfo? {
         guard let scoreSystem = systemManager.system(ofType: ScoreSystem.self),
-              let playerEntityId = entityManager.playerEntityId(),
+              let playerEntityId = entityManager.playerEntityId(with: 0),
               let score = scoreSystem.score(of: playerEntityId) else {
             return nil
         }
@@ -47,7 +47,7 @@ class GameEngine {
         eventManager.add(event: event)
     }
 
-    func handlePlayerJump(playerIndex: playerIndex) {
+    func handlePlayerJump(playerIndex: Int) {
         guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
             return
         }
@@ -55,7 +55,7 @@ class GameEngine {
         eventManager.add(event: JumpEvent(on: playerEntityId, by: PhysicsConstants.jumpImpulse))
     }
 
-    func handlePlayerMove(toLeft: Bool, playerIndex: playerIndex) {
+    func handlePlayerMove(toLeft: Bool, playerIndex: Int) {
         guard let playerEntityId = entityManager.playerEntityId(with: playerIndex),
               let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: playerEntityId),
               playerComponent.canMove else {
@@ -65,20 +65,12 @@ class GameEngine {
         eventManager.add(event: MoveEvent(on: playerEntityId, toLeft: toLeft))
     }
 
-    func handlePlayerStoppedMoving(playerIndex: playerIndex) {
+    func handlePlayerStoppedMoving(playerIndex: Int) {
         guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
             return
         }
 
         eventManager.add(event: StopMovingEvent(on: playerEntityId))
-    }
-
-    func playerPosition() -> CGPoint? {
-        guard let playerEntityId = entityManager.playerEntityId(),
-              let positionComponent = entityManager.component(ofType: PositionComponent.self, of: playerEntityId) else {
-            return nil
-        }
-        return positionComponent.position
     }
 
     private func setUpSystems() {

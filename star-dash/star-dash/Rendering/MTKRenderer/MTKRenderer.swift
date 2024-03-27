@@ -104,7 +104,7 @@ extension MTKRenderer: ControlViewDelegate {
             return
         }
 
-        viewDelegate?.joystickMoved(toLeft: toLeft)
+        viewDelegate?.joystickMoved(toLeft: toLeft, playerIndex: playerIndex)
     }
 
     func joystickReleased(from view: ControlView) {
@@ -112,7 +112,7 @@ extension MTKRenderer: ControlViewDelegate {
             return
         }
 
-        viewDelegate?.joystickReleased()
+        viewDelegate?.joystickReleased(playerIndex: playerIndex)
     }
 
     func jumpButtonPressed(from view: ControlView) {
@@ -120,6 +120,6 @@ extension MTKRenderer: ControlViewDelegate {
             return
         }
 
-        viewDelegate?.jumpButtonPressed()
+        viewDelegate?.jumpButtonPressed(playerIndex: playerIndex)
     }
 }

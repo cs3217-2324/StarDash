@@ -62,7 +62,7 @@ class ControlView: UIView {
 
     @objc
     func jumpButtonTapped() {
-        controlViewDelegate?.jumpButtonPressed()
+        controlViewDelegate?.jumpButtonPressed(from: self)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -80,7 +80,7 @@ class ControlView: UIView {
 //            controlViewDelegate?.joystickMoved(toLeft: isLeft)
 //        }
         let isLeft = firstTouch.location(in: joystickView).x < joystickView.center.x
-        controlViewDelegate?.joystickMoved(toLeft: isLeft)
+        controlViewDelegate?.joystickMoved(toLeft: isLeft, from: self)
 
         joystickView.moveJoystick(location: firstTouch.location(in: joystickView))
     }
@@ -93,7 +93,7 @@ class ControlView: UIView {
             return
         }
 
-        controlViewDelegate?.joystickReleased()
+        controlViewDelegate?.joystickReleased(from: self)
         joystickView?.returnJoystick()
     }
 
@@ -105,7 +105,7 @@ class ControlView: UIView {
 
         let location = gesture.location(in: self)
         if gesture.state == .ended {
-            controlViewDelegate?.joystickReleased()
+            controlViewDelegate?.joystickReleased(from: self)
             joystickView.returnJoystick()
             return
         }
@@ -114,7 +114,7 @@ class ControlView: UIView {
             joystickView.moveJoystick(location: gesture.location(in: joystickView))
             if shouldSendMoveEvent(location: location) {
                 let isLeft = gesture.location(in: joystickView).x < joystickView.center.x
-                controlViewDelegate?.joystickMoved(toLeft: isLeft)
+                controlViewDelegate?.joystickMoved(toLeft: isLeft, from: self)
             }
         }
     }

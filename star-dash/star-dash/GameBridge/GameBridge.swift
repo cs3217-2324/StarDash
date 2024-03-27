@@ -87,7 +87,9 @@ class GameBridge {
         }
 
         if type(of: entity) == Player.self {
-            self.scene.addPlayerObject(newObject)
+            if let playerIndex = entityManager.component(ofType: PlayerComponent.self, of: entity.id)?.playerIndex {
+                self.scene.addPlayerObject(newObject, playerIndex: playerIndex)
+            }
         } else {
             self.scene.addObject(newObject)
         }
