@@ -170,6 +170,7 @@ struct Database {
             print("Error creating table \(error)")
         }
     }
+
     private func createMonsterTable() {
         guard let db = db else {
             return
@@ -192,6 +193,33 @@ struct Database {
 
             })
             print("Monster table created")
+        } catch {
+            print("Error creating table \(error)")
+        }
+    }
+
+    private func createPowerUpTable() {
+        guard let db = db else {
+            return
+        }
+        let id = Expression<Int64>("id")
+        let levelId = Expression<Int64>("levelId")
+        let position = Expression<String>("position")
+        let sprite = Expression<String>("sprite")
+        let size = Expression<String>("size")
+        let type = Expression<String>("type")
+
+        do {
+            try db.run( monsterTable.create { table in
+                table.column(id, primaryKey: .autoincrement)
+                table.column(levelId)
+                table.column(position)
+                table.column(sprite)
+                table.column(size)
+                table.column(type)
+
+            })
+            print("PowerUp table created")
         } catch {
             print("Error creating table \(error)")
         }
@@ -257,6 +285,9 @@ extension Database {
                 for persistable in levelData.monsters {
                     insert(persistable: persistable)
                 }
+                for persistable in levelData.powerUps {
+                    insert(persistable: persistable)
+                }
 
             } catch {
                 print("Error reading or decoding JSON: \(error)")
@@ -310,6 +341,10 @@ extension Database {
             }
             entities += try database.prepare(monsterTable.filter(levelId == levelIdColumn)).map { row in
                 let persistable: MonsterEntityPersistable = try row.decode()
+                return persistable
+            }
+            entities += try database.prepare(monsterTable.filter(levelId == levelIdColumn)).map { row in
+                let persistable: PowerUpEntityPersistable = try row.decode()
                 return persistable
             }
         } catch {

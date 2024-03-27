@@ -99,5 +99,14 @@
         "size": [100,100],
         "health": 100
       },
+  ],
+  "powerUps": [
+    {
+      "levelId": 0,
+      "sprite": "SpeedBoost",
+      "position": [850, 300],
+      "size": [60,60],
+      "type": "SpeedBoost"
+    },
   ]
 }
