@@ -5,7 +5,7 @@ class StopMovingEvent: Event {
     let entityId: EntityId
 
     init(on entityId: EntityId) {
-        timestamp = Date.now
+        self.timestamp = Date.now
         self.entityId = entityId
     }
 

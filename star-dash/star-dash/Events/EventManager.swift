@@ -37,7 +37,7 @@ class EventManager {
         listeners[key]?.append(listener)
     }
 
-    func emit(event: Event) {
+    private func emit(event: Event) {
         let key = ObjectIdentifier(type(of: event))
         if let eventListeners = listeners[key] {
             for listener in eventListeners {

@@ -9,5 +9,4 @@ import Foundation
 
 protocol Event {
     var timestamp: Date { get }
-    var entityId: EntityId { get }
 }

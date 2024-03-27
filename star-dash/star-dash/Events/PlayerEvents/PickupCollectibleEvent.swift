@@ -9,13 +9,12 @@ import Foundation
 
 class PickupCollectibleEvent: Event {
     let timestamp: Date
-    let entityId: EntityId
-
+    let playerId: EntityId
     let collectibleEntityId: EntityId
 
-    init(by entityId: EntityId, collectibleEntityId: EntityId) {
-        timestamp = Date.now
-        self.entityId = entityId
+    init(by playerId: EntityId, collectibleEntityId: EntityId) {
+        self.timestamp = Date.now
+        self.playerId = playerId
         self.collectibleEntityId = collectibleEntityId
     }
 }
