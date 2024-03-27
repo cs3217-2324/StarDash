@@ -86,7 +86,7 @@ extension MTKRenderer: MTKViewDelegate {
         let viewport = CGRect(x: 0, y: 0, width: view.drawableSize.width, height: view.drawableSize.height)
 
         renderer.update(atTime: CACurrentMediaTime())
-        scene.useCamera(of: playerIndex)
+        scene.useCamera(of: playerIndex, rotatedBy: playerViews[playerIndex].rotation)
         renderer.render(
             withViewport: viewport,
             commandBuffer: commandBuffer,

@@ -1,10 +1,11 @@
 import UIKit
 
 class LayoutUtils {
-    
+
     static func layoutViews(superview: UIView, for numberOfPlayers: Int) -> [PlayerViewLayout]? {
         let layouts: [Int: (UIView) -> [PlayerViewLayout]] = [
-            1: createLayoutForSinglePlayer
+            1: createLayoutForSinglePlayer,
+            2: createLayoutForTwoPlayers
         ]
 
         guard let layoutMethod = layouts[numberOfPlayers] else {
@@ -28,27 +29,15 @@ class LayoutUtils {
         superview.addSubview(player1View)
         superview.addSubview(player2View)
 
-        // Add constraints to place them side by side
-        player1View.translatesAutoresizingMaskIntoConstraints = false
-        player2View.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            player1View.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            player1View.topAnchor.constraint(equalTo: superview.topAnchor),
-            player1View.bottomAnchor.constraint(equalTo: superview.bottomAnchor),
-            player1View.widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: 0.5)
-        ])
-
-        NSLayoutConstraint.activate([
-            player2View.leadingAnchor.constraint(equalTo: player1View.trailingAnchor),
-            player2View.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-            player2View.topAnchor.constraint(equalTo: superview.topAnchor),
-            player2View.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
-        ])
+        player1View.frame = CGRect(x: 0, y: 0, width: superview.frame.width / 2, height: superview.frame.height)
+        player2View.frame = CGRect(x: superview.frame.width / 2,
+                                   y: 0,
+                                   width: superview.frame.width / 2,
+                                   height: superview.frame.height)
 
         return [
-            PlayerViewLayout(superview: player1View, rotation: 0),
-            PlayerViewLayout(superview: player2View, rotation: 0)
+            PlayerViewLayout(superview: player1View, rotation: .pi / 2),
+            PlayerViewLayout(superview: player2View, rotation: .pi * 3 / 2)
         ]
     }
 }

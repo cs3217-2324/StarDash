@@ -36,18 +36,21 @@ public class GameScene: SKScene {
         }
     }
 
-    public func useCamera(of playerIndex: Int) {
+    public func useCamera(of playerIndex: Int, rotatedBy rotation: CGFloat) {
         guard let cameraObject = cameraPlayerMap[playerIndex] else {
             return
         }
         
+        cameraObject.zRotation = rotation
         self.camera = cameraObject.cameraNode
     }
 }
 
 extension GameScene: SDScene {
     public func addPlayerObject(_ playerObject: SDObject) {
-        let camera = SDCameraObject()
+        let camera = SDCameraObject(player: playerObject)
+        cameraPlayerMap[cameraPlayerMap.count] = camera
+        
         addObject(camera)
         addObject(playerObject)
     }

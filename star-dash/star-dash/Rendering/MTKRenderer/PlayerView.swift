@@ -1,5 +1,6 @@
 import UIKit
 import MetalKit
+import CoreGraphics
 
 /**
  `PlayerView` is responsible for creating and coordinating the views
@@ -11,18 +12,25 @@ import MetalKit
  3. Overlay View: The game overlay to show information such as points
  */
 class PlayerView {
+    let superview: UIView
+
     var sceneView: MTKView
     var controlView: ControlView
     var overlayView: OverlayView
 
-    private init(superview: UIView, device: MTLDevice) {
-        self.sceneView = MTKView(frame: superview.frame, device: device)
+    let rotation: CGFloat
+
+    private init(superview: UIView, rotation: CGFloat, device: MTLDevice) {
+        self.rotation = rotation
+        self.superview = superview
+
+        self.sceneView = MTKView(frame: superview.bounds, device: device)
         superview.addSubview(self.sceneView)
 
-        self.overlayView = OverlayView(frame: superview.frame)
+        self.overlayView = OverlayView(frame: superview.bounds, rotatedBy: rotation)
         superview.addSubview(self.overlayView)
 
-        self.controlView = ControlView(frame: superview.frame)
+        self.controlView = ControlView(frame: superview.bounds, rotatedBy: rotation)
         superview.addSubview(self.controlView)
     }
 
@@ -44,7 +52,7 @@ class PlayerView {
     }
 
     static func createPlayerView(layout: PlayerViewLayout, device: MTLDevice) -> PlayerView {
-        let playerView = PlayerView(superview: layout.superview, device: device)
+        let playerView = PlayerView(superview: layout.superview, rotation: layout.rotation, device: device)
         playerView.setupSubviews()
         return playerView
     }

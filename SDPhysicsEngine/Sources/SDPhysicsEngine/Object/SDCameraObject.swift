@@ -2,7 +2,7 @@ import SpriteKit
 
 public class SDCameraObject: SDObject {
     let cameraNode: SKCameraNode
-    let player: SKNode?
+    let player: SDObject?
 
     override public init() {
         player = nil
@@ -10,10 +10,15 @@ public class SDCameraObject: SDObject {
         super.init(node: cameraNode)
     }
 
-    init(player: SKNode) {
+    init(player: SDObject) {
         self.player = player
         cameraNode = SKCameraNode()
         super.init(node: cameraNode)
+    }
+    
+    var zRotation: CGFloat {
+        get { cameraNode.zRotation }
+        set { cameraNode.zRotation = newValue }
     }
 
     func update() {

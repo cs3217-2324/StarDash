@@ -24,7 +24,7 @@ class ControlView: UIView {
     // MARK: Private methods for setup
 
     private func setupMovementControls() {
-        let joystickY = frame.height - buttonSize - buttonMargin
+        let joystickY = bounds.height - buttonSize - buttonMargin
         let joystickView = JoystickView(frame: CGRect(
             x: buttonMargin,
             y: joystickY,
@@ -40,8 +40,8 @@ class ControlView: UIView {
     private func setupActionControls() {
         let jumpButton = UIButton(type: .custom)
 
-        let buttonX = frame.width - buttonSize - buttonMargin
-        let buttonY = frame.height - buttonSize - buttonMargin
+        let buttonX = bounds.width - buttonSize - buttonMargin
+        let buttonY = bounds.height - buttonSize - buttonMargin
         jumpButton.frame = CGRect(x: buttonX, y: buttonY, width: buttonSize, height: buttonSize)
 
         jumpButton.addTarget(self, action: #selector(jumpButtonTapped), for: .touchUpInside)

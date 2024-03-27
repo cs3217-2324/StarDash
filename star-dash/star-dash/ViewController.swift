@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         }
 
         renderer.viewDelegate = self
-        renderer.setupViews(at: self.view, for: 1)
+        renderer.setupViews(at: self.view, for: 2)
         self.renderer = renderer
     }
 
@@ -54,6 +54,13 @@ class ViewController: UIViewController {
             playerSprite: PlayerSprite.RedNose
         )
         player.setUpAndAdd(to: entityManager)
+
+        let player2 = Player(
+            playerIndex: 0,
+            position: CGPoint(x: scene.size.width / 2 + 25, y: scene.size.height / 2 + 200),
+            playerSprite: PlayerSprite.RedNose
+        )
+        player2.setUpAndAdd(to: entityManager)
 
         let floor = Floor(position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400))
         floor.setUpAndAdd(to: entityManager)
