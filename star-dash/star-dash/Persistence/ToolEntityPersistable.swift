@@ -13,7 +13,10 @@ struct ToolEntityPersistable: Codable, EntityPersistable {
     var sprite: String
     var size: CGSize
 
-    func toEntity() -> Entity {
-        Tool(position: self.position, sprite: self.sprite, size: self.size)
+    func addTo(_ entityManager: EntityManagerInterface) {
+        EntityFactory.createAndAddTool(to: entityManager,
+                                       position: self.position,
+                                       sprite: self.sprite,
+                                       size: self.size)
     }
 }

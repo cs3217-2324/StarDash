@@ -9,37 +9,8 @@ import Foundation
 
 class Monster: Entity {
     let id: EntityId
-    private let position: CGPoint
-    private let health: Int
-    private let sprite: String
-    private let size: CGSize
 
-    init(id: EntityId, position: CGPoint, health: Int, sprite: String, size: CGSize) {
+    init(id: EntityId) {
         self.id = id
-        self.position = position
-        self.health = health
-        self.sprite = sprite
-        self.size = size
-    }
-
-    convenience init(position: CGPoint, health: Int, sprite: String, size: CGSize) {
-        self.init(id: UUID(), position: position, health: health, sprite: sprite, size: size)
-    }
-
-    func addComponents(to: EntityManager) {
-        let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
-        let healthComponent = HealthComponent(entityId: self.id, health: self.health)
-        let spriteComponent = SpriteComponent(entityId: self.id,
-                                              image: self.sprite,
-                                              textureSet: nil,
-                                              textureAtlas: nil,
-                                              size: self.size)
-        let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.monster)
-        physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.monster
-
-        to.add(component: positionComponent)
-        to.add(component: healthComponent)
-        to.add(component: physicsComponent)
-        to.add(component: spriteComponent)
     }
 }

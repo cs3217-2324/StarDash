@@ -14,7 +14,11 @@ struct MonsterEntityPersistable: Codable, EntityPersistable {
     var health: Int
     var size: CGSize
 
-    func toEntity() -> Entity {
-        Monster(position: self.position, health: self.health, sprite: self.sprite, size: self.size)
+    func addTo(_ entityManager: EntityManagerInterface) {
+        EntityFactory.createAndAddMonster(to: entityManager,
+                                          position: self.position,
+                                          health: self.health,
+                                          sprite: self.sprite,
+                                          size: self.size)
     }
 }

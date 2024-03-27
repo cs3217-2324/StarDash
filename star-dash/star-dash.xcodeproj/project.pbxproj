@@ -41,6 +41,8 @@
 		461148962BA1D53D0073E7E1 /* PositionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148952BA1D53D0073E7E1 /* PositionSystem.swift */; };
 		461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */; };
 		46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B8C0992BA328D900498705 /* GameEngine.swift */; };
+		46C3B1C02BB45C2700F10574 /* EntityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1BF2BB45C2700F10574 /* EntityFactory.swift */; };
+		46C3B1C22BB467BB00F10574 /* EntityManagerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1C12BB467BB00F10574 /* EntityManagerInterface.swift */; };
 		46D418112BA5C88B0091A38B /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418102BA5C88B0091A38B /* Wall.swift */; };
 		46D418132BA5C9930091A38B /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418122BA5C9930091A38B /* Floor.swift */; };
 		46D418162BA5CBD60091A38B /* Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418152BA5CBD60091A38B /* Collidable.swift */; };
@@ -188,6 +190,8 @@
 		461148952BA1D53D0073E7E1 /* PositionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSystem.swift; sourceTree = "<group>"; };
 		461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsSystem.swift; sourceTree = "<group>"; };
 		46B8C0992BA328D900498705 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
+		46C3B1BF2BB45C2700F10574 /* EntityFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityFactory.swift; sourceTree = "<group>"; };
+		46C3B1C12BB467BB00F10574 /* EntityManagerInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerInterface.swift; sourceTree = "<group>"; };
 		46D418102BA5C88B0091A38B /* Wall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
 		46D418122BA5C9930091A38B /* Floor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
 		46D418152BA5CBD60091A38B /* Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collidable.swift; sourceTree = "<group>"; };
@@ -548,6 +552,8 @@
 				4E8660602BA0961F0035530D /* GameEntities */,
 				4E630F262B9F7E770008F887 /* Entity.swift */,
 				4E630F382B9F943B0008F887 /* EntityManager.swift */,
+				46C3B1BF2BB45C2700F10574 /* EntityFactory.swift */,
+				46C3B1C12BB467BB00F10574 /* EntityManagerInterface.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -840,6 +846,7 @@
 				1471B0A62BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift in Sources */,
 				4E8660642BA096600035530D /* Tool.swift in Sources */,
 				4E630F392B9F943B0008F887 /* EntityManager.swift in Sources */,
+				46C3B1C02BB45C2700F10574 /* EntityFactory.swift in Sources */,
 				4E630F302B9F83DE0008F887 /* SpriteComponent.swift in Sources */,
 				46D4181A2BA5CDBD0091A38B /* CollisionHandler.swift in Sources */,
 				4E86605F2BA095E30035530D /* Collectible.swift in Sources */,
@@ -874,6 +881,7 @@
 				14E247952BA2CB480071FFC0 /* EventManager.swift in Sources */,
 				4EC561E32BB1E98400166DDC /* PlayerObstacleContactEvent.swift in Sources */,
 				4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */,
+				46C3B1C22BB467BB00F10574 /* EntityManagerInterface.swift in Sources */,
 				E69FDDE02BAD3DAD0089D5F3 /* PointsComponent.swift in Sources */,
 				14970F542BA8163300CC1E8A /* ScoreSystem.swift in Sources */,
 				E64361112BA4C2CD003850FD /* SyncModule.swift in Sources */,

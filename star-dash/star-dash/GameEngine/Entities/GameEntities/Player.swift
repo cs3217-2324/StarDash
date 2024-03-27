@@ -9,45 +9,8 @@ import Foundation
 
 class Player: Entity {
     let id: EntityId
-    private let playerIndex: Int
-    private let position: CGPoint
-    private let playerSprite: PlayerSprite
 
-    init(id: EntityId, playerIndex: Int, position: CGPoint, playerSprite: PlayerSprite) {
+    init(id: EntityId) {
         self.id = id
-        self.playerIndex = playerIndex
-        self.position = position
-        self.playerSprite = playerSprite
-    }
-
-    convenience init(playerIndex: Int, position: CGPoint, playerSprite: PlayerSprite) {
-        self.init(id: UUID(), playerIndex: playerIndex, position: position, playerSprite: playerSprite)
-    }
-
-    func addComponents(to: EntityManager) {
-        let playerComponent = PlayerComponent(entityId: self.id, playerIndex: playerIndex)
-        let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
-        let healthComponent = HealthComponent(entityId: self.id, health: GameConstants.InitialHealth.player)
-        let spriteComponent = SpriteComponent(
-            entityId: self.id,
-            image: SpriteConstants.PlayerRedNose,
-            textureSet: SpriteConstants.PlayerRedNoseTexture,
-            textureAtlas: nil,
-            size: PhysicsConstants.Dimensions.player
-        )
-        let scoreComponent = ScoreComponent(entityId: self.id, score: 0)
-        let physicsComponent = PhysicsComponent(entityId: self.id, size: PhysicsConstants.Dimensions.player)
-        physicsComponent.categoryBitMask = PhysicsConstants.CollisionCategory.player
-        physicsComponent.contactTestMask = PhysicsConstants.ContactMask.player
-        physicsComponent.collisionBitMask = PhysicsConstants.CollisionMask.player
-        physicsComponent.affectedByGravity = true
-        physicsComponent.restitution = 0.0
-
-        to.add(component: playerComponent)
-        to.add(component: positionComponent)
-        to.add(component: healthComponent)
-        to.add(component: physicsComponent)
-        to.add(component: spriteComponent)
-        to.add(component: scoreComponent)
     }
 }

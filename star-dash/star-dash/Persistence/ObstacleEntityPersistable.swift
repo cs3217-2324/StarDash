@@ -13,7 +13,10 @@ struct ObstacleEntityPersistable: Codable, EntityPersistable {
     var sprite: String
     var size: CGSize
 
-    func toEntity() -> Entity {
-        Obstacle(position: self.position, sprite: self.sprite, size: self.size)
+    func addTo(_ entityManager: EntityManagerInterface) {
+        EntityFactory.createAndAddObstacle(to: entityManager,
+                                           position: self.position,
+                                           sprite: self.sprite,
+                                           size: self.size)
     }
 }

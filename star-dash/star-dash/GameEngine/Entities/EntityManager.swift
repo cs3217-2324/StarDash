@@ -45,7 +45,6 @@ class EntityManager {
         }
         self.entityMap[entity.id] = entity
         self.entityComponentMap[entity.id] = Set()
-        entity.addComponents(to: self)
     }
 
     func remove(entity: Entity) {

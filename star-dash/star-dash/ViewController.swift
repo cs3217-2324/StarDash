@@ -38,7 +38,8 @@ class ViewController: UIViewController {
     }
 
     func setupGameEntities() {
-        guard let scene = self.scene else {
+        guard let scene = self.scene,
+              let gameEngine = self.gameEngine else {
             return
         }
 
@@ -51,21 +52,23 @@ class ViewController: UIViewController {
         background.zPosition = -1
         scene.addObject(background)
 
-        let player = Player(playerIndex: 0,
-                            position: CGPoint(x: 100, y: scene.size.height / 2 + 200),
-                            playerSprite: PlayerSprite.RedNose)
-        let floor = Floor(position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400))
-        let collectible = Collectible.createStarCollectible(position: CGPoint(x: scene.size.width / 2 + 30,
-                                                                              y: scene.size.height / 2 - 100))
-        gameEngine?.add(entity: player)
-        gameEngine?.add(entity: floor)
-        gameEngine?.add(entity: collectible)
+        EntityFactory.createAndAddPlayer(to: gameEngine,
+                                         playerIndex: 0,
+                                         position: CGPoint(x: 100, y: scene.size.height / 2 + 200),
+                                         sprite: PlayerSprite.RedNose)
 
-        if let level = self.storageManager?.getLevel(id: 0) {
-            for entity in level.entities {
-                gameEngine?.add(entity: entity)
-            }
-        }
+        EntityFactory.createAndAddFloor(to: gameEngine,
+                                        position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400),
+                                        size: CGSize(width: 8_000, height: 10))
+
+        EntityFactory.createAndAddCollectible(to: gameEngine,
+                                              position: CGPoint(x: scene.size.width / 2 + 30,
+                                                                y: scene.size.height / 2 - 100),
+                                              sprite: SpriteConstants.star,
+                                              points: EntityConstants.StarCollectible.points,
+                                              size: EntityConstants.StarCollectible.size)
+
+        self.storageManager?.loadLevel(id: 0, into: gameEngine)
     }
 }
 
