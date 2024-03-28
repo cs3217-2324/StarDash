@@ -403,6 +403,7 @@
 		46B8C0982BA328BF00498705 /* GameEngine */ = {
 			isa = PBXGroup;
 			children = (
+				145F2C7E2BA2039700457549 /* Events */,
 				46D418142BA5CB760091A38B /* Collision */,
 				4611488F2BA1CD9E0073E7E1 /* Systems */,
 				4E630F282B9F7EC20008F887 /* Components */,
@@ -516,7 +517,6 @@
 				E6A745102BA057040080C1BE /* Rendering */,
 				4E86605D2BA095CC0035530D /* Constants */,
 				4E630F352B9F91C20008F887 /* Enums */,
-				145F2C7E2BA2039700457549 /* Events */,
 				143AA38D2BA4D600009C28E7 /* Extensions */,
 				4E630EF52B9F7E070008F887 /* AppDelegate.swift */,
 				4E630EF72B9F7E070008F887 /* SceneDelegate.swift */,
