@@ -22,7 +22,7 @@ struct EntityFactory {
                         textureAtlas: nil,
                         size: PhysicsConstants.Dimensions.player)
             .withScore(score: 0)
-            .withPhysics(size: PhysicsConstants.Dimensions.player)
+            .withPhysics(rectangleOf: PhysicsConstants.Dimensions.player)
                 .configureCategoryBitMask(PhysicsConstants.CollisionCategory.player)
                 .configureContactTestMask(PhysicsConstants.ContactMask.player)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.player)
@@ -44,7 +44,7 @@ struct EntityFactory {
                         textureSet: nil,
                         textureAtlas: nil,
                         size: size)
-            .withPhysics(size: PhysicsConstants.Dimensions.monster)
+            .withPhysics(rectangleOf: PhysicsConstants.Dimensions.monster)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.monster)
             .addToGame()
     }
@@ -62,7 +62,7 @@ struct EntityFactory {
                         textureAtlas: nil,
                         size: size)
             .withPoint(points: points)
-            .withPhysics(size: size)
+            .withPhysics(rectangleOf: size)
                 .configureCategoryBitMask(PhysicsConstants.CollisionCategory.collectible)
                 .configureContactTestMask(PhysicsConstants.ContactMask.collectible)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.collectible)
@@ -82,7 +82,7 @@ struct EntityFactory {
                         textureSet: nil,
                         textureAtlas: nil,
                         size: size)
-            .withPhysics(size: size)
+            .withPhysics(rectangleOf: size)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.obstacle)
                 .configureIsDynamic(false)
             .addToGame()
@@ -99,7 +99,7 @@ struct EntityFactory {
                         textureSet: nil,
                         textureAtlas: nil,
                         size: size)
-            .withPhysics(size: size)
+            .withPhysics(rectangleOf: size)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.tool)
                 .configureIsDynamic(false)
             .addToGame()
@@ -110,7 +110,7 @@ struct EntityFactory {
 
         wallBuilder
             .withPosition(at: position)
-            .withPhysics(size: size)
+            .withPhysics(rectangleOf: size)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.wall)
             .addToGame()
     }
@@ -120,7 +120,7 @@ struct EntityFactory {
 
         floorBuilder
             .withPosition(at: position)
-            .withPhysics(size: size)
+            .withPhysics(rectangleOf: size)
                 .configureCategoryBitMask(PhysicsConstants.CollisionCategory.floor)
                 .configureContactTestMask(PhysicsConstants.ContactMask.floor)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.floor)

@@ -71,9 +71,17 @@ class EntityBuilder {
         return self
     }
 
-    func withPhysics(size: CGSize) -> Self {
+    func withPhysics(rectangleOf size: CGSize) -> Self {
         let componentType = ObjectIdentifier(PhysicsComponent.self)
-        let component = PhysicsComponent(entityId: entityId, size: size)
+        let component = PhysicsComponent(entityId: entityId, rectangleOf: size)
+
+        self.components[componentType] = component
+        return self
+    }
+
+    func withPhysics(circleOf radius: CGFloat) -> Self {
+        let componentType = ObjectIdentifier(PhysicsComponent.self)
+        let component = PhysicsComponent(entityId: entityId, circleOf: radius)
 
         self.components[componentType] = component
         return self
