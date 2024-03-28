@@ -9,7 +9,7 @@ class SpeedBoostPowerUp: Entity {
         self.playerEntityId = playerEntityId
     }
 
-    convenience init(position: CGPoint, playerEntityId: EntityId) {
+    convenience init(playerEntityId: EntityId) {
         self.init(id: UUID(), playerEntityId: playerEntityId)
     }
 

@@ -78,4 +78,14 @@ class EntityManager {
 
         return componentMap[componentId] as? T
     }
+
+    func component<T: Component>(ofType type: T.Type) -> [T] {
+        var result: [T] = []
+
+        for component in ComponentMap.values where component is T {
+            result.append(component)
+        }
+
+        return result
+    }
 }
