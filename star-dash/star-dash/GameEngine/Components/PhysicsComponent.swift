@@ -19,20 +19,24 @@ class PhysicsComponent: Component {
     var affectedByGravity = false
     var restitution: CGFloat = 0.2
     var size: CGSize?
+    var radius: CGFloat?
 
-    init(id: ComponentId, entityId: EntityId, size: CGSize) {
+    init(entityId: EntityId, rectangleOf size: CGSize) {
         self.shape = .rectangle
         self.size = size
-        super.init(id: id, entityId: entityId)
+        super.init(id: UUID(), entityId: entityId)
     }
 
-    convenience init(entityId: EntityId, size: CGSize) {
-        self.init(id: UUID(), entityId: entityId, size: size)
+    init(entityId: EntityId, circleOf radius: CGFloat) {
+        self.shape = .circle
+        self.radius = radius
+        super.init(id: UUID(), entityId: entityId)
     }
 }
 
 extension PhysicsComponent {
     enum Shape {
         case rectangle
+        case circle
     }
 }

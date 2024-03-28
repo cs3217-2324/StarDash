@@ -36,7 +36,13 @@ class PhysicsModule: SyncModule {
             return
         }
 
-        object.physicsBody = createRectanglePhysicsBody(physicsComponent: physicsComponent)
+        switch physicsComponent.shape {
+        case .rectangle:
+            object.physicsBody = createRectanglePhysicsBody(physicsComponent: physicsComponent)
+        case .circle:
+            object.physicsBody = createCirclePhysicsBody(physicsComponent: physicsComponent)
+        }
+
         object.physicsBody?.restitution = physicsComponent.restitution
         object.physicsBody?.isDynamic = physicsComponent.isDynamic
         object.physicsBody?.affectedByGravity = physicsComponent.affectedByGravity
@@ -47,10 +53,16 @@ class PhysicsModule: SyncModule {
     }
 
     private func createRectanglePhysicsBody(physicsComponent: PhysicsComponent) -> SDPhysicsBody {
-        if let size = physicsComponent.size {
-            return SDPhysicsBody(rectangleOf: size)
-        } else {
+        guard let size = physicsComponent.size else {
             return SDPhysicsBody(rectangleOf: CGSize(width: 50, height: 50))
         }
+        return SDPhysicsBody(rectangleOf: size)
+    }
+
+    private func createCirclePhysicsBody(physicsComponent: PhysicsComponent) -> SDPhysicsBody {
+        guard let radius = physicsComponent.radius else {
+            return SDPhysicsBody(circleOf: 50)
+        }
+        return SDPhysicsBody(circleOf: radius)
     }
 }
