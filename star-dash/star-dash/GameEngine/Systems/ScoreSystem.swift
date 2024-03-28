@@ -52,7 +52,7 @@ class ScoreSystem: System {
             return
         }
 
-        applyScoreChange(to: event.entityId, scoreChange: pointsComponent.points)
+        applyScoreChange(to: event.playerId, scoreChange: pointsComponent.points)
         dispatcher?.add(event: RemoveEvent(on: event.collectibleEntityId))
     }
 

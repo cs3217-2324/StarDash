@@ -9,12 +9,12 @@ import Foundation
 
 class MonsterAttackPlayerEvent: Event {
     let timestamp: Date
-    let entityId: EntityId
+    let playerId: EntityId
     let monsterId: EntityId
 
-    init(from monsterId: EntityId, on entityId: EntityId) {
-        timestamp = Date.now
-        self.entityId = entityId
+    init(from monsterId: EntityId, on playerId: EntityId) {
+        self.timestamp = Date.now
+        self.playerId = playerId
         self.monsterId = monsterId
     }
 }

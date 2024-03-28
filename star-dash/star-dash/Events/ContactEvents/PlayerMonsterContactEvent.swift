@@ -8,14 +8,13 @@
 import Foundation
 
 class PlayerMonsterContactEvent: Event {
-    var entityId: EntityId
-
     let timestamp: Date
+    let playerId: EntityId
     let monsterId: EntityId
 
     init(from playerId: EntityId, on monsterId: EntityId) {
         self.timestamp = Date.now
-        self.entityId = playerId
+        self.playerId = playerId
         self.monsterId = monsterId
     }
 }

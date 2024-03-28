@@ -21,7 +21,7 @@ class PhysicsSystem: System {
     }
 
     func update(by deltaTime: TimeInterval) {
-        let physicsComponents = entityManager.componentMap.values.compactMap({ $0 as? PhysicsComponent })
+        let physicsComponents = entityManager.components(ofType: PhysicsComponent.self)
 
         for physicsComponent in physicsComponents {
             physicsComponent.force = .zero
@@ -34,14 +34,6 @@ class PhysicsSystem: System {
         }
 
         return physicsComponent.velocity != .zero
-    }
-
-    func applyForce(to entityId: EntityId, newForce: CGVector) {
-        guard let physicsComponent = getPhysicsComponent(of: entityId) else {
-            return
-        }
-
-        physicsComponent.force += newForce
     }
 
     func applyImpulse(to entityId: EntityId, impulse: CGVector) {

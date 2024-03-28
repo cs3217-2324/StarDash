@@ -8,12 +8,12 @@
 import Foundation
 class PlayerObstacleContactEvent: Event {
     let timestamp: Date
-    let entityId: EntityId
+    let playerId: EntityId
     let obstacleId: EntityId
 
-    init(from playerEntityId: EntityId, on obstacleEntityId: EntityId) {
+    init(from playerId: EntityId, on obstacleEntityId: EntityId) {
         self.timestamp = Date.now
-        self.entityId = playerEntityId
+        self.playerId = playerId
         self.obstacleId = obstacleEntityId
     }
 }

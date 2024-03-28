@@ -10,13 +10,11 @@ import Foundation
 class JumpEvent: Event {
     let timestamp: Date
     let entityId: EntityId
-
     let jumpImpulse: CGVector
 
     init(on entityId: EntityId, by jumpImpulse: CGVector) {
-        timestamp = Date.now
+        self.timestamp = Date.now
         self.entityId = entityId
         self.jumpImpulse = jumpImpulse
     }
-
 }

@@ -55,15 +55,12 @@ class CollisionSystem: System {
     }
 
     private func handleRemoveEvent(event: RemoveEvent) {
-        guard let entity = dispatcher?.entity(with: event.entityId) else {
-            return
-        }
-        dispatcher?.remove(entity: entity)
+        entityManager.remove(entityId: event.entityId)
     }
 
     private func handlePlayerFloorContactEvent(event: PlayerFloorContactEvent) {
-        guard let positionComponent = entityManager.component(ofType: PositionComponent.self, of: event.entityId),
-              let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: event.entityId),
+        guard let positionComponent = entityManager.component(ofType: PositionComponent.self, of: event.playerId),
+              let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: event.playerId),
               positionComponent.position.y > event.contactPoint.y else {
             return
         }
@@ -78,12 +75,12 @@ class CollisionSystem: System {
             return
         }
 
-        guard let playerPosition = positionSystem.getPosition(of: event.entityId),
+        guard let playerPosition = positionSystem.getPosition(of: event.playerId),
               let monsterPosition = positionSystem.getPosition(of: event.monsterId) else {
             return
         }
 
-        guard let playerSize = physicsSystem.getSize(of: event.entityId),
+        guard let playerSize = physicsSystem.getSize(of: event.playerId),
               let monsterSize = physicsSystem.getSize(of: event.monsterId) else {
             return
         }
@@ -91,20 +88,20 @@ class CollisionSystem: System {
         let isPlayerAbove = playerPosition.y - (playerSize.height / 2) >= monsterPosition.y + (monsterSize.height / 2)
 
         if isPlayerAbove {
-            dispatcher?.add(event: PlayerAttackMonsterEvent(on: event.monsterId))
+            dispatcher?.add(event: PlayerAttackMonsterEvent(from: event.playerId, on: event.monsterId))
         } else {
-            dispatcher?.add(event: MonsterAttackPlayerEvent(from: event.monsterId, on: event.entityId))
+            dispatcher?.add(event: MonsterAttackPlayerEvent(from: event.monsterId, on: event.playerId))
         }
     }
 
     private func handlePlayerObstacleContactEvent(event: PlayerObstacleContactEvent) {
-        guard let playerPositionComponent = entityManager.component(ofType: PositionComponent.self, of: event.entityId),
+        guard let playerPositionComponent = entityManager.component(ofType: PositionComponent.self, of: event.playerId),
               let obstaclePositionComponent = entityManager.component(ofType: PositionComponent.self,
                                                                       of: event.obstacleId),
-              let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: event.entityId),
+              let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: event.playerId),
               playerPositionComponent.position.y - PhysicsConstants.Dimensions.player.height / 2 >
                 obstaclePositionComponent.position.y + PhysicsConstants.Dimensions.obstacle.height / 2 else {
-            dispatcher?.add(event: StopMovingEvent(on: event.entityId))
+            dispatcher?.add(event: StopMovingEvent(on: event.playerId))
 
             return
         }

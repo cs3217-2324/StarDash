@@ -31,6 +31,6 @@ class MonsterSystem: System {
     }
 
     private func handleMonsterDeathEvent(event: MonsterDeathEvent) {
-        dispatcher?.add(event: RemoveEvent(on: event.entityId))
+        dispatcher?.add(event: RemoveEvent(on: event.monsterId))
     }
 }
