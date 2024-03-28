@@ -54,8 +54,7 @@ class ViewController: UIViewController {
 
         EntityFactory.createAndAddPlayer(to: gameEngine,
                                          playerIndex: 0,
-                                         position: CGPoint(x: 100, y: scene.size.height / 2 + 200),
-                                         sprite: PlayerSprite.RedNose)
+                                         position: CGPoint(x: 100, y: scene.size.height / 2 + 200))
 
         EntityFactory.createAndAddFloor(to: gameEngine,
                                         position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400),
@@ -64,7 +63,6 @@ class ViewController: UIViewController {
         EntityFactory.createAndAddCollectible(to: gameEngine,
                                               position: CGPoint(x: scene.size.width / 2 + 30,
                                                                 y: scene.size.height / 2 - 100),
-                                              sprite: SpriteConstants.star,
                                               points: EntityConstants.StarCollectible.points,
                                               size: EntityConstants.StarCollectible.size)
 
