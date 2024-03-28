@@ -3,12 +3,12 @@ import CoreGraphics
 
 class PlayerFloorContactEvent: Event {
     let timestamp: Date
-    let entityId: EntityId
+    let playerId: EntityId
     let contactPoint: CGPoint
 
-    init(from playerEntityId: EntityId, at contactPoint: CGPoint) {
+    init(from playerId: EntityId, at contactPoint: CGPoint) {
         self.timestamp = Date.now
-        self.entityId = playerEntityId
+        self.playerId = playerId
         self.contactPoint = contactPoint
     }
 }

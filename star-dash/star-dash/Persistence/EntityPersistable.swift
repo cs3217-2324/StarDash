@@ -8,5 +8,5 @@
 import Foundation
 
 protocol EntityPersistable: Codable {
-    func toEntity() -> Entity
+    func addTo(_ entityManager: EntityManagerInterface)
 }

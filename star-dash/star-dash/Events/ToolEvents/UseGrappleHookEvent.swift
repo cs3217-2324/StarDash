@@ -9,10 +9,10 @@ import Foundation
 
 class UseGrappleHookEvent: Event {
     let timestamp: Date
-    let entityId: EntityId
+    let playerId: EntityId
 
-    init(from playerEntityId: EntityId) {
+    init(from playerId: EntityId) {
         self.timestamp = Date.now
-        entityId = playerEntityId
+        self.playerId = playerId
     }
 }

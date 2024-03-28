@@ -9,12 +9,12 @@ import UIKit
 import SDPhysicsEngine
 
 class ViewController: UIViewController {
-
     var scene: SDScene?
     var renderer: Renderer?
     var gameBridge: GameBridge?
     var gameEngine: GameEngine?
     var storageManager: StorageManager?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
 
     func setupGameEntities() {
         guard let scene = self.scene,
-              let entityManager = gameEngine?.entityManager else {
+              let gameEngine = self.gameEngine else {
             return
         }
 
@@ -52,28 +52,23 @@ class ViewController: UIViewController {
         background.zPosition = -1
         scene.addObject(background)
 
-        let player = Player(
-            playerIndex: 0,
-            position: CGPoint(x: 100, y: scene.size.height / 2 + 200),
-            playerSprite: PlayerSprite.RedNose
-        )
-        player.setUpAndAdd(to: entityManager)
+        EntityFactory.createAndAddPlayer(to: gameEngine,
+                                         playerIndex: 0,
+                                         position: CGPoint(x: 100, y: scene.size.height / 2 + 200),
+                                         sprite: PlayerSprite.RedNose)
 
-        let floor = Floor(position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400))
-        floor.setUpAndAdd(to: entityManager)
+        EntityFactory.createAndAddFloor(to: gameEngine,
+                                        position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400),
+                                        size: CGSize(width: 8_000, height: 10))
 
-        if let level = self.storageManager?.getLevel(id: 0) {
-            for entity in  level.entities {
-                entity.setUpAndAdd(to: entityManager)
-            }
-        } else {
-            print("level not found")
-        }
+        EntityFactory.createAndAddCollectible(to: gameEngine,
+                                              position: CGPoint(x: scene.size.width / 2 + 30,
+                                                                y: scene.size.height / 2 - 100),
+                                              sprite: SpriteConstants.star,
+                                              points: EntityConstants.StarCollectible.points,
+                                              size: EntityConstants.StarCollectible.size)
 
-        let collectible = Collectible.createStarCollectible(
-            position: CGPoint(x: scene.size.width / 2 + 30, y: scene.size.height / 2 - 100)
-        )
-        collectible.setUpAndAdd(to: entityManager)
+        self.storageManager?.loadLevel(id: 0, into: gameEngine)
     }
 }
 

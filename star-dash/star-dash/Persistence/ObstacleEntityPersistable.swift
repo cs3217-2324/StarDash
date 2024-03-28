@@ -6,13 +6,17 @@
 //
 
 import Foundation
-struct ObstacleEntityPersistable: Codable, EntityPersistable {
 
+struct ObstacleEntityPersistable: Codable, EntityPersistable {
     var levelId: Int64
     var position: CGPoint
     var sprite: String
     var size: CGSize
-    func toEntity() -> Entity {
-        Obstacle(position: self.position, sprite: self.sprite, size: self.size)
+
+    func addTo(_ entityManager: EntityManagerInterface) {
+        EntityFactory.createAndAddObstacle(to: entityManager,
+                                           position: self.position,
+                                           sprite: self.sprite,
+                                           size: self.size)
     }
 }
