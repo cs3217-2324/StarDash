@@ -98,7 +98,7 @@ class CollisionSystem: System {
         guard let playerPositionComponent = entityManager.component(ofType: PositionComponent.self, of: event.playerId),
               let obstaclePositionComponent = entityManager.component(ofType: PositionComponent.self,
                                                                       of: event.obstacleId),
-              let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: event.obstacleId),
+              let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: event.playerId),
               playerPositionComponent.position.y > obstaclePositionComponent.position.y else {
             return
         }
