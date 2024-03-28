@@ -29,12 +29,12 @@ class GameEngine {
 
         return GameInfo(
             playerScore: score,
-            playersInfo: playersInfo()
+            playersInfo: playersInfo(of: playerIndex)
         )
     }
 
-    func playersInfo() -> [PlayerInfo] {
-        guard let playerEntityId = entityManager.playerEntityId(),
+    func playersInfo(of playerIndex: Int) -> [PlayerInfo] {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex),
               let positionSystem = systemManager.system(ofType: PositionSystem.self) else {
             return []
         }

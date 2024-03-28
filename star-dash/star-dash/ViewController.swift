@@ -56,8 +56,6 @@ class ViewController: UIViewController {
                                          playerIndex: 1,
                                          position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 + 200))
 
-        let floor = Floor(position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400))
-        floor.setUpAndAdd(to: entityManager)
         EntityFactory.createAndAddFloor(to: gameEngine,
                                         position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400),
                                         size: CGSize(width: 8_000, height: 10))
@@ -110,7 +108,8 @@ extension ViewController: ViewDelegate {
         }
 
         return OverlayInfo(
-            score: gameInfo.playerScore
+            score: gameInfo.playerScore,
+            playersInfo: gameInfo.playersInfo
         )
     }
 }

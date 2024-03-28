@@ -17,6 +17,7 @@ class PlayerView {
     var sceneView: MTKView
     var controlView: ControlView
     var overlayView: OverlayView
+    var minimapView: MiniMapView
 
     let rotation: CGFloat
 
@@ -29,6 +30,9 @@ class PlayerView {
 
         self.overlayView = OverlayView(frame: superview.bounds, rotatedBy: rotation)
         superview.addSubview(self.overlayView)
+        
+        self.minimapView = MiniMapView(frame: superview.bounds, rotatedBy: rotation)
+        superview.addSubview(self.minimapView)
 
         self.controlView = ControlView(frame: superview.bounds, rotatedBy: rotation)
         superview.addSubview(self.controlView)
@@ -37,6 +41,7 @@ class PlayerView {
     func setupSubviews() {
         self.controlView.setupSubviews()
         self.overlayView.setupSubviews()
+        self.minimapView.setupSubviews()
     }
 
     func setControlViewDelegate(_ delegate: ControlViewDelegate) {
@@ -48,7 +53,8 @@ class PlayerView {
     }
 
     func update(_ overlayInfo: OverlayInfo) {
-        overlayView.update(overlayInfo)
+        overlayView.update(overlayInfo.score)
+        minimapView.update(playersInfo: overlayInfo.playersInfo)
     }
 
     static func createPlayerView(layout: PlayerViewLayout, device: MTLDevice) -> PlayerView {
