@@ -99,10 +99,12 @@ class CollisionSystem: System {
               let obstaclePositionComponent = entityManager.component(ofType: PositionComponent.self,
                                                                       of: event.obstacleId),
               let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: event.playerId),
-              playerPositionComponent.position.y > obstaclePositionComponent.position.y else {
+              playerPositionComponent.position.y - PhysicsConstants.Dimensions.player.height / 2 >
+                obstaclePositionComponent.position.y + PhysicsConstants.Dimensions.obstacle.height / 2 else {
+            dispatcher?.add(event: StopMovingEvent(on: event.playerId))
+
             return
         }
-
         playerComponent.canJump = true
         playerComponent.canMove = true
     }

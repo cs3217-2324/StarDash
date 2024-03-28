@@ -14,7 +14,7 @@ class PlayerView {
     var sceneView: MTKView
     var controlView: ControlView
     var overlayView: OverlayView
-
+    var miniMapView: MiniMapView
     init(superview: UIView, device: MTLDevice, drawDelegate: MTKViewDelegate) {
         self.sceneView = MTKView(frame: superview.frame, device: device)
         self.sceneView.delegate = drawDelegate
@@ -22,6 +22,8 @@ class PlayerView {
 
         self.overlayView = OverlayView(frame: superview.frame)
         superview.addSubview(self.overlayView)
+        self.miniMapView = MiniMapView(frame: superview.frame)
+        superview.addSubview(self.miniMapView)
 
         self.controlView = ControlView(frame: superview.frame)
         superview.addSubview(self.controlView)
@@ -30,6 +32,7 @@ class PlayerView {
     func setupSubviews() {
         self.controlView.setupSubviews()
         self.overlayView.setupSubviews()
+        self.miniMapView.setupSubviews()
     }
 
     func setControlViewDelegate(_ delegate: ControlViewDelegate) {
@@ -38,5 +41,9 @@ class PlayerView {
 
     func updateOverlay(score: Int) {
         overlayView.update(score: score)
+    }
+
+    func updateMinimap(playersInfo: [PlayerInfo]) {
+        miniMapView.update(playersInfo: playersInfo)
     }
 }

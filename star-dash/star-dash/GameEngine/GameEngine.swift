@@ -28,8 +28,22 @@ class GameEngine {
         }
 
         return GameInfo(
-            playerScore: score
+            playerScore: score,
+            playersInfo: playersInfo()
         )
+    }
+
+    func playersInfo() -> [PlayerInfo] {
+        guard let playerEntityId = entityManager.playerEntityId(),
+              let positionSystem = systemManager.system(ofType: PositionSystem.self) else {
+            return []
+        }
+        var playersInfo = [PlayerInfo]()
+        if let position = positionSystem.getPosition(of: playerEntityId) {
+            playersInfo.append(PlayerInfo(position: position, player: .RedNose))
+        }
+        return playersInfo
+
     }
 
     func update(by deltaTime: TimeInterval) {
