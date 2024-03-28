@@ -85,7 +85,14 @@ class GameBridge {
         modules.forEach {
             $0.create(for: newObject, from: entity)
         }
-        self.scene.addObject(newObject)
+
+        if type(of: entity) == Player.self {
+            if let playerIndex = entityManager.component(ofType: PlayerComponent.self, of: entity.id)?.playerIndex {
+                self.scene.addPlayerObject(newObject, playerIndex: playerIndex)
+            }
+        } else {
+            self.scene.addObject(newObject)
+        }
     }
 
     private func removeObject(from entityId: EntityId) {

@@ -20,21 +20,21 @@ class GameEngine {
         setUpSystems()
     }
 
-    func gameInfo() -> GameInfo? {
+    func gameInfo(forPlayer playerIndex: Int) -> GameInfo? {
         guard let scoreSystem = systemManager.system(ofType: ScoreSystem.self),
-              let playerEntityId = entityManager.playerEntityId(),
+              let playerEntityId = entityManager.playerEntityId(with: playerIndex),
               let score = scoreSystem.score(of: playerEntityId) else {
             return nil
         }
 
         return GameInfo(
             playerScore: score,
-            playersInfo: playersInfo()
+            playersInfo: playersInfo(of: playerIndex)
         )
     }
 
-    func playersInfo() -> [PlayerInfo] {
-        guard let playerEntityId = entityManager.playerEntityId(),
+    func playersInfo(of playerIndex: Int) -> [PlayerInfo] {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex),
               let positionSystem = systemManager.system(ofType: PositionSystem.self) else {
             return []
         }
@@ -61,16 +61,16 @@ class GameEngine {
         eventManager.add(event: event)
     }
 
-    func handlePlayerJump() {
-        guard let playerEntityId = entityManager.playerEntityId() else {
+    func handlePlayerJump(playerIndex: Int) {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
             return
         }
 
         eventManager.add(event: JumpEvent(on: playerEntityId, by: PhysicsConstants.jumpImpulse))
     }
 
-    func handlePlayerMove(toLeft: Bool) {
-        guard let playerEntityId = entityManager.playerEntityId(),
+    func handlePlayerMove(toLeft: Bool, playerIndex: Int) {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex),
               let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: playerEntityId),
               playerComponent.canMove else {
             return
@@ -79,20 +79,12 @@ class GameEngine {
         eventManager.add(event: MoveEvent(on: playerEntityId, toLeft: toLeft))
     }
 
-    func handlePlayerStoppedMoving() {
-        guard let playerEntityId = entityManager.playerEntityId() else {
+    func handlePlayerStoppedMoving(playerIndex: Int) {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
             return
         }
 
         eventManager.add(event: StopMovingEvent(on: playerEntityId))
-    }
-
-    func playerPosition() -> CGPoint? {
-        guard let playerEntityId = entityManager.playerEntityId(),
-              let positionComponent = entityManager.component(ofType: PositionComponent.self, of: playerEntityId) else {
-            return nil
-        }
-        return positionComponent.position
     }
 
     private func setUpSystems() {
