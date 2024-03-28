@@ -101,7 +101,6 @@ struct Database {
         let id = Expression<Int64>("id")
         let levelId = Expression<Int64>("levelId")
         let position = Expression<String>("position")
-        let sprite = Expression<String>("sprite")
         let points = Expression<Int>("points")
         let size = Expression<String>("size")
 
@@ -110,7 +109,6 @@ struct Database {
                 table.column(id, primaryKey: .autoincrement)
                 table.column(levelId)
                 table.column(position)
-                table.column(sprite)
                 table.column(points)
                 table.column(size)
 
@@ -128,7 +126,6 @@ struct Database {
         let id = Expression<Int64>("id")
         let levelId = Expression<Int64>("levelId")
         let position = Expression<String>("position")
-        let sprite = Expression<String>("sprite")
         let size = Expression<String>("size")
 
         do {
@@ -136,7 +133,6 @@ struct Database {
                 table.column(id, primaryKey: .autoincrement)
                 table.column(levelId)
                 table.column(position)
-                table.column(sprite)
                 table.column(size)
 
             })
@@ -153,7 +149,6 @@ struct Database {
         let id = Expression<Int64>("id")
         let levelId = Expression<Int64>("levelId")
         let position = Expression<String>("position")
-        let sprite = Expression<String>("sprite")
         let size = Expression<String>("size")
 
         do {
@@ -161,7 +156,6 @@ struct Database {
                 table.column(id, primaryKey: .autoincrement)
                 table.column(levelId)
                 table.column(position)
-                table.column(sprite)
                 table.column(size)
 
             })
@@ -177,7 +171,6 @@ struct Database {
         let id = Expression<Int64>("id")
         let levelId = Expression<Int64>("levelId")
         let position = Expression<String>("position")
-        let sprite = Expression<String>("sprite")
         let size = Expression<String>("size")
         let health = Expression<Int>("health")
 
@@ -186,7 +179,6 @@ struct Database {
                 table.column(id, primaryKey: .autoincrement)
                 table.column(levelId)
                 table.column(position)
-                table.column(sprite)
                 table.column(size)
                 table.column(health)
 
