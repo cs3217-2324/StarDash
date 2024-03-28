@@ -10,14 +10,12 @@ import Foundation
 struct CollectibleEntityPersistable: Codable, EntityPersistable {
     var levelId: Int64
     var position: CGPoint
-    var sprite: String
     var points: Int
     var size: CGSize
 
     func addTo(_ entityManager: EntityManagerInterface) {
         EntityFactory.createAndAddCollectible(to: entityManager,
                                               position: self.position,
-                                              sprite: self.sprite,
                                               points: self.points,
                                               size: self.size)
     }

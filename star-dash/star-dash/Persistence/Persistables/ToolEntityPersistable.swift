@@ -10,13 +10,11 @@ import Foundation
 struct ToolEntityPersistable: Codable, EntityPersistable {
     var levelId: Int64
     var position: CGPoint
-    var sprite: String
     var size: CGSize
 
     func addTo(_ entityManager: EntityManagerInterface) {
         EntityFactory.createAndAddTool(to: entityManager,
                                        position: self.position,
-                                       sprite: self.sprite,
                                        size: self.size)
     }
 }

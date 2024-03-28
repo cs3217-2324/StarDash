@@ -9,4 +9,10 @@ struct SpriteConstants {
     )
 
     static let star = "Star"
+
+    static let monster = "Monster"
+
+    static let obstacle = "Obstacle"
+
+    static let tool = "Tool"
 }

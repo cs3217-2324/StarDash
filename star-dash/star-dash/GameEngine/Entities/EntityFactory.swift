@@ -10,8 +10,7 @@ import Foundation
 struct EntityFactory {
     static func createAndAddPlayer(to entityManager: EntityManagerInterface,
                                    playerIndex: Int,
-                                   position: CGPoint,
-                                   sprite: PlayerSprite) {
+                                   position: CGPoint) {
         let playerBuilder = EntityBuilder(entity: Player(id: UUID()), entityManager: entityManager)
 
         playerBuilder
@@ -35,14 +34,13 @@ struct EntityFactory {
     static func createAndAddMonster(to entityManager: EntityManagerInterface,
                                     position: CGPoint,
                                     health: Int,
-                                    sprite: String,
                                     size: CGSize) {
         let monsterBuilder = EntityBuilder(entity: Monster(id: UUID()), entityManager: entityManager)
 
         monsterBuilder
             .withPosition(at: position)
             .withHealth(health: health)
-            .withSprite(image: sprite,
+            .withSprite(image: SpriteConstants.monster,
                         textureSet: nil,
                         textureAtlas: nil,
                         size: size)
@@ -53,14 +51,13 @@ struct EntityFactory {
 
     static func createAndAddCollectible(to entityManager: EntityManagerInterface,
                                         position: CGPoint,
-                                        sprite: String,
                                         points: Int,
                                         size: CGSize) {
         let collectibleBuilder = EntityBuilder(entity: Collectible(id: UUID()), entityManager: entityManager)
 
         collectibleBuilder
             .withPosition(at: position)
-            .withSprite(image: sprite,
+            .withSprite(image: SpriteConstants.star,
                         textureSet: nil,
                         textureAtlas: nil,
                         size: size)
@@ -76,13 +73,12 @@ struct EntityFactory {
 
     static func createAndAddObstacle(to entityManager: EntityManagerInterface,
                                      position: CGPoint,
-                                     sprite: String,
                                      size: CGSize) {
         let obstacleBuilder = EntityBuilder(entity: Obstacle(id: UUID()), entityManager: entityManager)
 
         obstacleBuilder
             .withPosition(at: position)
-            .withSprite(image: sprite,
+            .withSprite(image: SpriteConstants.obstacle,
                         textureSet: nil,
                         textureAtlas: nil,
                         size: size)
@@ -94,13 +90,12 @@ struct EntityFactory {
 
     static func createAndAddTool(to entityManager: EntityManagerInterface,
                                  position: CGPoint,
-                                 sprite: String,
                                  size: CGSize) {
         let toolBuilder = EntityBuilder(entity: Tool(id: UUID()), entityManager: entityManager)
 
         toolBuilder
             .withPosition(at: position)
-            .withSprite(image: sprite,
+            .withSprite(image: SpriteConstants.tool,
                         textureSet: nil,
                         textureAtlas: nil,
                         size: size)

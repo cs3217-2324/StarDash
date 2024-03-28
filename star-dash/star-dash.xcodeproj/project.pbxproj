@@ -382,6 +382,19 @@
 			path = CommonEvents;
 			sourceTree = "<group>";
 		};
+		14E58BC42BB57E8000D5ABC3 /* Persistables */ = {
+			isa = PBXGroup;
+			children = (
+				4E59E25C2BAB405A007B3FA7 /* EntityPersistable.swift */,
+				4E59E2602BAB42FD007B3FA7 /* LevelPersistable.swift */,
+				4E59E2652BADA79A007B3FA7 /* MonsterEntityPersistable.swift */,
+				4E59E26B2BADA7DD007B3FA7 /* ObstacleEntityPersistable.swift */,
+				4E59E2672BADA7B6007B3FA7 /* CollectibleEntityPersistable.swift */,
+				4E59E2692BADA7C7007B3FA7 /* ToolEntityPersistable.swift */,
+			);
+			path = Persistables;
+			sourceTree = "<group>";
+		};
 		4611488F2BA1CD9E0073E7E1 /* Systems */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,6 +416,7 @@
 		46B8C0982BA328BF00498705 /* GameEngine */ = {
 			isa = PBXGroup;
 			children = (
+				145F2C7E2BA2039700457549 /* Events */,
 				46D418142BA5CB760091A38B /* Collision */,
 				4611488F2BA1CD9E0073E7E1 /* Systems */,
 				4E630F282B9F7EC20008F887 /* Components */,
@@ -456,12 +470,7 @@
 				4E59E2642BAD9A06007B3FA7 /* Data */,
 				4E59E2502BAB2EAE007B3FA7 /* StorageManager.swift */,
 				4E59E2522BAB3061007B3FA7 /* Database.swift */,
-				4E59E25C2BAB405A007B3FA7 /* EntityPersistable.swift */,
-				4E59E2602BAB42FD007B3FA7 /* LevelPersistable.swift */,
-				4E59E2652BADA79A007B3FA7 /* MonsterEntityPersistable.swift */,
-				4E59E26B2BADA7DD007B3FA7 /* ObstacleEntityPersistable.swift */,
-				4E59E2672BADA7B6007B3FA7 /* CollectibleEntityPersistable.swift */,
-				4E59E2692BADA7C7007B3FA7 /* ToolEntityPersistable.swift */,
+				14E58BC42BB57E8000D5ABC3 /* Persistables */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -516,7 +525,6 @@
 				E6A745102BA057040080C1BE /* Rendering */,
 				4E86605D2BA095CC0035530D /* Constants */,
 				4E630F352B9F91C20008F887 /* Enums */,
-				145F2C7E2BA2039700457549 /* Events */,
 				143AA38D2BA4D600009C28E7 /* Extensions */,
 				4E630EF52B9F7E070008F887 /* AppDelegate.swift */,
 				4E630EF72B9F7E070008F887 /* SceneDelegate.swift */,

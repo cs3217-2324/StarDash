@@ -10,7 +10,6 @@ import Foundation
 struct MonsterEntityPersistable: Codable, EntityPersistable {
     var levelId: Int64
     var position: CGPoint
-    var sprite: String
     var health: Int
     var size: CGSize
 
@@ -18,7 +17,6 @@ struct MonsterEntityPersistable: Codable, EntityPersistable {
         EntityFactory.createAndAddMonster(to: entityManager,
                                           position: self.position,
                                           health: self.health,
-                                          sprite: self.sprite,
                                           size: self.size)
     }
 }
