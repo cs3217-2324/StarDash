@@ -14,11 +14,9 @@ class StorageManager {
         database = Database()
     }
 
-    func getLevel(id: Int64) -> Level? {
-        if let levelPersistable = self.database.getLevelPersistable(id: id) {
-            let entityPersistables = self.database.getAllEntities(levelId: id)
-            return Level(levelPersistable: levelPersistable, entityPersistables: entityPersistables)
-        }
-        return nil
+    func loadLevel(id: Int64, into entityManager: EntityManagerInterface) {
+        let entityPersistables = self.database.getAllEntities(levelId: id)
+
+        entityPersistables.forEach { $0.addTo(entityManager) }
     }
 }

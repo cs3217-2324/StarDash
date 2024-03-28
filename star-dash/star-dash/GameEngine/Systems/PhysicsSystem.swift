@@ -21,7 +21,7 @@ class PhysicsSystem: System {
     }
 
     func update(by deltaTime: TimeInterval) {
-        let physicsComponents = entityManager.componentMap.values.compactMap({ $0 as? PhysicsComponent })
+        let physicsComponents = entityManager.components(ofType: PhysicsComponent.self)
 
         for physicsComponent in physicsComponents {
             physicsComponent.force = .zero
@@ -34,14 +34,6 @@ class PhysicsSystem: System {
         }
 
         return physicsComponent.velocity != .zero
-    }
-
-    func applyForce(to entityId: EntityId, newForce: CGVector) {
-        guard let physicsComponent = getPhysicsComponent(of: entityId) else {
-            return
-        }
-
-        physicsComponent.force += newForce
     }
 
     func applyImpulse(to entityId: EntityId, impulse: CGVector) {
@@ -104,7 +96,6 @@ class PhysicsSystem: System {
         }
         playerComponent.canJump = false
         playerComponent.canMove = false
-
         applyImpulse(to: event.entityId, impulse: event.jumpImpulse)
     }
 
@@ -113,7 +104,6 @@ class PhysicsSystem: System {
               let spriteComponent = entityManager.component(ofType: SpriteComponent.self, of: event.entityId) else {
             return
         }
-
         physicsComponent.velocity = .zero
         spriteComponent.textureAtlas = nil
     }

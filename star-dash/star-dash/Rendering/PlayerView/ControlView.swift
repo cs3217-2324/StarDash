@@ -4,7 +4,7 @@ import UIKit
  `ControlView` is responsible for displaying the controls
  such as jump button and joystick.
  */
-class ControlView: UIView {
+class ControlView: UIView, UIGestureRecognizerDelegate {
 
     var joystickView: JoystickView?
 
@@ -54,7 +54,7 @@ class ControlView: UIView {
     private func setupGestureRecognizers() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         panGesture.cancelsTouchesInView = false
-
+        panGesture.delegate = self
         addGestureRecognizer(panGesture)
     }
 
@@ -96,6 +96,16 @@ class ControlView: UIView {
         controlViewDelegate?.joystickReleased(from: self)
         joystickView?.returnJoystick()
     }
+    // To ensure gesture recognise only in a specific area
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        let touchLocation = touch.location(in: self)
+        let halfScreenWidth = self.frame.width / 2
+        let ignoredAreaRect = CGRect(x: halfScreenWidth, y: 0, width: halfScreenWidth, height: self.frame.height)
+        if ignoredAreaRect.contains(touchLocation) {
+            return false
+        }
+        return true
+    }
 
     @objc
     func handlePan(_ gesture: UIPanGestureRecognizer) {
@@ -110,12 +120,10 @@ class ControlView: UIView {
             return
         }
 
-        if location.x < self.frame.width / 2 {
-            joystickView.moveJoystick(location: gesture.location(in: joystickView))
-            if shouldSendMoveEvent(location: location) {
-                let isLeft = gesture.location(in: joystickView).x < joystickView.center.x
-                controlViewDelegate?.joystickMoved(toLeft: isLeft, from: self)
-            }
+        joystickView.moveJoystick(location: gesture.location(in: joystickView))
+        if shouldSendMoveEvent(location: location) {
+            let isLeft = gesture.location(in: joystickView).x < joystickView.center.x
+            controlViewDelegate?.joystickMoved(toLeft: isLeft, from: self)
         }
     }
 

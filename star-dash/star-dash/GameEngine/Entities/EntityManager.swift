@@ -13,9 +13,9 @@ typealias EntityMap = [EntityId: Entity]
 typealias EntityComponentMap = [EntityId: ComponentSet]
 
 class EntityManager {
-    var componentMap: ComponentMap
-    var entityMap: EntityMap
-    var entityComponentMap: EntityComponentMap
+    private var componentMap: ComponentMap
+    private var entityMap: EntityMap
+    private var entityComponentMap: EntityComponentMap
 
     init(componentMap: ComponentMap, entityMap: EntityMap, entityComponentMap: EntityComponentMap) {
         self.componentMap = componentMap
@@ -25,6 +25,10 @@ class EntityManager {
 
     convenience init() {
         self.init(componentMap: .init(), entityMap: .init(), entityComponentMap: .init())
+    }
+
+    var entities: [Entity] {
+        Array(entityMap.values)
     }
 
     func add(component: Component) {
@@ -45,13 +49,24 @@ class EntityManager {
 
     func remove(entity: Entity) {
         entityMap[entity.id] = nil
+
         guard let componentIds = entityComponentMap[entity.id] else {
             return
         }
+
         for componentId in componentIds {
             componentMap[componentId] = nil
         }
+
         entityComponentMap[entity.id] = nil
+    }
+
+    func remove(entityId: EntityId) {
+        guard let entity = entity(with: entityId) else {
+            return
+        }
+
+        remove(entity: entity)
     }
 
     func entity(with entityId: EntityId) -> Entity? {
@@ -79,5 +94,9 @@ class EntityManager {
         }
 
         return componentMap[componentId] as? T
+    }
+
+    func components<T: Component>(ofType type: T.Type) -> [T] {
+        componentMap.values.compactMap({ $0 as? T })
     }
 }

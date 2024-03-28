@@ -9,7 +9,7 @@ import Foundation
 
 class GameEngine {
     private let systemManager: SystemManager
-    let entityManager: EntityManager // TODO: Set to private
+    private let entityManager: EntityManager
     private let eventManager: EventManager
 
     init() {
@@ -28,8 +28,22 @@ class GameEngine {
         }
 
         return GameInfo(
-            playerScore: score
+            playerScore: score,
+            playersInfo: playersInfo()
         )
+    }
+
+    func playersInfo() -> [PlayerInfo] {
+        guard let playerEntityId = entityManager.playerEntityId(),
+              let positionSystem = systemManager.system(ofType: PositionSystem.self) else {
+            return []
+        }
+        var playersInfo = [PlayerInfo]()
+        if let position = positionSystem.getPosition(of: playerEntityId) {
+            playersInfo.append(PlayerInfo(position: position, player: .RedNose))
+        }
+        return playersInfo
+
     }
 
     func update(by deltaTime: TimeInterval) {
@@ -87,28 +101,12 @@ class GameEngine {
 }
 
 extension GameEngine: EventModifiable {
-    func entity(with entityId: EntityId) -> Entity? {
-        entityManager.entity(with: entityId)
-    }
-
     func system<T: System>(ofType type: T.Type) -> T? {
         systemManager.system(ofType: type)
     }
 
-    func component<T: Component>(ofType type: T.Type, ofEntity entityId: EntityId) -> T? {
-        entityManager.component(ofType: type, of: entityId)
-    }
-
-    func add(entity: Entity) {
-        entityManager.add(entity: entity)
-    }
-
     func add(event: Event) {
         eventManager.add(event: event)
-    }
-
-    func remove(entity: Entity) {
-        entityManager.remove(entity: entity)
     }
 
     func registerListener<T: Event>(for eventType: T.Type, listener: EventListener) {
@@ -117,9 +115,8 @@ extension GameEngine: EventModifiable {
 }
 
 extension GameEngine: EntitySyncInterface {
-
     var entities: [Entity] {
-        Array(entityManager.entityMap.values)
+        entityManager.entities
     }
 
     func component<T: Component>(ofType type: T.Type, of entityId: EntityId) -> T? {
@@ -127,6 +124,16 @@ extension GameEngine: EntitySyncInterface {
     }
 
     func entity(of entityId: EntityId) -> Entity? {
-        entityManager.entityMap[entityId]
+        entityManager.entity(with: entityId)
+    }
+}
+
+extension GameEngine: EntityManagerInterface {
+    func add(entity: Entity) {
+        entityManager.add(entity: entity)
+    }
+
+    func add(component: Component) {
+        entityManager.add(component: component)
     }
 }
