@@ -149,7 +149,5 @@ class EntityBuilder {
         self.entityManager.add(entity: self.entity)
 
         self.components.values.forEach { self.entityManager.add(component: $0) }
-        print("++++++")
-        print(components.values)
     }
 }
