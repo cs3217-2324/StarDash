@@ -77,6 +77,6 @@ struct CollisionHandler {
     }
 
     static func between(grappleHook: GrappleHook, obstacle: Obstacle) -> Event? {
-        return GrappleHookObstacleContactEvent(betweenHook: grappleHook.id, andObstacle: obstacle.id)
+        GrappleHookObstacleContactEvent(betweenHook: grappleHook.id, andObstacle: obstacle.id)
     }
 }
