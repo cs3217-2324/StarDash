@@ -43,7 +43,7 @@ class GameEngine {
               let event = entityOne.collides(with: entityTwo, at: contactPoint) else {
             return
         }
-
+        //print("\(entityOne), \(entityTwo), \(event)")
         eventManager.add(event: event)
     }
 

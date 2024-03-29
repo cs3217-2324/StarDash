@@ -104,9 +104,9 @@
     {
       "levelId": 0,
       "sprite": "SpeedBoost",
-      "position": [600, 400],
+      "position": [500, 300],
       "size": [60,60],
-      "type": "SpeedBoost"
+      "type": "SpeedBoostPowerUp"
     },
   ]
 }

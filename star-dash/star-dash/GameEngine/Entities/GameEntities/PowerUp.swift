@@ -22,6 +22,7 @@ class PowerUp: Entity {
     func setUpAndAdd(to: EntityManager) {
         let positionComponent = PositionComponent(entityId: self.id, position: self.position, rotation: .zero)
         let physicsComponent = PhysicsComponent(entityId: self.id, size: self.size)
+        let powerUpComponent = PowerUpComponent(entityId: self.id, type: type)
         let spriteComponent = SpriteComponent(entityId: self.id,
                                               image: self.sprite,
                                               textureSet: nil,
@@ -36,5 +37,6 @@ class PowerUp: Entity {
         to.add(component: positionComponent)
         to.add(component: physicsComponent)
         to.add(component: spriteComponent)
+        to.add(component: powerUpComponent)
     }
 }

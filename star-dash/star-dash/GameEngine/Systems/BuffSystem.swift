@@ -1,6 +1,7 @@
 import Foundation
 
-class BuffSystem: System {
+class BuffSystem: System, EventListener {
+    
     var isActive: Bool
     var dispatcher: EventModifiable?
     var entityManager: EntityManager
@@ -15,11 +16,13 @@ class BuffSystem: System {
     func applySpeedMultiplier(_ multiplier: Float, for entityId: EntityId) {
         guard let buffComponent = getBuffComponent(of: entityId),
               multiplier != 0 else {
-            return false
+            return
         }
 
         buffComponent.speedMultiplier *= multiplier
     }
+    
+    func setup() {}
 
     private func getBuffComponent(of entityId: EntityId) -> BuffComponent? {
         entityManager.component(ofType: BuffComponent.self, of: entityId)

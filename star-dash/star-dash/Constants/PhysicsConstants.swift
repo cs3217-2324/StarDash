@@ -22,7 +22,7 @@ struct PhysicsConstants {
     }
 
     struct CollisionMask {
-        static let player = CollisionCategory.max ^ CollisionCategory.player ^ CollisionCategory.collectible
+        static let player = CollisionCategory.max ^ CollisionCategory.player ^ CollisionCategory.collectible ^ CollisionCategory.powerUp
         static let monster = CollisionCategory.player | CollisionCategory.tool
         static let collectible = CollisionCategory.none
         static let obstacle = CollisionCategory.player | CollisionCategory.monster | CollisionMask.tool
@@ -55,7 +55,7 @@ struct PhysicsConstants {
         static let powerUp = CGSize(width: 60, height: 60)
     }
 
-    static let jumpImpulse = CGVector(dx: 15, dy: 250)
-    static let runVelocity = CGVector(dx: 15, dy: 0)
+    static let jumpImpulse = CGVector(dx: 30, dy: 300)
+    static let runVelocity = CGVector(dx: 100, dy: 0)
     static let maxRunVelocity = CGVector(dx: 250, dy: 0)
 }

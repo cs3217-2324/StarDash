@@ -1,9 +1,9 @@
 class PowerUpFactory {
 
-    static func createPowerUp(triggerdBy playerId: EntityId, type: String) -> Entity? {
-        let powerUps: [String: (EntityId) -> Entity] = {
+    static func createPowerUp(triggeredBy playerId: EntityId, type: String) -> Entity? {
+        let powerUps: [String: (EntityId) -> Entity] = [
             "SpeedBoostPowerUp": createSpeedBoostPowerUp
-        }
+        ]
 
         guard let createMethod = powerUps[type] else {
             return nil

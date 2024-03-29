@@ -112,6 +112,8 @@ extension ViewController: SDSceneDelegate {
     }
 
     func contactOccurred(objectA: SDObject, objectB: SDObject, contactPoint: CGPoint) {
+        print(objectA)
+        print(objectB)
         guard let entityA = gameBridge?.entityId(of: objectA.id),
               let entityB = gameBridge?.entityId(of: objectB.id) else {
             return

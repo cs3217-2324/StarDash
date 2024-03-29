@@ -24,10 +24,15 @@ class PowerUpSystem: System {
     }
 
     private func handlePlayerPickedUpPowerUpEvent(event: PowerUpPlayerEvent) {
-        guard let powerUp = PowerUpFactory.createSpeedBoostPowerUp(triggerdBy: event.entityId) else {
+        guard let type = entityManager.component(ofType: PowerUpComponent.self, of: event.powerUpId)?.type,
+              let powerUp = entityManager.entity(with: event.powerUpId),
+              let playerPowerUp = PowerUpFactory.createPowerUp(triggeredBy: event.entityId, type: type) else {
+            print("bruh")
             return
         }
+        print("here")
 
-        entityManager.add(entity: powerUp)
+        entityManager.add(entity: playerPowerUp)
+        entityManager.remove(entity: powerUp)
     }
 }
