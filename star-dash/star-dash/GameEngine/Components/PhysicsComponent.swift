@@ -19,6 +19,8 @@ class PhysicsComponent: Component {
     var affectedByGravity = false
     var restitution: CGFloat = 0.2
     var size: CGSize?
+    var startPoint: CGPoint?
+    var endPoint: CGPoint?
 
     init(id: ComponentId, entityId: EntityId, size: CGSize) {
         self.shape = .rectangle
@@ -29,10 +31,22 @@ class PhysicsComponent: Component {
     convenience init(entityId: EntityId, size: CGSize) {
         self.init(id: UUID(), entityId: entityId, size: size)
     }
+
+    init(id: ComponentId, entityId: EntityId, startPoint: CGPoint, endPoint: CGPoint) {
+        self.shape = .line
+        self.startPoint = startPoint
+        self.endPoint = endPoint
+        super.init(id: id, entityId: entityId)
+    }
+
+    convenience init(entityId: EntityId, startPoint: CGPoint, endPoint: CGPoint) {
+        self.init(id: UUID(), entityId: entityId, startPoint: startPoint, endPoint: endPoint)
+    }
 }
 
 extension PhysicsComponent {
     enum Shape {
         case rectangle
+        case line
     }
 }

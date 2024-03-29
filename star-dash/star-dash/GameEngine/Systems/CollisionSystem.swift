@@ -26,6 +26,7 @@ class CollisionSystem: System {
         dispatcher?.registerListener(for: PlayerMonsterContactEvent.self, listener: self)
         dispatcher?.registerListener(for: PlayerObstacleContactEvent.self, listener: self)
         dispatcher?.registerListener(for: PlayerToolContactEvent.self, listener: self)
+        dispatcher?.registerListener(for: GrappleHookObstacleContactEvent.self, listener: self)
 
         eventHandlers[ObjectIdentifier(RemoveEvent.self)] = { event in
             if let removeEvent = event as? RemoveEvent {
@@ -50,6 +51,11 @@ class CollisionSystem: System {
         eventHandlers[ObjectIdentifier(PlayerToolContactEvent.self)] = { event in
             if let playerToolContactEvent = event as? PlayerToolContactEvent {
                 self.handlePlayerToolContactEvent(event: playerToolContactEvent)
+            }
+        }
+        eventHandlers[ObjectIdentifier(GrappleHookObstacleContactEvent.self)] = { event in
+            if let grappleHookObstacleContactEvent = event as? GrappleHookObstacleContactEvent {
+                self.handleGrappleHookObstacleContactEvent(event: grappleHookObstacleContactEvent)
             }
         }
     }
@@ -109,5 +115,18 @@ class CollisionSystem: System {
 
     private func handlePlayerToolContactEvent(event: PlayerToolContactEvent) {
         dispatcher?.add(event: RemoveEvent(on: event.toolId))
+    }
+
+    private func handleGrappleHookObstacleContactEvent(event: GrappleHookObstacleContactEvent) {
+        guard let hookSystem = dispatcher?.system(ofType: GrappleHookSystem.self),
+              let hookState = hookSystem.getHookState(of: event.grappleHookId) else {
+            return
+        }
+
+        if hookState == .shooting && hookSystem.length(of: event.grappleHookId) >= GameConstants.Hook.minLength {
+            hookSystem.setHookState(of: event.grappleHookId, to: .retracting)
+        } else {
+            hookSystem.setHookState(of: event.grappleHookId, to: .releasing)
+        }
     }
 }

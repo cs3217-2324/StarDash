@@ -10,9 +10,11 @@ import Foundation
 class UseGrappleHookEvent: Event {
     let timestamp: Date
     let playerId: EntityId
+    let position: CGPoint
 
-    init(from playerId: EntityId) {
+    init(from playerId: EntityId, at position: CGPoint) {
         self.timestamp = Date.now
         self.playerId = playerId
+        self.position = position
     }
 }

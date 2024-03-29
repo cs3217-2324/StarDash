@@ -128,4 +128,22 @@ struct EntityFactory {
                 .configureRestitution(0.0)
             .addToGame()
     }
+
+    static func createAndAddGrappleHook(to entityManager: EntityManagerInterface,
+                                        playerId: EntityId,
+                                        startpoint: CGPoint,
+                                        endpoint: CGPoint) {
+        let grappleHookBuilder = EntityBuilder(entity: GrappleHook(id: UUID()), entityManager: entityManager)
+
+        grappleHookBuilder
+            .withHookOwner(playerId: playerId)
+            .withPhysics(startpoint: startpoint, endpoint: endpoint)
+                .configureCategoryBitMask(PhysicsConstants.CollisionCategory.hook)
+                .configureContactTestMask(PhysicsConstants.ContactMask.hook)
+                .configureCollisionBitMask(PhysicsConstants.CollisionMask.hook)
+                .configureIsDynamic(false)
+                .configureRestitution(0.0)
+                .configureAffectedByGravity(false)
+            .addToGame()
+    }
 }

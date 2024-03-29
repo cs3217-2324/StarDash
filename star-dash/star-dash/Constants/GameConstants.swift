@@ -29,4 +29,14 @@ struct GameConstants {
     struct AttackImpulse {
         static let attackedByPlayer = CGVector(dx: 0, dy: 400)
     }
+
+    struct Hook {
+        static let deltaPositionVector = CGVector(dx: 10, dy: -10)
+        static let deltaAngle: Double = 3
+        static let minLength: Double = 80
+        static let maxLength: Double = 600
+        static let releaseImpulseMagnitude: Double = 600
+        static let defaultRetractLength: Double = 70
+        static let defaultSwingAngle: Double = 90
+    }
 }

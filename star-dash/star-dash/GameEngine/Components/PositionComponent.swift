@@ -20,15 +20,4 @@ class PositionComponent: Component {
     convenience init(entityId: UUID, position: CGPoint, rotation: CGFloat) {
         self.init(id: UUID(), entityId: entityId, position: position, rotation: rotation)
     }
-
-    func setPosition(position: CGPoint) {
-        if position == self.position {
-            return
-        }
-        self.position = position
-    }
-
-    func setRotation(rotation: CGFloat) {
-        self.rotation = rotation
-    }
 }

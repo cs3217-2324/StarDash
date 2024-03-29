@@ -73,6 +73,10 @@ class EntityManager {
         entityMap[entityId]
     }
 
+    func entities<T: Entity>(ofType type: T.Type) -> [T] {
+        entityMap.values.compactMap({ $0 as? T })
+    }
+
     func playerEntityId() -> EntityId? {
         // TODO: Add parameter to specify the player index 
         for entityId in entityMap.keys where component(ofType: PlayerComponent.self, of: entityId) != nil {

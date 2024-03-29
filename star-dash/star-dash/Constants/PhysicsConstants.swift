@@ -18,6 +18,7 @@ struct PhysicsConstants {
         static let tool: UInt32 = 0b1 << 4
         static let wall: UInt32 = 0b1 << 5
         static let floor: UInt32 = 0b1 << 6
+        static let hook: UInt32 = 0b1 << 7
     }
 
     struct CollisionMask {
@@ -28,6 +29,7 @@ struct PhysicsConstants {
         static let tool = CollisionCategory.max ^ CollisionCategory.collectible ^ CollisionCategory.tool
         static let wall = CollisionCategory.player | CollisionCategory.monster | CollisionCategory.tool
         static let floor = CollisionCategory.player | CollisionCategory.monster | CollisionCategory.tool
+        static let hook = CollisionCategory.max ^ CollisionCategory.collectible ^ CollisionCategory.tool
     }
 
     struct ContactMask {
@@ -38,6 +40,7 @@ struct PhysicsConstants {
         static let tool = CollisionCategory.obstacle
         static let wall = CollisionCategory.tool | CollisionCategory.player
         static let floor = CollisionCategory.player
+        static let hook = CollisionCategory.obstacle
     }
 
     struct Dimensions {
