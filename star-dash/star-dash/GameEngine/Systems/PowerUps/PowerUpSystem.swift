@@ -27,10 +27,8 @@ class PowerUpSystem: System {
         guard let type = entityManager.component(ofType: PowerUpComponent.self, of: event.powerUpId)?.type,
               let powerUp = entityManager.entity(with: event.powerUpId),
               let playerPowerUp = PowerUpFactory.createPowerUp(triggeredBy: event.entityId, type: type) else {
-            print("bruh")
             return
         }
-        print("here")
 
         entityManager.add(entity: playerPowerUp)
         entityManager.remove(entity: powerUp)

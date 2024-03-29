@@ -40,4 +40,8 @@ extension CGVector {
     static func -= (left: inout CGVector, right: CGVector) {
         left = CGVector(dx: left.dx - right.dx, dy: left.dy - right.dy)
     }
+    
+    static func *= (left: inout CGVector, scalar: CGFloat) {
+        left = CGVector(dx: left.dx * scalar, dy: left.dy * scalar)
+    }
 }

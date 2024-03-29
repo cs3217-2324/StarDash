@@ -2,7 +2,7 @@ import CoreGraphics
 
 extension PowerUp: Collidable {
     func collides(with collidable: Collidable, at contactPoint: CGPoint) -> Event? {
-        nil
+        collidable.collideWithPowerUp(self, at: contactPoint)
     }
 
     func collideWithPlayer(_ player: Player, at contactPoint: CGPoint) -> Event? {

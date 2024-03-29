@@ -96,7 +96,7 @@ class PhysicsSystem: System {
         var runVelocity = (event.toLeft ? -1 : 1) * PhysicsConstants.runVelocity
 
         if let buffComponent = entityManager.component(ofType: BuffComponent.self, of: event.entityId) {
-            runVelocity = runVelocity * CGFloat(buffComponent.speedMultiplier)
+            runVelocity *= CGFloat(buffComponent.speedMultiplier)
         }
 
         physicsComponent.velocity = runVelocity
