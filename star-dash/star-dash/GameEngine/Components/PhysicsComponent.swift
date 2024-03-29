@@ -9,7 +9,7 @@ import Foundation
 
 class PhysicsComponent: Component {
     var shape: Shape
-    var mass: CGFloat = .zero
+    var mass = CGFloat(10)
     var velocity: CGVector = .zero
     var force: CGVector = .zero
     var categoryBitMask: UInt32 = 0xFFFFFFFF

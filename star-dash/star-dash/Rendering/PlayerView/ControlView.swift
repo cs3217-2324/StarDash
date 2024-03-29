@@ -4,7 +4,7 @@ import UIKit
  `ControlView` is responsible for displaying the controls
  such as jump button and joystick.
  */
-class ControlView: UIView {
+class ControlView: UIView, UIGestureRecognizerDelegate {
 
     var joystickView: JoystickView?
 
@@ -24,7 +24,7 @@ class ControlView: UIView {
     // MARK: Private methods for setup
 
     private func setupMovementControls() {
-        let joystickY = frame.height - buttonSize - buttonMargin
+        let joystickY = bounds.height - buttonSize - buttonMargin
         let joystickView = JoystickView(frame: CGRect(
             x: buttonMargin,
             y: joystickY,
@@ -40,8 +40,8 @@ class ControlView: UIView {
     private func setupActionControls() {
         let jumpButton = UIButton(type: .custom)
 
-        let buttonX = frame.width - buttonSize - buttonMargin
-        let buttonY = frame.height - buttonSize - buttonMargin
+        let buttonX = bounds.width - buttonSize - buttonMargin
+        let buttonY = bounds.height - buttonSize - buttonMargin
         jumpButton.frame = CGRect(x: buttonX, y: buttonY, width: buttonSize, height: buttonSize)
 
         jumpButton.addTarget(self, action: #selector(jumpButtonTapped), for: .touchUpInside)
@@ -54,7 +54,7 @@ class ControlView: UIView {
     private func setupGestureRecognizers() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         panGesture.cancelsTouchesInView = false
-
+        panGesture.delegate = self
         addGestureRecognizer(panGesture)
     }
 
@@ -62,7 +62,7 @@ class ControlView: UIView {
 
     @objc
     func jumpButtonTapped() {
-        controlViewDelegate?.jumpButtonPressed()
+        controlViewDelegate?.jumpButtonPressed(from: self)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -80,7 +80,7 @@ class ControlView: UIView {
 //            controlViewDelegate?.joystickMoved(toLeft: isLeft)
 //        }
         let isLeft = firstTouch.location(in: joystickView).x < joystickView.center.x
-        controlViewDelegate?.joystickMoved(toLeft: isLeft)
+        controlViewDelegate?.joystickMoved(toLeft: isLeft, from: self)
 
         joystickView.moveJoystick(location: firstTouch.location(in: joystickView))
     }
@@ -93,8 +93,18 @@ class ControlView: UIView {
             return
         }
 
-        controlViewDelegate?.joystickReleased()
+        controlViewDelegate?.joystickReleased(from: self)
         joystickView?.returnJoystick()
+    }
+    // To ensure gesture recognise only in a specific area
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        let touchLocation = touch.location(in: self)
+        let halfScreenWidth = self.frame.width / 2
+        let ignoredAreaRect = CGRect(x: halfScreenWidth, y: 0, width: halfScreenWidth, height: self.frame.height)
+        if ignoredAreaRect.contains(touchLocation) {
+            return false
+        }
+        return true
     }
 
     @objc
@@ -105,17 +115,15 @@ class ControlView: UIView {
 
         let location = gesture.location(in: self)
         if gesture.state == .ended {
-            controlViewDelegate?.joystickReleased()
+            controlViewDelegate?.joystickReleased(from: self)
             joystickView.returnJoystick()
             return
         }
 
-        if location.x < self.frame.width / 2 {
-            joystickView.moveJoystick(location: gesture.location(in: joystickView))
-            if shouldSendMoveEvent(location: location) {
-                let isLeft = gesture.location(in: joystickView).x < joystickView.center.x
-                controlViewDelegate?.joystickMoved(toLeft: isLeft)
-            }
+        joystickView.moveJoystick(location: gesture.location(in: joystickView))
+        if shouldSendMoveEvent(location: location) {
+            let isLeft = gesture.location(in: joystickView).x < joystickView.center.x
+            controlViewDelegate?.joystickMoved(toLeft: isLeft, from: self)
         }
     }
 

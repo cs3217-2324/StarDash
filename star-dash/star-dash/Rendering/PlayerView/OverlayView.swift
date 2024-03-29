@@ -22,10 +22,10 @@ class OverlayView: UIView {
             scoreLabel.leadingAnchor.constraint(greaterThanOrEqualTo: self.leadingAnchor, constant: margin)
         ])
 
-        update(score: 0)
+        update(0)
     }
 
-    func update(score: Int) {
+    func update(_ score: Int) {
         scoreLabel.text = "Score: \(score)"
     }
 }

@@ -9,9 +9,13 @@ import Foundation
 @testable import star_dash
 
 func createPlayerEntity() -> Player {
-    Player(position: CGPoint(x: 0, y: 0), playerSprite: .RedNose)
+    Player(id: UUID())
 }
 
 func createEntityManager() -> EntityManager {
     EntityManager()
+}
+
+func createTextureSet() -> TextureSet {
+    TextureSet(run: "")
 }

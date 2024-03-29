@@ -27,6 +27,7 @@ class PhysicsModule: SyncModule {
 
         body.mass = physicsComponent.mass
         body.velocity = physicsComponent.velocity
+
         // body.force = physicsComponent.force
     }
 
@@ -42,6 +43,7 @@ class PhysicsModule: SyncModule {
         object.physicsBody?.categoryBitMask = physicsComponent.categoryBitMask
         object.physicsBody?.contactTestMask = physicsComponent.contactTestMask
         object.physicsBody?.collisionBitMask = physicsComponent.collisionBitMask
+        object.physicsBody?.mass = physicsComponent.mass
     }
 
     private func createRectanglePhysicsBody(physicsComponent: PhysicsComponent) -> SDPhysicsBody {

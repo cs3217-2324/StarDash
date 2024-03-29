@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         }
 
         renderer.viewDelegate = self
-        renderer.createSinglePlayerView(at: self.view)
+        renderer.setupViews(at: self.view, for: 2)
         self.renderer = renderer
     }
 
@@ -43,10 +43,6 @@ class ViewController: UIViewController {
             return
         }
 
-        let camera = SDCameraObject()
-        camera.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
-        scene.addCameraObject(camera)
-
         let background = SDSpriteObject(imageNamed: "GameBackground")
         background.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
         background.zPosition = -1
@@ -55,6 +51,10 @@ class ViewController: UIViewController {
         EntityFactory.createAndAddPlayer(to: gameEngine,
                                          playerIndex: 0,
                                          position: CGPoint(x: 100, y: scene.size.height / 2 + 200))
+
+        EntityFactory.createAndAddPlayer(to: gameEngine,
+                                         playerIndex: 1,
+                                         position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 + 200))
 
         EntityFactory.createAndAddFloor(to: gameEngine,
                                         position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400),
@@ -76,32 +76,6 @@ extension ViewController: SDSceneDelegate {
         gameBridge?.syncToEntities()
         gameEngine?.update(by: deltaTime)
         gameBridge?.syncFromEntities()
-
-        updateCameraObjectPosition(scene)
-        updateOverlay()
-    }
-
-    private func updateCameraObjectPosition(_ scene: SDScene) {
-        guard let playerPosition = gameEngine?.playerPosition() else {
-            return
-        }
-        let screenSize = UIScreen.main.bounds.size
-        let halfScreenWidth = screenSize.width / 2
-        if playerPosition.x >= halfScreenWidth + 200 {
-            scene.setCameraObjectXPosition(to: playerPosition.x)
-        } else {
-            scene.setCameraObjectXPosition(to: halfScreenWidth + 200)
-        }
-    }
-
-    private func updateOverlay() {
-        guard let gameInfo = gameEngine?.gameInfo() else {
-            return
-        }
-
-        renderer?.updateOverlay(overlayInfo: OverlayInfo(
-            score: gameInfo.playerScore
-        ))
     }
 
     func contactOccurred(objectA: SDObject, objectB: SDObject, contactPoint: CGPoint) {
@@ -116,15 +90,26 @@ extension ViewController: SDSceneDelegate {
 
 extension ViewController: ViewDelegate {
 
-    func joystickMoved(toLeft: Bool) {
-        gameEngine?.handlePlayerMove(toLeft: toLeft)
+    func joystickMoved(toLeft: Bool, playerIndex: Int) {
+        gameEngine?.handlePlayerMove(toLeft: toLeft, playerIndex: playerIndex)
     }
 
-    func joystickReleased() {
-        gameEngine?.handlePlayerStoppedMoving()
+    func joystickReleased(playerIndex: Int) {
+        gameEngine?.handlePlayerStoppedMoving(playerIndex: playerIndex)
     }
 
-    func jumpButtonPressed() {
-        gameEngine?.handlePlayerJump()
+    func jumpButtonPressed(playerIndex: Int) {
+        gameEngine?.handlePlayerJump(playerIndex: playerIndex)
+    }
+
+    func overlayInfo(forPlayer playerIndex: Int) -> OverlayInfo? {
+        guard let gameInfo = gameEngine?.gameInfo(forPlayer: playerIndex) else {
+            return nil
+        }
+
+        return OverlayInfo(
+            score: gameInfo.playerScore,
+            playersInfo: gameInfo.playersInfo
+        )
     }
 }

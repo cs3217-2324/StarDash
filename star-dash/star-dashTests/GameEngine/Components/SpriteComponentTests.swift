@@ -12,9 +12,16 @@ import XCTest
 final class SpriteComponentTests: XCTestCase {
     func testEqual_initComponent() {
         let player = createPlayerEntity()
-        let spriteComponent = SpriteComponent(entityId: player.id, image: "", textureAtlas: "", size: .zero)
-        XCTAssertEqual(spriteComponent.size, .zero, "Size should be initialized")
+        let textureSet = createTextureSet()
+        let spriteComponent = SpriteComponent(
+            entityId: player.id,
+            image: "",
+            textureSet: textureSet,
+            textureAtlas: "",
+            size: .zero)
         XCTAssertEqual(spriteComponent.image, "", "Image should be initialized")
+        XCTAssertEqual(spriteComponent.textureSet?.run, textureSet.run, "TextureSet should be initialized")
         XCTAssertEqual(spriteComponent.textureAtlas, "", "TextureAtlas should be initialized")
+        XCTAssertEqual(spriteComponent.size, .zero, "Size should be initialized")
     }
 }

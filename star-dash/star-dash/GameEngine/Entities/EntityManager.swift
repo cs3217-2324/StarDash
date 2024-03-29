@@ -77,10 +77,12 @@ class EntityManager {
         entityMap.values.compactMap({ $0 as? T })
     }
 
-    func playerEntityId() -> EntityId? {
-        // TODO: Add parameter to specify the player index 
-        for entityId in entityMap.keys where component(ofType: PlayerComponent.self, of: entityId) != nil {
-            return entityId
+    func playerEntityId(with playerIndex: Int) -> EntityId? {
+        for entityId in entityMap.keys {
+            if let playerComponent = component(ofType: PlayerComponent.self, of: entityId),
+               playerComponent.playerIndex == playerIndex {
+                return entityId
+            }
         }
 
         return nil
