@@ -30,7 +30,7 @@ class PowerUpSystem: System {
             return
         }
 
-        entityManager.add(entity: playerPowerUp)
+        playerPowerUp.setUpAndAdd(to: entityManager)
         entityManager.remove(entity: powerUp)
     }
 }

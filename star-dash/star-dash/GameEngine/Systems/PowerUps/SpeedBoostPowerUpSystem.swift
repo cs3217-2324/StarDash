@@ -11,7 +11,7 @@ class SpeedBoostPowerUpSystem: System, EventListener {
         self.entityManager = entityManager
         self.dispatcher = dispatcher
     }
-    
+
     func setup() {}
 
     func update(by deltaTime: TimeInterval) {
@@ -30,8 +30,7 @@ class SpeedBoostPowerUpSystem: System, EventListener {
     }
 
     private func activatePowerUp(component: SpeedBoostComponent) {
-        guard let speedBoost = entityManager.entity(with: component.entityId) as? SpeedBoostPowerUp,
-              let buffSystem = dispatcher?.system(ofType: BuffSystem.self),
+        guard let buffSystem = dispatcher?.system(ofType: BuffSystem.self),
               !component.isActivated else {
             return
         }
@@ -41,8 +40,7 @@ class SpeedBoostPowerUpSystem: System, EventListener {
     }
 
     private func deactivatePowerUp(component: SpeedBoostComponent) {
-        guard let speedBoost = entityManager.entity(with: component.entityId),
-              let buffSystem = dispatcher?.system(ofType: BuffSystem.self),
+        guard let buffSystem = dispatcher?.system(ofType: BuffSystem.self),
               component.isActivated else {
             return
         }
