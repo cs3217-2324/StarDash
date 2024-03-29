@@ -131,17 +131,21 @@ struct EntityFactory {
 
     static func createAndAddGrappleHook(to entityManager: EntityManagerInterface,
                                         playerId: EntityId,
-                                        startpoint: CGPoint,
-                                        endpoint: CGPoint) {
+                                        startpoint: CGPoint) {
         let grappleHookBuilder = EntityBuilder(entity: GrappleHook(id: UUID()), entityManager: entityManager)
-
         grappleHookBuilder
             .withHookOwner(playerId: playerId)
-            .withPhysics(startpoint: startpoint, endpoint: endpoint)
+            .withGrappleHook()
+            .withPosition(at: startpoint)
+            .withSprite(image: SpriteConstants.hook,
+                        textureSet: nil,
+                        textureAtlas: nil,
+                        size: PhysicsConstants.Dimensions.hook)
+            .withPhysics(size: CGSize(width: 10, height: 10))
                 .configureCategoryBitMask(PhysicsConstants.CollisionCategory.hook)
                 .configureContactTestMask(PhysicsConstants.ContactMask.hook)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.hook)
-                .configureIsDynamic(false)
+                .configureIsDynamic(true)
                 .configureRestitution(0.0)
                 .configureAffectedByGravity(false)
             .addToGame()

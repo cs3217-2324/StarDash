@@ -79,17 +79,17 @@ class EntityBuilder {
         return self
     }
 
-    func withPhysics(size: CGSize) -> Self {
-        let componentType = ObjectIdentifier(PhysicsComponent.self)
-        let component = PhysicsComponent(entityId: entityId, size: size)
+    func withGrappleHook() -> Self {
+        let componentType = ObjectIdentifier(GrappleHookComponent.self)
+        let component = GrappleHookComponent(entityId: entityId, maxLength: GameConstants.Hook.maxLength)
 
         self.components[componentType] = component
         return self
     }
 
-    func withPhysics(startpoint: CGPoint, endpoint: CGPoint) -> Self {
+    func withPhysics(size: CGSize) -> Self {
         let componentType = ObjectIdentifier(PhysicsComponent.self)
-        let component = PhysicsComponent(entityId: entityId, startPoint: startpoint, endPoint: endpoint)
+        let component = PhysicsComponent(entityId: entityId, size: size)
 
         self.components[componentType] = component
         return self

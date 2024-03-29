@@ -87,6 +87,14 @@ class GameEngine {
         eventManager.add(event: StopMovingEvent(on: playerEntityId))
     }
 
+    func handlePlayerHook(playerIndex: Int) {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
+            return
+        }
+
+        eventManager.add(event: UseGrappleHookEvent(from: playerEntityId))
+    }
+
     private func setUpSystems() {
         systemManager.add(PositionSystem(entityManager, dispatcher: self))
         systemManager.add(PhysicsSystem(entityManager, dispatcher: self))

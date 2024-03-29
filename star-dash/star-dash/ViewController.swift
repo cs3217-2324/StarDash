@@ -102,6 +102,10 @@ extension ViewController: ViewDelegate {
         gameEngine?.handlePlayerJump(playerIndex: playerIndex)
     }
 
+    func hookButtonPressed(playerIndex: Int) {
+        gameEngine?.handlePlayerHook(playerIndex: playerIndex)
+    }
+
     func overlayInfo(forPlayer playerIndex: Int) -> OverlayInfo? {
         guard let gameInfo = gameEngine?.gameInfo(forPlayer: playerIndex) else {
             return nil

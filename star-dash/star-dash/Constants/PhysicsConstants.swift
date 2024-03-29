@@ -22,14 +22,20 @@ struct PhysicsConstants {
     }
 
     struct CollisionMask {
-        static let player = CollisionCategory.max ^ CollisionCategory.player ^ CollisionCategory.collectible
+        static let player = CollisionCategory.max
+                            ^ CollisionCategory.player
+                            ^ CollisionCategory.collectible
+                            ^ CollisionCategory.hook
         static let monster = CollisionCategory.player | CollisionCategory.tool
         static let collectible = CollisionCategory.none
         static let obstacle = CollisionCategory.player | CollisionCategory.monster | CollisionMask.tool
         static let tool = CollisionCategory.max ^ CollisionCategory.collectible ^ CollisionCategory.tool
         static let wall = CollisionCategory.player | CollisionCategory.monster | CollisionCategory.tool
         static let floor = CollisionCategory.player | CollisionCategory.monster | CollisionCategory.tool
-        static let hook = CollisionCategory.max ^ CollisionCategory.collectible ^ CollisionCategory.tool
+        static let hook = CollisionCategory.max
+                            ^ CollisionCategory.collectible
+                            ^ CollisionCategory.tool
+                            ^ CollisionCategory.player
     }
 
     struct ContactMask {
@@ -52,6 +58,7 @@ struct PhysicsConstants {
         static let tool = CGSize(width: 60, height: 60)
         static let wall = CGSize(width: 60, height: 60)
         static let floor = CGSize(width: 300, height: 60)
+        static let hook = CGSize(width: 100, height: 100)
     }
 
     struct Mass {

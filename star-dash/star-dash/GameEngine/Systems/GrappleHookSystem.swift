@@ -85,77 +85,84 @@ class GrappleHookSystem: System {
     }
 
     func extendHook(of hookEntityId: EntityId) {
-        guard let hookPhysicsComponent = entityManager.component(ofType: PhysicsComponent.self,
-                                                                 of: hookEntityId),
-              hookPhysicsComponent.shape == .line,
-              let oldEndPoint = hookPhysicsComponent.endPoint else {
+        guard let hookPositionComponent = entityManager.component(ofType: PositionComponent.self,
+                                                                  of: hookEntityId) else {
             return
         }
 
+        let oldEndPoint = hookPositionComponent.position
         let vector = GameConstants.Hook.deltaPositionVector
         let newEndPoint = CGPoint(x: oldEndPoint.x + vector.dx, y: oldEndPoint.y + vector.dy)
 
-        hookPhysicsComponent.endPoint = newEndPoint
+        hookPositionComponent.position = newEndPoint
     }
 
     func retractHook(of hookEntityId: EntityId) {
-        guard let hookPhysicsComponent = entityManager.component(ofType: PhysicsComponent.self,
-                                                                 of: hookEntityId),
-              hookPhysicsComponent.shape == .line,
-              let oldStartPoint = hookPhysicsComponent.startPoint,
+        guard let hookOwnerId = getHookOwner(of: hookEntityId),
+              let ownerPositionComponent = entityManager.component(ofType: PositionComponent.self,
+                                                                   of: hookOwnerId),
               let hookComponent = getHookComponent(of: hookEntityId) else {
             return
         }
 
+        let oldStartPoint = ownerPositionComponent.position
         let vector = GameConstants.Hook.deltaPositionVector
         let newStartPoint = CGPoint(x: oldStartPoint.x + vector.dx, y: oldStartPoint.y + vector.dy)
-        let lengthRetracted = sqrt(pow(vector.dx, 2) + pow(vector.dy, 2))
+        let lengthRetracted = hypot(vector.dx, vector.dy)
 
         hookComponent.lengthToRetract -= lengthRetracted
-        hookPhysicsComponent.startPoint = newStartPoint
+        ownerPositionComponent.position = newStartPoint
+    }
+
+    func swing(using hookEntityId: EntityId) {
+        guard let hookOwnerId = getHookOwner(of: hookEntityId),
+              let playerPositionComponent = entityManager.component(ofType: PositionComponent.self,
+                                                                    of: hookOwnerId),
+              let endPoint = getEndPoint(of: hookEntityId),
+              let startPoint = getStartPoint(of: hookEntityId),
+              let hookComponent = getHookComponent(of: hookEntityId) else {
+            return
+        }
+
+        let dx = startPoint.x - endPoint.x
+        let dy = startPoint.y - endPoint.y
+        let distance = hypot(dx, dy)
+        let angle = atan2(dy, dx)
+        let newAngle = angle + GameConstants.Hook.deltaAngle * .pi / 180.0
+        let newX = endPoint.x + distance * cos(newAngle)
+        let newY = endPoint.y + distance * sin(newAngle)
+        let newStartPoint = CGPoint(x: newX, y: newY)
+
+        hookComponent.angleToSwing -= GameConstants.Hook.deltaAngle
+        playerPositionComponent.position = newStartPoint
     }
 
     func length(of hookEntityId: EntityId) -> CGFloat {
-        guard let hookPhysicsComponent = entityManager.component(ofType: PhysicsComponent.self,
-                                                                 of: hookEntityId),
-              hookPhysicsComponent.shape == .line,
-              let endPoint = hookPhysicsComponent.endPoint,
-              let startPoint = hookPhysicsComponent.startPoint else {
+        guard let startPoint = getStartPoint(of: hookEntityId),
+              let endPoint = getEndPoint(of: hookEntityId) else {
             return 0
         }
 
-        return sqrt(pow(endPoint.x - startPoint.x, 2) + pow(endPoint.y - startPoint.y, 2))
+        return hypot(endPoint.x - startPoint.x, endPoint.y - startPoint.y)
     }
 
     func getStartPoint(of hookEntityId: EntityId) -> CGPoint? {
-        guard let hookPhysicsComponent = entityManager.component(ofType: PhysicsComponent.self,
-                                                                 of: hookEntityId),
-              hookPhysicsComponent.shape == .line else {
+        guard let hookOwnerId = getHookOwner(of: hookEntityId),
+              let playerPositionComponent = entityManager.component(ofType: PositionComponent.self,
+                                                                    of: hookOwnerId) else {
             return nil
         }
 
-        return hookPhysicsComponent.startPoint
+        return playerPositionComponent.position
     }
 
-    func getPlayerReleaseImpulse(of hookEntityId: EntityId) -> CGVector? {
-        guard let hookPhysicsComponent = entityManager.component(ofType: PhysicsComponent.self,
-                                                                 of: hookEntityId),
-              hookPhysicsComponent.shape == .line,
-              let endPoint = hookPhysicsComponent.endPoint,
-              let startPoint = hookPhysicsComponent.startPoint else {
+    func getEndPoint(of hookEntityId: EntityId) -> CGPoint? {
+        guard let hookPositionComponent = entityManager.component(ofType: PositionComponent.self,
+                                                                  of: hookEntityId) else {
             return nil
         }
 
-        let dx = endPoint.x - startPoint.x
-        let dy = endPoint.y - startPoint.y
-        let normalX = -dy
-        let normalY = dx
-        let length = hypot(normalX, normalY)
-        let unitNormalX = normalX / length
-        let unitNormalY = normalY / length
-        let impulseVector = CGVector(dx: unitNormalX, dy: unitNormalY) * GameConstants.Hook.releaseImpulseMagnitude
-
-        return impulseVector
+        return hookPositionComponent.position
     }
 
     func getHookOwner(of hookEntityId: EntityId) -> EntityId? {
@@ -175,6 +182,14 @@ class GrappleHookSystem: System {
         return hookComponent.lengthToRetract
     }
 
+    func angleLeftToSwing(of hookEntityId: EntityId) -> CGFloat? {
+        guard let hookComponent = getHookComponent(of: hookEntityId) else {
+            return nil
+        }
+
+        return hookComponent.angleToSwing
+    }
+
     func setHookState(of hookEntityId: EntityId, to state: HookState) {
         guard let hookComponent = getHookComponent(of: hookEntityId) else {
             return
@@ -191,44 +206,23 @@ class GrappleHookSystem: System {
         return hookComponent.state
     }
 
-    func swing(using hookEntityId: EntityId) {
-        guard let hookPhysicsComponent = entityManager.component(ofType: PhysicsComponent.self,
-                                                                 of: hookEntityId),
-              hookPhysicsComponent.shape == .line,
-              let endPoint = hookPhysicsComponent.endPoint,
-              let startPoint = hookPhysicsComponent.startPoint else {
-            return
-        }
-
-        let dx = startPoint.x - endPoint.x
-        let dy = startPoint.y - endPoint.y
-        let distance = hypot(dx, dy)
-        let angle = atan2(dy, dx)
-        let newAngle = angle + GameConstants.Hook.deltaAngle * .pi / 180.0
-        let newX = endPoint.x + distance * cos(newAngle)
-        let newY = endPoint.y + distance * sin(newAngle)
-        let newStartPoint = CGPoint(x: newX, y: newY)
-
-        hookPhysicsComponent.startPoint = newStartPoint
-    }
-
-    func angleLeftToSwing(of hookEntityId: EntityId) -> CGFloat? {
-        guard let hookComponent = getHookComponent(of: hookEntityId) else {
-            return nil
-        }
-
-        return hookComponent.angleToSwing
-    }
-
     private func activateHook(event: UseGrappleHookEvent) {
-        guard let entityManager = dispatcher as? EntityManagerInterface else {
+        let hookComponents = entityManager.components(ofType: GrappleHookOwnerComponent.self)
+
+        guard !hookComponents.contains(where: { $0.playerId == event.playerId }),
+              let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: event.playerId),
+              let entityManager = dispatcher as? EntityManagerInterface,
+              let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
+              let position = positionSystem.getPosition(of: event.playerId) else {
             return
         }
+
+        playerComponent.canMove = false
+        playerComponent.canJump = false
 
         EntityFactory.createAndAddGrappleHook(to: entityManager,
                                               playerId: event.playerId,
-                                              startpoint: event.position,
-                                              endpoint: event.position)
+                                              startpoint: position)
     }
 
     private func handleShootEvent(event: ShootGrappleHookEvent) {
@@ -241,11 +235,6 @@ class GrappleHookSystem: System {
     }
 
     private func handleRetractEvent(event: RetractGrappleHookEvent) {
-        guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
-              let hookOwnerId = getHookOwner(of: event.hookId) else {
-            return
-        }
-
         guard let lengthRemaining = lengthLeftToRetract(of: event.hookId),
               lengthRemaining > 0 else {
             setHookState(of: event.hookId, to: .swinging)
@@ -253,20 +242,9 @@ class GrappleHookSystem: System {
         }
 
         retractHook(of: event.hookId)
-
-        guard let startPointOfHook = getStartPoint(of: event.hookId) else {
-            return
-        }
-
-        positionSystem.move(entityId: hookOwnerId, to: startPointOfHook)
     }
 
     private func handleSwingEvent(event: SwingGrappleHookEvent) {
-        guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
-              let hookOwnerId = getHookOwner(of: event.hookId) else {
-            return
-        }
-
         guard let angleRemaining = angleLeftToSwing(of: event.hookId),
               angleRemaining > 0 else {
             setHookState(of: event.hookId, to: .releasing)
@@ -274,25 +252,16 @@ class GrappleHookSystem: System {
         }
 
         swing(using: event.hookId)
-
-        guard let startPointOfHook = getStartPoint(of: event.hookId) else {
-            return
-        }
-
-        positionSystem.move(entityId: hookOwnerId, to: startPointOfHook)
     }
 
     private func handleReleaseEvent(event: ReleaseGrappleHookEvent) {
-        guard let playerReleaseImpulse = getPlayerReleaseImpulse(of: event.hookId),
-              let playerOwnerId = getHookOwner(of: event.hookId),
-              let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
+        guard let playerOwnerId = getHookOwner(of: event.hookId),
               let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: playerOwnerId) else {
             return
         }
 
         playerComponent.canJump = true
         playerComponent.canMove = true
-        physicsSystem.applyImpulse(to: playerOwnerId, impulse: playerReleaseImpulse)
 
         dispatcher?.add(event: RemoveEvent(on: event.hookId))
     }

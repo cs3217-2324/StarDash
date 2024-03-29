@@ -38,17 +38,25 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
     }
 
     private func setupActionControls() {
+        // Jump Button
         let jumpButton = UIButton(type: .custom)
-
         let buttonX = bounds.width - buttonSize - buttonMargin
         let buttonY = bounds.height - buttonSize - buttonMargin
         jumpButton.frame = CGRect(x: buttonX, y: buttonY, width: buttonSize, height: buttonSize)
-
         jumpButton.addTarget(self, action: #selector(jumpButtonTapped), for: .touchUpInside)
-
         jumpButton.setImage(#imageLiteral(resourceName: "JumpButton"), for: .normal)
         jumpButton.setImage(#imageLiteral(resourceName: "JumpButtonDown"), for: .highlighted)
         addSubview(jumpButton)
+
+        // Hook Button
+        let hookButton = UIButton(type: .custom)
+        let hookButtonX = bounds.width - (buttonSize + buttonMargin) * 2
+        let hookButtonY = bounds.height - buttonSize - buttonMargin
+        hookButton.frame = CGRect(x: hookButtonX, y: hookButtonY, width: buttonSize, height: buttonSize)
+        hookButton.addTarget(self, action: #selector(hookButtonTapped), for: .touchUpInside)
+        hookButton.setImage(#imageLiteral(resourceName: "GrapplingHookButton"), for: .normal)
+        hookButton.setImage(#imageLiteral(resourceName: "GrapplingHookButtonDown"), for: .highlighted)
+        addSubview(hookButton)
     }
 
     private func setupGestureRecognizers() {
@@ -59,6 +67,11 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
     }
 
     // MARK: Gesture handler methods
+
+    @objc
+    func hookButtonTapped() {
+        controlViewDelegate?.hookButtonPressed(from: self)
+    }
 
     @objc
     func jumpButtonTapped() {
