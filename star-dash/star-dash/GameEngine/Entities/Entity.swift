@@ -11,6 +11,4 @@ typealias EntityId = UUID
 
 protocol Entity {
     var id: EntityId { get }
-
-    func setUpAndAdd(to: EntityManager)
 }

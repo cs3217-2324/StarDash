@@ -44,21 +44,21 @@ class AttackSystem: System {
         }
 
         guard let monsterPosition = positionSystem.getPosition(of: event.monsterId),
-              let playerPosition = positionSystem.getPosition(of: event.entityId) else {
+              let playerPosition = positionSystem.getPosition(of: event.playerId) else {
             return
         }
 
-        healthSystem.applyHealthChange(to: event.entityId, healthChange: GameConstants.HealthChange.attackedByMonster)
+        healthSystem.applyHealthChange(to: event.playerId, healthChange: GameConstants.HealthChange.attackedByMonster)
 
         let isMonsterToRight = monsterPosition.x > playerPosition.x
         let impulse = isMonsterToRight
                       ? GameConstants.DamageImpulse.attackedByMonster * -1
                       : GameConstants.DamageImpulse.attackedByMonster
 
-        physicsSystem.applyImpulse(to: event.entityId, impulse: impulse)
+        physicsSystem.applyImpulse(to: event.playerId, impulse: impulse)
 
-        if !healthSystem.hasHealth(for: event.entityId) {
-            dispatcher?.add(event: PlayerDeathEvent(on: event.entityId))
+        if !healthSystem.hasHealth(for: event.playerId) {
+            dispatcher?.add(event: PlayerDeathEvent(on: event.playerId))
         }
     }
 
@@ -68,11 +68,11 @@ class AttackSystem: System {
             return
         }
 
-        healthSystem.applyHealthChange(to: event.entityId, healthChange: GameConstants.HealthChange.attackedByPlayer)
-        physicSystem.applyImpulse(to: event.entityId, impulse: GameConstants.AttackImpulse.attackedByPlayer)
+        healthSystem.applyHealthChange(to: event.monsterId, healthChange: GameConstants.HealthChange.attackedByPlayer)
+        physicSystem.applyImpulse(to: event.monsterId, impulse: GameConstants.AttackImpulse.attackedByPlayer)
 
-        if !healthSystem.hasHealth(for: event.entityId) {
-            dispatcher?.add(event: MonsterDeathEvent(on: event.entityId))
+        if !healthSystem.hasHealth(for: event.monsterId) {
+            dispatcher?.add(event: MonsterDeathEvent(on: event.monsterId))
         }
     }
 }

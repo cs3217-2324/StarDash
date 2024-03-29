@@ -4,8 +4,7 @@ public protocol SDScene {
 
     var size: CGSize { get }
 
+    func addPlayerObject(_ playerObject: SDObject, playerIndex: Int)
     func addObject(_ object: SDObject)
     func removeObject(_ object: SDObject)
-    func addCameraObject(_ cameraObject: SDCameraObject)
-    func setCameraObjectXPosition(to x: CGFloat)
 }

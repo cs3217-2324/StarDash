@@ -9,7 +9,7 @@ import Foundation
 
 class GameEngine {
     private let systemManager: SystemManager
-    let entityManager: EntityManager // TODO: Set to private
+    private let entityManager: EntityManager
     private let eventManager: EventManager
 
     init() {
@@ -20,16 +20,30 @@ class GameEngine {
         setUpSystems()
     }
 
-    func gameInfo() -> GameInfo? {
+    func gameInfo(forPlayer playerIndex: Int) -> GameInfo? {
         guard let scoreSystem = systemManager.system(ofType: ScoreSystem.self),
-              let playerEntityId = entityManager.playerEntityId(),
+              let playerEntityId = entityManager.playerEntityId(with: playerIndex),
               let score = scoreSystem.score(of: playerEntityId) else {
             return nil
         }
 
         return GameInfo(
-            playerScore: score
+            playerScore: score,
+            playersInfo: playersInfo(of: playerIndex)
         )
+    }
+
+    func playersInfo(of playerIndex: Int) -> [PlayerInfo] {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex),
+              let positionSystem = systemManager.system(ofType: PositionSystem.self) else {
+            return []
+        }
+        var playersInfo = [PlayerInfo]()
+        if let position = positionSystem.getPosition(of: playerEntityId) {
+            playersInfo.append(PlayerInfo(position: position, player: .RedNose))
+        }
+        return playersInfo
+
     }
 
     func update(by deltaTime: TimeInterval) {
@@ -47,16 +61,16 @@ class GameEngine {
         eventManager.add(event: event)
     }
 
-    func handlePlayerJump() {
-        guard let playerEntityId = entityManager.playerEntityId() else {
+    func handlePlayerJump(playerIndex: Int) {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
             return
         }
 
         eventManager.add(event: JumpEvent(on: playerEntityId, by: PhysicsConstants.jumpImpulse))
     }
 
-    func handlePlayerMove(toLeft: Bool) {
-        guard let playerEntityId = entityManager.playerEntityId(),
+    func handlePlayerMove(toLeft: Bool, playerIndex: Int) {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex),
               let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: playerEntityId),
               playerComponent.canMove else {
             return
@@ -65,20 +79,12 @@ class GameEngine {
         eventManager.add(event: MoveEvent(on: playerEntityId, toLeft: toLeft))
     }
 
-    func handlePlayerStoppedMoving() {
-        guard let playerEntityId = entityManager.playerEntityId() else {
+    func handlePlayerStoppedMoving(playerIndex: Int) {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
             return
         }
 
         eventManager.add(event: StopMovingEvent(on: playerEntityId))
-    }
-
-    func playerPosition() -> CGPoint? {
-        guard let playerEntityId = entityManager.playerEntityId(),
-              let positionComponent = entityManager.component(ofType: PositionComponent.self, of: playerEntityId) else {
-            return nil
-        }
-        return positionComponent.position
     }
 
     private func setUpSystems() {
@@ -99,28 +105,12 @@ class GameEngine {
 }
 
 extension GameEngine: EventModifiable {
-    func entity(with entityId: EntityId) -> Entity? {
-        entityManager.entity(with: entityId)
-    }
-
     func system<T: System>(ofType type: T.Type) -> T? {
         systemManager.system(ofType: type)
     }
 
-    func component<T: Component>(ofType type: T.Type, ofEntity entityId: EntityId) -> T? {
-        entityManager.component(ofType: type, of: entityId)
-    }
-
-    func add(entity: Entity) {
-        entityManager.add(entity: entity)
-    }
-
     func add(event: Event) {
         eventManager.add(event: event)
-    }
-
-    func remove(entity: Entity) {
-        entityManager.remove(entity: entity)
     }
 
     func registerListener<T: Event>(for eventType: T.Type, listener: EventListener) {
@@ -129,9 +119,8 @@ extension GameEngine: EventModifiable {
 }
 
 extension GameEngine: EntitySyncInterface {
-
     var entities: [Entity] {
-        Array(entityManager.entityMap.values)
+        entityManager.entities
     }
 
     func component<T: Component>(ofType type: T.Type, of entityId: EntityId) -> T? {
@@ -139,6 +128,16 @@ extension GameEngine: EntitySyncInterface {
     }
 
     func entity(of entityId: EntityId) -> Entity? {
-        entityManager.entityMap[entityId]
+        entityManager.entity(with: entityId)
+    }
+}
+
+extension GameEngine: EntityManagerInterface {
+    func add(entity: Entity) {
+        entityManager.add(entity: entity)
+    }
+
+    func add(component: Component) {
+        entityManager.add(component: component)
     }
 }
