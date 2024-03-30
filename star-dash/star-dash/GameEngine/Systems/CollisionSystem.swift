@@ -71,6 +71,13 @@ class CollisionSystem: System {
             return
         }
 
+        if let hookOwnerComponent = entityManager
+                                    .components(ofType: GrappleHookOwnerComponent.self)
+                                    .first(where: { $0.playerId == event.playerId }) {
+            dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
+            print("collide with floor")
+        }
+
         playerComponent.canJump = true
         playerComponent.canMove = true
     }
@@ -89,6 +96,12 @@ class CollisionSystem: System {
         guard let playerSize = physicsSystem.getSize(of: event.playerId),
               let monsterSize = physicsSystem.getSize(of: event.monsterId) else {
             return
+        }
+
+        if let hookOwnerComponent = entityManager
+                                    .components(ofType: GrappleHookOwnerComponent.self)
+                                    .first(where: { $0.playerId == event.playerId }) {
+            dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
         }
 
         let isPlayerAbove = playerPosition.y - (playerSize.height / 2) >= monsterPosition.y + (monsterSize.height / 2)
@@ -111,6 +124,13 @@ class CollisionSystem: System {
 
             return
         }
+
+        if let hookOwnerComponent = entityManager
+                                    .components(ofType: GrappleHookOwnerComponent.self)
+                                    .first(where: { $0.playerId == event.playerId }) {
+            dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
+        }
+
         playerComponent.canJump = true
         playerComponent.canMove = true
     }
@@ -127,8 +147,6 @@ class CollisionSystem: System {
 
         if hookState == .shooting && hookSystem.length(of: event.grappleHookId) >= GameConstants.Hook.minLength {
             hookSystem.setHookState(of: event.grappleHookId, to: .retracting)
-        } else {
-            hookSystem.setHookState(of: event.grappleHookId, to: .releasing)
         }
     }
 }

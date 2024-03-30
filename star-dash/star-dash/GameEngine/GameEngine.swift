@@ -106,6 +106,7 @@ class GameEngine {
         systemManager.add(CollisionSystem(entityManager, dispatcher: self))
         systemManager.add(MonsterSystem(entityManager, dispatcher: self))
         systemManager.add(GrappleHookSystem(entityManager, dispatcher: self))
+        systemManager.add(SpriteSystem(entityManager, dispatcher: self))
     }
 }
 

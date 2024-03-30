@@ -8,19 +8,18 @@
 import Foundation
 
 class GrappleHookComponent: Component {
-    let maxLength: Double
+    var startpoint: CGPoint
     var lengthToRetract: Double = GameConstants.Hook.defaultRetractLength
     var angleToSwing: Double = GameConstants.Hook.defaultSwingAngle
-    var state: HookState
+    var state: HookState = .shooting
 
-    init(id: ComponentId, entityId: EntityId, maxLength: Double) {
-        self.maxLength = maxLength
-        self.state = .shooting
+    init(id: ComponentId, entityId: EntityId, startpoint: CGPoint) {
+        self.startpoint = startpoint
         super.init(id: id, entityId: entityId)
     }
 
-    convenience init(entityId: EntityId, maxLength: Double) {
-        self.init(id: UUID(), entityId: entityId, maxLength: maxLength)
+    convenience init(entityId: EntityId, startpoint: CGPoint) {
+        self.init(id: UUID(), entityId: entityId, startpoint: startpoint)
     }
 }
 

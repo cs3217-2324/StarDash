@@ -36,6 +36,7 @@ struct PhysicsConstants {
                             ^ CollisionCategory.collectible
                             ^ CollisionCategory.tool
                             ^ CollisionCategory.player
+                            ^ CollisionCategory.hook
     }
 
     struct ContactMask {

@@ -56,6 +56,18 @@ class PhysicsSystem: System {
         return physicsComponent.size
     }
 
+    func setSize(of entityId: EntityId, to newSize: CGSize) {
+        guard let physicsComponent = getPhysicsComponent(of: entityId) else {
+            return
+        }
+
+        guard physicsComponent.shape == .rectangle else {
+            return
+        }
+
+        physicsComponent.size = newSize
+    }
+
     func setup() {
         dispatcher?.registerListener(for: MoveEvent.self, listener: self)
         dispatcher?.registerListener(for: JumpEvent.self, listener: self)

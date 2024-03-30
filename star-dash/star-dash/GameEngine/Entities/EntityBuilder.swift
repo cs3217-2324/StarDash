@@ -19,9 +19,9 @@ class EntityBuilder {
         self.entityId = entity.id
     }
 
-    func withPosition(at position: CGPoint) -> Self {
+    func withPosition(at position: CGPoint, with rotation: CGFloat = .zero) -> Self {
         let componentType = ObjectIdentifier(PositionComponent.self)
-        let component = PositionComponent(entityId: entityId, position: position, rotation: .zero)
+        let component = PositionComponent(entityId: entityId, position: position, rotation: rotation)
 
         self.components[componentType] = component
         return self
@@ -79,9 +79,17 @@ class EntityBuilder {
         return self
     }
 
-    func withGrappleHook() -> Self {
+    func withOwnsRope(ropeId: EntityId) -> Self {
+        let componentType = ObjectIdentifier(OwnsRopeComponent.self)
+        let component = OwnsRopeComponent(entityId: entityId, ropeId: ropeId)
+
+        self.components[componentType] = component
+        return self
+    }
+
+    func withGrappleHook(at startpoint: CGPoint) -> Self {
         let componentType = ObjectIdentifier(GrappleHookComponent.self)
-        let component = GrappleHookComponent(entityId: entityId, maxLength: GameConstants.Hook.maxLength)
+        let component = GrappleHookComponent(entityId: entityId, startpoint: startpoint)
 
         self.components[componentType] = component
         return self

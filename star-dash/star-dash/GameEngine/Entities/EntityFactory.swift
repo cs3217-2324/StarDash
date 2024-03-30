@@ -132,16 +132,36 @@ struct EntityFactory {
     static func createAndAddGrappleHook(to entityManager: EntityManagerInterface,
                                         playerId: EntityId,
                                         startpoint: CGPoint) {
+        let ropeId = UUID()
+        let ropeBuilder = EntityBuilder(entity: Rope(id: ropeId), entityManager: entityManager)
+
+        ropeBuilder
+            .withPosition(at: startpoint)
+            .withSprite(image: SpriteConstants.rope,
+                        textureSet: nil,
+                        textureAtlas: nil,
+                        size: .zero)
+            .withPhysics(size: .zero)
+                .configureCategoryBitMask(PhysicsConstants.CollisionCategory.hook)
+                .configureContactTestMask(PhysicsConstants.ContactMask.hook)
+                .configureCollisionBitMask(PhysicsConstants.CollisionMask.hook)
+                .configureIsDynamic(false)
+                .configureRestitution(0.0)
+                .configureAffectedByGravity(false)
+            .addToGame()
+
         let grappleHookBuilder = EntityBuilder(entity: GrappleHook(id: UUID()), entityManager: entityManager)
+
         grappleHookBuilder
             .withHookOwner(playerId: playerId)
-            .withGrappleHook()
+            .withOwnsRope(ropeId: ropeId)
+            .withGrappleHook(at: startpoint)
             .withPosition(at: startpoint)
             .withSprite(image: SpriteConstants.hook,
                         textureSet: nil,
                         textureAtlas: nil,
-                        size: PhysicsConstants.Dimensions.hook)
-            .withPhysics(size: CGSize(width: 10, height: 10))
+                        size: CGSize(width: 20, height: 20))
+            .withPhysics(size: CGSize(width: 20, height: 20))
                 .configureCategoryBitMask(PhysicsConstants.CollisionCategory.hook)
                 .configureContactTestMask(PhysicsConstants.ContactMask.hook)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.hook)
