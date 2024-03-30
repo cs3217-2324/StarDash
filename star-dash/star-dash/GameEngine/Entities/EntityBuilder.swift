@@ -145,6 +145,22 @@ class EntityBuilder {
         return self
     }
 
+    func withPowerUpType(type: String) -> Self {
+        let componentType = ObjectIdentifier(PowerUpComponent.self)
+        let component = PowerUpComponent(entityId: entityId, type: type)
+
+        self.components[componentType] = component
+        return self
+    }
+
+    func withSpeedBoost(entityId: EntityId, duration: Float, multiplier: CGFloat) {
+        let componentType = ObjectIdentifier(SpeedBoostComponent.self)
+        let component = SpeedBoostComponent(entityId: entityId, duration: duration, multiplier: multiplier)
+
+        self.components[componentType] = component
+        return self
+    }
+
     func addToGame() {
         self.entityManager.add(entity: self.entity)
 

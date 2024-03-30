@@ -128,4 +128,33 @@ struct EntityFactory {
                 .configureRestitution(0.0)
             .addToGame()
     }
+
+    static func createAndAddPowerUp(to entityManager: EntityManagerInterface,
+                                    position: CGPoint,
+                                    size: CGSize,
+                                    type: String) {
+        let powerUpBuilder = EntityBuilder(entity: PowerUp(id: UUID()), entityManager: entityManager)
+
+        powerUpBuilder
+            .withPosition(at: position)
+            .withPhysics(size: size)
+                .configureCategoryBitMask(PhysicsConstants.CollisionCategory.powerUp)
+                .configureContactTestMask(PhysicsConstants.ContactMask.powerUp)
+                .configureCollisionBitMask(PhysicsConstants.CollisionMask.powerUp)
+                .configureIsDynamic(false)
+                .configureAffectedByGravity(false)
+            withPowerUpType(type: type)
+            .addToGame()
+    }
+
+    static func createAndAddSpeedBoostPowerUp(to entityManager: EntityManagerInterface,
+                                              entityId: EntityId,
+                                              duration: Float,
+                                              multiplier: CGFloat) {
+        let powerUpBuilder = EntityBuilder(entity: SpeedBoostPowerUp(id: UUID()), entityManager: entityManager)
+
+        powerUpBuilder
+            .withSpeedBoost(entityId: entityId, duration: duration, multiplier: multiplier)
+            .addToGame()
+    }
 }
