@@ -137,13 +137,17 @@ struct EntityFactory {
 
         powerUpBuilder
             .withPosition(at: position)
+            .withSprite(image: SpriteConstants.speedBoostPowerUp,
+                        textureSet: nil,
+                        textureAtlas: nil,
+                        size: PhysicsConstants.Dimensions.powerUp)
             .withPhysics(size: size)
                 .configureCategoryBitMask(PhysicsConstants.CollisionCategory.powerUp)
                 .configureContactTestMask(PhysicsConstants.ContactMask.powerUp)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.powerUp)
                 .configureIsDynamic(false)
                 .configureAffectedByGravity(false)
-            withPowerUpType(type: type)
+            .withPowerUpType(type: type)
             .addToGame()
     }
 

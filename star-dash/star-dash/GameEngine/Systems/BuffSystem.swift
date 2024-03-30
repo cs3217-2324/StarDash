@@ -13,7 +13,7 @@ class BuffSystem: System, EventListener {
         self.dispatcher = dispatcher
     }
 
-    func applySpeedMultiplier(_ multiplier: Float, for entityId: EntityId) {
+    func applySpeedMultiplier(_ multiplier: CGFloat, for entityId: EntityId) {
         if getBuffComponent(of: entityId) == nil {
            setupBuffComponent(for: entityId)
         }

@@ -15,7 +15,7 @@ class SpeedBoostPowerUpSystem: System, EventListener {
     func setup() {}
 
     func update(by deltaTime: TimeInterval) {
-        for speedBoostComponent in entityManager.component(ofType: SpeedBoostComponent.self) {
+        for speedBoostComponent in entityManager.components(ofType: SpeedBoostComponent.self) {
             if !speedBoostComponent.isActivated {
                 activatePowerUp(component: speedBoostComponent)
                 continue

@@ -153,7 +153,7 @@ class EntityBuilder {
         return self
     }
 
-    func withSpeedBoost(entityId: EntityId, duration: Float, multiplier: CGFloat) {
+    func withSpeedBoost(entityId: EntityId, duration: Float, multiplier: CGFloat) -> Self {
         let componentType = ObjectIdentifier(SpeedBoostComponent.self)
         let component = SpeedBoostComponent(entityId: entityId, duration: duration, multiplier: multiplier)
 

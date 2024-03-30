@@ -25,12 +25,11 @@ class PowerUpSystem: System {
 
     private func handlePlayerPickedUpPowerUpEvent(event: PowerUpPlayerEvent) {
         guard let type = entityManager.component(ofType: PowerUpComponent.self, of: event.powerUpId)?.type,
-              let powerUp = entityManager.entity(with: event.powerUpId),
-              let playerPowerUp = PowerUpFactory.createPowerUp(triggeredBy: event.entityId, type: type) else {
+              let powerUp = entityManager.entity(with: event.powerUpId) else {
             return
         }
 
-        playerPowerUp.setUpAndAdd(to: entityManager)
         entityManager.remove(entity: powerUp)
+        PowerUpFactory.createPowerUp(triggeredBy: event.entityId, type: type, to: entityManager)
     }
 }
