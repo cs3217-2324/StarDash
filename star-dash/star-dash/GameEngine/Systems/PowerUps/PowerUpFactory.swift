@@ -12,7 +12,7 @@ class PowerUpFactory {
         return createMethod(playerId)
     }
 
-    static private func createSpeedBoostPowerUp(triggeredBy playerId: EntityId) -> Entity {
+    private static func createSpeedBoostPowerUp(triggeredBy playerId: EntityId) -> Entity {
         SpeedBoostPowerUp(playerEntityId: playerId)
     }
 }

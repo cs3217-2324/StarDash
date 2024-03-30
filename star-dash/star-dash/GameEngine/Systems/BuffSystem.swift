@@ -14,6 +14,10 @@ class BuffSystem: System, EventListener {
     }
 
     func applySpeedMultiplier(_ multiplier: Float, for entityId: EntityId) {
+        if getBuffComponent(of: entityId) == nil {
+           setupBuffComponent(for: entityId)
+        }
+
         guard let buffComponent = getBuffComponent(of: entityId),
               multiplier != 0 else {
             return
@@ -21,8 +25,13 @@ class BuffSystem: System, EventListener {
 
         buffComponent.speedMultiplier *= multiplier
     }
-    
+
     func setup() {}
+    
+    private func setupBuffComponent(for entityId: EntityId) {
+        let buffComponent = BuffComponent(entityId: entityId)
+        entityManager.add(component: buffComponent)
+    }
 
     private func getBuffComponent(of entityId: EntityId) -> BuffComponent? {
         entityManager.component(ofType: BuffComponent.self, of: entityId)

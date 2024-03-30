@@ -15,8 +15,8 @@ class SpeedBoostPowerUp: Entity {
 
     func setUpAndAdd(to: EntityManager) {
         let speedBoostComponent = SpeedBoostComponent(
-            entityId: self.id,
-            duration: 50,
+            entityId: self.playerEntityId,
+            duration: 100000,
             multiplier: 2.5
         )
         to.add(entity: self)
