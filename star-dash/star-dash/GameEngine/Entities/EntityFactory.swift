@@ -52,7 +52,7 @@ struct EntityFactory {
     static func createAndAddCollectible(to entityManager: EntityManagerInterface,
                                         position: CGPoint,
                                         points: Int,
-                                        size: CGSize) {
+                                        radius: CGFloat) {
         let collectibleBuilder = EntityBuilder(entity: Collectible(id: UUID()), entityManager: entityManager)
 
         collectibleBuilder
@@ -60,9 +60,9 @@ struct EntityFactory {
             .withSprite(image: SpriteConstants.star,
                         textureSet: nil,
                         textureAtlas: nil,
-                        size: size)
+                        radius: radius)
             .withPoint(points: points)
-            .withPhysics(rectangleOf: size)
+            .withPhysics(circleOf: radius)
                 .configureCategoryBitMask(PhysicsConstants.CollisionCategory.collectible)
                 .configureContactTestMask(PhysicsConstants.ContactMask.collectible)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.collectible)

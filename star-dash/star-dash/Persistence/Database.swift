@@ -102,7 +102,7 @@ struct Database {
         let levelId = Expression<Int64>("levelId")
         let position = Expression<String>("position")
         let points = Expression<Int>("points")
-        let size = Expression<String>("size")
+        let radius = Expression<String>("radius")
 
         do {
             try db.run( collectibleTable.create { table in
@@ -110,7 +110,7 @@ struct Database {
                 table.column(levelId)
                 table.column(position)
                 table.column(points)
-                table.column(size)
+                table.column(radius)
 
             })
             print("Collectible table created")
@@ -164,6 +164,7 @@ struct Database {
             print("Error creating table \(error)")
         }
     }
+
     private func createMonsterTable() {
         guard let db = db else {
             return
