@@ -75,7 +75,6 @@ class CollisionSystem: System {
                                     .components(ofType: GrappleHookOwnerComponent.self)
                                     .first(where: { $0.playerId == event.playerId }) {
             dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
-            print("collide with floor")
         }
 
         playerComponent.canJump = true

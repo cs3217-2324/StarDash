@@ -86,12 +86,16 @@ class GrappleHookSystem: System {
 
     func extendHook(of hookEntityId: EntityId) {
         guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
-              let oldEndPoint = positionSystem.getPosition(of: hookEntityId) else {
+              let oldEndPoint = positionSystem.getPosition(of: hookEntityId),
+              let hookComponent = getHookComponent(of: hookEntityId),
+              let hookOwnerId = getHookOwner(of: hookEntityId),
+              let ownerPosition = positionSystem.getPosition(of: hookOwnerId) else {
             return
         }
 
         let vector = GameConstants.Hook.deltaPositionVector
         let newEndPoint = CGPoint(x: oldEndPoint.x + vector.dx, y: oldEndPoint.y + vector.dy)
+        hookComponent.startpoint = ownerPosition
 
         positionSystem.move(entityId: hookEntityId, to: newEndPoint)
     }
