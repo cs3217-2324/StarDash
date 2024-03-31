@@ -1,6 +1,6 @@
 import Foundation
 
-class BuffSystem: System, EventListener {
+class BuffSystem: System {
     
     var isActive: Bool
     var dispatcher: EventModifiable?
