@@ -12,10 +12,13 @@ class GameEngine {
     private let entityManager: EntityManager
     private let eventManager: EventManager
 
-    init() {
+    let mapSize: CGSize
+
+    init(mapSize: CGSize) {
         self.systemManager = SystemManager()
         self.entityManager = EntityManager()
         self.eventManager = EventManager()
+        self.mapSize = mapSize
 
         setUpSystems()
     }
@@ -29,7 +32,8 @@ class GameEngine {
 
         return GameInfo(
             playerScore: score,
-            playersInfo: playersInfo(of: playerIndex)
+            playersInfo: playersInfo(of: playerIndex),
+            mapSize: mapSize
         )
     }
 

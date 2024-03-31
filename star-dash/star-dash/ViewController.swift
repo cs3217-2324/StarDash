@@ -19,12 +19,15 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         self.storageManager = StorageManager()
-        let scene = createGameScene()
+
+        let gameEngine = createGameEngine()
+        self.gameEngine = gameEngine
+
+        let scene = createGameScene(of: gameEngine.mapSize)
         self.scene = scene
 
-        let gameEngine = GameEngine()
-        self.gameEngine = gameEngine
         self.gameBridge = GameBridge(entityManager: gameEngine, scene: scene)
+
         setupGameEntities()
         setupBackground()
 
@@ -37,9 +40,13 @@ class ViewController: UIViewController {
         self.renderer = renderer
     }
 
-    private func createGameScene() -> GameScene {
+    private func createGameEngine() -> GameEngine {
         let levelSize = self.storageManager?.getLevelSize(id: 0) ?? CGSize(width: 4_842, height: 1_040)
-        let scene = GameScene(size: levelSize)
+        return GameEngine(mapSize: levelSize)
+    }
+
+    private func createGameScene(of size: CGSize) -> GameScene {
+        let scene = GameScene(size: size)
         scene.scaleMode = .aspectFill
         scene.sceneDelegate = self
         return scene
@@ -134,7 +141,8 @@ extension ViewController: ViewDelegate {
 
         return OverlayInfo(
             score: gameInfo.playerScore,
-            playersInfo: gameInfo.playersInfo
+            playersInfo: gameInfo.playersInfo,
+            mapSize: gameInfo.mapSize
         )
     }
 }
