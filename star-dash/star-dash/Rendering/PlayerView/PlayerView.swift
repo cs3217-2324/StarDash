@@ -30,7 +30,7 @@ class PlayerView {
 
         self.overlayView = OverlayView(frame: superview.bounds, rotatedBy: rotation)
         superview.addSubview(self.overlayView)
-        
+
         self.minimapView = MiniMapView(frame: superview.bounds, rotatedBy: rotation)
         superview.addSubview(self.minimapView)
 

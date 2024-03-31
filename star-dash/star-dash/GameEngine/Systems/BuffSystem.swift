@@ -1,7 +1,7 @@
 import Foundation
 
 class BuffSystem: System {
-    
+
     var isActive: Bool
     var dispatcher: EventModifiable?
     var entityManager: EntityManager
@@ -27,7 +27,7 @@ class BuffSystem: System {
     }
 
     func setup() {}
-    
+
     private func setupBuffComponent(for entityId: EntityId) {
         let buffComponent = BuffComponent(entityId: entityId)
         entityManager.add(component: buffComponent)
