@@ -36,11 +36,31 @@ class PlayerSystem: System {
         }
     }
 
+    func setCanJump(to entityId: EntityId, canJump: Bool) {
+        guard let playerComponent = getPlayerComponent(of: entityId) else {
+            return
+        }
+
+        playerComponent.canJump = canJump
+    }
+
+    func setCanMove(to entityId: EntityId, canMove: Bool) {
+        guard let playerComponent = getPlayerComponent(of: entityId) else {
+            return
+        }
+
+        playerComponent.canMove = canMove
+    }
+
     private func handleRespawnEvent(event: RespawnEvent) {
         dispatcher?.add(event: TeleportEvent(on: event.entityId, to: event.newPosition))
     }
 
     private func handlePlayerDeathEvent(event: PlayerDeathEvent) {
         // TODO
+    }
+
+    private func getPlayerComponent(of entityId: EntityId) -> PlayerComponent? {
+        entityManager.component(ofType: PlayerComponent.self, of: entityId)
     }
 }
