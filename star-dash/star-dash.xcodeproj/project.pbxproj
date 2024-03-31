@@ -410,17 +410,10 @@
 		4611488F2BA1CD9E0073E7E1 /* Systems */ = {
 			isa = PBXGroup;
 			children = (
+				E6A115302BB9B15A0076A21F /* Basic */,
+				E6A115312BB9B1AF0076A21F /* Complex */,
 				461148902BA1CDBF0073E7E1 /* SystemManager.swift */,
 				461148922BA1D04B0073E7E1 /* System.swift */,
-				1471B09F2BA6A70600878B14 /* HealthSystem.swift */,
-				14970F532BA8163300CC1E8A /* ScoreSystem.swift */,
-				461148952BA1D53D0073E7E1 /* PositionSystem.swift */,
-				461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */,
-				4604BBD82BA81C940078B84C /* InventorySystem.swift */,
-				460A200A2BB1D04F002597B8 /* AttackSystem.swift */,
-				460A200C2BB1DF27002597B8 /* PlayerSystem.swift */,
-				460A200E2BB1E1F1002597B8 /* CollisionSystem.swift */,
-				460A20102BB1E6DF002597B8 /* MonsterSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -674,6 +667,29 @@
 				E64361092BA4C2CC003850FD /* SyncModule */,
 			);
 			path = GameBridge;
+			sourceTree = "<group>";
+		};
+		E6A115302BB9B15A0076A21F /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				1471B09F2BA6A70600878B14 /* HealthSystem.swift */,
+				14970F532BA8163300CC1E8A /* ScoreSystem.swift */,
+				461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */,
+				461148952BA1D53D0073E7E1 /* PositionSystem.swift */,
+				460A20102BB1E6DF002597B8 /* MonsterSystem.swift */,
+				4604BBD82BA81C940078B84C /* InventorySystem.swift */,
+			);
+			name = Basic;
+			sourceTree = "<group>";
+		};
+		E6A115312BB9B1AF0076A21F /* Complex */ = {
+			isa = PBXGroup;
+			children = (
+				460A200A2BB1D04F002597B8 /* AttackSystem.swift */,
+				460A200E2BB1E1F1002597B8 /* CollisionSystem.swift */,
+				460A200C2BB1DF27002597B8 /* PlayerSystem.swift */,
+			);
+			name = Complex;
 			sourceTree = "<group>";
 		};
 		E6A72FC22BB2E1E10015729E /* Utils */ = {
