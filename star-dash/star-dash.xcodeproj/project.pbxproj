@@ -682,6 +682,7 @@
 				461148952BA1D53D0073E7E1 /* PositionSystem.swift */,
 				460A20102BB1E6DF002597B8 /* MonsterSystem.swift */,
 				4604BBD82BA81C940078B84C /* InventorySystem.swift */,
+				E6A115362BB9E2F90076A21F /* SpriteSystem.swift */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -690,7 +691,6 @@
 			isa = PBXGroup;
 			children = (
 				E6A115382BB9E3010076A21F /* MovementSystem.swift */,
-				E6A115362BB9E2F90076A21F /* SpriteSystem.swift */,
 				460A200A2BB1D04F002597B8 /* AttackSystem.swift */,
 				460A200E2BB1E1F1002597B8 /* CollisionSystem.swift */,
 				460A200C2BB1DF27002597B8 /* PlayerSystem.swift */,
