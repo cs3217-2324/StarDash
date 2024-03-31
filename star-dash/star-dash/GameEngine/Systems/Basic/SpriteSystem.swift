@@ -15,8 +15,7 @@ class SpriteSystem: System {
 
     func startAnimation(of entityId: EntityId, named: String) {
         guard let spriteComponent = getSpriteComponent(of: entityId),
-              let keyPath = \TextureSet.self[named],
-              let textureAtlas = spriteComponent.textureSet?[keyPath: keyPath] else {
+              let textureAtlas = spriteComponent.textureSet?.getValueFor(key: named) else {
             return
         }
 

@@ -38,18 +38,20 @@ class MovementSystem: System {
     private func handleMoveEvent(event: MoveEvent) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
-              let textureSet = spriteComponent.textureSet else {
+              let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
+              playerSystem.canMove(for: event.entityId) else {
             return
         }
 
         physicsSystem.setVelocity(to: event.entityId,
                                   velocity: (event.toLeft ? -1 : 1) * PhysicsConstants.runVelocity)
-        spriteSystem.startAnimation(of: event.entityId, textureAtlas: texture)
-        spriteComponent.textureAtlas = textureSet.run
+        spriteSystem.startAnimation(of: event.entityId, named: "run")
     }
 
     private func handleJumpEvent(event: JumpEvent) {
-        guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self) else {
+        guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
+              let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
+              playerSystem.canJump(for: event.entityId) else {
             return
         }
 
@@ -60,8 +62,7 @@ class MovementSystem: System {
 
     private func handleStopMovingEvent(event: StopMovingEvent) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
-              let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
-              let textureSet = spriteComponent.textureSet else {
+              let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self) else {
             return
         }
 
