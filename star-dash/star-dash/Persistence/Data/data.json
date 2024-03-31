@@ -60,13 +60,13 @@
       {
         "levelId": 0,
         "position": [400, 150],
-        "size": [50,50],
+        "radius": 25,
         "points": 10
       },
       {
         "levelId": 0,
         "position": [700, 450],
-        "size": [50,50],
+        "radius": 25,
         "points": 10
       }
   ],
