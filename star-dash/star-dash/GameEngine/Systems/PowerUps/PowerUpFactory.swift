@@ -16,7 +16,7 @@ class PowerUpFactory {
                                                 to entityManager: EntityManagerInterface) {
         EntityFactory.createAndAddSpeedBoostPowerUp(to: entityManager,
                                                     entityId: playerId,
-                                                    duration: 1_000,
+                                                    duration: 15,
                                                     multiplier: 2.5)
     }
 }

@@ -16,7 +16,7 @@ class SpeedBoostPowerUpSystem: System, EventListener {
 
     func update(by deltaTime: TimeInterval) {
         for speedBoostComponent in entityManager.components(ofType: SpeedBoostComponent.self) {
-            if !speedBoostComponent.isActivated {
+            if !speedBoostComponent.isActivated && speedBoostComponent.duration > 0 {
                 activatePowerUp(component: speedBoostComponent)
                 continue
             }
@@ -24,7 +24,6 @@ class SpeedBoostPowerUpSystem: System, EventListener {
             speedBoostComponent.duration -= Float(deltaTime)
             if speedBoostComponent.duration <= 0 {
                 deactivatePowerUp(component: speedBoostComponent)
-                removePowerUp(component: speedBoostComponent)
             }
         }
     }
@@ -45,14 +44,7 @@ class SpeedBoostPowerUpSystem: System, EventListener {
             return
         }
 
+        component.isActivated = false
         buffSystem.applySpeedMultiplier(1 / component.multiplier, for: component.entityId)
-    }
-
-    private func removePowerUp(component: SpeedBoostComponent) {
-        guard let speedBoost = entityManager.entity(with: component.entityId) else {
-            return
-        }
-
-        entityManager.remove(entity: speedBoost)
     }
 }

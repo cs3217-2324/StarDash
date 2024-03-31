@@ -89,7 +89,9 @@ class PhysicsSystem: System {
 
         if let buffComponent = entityManager.component(ofType: BuffComponent.self, of: event.entityId) {
             runVelocity *= CGFloat(buffComponent.speedMultiplier)
+            print(buffComponent.speedMultiplier)
         }
+        print("gonna run")
 
         physicsComponent.velocity = runVelocity
         spriteComponent.textureAtlas = textureSet.run
