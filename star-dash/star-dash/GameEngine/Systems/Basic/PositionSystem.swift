@@ -36,6 +36,17 @@ class PositionSystem: System {
         positionComponent.setRotation(rotation: newRotation)
     }
 
+    func rotate(entityId: EntityId, inDirection direction: CGVector) {
+        guard let positionComponent = getPositionComponent(of: entityId) else {
+            return
+        }
+        
+        let angle = atan2(direction.dy, direction.dx)
+        let degrees = angle * CGFloat(180 / Double.pi)
+        let newRotation = angle - CGFloat(Double.pi / 2)
+        positionComponent.setRotation(rotation: newRotation)
+    }
+
     func getPosition(of entityId: EntityId) -> CGPoint? {
         guard let positionComponent = getPositionComponent(of: entityId) else {
             return nil

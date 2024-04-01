@@ -59,7 +59,7 @@ struct PhysicsConstants {
         static let wall = CGSize(width: 60, height: 60)
         static let floor = CGSize(width: 300, height: 60)
         static let powerUp = CGSize(width: 60, height: 60)
-        static let homingMissle = CGSize(width: 100, height: 20)
+        static let homingMissle = CGSize(width: 50, height: 100)
     }
 
     struct Mass {

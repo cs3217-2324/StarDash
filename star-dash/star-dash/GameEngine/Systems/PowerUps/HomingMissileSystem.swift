@@ -77,6 +77,7 @@ class HomingMissileSystem: System, EventListener {
 
         let newVelocity = CGVector(dx: dx / distance, dy: dy / distance) * missleVelocity.magnitude
         physicsSystem.setVelocity(to: component.entityId, velocity: newVelocity)
+        positionSystem.rotate(entityId: component.entityId, inDirection: newVelocity)
     }
 
     // Event Handlers
