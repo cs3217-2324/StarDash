@@ -1,18 +1,18 @@
 struct TextureSet {
     let run: String
-    
+
     func getValueFor(key: String) -> String? {
         let mirror = Mirror(reflecting: self)
-        
+
         for (property, value) in mirror.children {
             guard let property = property,
                   property == key else {
                 continue
             }
-            
+
             return value as? String
         }
-        
+
         return nil
     }
 }

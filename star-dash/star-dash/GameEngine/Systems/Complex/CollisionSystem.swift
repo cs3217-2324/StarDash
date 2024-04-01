@@ -66,8 +66,8 @@ class CollisionSystem: System {
             return
         }
 
-        playerSystem.setCanJump(to: event.entityId, canJump: true)
-        playerSystem.setCanMove(to: event.entityId, canMove: true)
+        playerSystem.setCanJump(to: event.playerId, canJump: true)
+        playerSystem.setCanMove(to: event.playerId, canMove: true)
     }
 
     private func handlePlayerMonsterContactEvent(event: PlayerMonsterContactEvent) {
@@ -101,14 +101,14 @@ class CollisionSystem: System {
               let playerPosition = positionSystem.getPosition(of: event.playerId),
               let obstaclePosition = positionSystem.getPosition(of: event.playerId),
               playerPosition.y - PhysicsConstants.Dimensions.player.height / 2 >
-              obstaclePosition.position.y + PhysicsConstants.Dimensions.obstacle.height / 2 else {
+              obstaclePosition.y + PhysicsConstants.Dimensions.obstacle.height / 2 else {
 
             dispatcher?.add(event: StopMovingEvent(on: event.playerId))
             return
         }
 
-        playerSystem.setCanJump(to: event.entityId, canJump: true)
-        playerSystem.setCanMove(to: event.entityId, canMove: true)
+        playerSystem.setCanJump(to: event.playerId, canJump: true)
+        playerSystem.setCanMove(to: event.playerId, canMove: true)
     }
 
     private func handlePlayerToolContactEvent(event: PlayerToolContactEvent) {
