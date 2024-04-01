@@ -11,11 +11,11 @@ class TwinkleStarAchievement: Achievement {
     let name: String = "Twinkle Star"
     let description: String = "Collect your first star."
     let imageName: String = ""
-    let playerId: EntityId
+    let playerId: Int
 
     var hasCollectedStar: Bool
 
-    init(playerId: EntityId, hasCollectedStar: Bool) {
+    init(playerId: Int, hasCollectedStar: Bool = false) {
         self.playerId = playerId
         self.hasCollectedStar = hasCollectedStar
     }
@@ -32,12 +32,8 @@ class TwinkleStarAchievement: Achievement {
         hasCollectedStar = false
     }
 
-    func handleEvent(event: Event) {
-        guard let collectibleEvent = event as? PickupCollectibleEvent else {
-            return
-        }
-
-        guard collectibleEvent.playerId == playerId else {
+    func handleEvent(event: Event, saveTo storageManager: StorageManager) {
+        guard event is PickupCollectibleEvent else {
             return
         }
 
@@ -46,6 +42,8 @@ class TwinkleStarAchievement: Achievement {
         }
 
         hasCollectedStar = true
+
+        storageManager.upsert(achievement: self)
 
         if isUnlocked {
             print("Unlocked \(name) Achievement!")

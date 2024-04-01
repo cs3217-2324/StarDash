@@ -17,15 +17,24 @@ struct Database {
     private let obstacleTable = Table("obstacle")
     private let toolTable = Table("tool")
     private let monsterTable = Table("monster")
+
+    private let twinkleStarAchievementTable = Table("twinklestar")
+    private let stellarCollectorAchievementTable = Table("stellarCollector")
+    private let powerRangerAchievementTable = Table("powerranger")
+
     private var db: Connection?
     // Define a dictionary to map entity types to tables
     let tableMap: [ObjectIdentifier: Table]
+
     init() {
         tableMap = [
             ObjectIdentifier(CollectibleEntityPersistable.self): self.collectibleTable,
             ObjectIdentifier(ToolEntityPersistable.self): self.toolTable,
             ObjectIdentifier(ObstacleEntityPersistable.self): self.obstacleTable,
-            ObjectIdentifier(MonsterEntityPersistable.self): self.monsterTable
+            ObjectIdentifier(MonsterEntityPersistable.self): self.monsterTable,
+            ObjectIdentifier(TwinkleStarAchievementPersistable.self): self.twinkleStarAchievementTable,
+            ObjectIdentifier(StellarCollectorAchievementPersistable.self): self.stellarCollectorAchievementTable,
+            ObjectIdentifier(TwinkleStarAchievementPersistable.self): self.powerRangerAchievementTable
         ]
 
         if let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
@@ -61,6 +70,11 @@ struct Database {
             try db.run(collectibleTable.drop())
             try db.run(toolTable.drop())
             try db.run(monsterTable.drop())
+
+            // Comment out below to test for persistency
+            try db.run(twinkleStarAchievementTable.drop())
+            try db.run(stellarCollectorAchievementTable.drop())
+            try db.run(powerRangerAchievementTable.drop())
         } catch {
             print("Error deleting table \(error)")
         }
@@ -73,6 +87,8 @@ struct Database {
         createToolTable()
         createMonsterTable()
         createObstacleTable()
+
+        createAchievementTables()
     }
 
     private func createLevelTable() {
@@ -306,11 +322,212 @@ extension Database {
             }
         } catch {
             print("Error retriving \(error)")
-
         }
 
         return entities
+    }
+}
 
+extension Database {
+    func getAllAchievements(of playerId: Int) -> [AchievementPersistable] {
+        var achievements: [AchievementPersistable] = []
+
+        guard let twinkleStar = getTwinkleStar(of: playerId),
+              let stellarCollector = getStellarCollector(of: playerId),
+              let powerRanger = getPowerRanger(of: playerId) else {
+            return achievements
+        }
+
+        achievements.append(twinkleStar)
+        achievements.append(stellarCollector)
+        achievements.append(powerRanger)
+
+        return achievements
     }
 
+    func upsertTwinkleStar(_ achievement: TwinkleStarAchievement) {
+        guard let db = db else {
+            return
+        }
+
+        let playerIdExpression = Expression<Int64>("playerId")
+        let hasCollectedStarExprssion = Expression<Bool>("hasCollectedStar")
+
+        let table = twinkleStarAchievementTable.filter(playerIdExpression == Int64(achievement.playerId))
+
+        do {
+            if try db.scalar(table.count) > 0 {
+                // Update existing row
+                let update = table.update(hasCollectedStarExprssion <- achievement.hasCollectedStar)
+                try db.run(update)
+                print("TwinkleStar achievement updated successfully")
+            } else {
+                // Insert new row
+                try db.run(twinkleStarAchievementTable.insert(
+                        playerIdExpression <- Int64(achievement.playerId),
+                        hasCollectedStarExprssion <- achievement.hasCollectedStar
+                    ))
+                    print("TwinkleStar achievement inserted successfully")
+                }
+        } catch {
+            print("Error upserting TwinkleStar achievement: \(error)")
+        }
+    }
+
+    func upsertStellarCollector(_ achievement: StellarCollectorAchievement) {
+        guard let db = db else {
+            return
+        }
+
+        let playerIdExpression = Expression<Int64>("playerId")
+        let starsCollectedStarExprssion = Expression<Int64>("starsCollected")
+
+        let table = stellarCollectorAchievementTable.filter(playerIdExpression == Int64(achievement.playerId))
+
+        do {
+            if try db.scalar(table.count) > 0 {
+                // Update existing row
+                let update = table.update(starsCollectedStarExprssion <- Int64(achievement.starsCollected))
+                try db.run(update)
+                print("StellarCollector achievement updated successfully")
+            } else {
+                // Insert new row
+                try db.run(stellarCollectorAchievementTable.insert(
+                        playerIdExpression <- Int64(achievement.playerId),
+                        starsCollectedStarExprssion <- Int64(achievement.starsCollected)
+                    ))
+                    print("StellarCollector achievement inserted successfully")
+                }
+        } catch {
+            print("Error upserting StellarCollector achievement: \(error)")
+        }
+    }
+
+    func upsertPowerRanger(_ achievement: PowerRangerAchievement) {
+        guard let db = db else {
+            return
+        }
+
+        let playerIdExpression = Expression<Int64>("playerId")
+        let powerUpsUsedStarExprssion = Expression<Int64>("powerUpsUsed")
+
+        let table = powerRangerAchievementTable.filter(playerIdExpression == Int64(achievement.playerId))
+
+        do {
+            if try db.scalar(table.count) > 0 {
+                // Update existing row
+                let update = table.update(powerUpsUsedStarExprssion <- Int64(achievement.powerUpsUsed))
+                try db.run(update)
+                print("PowerRanger achievement updated successfully")
+            } else {
+                // Insert new row
+                try db.run(powerRangerAchievementTable.insert(
+                        playerIdExpression <- Int64(achievement.playerId),
+                        powerUpsUsedStarExprssion <- Int64(achievement.powerUpsUsed)
+                    ))
+                    print("PowerRanger achievement inserted successfully")
+                }
+        } catch {
+            print("Error upserting PowerRanger achievement: \(error)")
+        }
+    }
+
+    private func getTwinkleStar(of playerId: Int) -> TwinkleStarAchievementPersistable? {
+        guard let db = db else {
+            return nil
+        }
+
+        let playerIdExpression = Expression<Int64>("playerId")
+
+        let table = twinkleStarAchievementTable.filter(playerIdExpression == Int64(playerId))
+
+        do {
+            if let row = try db.prepare(table).first(where: { _ in true }) {
+                let persistable: TwinkleStarAchievementPersistable = try row.decode()
+                return persistable
+            } else {
+                return nil
+            }
+        } catch {
+            print("Error fetching TwinkleStar achievement: \(error)")
+            return nil
+        }
+    }
+
+    private func getStellarCollector(of playerId: Int) -> StellarCollectorAchievementPersistable? {
+        guard let db = db else {
+            return nil
+        }
+
+        let playerIdExpression = Expression<Int64>("playerId")
+
+        let table = stellarCollectorAchievementTable.filter(playerIdExpression == Int64(playerId))
+
+        do {
+            if let row = try db.prepare(table).first(where: { _ in true }) {
+                let persistable: StellarCollectorAchievementPersistable = try row.decode()
+                return persistable
+            } else {
+                return nil
+            }
+        } catch {
+            print("Error fetching StellarCollector achievement: \(error)")
+            return nil
+        }
+    }
+
+    private func getPowerRanger(of playerId: Int) -> PowerRangerAchievementPersistable? {
+        guard let db = db else {
+            return nil
+        }
+
+        let playerIdExpression = Expression<Int64>("playerId")
+
+        let table = powerRangerAchievementTable.filter(playerIdExpression == Int64(playerId))
+
+        do {
+            if let row = try db.prepare(table).first(where: { _ in true }) {
+                let persistable: PowerRangerAchievementPersistable = try row.decode()
+                return persistable
+            } else {
+                return nil
+            }
+        } catch {
+            print("Error fetching PowerRanger achievement: \(error)")
+            return nil
+        }
+    }
+
+    private func createAchievementTables() {
+        guard let db = db else {
+           return
+        }
+
+        let playerId = Expression<Int64>("playerId")
+        let hasCollected = Expression<Bool>("hasCollectedStar")
+        let starsCollected = Expression<Int64>("starsCollected")
+        let powerUpsUsed = Expression<Int64>("powerUpsUsed")
+
+        do {
+            try db.run( twinkleStarAchievementTable.create { table in
+               table.column(playerId, primaryKey: true)
+               table.column(hasCollected)
+            })
+            print("twinklestar table created")
+
+            try db.run( stellarCollectorAchievementTable.create { table in
+                table.column(playerId, primaryKey: true)
+                table.column(starsCollected)
+            })
+            print("stellarcollector table created")
+
+            try db.run( powerRangerAchievementTable.create { table in
+                table.column(playerId, primaryKey: true)
+                table.column(powerUpsUsed)
+            })
+            print("powerranger table created")
+        } catch {
+           print("Error creating table: \(error)")
+        }
+    }
 }

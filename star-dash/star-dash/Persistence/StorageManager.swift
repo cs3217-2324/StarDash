@@ -19,15 +19,29 @@ class StorageManager {
 
         entityPersistables.forEach { $0.addTo(entityManager) }
     }
-    
-    func loadAchievements() -> [Int: PlayerAchievements] {
-        var map: [Int: PlayerAchievements] = [:]
-        let playerAchievements = self.database.getAllPlayerAchievements()
 
-        playerAchievements.forEach { map[$0.playerId] = $0 }
+    func loadAchievements(of id: Int) -> PlayerAchievements? {
+        var achievements: [Achievement] = []
+        let playerAchievements = self.database.getAllAchievements(of: id)
+
+        playerAchievements.forEach { achievements.append($0.toAchievement()) }
+
+        guard !achievements.isEmpty else {
+            return nil
+        }
+
+        return PlayerAchievements(playerId: id, achievements: achievements)
     }
-    
-    func saveAchievements(_ achievements: [PlayerAchievements]) {
-        
+
+    func upsert(achievement: TwinkleStarAchievement) {
+        self.database.upsertTwinkleStar(achievement)
+    }
+
+    func upsert(achievement: StellarCollectorAchievement) {
+        self.database.upsertStellarCollector(achievement)
+    }
+
+    func upsert(achievement: PowerRangerAchievement) {
+        self.database.upsertPowerRanger(achievement)
     }
 }

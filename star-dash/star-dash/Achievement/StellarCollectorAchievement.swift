@@ -11,11 +11,11 @@ class StellarCollectorAchievement: Achievement {
     let name: String = "Stellar Collector"
     let description: String = "Collect 10 Stars."
     let imageName: String = ""
-    let playerId: EntityId
+    let playerId: Int
 
     var starsCollected: Int
 
-    init(playerId: EntityId, starsCollected: Int) {
+    init(playerId: Int, starsCollected: Int = 0) {
         self.playerId = playerId
         self.starsCollected = starsCollected
     }
@@ -32,12 +32,8 @@ class StellarCollectorAchievement: Achievement {
         starsCollected = 0
     }
 
-    func handleEvent(event: Event) {
-        guard let collectibleEvent = event as? PickupCollectibleEvent else {
-            return
-        }
-
-        guard collectibleEvent.playerId == playerId else {
+    func handleEvent(event: Event, saveTo storageManager: StorageManager) {
+        guard event is PickupCollectibleEvent else {
             return
         }
 
@@ -46,6 +42,8 @@ class StellarCollectorAchievement: Achievement {
         }
 
         starsCollected += 1
+
+        storageManager.upsert(achievement: self)
 
         if isUnlocked {
             print("Unlocked \(name) Achievement!")

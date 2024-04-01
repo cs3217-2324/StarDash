@@ -11,11 +11,11 @@ class PowerRangerAchievement: Achievement {
     let name: String = "Power Ranger"
     let description: String = "Use at least 3 power ups in a single game."
     let imageName: String = ""
-    let playerId: EntityId
+    let playerId: Int
 
     var powerUpsUsed: Int
 
-    init(playerId: EntityId, powerUpsUsed: Int) {
+    init(playerId: Int, powerUpsUsed: Int = 0) {
         self.playerId = playerId
         self.powerUpsUsed = powerUpsUsed
     }
@@ -32,12 +32,8 @@ class PowerRangerAchievement: Achievement {
         powerUpsUsed = 0
     }
 
-    func handleEvent(event: Event) {
-        guard let collectibleEvent = event as? PickupCollectibleEvent else {
-            return
-        }
-
-        guard collectibleEvent.playerId == playerId else {
+    func handleEvent(event: Event, saveTo storageManager: StorageManager) {
+        guard event is PickupCollectibleEvent else {
             return
         }
 
@@ -46,6 +42,8 @@ class PowerRangerAchievement: Achievement {
         }
 
         powerUpsUsed += 1
+
+        storageManager.upsert(achievement: self)
 
         if isUnlocked {
             print("Unlocked \(name) Achievement!")

@@ -11,10 +11,10 @@ protocol Achievement {
     var name: String { get }
     var description: String { get }
     var imageName: String { get }
-    var playerId: EntityId { get }
+    var playerId: Int { get }
     var progress: Double { get }
     var isUnlocked: Bool { get }
 
     func reset()
-    func handleEvent(event: Event)
+    func handleEvent(event: Event, saveTo: StorageManager)
 }
