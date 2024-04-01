@@ -59,14 +59,15 @@ class CollisionSystem: System {
     }
 
     private func handlePlayerFloorContactEvent(event: PlayerFloorContactEvent) {
-        guard let positionComponent = entityManager.component(ofType: PositionComponent.self, of: event.playerId),
-              let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: event.playerId),
-              positionComponent.position.y > event.contactPoint.y else {
+        guard let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
+              let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
+              let playerPosition = positionSystem.getPosition(of: event.playerId),
+              playerPosition.y > event.contactPoint.y else {
             return
         }
 
-        playerComponent.canJump = true
-        playerComponent.canMove = true
+        playerSystem.setCanJump(to: event.entityId, canJump: true)
+        playerSystem.setCanMove(to: event.entityId, canMove: true)
     }
 
     private func handlePlayerMonsterContactEvent(event: PlayerMonsterContactEvent) {
@@ -95,18 +96,19 @@ class CollisionSystem: System {
     }
 
     private func handlePlayerObstacleContactEvent(event: PlayerObstacleContactEvent) {
-        guard let playerPositionComponent = entityManager.component(ofType: PositionComponent.self, of: event.playerId),
-              let obstaclePositionComponent = entityManager.component(ofType: PositionComponent.self,
-                                                                      of: event.obstacleId),
-              let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: event.playerId),
-              playerPositionComponent.position.y - PhysicsConstants.Dimensions.player.height / 2 >
-                obstaclePositionComponent.position.y + PhysicsConstants.Dimensions.obstacle.height / 2 else {
-            dispatcher?.add(event: StopMovingEvent(on: event.playerId))
+        guard let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
+              let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
+              let playerPosition = positionSystem.getPosition(of: event.playerId),
+              let obstaclePosition = positionSystem.getPosition(of: event.playerId),
+              playerPosition.y - PhysicsConstants.Dimensions.player.height / 2 >
+              obstaclePosition.position.y + PhysicsConstants.Dimensions.obstacle.height / 2 else {
 
+            dispatcher?.add(event: StopMovingEvent(on: event.playerId))
             return
         }
-        playerComponent.canJump = true
-        playerComponent.canMove = true
+
+        playerSystem.setCanJump(to: event.entityId, canJump: true)
+        playerSystem.setCanMove(to: event.entityId, canMove: true)
     }
 
     private func handlePlayerToolContactEvent(event: PlayerToolContactEvent) {
