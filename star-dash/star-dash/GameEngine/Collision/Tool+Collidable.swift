@@ -39,4 +39,8 @@ extension Tool: Collidable {
     func collideWithFloor(_ floor: Floor, at contactPoint: CGPoint) -> Event? {
         CollisionHandler.between(tool: self, floor: floor)
     }
+
+    func collideWithPowerUp(_ powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
+        nil
+    }
 }

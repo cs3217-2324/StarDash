@@ -43,8 +43,14 @@ class MovementSystem: System {
             return
         }
 
-        physicsSystem.setVelocity(to: event.entityId,
-                                  velocity: (event.toLeft ? -1 : 1) * PhysicsConstants.runVelocity)
+        var runVelocity = (event.toLeft ? -1 : 1) * PhysicsConstants.runVelocity
+
+        if let buffSystem = dispatcher?.system(ofType: BuffSystem.self),
+           let speedMultiplier = buffSystem.speedMultiplier(of: event.entityId) {
+            runVelocity *= CGFloat(speedMultiplier)
+        }
+
+        physicsSystem.setVelocity(to: event.entityId, velocity: runVelocity)
         spriteSystem.startAnimation(of: event.entityId, named: "run")
     }
 

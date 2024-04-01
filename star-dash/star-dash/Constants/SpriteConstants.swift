@@ -30,4 +30,6 @@ struct SpriteConstants {
     static let obstacle = "Obstacle"
 
     static let tool = "Tool"
+
+    static let speedBoostPowerUp = "SpeedBoostPowerUp"
 }

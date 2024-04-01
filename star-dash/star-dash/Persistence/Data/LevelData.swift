@@ -15,4 +15,5 @@ struct LevelData: Codable {
     var obstacles: [ObstacleEntityPersistable]
     var collectibles: [CollectibleEntityPersistable]
     var tools: [ToolEntityPersistable]
+    var powerUps: [PowerUpEntityPersistable]
 }
