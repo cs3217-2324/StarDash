@@ -40,12 +40,13 @@ struct PhysicsConstants {
                             CollisionCategory.homingMissle
         static let monster = CollisionCategory.player
         static let collectible = CollisionCategory.player
-        static let obstacle = CollisionCategory.none
+        static let obstacle = CollisionCategory.homingMissle
         static let tool = CollisionCategory.obstacle
         static let wall = CollisionCategory.tool | CollisionCategory.player
-        static let floor = CollisionCategory.player
+        static let floor = CollisionCategory.player | CollisionCategory.homingMissle
         static let powerUp = CollisionCategory.player
-        static let homingMissle = CollisionCategory.player
+        static let homingMissle = CollisionCategory.player | CollisionCategory.obstacle | CollisionMask.floor
+
     }
 
     struct Dimensions {

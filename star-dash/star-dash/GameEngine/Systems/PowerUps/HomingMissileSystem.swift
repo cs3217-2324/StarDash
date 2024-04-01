@@ -15,10 +15,17 @@ class HomingMissileSystem: System, EventListener {
 
     func setup() {
         dispatcher?.registerListener(for: MissileHitPlayerEvent.self, listener: self)
+        dispatcher?.registerListener(for: MissileBlockedEvent.self, listener: self)
 
         eventHandlers[ObjectIdentifier(MissileHitPlayerEvent.self)] = { event in
             if let missileHitPlayerEvent = event as? MissileHitPlayerEvent {
                 self.handleMissleHitPlayerEvent(event: missileHitPlayerEvent)
+            }
+        }
+
+        eventHandlers[ObjectIdentifier(MissileBlockedEvent.self)] = { event in
+            if let missileBlockedEvent = event as? MissileBlockedEvent {
+                self.handleMissleBlockedEvent(event: missileBlockedEvent)
             }
         }
     }
@@ -36,7 +43,7 @@ class HomingMissileSystem: System, EventListener {
 
     private func fireMissle(component: HomingMissileComponent) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
-            !component.isActivated else {
+              !component.isActivated else {
             return
         }
 
@@ -77,5 +84,9 @@ class HomingMissileSystem: System, EventListener {
     private func handleMissleHitPlayerEvent(event: MissileHitPlayerEvent) {
         dispatcher?.add(event: PlayerDeathEvent(on: event.entityId))
         entityManager.remove(entityId: event.entityId)
+    }
+
+    private func handleMissleBlockedEvent(event: MissileBlockedEvent) {
+        entityManager.remove(entityId: event.missleId)
     }
 }

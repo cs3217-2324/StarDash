@@ -70,9 +70,7 @@ class GameEngine {
     }
 
     func handlePlayerMove(toLeft: Bool, playerIndex: Int) {
-        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex),
-              let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: playerEntityId),
-              playerComponent.canMove else {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
             return
         }
 

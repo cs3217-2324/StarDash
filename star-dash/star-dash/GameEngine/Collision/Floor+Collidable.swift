@@ -43,8 +43,8 @@ extension Floor: Collidable {
     func collideWithPowerUp(_ powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
         nil
     }
-    
+
     func collideWithHomingMissle(_ homingMissle: HomingMissile, at contactPoint: CGPoint) -> Event? {
-        nil
+        CollisionHandler.between(homingMissle: homingMissle, floor: self)
     }
 }

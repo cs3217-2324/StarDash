@@ -119,6 +119,7 @@
 		E6A011172BA5F4AD006904D9 /* EntitySyncInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A011162BA5F4AD006904D9 /* EntitySyncInterface.swift */; };
 		E6A1030C2BBAF0F7005BDFFA /* MissileHitPlayerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1030B2BBAF0F7005BDFFA /* MissileHitPlayerEvent.swift */; };
 		E6A1030E2BBAF3B1005BDFFA /* HomingMissile+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1030D2BBAF3B1005BDFFA /* HomingMissile+Collidable.swift */; };
+		E6A103102BBAF9B4005BDFFA /* MissileBlockedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1030F2BBAF9B4005BDFFA /* MissileBlockedEvent.swift */; };
 		E6A115372BB9E2F90076A21F /* SpriteSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A115362BB9E2F90076A21F /* SpriteSystem.swift */; };
 		E6A115392BB9E3010076A21F /* MovementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A115382BB9E3010076A21F /* MovementSystem.swift */; };
 		E6A72FC52BB2E1E10015729E /* PlayerViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A72FC32BB2E1E10015729E /* PlayerViewLayout.swift */; };
@@ -297,6 +298,7 @@
 		E6A011162BA5F4AD006904D9 /* EntitySyncInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntitySyncInterface.swift; sourceTree = "<group>"; };
 		E6A1030B2BBAF0F7005BDFFA /* MissileHitPlayerEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MissileHitPlayerEvent.swift; path = "star-dash/Events/PowerUpEvents/MissileHitPlayerEvent.swift"; sourceTree = SOURCE_ROOT; };
 		E6A1030D2BBAF3B1005BDFFA /* HomingMissile+Collidable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomingMissile+Collidable.swift"; sourceTree = "<group>"; };
+		E6A1030F2BBAF9B4005BDFFA /* MissileBlockedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MissileBlockedEvent.swift; path = "star-dash/GameEngine/Collision/MissileBlockedEvent.swift"; sourceTree = SOURCE_ROOT; };
 		E6A115362BB9E2F90076A21F /* SpriteSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpriteSystem.swift; path = "star-dash/GameEngine/Systems/Basic/SpriteSystem.swift"; sourceTree = SOURCE_ROOT; };
 		E6A115382BB9E3010076A21F /* MovementSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementSystem.swift; sourceTree = "<group>"; };
 		E6A72FC32BB2E1E10015729E /* PlayerViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewLayout.swift; sourceTree = "<group>"; };
@@ -814,6 +816,7 @@
 			children = (
 				E6A1030B2BBAF0F7005BDFFA /* MissileHitPlayerEvent.swift */,
 				E6B1CC5F2BB7E05500416BCD /* PowerUpPlayerEvent.swift */,
+				E6A1030F2BBAF9B4005BDFFA /* MissileBlockedEvent.swift */,
 			);
 			path = PowerUpEvents;
 			sourceTree = "<group>";
@@ -1101,6 +1104,7 @@
 				E6D45DBA2BB6E6080004CBA2 /* PowerUpSystem.swift in Sources */,
 				461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */,
 				4E630F2E2B9F81850008F887 /* HealthComponent.swift in Sources */,
+				E6A103102BBAF9B4005BDFFA /* MissileBlockedEvent.swift in Sources */,
 				4E86605C2BA095460035530D /* Monster.swift in Sources */,
 				4E59E2632BACB9E2007B3FA7 /* LevelData.swift in Sources */,
 				145F2C802BA203B400457549 /* Event.swift in Sources */,

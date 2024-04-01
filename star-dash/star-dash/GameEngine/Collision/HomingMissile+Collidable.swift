@@ -18,7 +18,7 @@ extension HomingMissile: Collidable {
     }
 
     func collideWithObstacle(_ obstacle: Obstacle, at contactPoint: CGPoint) -> Event? {
-        nil
+        CollisionHandler.between(homingMissle: self, obstacle: obstacle)
     }
 
     func collideWithTool(_ tool: Tool, at contactPoint: CGPoint) -> Event? {
@@ -30,7 +30,7 @@ extension HomingMissile: Collidable {
     }
 
     func collideWithFloor(_ floor: Floor, at contactPoint: CGPoint) -> Event? {
-        nil
+        CollisionHandler.between(homingMissle: self, floor: floor)
     }
 
     func collideWithPowerUp(_ powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
