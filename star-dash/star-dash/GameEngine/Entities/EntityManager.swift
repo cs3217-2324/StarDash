@@ -73,6 +73,10 @@ class EntityManager: EntityManagerInterface {
         entityMap[entityId]
     }
 
+    func entities<T: Entity>(ofType type: T.Type) -> [T] {
+        entityMap.values.compactMap({ $0 as? T })
+    }
+
     func playerEntityId(with playerIndex: Int) -> EntityId? {
         for entityId in entityMap.keys {
             if let playerComponent = component(ofType: PlayerComponent.self, of: entityId),

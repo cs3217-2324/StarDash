@@ -40,6 +40,10 @@ extension Tool: Collidable {
         CollisionHandler.between(tool: self, floor: floor)
     }
 
+    func collideWithGrappleHook(_ grappleHook: GrappleHook, at contactPoint: CGPoint) -> Event? {
+        nil
+    }
+
     func collideWithPowerUp(_ powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
         nil
     }

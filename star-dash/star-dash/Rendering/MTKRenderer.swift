@@ -131,4 +131,12 @@ extension MTKRenderer: ControlViewDelegate {
 
         viewDelegate?.jumpButtonPressed(playerIndex: playerIndex)
     }
+
+    func hookButtonPressed(from view: ControlView) {
+        guard let playerIndex = playerIndex(from: view) else {
+            return
+        }
+
+        viewDelegate?.hookButtonPressed(playerIndex: playerIndex)
+    }
 }

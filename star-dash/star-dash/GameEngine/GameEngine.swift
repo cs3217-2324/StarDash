@@ -87,6 +87,14 @@ class GameEngine {
         eventManager.add(event: StopMovingEvent(on: playerEntityId))
     }
 
+    func handlePlayerHook(playerIndex: Int) {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
+            return
+        }
+
+        eventManager.add(event: UseGrappleHookEvent(from: playerEntityId))
+    }
+
     private func setUpSystems() {
         systemManager.add(PositionSystem(entityManager, dispatcher: self))
         systemManager.add(PhysicsSystem(entityManager, dispatcher: self))
@@ -97,6 +105,8 @@ class GameEngine {
         systemManager.add(PlayerSystem(entityManager, dispatcher: self))
         systemManager.add(CollisionSystem(entityManager, dispatcher: self))
         systemManager.add(MonsterSystem(entityManager, dispatcher: self))
+        systemManager.add(GrappleHookSystem(entityManager, dispatcher: self))
+        systemManager.add(SpriteSystem(entityManager, dispatcher: self))
         systemManager.add(BuffSystem(entityManager, dispatcher: self))
 
         // Power-Up Systems

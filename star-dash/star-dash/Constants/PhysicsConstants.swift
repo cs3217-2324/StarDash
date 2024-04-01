@@ -19,17 +19,26 @@ struct PhysicsConstants {
         static let wall: UInt32 = 0b1 << 5
         static let floor: UInt32 = 0b1 << 6
         static let powerUp: UInt32 = 0b1 << 7
+        static let hook: UInt32 = 0b1 << 8
     }
 
     struct CollisionMask {
-        static let player = CollisionCategory.max ^ CollisionCategory.player ^ CollisionCategory.collectible ^
-                            CollisionCategory.powerUp
+        static let player = CollisionCategory.max
+                            ^ CollisionCategory.player
+                            ^ CollisionCategory.collectible
+                            ^ CollisionCategory.hook
+                            ^ CollisionCategory.powerUp
         static let monster = CollisionCategory.player | CollisionCategory.tool
         static let collectible = CollisionCategory.none
         static let obstacle = CollisionCategory.player | CollisionCategory.monster | CollisionMask.tool
         static let tool = CollisionCategory.max ^ CollisionCategory.collectible ^ CollisionCategory.tool
         static let wall = CollisionCategory.player | CollisionCategory.monster | CollisionCategory.tool
         static let floor = CollisionCategory.player | CollisionCategory.monster | CollisionCategory.tool
+        static let hook = CollisionCategory.max
+                            ^ CollisionCategory.collectible
+                            ^ CollisionCategory.tool
+                            ^ CollisionCategory.player
+                            ^ CollisionCategory.hook
         static let powerUp = CollisionCategory.none
     }
 
@@ -41,6 +50,7 @@ struct PhysicsConstants {
         static let tool = CollisionCategory.obstacle
         static let wall = CollisionCategory.tool | CollisionCategory.player
         static let floor = CollisionCategory.player
+        static let hook = CollisionCategory.obstacle
         static let powerUp = CollisionCategory.player
     }
 
@@ -53,6 +63,7 @@ struct PhysicsConstants {
         static let tool = CGSize(width: 60, height: 60)
         static let wall = CGSize(width: 60, height: 60)
         static let floor = CGSize(width: 300, height: 60)
+        static let hook = CGSize(width: 100, height: 100)
         static let powerUp = CGSize(width: 60, height: 60)
     }
 
