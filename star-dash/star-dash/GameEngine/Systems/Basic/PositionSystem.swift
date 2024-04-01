@@ -40,10 +40,11 @@ class PositionSystem: System {
         guard let positionComponent = getPositionComponent(of: entityId) else {
             return
         }
-        
+
         let angle = atan2(direction.dy, direction.dx)
-        let degrees = angle * CGFloat(180 / Double.pi)
         let newRotation = angle - CGFloat(Double.pi / 2)
+        print(direction)
+        print(newRotation * 180 / Double.pi)
         positionComponent.setRotation(rotation: newRotation)
     }
 

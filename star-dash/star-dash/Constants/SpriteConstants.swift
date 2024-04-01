@@ -33,5 +33,5 @@ struct SpriteConstants {
 
     static let speedBoostPowerUp = "SpeedBoostPowerUp"
 
-    static let homingMissle = "HomingMissle"
+    static let homingMissle = "HomingMissile"
 }
