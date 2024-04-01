@@ -99,7 +99,7 @@ class CollisionSystem: System {
         guard let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
               let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let playerPosition = positionSystem.getPosition(of: event.playerId),
-              let obstaclePosition = positionSystem.getPosition(of: event.playerId),
+              let obstaclePosition = positionSystem.getPosition(of: event.obstacleId),
               playerPosition.y - PhysicsConstants.Dimensions.player.height / 2 >
               obstaclePosition.y + PhysicsConstants.Dimensions.obstacle.height / 2 else {
 
