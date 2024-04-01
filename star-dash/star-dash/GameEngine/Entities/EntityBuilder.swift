@@ -55,6 +55,18 @@ class EntityBuilder {
         return self
     }
 
+    func withSprite(image: String, textureSet: TextureSet?, textureAtlas: String?, radius: CGFloat?) -> Self {
+        let componentType = ObjectIdentifier(SpriteComponent.self)
+        let component = SpriteComponent(entityId: entityId,
+                                        image: image,
+                                        textureSet: textureSet,
+                                        textureAtlas: textureAtlas,
+                                        radius: radius)
+
+        self.components[componentType] = component
+        return self
+    }
+
     func withScore(score: Int) -> Self {
         let componentType = ObjectIdentifier(ScoreComponent.self)
         let component = ScoreComponent(entityId: entityId, score: score)
@@ -95,9 +107,17 @@ class EntityBuilder {
         return self
     }
 
-    func withPhysics(size: CGSize) -> Self {
+    func withPhysics(rectangleOf size: CGSize) -> Self {
         let componentType = ObjectIdentifier(PhysicsComponent.self)
-        let component = PhysicsComponent(entityId: entityId, size: size)
+        let component = PhysicsComponent(entityId: entityId, rectangleOf: size)
+
+        self.components[componentType] = component
+        return self
+    }
+
+    func withPhysics(circleOf radius: CGFloat) -> Self {
+        let componentType = ObjectIdentifier(PhysicsComponent.self)
+        let component = PhysicsComponent(entityId: entityId, circleOf: radius)
 
         self.components[componentType] = component
         return self
@@ -166,6 +186,22 @@ class EntityBuilder {
         }
 
         physicsComponent.isDynamic = isDynamic
+        return self
+    }
+
+    func withPowerUpType(type: String) -> Self {
+        let componentType = ObjectIdentifier(PowerUpComponent.self)
+        let component = PowerUpComponent(entityId: entityId, type: type)
+
+        self.components[componentType] = component
+        return self
+    }
+
+    func withSpeedBoost(entityId: EntityId, duration: Float, multiplier: CGFloat) -> Self {
+        let componentType = ObjectIdentifier(SpeedBoostComponent.self)
+        let component = SpeedBoostComponent(entityId: entityId, duration: duration, multiplier: multiplier)
+
+        self.components[componentType] = component
         return self
     }
 

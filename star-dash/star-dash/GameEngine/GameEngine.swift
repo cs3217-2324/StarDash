@@ -107,6 +107,11 @@ class GameEngine {
         systemManager.add(MonsterSystem(entityManager, dispatcher: self))
         systemManager.add(GrappleHookSystem(entityManager, dispatcher: self))
         systemManager.add(SpriteSystem(entityManager, dispatcher: self))
+        systemManager.add(BuffSystem(entityManager, dispatcher: self))
+
+        // Power-Up Systems
+        systemManager.add(PowerUpSystem(entityManager, dispatcher: self))
+        systemManager.add(SpeedBoostPowerUpSystem(entityManager, dispatcher: self))
     }
 }
 

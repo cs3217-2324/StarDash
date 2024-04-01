@@ -79,4 +79,8 @@ struct CollisionHandler {
     static func between(grappleHook: GrappleHook, obstacle: Obstacle) -> Event? {
         GrappleHookObstacleContactEvent(betweenHook: grappleHook.id, andObstacle: obstacle.id)
     }
+
+    static func between(player: Player, powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
+        PowerUpPlayerEvent(from: player.id, pickedUp: powerUp.id)
+    }
 }

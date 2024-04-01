@@ -11,12 +11,12 @@ struct CollectibleEntityPersistable: Codable, EntityPersistable {
     var levelId: Int64
     var position: CGPoint
     var points: Int
-    var size: CGSize
+    var radius: CGFloat
 
     func addTo(_ entityManager: EntityManagerInterface) {
         EntityFactory.createAndAddCollectible(to: entityManager,
                                               position: self.position,
                                               points: self.points,
-                                              size: self.size)
+                                              radius: self.radius)
     }
 }

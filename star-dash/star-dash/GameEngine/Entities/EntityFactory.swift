@@ -22,7 +22,7 @@ struct EntityFactory {
                         textureAtlas: nil,
                         size: PhysicsConstants.Dimensions.player)
             .withScore(score: 0)
-            .withPhysics(size: PhysicsConstants.Dimensions.player)
+            .withPhysics(rectangleOf: PhysicsConstants.Dimensions.player)
                 .configureCategoryBitMask(PhysicsConstants.CollisionCategory.player)
                 .configureContactTestMask(PhysicsConstants.ContactMask.player)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.player)
@@ -44,7 +44,7 @@ struct EntityFactory {
                         textureSet: nil,
                         textureAtlas: nil,
                         size: size)
-            .withPhysics(size: PhysicsConstants.Dimensions.monster)
+            .withPhysics(rectangleOf: PhysicsConstants.Dimensions.monster)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.monster)
             .addToGame()
     }
@@ -52,7 +52,7 @@ struct EntityFactory {
     static func createAndAddCollectible(to entityManager: EntityManagerInterface,
                                         position: CGPoint,
                                         points: Int,
-                                        size: CGSize) {
+                                        radius: CGFloat) {
         let collectibleBuilder = EntityBuilder(entity: Collectible(id: UUID()), entityManager: entityManager)
 
         collectibleBuilder
@@ -60,9 +60,9 @@ struct EntityFactory {
             .withSprite(image: SpriteConstants.star,
                         textureSet: nil,
                         textureAtlas: nil,
-                        size: size)
+                        radius: radius)
             .withPoint(points: points)
-            .withPhysics(size: size)
+            .withPhysics(circleOf: radius)
                 .configureCategoryBitMask(PhysicsConstants.CollisionCategory.collectible)
                 .configureContactTestMask(PhysicsConstants.ContactMask.collectible)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.collectible)
@@ -82,7 +82,7 @@ struct EntityFactory {
                         textureSet: nil,
                         textureAtlas: nil,
                         size: size)
-            .withPhysics(size: size)
+            .withPhysics(rectangleOf: size)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.obstacle)
                 .configureIsDynamic(false)
             .addToGame()
@@ -99,7 +99,7 @@ struct EntityFactory {
                         textureSet: nil,
                         textureAtlas: nil,
                         size: size)
-            .withPhysics(size: size)
+            .withPhysics(rectangleOf: size)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.tool)
                 .configureIsDynamic(false)
             .addToGame()
@@ -110,7 +110,7 @@ struct EntityFactory {
 
         wallBuilder
             .withPosition(at: position)
-            .withPhysics(size: size)
+            .withPhysics(rectangleOf: size)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.wall)
             .addToGame()
     }
@@ -120,7 +120,7 @@ struct EntityFactory {
 
         floorBuilder
             .withPosition(at: position)
-            .withPhysics(size: size)
+            .withPhysics(rectangleOf: size)
                 .configureCategoryBitMask(PhysicsConstants.CollisionCategory.floor)
                 .configureContactTestMask(PhysicsConstants.ContactMask.floor)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.floor)
@@ -141,7 +141,7 @@ struct EntityFactory {
                         textureSet: nil,
                         textureAtlas: nil,
                         size: .zero)
-            .withPhysics(size: .zero)
+            .withPhysics(rectangleOf: .zero)
                 .configureCategoryBitMask(PhysicsConstants.CollisionCategory.hook)
                 .configureContactTestMask(PhysicsConstants.ContactMask.hook)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.hook)
@@ -161,13 +161,46 @@ struct EntityFactory {
                         textureSet: nil,
                         textureAtlas: nil,
                         size: CGSize(width: 20, height: 20))
-            .withPhysics(size: CGSize(width: 20, height: 20))
+            .withPhysics(circleOf: 20)
                 .configureCategoryBitMask(PhysicsConstants.CollisionCategory.hook)
                 .configureContactTestMask(PhysicsConstants.ContactMask.hook)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.hook)
                 .configureIsDynamic(true)
                 .configureRestitution(0.0)
                 .configureAffectedByGravity(false)
+            .addToGame()
+    }
+
+    static func createAndAddPowerUp(to entityManager: EntityManagerInterface,
+                                    position: CGPoint,
+                                    size: CGSize,
+                                    type: String) {
+        let powerUpBuilder = EntityBuilder(entity: PowerUp(id: UUID()), entityManager: entityManager)
+
+        powerUpBuilder
+            .withPosition(at: position)
+            .withSprite(image: SpriteConstants.speedBoostPowerUp,
+                        textureSet: nil,
+                        textureAtlas: nil,
+                        size: PhysicsConstants.Dimensions.powerUp)
+            .withPhysics(rectangleOf: size)
+                .configureCategoryBitMask(PhysicsConstants.CollisionCategory.powerUp)
+                .configureContactTestMask(PhysicsConstants.ContactMask.powerUp)
+                .configureCollisionBitMask(PhysicsConstants.CollisionMask.powerUp)
+                .configureIsDynamic(false)
+                .configureAffectedByGravity(false)
+            .withPowerUpType(type: type)
+            .addToGame()
+    }
+
+    static func createAndAddSpeedBoostPowerUp(to entityManager: EntityManagerInterface,
+                                              entityId: EntityId,
+                                              duration: Float,
+                                              multiplier: CGFloat) {
+        let powerUpBuilder = EntityBuilder(entity: SpeedBoostPowerUp(id: UUID()), entityManager: entityManager)
+
+        powerUpBuilder
+            .withSpeedBoost(entityId: entityId, duration: duration, multiplier: multiplier)
             .addToGame()
     }
 }

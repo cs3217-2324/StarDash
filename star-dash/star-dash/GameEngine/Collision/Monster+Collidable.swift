@@ -43,4 +43,8 @@ extension Monster: Collidable {
     func collideWithGrappleHook(_ grappleHook: GrappleHook, at contactPoint: CGPoint) -> Event? {
         CollisionHandler.between(monster: self, grappleHook: grappleHook)
     }
+
+    func collideWithPowerUp(_ powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
+        nil
+    }
 }

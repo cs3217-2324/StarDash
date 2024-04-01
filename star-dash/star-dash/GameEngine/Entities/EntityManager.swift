@@ -12,7 +12,7 @@ typealias ComponentMap = [ComponentId: Component]
 typealias EntityMap = [EntityId: Entity]
 typealias EntityComponentMap = [EntityId: ComponentSet]
 
-class EntityManager {
+class EntityManager: EntityManagerInterface {
     private var componentMap: ComponentMap
     private var entityMap: EntityMap
     private var entityComponentMap: EntityComponentMap

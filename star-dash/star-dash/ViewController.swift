@@ -64,7 +64,7 @@ class ViewController: UIViewController {
                                               position: CGPoint(x: scene.size.width / 2 + 30,
                                                                 y: scene.size.height / 2 - 100),
                                               points: EntityConstants.StarCollectible.points,
-                                              size: EntityConstants.StarCollectible.size)
+                                              radius: EntityConstants.StarCollectible.radius)
 
         self.storageManager?.loadLevel(id: 0, into: gameEngine)
     }

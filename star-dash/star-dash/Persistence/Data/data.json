@@ -48,13 +48,13 @@
       {
         "levelId": 0,
         "position": [400, 150],
-        "size": [50,50],
+        "radius": 25,
         "points": 10
       },
       {
         "levelId": 0,
         "position": [700, 450],
-        "size": [50,50],
+        "radius": 25,
         "points": 10
       }
   ],
@@ -73,5 +73,13 @@
         "size": [100,100],
         "health": 100
       },
+  ],
+  "powerUps": [
+    {
+      "levelId": 0,
+      "position": [500, 400],
+      "size": [60,60],
+      "type": "SpeedBoostPowerUp"
+    },
   ]
 }

@@ -43,4 +43,8 @@ extension Player: Collidable {
     func collideWithGrappleHook(_ grappleHook: GrappleHook, at contactPoint: CGPoint) -> Event? {
         CollisionHandler.between(player: self, grappleHook: grappleHook)
     }
+
+    func collideWithPowerUp(_ powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
+        CollisionHandler.between(player: self, powerUp: powerUp, at: contactPoint)
+    }
 }
