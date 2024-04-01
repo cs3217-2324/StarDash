@@ -43,8 +43,6 @@ class PositionSystem: System {
 
         let angle = atan2(direction.dy, direction.dx)
         let newRotation = angle - CGFloat(Double.pi / 2)
-        print(direction)
-        print(newRotation * 180 / Double.pi)
         positionComponent.setRotation(rotation: newRotation)
     }
 

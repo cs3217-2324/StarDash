@@ -84,7 +84,7 @@ class HomingMissileSystem: System, EventListener {
 
     private func handleMissleHitPlayerEvent(event: MissileHitPlayerEvent) {
         dispatcher?.add(event: PlayerDeathEvent(on: event.entityId))
-        entityManager.remove(entityId: event.entityId)
+        entityManager.remove(entityId: event.missleId)
     }
 
     private func handleMissleBlockedEvent(event: MissileBlockedEvent) {
