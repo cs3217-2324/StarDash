@@ -21,7 +21,10 @@ class StorageManager {
     }
     
     func loadAchievements() -> [Int: PlayerAchievements] {
-        
+        var map: [Int: PlayerAchievements] = [:]
+        let playerAchievements = self.database.getAllPlayerAchievements()
+
+        playerAchievements.forEach { map[$0.playerId] = $0 }
     }
     
     func saveAchievements(_ achievements: [PlayerAchievements]) {
