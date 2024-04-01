@@ -18,15 +18,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let scene = GameScene(size: CGSize(width: 4_842, height: 1_040))
-        scene.scaleMode = .aspectFill
-        scene.sceneDelegate = self
-        self.scene = scene
-        let gameEngine = GameEngine()
-        self.gameEngine = gameEngine
-        self.gameBridge = GameBridge(entityManager: gameEngine, scene: scene)
         self.storageManager = StorageManager()
+
+        let gameEngine = createGameEngine()
+        self.gameEngine = gameEngine
+
+        let scene = createGameScene(of: gameEngine.mapSize)
+        self.scene = scene
+
+        self.gameBridge = GameBridge(entityManager: gameEngine, scene: scene)
+
         setupGameEntities()
+        setupBackground()
 
         guard let renderer = MTKRenderer(scene: scene) else {
             return
@@ -37,16 +40,23 @@ class ViewController: UIViewController {
         self.renderer = renderer
     }
 
-    func setupGameEntities() {
+    private func createGameEngine() -> GameEngine {
+        let levelSize = self.storageManager?.getLevelSize(id: 0) ?? CGSize(width: 4_842, height: 1_040)
+        return GameEngine(mapSize: levelSize)
+    }
+
+    private func createGameScene(of size: CGSize) -> GameScene {
+        let scene = GameScene(size: size)
+        scene.scaleMode = .aspectFill
+        scene.sceneDelegate = self
+        return scene
+    }
+
+    private func setupGameEntities() {
         guard let scene = self.scene,
               let gameEngine = self.gameEngine else {
             return
         }
-
-        let background = SDSpriteObject(imageNamed: "GameBackground")
-        background.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
-        background.zPosition = -1
-        scene.addObject(background)
 
         EntityFactory.createAndAddPlayer(to: gameEngine,
                                          playerIndex: 0,
@@ -67,6 +77,28 @@ class ViewController: UIViewController {
                                               radius: EntityConstants.StarCollectible.radius)
 
         self.storageManager?.loadLevel(id: 0, into: gameEngine)
+    }
+
+    private func setupBackground() {
+        guard let scene = self.scene else {
+            return
+        }
+        let background = SDSpriteObject(imageNamed: "GameBackground")
+        let backgroundWidth = background.size.width
+        let backgroundHeight = background.size.height
+
+        var remainingGameWidth = scene.size.width
+        var numOfAddedBackgrounds = 0
+        while remainingGameWidth > 0 {
+            let background = SDSpriteObject(imageNamed: "GameBackground")
+            let offset = CGFloat(numOfAddedBackgrounds) * backgroundWidth
+            background.position = CGPoint(x: backgroundWidth / 2 + offset, y: backgroundHeight / 2)
+            background.zPosition = -1
+            scene.addObject(background)
+
+            remainingGameWidth -= backgroundWidth
+            numOfAddedBackgrounds += 1
+        }
     }
 }
 
@@ -113,7 +145,8 @@ extension ViewController: ViewDelegate {
 
         return OverlayInfo(
             score: gameInfo.playerScore,
-            playersInfo: gameInfo.playersInfo
+            playersInfo: gameInfo.playersInfo,
+            mapSize: gameInfo.mapSize
         )
     }
 }

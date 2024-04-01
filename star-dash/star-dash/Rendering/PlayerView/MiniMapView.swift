@@ -33,8 +33,8 @@ class MiniMapView: UIView {
             mapImageView.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    // TODO: Pass in actual map size
-    func update(playersInfo: [PlayerInfo], mapSize: CGSize = CGSize(width: 4_500, height: 0)) {
+
+    func update(playersInfo: [PlayerInfo], mapSize: CGSize) {
         removeAllPlayerIcons()
 
         for playerData in playersInfo {
