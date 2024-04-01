@@ -109,6 +109,7 @@ class GameEngine {
         // Power-Up Systems
         systemManager.add(PowerUpSystem(entityManager, dispatcher: self))
         systemManager.add(SpeedBoostPowerUpSystem(entityManager, dispatcher: self))
+        systemManager.add(HomingMissleSystem(entityManager, dispatcher: self))
     }
 }
 

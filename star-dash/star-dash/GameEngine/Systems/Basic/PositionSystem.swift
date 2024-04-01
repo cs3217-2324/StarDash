@@ -44,6 +44,18 @@ class PositionSystem: System {
         return positionComponent.position
     }
 
+    func getEntityAhead<T: Entity>(of position: CGPoint, ofType entityType: T.Type) -> EntityId {
+        for positionComponent in entityManager.components(ofType: PositionComponent.self) {
+            guard let entity = entityManager.entity(of: positionComponent.entityId) as? entityType {
+                continue 
+            }
+
+            return entity.id
+        }
+
+        return nil
+    }
+
     func setup() {
         dispatcher?.registerListener(for: TeleportEvent.self, listener: self)
 

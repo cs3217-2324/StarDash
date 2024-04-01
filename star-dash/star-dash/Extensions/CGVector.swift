@@ -9,6 +9,10 @@ import Foundation
 
 // MARK: Operators
 extension CGVector {
+    var magnitude: CGFloat {
+        return sqrt(dx*dx + dy*dy)
+    }
+
     static prefix func - (vector: CGVector) -> CGVector {
         CGVector(dx: -vector.dx, dy: -vector.dy)
     }

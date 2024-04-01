@@ -161,4 +161,23 @@ struct EntityFactory {
             .withSpeedBoost(entityId: entityId, duration: duration, multiplier: multiplier)
             .addToGame()
     }
+
+    static func createAndAddHomingMisslePowerUp(to entityManager: EntityManagerInterface,
+                                                position: CGVector,
+                                                impulse: CGVector) {
+        let powerUpBuilder = EntityBuilder(entity: HomingMissle(id: UUID()), entityManager: entityManager)
+
+        powerUpBuilder
+            .withPosition(at: position)
+            .withSprite(image: SpriteConstants.homingMissle,
+                        textureSet: nil,
+                        textureAtlas: nil,
+                        size: PhysicsConstants.Dimensions.homingMissle)
+            .withPhysics(size: size)
+                .configureCategoryBitMask(PhysicsConstants.CollisionCategory.homingMissle)
+                .configureContactTestMask(PhysicsConstants.ContactMask.homingMissle)
+                .configureCollisionBitMask(PhysicsConstants.CollisionMask.homingMissle)
+                .configureAffectedByGravity(false)
+            .addToGame()
+    }
 }

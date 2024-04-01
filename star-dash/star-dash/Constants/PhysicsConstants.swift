@@ -19,6 +19,7 @@ struct PhysicsConstants {
         static let wall: UInt32 = 0b1 << 5
         static let floor: UInt32 = 0b1 << 6
         static let powerUp: UInt32 = 0b1 << 7
+        static let homingMissle: UInt32 = 0b1 << 8
     }
 
     struct CollisionMask {
@@ -31,10 +32,12 @@ struct PhysicsConstants {
         static let wall = CollisionCategory.player | CollisionCategory.monster | CollisionCategory.tool
         static let floor = CollisionCategory.player | CollisionCategory.monster | CollisionCategory.tool
         static let powerUp = CollisionCategory.none
+        static let homingMissle = CollisionCategory.none
     }
 
     struct ContactMask {
-        static let player = CollisionCategory.floor | CollisionCategory.collectible | CollisionCategory.powerUp
+        static let player = CollisionCategory.floor | CollisionCategory.collectible | CollisionCategory.powerUp |
+                            CollisionCategory.homingMissle
         static let monster = CollisionCategory.player
         static let collectible = CollisionCategory.player
         static let obstacle = CollisionCategory.none
@@ -42,6 +45,7 @@ struct PhysicsConstants {
         static let wall = CollisionCategory.tool | CollisionCategory.player
         static let floor = CollisionCategory.player
         static let powerUp = CollisionCategory.player
+        static let homingMissle = CollisionCategory.player
     }
 
     struct Dimensions {
@@ -54,6 +58,7 @@ struct PhysicsConstants {
         static let wall = CGSize(width: 60, height: 60)
         static let floor = CGSize(width: 300, height: 60)
         static let powerUp = CGSize(width: 60, height: 60)
+        static let homingMissle = CGSize(width: 100, height: 20)
     }
 
     struct Mass {

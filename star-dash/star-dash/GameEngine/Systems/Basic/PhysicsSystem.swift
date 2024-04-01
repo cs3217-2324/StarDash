@@ -52,6 +52,14 @@ class PhysicsSystem: System {
         physicsComponent.velocity = velocity
     }
 
+    func velocity(of: entityId: EntityId) -> CGVector? {
+        guard let physicsComponent = getPhysicsComponent(of: entityId) else {
+            return nil
+        }
+
+        return physicsComponent.velocity
+    }
+
     func getSize(of entityId: EntityId) -> CGSize? {
         guard let physicsComponent = getPhysicsComponent(of: entityId) else {
             return nil
