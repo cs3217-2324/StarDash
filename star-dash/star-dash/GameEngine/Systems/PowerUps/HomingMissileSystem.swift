@@ -12,7 +12,15 @@ class SpeedBoostPowerUpSystem: System, EventListener {
         self.dispatcher = dispatcher
     }
 
-    func setup() {}
+    func setup() {
+        dispatcher?.registerListener(for: MissileHitPlayerEvent.self, listener: self)
+
+        eventHandlers[ObjectIdentifier(MissileHitPlayerEvent.self)] = { event in
+            if let missileHitPlayerEvent = event as? MissileHitPlayerEvent {
+                self.handleMissleHitPlayerEvent(event: missileHitPlayerEvent)
+            }
+        }
+    }
 
     func update(by deltaTime: TimeInterval) {
         for homingMissleComponent in entityManager.components(ofType: HomingMissleComponent.self) {
@@ -61,5 +69,12 @@ class SpeedBoostPowerUpSystem: System, EventListener {
 
         let newVelocity = CGVector(dx: dx / distance, dy: dy / distance) * missleVelocity.magnitude 
         physicsSystem.setVelocity(to: component.entityId, velocity: unitVector)
+    }
+
+    // Event Handlers
+
+    private func handleMissleHitPlayerEvent(event: MissileHitPlayerEvent) {
+        dispatcher?.add(event: PlayerDeathEvent(on: event.entityId))
+        print("player hit")
     }
 }

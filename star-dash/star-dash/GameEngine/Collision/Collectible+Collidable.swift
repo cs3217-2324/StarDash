@@ -43,4 +43,8 @@ extension Collectible: Collidable {
     func collideWithPowerUp(_ powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
         nil
     }
+
+    func collideWithHomingMissle(_ homingMissle: HomingMissle, at contactPoint: CGPoint) -> Event? {
+        nil
+    }
 }

@@ -1,23 +1,16 @@
-//
-//  Wall+Collidable.swift
-//  star-dash
-//
-//  Created by Ho Jun Hao on 16/3/24.
-//
-
 import CoreGraphics
 
-extension Wall: Collidable {
+extension HomingMissile: Collidable {
     func collides(with collidable: Collidable, at contactPoint: CGPoint) -> Event? {
-        collidable.collideWithWall(self, at: contactPoint)
+        nil
     }
 
     func collideWithPlayer(_ player: Player, at contactPoint: CGPoint) -> Event? {
-        CollisionHandler.between(player: player, wall: self)
+        CollisionHandler.between(player: player, homingMissle: self)
     }
 
     func collideWithMonster(_ monster: Monster, at contactPoint: CGPoint) -> Event? {
-        CollisionHandler.between(monster: monster, wall: self)
+        nil
     }
 
     func collideWithCollectible(_ collectible: Collectible, at contactPoint: CGPoint) -> Event? {
@@ -29,7 +22,7 @@ extension Wall: Collidable {
     }
 
     func collideWithTool(_ tool: Tool, at contactPoint: CGPoint) -> Event? {
-        CollisionHandler.between(tool: tool, wall: self)
+        nil
     }
 
     func collideWithWall(_ wall: Wall, at contactPoint: CGPoint) -> Event? {

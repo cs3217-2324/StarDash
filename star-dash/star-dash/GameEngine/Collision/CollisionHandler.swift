@@ -63,4 +63,8 @@ struct CollisionHandler {
     static func between(player: Player, powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
         PowerUpPlayerEvent(from: player.id, pickedUp: powerUp.id)
     }
+
+    static func between(player: player, homingMissle: self) -> Event? {
+        MissileHitPlayerEvent(from: player.id, missle: homingMissle.id)
+    }
 }

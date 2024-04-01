@@ -43,4 +43,8 @@ extension Player: Collidable {
     func collideWithPowerUp(_ powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
         CollisionHandler.between(player: self, powerUp: powerUp, at: contactPoint)
     }
+
+    func collideWithHomingMissle(_ homingMissle: HomingMissle, at contactPoint: CGPoint) -> Event? {
+        CollisionHandler.between(player: player, homingMissle: self)
+    }
 }
