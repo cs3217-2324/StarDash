@@ -73,7 +73,7 @@ class EntityBuilder {
 
     func withHookOwner(playerId: EntityId) -> Self {
         let componentType = ObjectIdentifier(GrappleHookOwnerComponent.self)
-        let component = GrappleHookOwnerComponent(entityId: entityId, playerId: playerId)
+        let component = GrappleHookOwnerComponent(entityId: entityId, ownerPlayerId: playerId)
 
         self.components[componentType] = component
         return self

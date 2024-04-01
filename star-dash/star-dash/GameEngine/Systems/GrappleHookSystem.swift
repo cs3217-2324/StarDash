@@ -206,7 +206,7 @@ class GrappleHookSystem: System {
             return nil
         }
 
-        return hookOwnerComponent.playerId
+        return hookOwnerComponent.ownerPlayerId
     }
 
     func lengthLeftToRetract(of hookEntityId: EntityId) -> CGFloat? {

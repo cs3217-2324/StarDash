@@ -73,7 +73,7 @@ class CollisionSystem: System {
 
         if let hookOwnerComponent = entityManager
                                     .components(ofType: GrappleHookOwnerComponent.self)
-                                    .first(where: { $0.playerId == event.playerId }) {
+                                    .first(where: { $0.ownerPlayerId == event.playerId }) {
             dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
         }
 
@@ -99,7 +99,7 @@ class CollisionSystem: System {
 
         if let hookOwnerComponent = entityManager
                                     .components(ofType: GrappleHookOwnerComponent.self)
-                                    .first(where: { $0.playerId == event.playerId }) {
+                                    .first(where: { $0.ownerPlayerId == event.playerId }) {
             dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
         }
 
@@ -126,7 +126,7 @@ class CollisionSystem: System {
 
         if let hookOwnerComponent = entityManager
                                     .components(ofType: GrappleHookOwnerComponent.self)
-                                    .first(where: { $0.playerId == event.playerId }) {
+                                    .first(where: { $0.ownerPlayerId == event.playerId }) {
             dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
         }
 

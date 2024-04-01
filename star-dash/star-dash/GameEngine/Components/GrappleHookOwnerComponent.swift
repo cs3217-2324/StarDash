@@ -8,14 +8,14 @@
 import Foundation
 
 class GrappleHookOwnerComponent: Component {
-    var playerId: EntityId
+    var ownerPlayerId: EntityId
 
-    init(id: ComponentId, entityId: EntityId, playerId: EntityId) {
-        self.playerId = playerId
+    init(id: ComponentId, entityId: EntityId, ownerPlayerId: EntityId) {
+        self.ownerPlayerId = ownerPlayerId
         super.init(id: id, entityId: entityId)
     }
 
-    convenience init(entityId: EntityId, playerId: EntityId) {
-        self.init(id: UUID(), entityId: entityId, playerId: playerId)
+    convenience init(entityId: EntityId, ownerPlayerId: EntityId) {
+        self.init(id: UUID(), entityId: entityId, ownerPlayerId: ownerPlayerId)
     }
 }
