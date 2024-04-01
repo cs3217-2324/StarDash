@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     var gameBridge: GameBridge?
     var gameEngine: GameEngine?
     var storageManager: StorageManager?
-
+    static var gameMode: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         }
 
         renderer.viewDelegate = self
-        renderer.setupViews(at: self.view, for: 2)
+        renderer.setupViews(at: self.view, for: ViewController.gameMode)
         self.renderer = renderer
     }
 
