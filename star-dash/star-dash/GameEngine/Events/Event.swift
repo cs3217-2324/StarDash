@@ -8,5 +8,6 @@
 import Foundation
 
 protocol Event {
+    var playerIdForEvent: EntityId? { get }
     var timestamp: Date { get }
 }

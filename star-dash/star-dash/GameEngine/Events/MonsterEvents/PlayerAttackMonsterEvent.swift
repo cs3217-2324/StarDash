@@ -17,4 +17,8 @@ class PlayerAttackMonsterEvent: Event {
         self.playerId = playerId
         self.monsterId = monsterId
     }
+
+    var playerIdForEvent: EntityId? {
+        playerId
+    }
 }

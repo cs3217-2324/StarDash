@@ -17,4 +17,8 @@ class PickupCollectibleEvent: Event {
         self.playerId = playerId
         self.collectibleEntityId = collectibleEntityId
     }
+
+    var playerIdForEvent: EntityId? {
+        playerId
+    }
 }

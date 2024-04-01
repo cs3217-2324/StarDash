@@ -19,4 +19,12 @@ class StorageManager {
 
         entityPersistables.forEach { $0.addTo(entityManager) }
     }
+    
+    func loadAchievements() -> [Int: PlayerAchievements] {
+        
+    }
+    
+    func saveAchievements(_ achievements: [PlayerAchievements]) {
+        
+    }
 }

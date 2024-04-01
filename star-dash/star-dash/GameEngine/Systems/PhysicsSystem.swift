@@ -57,9 +57,7 @@ class PhysicsSystem: System {
     }
 
     func setup() {
-        dispatcher?.registerListener(for: MoveEvent.self, listener: self)
-        dispatcher?.registerListener(for: JumpEvent.self, listener: self)
-        dispatcher?.registerListener(for: StopMovingEvent.self, listener: self)
+        dispatcher?.registerListener(self)
 
         eventHandlers[ObjectIdentifier(MoveEvent.self)] = { event in
             if let moveEvent = event as? MoveEvent {

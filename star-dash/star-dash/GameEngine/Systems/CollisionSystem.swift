@@ -21,11 +21,7 @@ class CollisionSystem: System {
     }
 
     func setup() {
-        dispatcher?.registerListener(for: RemoveEvent.self, listener: self)
-        dispatcher?.registerListener(for: PlayerFloorContactEvent.self, listener: self)
-        dispatcher?.registerListener(for: PlayerMonsterContactEvent.self, listener: self)
-        dispatcher?.registerListener(for: PlayerObstacleContactEvent.self, listener: self)
-        dispatcher?.registerListener(for: PlayerToolContactEvent.self, listener: self)
+        dispatcher?.registerListener(self)
 
         eventHandlers[ObjectIdentifier(RemoveEvent.self)] = { event in
             if let removeEvent = event as? RemoveEvent {

@@ -45,7 +45,7 @@ class PositionSystem: System {
     }
 
     func setup() {
-        dispatcher?.registerListener(for: TeleportEvent.self, listener: self)
+        dispatcher?.registerListener(self)
 
         eventHandlers[ObjectIdentifier(TeleportEvent.self)] = { event in
             if let teleportEvent = event as? TeleportEvent {

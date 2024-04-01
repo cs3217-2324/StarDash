@@ -109,8 +109,8 @@ extension GameEngine: EventModifiable {
         eventManager.add(event: event)
     }
 
-    func registerListener<T: Event>(for eventType: T.Type, listener: EventListener) {
-        eventManager.registerListener(for: eventType, listener: listener)
+    func registerListener(_ listener: EventListener) {
+        eventManager.registerListener(listener)
     }
 }
 
@@ -129,6 +129,13 @@ extension GameEngine: EntitySyncInterface {
 }
 
 extension GameEngine: EntityManagerInterface {
+    var playerIdEntityMap: [EntityId: Int] {
+        var map: [EntityId: Int] = [:]
+        let playerComponents = entityManager.components(ofType: PlayerComponent.self)
+        playerComponents.forEach { map[$0.entityId] = $0.playerIndex }
+        return map
+    }
+
     func add(entity: Entity) {
         entityManager.add(entity: entity)
     }

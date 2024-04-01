@@ -67,6 +67,10 @@ class ViewController: UIViewController {
                                               size: EntityConstants.StarCollectible.size)
 
         self.storageManager?.loadLevel(id: 0, into: gameEngine)
+
+        let achievementManager = AchievementManager.shared
+        gameEngine.registerListener(achievementManager)
+        achievementManager.setup(withMap: gameEngine.playerIdEntityMap)
     }
 }
 

@@ -21,8 +21,7 @@ class AttackSystem: System {
     }
 
     func setup() {
-        dispatcher?.registerListener(for: MonsterAttackPlayerEvent.self, listener: self)
-        dispatcher?.registerListener(for: PlayerAttackMonsterEvent.self, listener: self)
+        dispatcher?.registerListener(self)
 
         eventHandlers[ObjectIdentifier(MonsterAttackPlayerEvent.self)] = { event in
             if let monsterAttackPlayerEvent = event as? MonsterAttackPlayerEvent {
@@ -72,7 +71,7 @@ class AttackSystem: System {
         physicSystem.applyImpulse(to: event.monsterId, impulse: GameConstants.AttackImpulse.attackedByPlayer)
 
         if !healthSystem.hasHealth(for: event.monsterId) {
-            dispatcher?.add(event: MonsterDeathEvent(on: event.monsterId))
+            dispatcher?.add(event: MonsterDeathEvent(on: event.monsterId, causedBy: event.playerId))
         }
     }
 }

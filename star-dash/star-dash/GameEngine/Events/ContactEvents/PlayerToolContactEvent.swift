@@ -16,4 +16,8 @@ class PlayerToolContactEvent: Event {
         self.playerId = playerId
         self.toolId = toolEntityId
     }
+
+    var playerIdForEvent: EntityId? {
+        playerId
+    }
 }
