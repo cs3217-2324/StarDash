@@ -18,26 +18,30 @@ struct PhysicsConstants {
         static let tool: UInt32 = 0b1 << 4
         static let wall: UInt32 = 0b1 << 5
         static let floor: UInt32 = 0b1 << 6
+        static let powerUp: UInt32 = 0b1 << 7
     }
 
     struct CollisionMask {
-        static let player = CollisionCategory.max ^ CollisionCategory.player ^ CollisionCategory.collectible
+        static let player = CollisionCategory.max ^ CollisionCategory.player ^ CollisionCategory.collectible ^
+                            CollisionCategory.powerUp
         static let monster = CollisionCategory.player | CollisionCategory.tool
         static let collectible = CollisionCategory.none
         static let obstacle = CollisionCategory.player | CollisionCategory.monster | CollisionMask.tool
         static let tool = CollisionCategory.max ^ CollisionCategory.collectible ^ CollisionCategory.tool
         static let wall = CollisionCategory.player | CollisionCategory.monster | CollisionCategory.tool
         static let floor = CollisionCategory.player | CollisionCategory.monster | CollisionCategory.tool
+        static let powerUp = CollisionCategory.none
     }
 
     struct ContactMask {
-        static let player = CollisionCategory.floor | CollisionCategory.collectible
+        static let player = CollisionCategory.floor | CollisionCategory.collectible | CollisionCategory.powerUp
         static let monster = CollisionCategory.player
         static let collectible = CollisionCategory.player
         static let obstacle = CollisionCategory.none
         static let tool = CollisionCategory.obstacle
         static let wall = CollisionCategory.tool | CollisionCategory.player
         static let floor = CollisionCategory.player
+        static let powerUp = CollisionCategory.player
     }
 
     struct Dimensions {
@@ -49,13 +53,14 @@ struct PhysicsConstants {
         static let tool = CGSize(width: 60, height: 60)
         static let wall = CGSize(width: 60, height: 60)
         static let floor = CGSize(width: 300, height: 60)
+        static let powerUp = CGSize(width: 60, height: 60)
     }
 
     struct Mass {
         static let player = CGFloat(50)
     }
 
-    static let jumpImpulse = CGVector(dx: 15, dy: 7_500)
+    static let jumpImpulse = CGVector(dx: 1_000, dy: 7_500)
     static let runVelocity = CGVector(dx: 200, dy: 0)
     static let maxRunVelocity = CGVector(dx: 250, dy: 0)
 }

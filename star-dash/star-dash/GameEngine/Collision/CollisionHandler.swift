@@ -59,4 +59,8 @@ struct CollisionHandler {
     static func between(tool: Tool, obstacle: Obstacle) -> Event? {
         nil
     }
+
+    static func between(player: Player, powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
+        PowerUpPlayerEvent(from: player.id, pickedUp: powerUp.id)
+    }
 }
