@@ -1,6 +1,6 @@
 import Foundation
 
-class SpeedBoostPowerUpSystem: System, EventListener {
+class HomingMissileSystem: System, EventListener {
     var isActive: Bool
     var dispatcher: EventModifiable?
     var entityManager: EntityManager
@@ -10,6 +10,7 @@ class SpeedBoostPowerUpSystem: System, EventListener {
         self.isActive = true
         self.entityManager = entityManager
         self.dispatcher = dispatcher
+        setup()
     }
 
     func setup() {
@@ -23,7 +24,7 @@ class SpeedBoostPowerUpSystem: System, EventListener {
     }
 
     func update(by deltaTime: TimeInterval) {
-        for homingMissleComponent in entityManager.components(ofType: HomingMissleComponent.self) {
+        for homingMissleComponent in entityManager.components(ofType: HomingMissileComponent.self) {
             if !homingMissleComponent.isActivated {
                 fireMissle(component: homingMissleComponent)
                 continue
@@ -33,48 +34,48 @@ class SpeedBoostPowerUpSystem: System, EventListener {
         }
     }
 
-    private func fireMissle(component: homingMissleComponent) {
-        guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem),
+    private func fireMissle(component: HomingMissileComponent) {
+        guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
             !component.isActivated else {
             return
         }
 
         component.isActivated = true
         physicsSystem.applyImpulse(to: component.entityId, impulse: component.impulse)
-        
+
         // search for a target
-        guard let positionSystem = dispatcher?.system(ofType: PositionSystem),
-              let misslePosition = positionSystem.getPosition(of: component.entityId),
-              let targetId = positionSystem.getEntityAhead(of: misslePosition, ofType: Player.self),
+        guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
+              let missilePosition = positionSystem.getPosition(of: component.entityId),
+              let targetId = positionSystem.getEntityAhead(of: missilePosition, ofType: Player.self),
               component.targetId == nil else {
             return
         }
-        
+
         component.targetId = targetId
     }
 
-    private func updateMissle(component: homingMissleComponent) {
+    private func updateMissle(component: HomingMissileComponent) {
         guard let targetId = component.targetId,
-              let positionSystem = dispatcher?.system(ofType: PositionSystem),
-              let physicsSystem = dispatcher?.system(ofType: PhysicsSystem),
+              let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
+              let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let misslePosition = positionSystem.getPosition(of: component.entityId),
               let targetPosition = positionSystem.getPosition(of: targetId),
-              let missleVelocity = physicsSystem.velocity(of: componenty.entityId) else {
+              let missleVelocity = physicsSystem.velocity(of: component.entityId) else {
             return
         }
 
-        let dy = misslePosition.y - targetPosition.y
-        let dx = misslePosition.x - targetPosition.x
+        let dy = targetPosition.y - misslePosition.y
+        let dx = targetPosition.x - misslePosition.x
         let distance = hypot(dx, dy)
 
-        let newVelocity = CGVector(dx: dx / distance, dy: dy / distance) * missleVelocity.magnitude 
-        physicsSystem.setVelocity(to: component.entityId, velocity: unitVector)
+        let newVelocity = CGVector(dx: dx / distance, dy: dy / distance) * missleVelocity.magnitude
+        physicsSystem.setVelocity(to: component.entityId, velocity: newVelocity)
     }
 
     // Event Handlers
 
     private func handleMissleHitPlayerEvent(event: MissileHitPlayerEvent) {
         dispatcher?.add(event: PlayerDeathEvent(on: event.entityId))
-        print("player hit")
+        entityManager.remove(entityId: event.entityId)
     }
 }

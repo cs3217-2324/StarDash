@@ -1,6 +1,6 @@
 import Foundation
 
-class SpeedBoostPowerUpSystem: System, EventListener {
+class SpeedBoostPowerUpSystem: System {
     var isActive: Bool
     var dispatcher: EventModifiable?
     var entityManager: EntityManager

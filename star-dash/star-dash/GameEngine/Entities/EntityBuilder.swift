@@ -165,6 +165,16 @@ class EntityBuilder {
         return self
     }
 
+    func configureLinearDamping(_ linearDamping: CGFloat) -> Self {
+        let componentType = ObjectIdentifier(PhysicsComponent.self)
+
+        guard let physicsComponent = self.components[componentType] as? PhysicsComponent else {
+            return self
+        }
+
+        physicsComponent.linearDamping = linearDamping
+        return self
+    }
     func withPowerUpType(type: String) -> Self {
         let componentType = ObjectIdentifier(PowerUpComponent.self)
         let component = PowerUpComponent(entityId: entityId, type: type)
@@ -176,6 +186,14 @@ class EntityBuilder {
     func withSpeedBoost(entityId: EntityId, duration: Float, multiplier: CGFloat) -> Self {
         let componentType = ObjectIdentifier(SpeedBoostComponent.self)
         let component = SpeedBoostComponent(entityId: entityId, duration: duration, multiplier: multiplier)
+
+        self.components[componentType] = component
+        return self
+    }
+
+    func withHomingMissle(impulse: CGVector) -> Self {
+        let componentType = ObjectIdentifier(HomingMissileComponent.self)
+        let component = HomingMissileComponent(entityId: entityId, targetId: nil, impulse: impulse)
 
         self.components[componentType] = component
         return self

@@ -1,6 +1,6 @@
 import Foundation
 
-class HomingMissle: Entity {
+class HomingMissile: Entity {
     let id: EntityId
 
     init(id: EntityId) {

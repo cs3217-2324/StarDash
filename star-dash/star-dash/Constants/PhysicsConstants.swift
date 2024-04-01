@@ -24,7 +24,7 @@ struct PhysicsConstants {
 
     struct CollisionMask {
         static let player = CollisionCategory.max ^ CollisionCategory.player ^ CollisionCategory.collectible ^
-                            CollisionCategory.powerUp
+        CollisionCategory.powerUp ^ CollisionCategory.homingMissle
         static let monster = CollisionCategory.player | CollisionCategory.tool
         static let collectible = CollisionCategory.none
         static let obstacle = CollisionCategory.player | CollisionCategory.monster | CollisionMask.tool

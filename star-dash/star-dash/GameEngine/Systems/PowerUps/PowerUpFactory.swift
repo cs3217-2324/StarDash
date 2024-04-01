@@ -1,7 +1,9 @@
+import CoreGraphics
+
 class PowerUpFactory {
 
-    static func createPowerUp(triggeredBy playerId: EntityId, type: String, to entityManager: EntityManagerInterface) {
-        let powerUps: [String: (EntityId, EntityManagerInterface) -> Void] = [
+    static func createPowerUp(triggeredBy playerId: EntityId, type: String, to entityManager: EntityManager) {
+        let powerUps: [String: (EntityId, EntityManager) -> Void] = [
             "SpeedBoostPowerUp": createSpeedBoostPowerUp,
             "HomingMisslePowerUp": createHomingMisslePowerUp
         ]
@@ -14,7 +16,7 @@ class PowerUpFactory {
     }
 
     private static func createSpeedBoostPowerUp(triggeredBy playerId: EntityId,
-                                                to entityManager: EntityManagerInterface) {
+                                                to entityManager: EntityManager) {
         EntityFactory.createAndAddSpeedBoostPowerUp(to: entityManager,
                                                     entityId: playerId,
                                                     duration: 15,
@@ -22,13 +24,15 @@ class PowerUpFactory {
     }
 
     private static func createHomingMisslePowerUp(triggeredBy playerId: EntityId,
-                                                to entityManager: EntityManagerInterface) {
+                                                  to entityManager: EntityManager) {
         guard let positionComponent = entityManager.component(ofType: PositionComponent.self, of: playerId) else {
             return
         }
 
-        EntityFactory.createAndAddHomingMissle(to: entityManager,
-                                               position: positionComponent.position,
-                                               impulse: CGVector(dx: 2_000, dy: 0))
+        let misslePosition = CGPoint(x: positionComponent.position.x + 100, y: positionComponent.position.y)
+
+        EntityFactory.createAndAddHomingMissilePowerUp(to: entityManager,
+                                                       position: misslePosition,
+                                                       impulse: CGVector(dx: 4_000, dy: 0))
     }
 }

@@ -94,6 +94,9 @@
 		4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660652BA097D40035530D /* PhysicsConstants.swift */; };
 		4EC561E32BB1E98400166DDC /* PlayerObstacleContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC561E22BB1E98400166DDC /* PlayerObstacleContactEvent.swift */; };
 		4EC561E52BB1E9A300166DDC /* PlayerToolContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC561E42BB1E9A300166DDC /* PlayerToolContactEvent.swift */; };
+		E62430362BBAB777001FC686 /* HomingMissileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62430352BBAB777001FC686 /* HomingMissileSystem.swift */; };
+		E62430382BBAB780001FC686 /* HomingMissile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62430372BBAB780001FC686 /* HomingMissile.swift */; };
+		E624303A2BBAB787001FC686 /* HomingMissileComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62430392BBAB787001FC686 /* HomingMissileComponent.swift */; };
 		E638B9CF2BAB3C5D00931CC2 /* TeleportEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638B9CE2BAB3C5D00931CC2 /* TeleportEvent.swift */; };
 		E64361102BA4C2CD003850FD /* SpriteModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610A2BA4C2CC003850FD /* SpriteModule.swift */; };
 		E64361112BA4C2CD003850FD /* SyncModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643610B2BA4C2CC003850FD /* SyncModule.swift */; };
@@ -114,6 +117,8 @@
 		E69FDDE42BADC2F10089D5F3 /* SpriteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69FDDE32BADC2F10089D5F3 /* SpriteConstants.swift */; };
 		E69FDDE62BADD11B0089D5F3 /* StopMovingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69FDDE52BADD11B0089D5F3 /* StopMovingEvent.swift */; };
 		E6A011172BA5F4AD006904D9 /* EntitySyncInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A011162BA5F4AD006904D9 /* EntitySyncInterface.swift */; };
+		E6A1030C2BBAF0F7005BDFFA /* MissileHitPlayerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1030B2BBAF0F7005BDFFA /* MissileHitPlayerEvent.swift */; };
+		E6A1030E2BBAF3B1005BDFFA /* HomingMissile+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1030D2BBAF3B1005BDFFA /* HomingMissile+Collidable.swift */; };
 		E6A115372BB9E2F90076A21F /* SpriteSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A115362BB9E2F90076A21F /* SpriteSystem.swift */; };
 		E6A115392BB9E3010076A21F /* MovementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A115382BB9E3010076A21F /* MovementSystem.swift */; };
 		E6A72FC52BB2E1E10015729E /* PlayerViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A72FC32BB2E1E10015729E /* PlayerViewLayout.swift */; };
@@ -267,6 +272,9 @@
 		4E8660652BA097D40035530D /* PhysicsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsConstants.swift; sourceTree = "<group>"; };
 		4EC561E22BB1E98400166DDC /* PlayerObstacleContactEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerObstacleContactEvent.swift; sourceTree = "<group>"; };
 		4EC561E42BB1E9A300166DDC /* PlayerToolContactEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerToolContactEvent.swift; sourceTree = "<group>"; };
+		E62430352BBAB777001FC686 /* HomingMissileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomingMissileSystem.swift; sourceTree = "<group>"; };
+		E62430372BBAB780001FC686 /* HomingMissile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomingMissile.swift; sourceTree = "<group>"; };
+		E62430392BBAB787001FC686 /* HomingMissileComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomingMissileComponent.swift; sourceTree = "<group>"; };
 		E638B9CE2BAB3C5D00931CC2 /* TeleportEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleportEvent.swift; sourceTree = "<group>"; };
 		E643610A2BA4C2CC003850FD /* SpriteModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteModule.swift; sourceTree = "<group>"; };
 		E643610B2BA4C2CC003850FD /* SyncModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncModule.swift; sourceTree = "<group>"; };
@@ -287,6 +295,8 @@
 		E69FDDE32BADC2F10089D5F3 /* SpriteConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteConstants.swift; sourceTree = "<group>"; };
 		E69FDDE52BADD11B0089D5F3 /* StopMovingEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopMovingEvent.swift; sourceTree = "<group>"; };
 		E6A011162BA5F4AD006904D9 /* EntitySyncInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntitySyncInterface.swift; sourceTree = "<group>"; };
+		E6A1030B2BBAF0F7005BDFFA /* MissileHitPlayerEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MissileHitPlayerEvent.swift; path = "star-dash/Events/PowerUpEvents/MissileHitPlayerEvent.swift"; sourceTree = SOURCE_ROOT; };
+		E6A1030D2BBAF3B1005BDFFA /* HomingMissile+Collidable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomingMissile+Collidable.swift"; sourceTree = "<group>"; };
 		E6A115362BB9E2F90076A21F /* SpriteSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpriteSystem.swift; path = "star-dash/GameEngine/Systems/Basic/SpriteSystem.swift"; sourceTree = SOURCE_ROOT; };
 		E6A115382BB9E3010076A21F /* MovementSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementSystem.swift; sourceTree = "<group>"; };
 		E6A72FC32BB2E1E10015729E /* PlayerViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewLayout.swift; sourceTree = "<group>"; };
@@ -454,10 +464,11 @@
 		46D418142BA5CB760091A38B /* Collision */ = {
 			isa = PBXGroup;
 			children = (
-				E6D45DC62BB6F8680004CBA2 /* PowerUp+Collidable.swift */,
-				46D418152BA5CBD60091A38B /* Collidable.swift */,
-				46D418172BA5CD840091A38B /* Player+Collidable.swift */,
 				46D418192BA5CDBD0091A38B /* CollisionHandler.swift */,
+				46D418152BA5CBD60091A38B /* Collidable.swift */,
+				E6A1030D2BBAF3B1005BDFFA /* HomingMissile+Collidable.swift */,
+				E6D45DC62BB6F8680004CBA2 /* PowerUp+Collidable.swift */,
+				46D418172BA5CD840091A38B /* Player+Collidable.swift */,
 				46D4181D2BA5D2620091A38B /* Monster+Collidable.swift */,
 				46D4181F2BA5D3420091A38B /* Collectible+Collidable.swift */,
 				46D418212BA5D4E60091A38B /* Obstacle+Collidable.swift */,
@@ -678,6 +689,7 @@
 		E64F316A2BB4861800EC5371 /* PowerUps */ = {
 			isa = PBXGroup;
 			children = (
+				E62430372BBAB780001FC686 /* HomingMissile.swift */,
 				E64F316B2BB4861800EC5371 /* SpeedBoostPowerUp.swift */,
 			);
 			path = PowerUps;
@@ -686,6 +698,7 @@
 		E64F316F2BB4862700EC5371 /* PowerUps */ = {
 			isa = PBXGroup;
 			children = (
+				E62430392BBAB787001FC686 /* HomingMissileComponent.swift */,
 				E64F31702BB4862700EC5371 /* SpeedBoostComponent.swift */,
 			);
 			path = PowerUps;
@@ -788,6 +801,7 @@
 		E6D45DB62BB6E6080004CBA2 /* PowerUps */ = {
 			isa = PBXGroup;
 			children = (
+				E62430352BBAB777001FC686 /* HomingMissileSystem.swift */,
 				E6D45DB72BB6E6080004CBA2 /* PowerUpSystem.swift */,
 				E6D45DB82BB6E6080004CBA2 /* PowerUpFactory.swift */,
 				E6D45DB92BB6E6080004CBA2 /* SpeedBoostPowerUpSystem.swift */,
@@ -798,6 +812,7 @@
 		E6D45DBD2BB6E6BE0004CBA2 /* PowerUpEvents */ = {
 			isa = PBXGroup;
 			children = (
+				E6A1030B2BBAF0F7005BDFFA /* MissileHitPlayerEvent.swift */,
 				E6B1CC5F2BB7E05500416BCD /* PowerUpPlayerEvent.swift */,
 			);
 			path = PowerUpEvents;
@@ -988,6 +1003,7 @@
 				E6B0AAD12BAAE3DC009CB939 /* ViewDelegate.swift in Sources */,
 				1471B0A62BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift in Sources */,
 				4E8660642BA096600035530D /* Tool.swift in Sources */,
+				E6A1030E2BBAF3B1005BDFFA /* HomingMissile+Collidable.swift in Sources */,
 				4E630F392B9F943B0008F887 /* EntityManager.swift in Sources */,
 				46C3B1C02BB45C2700F10574 /* EntityFactory.swift in Sources */,
 				4E630F302B9F83DE0008F887 /* SpriteComponent.swift in Sources */,
@@ -997,11 +1013,11 @@
 				4E0905FF2BB4A4EB00DE666B /* PlayerInfo.swift in Sources */,
 				4E59E2532BAB3061007B3FA7 /* Database.swift in Sources */,
 				E6A72FC52BB2E1E10015729E /* PlayerViewLayout.swift in Sources */,
+				E624303A2BBAB787001FC686 /* HomingMissileComponent.swift in Sources */,
 				4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */,
 				143AA3952BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift in Sources */,
 				143AA3932BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift in Sources */,
 				E6A115392BB9E3010076A21F /* MovementSystem.swift in Sources */,
-				4E59E2682BADA7B6007B3FA7 /* CollectibleEntityPersistable.swift in Sources */,
 				46D418162BA5CBD60091A38B /* Collidable.swift in Sources */,
 				461148912BA1CDBF0073E7E1 /* SystemManager.swift in Sources */,
 				460A20112BB1E6DF002597B8 /* MonsterSystem.swift in Sources */,
@@ -1022,6 +1038,7 @@
 				143AA38C2BA4D3E3009C28E7 /* JumpEvent.swift in Sources */,
 				4E630F2A2B9F7EF60008F887 /* PositionComponent.swift in Sources */,
 				E6D45DC52BB6ED8F0004CBA2 /* PowerUpComponent.swift in Sources */,
+				E6A1030C2BBAF0F7005BDFFA /* MissileHitPlayerEvent.swift in Sources */,
 				46D418132BA5C9930091A38B /* Floor.swift in Sources */,
 				E64361152BA4C2CD003850FD /* GameBridge.swift in Sources */,
 				E6B1CC5A2BB7E00600416BCD /* LevelPersistable.swift in Sources */,
@@ -1043,6 +1060,7 @@
 				E638B9CF2BAB3C5D00931CC2 /* TeleportEvent.swift in Sources */,
 				143AA3972BA4E0D9009C28E7 /* PickupCollectibleEvent.swift in Sources */,
 				E64F31732BB4882D00EC5371 /* PowerUpEntityPersistable.swift in Sources */,
+				E62430362BBAB777001FC686 /* HomingMissileSystem.swift in Sources */,
 				46D418242BA5D5280091A38B /* Tool+Collidable.swift in Sources */,
 				E64361142BA4C2CD003850FD /* CreationModule.swift in Sources */,
 				46C3B1C42BB5055F00F10574 /* EntityBuilder.swift in Sources */,
@@ -1075,6 +1093,7 @@
 				E6B1CC592BB7E00600416BCD /* ToolEntityPersistable.swift in Sources */,
 				E64F31672BB3D14600EC5371 /* UIView.swift in Sources */,
 				143AA3912BA4D7AC009C28E7 /* MonsterDeathEvent.swift in Sources */,
+				E62430382BBAB780001FC686 /* HomingMissile.swift in Sources */,
 				E64361102BA4C2CD003850FD /* SpriteModule.swift in Sources */,
 				4604BBD52BA819C70078B84C /* InventoryComponent.swift in Sources */,
 				46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */,

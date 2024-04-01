@@ -64,7 +64,7 @@ struct CollisionHandler {
         PowerUpPlayerEvent(from: player.id, pickedUp: powerUp.id)
     }
 
-    static func between(player: player, homingMissle: self) -> Event? {
+    static func between(player: Player, homingMissle: HomingMissile) -> Event? {
         MissileHitPlayerEvent(from: player.id, missle: homingMissle.id)
     }
 }

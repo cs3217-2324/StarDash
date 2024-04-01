@@ -44,10 +44,11 @@ class PositionSystem: System {
         return positionComponent.position
     }
 
-    func getEntityAhead<T: Entity>(of position: CGPoint, ofType entityType: T.Type) -> EntityId {
+    func getEntityAhead<T: Entity>(of position: CGPoint, ofType entityType: T.Type) -> EntityId? {
         for positionComponent in entityManager.components(ofType: PositionComponent.self) {
-            guard let entity = entityManager.entity(of: positionComponent.entityId) as? entityType {
-                continue 
+            guard let entity = entityManager.entity(with: positionComponent.entityId) as? T,
+                  positionComponent.position.x > position.x else {
+                continue
             }
 
             return entity.id

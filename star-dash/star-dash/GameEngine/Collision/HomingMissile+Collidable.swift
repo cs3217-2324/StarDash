@@ -2,7 +2,7 @@ import CoreGraphics
 
 extension HomingMissile: Collidable {
     func collides(with collidable: Collidable, at contactPoint: CGPoint) -> Event? {
-        nil
+        collidable.collideWithHomingMissle(self, at: contactPoint)
     }
 
     func collideWithPlayer(_ player: Player, at contactPoint: CGPoint) -> Event? {
@@ -37,7 +37,7 @@ extension HomingMissile: Collidable {
         nil
     }
 
-    func collideWithHomingMissle(_ homingMissle: HomingMissle, at contactPoint: CGPoint) -> Event? {
+    func collideWithHomingMissle(_ homingMissle: HomingMissile, at contactPoint: CGPoint) -> Event? {
         nil
     }
 }

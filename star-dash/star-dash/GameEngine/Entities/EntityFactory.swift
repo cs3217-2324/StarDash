@@ -141,7 +141,7 @@ struct EntityFactory {
                         textureSet: nil,
                         textureAtlas: nil,
                         size: PhysicsConstants.Dimensions.powerUp)
-            .withPhysics(size: size)
+            .withPhysics(rectangleOf: size)
                 .configureCategoryBitMask(PhysicsConstants.CollisionCategory.powerUp)
                 .configureContactTestMask(PhysicsConstants.ContactMask.powerUp)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.powerUp)
@@ -162,10 +162,10 @@ struct EntityFactory {
             .addToGame()
     }
 
-    static func createAndAddHomingMisslePowerUp(to entityManager: EntityManagerInterface,
-                                                position: CGVector,
-                                                impulse: CGVector) {
-        let powerUpBuilder = EntityBuilder(entity: HomingMissle(id: UUID()), entityManager: entityManager)
+    static func createAndAddHomingMissilePowerUp(to entityManager: EntityManagerInterface,
+                                                 position: CGPoint,
+                                                 impulse: CGVector) {
+        let powerUpBuilder = EntityBuilder(entity: HomingMissile(id: UUID()), entityManager: entityManager)
 
         powerUpBuilder
             .withPosition(at: position)
@@ -173,11 +173,13 @@ struct EntityFactory {
                         textureSet: nil,
                         textureAtlas: nil,
                         size: PhysicsConstants.Dimensions.homingMissle)
-            .withPhysics(size: size)
+            .withPhysics(rectangleOf: PhysicsConstants.Dimensions.homingMissle)
                 .configureCategoryBitMask(PhysicsConstants.CollisionCategory.homingMissle)
                 .configureContactTestMask(PhysicsConstants.ContactMask.homingMissle)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.homingMissle)
                 .configureAffectedByGravity(false)
+                .configureLinearDamping(0)
+            .withHomingMissle(impulse: impulse)
             .addToGame()
     }
 }
