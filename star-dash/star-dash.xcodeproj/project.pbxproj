@@ -40,10 +40,20 @@
 		461148932BA1D04B0073E7E1 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148922BA1D04B0073E7E1 /* System.swift */; };
 		461148962BA1D53D0073E7E1 /* PositionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148952BA1D53D0073E7E1 /* PositionSystem.swift */; };
 		461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */; };
+		461B1FF62BBC50220020F6C4 /* Database+Achievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461B1FF52BBC50220020F6C4 /* Database+Achievements.swift */; };
 		46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B8C0992BA328D900498705 /* GameEngine.swift */; };
 		46C3B1C02BB45C2700F10574 /* EntityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1BF2BB45C2700F10574 /* EntityFactory.swift */; };
 		46C3B1C22BB467BB00F10574 /* EntityManagerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1C12BB467BB00F10574 /* EntityManagerInterface.swift */; };
 		46C3B1C42BB5055F00F10574 /* EntityBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1C32BB5055F00F10574 /* EntityBuilder.swift */; };
+		46C3B1C72BB596DE00F10574 /* GrappleHook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1C62BB596DE00F10574 /* GrappleHook.swift */; };
+		46C3B1C92BB5974D00F10574 /* GrappleHookComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1C82BB5974D00F10574 /* GrappleHookComponent.swift */; };
+		46C3B1CB2BB5976200F10574 /* GrappleHookOwnerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1CA2BB5976200F10574 /* GrappleHookOwnerComponent.swift */; };
+		46C3B1D02BB59F7500F10574 /* ShootGrappleHookEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1CF2BB59F7500F10574 /* ShootGrappleHookEvent.swift */; };
+		46C3B1D22BB59F8600F10574 /* RetractGrappleHookEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1D12BB59F8600F10574 /* RetractGrappleHookEvent.swift */; };
+		46C3B1D42BB59F9200F10574 /* SwingGrappleHookEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1D32BB59F9200F10574 /* SwingGrappleHookEvent.swift */; };
+		46C3B1D62BB59F9B00F10574 /* ReleaseGrappleHookEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1D52BB59F9B00F10574 /* ReleaseGrappleHookEvent.swift */; };
+		46C3B1D82BB654F400F10574 /* GrappleHook+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1D72BB654F400F10574 /* GrappleHook+Collidable.swift */; };
+		46C3B1DA2BB656F000F10574 /* GrappleHookObstacleContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1D92BB656F000F10574 /* GrappleHookObstacleContactEvent.swift */; };
 		46D049F52BB94EFA0096D9F2 /* AchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D049F42BB94EFA0096D9F2 /* AchievementManager.swift */; };
 		46D049F72BB94F100096D9F2 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D049F62BB94F100096D9F2 /* Achievement.swift */; };
 		46D049F92BB951130096D9F2 /* TwinkleStarAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D049F82BB951130096D9F2 /* TwinkleStarAchievement.swift */; };
@@ -55,15 +65,6 @@
 		46D04A072BBACA6A0096D9F2 /* PowerRangerAchievementPersistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D04A062BBACA6A0096D9F2 /* PowerRangerAchievementPersistable.swift */; };
 		46D04A092BBACA8B0096D9F2 /* AchievementPersistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D04A082BBACA8B0096D9F2 /* AchievementPersistable.swift */; };
 		46D04A0C2BBAE22F0096D9F2 /* AchievementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D04A0B2BBAE22F0096D9F2 /* AchievementFactory.swift */; };
-		46C3B1C72BB596DE00F10574 /* GrappleHook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1C62BB596DE00F10574 /* GrappleHook.swift */; };
-		46C3B1C92BB5974D00F10574 /* GrappleHookComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1C82BB5974D00F10574 /* GrappleHookComponent.swift */; };
-		46C3B1CB2BB5976200F10574 /* GrappleHookOwnerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1CA2BB5976200F10574 /* GrappleHookOwnerComponent.swift */; };
-		46C3B1D02BB59F7500F10574 /* ShootGrappleHookEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1CF2BB59F7500F10574 /* ShootGrappleHookEvent.swift */; };
-		46C3B1D22BB59F8600F10574 /* RetractGrappleHookEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1D12BB59F8600F10574 /* RetractGrappleHookEvent.swift */; };
-		46C3B1D42BB59F9200F10574 /* SwingGrappleHookEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1D32BB59F9200F10574 /* SwingGrappleHookEvent.swift */; };
-		46C3B1D62BB59F9B00F10574 /* ReleaseGrappleHookEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1D52BB59F9B00F10574 /* ReleaseGrappleHookEvent.swift */; };
-		46C3B1D82BB654F400F10574 /* GrappleHook+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1D72BB654F400F10574 /* GrappleHook+Collidable.swift */; };
-		46C3B1DA2BB656F000F10574 /* GrappleHookObstacleContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1D92BB656F000F10574 /* GrappleHookObstacleContactEvent.swift */; };
 		46D3C5C72BB702BD008CC24F /* Rope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D3C5C62BB702BD008CC24F /* Rope.swift */; };
 		46D3C5C92BB70541008CC24F /* OwnsRopeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D3C5C82BB70541008CC24F /* OwnsRopeComponent.swift */; };
 		46D418112BA5C88B0091A38B /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418102BA5C88B0091A38B /* Wall.swift */; };
@@ -232,10 +233,21 @@
 		461148922BA1D04B0073E7E1 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		461148952BA1D53D0073E7E1 /* PositionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSystem.swift; sourceTree = "<group>"; };
 		461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsSystem.swift; sourceTree = "<group>"; };
+		461B1FF52BBC50220020F6C4 /* Database+Achievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+Achievements.swift"; sourceTree = "<group>"; };
 		46B8C0992BA328D900498705 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		46C3B1BF2BB45C2700F10574 /* EntityFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityFactory.swift; sourceTree = "<group>"; };
 		46C3B1C12BB467BB00F10574 /* EntityManagerInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerInterface.swift; sourceTree = "<group>"; };
 		46C3B1C32BB5055F00F10574 /* EntityBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityBuilder.swift; sourceTree = "<group>"; };
+		46C3B1C62BB596DE00F10574 /* GrappleHook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrappleHook.swift; sourceTree = "<group>"; };
+		46C3B1C82BB5974D00F10574 /* GrappleHookComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrappleHookComponent.swift; sourceTree = "<group>"; };
+		46C3B1CA2BB5976200F10574 /* GrappleHookOwnerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrappleHookOwnerComponent.swift; sourceTree = "<group>"; };
+		46C3B1CD2BB59E3000F10574 /* GrappleHookSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrappleHookSystem.swift; sourceTree = "<group>"; };
+		46C3B1CF2BB59F7500F10574 /* ShootGrappleHookEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootGrappleHookEvent.swift; sourceTree = "<group>"; };
+		46C3B1D12BB59F8600F10574 /* RetractGrappleHookEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetractGrappleHookEvent.swift; sourceTree = "<group>"; };
+		46C3B1D32BB59F9200F10574 /* SwingGrappleHookEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingGrappleHookEvent.swift; sourceTree = "<group>"; };
+		46C3B1D52BB59F9B00F10574 /* ReleaseGrappleHookEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseGrappleHookEvent.swift; sourceTree = "<group>"; };
+		46C3B1D72BB654F400F10574 /* GrappleHook+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GrappleHook+Collidable.swift"; sourceTree = "<group>"; };
+		46C3B1D92BB656F000F10574 /* GrappleHookObstacleContactEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrappleHookObstacleContactEvent.swift; sourceTree = "<group>"; };
 		46D049F42BB94EFA0096D9F2 /* AchievementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementManager.swift; sourceTree = "<group>"; };
 		46D049F62BB94F100096D9F2 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
 		46D049F82BB951130096D9F2 /* TwinkleStarAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleStarAchievement.swift; sourceTree = "<group>"; };
@@ -247,16 +259,6 @@
 		46D04A062BBACA6A0096D9F2 /* PowerRangerAchievementPersistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerRangerAchievementPersistable.swift; sourceTree = "<group>"; };
 		46D04A082BBACA8B0096D9F2 /* AchievementPersistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementPersistable.swift; sourceTree = "<group>"; };
 		46D04A0B2BBAE22F0096D9F2 /* AchievementFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementFactory.swift; sourceTree = "<group>"; };
-		46C3B1C62BB596DE00F10574 /* GrappleHook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrappleHook.swift; sourceTree = "<group>"; };
-		46C3B1C82BB5974D00F10574 /* GrappleHookComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrappleHookComponent.swift; sourceTree = "<group>"; };
-		46C3B1CA2BB5976200F10574 /* GrappleHookOwnerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrappleHookOwnerComponent.swift; sourceTree = "<group>"; };
-		46C3B1CD2BB59E3000F10574 /* GrappleHookSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrappleHookSystem.swift; sourceTree = "<group>"; };
-		46C3B1CF2BB59F7500F10574 /* ShootGrappleHookEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootGrappleHookEvent.swift; sourceTree = "<group>"; };
-		46C3B1D12BB59F8600F10574 /* RetractGrappleHookEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetractGrappleHookEvent.swift; sourceTree = "<group>"; };
-		46C3B1D32BB59F9200F10574 /* SwingGrappleHookEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingGrappleHookEvent.swift; sourceTree = "<group>"; };
-		46C3B1D52BB59F9B00F10574 /* ReleaseGrappleHookEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseGrappleHookEvent.swift; sourceTree = "<group>"; };
-		46C3B1D72BB654F400F10574 /* GrappleHook+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GrappleHook+Collidable.swift"; sourceTree = "<group>"; };
-		46C3B1D92BB656F000F10574 /* GrappleHookObstacleContactEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrappleHookObstacleContactEvent.swift; sourceTree = "<group>"; };
 		46D3C5C62BB702BD008CC24F /* Rope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rope.swift; sourceTree = "<group>"; };
 		46D3C5C82BB70541008CC24F /* OwnsRopeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnsRopeComponent.swift; sourceTree = "<group>"; };
 		46D3C5CA2BB70DDA008CC24F /* SpriteSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteSystem.swift; sourceTree = "<group>"; };
@@ -509,6 +511,18 @@
 			path = GameEngine;
 			sourceTree = "<group>";
 		};
+		46C3B1C52BB5969500F10574 /* GrappleHookEvents */ = {
+			isa = PBXGroup;
+			children = (
+				1471B0AC2BA6AE4E00878B14 /* UseGrappleHookEvent.swift */,
+				46C3B1CF2BB59F7500F10574 /* ShootGrappleHookEvent.swift */,
+				46C3B1D12BB59F8600F10574 /* RetractGrappleHookEvent.swift */,
+				46C3B1D32BB59F9200F10574 /* SwingGrappleHookEvent.swift */,
+				46C3B1D52BB59F9B00F10574 /* ReleaseGrappleHookEvent.swift */,
+			);
+			path = GrappleHookEvents;
+			sourceTree = "<group>";
+		};
 		46D049F32BB94ED30096D9F2 /* Achievement */ = {
 			isa = PBXGroup;
 			children = (
@@ -545,18 +559,6 @@
 				E64F31722BB4882D00EC5371 /* PowerUpEntityPersistable.swift */,
 			);
 			path = EntityPersistable;
-			sourceTree = "<group>";
-		};
-		46C3B1C52BB5969500F10574 /* GrappleHookEvents */ = {
-			isa = PBXGroup;
-			children = (
-				1471B0AC2BA6AE4E00878B14 /* UseGrappleHookEvent.swift */,
-				46C3B1CF2BB59F7500F10574 /* ShootGrappleHookEvent.swift */,
-				46C3B1D12BB59F8600F10574 /* RetractGrappleHookEvent.swift */,
-				46C3B1D32BB59F9200F10574 /* SwingGrappleHookEvent.swift */,
-				46C3B1D52BB59F9B00F10574 /* ReleaseGrappleHookEvent.swift */,
-			);
-			path = GrappleHookEvents;
 			sourceTree = "<group>";
 		};
 		46D418142BA5CB760091A38B /* Collision */ = {
@@ -605,6 +607,7 @@
 				4E59E2642BAD9A06007B3FA7 /* Data */,
 				4E59E2502BAB2EAE007B3FA7 /* StorageManager.swift */,
 				4E59E2522BAB3061007B3FA7 /* Database.swift */,
+				461B1FF52BBC50220020F6C4 /* Database+Achievements.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -1090,6 +1093,7 @@
 				46C3B1CB2BB5976200F10574 /* GrappleHookOwnerComponent.swift in Sources */,
 				14E2478E2BA22FCE0071FFC0 /* MoveEvent.swift in Sources */,
 				14D14B732BA5A3CD00386C3B /* RemoveEvent.swift in Sources */,
+				461B1FF62BBC50220020F6C4 /* Database+Achievements.swift in Sources */,
 				E6A2B3A92BBBA41900DE6C79 /* GrappleHookSystem.swift in Sources */,
 				4E8660622BA0964A0035530D /* Obstacle.swift in Sources */,
 				46C3B1D62BB59F9B00F10574 /* ReleaseGrappleHookEvent.swift in Sources */,
@@ -1126,7 +1130,6 @@
 				E6B1CC5C2BB7E00600416BCD /* EntityPersistable.swift in Sources */,
 				4E630F322B9F887C0008F887 /* PhysicsComponent.swift in Sources */,
 				46D049F92BB951130096D9F2 /* TwinkleStarAchievement.swift in Sources */,
-				4E59E25D2BAB405A007B3FA7 /* EntityPersistable.swift in Sources */,
 				E64F316D2BB4861800EC5371 /* SpeedBoostPowerUp.swift in Sources */,
 				E6D45DC32BB6E6E30004CBA2 /* BuffComponent.swift in Sources */,
 				1471B0AD2BA6AE4E00878B14 /* UseGrappleHookEvent.swift in Sources */,
@@ -1139,7 +1142,6 @@
 				E6D45DC52BB6ED8F0004CBA2 /* PowerUpComponent.swift in Sources */,
 				46D418132BA5C9930091A38B /* Floor.swift in Sources */,
 				E64361152BA4C2CD003850FD /* GameBridge.swift in Sources */,
-				4E59E26A2BADA7C7007B3FA7 /* ToolEntityPersistable.swift in Sources */,
 				46D04A072BBACA6A0096D9F2 /* PowerRangerAchievementPersistable.swift in Sources */,
 				E6B0AAD32BAAE438009CB939 /* ControlViewDelegate.swift in Sources */,
 				4604BBD92BA81C940078B84C /* InventorySystem.swift in Sources */,
@@ -1170,7 +1172,6 @@
 				E64361142BA4C2CD003850FD /* CreationModule.swift in Sources */,
 				46C3B1C42BB5055F00F10574 /* EntityBuilder.swift in Sources */,
 				46D04A052BBACA5D0096D9F2 /* StellarCollectorAchievementPersistable.swift in Sources */,
-				4E59E2612BAB42FD007B3FA7 /* LevelPersistable.swift in Sources */,
 				460A200B2BB1D04F002597B8 /* AttackSystem.swift in Sources */,
 				46D049F72BB94F100096D9F2 /* Achievement.swift in Sources */,
 				E6A72FC62BB2E1E10015729E /* LayoutUtils.swift in Sources */,

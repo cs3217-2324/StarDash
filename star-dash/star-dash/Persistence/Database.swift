@@ -19,12 +19,12 @@ struct Database {
     private let monsterTable = Table("monster")
     private let powerUpTable = Table("powerUp")
 
-    private let twinkleStarAchievementTable = Table("twinklestar")
-    private let stellarCollectorAchievementTable = Table("stellarCollector")
-    private let powerRangerAchievementTable = Table("powerranger")
+    let twinkleStarAchievementTable = Table("twinklestar")
+    let stellarCollectorAchievementTable = Table("stellarCollector")
+    let powerRangerAchievementTable = Table("powerranger")
 
-    private var db: Connection?
-    // Define a dictionary to map entity types to tables
+    var db: Connection?
+
     let tableMap: [ObjectIdentifier: Table]
 
     init() {
@@ -54,11 +54,8 @@ struct Database {
                 insertJsonData()
                 print("SQLiteDataStore init successfully at: \(dbPath) ")
             } catch {
-                db = nil
                 print("SQLiteDataStore init error: \(error)")
             }
-        } else {
-            db = nil
         }
     }
 
@@ -78,21 +75,14 @@ struct Database {
             try db.run(twinkleStarAchievementTable.drop())
             try db.run(stellarCollectorAchievementTable.drop())
             try db.run(powerRangerAchievementTable.drop())
-
         } catch {
             print("Error deleting table \(error)")
         }
-
     }
 
     private func createAllTables() {
         createLevelTable()
-        createCollectibleTable()
-        createToolTable()
-        createMonsterTable()
-        createObstacleTable()
-        createPowerUpTable()
-
+        createEntityTables()
         createAchievementTables()
     }
 
@@ -115,13 +105,16 @@ struct Database {
         }
     }
 
-    private func createCollectibleTable() {
+    private func createEntityTables() {
         guard let db = db else {
             return
         }
         let id = Expression<Int64>("id")
         let levelId = Expression<Int64>("levelId")
         let position = Expression<String>("position")
+        let size = Expression<String>("size")
+        let type = Expression<String>("type")
+        let health = Expression<Int>("health")
         let points = Expression<Int>("points")
         let radius = Expression<String>("radius")
 
@@ -132,105 +125,38 @@ struct Database {
                 table.column(position)
                 table.column(points)
                 table.column(radius)
-
             })
-            print("Collectible table created")
-        } catch {
-            print("Error creating table \(error)")
-        }
-    }
 
-    private func createObstacleTable() {
-        guard let db = db else {
-            return
-        }
-        let id = Expression<Int64>("id")
-        let levelId = Expression<Int64>("levelId")
-        let position = Expression<String>("position")
-        let size = Expression<String>("size")
-
-        do {
             try db.run( obstacleTable.create { table in
                 table.column(id, primaryKey: .autoincrement)
                 table.column(levelId)
                 table.column(position)
                 table.column(size)
-
             })
-            print("Obstacle table created")
-        } catch {
-            print("Error creating table \(error)")
-        }
-    }
 
-    private func createToolTable() {
-        guard let db = db else {
-            return
-        }
-        let id = Expression<Int64>("id")
-        let levelId = Expression<Int64>("levelId")
-        let position = Expression<String>("position")
-        let size = Expression<String>("size")
-
-        do {
             try db.run( toolTable.create { table in
                 table.column(id, primaryKey: .autoincrement)
                 table.column(levelId)
                 table.column(position)
                 table.column(size)
-
             })
-            print("Tool table created")
-        } catch {
-            print("Error creating table \(error)")
-        }
-    }
 
-    private func createMonsterTable() {
-        guard let db = db else {
-            return
-        }
-        let id = Expression<Int64>("id")
-        let levelId = Expression<Int64>("levelId")
-        let position = Expression<String>("position")
-        let size = Expression<String>("size")
-        let health = Expression<Int>("health")
-
-        do {
             try db.run( monsterTable.create { table in
                 table.column(id, primaryKey: .autoincrement)
                 table.column(levelId)
                 table.column(position)
                 table.column(size)
                 table.column(health)
-
             })
-            print("Monster table created")
-        } catch {
-            print("Error creating table \(error)")
-        }
-    }
 
-    private func createPowerUpTable() {
-        guard let db = db else {
-            return
-        }
-        let id = Expression<Int64>("id")
-        let levelId = Expression<Int64>("levelId")
-        let position = Expression<String>("position")
-        let size = Expression<String>("size")
-        let type = Expression<String>("type")
-
-        do {
             try db.run( powerUpTable.create { table in
                 table.column(id, primaryKey: .autoincrement)
                 table.column(levelId)
                 table.column(position)
                 table.column(size)
                 table.column(type)
-
             })
-            print("PowerUp table created")
+            print("All Entity tables created")
         } catch {
             print("Error creating table \(error)")
         }
@@ -267,7 +193,6 @@ struct Database {
             print("Error saving level \(error)")
         }
     }
-
 }
 
 extension Database {
@@ -299,7 +224,6 @@ extension Database {
                 for persistable in levelData.powerUps {
                     insert(persistable: persistable)
                 }
-
             } catch {
                 print("Error reading or decoding JSON: \(error)")
             }
@@ -310,25 +234,23 @@ extension Database {
 
     func getLevelPersistable(id: Int64) -> LevelPersistable? {
         guard let database = db else {
-                    return nil
-                }
+            return nil
+        }
         let idColumn = Expression<Int64>("id")
-                do {
-                    let loadedLevel: [LevelPersistable] =
-                    try database.prepare(levelTable.filter(id == idColumn)).map { row in
-                        let persistable: LevelPersistable = try row.decode()
-                        return persistable
-
-                    }
-                    if loadedLevel.isEmpty {
-                        return nil
-                    }
-                    return loadedLevel[0]
-
-                } catch {
-                    print("Error fetching levels \(error)")
-                    return nil
-                }
+        do {
+            let loadedLevel: [LevelPersistable] =
+            try database.prepare(levelTable.filter(id == idColumn)).map { row in
+                let persistable: LevelPersistable = try row.decode()
+                return persistable
+            }
+            if loadedLevel.isEmpty {
+                return nil
+            }
+            return loadedLevel[0]
+        } catch {
+            print("Error fetching levels \(error)")
+            return nil
+        }
     }
 
     func getAllEntities(levelId: Int64) -> [EntityPersistable] {
@@ -363,165 +285,5 @@ extension Database {
         }
 
         return entities
-    }
-}
-
-extension Database {
-    func getAllAchievements(of playerId: Int) -> [AchievementPersistable] {
-        var achievements: [AchievementPersistable] = []
-
-        achievements += getAchievement(TwinkleStarAchievementPersistable.self,
-                                       table: twinkleStarAchievementTable,
-                                       playerId: playerId).map { [$0] } ?? []
-        achievements += getAchievement(StellarCollectorAchievementPersistable.self,
-                                       table: stellarCollectorAchievementTable,
-                                       playerId: playerId).map { [$0] } ?? []
-        achievements += getAchievement(PowerRangerAchievementPersistable.self,
-                                       table: powerRangerAchievementTable,
-                                       playerId: playerId).map { [$0] } ?? []
-
-        return achievements
-    }
-
-    func upsertTwinkleStar(_ achievement: TwinkleStarAchievement) {
-        guard let db = db else {
-            return
-        }
-
-        let playerIdExpression = Expression<Int64>("playerId")
-        let hasCollectedStarExprssion = Expression<Bool>("hasCollectedStar")
-
-        let table = twinkleStarAchievementTable.filter(playerIdExpression == Int64(achievement.playerId))
-
-        do {
-            if try db.scalar(table.count) > 0 {
-                // Update existing row
-                let update = table.update(hasCollectedStarExprssion <- achievement.hasCollectedStar)
-                try db.run(update)
-                print("TwinkleStar achievement updated successfully")
-            } else {
-                // Insert new row
-                try db.run(twinkleStarAchievementTable.insert(
-                        playerIdExpression <- Int64(achievement.playerId),
-                        hasCollectedStarExprssion <- achievement.hasCollectedStar
-                    ))
-                    print("TwinkleStar achievement inserted successfully")
-                }
-        } catch {
-            print("Error upserting TwinkleStar achievement: \(error)")
-        }
-    }
-
-    func upsertStellarCollector(_ achievement: StellarCollectorAchievement) {
-        guard let db = db else {
-            return
-        }
-
-        let playerIdExpression = Expression<Int64>("playerId")
-        let starsCollectedStarExprssion = Expression<Int64>("starsCollected")
-
-        let table = stellarCollectorAchievementTable.filter(playerIdExpression == Int64(achievement.playerId))
-
-        do {
-            if try db.scalar(table.count) > 0 {
-                // Update existing row
-                let update = table.update(starsCollectedStarExprssion <- Int64(achievement.starsCollected))
-                try db.run(update)
-                print("StellarCollector achievement updated successfully")
-            } else {
-                // Insert new row
-                try db.run(stellarCollectorAchievementTable.insert(
-                        playerIdExpression <- Int64(achievement.playerId),
-                        starsCollectedStarExprssion <- Int64(achievement.starsCollected)
-                    ))
-                    print("StellarCollector achievement inserted successfully")
-                }
-        } catch {
-            print("Error upserting StellarCollector achievement: \(error)")
-        }
-    }
-
-    func upsertPowerRanger(_ achievement: PowerRangerAchievement) {
-        guard let db = db else {
-            return
-        }
-
-        let playerIdExpression = Expression<Int64>("playerId")
-        let powerUpsUsedStarExprssion = Expression<Int64>("powerUpsUsed")
-
-        let table = powerRangerAchievementTable.filter(playerIdExpression == Int64(achievement.playerId))
-
-        do {
-            if try db.scalar(table.count) > 0 {
-                // Update existing row
-                let update = table.update(powerUpsUsedStarExprssion <- Int64(achievement.powerUpsUsed))
-                try db.run(update)
-                print("PowerRanger achievement updated successfully")
-            } else {
-                // Insert new row
-                try db.run(powerRangerAchievementTable.insert(
-                        playerIdExpression <- Int64(achievement.playerId),
-                        powerUpsUsedStarExprssion <- Int64(achievement.powerUpsUsed)
-                    ))
-                    print("PowerRanger achievement inserted successfully")
-                }
-        } catch {
-            print("Error upserting PowerRanger achievement: \(error)")
-        }
-    }
-
-    private func getAchievement<T: AchievementPersistable>(_ type: T.Type, table: Table, playerId: Int) -> T? {
-        guard let db = db else {
-            return nil
-        }
-
-        let playerIdExpression = Expression<Int64>("playerId")
-
-        let filteredTable = table.filter(playerIdExpression == Int64(playerId))
-
-        do {
-            if let row = try db.prepare(filteredTable).first(where: { _ in true }) {
-                let persistable: T = try row.decode()
-                return persistable
-            } else {
-                return nil
-            }
-        } catch {
-            print("Error fetching \(T.self) achievement: \(error)")
-            return nil
-        }
-    }
-
-    private func createAchievementTables() {
-        guard let db = db else {
-           return
-        }
-
-        let playerId = Expression<Int64>("playerId")
-        let hasCollected = Expression<Bool>("hasCollectedStar")
-        let starsCollected = Expression<Int64>("starsCollected")
-        let powerUpsUsed = Expression<Int64>("powerUpsUsed")
-
-        do {
-            try db.run( twinkleStarAchievementTable.create { table in
-               table.column(playerId, primaryKey: true)
-               table.column(hasCollected)
-            })
-            print("twinklestar table created")
-
-            try db.run( stellarCollectorAchievementTable.create { table in
-                table.column(playerId, primaryKey: true)
-                table.column(starsCollected)
-            })
-            print("stellarcollector table created")
-
-            try db.run( powerRangerAchievementTable.create { table in
-                table.column(playerId, primaryKey: true)
-                table.column(powerUpsUsed)
-            })
-            print("powerranger table created")
-        } catch {
-           print("Error creating table: \(error)")
-        }
     }
 }
