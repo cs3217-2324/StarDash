@@ -82,7 +82,11 @@ struct Database {
 
     private func createAllTables() {
         createLevelTable()
-        createEntityTables()
+        createCollectibleTable()
+        createToolTable()
+        createMonsterTable()
+        createObstacleTable()
+        createPowerUpTable()
         createAchievementTables()
     }
 
@@ -105,16 +109,13 @@ struct Database {
         }
     }
 
-    private func createEntityTables() {
+    private func createCollectibleTable() {
         guard let db = db else {
             return
         }
         let id = Expression<Int64>("id")
         let levelId = Expression<Int64>("levelId")
         let position = Expression<String>("position")
-        let size = Expression<String>("size")
-        let type = Expression<String>("type")
-        let health = Expression<Int>("health")
         let points = Expression<Int>("points")
         let radius = Expression<String>("radius")
 
@@ -125,34 +126,105 @@ struct Database {
                 table.column(position)
                 table.column(points)
                 table.column(radius)
+
             })
+            print("Collectible table created")
+        } catch {
+            print("Error creating table \(error)")
+        }
+    }
+
+    private func createObstacleTable() {
+        guard let db = db else {
+            return
+        }
+        let id = Expression<Int64>("id")
+        let levelId = Expression<Int64>("levelId")
+        let position = Expression<String>("position")
+        let size = Expression<String>("size")
+
+        do {
             try db.run( obstacleTable.create { table in
                 table.column(id, primaryKey: .autoincrement)
                 table.column(levelId)
                 table.column(position)
                 table.column(size)
+
             })
+            print("Obstacle table created")
+        } catch {
+            print("Error creating table \(error)")
+        }
+    }
+
+    private func createToolTable() {
+        guard let db = db else {
+            return
+        }
+        let id = Expression<Int64>("id")
+        let levelId = Expression<Int64>("levelId")
+        let position = Expression<String>("position")
+        let size = Expression<String>("size")
+
+        do {
             try db.run( toolTable.create { table in
                 table.column(id, primaryKey: .autoincrement)
                 table.column(levelId)
                 table.column(position)
                 table.column(size)
+
             })
+            print("Tool table created")
+        } catch {
+            print("Error creating table \(error)")
+        }
+    }
+
+    private func createMonsterTable() {
+        guard let db = db else {
+            return
+        }
+        let id = Expression<Int64>("id")
+        let levelId = Expression<Int64>("levelId")
+        let position = Expression<String>("position")
+        let size = Expression<String>("size")
+        let health = Expression<Int>("health")
+
+        do {
             try db.run( monsterTable.create { table in
                 table.column(id, primaryKey: .autoincrement)
                 table.column(levelId)
                 table.column(position)
                 table.column(size)
                 table.column(health)
+
             })
+            print("Monster table created")
+        } catch {
+            print("Error creating table \(error)")
+        }
+    }
+
+    private func createPowerUpTable() {
+        guard let db = db else {
+            return
+        }
+        let id = Expression<Int64>("id")
+        let levelId = Expression<Int64>("levelId")
+        let position = Expression<String>("position")
+        let size = Expression<String>("size")
+        let type = Expression<String>("type")
+
+        do {
             try db.run( powerUpTable.create { table in
                 table.column(id, primaryKey: .autoincrement)
                 table.column(levelId)
                 table.column(position)
                 table.column(size)
                 table.column(type)
+
             })
-            print("All Entity tables created")
+            print("PowerUp table created")
         } catch {
             print("Error creating table \(error)")
         }
