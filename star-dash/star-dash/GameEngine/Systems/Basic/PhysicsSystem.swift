@@ -63,7 +63,7 @@ class PhysicsSystem: System {
 
         return physicsComponent.size
     }
-    
+
     func setSize(of entityId: EntityId, to size: CGSize) {
         guard let physicsComponent = getPhysicsComponent(of: entityId) else {
             return
