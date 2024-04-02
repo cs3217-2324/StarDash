@@ -29,6 +29,14 @@ class SpriteSystem: System {
 
         spriteComponent.textureAtlas = nil
     }
+    
+    func setSize(of entityId: EntityId, to size: CGSize) {
+        guard let spriteComponent = getSpriteComponent(of: entityId) else {
+            return
+        }
+        
+        spriteComponent.size = size
+    }
 
     func setup() {}
 
