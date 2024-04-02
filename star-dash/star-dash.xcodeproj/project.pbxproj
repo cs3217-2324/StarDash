@@ -47,7 +47,6 @@
 		46C3B1C72BB596DE00F10574 /* GrappleHook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1C62BB596DE00F10574 /* GrappleHook.swift */; };
 		46C3B1C92BB5974D00F10574 /* GrappleHookComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1C82BB5974D00F10574 /* GrappleHookComponent.swift */; };
 		46C3B1CB2BB5976200F10574 /* GrappleHookOwnerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1CA2BB5976200F10574 /* GrappleHookOwnerComponent.swift */; };
-		46C3B1CE2BB59E3000F10574 /* GrappleHookSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1CD2BB59E3000F10574 /* GrappleHookSystem.swift */; };
 		46C3B1D02BB59F7500F10574 /* ShootGrappleHookEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1CF2BB59F7500F10574 /* ShootGrappleHookEvent.swift */; };
 		46C3B1D22BB59F8600F10574 /* RetractGrappleHookEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1D12BB59F8600F10574 /* RetractGrappleHookEvent.swift */; };
 		46C3B1D42BB59F9200F10574 /* SwingGrappleHookEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1D32BB59F9200F10574 /* SwingGrappleHookEvent.swift */; };
@@ -56,7 +55,6 @@
 		46C3B1DA2BB656F000F10574 /* GrappleHookObstacleContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1D92BB656F000F10574 /* GrappleHookObstacleContactEvent.swift */; };
 		46D3C5C72BB702BD008CC24F /* Rope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D3C5C62BB702BD008CC24F /* Rope.swift */; };
 		46D3C5C92BB70541008CC24F /* OwnsRopeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D3C5C82BB70541008CC24F /* OwnsRopeComponent.swift */; };
-		46D3C5CB2BB70DDA008CC24F /* SpriteSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D3C5CA2BB70DDA008CC24F /* SpriteSystem.swift */; };
 		46D418112BA5C88B0091A38B /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418102BA5C88B0091A38B /* Wall.swift */; };
 		46D418132BA5C9930091A38B /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418122BA5C9930091A38B /* Floor.swift */; };
 		46D418162BA5CBD60091A38B /* Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418152BA5CBD60091A38B /* Collidable.swift */; };
@@ -134,6 +132,9 @@
 		E69FDDE42BADC2F10089D5F3 /* SpriteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69FDDE32BADC2F10089D5F3 /* SpriteConstants.swift */; };
 		E69FDDE62BADD11B0089D5F3 /* StopMovingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69FDDE52BADD11B0089D5F3 /* StopMovingEvent.swift */; };
 		E6A011172BA5F4AD006904D9 /* EntitySyncInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A011162BA5F4AD006904D9 /* EntitySyncInterface.swift */; };
+		E6A115372BB9E2F90076A21F /* SpriteSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A115362BB9E2F90076A21F /* SpriteSystem.swift */; };
+		E6A115392BB9E3010076A21F /* MovementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A115382BB9E3010076A21F /* MovementSystem.swift */; };
+		E6A2B3A92BBBA41900DE6C79 /* GrappleHookSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2B3A82BBBA41900DE6C79 /* GrappleHookSystem.swift */; };
 		E6A72FC52BB2E1E10015729E /* PlayerViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A72FC32BB2E1E10015729E /* PlayerViewLayout.swift */; };
 		E6A72FC62BB2E1E10015729E /* LayoutUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A72FC42BB2E1E10015729E /* LayoutUtils.swift */; };
 		E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745112BA057040080C1BE /* MTKRenderer.swift */; };
@@ -325,6 +326,9 @@
 		E69FDDE32BADC2F10089D5F3 /* SpriteConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteConstants.swift; sourceTree = "<group>"; };
 		E69FDDE52BADD11B0089D5F3 /* StopMovingEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopMovingEvent.swift; sourceTree = "<group>"; };
 		E6A011162BA5F4AD006904D9 /* EntitySyncInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntitySyncInterface.swift; sourceTree = "<group>"; };
+		E6A115362BB9E2F90076A21F /* SpriteSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpriteSystem.swift; path = "star-dash/GameEngine/Systems/Basic/SpriteSystem.swift"; sourceTree = SOURCE_ROOT; };
+		E6A115382BB9E3010076A21F /* MovementSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementSystem.swift; sourceTree = "<group>"; };
+		E6A2B3A82BBBA41900DE6C79 /* GrappleHookSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrappleHookSystem.swift; sourceTree = "<group>"; };
 		E6A72FC32BB2E1E10015729E /* PlayerViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewLayout.swift; sourceTree = "<group>"; };
 		E6A72FC42BB2E1E10015729E /* LayoutUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutUtils.swift; sourceTree = "<group>"; };
 		E6A745112BA057040080C1BE /* MTKRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKRenderer.swift; sourceTree = "<group>"; };
@@ -463,21 +467,11 @@
 		4611488F2BA1CD9E0073E7E1 /* Systems */ = {
 			isa = PBXGroup;
 			children = (
+				E6A115332BB9D6EB0076A21F /* Basic */,
+				E6A115352BB9D7200076A21F /* Complex */,
 				E6D45DB62BB6E6080004CBA2 /* PowerUps */,
-				E6D45DC02BB6E6CF0004CBA2 /* BuffSystem.swift */,
 				461148902BA1CDBF0073E7E1 /* SystemManager.swift */,
 				461148922BA1D04B0073E7E1 /* System.swift */,
-				1471B09F2BA6A70600878B14 /* HealthSystem.swift */,
-				14970F532BA8163300CC1E8A /* ScoreSystem.swift */,
-				461148952BA1D53D0073E7E1 /* PositionSystem.swift */,
-				461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */,
-				4604BBD82BA81C940078B84C /* InventorySystem.swift */,
-				460A200A2BB1D04F002597B8 /* AttackSystem.swift */,
-				460A200C2BB1DF27002597B8 /* PlayerSystem.swift */,
-				460A200E2BB1E1F1002597B8 /* CollisionSystem.swift */,
-				460A20102BB1E6DF002597B8 /* MonsterSystem.swift */,
-				46C3B1CD2BB59E3000F10574 /* GrappleHookSystem.swift */,
-				46D3C5CA2BB70DDA008CC24F /* SpriteSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -773,6 +767,8 @@
 			isa = PBXGroup;
 			children = (
 				4E0905FC2BB4A15600DE666B /* MiniMapView.swift */,
+				46C3B1CD2BB59E3000F10574 /* GrappleHookSystem.swift */,
+				46D3C5CA2BB70DDA008CC24F /* SpriteSystem.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -785,6 +781,33 @@
 				E64361092BA4C2CC003850FD /* SyncModule */,
 			);
 			path = GameBridge;
+			sourceTree = "<group>";
+		};
+		E6A115332BB9D6EB0076A21F /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				460A200C2BB1DF27002597B8 /* PlayerSystem.swift */,
+				E6D45DC02BB6E6CF0004CBA2 /* BuffSystem.swift */,
+				1471B09F2BA6A70600878B14 /* HealthSystem.swift */,
+				14970F532BA8163300CC1E8A /* ScoreSystem.swift */,
+				461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */,
+				461148952BA1D53D0073E7E1 /* PositionSystem.swift */,
+				460A20102BB1E6DF002597B8 /* MonsterSystem.swift */,
+				4604BBD82BA81C940078B84C /* InventorySystem.swift */,
+				E6A115362BB9E2F90076A21F /* SpriteSystem.swift */,
+			);
+			path = Basic;
+			sourceTree = "<group>";
+		};
+		E6A115352BB9D7200076A21F /* Complex */ = {
+			isa = PBXGroup;
+			children = (
+				E6A2B3A82BBBA41900DE6C79 /* GrappleHookSystem.swift */,
+				E6A115382BB9E3010076A21F /* MovementSystem.swift */,
+				460A200A2BB1D04F002597B8 /* AttackSystem.swift */,
+				460A200E2BB1E1F1002597B8 /* CollisionSystem.swift */,
+			);
+			path = Complex;
 			sourceTree = "<group>";
 		};
 		E6A72FC22BB2E1E10015729E /* Utils */ = {
@@ -1044,6 +1067,7 @@
 				46C3B1CB2BB5976200F10574 /* GrappleHookOwnerComponent.swift in Sources */,
 				14E2478E2BA22FCE0071FFC0 /* MoveEvent.swift in Sources */,
 				14D14B732BA5A3CD00386C3B /* RemoveEvent.swift in Sources */,
+				E6A2B3A92BBBA41900DE6C79 /* GrappleHookSystem.swift in Sources */,
 				4E8660622BA0964A0035530D /* Obstacle.swift in Sources */,
 				46C3B1D62BB59F9B00F10574 /* ReleaseGrappleHookEvent.swift in Sources */,
 				1471B0A02BA6A70600878B14 /* HealthSystem.swift in Sources */,
@@ -1064,6 +1088,7 @@
 				4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */,
 				143AA3952BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift in Sources */,
 				143AA3932BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift in Sources */,
+				E6A115392BB9E3010076A21F /* MovementSystem.swift in Sources */,
 				46D418162BA5CBD60091A38B /* Collidable.swift in Sources */,
 				461148912BA1CDBF0073E7E1 /* SystemManager.swift in Sources */,
 				460A20112BB1E6DF002597B8 /* MonsterSystem.swift in Sources */,
@@ -1111,7 +1136,6 @@
 				4E18DD082BBB050B00746ACC /* LevelSelectorViewController.swift in Sources */,
 				4EAE2C2E2BBAED2400D9E1DE /* MenuViewController.swift in Sources */,
 				46D418242BA5D5280091A38B /* Tool+Collidable.swift in Sources */,
-				46C3B1CE2BB59E3000F10574 /* GrappleHookSystem.swift in Sources */,
 				46D3C5C92BB70541008CC24F /* OwnsRopeComponent.swift in Sources */,
 				E64361142BA4C2CD003850FD /* CreationModule.swift in Sources */,
 				46C3B1C42BB5055F00F10574 /* EntityBuilder.swift in Sources */,
@@ -1119,6 +1143,7 @@
 				E6A72FC62BB2E1E10015729E /* LayoutUtils.swift in Sources */,
 				E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */,
 				E6A745182BA057040080C1BE /* Renderer.swift in Sources */,
+				E6A115372BB9E2F90076A21F /* SpriteSystem.swift in Sources */,
 				4E59E25F2BAB4134007B3FA7 /* EntityType.swift in Sources */,
 				460A200D2BB1DF27002597B8 /* PlayerSystem.swift in Sources */,
 				E6A745172BA057040080C1BE /* ControlView.swift in Sources */,
@@ -1133,7 +1158,6 @@
 				E6B1CC5E2BB7E00600416BCD /* CollectibleEntityPersistable.swift in Sources */,
 				E64F316E2BB4861800EC5371 /* PowerUp.swift in Sources */,
 				46D418262BA5D6500091A38B /* Wall+Collidable.swift in Sources */,
-				46D3C5CB2BB70DDA008CC24F /* SpriteSystem.swift in Sources */,
 				E69FDDE22BAD3DC40089D5F3 /* EntityConstants.swift in Sources */,
 				E6B1CC5B2BB7E00600416BCD /* ObstacleEntityPersistable.swift in Sources */,
 				4E630F342B9F8FC00008F887 /* Player.swift in Sources */,
