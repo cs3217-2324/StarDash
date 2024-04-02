@@ -13,9 +13,12 @@ class SpriteModule: SyncModule {
 
     func sync(object: SDObject, from entity: Entity) {
         guard let spriteComponent = entityManager.component(ofType: SpriteComponent.self, of: entity.id),
-              let spriteObject = object as? SDSpriteObject else {
+              let spriteObject = object as? SDSpriteObject,
+              let spriteSize = spriteComponent.size else {
             return
         }
+
+        spriteObject.size = spriteSize
 
         if spriteComponent.textureAtlas == nil && spriteObject.activeTexture != nil {
             spriteObject.cancelTexture()

@@ -4,6 +4,7 @@ class PlayerComponent: Component {
     let playerIndex: Int
     var canJump = true
     var canMove = true
+    var canHook = true
 
     init(id: ComponentId, entityId: EntityId, playerIndex: Int) {
         self.playerIndex = playerIndex

@@ -37,6 +37,10 @@ extension PowerUp: Collidable {
         nil
     }
 
+    func collideWithGrappleHook(_ grappleHook: GrappleHook, at contactPoint: CGPoint) -> Event? {
+        nil
+    }
+
     func collideWithHomingMissle(_ homingMissle: HomingMissile, at contactPoint: CGPoint) -> Event? {
         nil
     }

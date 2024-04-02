@@ -1,3 +1,10 @@
+//
+//  SpriteSystem.swift
+//  star-dash
+//
+//  Created by Ho Jun Hao on 29/3/24.
+//
+
 import Foundation
 
 class SpriteSystem: System {
@@ -13,32 +20,15 @@ class SpriteSystem: System {
         setup()
     }
 
-    func startAnimation(of entityId: EntityId, named: String) {
-        guard let spriteComponent = getSpriteComponent(of: entityId),
-              let textureAtlas = spriteComponent.textureSet?.getValueFor(key: named) else {
-            return
-        }
-
-        spriteComponent.textureAtlas = textureAtlas
-    }
-
-    func endAnimation(of entityId: EntityId) {
-        guard let spriteComponent = getSpriteComponent(of: entityId) else {
-            return
-        }
-
-        spriteComponent.textureAtlas = nil
-    }
-
-    func setSize(of entityId: EntityId, to size: CGSize) {
-        guard let spriteComponent = getSpriteComponent(of: entityId) else {
-            return
-        }
-
-        spriteComponent.size = size
-    }
-
     func setup() {}
+
+    func setSize(of entityId: EntityId, to newSize: CGSize) {
+        guard let spriteComponent = getSpriteComponent(of: entityId) else {
+            return
+        }
+
+        spriteComponent.size = newSize
+    }
 
     private func getSpriteComponent(of entityId: EntityId) -> SpriteComponent? {
         entityManager.component(ofType: SpriteComponent.self, of: entityId)
