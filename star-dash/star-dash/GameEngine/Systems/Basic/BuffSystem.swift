@@ -13,6 +13,14 @@ class BuffSystem: System {
         self.dispatcher = dispatcher
     }
 
+    func speedMultiplier(of entityId: EntityId) -> CGFloat? {
+        guard let buffComponent = getBuffComponent(of: entityId) else {
+            return nil
+        }
+
+        return buffComponent.speedMultiplier
+    }
+
     func applySpeedMultiplier(_ multiplier: CGFloat, for entityId: EntityId) {
         if getBuffComponent(of: entityId) == nil {
            setupBuffComponent(for: entityId)

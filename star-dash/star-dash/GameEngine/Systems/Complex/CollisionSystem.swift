@@ -65,20 +65,21 @@ class CollisionSystem: System {
     }
 
     private func handlePlayerFloorContactEvent(event: PlayerFloorContactEvent) {
-        guard let positionComponent = entityManager.component(ofType: PositionComponent.self, of: event.playerId),
-              let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: event.playerId),
-              positionComponent.position.y > event.contactPoint.y else {
+        guard let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
+              let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
+              let playerPosition = positionSystem.getPosition(of: event.playerId),
+              playerPosition.y > event.contactPoint.y else {
             return
         }
+
+        playerSystem.setCanJump(to: event.playerId, canJump: true)
+        playerSystem.setCanMove(to: event.playerId, canMove: true)
 
         if let hookOwnerComponent = entityManager
                                     .components(ofType: GrappleHookOwnerComponent.self)
                                     .first(where: { $0.ownerPlayerId == event.playerId }) {
             dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
         }
-
-        playerComponent.canJump = true
-        playerComponent.canMove = true
     }
 
     private func handlePlayerMonsterContactEvent(event: PlayerMonsterContactEvent) {
@@ -113,25 +114,25 @@ class CollisionSystem: System {
     }
 
     private func handlePlayerObstacleContactEvent(event: PlayerObstacleContactEvent) {
-        guard let playerPositionComponent = entityManager.component(ofType: PositionComponent.self, of: event.playerId),
-              let obstaclePositionComponent = entityManager.component(ofType: PositionComponent.self,
-                                                                      of: event.obstacleId),
-              let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: event.playerId),
-              playerPositionComponent.position.y - PhysicsConstants.Dimensions.player.height / 2 >
-                obstaclePositionComponent.position.y + PhysicsConstants.Dimensions.obstacle.height / 2 else {
-            dispatcher?.add(event: StopMovingEvent(on: event.playerId))
+        guard let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
+              let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
+              let playerPosition = positionSystem.getPosition(of: event.playerId),
+              let obstaclePosition = positionSystem.getPosition(of: event.obstacleId),
+              playerPosition.y - PhysicsConstants.Dimensions.player.height / 2 >
+              obstaclePosition.y + PhysicsConstants.Dimensions.obstacle.height / 2 else {
 
+            dispatcher?.add(event: StopMovingEvent(on: event.playerId))
             return
         }
+
+        playerSystem.setCanJump(to: event.playerId, canJump: true)
+        playerSystem.setCanMove(to: event.playerId, canMove: true)
 
         if let hookOwnerComponent = entityManager
                                     .components(ofType: GrappleHookOwnerComponent.self)
                                     .first(where: { $0.ownerPlayerId == event.playerId }) {
             dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
         }
-
-        playerComponent.canJump = true
-        playerComponent.canMove = true
     }
 
     private func handlePlayerToolContactEvent(event: PlayerToolContactEvent) {
