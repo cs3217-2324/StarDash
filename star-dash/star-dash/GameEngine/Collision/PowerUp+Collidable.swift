@@ -36,4 +36,8 @@ extension PowerUp: Collidable {
     func collideWithPowerUp(_ powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
         nil
     }
+
+    func collideWithGrappleHook(_ grappleHook: GrappleHook, at contactPoint: CGPoint) -> Event? {
+        nil
+    }
 }
