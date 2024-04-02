@@ -51,7 +51,7 @@ class MovementSystem: System {
         }
 
         physicsSystem.setVelocity(to: event.entityId, velocity: runVelocity)
-        spriteSystem.startAnimation(of: event.entityId, named: "run")
+        spriteSystem.startAnimation(of: event.entityId, named: event.toLeft ? "runLeft" : "run")
     }
 
     private func handleJumpEvent(event: JumpEvent) {
