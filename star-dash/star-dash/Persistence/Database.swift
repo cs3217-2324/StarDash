@@ -126,21 +126,18 @@ struct Database {
                 table.column(points)
                 table.column(radius)
             })
-
             try db.run( obstacleTable.create { table in
                 table.column(id, primaryKey: .autoincrement)
                 table.column(levelId)
                 table.column(position)
                 table.column(size)
             })
-
             try db.run( toolTable.create { table in
                 table.column(id, primaryKey: .autoincrement)
                 table.column(levelId)
                 table.column(position)
                 table.column(size)
             })
-
             try db.run( monsterTable.create { table in
                 table.column(id, primaryKey: .autoincrement)
                 table.column(levelId)
@@ -148,7 +145,6 @@ struct Database {
                 table.column(size)
                 table.column(health)
             })
-
             try db.run( powerUpTable.create { table in
                 table.column(id, primaryKey: .autoincrement)
                 table.column(levelId)
