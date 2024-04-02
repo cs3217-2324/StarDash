@@ -88,6 +88,14 @@ class EntityManager: EntityManagerInterface {
         return nil
     }
 
+    func playerEntities() -> [Entity] {
+        var playerEntities = [Entity]()
+        for (_, entity) in entityMap where entity is Player {
+            playerEntities.append(entity)
+        }
+        return playerEntities
+    }
+
     func component<T: Component>(ofType type: T.Type, of entityId: EntityId) -> T? {
         guard let components = entityComponentMap[entityId] else {
             return nil

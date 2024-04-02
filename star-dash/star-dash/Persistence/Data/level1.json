@@ -1,7 +1,8 @@
 {
 "id": 0,
-  "name": "1",
+  "name": "Joyride",
   "size": [4842, 1040],
+  "background": "GameBackground",
   "obstacles": [
     {
       "levelId": 0,

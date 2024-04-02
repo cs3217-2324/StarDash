@@ -14,11 +14,11 @@ class ViewController: UIViewController {
     var gameBridge: GameBridge?
     var gameEngine: GameEngine?
     var storageManager: StorageManager?
-    static var gameMode: Int = 0
+    var gameMode: Int = 0
+    var level: LevelPersistable?
+    var numberOfPlayers: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.storageManager = StorageManager()
 
         let gameEngine = createGameEngine()
         self.gameEngine = gameEngine
@@ -28,15 +28,14 @@ class ViewController: UIViewController {
 
         self.gameBridge = GameBridge(entityManager: gameEngine, scene: scene)
 
-        setupGameEntities()
-        setupBackground()
+        setupGame()
 
         guard let renderer = MTKRenderer(scene: scene) else {
             return
         }
 
         renderer.viewDelegate = self
-        renderer.setupViews(at: self.view, for: ViewController.gameMode)
+        renderer.setupViews(at: self.view, for: gameMode)
         self.renderer = renderer
     }
 
@@ -46,60 +45,31 @@ class ViewController: UIViewController {
     }
 
     private func createGameScene(of size: CGSize) -> GameScene {
-        let scene = GameScene(size: size)
+        var playerScreenSize = UIScreen.main.bounds.size
+        if gameMode == 2 {
+            playerScreenSize = CGSize(width: playerScreenSize.height, height: playerScreenSize.width / 2)
+        }
+        let scene = GameScene(size: size, playerScreenSize: playerScreenSize)
         scene.scaleMode = .aspectFill
         scene.sceneDelegate = self
+        if let level = level {
+            scene.setUpBackground(backgroundImage: level.background)
+        }
         return scene
     }
 
-    private func setupGameEntities() {
-        guard let scene = self.scene,
-              let gameEngine = self.gameEngine else {
+    private func setupGame() {
+        guard let storageManager = self.storageManager,
+              let gameEngine = self.gameEngine,
+              let level = self.level else {
             return
         }
 
-        EntityFactory.createAndAddPlayer(to: gameEngine,
-                                         playerIndex: 0,
-                                         position: CGPoint(x: 100, y: scene.size.height / 2 + 200))
-
-        EntityFactory.createAndAddPlayer(to: gameEngine,
-                                         playerIndex: 1,
-                                         position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 + 200))
-
-        EntityFactory.createAndAddFloor(to: gameEngine,
-                                        position: CGPoint(x: scene.size.width / 2, y: scene.size.height / 2 - 400),
-                                        size: CGSize(width: 8_000, height: 10))
-
-        EntityFactory.createAndAddCollectible(to: gameEngine,
-                                              position: CGPoint(x: scene.size.width / 2 + 30,
-                                                                y: scene.size.height / 2 - 100),
-                                              points: EntityConstants.StarCollectible.points,
-                                              radius: EntityConstants.StarCollectible.radius)
-
-        self.storageManager?.loadLevel(id: 0, into: gameEngine)
+        let entities = storageManager.getAllEntity(id: level.id)
+        gameEngine.setupLevel(level: level, entities: entities )
+        gameEngine.setupPlayers(numberOfPlayers: self.numberOfPlayers)
     }
 
-    private func setupBackground() {
-        guard let scene = self.scene else {
-            return
-        }
-        let background = SDSpriteObject(imageNamed: "GameBackground")
-        let backgroundWidth = background.size.width
-        let backgroundHeight = background.size.height
-
-        var remainingGameWidth = scene.size.width
-        var numOfAddedBackgrounds = 0
-        while remainingGameWidth > 0 {
-            let background = SDSpriteObject(imageNamed: "GameBackground")
-            let offset = CGFloat(numOfAddedBackgrounds) * backgroundWidth
-            background.position = CGPoint(x: backgroundWidth / 2 + offset, y: backgroundHeight / 2)
-            background.zPosition = -1
-            scene.addObject(background)
-
-            remainingGameWidth -= backgroundWidth
-            numOfAddedBackgrounds += 1
-        }
-    }
 }
 
 extension ViewController: SDSceneDelegate {

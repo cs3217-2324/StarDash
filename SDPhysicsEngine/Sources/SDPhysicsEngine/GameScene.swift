@@ -9,6 +9,16 @@ public class GameScene: SKScene {
     private var objectMap: [SKNode: SDObject] = [:]
 
     private var cameraPlayerMap: [Int: SDCameraObject] = [:]
+    private var playerScreenSize: CGSize = .zero
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    public init(size: CGSize, playerScreenSize: CGSize) {
+        self.playerScreenSize = playerScreenSize
+        super.init(size: size)
+    }
 
     override public func sceneDidLoad() {
         super.sceneDidLoad()
@@ -40,15 +50,33 @@ public class GameScene: SKScene {
         guard let cameraObject = cameraPlayerMap[playerIndex] else {
             return
         }
-
         cameraObject.zRotation = rotation
         self.camera = cameraObject.cameraNode
+    }
+
+    public func setUpBackground(backgroundImage: String) {
+        let background = SDSpriteObject(imageNamed: backgroundImage)
+        let backgroundWidth = background.size.width
+        let backgroundHeight = background.size.height
+
+        var remainingGameWidth = self.size.width
+        var numOfAddedBackgrounds = 0
+        while remainingGameWidth > 0 {
+            let background = SDSpriteObject(imageNamed: backgroundImage)
+            let offset = CGFloat(numOfAddedBackgrounds) * backgroundWidth
+            background.position = CGPoint(x: backgroundWidth / 2 + offset, y: backgroundHeight / 2)
+            background.zPosition = -1
+            self.addObject(background)
+
+            remainingGameWidth -= backgroundWidth
+            numOfAddedBackgrounds += 1
+        }
     }
 }
 
 extension GameScene: SDScene {
     public func addPlayerObject(_ playerObject: SDObject, playerIndex: Int) {
-        let camera = SDCameraObject(player: playerObject)
+        let camera = SDCameraObject(player: playerObject, screenSize: playerScreenSize, sceneSize: self.size)
         cameraPlayerMap[playerIndex] = camera
 
         addObject(camera)

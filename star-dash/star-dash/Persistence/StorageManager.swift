@@ -18,6 +18,14 @@ class StorageManager {
         self.database.getLevelPersistable(id: id)?.size
     }
 
+    func getLevels() -> [LevelPersistable] {
+        self.database.getLevels()
+    }
+
+    func getAllEntity(id: Int64) -> [EntityPersistable] {
+        self.database.getAllEntities(levelId: id)
+    }
+
     func loadLevel(id: Int64, into entityManager: EntityManagerInterface) {
         let entityPersistables = self.database.getAllEntities(levelId: id)
 

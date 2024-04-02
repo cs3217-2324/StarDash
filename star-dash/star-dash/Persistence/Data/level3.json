@@ -1,0 +1,117 @@
+{ 
+  "id": 2,
+  "name": "Sky High",
+  "size": [4842, 1024],
+  "background": "SkyHigh",
+  "obstacles": [
+    {
+      "levelId": 2,
+      "position": [500, 150],
+      "size": [100,100]
+    },
+    {
+      "levelId": 2,
+      "position": [600, 150],
+      "size": [100,100]
+    },
+    {
+      "levelId": 2,
+      "position": [600, 250],
+      "size": [100,100]
+    },
+    {
+      "levelId": 2,
+      "position": [850, 350],
+      "size": [100,100]
+      },
+    {
+      "levelId": 2,
+      "position": [950, 350],
+      "size": [100,100]
+    },
+    {
+      "levelId": 2,
+      "position": [1100, 500],
+      "size": [100,100]
+    },
+    {
+      "levelId": 2,
+      "position": [1200, 500],
+      "size": [100,100]
+    },
+    {
+      "levelId": 2,
+      "position": [1300, 500],
+      "size": [100,100]
+    },
+    {
+      "levelId": 2,
+      "position": [1500, 650],
+      "size": [100,100]
+    },
+    {
+      "levelId": 2,
+      "position": [1600, 650],
+      "size": [100,100]
+    },
+    {
+      "levelId": 2,
+      "position": [1800, 650],
+      "size": [100,100]
+    },
+    {
+      "levelId": 2,
+      "position": [1000, 900],
+      "size": [100,100]
+    },
+    {
+      "levelId": 2,
+      "position": [2100, 900],
+      "size": [100,100]
+    },
+    {
+      "levelId": 2,
+      "position": [2400, 900],
+      "size": [100,100]
+    }
+    
+  ],
+  "collectibles": [
+      {
+        "levelId": 2,
+        "position": [400, 150],
+        "radius": 25,
+        "points": 10
+      },
+      {
+        "levelId": 2,
+        "position": [700, 450],
+        "radius": 25,
+        "points": 10
+      }
+  ],
+  
+  "tools": [
+      {
+        "levelId": 2,
+        "position": [500, 250],
+        "size": [50,50]
+      },
+  ],
+  "monsters": [
+      {
+        "levelId": 2,
+        "position": [700, 150],
+        "size": [100,100],
+        "health": 100
+      },
+  ],
+  "powerUps": [
+    {
+      "levelId": 2,
+      "position": [500, 400],
+      "size": [60,60],
+      "type": "SpeedBoostPowerUp"
+    },
+  ]
+}

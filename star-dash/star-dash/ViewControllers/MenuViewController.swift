@@ -9,15 +9,28 @@ import Foundation
 import UIKit
 
 class MenuViewController: UIViewController {
-    
+    var storageManager = StorageManager()
     @IBAction private func singlePlayer(_ sender: Any) {
-        print("Single button tapped")
-        ViewController.gameMode = 1
-        performSegue(withIdentifier: "PlaySegue", sender: self)
+        let gameMode = 1
+        let numberOfPlayers = 1
+        performSegue(withIdentifier: "LevelSelectSeque", sender: (gameMode, numberOfPlayers, storageManager))
     }
-    @IBAction func localMultiplayer(_ sender: Any) {
-        print("Local multiplayer")
-        ViewController.gameMode = 2
-        performSegue(withIdentifier: "PlaySegue", sender: self)
+    @IBAction private func localMultiplayer(_ sender: Any) {
+        let gameMode = 2
+        let numberOfPlayers = 2
+        performSegue(withIdentifier: "LevelSelectSeque", sender: (gameMode, numberOfPlayers, storageManager))
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LevelSelectSeque" {
+            if let destinationVC = segue.destination as? LevelSelectorViewController {
+                if let data = sender as? (Int, Int, StorageManager) { // Adjust types accordingly
+                    destinationVC.gameMode = data.0
+                    destinationVC.numberOfPlayers = data.1
+                    destinationVC.storageManager = data.2
+                }
+            }
+        }
+    }
+
 }

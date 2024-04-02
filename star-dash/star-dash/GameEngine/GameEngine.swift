@@ -23,6 +23,26 @@ class GameEngine {
         setUpSystems()
     }
 
+    func setupLevel(level: LevelPersistable, entities: [EntityPersistable]) {
+        EntityFactory.createAndAddFloor(to: self,
+                                        position: CGPoint(x: level.size.width / 2, y: level.size.height / 2 - 400),
+                                        size: CGSize(width: 8_000, height: 10))
+        entities.forEach({ $0.addTo(self) })
+    }
+    // TODO: Set up players with characters that are selected
+    func setupPlayers(numberOfPlayers: Int) {
+        for playerIndex in 0..<numberOfPlayers {
+               // Calculate position for each player
+               let position = CGPoint(x: 100, y: 200)
+
+               // Create and add player
+               EntityFactory.createAndAddPlayer(to: self,
+                                                playerIndex: playerIndex,
+                                                position: position)
+        }
+
+    }
+
     func gameInfo(forPlayer playerIndex: Int) -> GameInfo? {
         guard let scoreSystem = systemManager.system(ofType: ScoreSystem.self),
               let playerEntityId = entityManager.playerEntityId(with: playerIndex),
@@ -32,19 +52,22 @@ class GameEngine {
 
         return GameInfo(
             playerScore: score,
-            playersInfo: playersInfo(of: playerIndex),
+            playersInfo: playersInfo(),
             mapSize: mapSize
         )
     }
 
-    func playersInfo(of playerIndex: Int) -> [PlayerInfo] {
-        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex),
-              let positionSystem = systemManager.system(ofType: PositionSystem.self) else {
+    func playersInfo() -> [PlayerInfo] {
+        guard let positionSystem = systemManager.system(ofType: PositionSystem.self) else {
             return []
         }
+        let playerEntities = entityManager.playerEntities()
         var playersInfo = [PlayerInfo]()
-        if let position = positionSystem.getPosition(of: playerEntityId) {
-            playersInfo.append(PlayerInfo(position: position, player: .RedNose))
+        // TODO: Replace with actual icon sprite
+        for playerEntity in playerEntities {
+            if let position = positionSystem.getPosition(of: playerEntity.id) {
+                playersInfo.append(PlayerInfo(position: position, player: .RedNose))
+            }
         }
         return playersInfo
 
