@@ -100,13 +100,20 @@ class GameEngine {
     }
 
     private func setUpSystems() {
+        // Basic Systems
         systemManager.add(PositionSystem(entityManager, dispatcher: self))
         systemManager.add(PhysicsSystem(entityManager, dispatcher: self))
         systemManager.add(ScoreSystem(entityManager, dispatcher: self))
         systemManager.add(HealthSystem(entityManager, dispatcher: self))
+        systemManager.add(MonsterSystem(entityManager, dispatcher: self))
+        systemManager.add(SpriteSystem(entityManager, dispatcher: self))
+
+        // Complex Systems
+        systemManager.add(CollisionSystem(entityManager, dispatcher: self))
         systemManager.add(InventorySystem(entityManager, dispatcher: self))
         systemManager.add(AttackSystem(entityManager, dispatcher: self))
         systemManager.add(PlayerSystem(entityManager, dispatcher: self))
+        systemManager.add(MovementSystem(entityManager, dispatcher: self))
         systemManager.add(CollisionSystem(entityManager, dispatcher: self))
         systemManager.add(MonsterSystem(entityManager, dispatcher: self))
         systemManager.add(GrappleHookSystem(entityManager, dispatcher: self))
