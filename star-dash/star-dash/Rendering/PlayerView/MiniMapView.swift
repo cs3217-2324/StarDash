@@ -21,7 +21,7 @@ class MiniMapView: UIView {
     }
 
     func setupSubviews() {
-        mapImageView = UIImageView(image: UIImage(named: "MiniMap"))
+        mapImageView = UIImageView(image: #imageLiteral(resourceName: "MiniMap"))
         mapImageView.contentMode = .scaleAspectFit
         mapImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(mapImageView)
@@ -33,12 +33,12 @@ class MiniMapView: UIView {
             mapImageView.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    // TODO: Pass in actual map size
-    func update(playersInfo: [PlayerInfo], mapSize: CGSize = CGSize(width: 4_500, height: 0)) {
+
+    func update(playersInfo: [PlayerInfo], mapSize: CGSize) {
         removeAllPlayerIcons()
 
         for playerData in playersInfo {
-            let playerIcon = UIImageView(image: UIImage(named: "RedNoseIcon"))
+            let playerIcon = UIImageView(image: #imageLiteral(resourceName: "RedNoseIcon"))
             playerIcon.contentMode = .scaleAspectFit
             playerIcon.translatesAutoresizingMaskIntoConstraints = false
             addSubview(playerIcon)

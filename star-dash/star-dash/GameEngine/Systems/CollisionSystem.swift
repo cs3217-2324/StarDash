@@ -48,6 +48,11 @@ class CollisionSystem: System {
                 self.handlePlayerToolContactEvent(event: playerToolContactEvent)
             }
         }
+        eventHandlers[ObjectIdentifier(GrappleHookObstacleContactEvent.self)] = { event in
+            if let grappleHookObstacleContactEvent = event as? GrappleHookObstacleContactEvent {
+                self.handleGrappleHookObstacleContactEvent(event: grappleHookObstacleContactEvent)
+            }
+        }
     }
 
     private func handleRemoveEvent(event: RemoveEvent) {
@@ -59,6 +64,12 @@ class CollisionSystem: System {
               let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: event.playerId),
               positionComponent.position.y > event.contactPoint.y else {
             return
+        }
+
+        if let hookOwnerComponent = entityManager
+                                    .components(ofType: GrappleHookOwnerComponent.self)
+                                    .first(where: { $0.ownerPlayerId == event.playerId }) {
+            dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
         }
 
         playerComponent.canJump = true
@@ -81,6 +92,12 @@ class CollisionSystem: System {
             return
         }
 
+        if let hookOwnerComponent = entityManager
+                                    .components(ofType: GrappleHookOwnerComponent.self)
+                                    .first(where: { $0.ownerPlayerId == event.playerId }) {
+            dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
+        }
+
         let isPlayerAbove = playerPosition.y - (playerSize.height / 2) >= monsterPosition.y + (monsterSize.height / 2)
 
         if isPlayerAbove {
@@ -101,11 +118,29 @@ class CollisionSystem: System {
 
             return
         }
+
+        if let hookOwnerComponent = entityManager
+                                    .components(ofType: GrappleHookOwnerComponent.self)
+                                    .first(where: { $0.ownerPlayerId == event.playerId }) {
+            dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
+        }
+
         playerComponent.canJump = true
         playerComponent.canMove = true
     }
 
     private func handlePlayerToolContactEvent(event: PlayerToolContactEvent) {
         dispatcher?.add(event: RemoveEvent(on: event.toolId))
+    }
+
+    private func handleGrappleHookObstacleContactEvent(event: GrappleHookObstacleContactEvent) {
+        guard let hookSystem = dispatcher?.system(ofType: GrappleHookSystem.self),
+              let hookState = hookSystem.getHookState(of: event.grappleHookId) else {
+            return
+        }
+
+        if hookState == .shooting && hookSystem.length(of: event.grappleHookId) >= GameConstants.Hook.minLength {
+            hookSystem.setHookState(of: event.grappleHookId, to: .retracting)
+        }
     }
 }

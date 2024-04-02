@@ -17,6 +17,7 @@ struct Database {
     private let obstacleTable = Table("obstacle")
     private let toolTable = Table("tool")
     private let monsterTable = Table("monster")
+    private let powerUpTable = Table("powerUp")
 
     private let twinkleStarAchievementTable = Table("twinklestar")
     private let stellarCollectorAchievementTable = Table("stellarCollector")
@@ -32,9 +33,10 @@ struct Database {
             ObjectIdentifier(ToolEntityPersistable.self): self.toolTable,
             ObjectIdentifier(ObstacleEntityPersistable.self): self.obstacleTable,
             ObjectIdentifier(MonsterEntityPersistable.self): self.monsterTable,
+            ObjectIdentifier(PowerUpEntityPersistable.self): self.powerUpTable,
             ObjectIdentifier(TwinkleStarAchievementPersistable.self): self.twinkleStarAchievementTable,
             ObjectIdentifier(StellarCollectorAchievementPersistable.self): self.stellarCollectorAchievementTable,
-            ObjectIdentifier(TwinkleStarAchievementPersistable.self): self.powerRangerAchievementTable
+            ObjectIdentifier(PowerRangerAchievementPersistable.self): self.powerRangerAchievementTable
         ]
 
         if let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
@@ -70,11 +72,13 @@ struct Database {
             try db.run(collectibleTable.drop())
             try db.run(toolTable.drop())
             try db.run(monsterTable.drop())
+            try db.run(powerUpTable.drop())
 
             // Comment out below to test for persistency
             try db.run(twinkleStarAchievementTable.drop())
             try db.run(stellarCollectorAchievementTable.drop())
             try db.run(powerRangerAchievementTable.drop())
+
         } catch {
             print("Error deleting table \(error)")
         }
@@ -87,6 +91,7 @@ struct Database {
         createToolTable()
         createMonsterTable()
         createObstacleTable()
+        createPowerUpTable()
 
         createAchievementTables()
     }
@@ -118,7 +123,7 @@ struct Database {
         let levelId = Expression<Int64>("levelId")
         let position = Expression<String>("position")
         let points = Expression<Int>("points")
-        let size = Expression<String>("size")
+        let radius = Expression<String>("radius")
 
         do {
             try db.run( collectibleTable.create { table in
@@ -126,7 +131,7 @@ struct Database {
                 table.column(levelId)
                 table.column(position)
                 table.column(points)
-                table.column(size)
+                table.column(radius)
 
             })
             print("Collectible table created")
@@ -180,6 +185,7 @@ struct Database {
             print("Error creating table \(error)")
         }
     }
+
     private func createMonsterTable() {
         guard let db = db else {
             return
@@ -200,6 +206,31 @@ struct Database {
 
             })
             print("Monster table created")
+        } catch {
+            print("Error creating table \(error)")
+        }
+    }
+
+    private func createPowerUpTable() {
+        guard let db = db else {
+            return
+        }
+        let id = Expression<Int64>("id")
+        let levelId = Expression<Int64>("levelId")
+        let position = Expression<String>("position")
+        let size = Expression<String>("size")
+        let type = Expression<String>("type")
+
+        do {
+            try db.run( powerUpTable.create { table in
+                table.column(id, primaryKey: .autoincrement)
+                table.column(levelId)
+                table.column(position)
+                table.column(size)
+                table.column(type)
+
+            })
+            print("PowerUp table created")
         } catch {
             print("Error creating table \(error)")
         }
@@ -265,6 +296,9 @@ extension Database {
                 for persistable in levelData.monsters {
                     insert(persistable: persistable)
                 }
+                for persistable in levelData.powerUps {
+                    insert(persistable: persistable)
+                }
 
             } catch {
                 print("Error reading or decoding JSON: \(error)")
@@ -318,6 +352,10 @@ extension Database {
             }
             entities += try database.prepare(monsterTable.filter(levelId == levelIdColumn)).map { row in
                 let persistable: MonsterEntityPersistable = try row.decode()
+                return persistable
+            }
+            entities += try database.prepare(powerUpTable.filter(levelId == levelIdColumn)).map { row in
+                let persistable: PowerUpEntityPersistable = try row.decode()
                 return persistable
             }
         } catch {

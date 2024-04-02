@@ -12,7 +12,7 @@ typealias ComponentMap = [ComponentId: Component]
 typealias EntityMap = [EntityId: Entity]
 typealias EntityComponentMap = [EntityId: ComponentSet]
 
-class EntityManager {
+class EntityManager: EntityManagerInterface {
     private var componentMap: ComponentMap
     private var entityMap: EntityMap
     private var entityComponentMap: EntityComponentMap
@@ -71,6 +71,10 @@ class EntityManager {
 
     func entity(with entityId: EntityId) -> Entity? {
         entityMap[entityId]
+    }
+
+    func entities<T: Entity>(ofType type: T.Type) -> [T] {
+        entityMap.values.compactMap({ $0 as? T })
     }
 
     func playerEntityId(with playerIndex: Int) -> EntityId? {

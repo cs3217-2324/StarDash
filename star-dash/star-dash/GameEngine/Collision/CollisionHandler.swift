@@ -32,8 +32,16 @@ struct CollisionHandler {
         PlayerToolContactEvent(from: player.id, on: tool.id)
     }
 
+    static func between(player: Player, grappleHook: GrappleHook) -> Event? {
+        nil
+    }
+
     static func between(monster: Monster, tool: Tool) -> Event? {
         nil
+    }
+
+    static func between(monster: Monster, grappleHook: GrappleHook) -> Event? {
+        ReleaseGrappleHookEvent(using: grappleHook.id)
     }
 
     static func between(monster: Monster, wall: Wall) -> Event? {
@@ -58,5 +66,21 @@ struct CollisionHandler {
 
     static func between(tool: Tool, obstacle: Obstacle) -> Event? {
         nil
+    }
+
+    static func between(grappleHook: GrappleHook, floor: Floor) -> Event? {
+        ReleaseGrappleHookEvent(using: grappleHook.id)
+    }
+
+    static func between(grappleHook: GrappleHook, wall: Wall) -> Event? {
+        ReleaseGrappleHookEvent(using: grappleHook.id)
+    }
+
+    static func between(grappleHook: GrappleHook, obstacle: Obstacle) -> Event? {
+        GrappleHookObstacleContactEvent(betweenHook: grappleHook.id, andObstacle: obstacle.id)
+    }
+
+    static func between(player: Player, powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
+        PowerUpPlayerEvent(from: player.id, pickedUp: powerUp.id)
     }
 }

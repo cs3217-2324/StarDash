@@ -56,6 +56,18 @@ class PhysicsSystem: System {
         return physicsComponent.size
     }
 
+    func setSize(of entityId: EntityId, to newSize: CGSize) {
+        guard let physicsComponent = getPhysicsComponent(of: entityId) else {
+            return
+        }
+
+        guard physicsComponent.shape == .rectangle else {
+            return
+        }
+
+        physicsComponent.size = newSize
+    }
+
     func setup() {
         dispatcher?.registerListener(self)
 
@@ -83,7 +95,13 @@ class PhysicsSystem: System {
             return
         }
 
-        physicsComponent.velocity = (event.toLeft ? -1 : 1) * PhysicsConstants.runVelocity
+        var runVelocity = (event.toLeft ? -1 : 1) * PhysicsConstants.runVelocity
+
+        if let buffComponent = entityManager.component(ofType: BuffComponent.self, of: event.entityId) {
+            runVelocity *= CGFloat(buffComponent.speedMultiplier)
+        }
+
+        physicsComponent.velocity = runVelocity
         spriteComponent.textureAtlas = textureSet.run
     }
 

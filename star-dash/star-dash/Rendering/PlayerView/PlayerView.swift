@@ -54,7 +54,7 @@ class PlayerView {
 
     func update(_ overlayInfo: OverlayInfo) {
         overlayView.update(overlayInfo.score)
-        minimapView.update(playersInfo: overlayInfo.playersInfo)
+        minimapView.update(playersInfo: overlayInfo.playersInfo, mapSize: overlayInfo.mapSize)
     }
 
     static func createPlayerView(layout: PlayerViewLayout, device: MTLDevice) -> PlayerView {

@@ -32,7 +32,7 @@ public class SDObject {
         get { innerRotation }
         set {
             innerRotation = newValue
-            node.run(SKAction.rotate(toAngle: newValue, duration: 1))
+            node.run(SKAction.rotate(toAngle: newValue, duration: 0))
         }
     }
 

@@ -12,10 +12,13 @@ class GameEngine {
     private let entityManager: EntityManager
     private let eventManager: EventManager
 
-    init() {
+    let mapSize: CGSize
+
+    init(mapSize: CGSize) {
         self.systemManager = SystemManager()
         self.entityManager = EntityManager()
         self.eventManager = EventManager()
+        self.mapSize = mapSize
 
         setUpSystems()
     }
@@ -29,7 +32,8 @@ class GameEngine {
 
         return GameInfo(
             playerScore: score,
-            playersInfo: playersInfo(of: playerIndex)
+            playersInfo: playersInfo(of: playerIndex),
+            mapSize: mapSize
         )
     }
 
@@ -87,6 +91,14 @@ class GameEngine {
         eventManager.add(event: StopMovingEvent(on: playerEntityId))
     }
 
+    func handlePlayerHook(playerIndex: Int) {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
+            return
+        }
+
+        eventManager.add(event: UseGrappleHookEvent(from: playerEntityId))
+    }
+
     private func setUpSystems() {
         systemManager.add(PositionSystem(entityManager, dispatcher: self))
         systemManager.add(PhysicsSystem(entityManager, dispatcher: self))
@@ -97,6 +109,13 @@ class GameEngine {
         systemManager.add(PlayerSystem(entityManager, dispatcher: self))
         systemManager.add(CollisionSystem(entityManager, dispatcher: self))
         systemManager.add(MonsterSystem(entityManager, dispatcher: self))
+        systemManager.add(GrappleHookSystem(entityManager, dispatcher: self))
+        systemManager.add(SpriteSystem(entityManager, dispatcher: self))
+        systemManager.add(BuffSystem(entityManager, dispatcher: self))
+
+        // Power-Up Systems
+        systemManager.add(PowerUpSystem(entityManager, dispatcher: self))
+        systemManager.add(SpeedBoostPowerUpSystem(entityManager, dispatcher: self))
     }
 }
 

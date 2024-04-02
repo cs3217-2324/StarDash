@@ -44,4 +44,31 @@ class SpriteComponent: Component {
             size: size
         )
     }
+
+    convenience init(
+        entityId: EntityId,
+        image: String,
+        textureSet: TextureSet?,
+        textureAtlas: String?,
+        radius: CGFloat?
+    ) {
+        guard let radius = radius else {
+            self.init(
+                entityId: entityId,
+                image: image,
+                textureSet: textureSet,
+                textureAtlas: textureAtlas,
+                size: nil
+            )
+            return
+        }
+        let size = CGSize(width: radius * 2, height: radius * 2)
+        self.init(
+            entityId: entityId,
+            image: image,
+            textureSet: textureSet,
+            textureAtlas: textureAtlas,
+            size: size
+        )
+    }
 }

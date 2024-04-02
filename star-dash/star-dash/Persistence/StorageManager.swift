@@ -14,6 +14,10 @@ class StorageManager {
         database = Database()
     }
 
+    func getLevelSize(id: Int64) -> CGSize? {
+        self.database.getLevelPersistable(id: id)?.size
+    }
+
     func loadLevel(id: Int64, into entityManager: EntityManagerInterface) {
         let entityPersistables = self.database.getAllEntities(levelId: id)
 
