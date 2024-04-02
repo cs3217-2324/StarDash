@@ -8,6 +8,11 @@ struct PowerUpEntityPersistable: Codable, EntityPersistable {
     var type: String
 
     func addTo(_ entityManager: EntityManagerInterface) {
-        EntityFactory.createAndAddPowerUp(to: entityManager, position: position, size: size, type: type)
+        EntityFactory.createAndAddPowerUpBox(
+            to: entityManager,
+            position: position,
+            size: size,
+            type: type
+        )
     }
 }

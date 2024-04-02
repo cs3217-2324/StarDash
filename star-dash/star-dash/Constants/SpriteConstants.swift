@@ -29,7 +29,7 @@ struct SpriteConstants {
 
     static let obstacle = "Obstacle"
 
-    static let tool = "Tool"
+    static let powerUpBox = "Tool"
 
     static let hook = "GrapplingHook"
 

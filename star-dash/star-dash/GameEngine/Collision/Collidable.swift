@@ -13,10 +13,9 @@ protocol Collidable {
     func collideWithMonster(_ monster: Monster, at contactPoint: CGPoint) -> Event?
     func collideWithCollectible(_ collectible: Collectible, at contactPoint: CGPoint) -> Event?
     func collideWithObstacle(_ obstacle: Obstacle, at contactPoint: CGPoint) -> Event?
-    func collideWithTool(_ tool: Tool, at contactPoint: CGPoint) -> Event?
     func collideWithGrappleHook(_ grappleHook: GrappleHook, at contactPoint: CGPoint) -> Event?
     func collideWithWall(_ wall: Wall, at contactPoint: CGPoint) -> Event?
     func collideWithFloor(_ floor: Floor, at contactPoint: CGPoint) -> Event?
-    func collideWithPowerUp(_ powerUp: PowerUp, at contactPoint: CGPoint) -> Event?
+    func collideWithPowerUpBox(_ powerUp: PowerUp, at contactPoint: CGPoint) -> Event?
     func collideWithHomingMissle(_ homingMissle: HomingMissile, at contactPoint: CGPoint) -> Event?
 }

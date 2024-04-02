@@ -14,16 +14,16 @@ class PowerUpSystem: System {
     }
 
     func setup() {
-        dispatcher?.registerListener(for: PowerUpPlayerEvent.self, listener: self)
+        dispatcher?.registerListener(for: PowerUpBoxPlayerEvent.self, listener: self)
 
-        eventHandlers[ObjectIdentifier(PowerUpPlayerEvent.self)] = { event in
-            if let powerUpPlayerEvent = event as? PowerUpPlayerEvent {
-                self.handlePlayerPickedUpPowerUpEvent(event: powerUpPlayerEvent)
+        eventHandlers[ObjectIdentifier(PowerUpBoxPlayerEvent.self)] = { event in
+            if let powerUpBoxPlayerEvent = event as? PowerUpBoxPlayerEvent {
+                self.handlePlayerPickedUpPowerUpBoxEvent(event: powerUpBoxPlayerEvent)
             }
         }
     }
 
-    private func handlePlayerPickedUpPowerUpEvent(event: PowerUpPlayerEvent) {
+    private func handlePlayerPickedUpPowerUpBoxEvent(event: PowerUpBoxPlayerEvent) {
         guard let type = entityManager.component(ofType: PowerUpComponent.self, of: event.powerUpId)?.type,
               let powerUp = entityManager.entity(with: event.powerUpId) else {
             return

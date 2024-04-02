@@ -1,6 +1,6 @@
 import CoreGraphics
 
-extension PowerUp: Collidable {
+extension PowerUpBox: Collidable {
     func collides(with collidable: Collidable, at contactPoint: CGPoint) -> Event? {
         collidable.collideWithPowerUp(self, at: contactPoint)
     }
@@ -18,10 +18,6 @@ extension PowerUp: Collidable {
     }
 
     func collideWithObstacle(_ obstacle: Obstacle, at contactPoint: CGPoint) -> Event? {
-        nil
-    }
-
-    func collideWithTool(_ tool: Tool, at contactPoint: CGPoint) -> Event? {
         nil
     }
 

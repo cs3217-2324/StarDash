@@ -25,7 +25,6 @@ class CollisionSystem: System {
         dispatcher?.registerListener(for: PlayerFloorContactEvent.self, listener: self)
         dispatcher?.registerListener(for: PlayerMonsterContactEvent.self, listener: self)
         dispatcher?.registerListener(for: PlayerObstacleContactEvent.self, listener: self)
-        dispatcher?.registerListener(for: PlayerToolContactEvent.self, listener: self)
         dispatcher?.registerListener(for: GrappleHookObstacleContactEvent.self, listener: self)
 
         eventHandlers[ObjectIdentifier(RemoveEvent.self)] = { event in
@@ -46,11 +45,6 @@ class CollisionSystem: System {
         eventHandlers[ObjectIdentifier(PlayerObstacleContactEvent.self)] = { event in
             if let playerObstacleContactEvent = event as? PlayerObstacleContactEvent {
                 self.handlePlayerObstacleContactEvent(event: playerObstacleContactEvent)
-            }
-        }
-        eventHandlers[ObjectIdentifier(PlayerToolContactEvent.self)] = { event in
-            if let playerToolContactEvent = event as? PlayerToolContactEvent {
-                self.handlePlayerToolContactEvent(event: playerToolContactEvent)
             }
         }
         eventHandlers[ObjectIdentifier(GrappleHookObstacleContactEvent.self)] = { event in
@@ -133,10 +127,6 @@ class CollisionSystem: System {
                                     .first(where: { $0.ownerPlayerId == event.playerId }) {
             dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
         }
-    }
-
-    private func handlePlayerToolContactEvent(event: PlayerToolContactEvent) {
-        dispatcher?.add(event: RemoveEvent(on: event.toolId))
     }
 
     private func handleGrappleHookObstacleContactEvent(event: GrappleHookObstacleContactEvent) {

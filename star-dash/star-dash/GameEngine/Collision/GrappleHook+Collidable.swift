@@ -27,11 +27,7 @@ extension GrappleHook: Collidable {
     func collideWithObstacle(_ obstacle: Obstacle, at contactPoint: CGPoint) -> Event? {
         CollisionHandler.between(grappleHook: self, obstacle: obstacle)
     }
-    
-    func collideWithTool(_ tool: Tool, at contactPoint: CGPoint) -> Event? {
-        nil
-    }
-    
+
     func collideWithGrappleHook(_ grappleHook: GrappleHook, at contactPoint: CGPoint) -> Event? {
         nil
     }
@@ -43,8 +39,8 @@ extension GrappleHook: Collidable {
     func collideWithFloor(_ floor: Floor, at contactPoint: CGPoint) -> Event? {
         CollisionHandler.between(grappleHook: self, floor: floor)
     }
-    
-    func collideWithPowerUp(_ powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
+
+    func collideWithPowerUpBox(_ powerUpBox: PowerUpBox, at contactPoint: CGPoint) -> Event? {
         nil
     }
     

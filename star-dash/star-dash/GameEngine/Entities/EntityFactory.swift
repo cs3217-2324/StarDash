@@ -88,20 +88,24 @@ struct EntityFactory {
             .addToGame()
     }
 
-    static func createAndAddTool(to entityManager: EntityManagerInterface,
-                                 position: CGPoint,
-                                 size: CGSize) {
-        let toolBuilder = EntityBuilder(entity: Tool(id: UUID()), entityManager: entityManager)
+    static func createAndAddPowerUpBox(to entityManager: EntityManagerInterface,
+                                       position: CGPoint,
+                                       size: CGSize,
+                                       type: String) {
+        let powerUpBoxBuilder = EntityBuilder(entity: PowerUpBox(id: UUID()), entityManager: entityManager)
 
-        toolBuilder
+        powerUpBoxBuilder
             .withPosition(at: position)
-            .withSprite(image: SpriteConstants.tool,
+            .withSprite(image: SpriteConstants.powerUpBox,
                         textureSet: nil,
                         textureAtlas: nil,
                         size: size)
             .withPhysics(rectangleOf: size)
-                .configureCollisionBitMask(PhysicsConstants.CollisionMask.tool)
+                .configureCollisionBitMask(PhysicsConstants.powerUpBox)
+                .configureContactTestMask(PhysicsConstants.ContactMask.powerUpBox)
+                .configureCollisionBitMask(PhysicsConstants.CollisionMask.powerUpBox)
                 .configureIsDynamic(false)
+            .withPowerUpType(type: type)
             .addToGame()
     }
 
@@ -168,28 +172,6 @@ struct EntityFactory {
                 .configureIsDynamic(true)
                 .configureRestitution(0.0)
                 .configureAffectedByGravity(false)
-            .addToGame()
-    }
-
-    static func createAndAddPowerUp(to entityManager: EntityManagerInterface,
-                                    position: CGPoint,
-                                    size: CGSize,
-                                    type: String) {
-        let powerUpBuilder = EntityBuilder(entity: PowerUp(id: UUID()), entityManager: entityManager)
-
-        powerUpBuilder
-            .withPosition(at: position)
-            .withSprite(image: SpriteConstants.speedBoostPowerUp,
-                        textureSet: nil,
-                        textureAtlas: nil,
-                        size: PhysicsConstants.Dimensions.powerUp)
-            .withPhysics(rectangleOf: size)
-                .configureCategoryBitMask(PhysicsConstants.CollisionCategory.powerUp)
-                .configureContactTestMask(PhysicsConstants.ContactMask.powerUp)
-                .configureCollisionBitMask(PhysicsConstants.CollisionMask.powerUp)
-                .configureIsDynamic(false)
-                .configureAffectedByGravity(false)
-            .withPowerUpType(type: type)
             .addToGame()
     }
 

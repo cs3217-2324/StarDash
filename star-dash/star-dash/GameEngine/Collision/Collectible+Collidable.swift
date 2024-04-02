@@ -28,10 +28,6 @@ extension Collectible: Collidable {
         nil
     }
 
-    func collideWithTool(_ tool: Tool, at contactPoint: CGPoint) -> Event? {
-        nil
-    }
-
     func collideWithWall(_ wall: Wall, at contactPoint: CGPoint) -> Event? {
         nil
     }
@@ -44,7 +40,7 @@ extension Collectible: Collidable {
         nil
     }
 
-    func collideWithPowerUp(_ powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
+    func collideWithPowerUpBox(_ powerUpBox: PowerUpBox, at contactPoint: CGPoint) -> Event? {
         nil
     }
 
