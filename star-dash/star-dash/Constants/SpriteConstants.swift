@@ -1,5 +1,6 @@
 struct TextureSet {
     let run: String
+    let runLeft: String
 
     func getValueFor(key: String) -> String? {
         let mirror = Mirror(reflecting: self)
