@@ -370,15 +370,15 @@ extension Database {
     func getAllAchievements(of playerId: Int) -> [AchievementPersistable] {
         var achievements: [AchievementPersistable] = []
 
-        guard let twinkleStar = getTwinkleStar(of: playerId),
-              let stellarCollector = getStellarCollector(of: playerId),
-              let powerRanger = getPowerRanger(of: playerId) else {
-            return achievements
-        }
-
-        achievements.append(twinkleStar)
-        achievements.append(stellarCollector)
-        achievements.append(powerRanger)
+        achievements += getAchievement(TwinkleStarAchievementPersistable.self,
+                                       table: twinkleStarAchievementTable,
+                                       playerId: playerId).map { [$0] } ?? []
+        achievements += getAchievement(StellarCollectorAchievementPersistable.self,
+                                       table: stellarCollectorAchievementTable,
+                                       playerId: playerId).map { [$0] } ?? []
+        achievements += getAchievement(PowerRangerAchievementPersistable.self,
+                                       table: powerRangerAchievementTable,
+                                       playerId: playerId).map { [$0] } ?? []
 
         return achievements
     }
@@ -470,68 +470,24 @@ extension Database {
         }
     }
 
-    private func getTwinkleStar(of playerId: Int) -> TwinkleStarAchievementPersistable? {
+    private func getAchievement<T: AchievementPersistable>(_ type: T.Type, table: Table, playerId: Int) -> T? {
         guard let db = db else {
             return nil
         }
 
         let playerIdExpression = Expression<Int64>("playerId")
 
-        let table = twinkleStarAchievementTable.filter(playerIdExpression == Int64(playerId))
+        let filteredTable = table.filter(playerIdExpression == Int64(playerId))
 
         do {
-            if let row = try db.prepare(table).first(where: { _ in true }) {
-                let persistable: TwinkleStarAchievementPersistable = try row.decode()
+            if let row = try db.prepare(filteredTable).first(where: { _ in true }) {
+                let persistable: T = try row.decode()
                 return persistable
             } else {
                 return nil
             }
         } catch {
-            print("Error fetching TwinkleStar achievement: \(error)")
-            return nil
-        }
-    }
-
-    private func getStellarCollector(of playerId: Int) -> StellarCollectorAchievementPersistable? {
-        guard let db = db else {
-            return nil
-        }
-
-        let playerIdExpression = Expression<Int64>("playerId")
-
-        let table = stellarCollectorAchievementTable.filter(playerIdExpression == Int64(playerId))
-
-        do {
-            if let row = try db.prepare(table).first(where: { _ in true }) {
-                let persistable: StellarCollectorAchievementPersistable = try row.decode()
-                return persistable
-            } else {
-                return nil
-            }
-        } catch {
-            print("Error fetching StellarCollector achievement: \(error)")
-            return nil
-        }
-    }
-
-    private func getPowerRanger(of playerId: Int) -> PowerRangerAchievementPersistable? {
-        guard let db = db else {
-            return nil
-        }
-
-        let playerIdExpression = Expression<Int64>("playerId")
-
-        let table = powerRangerAchievementTable.filter(playerIdExpression == Int64(playerId))
-
-        do {
-            if let row = try db.prepare(table).first(where: { _ in true }) {
-                let persistable: PowerRangerAchievementPersistable = try row.decode()
-                return persistable
-            } else {
-                return nil
-            }
-        } catch {
-            print("Error fetching PowerRanger achievement: \(error)")
+            print("Error fetching \(T.self) achievement: \(error)")
             return nil
         }
     }

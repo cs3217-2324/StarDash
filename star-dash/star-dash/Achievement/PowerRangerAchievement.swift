@@ -33,7 +33,7 @@ class PowerRangerAchievement: Achievement {
     }
 
     func handleEvent(event: Event, saveTo storageManager: StorageManager) {
-        guard event is PickupCollectibleEvent else {
+        guard event is PowerUpPlayerEvent else {
             return
         }
 
@@ -43,9 +43,8 @@ class PowerRangerAchievement: Achievement {
 
         powerUpsUsed += 1
 
-        storageManager.upsert(achievement: self)
-
         if isUnlocked {
+            storageManager.upsert(achievement: self)
             print("Unlocked \(name) Achievement!")
         }
     }

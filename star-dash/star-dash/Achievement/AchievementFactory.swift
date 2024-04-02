@@ -8,19 +8,15 @@
 import Foundation
 
 struct AchievementFactory {
-    private static let availableAchievements: [ObjectIdentifier: (Int) -> Achievement] = [
-        ObjectIdentifier(TwinkleStarAchievement.self): createTwinkleStarAchievement
-    ]
-
-    static func createAllDefault(for id: Int) -> PlayerAchievements {
-        var achievements: [Achievement] = []
-
-        availableAchievements.values.forEach { achievements.append($0(id)) }
-
-        return PlayerAchievements(playerId: id, achievements: achievements)
-    }
-
     static func createTwinkleStarAchievement(_ playerId: Int) -> TwinkleStarAchievement {
         TwinkleStarAchievement(playerId: playerId)
+    }
+
+    static func createStellarCollectorAchievement(_ playerId: Int) -> StellarCollectorAchievement {
+        StellarCollectorAchievement(playerId: playerId)
+    }
+
+    static func createPowerRangerAchievement(_ playerId: Int) -> PowerRangerAchievement {
+        PowerRangerAchievement(playerId: playerId)
     }
 }

@@ -10,15 +10,30 @@ import Foundation
 class AchievementManager: EventListener {
     static let shared = AchievementManager()
 
-    var entityIdMap: [EntityId: Int] = [:]
-    var idAchievementMap: [Int: PlayerAchievements] = [:]
+    private var entityIdMap: [EntityId: Int] = [:]
+    private var idAchievementMap: [Int: PlayerAchievements] = [:]
+    private var storageManager = StorageManager()
+    private var achievementFactoryMap: [ObjectIdentifier: (Int) -> Achievement] = [:]
+
     var eventHandlers: [ObjectIdentifier: (Event) -> Void] = [:]
-    var storageManager = StorageManager()
 
     func setup() {}
 
     func setup(withMap entityIdMap: [EntityId: Int]) {
         self.entityIdMap = entityIdMap
+
+        achievementFactoryMap[ObjectIdentifier(TwinkleStarAchievement.self)] = { id in
+            AchievementFactory.createTwinkleStarAchievement(id)
+        }
+
+        achievementFactoryMap[ObjectIdentifier(StellarCollectorAchievement.self)] = { id in
+            AchievementFactory.createStellarCollectorAchievement(id)
+        }
+
+        achievementFactoryMap[ObjectIdentifier(PowerRangerAchievement.self)] = { id in
+            AchievementFactory.createPowerRangerAchievement(id)
+        }
+
         loadAchievements(ids: Array(entityIdMap.values))
     }
 
@@ -34,13 +49,27 @@ class AchievementManager: EventListener {
 
     private func loadAchievements(ids: [Int]) {
         for id in ids {
-            if let playerAchievements = self.storageManager.loadAchievements(of: id) {
-                print("load from database for player id \(id)")
-                idAchievementMap[id] = playerAchievements
+            var playerAchievements: [Achievement] = self.storageManager.loadAchievements(of: id)
+
+            let typesAlreadyExisting = Set(playerAchievements.map { ObjectIdentifier(type(of: $0)) })
+            let allTypes = Set(achievementFactoryMap.keys)
+            let typesMissing = allTypes.subtracting(typesAlreadyExisting)
+
+            if typesMissing.isEmpty {
+                print("Loaded achievements from database")
             } else {
-                print("initialised new achievements for player id \(id)")
-                idAchievementMap[id] = AchievementFactory.createAllDefault(for: id)
+                print("Initialised new achievements")
             }
+
+            for type in typesMissing {
+                guard let achievement = achievementFactoryMap[type]?(id) else {
+
+                    continue
+                }
+                playerAchievements.append(achievement)
+            }
+
+            idAchievementMap[id] = PlayerAchievements(playerId: id, achievements: playerAchievements)
         }
 
         idAchievementMap.values.forEach {
