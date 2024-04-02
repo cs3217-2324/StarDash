@@ -20,7 +20,8 @@ struct TextureSet {
 struct SpriteConstants {
     static let PlayerRedNose = "PlayerRedNose"
     static let PlayerRedNoseTexture = TextureSet(
-        run: "PlayerRedNoseRun"
+        run: "PlayerRedNoseRun",
+        runLeft: "PlayerRedNoseRunLeft"
     )
 
     static let star = "Star"
