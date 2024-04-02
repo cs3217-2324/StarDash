@@ -43,7 +43,7 @@ class PositionSystem: System {
 
         let angle = atan2(direction.dy, direction.dx)
         let newRotation = angle - CGFloat(Double.pi / 2)
-        positionComponent.setRotation(rotation: newRotation)
+        positionComponent.rotation = newRotation
     }
 
     func getPosition(of entityId: EntityId) -> CGPoint? {
