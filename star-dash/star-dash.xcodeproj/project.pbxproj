@@ -426,12 +426,11 @@
 		4611488F2BA1CD9E0073E7E1 /* Systems */ = {
 			isa = PBXGroup;
 			children = (
+				E6A115332BB9D6EB0076A21F /* Basic */,
+				E6A115352BB9D7200076A21F /* Complex */,
 				E6D45DB62BB6E6080004CBA2 /* PowerUps */,
-				E6D45DC02BB6E6CF0004CBA2 /* BuffSystem.swift */,
 				461148902BA1CDBF0073E7E1 /* SystemManager.swift */,
 				461148922BA1D04B0073E7E1 /* System.swift */,
-				E6A115352BB9D7200076A21F /* Complex */,
-				E6A115332BB9D6EB0076A21F /* Basic */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -712,6 +711,8 @@
 		E6A115332BB9D6EB0076A21F /* Basic */ = {
 			isa = PBXGroup;
 			children = (
+				460A200C2BB1DF27002597B8 /* PlayerSystem.swift */,
+				E6D45DC02BB6E6CF0004CBA2 /* BuffSystem.swift */,
 				1471B09F2BA6A70600878B14 /* HealthSystem.swift */,
 				14970F532BA8163300CC1E8A /* ScoreSystem.swift */,
 				461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */,
@@ -729,7 +730,6 @@
 				E6A115382BB9E3010076A21F /* MovementSystem.swift */,
 				460A200A2BB1D04F002597B8 /* AttackSystem.swift */,
 				460A200E2BB1E1F1002597B8 /* CollisionSystem.swift */,
-				460A200C2BB1DF27002597B8 /* PlayerSystem.swift */,
 			);
 			path = Complex;
 			sourceTree = "<group>";
@@ -1001,7 +1001,6 @@
 				143AA3952BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift in Sources */,
 				143AA3932BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift in Sources */,
 				E6A115392BB9E3010076A21F /* MovementSystem.swift in Sources */,
-				4E59E2682BADA7B6007B3FA7 /* CollectibleEntityPersistable.swift in Sources */,
 				46D418162BA5CBD60091A38B /* Collidable.swift in Sources */,
 				461148912BA1CDBF0073E7E1 /* SystemManager.swift in Sources */,
 				460A20112BB1E6DF002597B8 /* MonsterSystem.swift in Sources */,
