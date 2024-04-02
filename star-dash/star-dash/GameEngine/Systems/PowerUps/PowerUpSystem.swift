@@ -24,8 +24,8 @@ class PowerUpSystem: System {
     }
 
     private func handlePlayerPickedUpPowerUpBoxEvent(event: PowerUpBoxPlayerEvent) {
-        guard let type = entityManager.component(ofType: PowerUpComponent.self, of: event.powerUpId)?.type,
-              let powerUp = entityManager.entity(with: event.powerUpId) else {
+        guard let type = entityManager.component(ofType: PowerUpComponent.self, of: event.powerUpBoxId)?.type,
+              let powerUp = entityManager.entity(with: event.powerUpBoxId) else {
             return
         }
 

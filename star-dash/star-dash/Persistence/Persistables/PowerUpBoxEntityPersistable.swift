@@ -1,6 +1,6 @@
 import Foundation
 
-struct PowerUpEntityPersistable: Codable, EntityPersistable {
+struct PowerUpBoxEntityPersistable: Codable, EntityPersistable {
 
     var levelId: Int64
     var position: CGPoint

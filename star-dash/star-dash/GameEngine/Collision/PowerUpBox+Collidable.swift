@@ -2,11 +2,11 @@ import CoreGraphics
 
 extension PowerUpBox: Collidable {
     func collides(with collidable: Collidable, at contactPoint: CGPoint) -> Event? {
-        collidable.collideWithPowerUp(self, at: contactPoint)
+        collidable.collideWithPowerUpBox(self, at: contactPoint)
     }
 
     func collideWithPlayer(_ player: Player, at contactPoint: CGPoint) -> Event? {
-        CollisionHandler.between(player: player, powerUp: self, at: contactPoint)
+        CollisionHandler.between(player: player, powerUpBox: self, at: contactPoint)
     }
 
     func collideWithMonster(_ monster: Monster, at contactPoint: CGPoint) -> Event? {
@@ -29,7 +29,7 @@ extension PowerUpBox: Collidable {
         nil
     }
 
-    func collideWithPowerUp(_ powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
+    func collideWithPowerUpBox(_ powerUpBox: PowerUpBox, at contactPoint: CGPoint) -> Event? {
         nil
     }
 

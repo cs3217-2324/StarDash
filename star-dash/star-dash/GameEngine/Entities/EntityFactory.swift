@@ -101,7 +101,7 @@ struct EntityFactory {
                         textureAtlas: nil,
                         size: size)
             .withPhysics(rectangleOf: size)
-                .configureCollisionBitMask(PhysicsConstants.powerUpBox)
+                .configureCategoryBitMask(PhysicsConstants.CollisionCategory.powerUpBox)
                 .configureContactTestMask(PhysicsConstants.ContactMask.powerUpBox)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.powerUpBox)
                 .configureIsDynamic(false)

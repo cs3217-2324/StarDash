@@ -304,7 +304,7 @@ extension Database {
                 return persistable
             }
             entities += try database.prepare(powerUpBoxTable.filter(levelId == levelIdColumn)).map { row in
-                let persistable: PowerUpEntityPersistable = try row.decode()
+                let persistable: PowerUpBoxEntityPersistable = try row.decode()
                 return persistable
             }
         } catch {

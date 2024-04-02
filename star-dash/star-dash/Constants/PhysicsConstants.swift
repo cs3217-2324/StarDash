@@ -18,8 +18,8 @@ struct PhysicsConstants {
         static let powerUpBox: UInt32 = 0b1 << 4
         static let wall: UInt32 = 0b1 << 5
         static let floor: UInt32 = 0b1 << 6
-        static let hook: UInt32 = 0b1 << 8
-        static let homingMissle: UInt32 = 0b1 << 9
+        static let hook: UInt32 = 0b1 << 7
+        static let homingMissle: UInt32 = 0b1 << 8
     }
 
     struct CollisionMask {
@@ -29,7 +29,7 @@ struct PhysicsConstants {
                             ^ CollisionCategory.hook
                             ^ CollisionCategory.powerUpBox
                             ^ CollisionCategory.homingMissle
-        static let monster = CollisionCategory.Player
+        static let monster = CollisionCategory.player
         static let collectible = CollisionCategory.none
         static let obstacle = CollisionCategory.player | CollisionCategory.monster
         static let powerUpBox = CollisionCategory.none
@@ -54,7 +54,6 @@ struct PhysicsConstants {
         static let floor = CollisionCategory.player | CollisionCategory.homingMissle
         static let hook = CollisionCategory.obstacle
         static let homingMissle = CollisionCategory.player | CollisionCategory.obstacle | CollisionMask.floor
-
     }
 
     struct Dimensions {

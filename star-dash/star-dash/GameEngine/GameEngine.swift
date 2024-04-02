@@ -56,11 +56,15 @@ class GameEngine {
     }
 
     func handleCollision(_ entityOneId: EntityId, _ entityTwoId: EntityId, at contactPoint: CGPoint) {
+        print("collided")
         guard let entityOne = entity(of: entityOneId) as? Collidable,
               let entityTwo = entity(of: entityTwoId) as? Collidable,
               let event = entityOne.collides(with: entityTwo, at: contactPoint) else {
+            print(entity(of: entityOneId) as? Collidable)
+            print(entity(of: entityTwoId) as? Collidable)
             return
         }
+        print("\(entityOne), \(entityTwo)")
 
         eventManager.add(event: event)
     }
