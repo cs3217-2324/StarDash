@@ -37,6 +37,20 @@ class ViewController: UIViewController {
         renderer.viewDelegate = self
         renderer.setupViews(at: self.view, for: gameMode)
         self.renderer = renderer
+
+        let backButton = UIButton(type: .system)
+            backButton.setTitle("Back", for: .normal)
+            backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+            self.view.addSubview(backButton)
+            backButton.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+                backButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            ])
+    }
+    @objc
+    func backButtonTapped() {
+        performSegue(withIdentifier: "BackSegue", sender: self)
     }
 
     private func createGameEngine() -> GameEngine {

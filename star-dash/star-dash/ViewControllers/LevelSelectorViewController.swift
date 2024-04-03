@@ -36,6 +36,11 @@ class LevelSelectorViewController: UIViewController {
             Levels.addArrangedSubview(button)
         }
     }
+
+    @IBAction private func back(_ sender: Any) {
+        performSegue(withIdentifier: "BackSegue", sender: nil)
+    }
+
     @objc
     func levelButtonTapped(_ sender: UIButton) {
         guard let storageManager = storageManager else {
