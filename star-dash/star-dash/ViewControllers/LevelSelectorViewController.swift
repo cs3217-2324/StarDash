@@ -13,40 +13,41 @@ class LevelSelectorViewController: UIViewController {
     var numberOfPlayers: Int = 0
     @IBOutlet private var Levels: UIStackView!
     var levels: [LevelPersistable] = [] // Assuming Level is a struct or class representing a level
-       override func viewDidLoad() {
-           super.viewDidLoad()
-           fetchLevelsFromDatabase()
-           createLevelButtons()
-       }
-       func fetchLevelsFromDatabase() {
-           if let levels = storageManager?.database.getLevels() {
-               self.levels = levels
-           }
-       }
-       func createLevelButtons() {
-           for (index, level) in levels.enumerated() {
-               let button = LevelButton()
-                button.tag = index // Set a tag to identify the button later
-                button.levelNameLabel.text = "\(level.name)"
-               button.levelImageView.image = UIImage(named: level.background) // Set your image here
-                button.backgroundColor = .clear
-                button.layer.cornerRadius = 8
-                button.addTarget(self, action: #selector(levelButtonTapped(_:)), for: .touchUpInside)
-                Levels.addArrangedSubview(button)
-           }
-       }
-       @objc func levelButtonTapped(_ sender: UIButton) {
-           guard let storageManager = storageManager else {
-               return
-           }
-           let level = levels[sender.tag]
-           // Perform actions related to the selected level
-           performSegue(withIdentifier: "PlaySeque",
-                        sender: GameData(gameMode: gameMode,
-                                         level: level,
-                                         numberOfPlayers: numberOfPlayers,
-                                         storageManager: storageManager))
-       }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fetchLevelsFromDatabase()
+        createLevelButtons()
+    }
+    func fetchLevelsFromDatabase() {
+        if let levels = storageManager?.database.getLevels() {
+            print(levels)
+            self.levels = levels
+        }
+    }
+    func createLevelButtons() {
+        for (index, level) in levels.enumerated() {
+            let button = LevelButton()
+            button.tag = index // Set a tag to identify the button later
+            button.levelNameLabel.text = "\(level.name)"
+            button.levelImageView.image = UIImage(named: level.background) // Set your image here
+            button.backgroundColor = .clear
+            button.layer.cornerRadius = 8
+            button.addTarget(self, action: #selector(levelButtonTapped(_:)), for: .touchUpInside)
+            Levels.addArrangedSubview(button)
+        }
+    }
+    @objc func levelButtonTapped(_ sender: UIButton) {
+        guard let storageManager = storageManager else {
+            return
+        }
+        let level = levels[sender.tag]
+        // Perform actions related to the selected level
+        performSegue(withIdentifier: "PlaySeque",
+                     sender: GameData(gameMode: gameMode,
+                                      level: level,
+                                      numberOfPlayers: numberOfPlayers,
+                                      storageManager: storageManager))
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlaySeque" {
