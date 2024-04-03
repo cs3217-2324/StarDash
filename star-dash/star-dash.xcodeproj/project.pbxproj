@@ -792,7 +792,6 @@
 		E6A745102BA057040080C1BE /* Rendering */ = {
 			isa = PBXGroup;
 			children = (
-				E6B5509F2BA15D2000DC7396 /* MTKRenderer */,
 				E6A72FC22BB2E1E10015729E /* Utils */,
 				E64F31682BB400CB00EC5371 /* PlayerView */,
 				E6A745132BA057040080C1BE /* Renderer.swift */,
@@ -821,13 +820,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E6B5509F2BA15D2000DC7396 /* MTKRenderer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MTKRenderer;
 			sourceTree = "<group>";
 		};
 		E6D45DB62BB6E6080004CBA2 /* PowerUps */ = {

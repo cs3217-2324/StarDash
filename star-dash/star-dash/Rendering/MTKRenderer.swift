@@ -88,8 +88,9 @@ extension MTKRenderer: MTKViewDelegate {
             renderPassDescriptor: renderPassDescriptor
         )
 
-        commandBuffer.present(drawable)
         commandBuffer.commit()
+        commandBuffer.waitUntilScheduled()
+        drawable.present()
     }
 
     func updateScene(forPlayer playerIndex: Int) {
