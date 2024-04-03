@@ -75,7 +75,7 @@
         "health": 100
       },
   ],
-  "powerUps": [
+  "powerUpBoxes": [
     {
       "levelId": 1,
       "position": [500, 400],

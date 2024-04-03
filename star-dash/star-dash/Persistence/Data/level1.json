@@ -59,14 +59,6 @@
         "points": 10
       }
   ],
-  
-  "tools": [
-      {
-        "levelId": 0,
-        "position": [500, 250],
-        "size": [50,50]
-      },
-  ],
   "monsters": [
       {
         "levelId": 0,
@@ -75,12 +67,18 @@
         "health": 100
       },
   ],
-  "powerUps": [
+  "powerUpBoxes": [
     {
       "levelId": 0,
       "position": [500, 400],
       "size": [60,60],
       "type": "SpeedBoostPowerUp"
     },
+    {
+      "levelId": 0,
+      "position": [900, 300],
+      "size": [60,60],
+      "type": "HomingMissilePowerUp"
+    }
   ]
 }

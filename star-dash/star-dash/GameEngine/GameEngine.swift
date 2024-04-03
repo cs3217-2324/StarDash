@@ -97,9 +97,7 @@ class GameEngine {
     }
 
     func handlePlayerMove(toLeft: Bool, playerIndex: Int) {
-        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex),
-              let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: playerEntityId),
-              playerComponent.canMove else {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
             return
         }
 
@@ -146,6 +144,7 @@ class GameEngine {
         // Power-Up Systems
         systemManager.add(PowerUpSystem(entityManager, dispatcher: self))
         systemManager.add(SpeedBoostPowerUpSystem(entityManager, dispatcher: self))
+        systemManager.add(HomingMissileSystem(entityManager, dispatcher: self))
     }
 }
 

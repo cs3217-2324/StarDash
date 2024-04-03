@@ -13,7 +13,10 @@ class MenuViewController: UIViewController {
     @IBAction private func singlePlayer(_ sender: Any) {
         let gameMode = 1
         let numberOfPlayers = 1
-        performSegue(withIdentifier: "LevelSelectSeque", sender: (gameMode, numberOfPlayers, storageManager))
+        performSegue(withIdentifier: "LevelSelectSeque", sender: GameData(gameMode: gameMode,
+                                                                          level: nil,
+                                                                          numberOfPlayers: numberOfPlayers,
+                                                                          storageManager: storageManager))
     }
     @IBAction private func localMultiplayer(_ sender: Any) {
         let gameMode = 2

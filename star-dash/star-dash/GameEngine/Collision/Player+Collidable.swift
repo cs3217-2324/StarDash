@@ -28,10 +28,6 @@ extension Player: Collidable {
         CollisionHandler.between(player: self, obstacle: obstacle)
     }
 
-    func collideWithTool(_ tool: Tool, at contactPoint: CGPoint) -> Event? {
-        CollisionHandler.between(player: self, tool: tool)
-    }
-
     func collideWithWall(_ wall: Wall, at contactPoint: CGPoint) -> Event? {
         CollisionHandler.between(player: self, wall: wall)
     }
@@ -44,7 +40,11 @@ extension Player: Collidable {
         CollisionHandler.between(player: self, grappleHook: grappleHook)
     }
 
-    func collideWithPowerUp(_ powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
-        CollisionHandler.between(player: self, powerUp: powerUp, at: contactPoint)
+    func collideWithPowerUpBox(_ powerUpBox: PowerUpBox, at contactPoint: CGPoint) -> Event? {
+        CollisionHandler.between(player: self, powerUpBox: powerUpBox, at: contactPoint)
+    }
+
+    func collideWithHomingMissile(_ homingMissile: HomingMissile, at contactPoint: CGPoint) -> Event? {
+        CollisionHandler.between(player: self, homingMissile: homingMissile)
     }
 }

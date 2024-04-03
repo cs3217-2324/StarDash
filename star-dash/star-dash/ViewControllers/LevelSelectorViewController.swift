@@ -15,29 +15,22 @@ class LevelSelectorViewController: UIViewController {
     var levels: [LevelPersistable] = [] // Assuming Level is a struct or class representing a level
        override func viewDidLoad() {
            super.viewDidLoad()
-           // Fetch level data from the database
            fetchLevelsFromDatabase()
-           // Create and add buttons for each level
            createLevelButtons()
        }
        func fetchLevelsFromDatabase() {
-           // Implement code to fetch levels from the database and populate the 'levels' array
-           // Example:
            if let levels = storageManager?.database.getLevels() {
                self.levels = levels
-           }// Assuming you have a DatabaseManager class with a method to fetch levels
+           }
        }
        func createLevelButtons() {
            for (index, level) in levels.enumerated() {
                let button = LevelButton()
                 button.tag = index // Set a tag to identify the button later
-                // Set button title (level name) and image
                 button.levelNameLabel.text = "\(level.name)"
                button.levelImageView.image = UIImage(named: level.background) // Set your image here
-                // Set button appearance
                 button.backgroundColor = .clear
                 button.layer.cornerRadius = 8
-                // Add target for button tap
                 button.addTarget(self, action: #selector(levelButtonTapped(_:)), for: .touchUpInside)
                 Levels.addArrangedSubview(button)
            }

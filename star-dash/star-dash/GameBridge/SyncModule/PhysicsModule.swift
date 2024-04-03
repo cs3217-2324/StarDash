@@ -50,6 +50,7 @@ class PhysicsModule: SyncModule {
         object.physicsBody?.contactTestMask = physicsComponent.contactTestMask
         object.physicsBody?.collisionBitMask = physicsComponent.collisionBitMask
         object.physicsBody?.mass = physicsComponent.mass
+        object.physicsBody?.linearDamping = physicsComponent.linearDamping
     }
 
     private func createRectanglePhysicsBody(physicsComponent: PhysicsComponent) -> SDPhysicsBody {
