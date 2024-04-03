@@ -60,7 +60,10 @@ class LevelSelectorViewController: UIViewController {
             if let destinationVC = segue.destination as? ViewController {
                 if let data = sender as? GameData { // Adjust types accordingly
                     destinationVC.gameMode = data.gameMode
-                    destinationVC.level = data.level
+                    if let level = data.level {
+                        destinationVC.level = level
+
+                    }
                     destinationVC.numberOfPlayers = data.numberOfPlayers
                     destinationVC.storageManager = data.storageManager
                 }
