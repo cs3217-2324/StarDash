@@ -67,6 +67,14 @@ class PlayerSystem: System {
         playerComponent.canMove = canMove
     }
 
+    func setDeathTimer(to entityId: EntityId, timer: Float) {
+        guard let playerComponent = getPlayerComponent(of: entityId) else {
+            return
+        }
+
+        playerComponent.deathTimer = timer
+    }
+
     private func handleRespawnEvent(event: RespawnEvent) {
         dispatcher?.add(event: TeleportEvent(on: event.entityId, to: event.newPosition))
     }

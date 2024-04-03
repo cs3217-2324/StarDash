@@ -5,6 +5,7 @@ class PlayerComponent: Component {
     var canJump = true
     var canMove = true
     var canHook = true
+    var deathTimer: Float = 0
 
     init(id: ComponentId, entityId: EntityId, playerIndex: Int) {
         self.playerIndex = playerIndex
