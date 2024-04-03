@@ -28,10 +28,6 @@ extension Monster: Collidable {
         CollisionHandler.between(monster: self, obstacle: obstacle)
     }
 
-    func collideWithTool(_ tool: Tool, at contactPoint: CGPoint) -> Event? {
-        CollisionHandler.between(monster: self, tool: tool)
-    }
-
     func collideWithWall(_ wall: Wall, at contactPoint: CGPoint) -> Event? {
         CollisionHandler.between(monster: self, wall: wall)
     }
@@ -44,7 +40,11 @@ extension Monster: Collidable {
         CollisionHandler.between(monster: self, grappleHook: grappleHook)
     }
 
-    func collideWithPowerUp(_ powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
+    func collideWithPowerUpBox(_ powerUpBox: PowerUpBox, at contactPoint: CGPoint) -> Event? {
+        nil
+    }
+
+    func collideWithHomingMissile(_ homingMissile: HomingMissile, at contactPoint: CGPoint) -> Event? {
         nil
     }
 }

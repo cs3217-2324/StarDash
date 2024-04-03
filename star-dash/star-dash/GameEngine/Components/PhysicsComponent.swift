@@ -20,6 +20,7 @@ class PhysicsComponent: Component {
     var restitution: CGFloat = 0.2
     var size: CGSize?
     var radius: CGFloat?
+    var linearDamping: CGFloat = 0.1
 
     init(entityId: EntityId, rectangleOf size: CGSize) {
         self.shape = .rectangle

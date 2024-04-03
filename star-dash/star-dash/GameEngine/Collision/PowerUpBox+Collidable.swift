@@ -1,23 +1,16 @@
-//
-//  Tool+Collidable.swift
-//  star-dash
-//
-//  Created by Ho Jun Hao on 16/3/24.
-//
-
 import CoreGraphics
 
-extension Tool: Collidable {
+extension PowerUpBox: Collidable {
     func collides(with collidable: Collidable, at contactPoint: CGPoint) -> Event? {
-        collidable.collideWithTool(self, at: contactPoint)
+        collidable.collideWithPowerUpBox(self, at: contactPoint)
     }
 
     func collideWithPlayer(_ player: Player, at contactPoint: CGPoint) -> Event? {
-        CollisionHandler.between(player: player, tool: self)
+        CollisionHandler.between(player: player, powerUpBox: self, at: contactPoint)
     }
 
     func collideWithMonster(_ monster: Monster, at contactPoint: CGPoint) -> Event? {
-        CollisionHandler.between(monster: monster, tool: self)
+        nil
     }
 
     func collideWithCollectible(_ collectible: Collectible, at contactPoint: CGPoint) -> Event? {
@@ -25,26 +18,26 @@ extension Tool: Collidable {
     }
 
     func collideWithObstacle(_ obstacle: Obstacle, at contactPoint: CGPoint) -> Event? {
-        CollisionHandler.between(tool: self, obstacle: obstacle)
-    }
-
-    func collideWithTool(_ tool: Tool, at contactPoint: CGPoint) -> Event? {
         nil
     }
 
     func collideWithWall(_ wall: Wall, at contactPoint: CGPoint) -> Event? {
-        CollisionHandler.between(tool: self, wall: wall)
+        nil
     }
 
     func collideWithFloor(_ floor: Floor, at contactPoint: CGPoint) -> Event? {
-        CollisionHandler.between(tool: self, floor: floor)
+        nil
+    }
+
+    func collideWithPowerUpBox(_ powerUpBox: PowerUpBox, at contactPoint: CGPoint) -> Event? {
+        nil
     }
 
     func collideWithGrappleHook(_ grappleHook: GrappleHook, at contactPoint: CGPoint) -> Event? {
         nil
     }
 
-    func collideWithPowerUp(_ powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
+    func collideWithHomingMissile(_ homingMissile: HomingMissile, at contactPoint: CGPoint) -> Event? {
         nil
     }
 }
