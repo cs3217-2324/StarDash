@@ -33,7 +33,7 @@ class GameEngine {
     func setupPlayers(numberOfPlayers: Int) {
         for playerIndex in 0..<numberOfPlayers {
                // Calculate position for each player
-               let position = CGPoint(x: 100, y: 200)
+               let position = CGPoint(x: 200, y: 200)
 
                // Create and add player
                EntityFactory.createAndAddPlayer(to: self,

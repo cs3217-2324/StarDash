@@ -17,32 +17,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PUz-Cw-weV">
-                                <rect key="frame" x="558" y="0.0" width="64.5" height="79"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="MenuBG" translatesAutoresizingMaskIntoConstraints="NO" id="46R-rd-hAr">
                                 <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9od-mk-aUW">
-                                <rect key="frame" x="558" y="367" width="64.5" height="34.5"/>
+                            <stackView opaque="NO" contentMode="center" axis="vertical" spacing="10" id="PUz-Cw-weV">
+                                <rect key="frame" x="556" y="372" width="65" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Local"/>
-                                <connections>
-                                    <action selector="localMultiplayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ag1-C2-EDy"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIg-qy-c7E">
-                                <rect key="frame" x="558" y="322" width="64.5" height="34.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIg-qy-c7E">
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="34.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Play"/>
+                                        <connections>
+                                            <action selector="singlePlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DWz-tS-T6E"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9od-mk-aUW">
+                                        <rect key="frame" x="0.0" y="44.5" width="65" height="34.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Local"/>
+                                        <connections>
+                                            <action selector="localMultiplayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ag1-C2-EDy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Title" translatesAutoresizingMaskIntoConstraints="NO" id="YIl-Ja-bXk">
+                                <rect key="frame" x="115" y="89" width="984" height="315"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Play"/>
-                                <connections>
-                                    <action selector="singlePlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DWz-tS-T6E"/>
-                                </connections>
-                            </button>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -66,6 +70,7 @@
     </scenes>
     <resources>
         <image name="MenuBG" width="1920" height="1080"/>
+        <image name="Title" width="984" height="315"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
