@@ -2,10 +2,10 @@ import Foundation
 
 class MissileBlockedEvent: Event {
     let timestamp: Date
-    let missleId: EntityId
+    let missileId: EntityId
 
-    init(missle missleId: EntityId) {
+    init(missile missileId: EntityId) {
         self.timestamp = Date.now
-        self.missleId = missleId
+        self.missileId = missileId
     }
 }

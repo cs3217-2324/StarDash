@@ -193,17 +193,17 @@ struct EntityFactory {
 
         powerUpBuilder
             .withPosition(at: position)
-            .withSprite(image: SpriteConstants.homingMissle,
+            .withSprite(image: SpriteConstants.homingMissile,
                         textureSet: nil,
                         textureAtlas: nil,
-                        size: PhysicsConstants.Dimensions.homingMissle)
-            .withPhysics(rectangleOf: PhysicsConstants.Dimensions.homingMissle)
-                .configureCategoryBitMask(PhysicsConstants.CollisionCategory.homingMissle)
-                .configureContactTestMask(PhysicsConstants.ContactMask.homingMissle)
-                .configureCollisionBitMask(PhysicsConstants.CollisionMask.homingMissle)
+                        size: PhysicsConstants.Dimensions.homingMissile)
+            .withPhysics(rectangleOf: PhysicsConstants.Dimensions.homingMissile)
+                .configureCategoryBitMask(PhysicsConstants.CollisionCategory.homingMissile)
+                .configureContactTestMask(PhysicsConstants.ContactMask.homingMissile)
+                .configureCollisionBitMask(PhysicsConstants.CollisionMask.homingMissile)
                 .configureAffectedByGravity(false)
                 .configureLinearDamping(0)
-            .withHomingMissle(impulse: impulse)
+            .withHomingMissile(impulse: impulse)
             .addToGame()
     }
 }

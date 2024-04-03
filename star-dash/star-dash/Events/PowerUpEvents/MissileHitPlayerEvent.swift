@@ -3,11 +3,11 @@ import Foundation
 class MissileHitPlayerEvent: Event {
     let timestamp: Date
     let entityId: EntityId
-    let missleId: EntityId
+    let missileId: EntityId
 
-    init(from playerEntityId: EntityId, missle missleId: EntityId) {
+    init(from playerEntityId: EntityId, missile missileId: EntityId) {
         self.timestamp = Date.now
         self.entityId = playerEntityId
-        self.missleId = missleId
+        self.missileId = missileId
     }
 }

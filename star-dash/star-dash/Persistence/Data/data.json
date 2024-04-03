@@ -77,7 +77,7 @@
       "levelId": 0,
       "position": [900, 300],
       "size": [60,60],
-      "type": "HomingMisslePowerUp"
+      "type": "HomingMissilePowerUp"
     }
   ]
 }

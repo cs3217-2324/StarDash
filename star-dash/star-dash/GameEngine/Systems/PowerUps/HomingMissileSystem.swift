@@ -19,29 +19,29 @@ class HomingMissileSystem: System, EventListener {
 
         eventHandlers[ObjectIdentifier(MissileHitPlayerEvent.self)] = { event in
             if let missileHitPlayerEvent = event as? MissileHitPlayerEvent {
-                self.handleMissleHitPlayerEvent(event: missileHitPlayerEvent)
+                self.handleMissileHitPlayerEvent(event: missileHitPlayerEvent)
             }
         }
 
         eventHandlers[ObjectIdentifier(MissileBlockedEvent.self)] = { event in
             if let missileBlockedEvent = event as? MissileBlockedEvent {
-                self.handleMissleBlockedEvent(event: missileBlockedEvent)
+                self.handleMissileBlockedEvent(event: missileBlockedEvent)
             }
         }
     }
 
     func update(by deltaTime: TimeInterval) {
-        for homingMissleComponent in entityManager.components(ofType: HomingMissileComponent.self) {
-            if !homingMissleComponent.isActivated {
-                fireMissle(component: homingMissleComponent)
+        for homingMissileComponent in entityManager.components(ofType: HomingMissileComponent.self) {
+            if !homingMissileComponent.isActivated {
+                fireMissile(component: homingMissileComponent)
                 continue
             }
 
-            updateMissle(component: homingMissleComponent)
+            updateMissile(component: homingMissileComponent)
         }
     }
 
-    private func fireMissle(component: HomingMissileComponent) {
+    private func fireMissile(component: HomingMissileComponent) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               !component.isActivated else {
             return
@@ -61,33 +61,33 @@ class HomingMissileSystem: System, EventListener {
         component.targetId = targetId
     }
 
-    private func updateMissle(component: HomingMissileComponent) {
+    private func updateMissile(component: HomingMissileComponent) {
         guard let targetId = component.targetId,
               let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
-              let misslePosition = positionSystem.getPosition(of: component.entityId),
+              let missilePosition = positionSystem.getPosition(of: component.entityId),
               let targetPosition = positionSystem.getPosition(of: targetId),
-              let missleVelocity = physicsSystem.velocity(of: component.entityId) else {
+              let missileVelocity = physicsSystem.velocity(of: component.entityId) else {
             return
         }
 
-        let dy = targetPosition.y - misslePosition.y
-        let dx = targetPosition.x - misslePosition.x
+        let dy = targetPosition.y - missilePosition.y
+        let dx = targetPosition.x - missilePosition.x
         let distance = hypot(dx, dy)
 
-        let newVelocity = CGVector(dx: dx / distance, dy: dy / distance) * missleVelocity.magnitude
+        let newVelocity = CGVector(dx: dx / distance, dy: dy / distance) * missileVelocity.magnitude
         physicsSystem.setVelocity(to: component.entityId, velocity: newVelocity)
         positionSystem.rotate(entityId: component.entityId, inDirection: newVelocity)
     }
 
     // Event Handlers
 
-    private func handleMissleHitPlayerEvent(event: MissileHitPlayerEvent) {
+    private func handleMissileHitPlayerEvent(event: MissileHitPlayerEvent) {
         dispatcher?.add(event: PlayerDeathEvent(on: event.entityId))
-        entityManager.remove(entityId: event.missleId)
+        entityManager.remove(entityId: event.missileId)
     }
 
-    private func handleMissleBlockedEvent(event: MissileBlockedEvent) {
-        entityManager.remove(entityId: event.missleId)
+    private func handleMissileBlockedEvent(event: MissileBlockedEvent) {
+        entityManager.remove(entityId: event.missileId)
     }
 }

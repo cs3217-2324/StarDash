@@ -64,15 +64,15 @@ struct CollisionHandler {
         PowerUpBoxPlayerEvent(from: player.id, pickedUp: powerUpBox.id)
     }
 
-    static func between(player: Player, homingMissle: HomingMissile) -> Event? {
-        MissileHitPlayerEvent(from: player.id, missle: homingMissle.id)
+    static func between(player: Player, homingMissile: HomingMissile) -> Event? {
+        MissileHitPlayerEvent(from: player.id, missile: homingMissile.id)
     }
 
-    static func between(homingMissle: HomingMissile, floor: Floor) -> Event? {
-        MissileBlockedEvent(missle: homingMissle.id)
+    static func between(homingMissile: HomingMissile, floor: Floor) -> Event? {
+        MissileBlockedEvent(missile: homingMissile.id)
     }
 
-    static func between(homingMissle: HomingMissile, obstacle: Obstacle) -> Event? {
-        MissileBlockedEvent(missle: homingMissle.id)
+    static func between(homingMissile: HomingMissile, obstacle: Obstacle) -> Event? {
+        MissileBlockedEvent(missile: homingMissile.id)
     }
 }

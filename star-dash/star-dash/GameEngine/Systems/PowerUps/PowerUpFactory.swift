@@ -5,7 +5,7 @@ class PowerUpFactory {
     static func createPowerUp(triggeredBy playerId: EntityId, type: String, to entityManager: EntityManager) {
         let powerUps: [String: (EntityId, EntityManager) -> Void] = [
             "SpeedBoostPowerUp": createSpeedBoostPowerUp,
-            "HomingMisslePowerUp": createHomingMisslePowerUp
+            "HomingMissilePowerUp": createHomingMissilePowerUp
         ]
 
         guard let createMethod = powerUps[type] else {
@@ -23,16 +23,16 @@ class PowerUpFactory {
                                                     multiplier: 2.5)
     }
 
-    private static func createHomingMisslePowerUp(triggeredBy playerId: EntityId,
+    private static func createHomingMissilePowerUp(triggeredBy playerId: EntityId,
                                                   to entityManager: EntityManager) {
         guard let positionComponent = entityManager.component(ofType: PositionComponent.self, of: playerId) else {
             return
         }
 
-        let misslePosition = CGPoint(x: positionComponent.position.x + 100, y: positionComponent.position.y)
+        let missilePosition = CGPoint(x: positionComponent.position.x + 100, y: positionComponent.position.y)
 
         EntityFactory.createAndAddHomingMissilePowerUp(to: entityManager,
-                                                       position: misslePosition,
+                                                       position: missilePosition,
                                                        impulse: CGVector(dx: 4_000, dy: 0))
     }
 }
