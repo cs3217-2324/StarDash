@@ -32,7 +32,7 @@ extension HomingMissile: Collidable {
     func collideWithPowerUpBox(_ powerUpBox: PowerUpBox, at contactPoint: CGPoint) -> Event? {
         nil
     }
-    
+
     func collideWithHomingMissile(_ homingMissile: HomingMissile, at contactPoint: CGPoint) -> Event? {
         nil
     }

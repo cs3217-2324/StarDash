@@ -24,7 +24,7 @@ class PowerUpFactory {
     }
 
     private static func createHomingMissilePowerUp(triggeredBy playerId: EntityId,
-                                                  to entityManager: EntityManager) {
+                                                   to entityManager: EntityManager) {
         guard let positionComponent = entityManager.component(ofType: PositionComponent.self, of: playerId) else {
             return
         }
