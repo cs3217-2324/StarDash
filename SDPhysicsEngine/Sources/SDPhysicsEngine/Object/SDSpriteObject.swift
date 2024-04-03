@@ -2,12 +2,14 @@ import SpriteKit
 
 public class SDSpriteObject: SDObject {
     let spriteNode: SKSpriteNode
+    let originalImage: String
 
     static let textureActionKey = "animation"
     public var activeTexture: String?
 
     public init(imageNamed: String) {
         self.spriteNode = SKSpriteNode(imageNamed: imageNamed)
+        self.originalImage = imageNamed
         super.init(node: spriteNode)
     }
 
@@ -15,12 +17,36 @@ public class SDSpriteObject: SDObject {
         get { spriteNode.size }
         set { spriteNode.size = newValue }
     }
+    
+    public var texture: String? {
+        willSet {
+            guard let texture = newValue else {
+                return
+            }
+            spriteNode.texture = SKTexture(imageNamed: texture)
+        }
+    }
 
-    public func runTexture(named: String) {
+    /// Runs an animation with the given name of a texture atlas.
+    /// Params:
+    /// - named: Name of texture atlas
+    /// - repetitive: True if the texture should be repeated indefinitely
+    /// - duration: If nil, original sprite will render immediately after animation ends. Else, it only renders after given duration.
+    public func runTexture(named: String, repetitive: Bool, duration: Double?) {
         let texture = loadTexture(named: named)
-        spriteNode.run(SKAction.repeatForever(
-            SKAction.animate(with: texture, timePerFrame: TimeInterval(0.1), resize: false, restore: true)
-        ), withKey: SDSpriteObject.textureActionKey)
+        var animation = SKAction.animate(with: texture, timePerFrame: TimeInterval(0.1), resize: false, restore: duration == nil)
+
+        if repetitive {
+            animation = SKAction.repeatForever(animation)
+        }
+
+        spriteNode.run(animation, withKey: SDSpriteObject.textureActionKey)
+        
+        if let duration = duration {
+            spriteNode.run(SKAction.wait(forDuration: Double(duration))) {
+                self.spriteNode.texture = SKTexture(imageNamed: self.originalImage)
+            }
+        }
 
         activeTexture = named
     }

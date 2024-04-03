@@ -72,6 +72,7 @@ class PlayerSystem: System {
             return
         }
 
+        playerComponent.isDead = timer > 0
         playerComponent.deathTimer = timer
     }
 
