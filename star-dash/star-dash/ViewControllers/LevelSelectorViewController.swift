@@ -36,7 +36,8 @@ class LevelSelectorViewController: UIViewController {
             Levels.addArrangedSubview(button)
         }
     }
-    @objc func levelButtonTapped(_ sender: UIButton) {
+    @objc
+    func levelButtonTapped(_ sender: UIButton) {
         guard let storageManager = storageManager else {
             return
         }
