@@ -63,10 +63,6 @@ public class SDSpriteObject: SDObject {
 
     private func loadTexture(named: String) -> [SKTexture] {
         let textureAtlas = SKTextureAtlas(named: named)
-        var frames = [SKTexture]()
-        for idx in 0..<textureAtlas.textureNames.count {
-            frames.append(textureAtlas.textureNamed(textureAtlas.textureNames[idx]))
-        }
-        return frames
+        return textureAtlas.textureNames.sorted().map { name in textureAtlas.textureNamed(name) }
     }
 }
