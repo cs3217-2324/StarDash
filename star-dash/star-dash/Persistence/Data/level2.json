@@ -43,21 +43,225 @@
       "levelId": 1,
       "position": [1300, 500],
       "size": [100,100]
-    }
+    },
+    {
+      "levelId": 1,
+      "position": [1500, 650],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [1600, 650],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [1700, 650],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [1900, 850],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [2000, 850],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [2200, 850],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [2300, 850],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [2500, 850],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [2600, 850],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [1900, 250],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [2000, 250],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [2100, 350],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [2200, 350],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [2300, 450],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [2400, 350],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [2500, 350],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [2600, 450],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [2700, 325],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [2800, 250],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [2900, 325],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [3000, 450],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [3300, 750],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [3300, 250],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [3600, 250],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [3900, 250],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [4200, 250],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [3600, 750],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [3900, 750],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [4200, 750],
+      "size": [100,100]
+    },
+    
+    
+ 
   ],
   "collectibles": [
       {
         "levelId": 1,
         "position": [400, 150],
         "radius": 25,
-        "points": 10
+        "points": 20
       },
       {
         "levelId": 1,
         "position": [700, 450],
         "radius": 25,
-        "points": 10
-      }
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [900, 250],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [1200, 600],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [1600, 750],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [2000, 350],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [2200, 450],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [2800, 350],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [3000, 325],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [3000, 250],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [3750, 450],
+        "radius": 25,
+        "points": 20
+      },
+      
+      
   ],
   
   "tools": [
@@ -71,6 +275,36 @@
       {
         "levelId": 1,
         "position": [700, 150],
+        "size": [100,100],
+        "health": 100
+      },
+      {
+        "levelId": 1,
+        "position": [1300, 600],
+        "size": [100,100],
+        "health": 100
+      },
+      {
+        "levelId": 1,
+        "position": [1800, 200],
+        "size": [100,100],
+        "health": 100
+      },
+      {
+        "levelId": 1,
+        "position": [2500, 450],
+        "size": [100,100],
+        "health": 100
+      },
+      {
+        "levelId": 1,
+        "position": [3450, 150],
+        "size": [100,100],
+        "health": 100
+      },
+      {
+        "levelId": 1,
+        "position": [4050, 150],
         "size": [100,100],
         "health": 100
       },

@@ -43,7 +43,7 @@ class MovementSystem: System {
         }
         let runSpeed = (event.toLeft ? -1 : 1) * PhysicsConstants.runSpeed
         var newRunSpeed = currentVelocity.dx + runSpeed
-        if (event.toLeft && newRunSpeed > 0 || !event.toLeft && newRunSpeed < 0) {
+        if event.toLeft && newRunSpeed > 0 || !event.toLeft && newRunSpeed < 0 {
             newRunSpeed = runSpeed
         }
         if abs(newRunSpeed) > PhysicsConstants.maxRunSpeed {

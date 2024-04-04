@@ -46,6 +46,7 @@ struct EntityFactory {
                         size: size)
             .withPhysics(rectangleOf: PhysicsConstants.Dimensions.monster)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.monster)
+                .configureIsDynamic(false)
             .addToGame()
     }
 
