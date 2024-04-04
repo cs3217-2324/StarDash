@@ -8,7 +8,7 @@
 import UIKit
 import SDPhysicsEngine
 
-class ViewController: UIViewController {
+class GameViewController: UIViewController {
     var scene: SDScene?
     var renderer: Renderer?
     var gameBridge: GameBridge?
@@ -87,7 +87,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: SDSceneDelegate {
+extension GameViewController: SDSceneDelegate {
 
     func update(_ scene: SDScene, deltaTime: Double) {
         gameBridge?.syncToEntities()
@@ -105,7 +105,7 @@ extension ViewController: SDSceneDelegate {
     }
 }
 
-extension ViewController: ViewDelegate {
+extension GameViewController: ViewDelegate {
 
     func joystickMoved(toLeft: Bool, playerIndex: Int) {
         gameEngine?.handlePlayerMove(toLeft: toLeft, playerIndex: playerIndex)

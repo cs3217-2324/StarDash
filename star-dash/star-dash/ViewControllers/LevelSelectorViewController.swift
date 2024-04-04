@@ -60,7 +60,7 @@ class LevelSelectorViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlaySegue" {
-            if let destinationVC = segue.destination as? ViewController {
+            if let destinationVC = segue.destination as? GameViewController {
                 if let data = sender as? GameData { // Adjust types accordingly
                     destinationVC.gameMode = data.gameMode
                     if let level = data.level {
