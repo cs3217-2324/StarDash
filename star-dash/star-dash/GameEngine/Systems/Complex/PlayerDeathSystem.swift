@@ -5,7 +5,7 @@ class PlayerDeathSystem: System {
     var dispatcher: EventModifiable?
     var entityManager: EntityManager
     var eventHandlers: [ObjectIdentifier: (Event) -> Void] = [:]
-    
+
     static let DEATH_TIMER: Double = 2 // 2 seconds
 
     init(_ entityManager: EntityManager, dispatcher: EventModifiable? = nil) {
