@@ -9,5 +9,5 @@ import Foundation
 
 struct PlayerInfo {
     let position: CGPoint
-    let player: PlayerSprite
+    let spriteImage: String
 }

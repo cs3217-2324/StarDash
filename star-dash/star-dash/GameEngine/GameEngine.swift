@@ -68,15 +68,16 @@ class GameEngine {
     }
 
     func playersInfo() -> [PlayerInfo] {
-        guard let positionSystem = systemManager.system(ofType: PositionSystem.self) else {
+        guard let positionSystem = systemManager.system(ofType: PositionSystem.self),
+              let spriteSystem = systemManager.system(ofType: SpriteSystem.self) else {
             return []
         }
         let playerEntities = entityManager.playerEntities()
         var playersInfo = [PlayerInfo]()
-        // TODO: Replace with actual icon sprite
         for playerEntity in playerEntities {
-            if let position = positionSystem.getPosition(of: playerEntity.id) {
-                playersInfo.append(PlayerInfo(position: position, player: .RedNose))
+            if let position = positionSystem.getPosition(of: playerEntity.id),
+               let spriteImage = spriteSystem.getImage(of: playerEntity.id) {
+                playersInfo.append(PlayerInfo(position: position, spriteImage: spriteImage))
             }
         }
         return playersInfo
@@ -157,11 +158,11 @@ class GameEngine {
         systemManager.add(SpeedBoostPowerUpSystem(entityManager, dispatcher: self))
         systemManager.add(HomingMissileSystem(entityManager, dispatcher: self))
     }
-    
+
     private func setupGameMode() {
         self.gameMode.setTarget(self)
     }
-    
+
     private func checkHasGameEnded() {
         if gameMode.hasGameEnded() {
             // TODO: Handle game ending

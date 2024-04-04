@@ -98,7 +98,6 @@
 		4E59E2562BAB33EC007B3FA7 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 4E59E2552BAB33EC007B3FA7 /* SQLite */; };
 		4E59E2582BAB3B5B007B3FA7 /* level1.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E59E2572BAB3B5B007B3FA7 /* level1.json */; };
 		4E59E25B2BAB3FDB007B3FA7 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59E25A2BAB3FDB007B3FA7 /* Level.swift */; };
-		4E59E25F2BAB4134007B3FA7 /* EntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59E25E2BAB4134007B3FA7 /* EntityType.swift */; };
 		4E59E2632BACB9E2007B3FA7 /* LevelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59E2622BACB9E2007B3FA7 /* LevelData.swift */; };
 		4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF52B9F7E070008F887 /* AppDelegate.swift */; };
 		4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF72B9F7E070008F887 /* SceneDelegate.swift */; };
@@ -116,7 +115,6 @@
 		4E630F302B9F83DE0008F887 /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F2F2B9F83DE0008F887 /* SpriteComponent.swift */; };
 		4E630F322B9F887C0008F887 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F312B9F887C0008F887 /* PhysicsComponent.swift */; };
 		4E630F342B9F8FC00008F887 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F332B9F8FC00008F887 /* Player.swift */; };
-		4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F362B9F91DE0008F887 /* PlayerSprite.swift */; };
 		4E630F392B9F943B0008F887 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F382B9F943B0008F887 /* EntityManager.swift */; };
 		4E86605C2BA095460035530D /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86605B2BA095460035530D /* Monster.swift */; };
 		4E86605F2BA095E30035530D /* Collectible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86605E2BA095E30035530D /* Collectible.swift */; };
@@ -310,7 +308,6 @@
 		4E59E2522BAB3061007B3FA7 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		4E59E2572BAB3B5B007B3FA7 /* level1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = level1.json; sourceTree = "<group>"; };
 		4E59E25A2BAB3FDB007B3FA7 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
-		4E59E25E2BAB4134007B3FA7 /* EntityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityType.swift; sourceTree = "<group>"; };
 		4E59E2622BACB9E2007B3FA7 /* LevelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelData.swift; sourceTree = "<group>"; };
 		4E630EF22B9F7E070008F887 /* star-dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "star-dash.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E630EF52B9F7E070008F887 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -332,7 +329,6 @@
 		4E630F2F2B9F83DE0008F887 /* SpriteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
 		4E630F312B9F887C0008F887 /* PhysicsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsComponent.swift; sourceTree = "<group>"; };
 		4E630F332B9F8FC00008F887 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		4E630F362B9F91DE0008F887 /* PlayerSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSprite.swift; sourceTree = "<group>"; };
 		4E630F382B9F943B0008F887 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
 		4E86605B2BA095460035530D /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		4E86605E2BA095E30035530D /* Collectible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collectible.swift; sourceTree = "<group>"; };
@@ -698,7 +694,6 @@
 				46B8C0982BA328BF00498705 /* GameEngine */,
 				E6A745102BA057040080C1BE /* Rendering */,
 				4E86605D2BA095CC0035530D /* Constants */,
-				4E630F352B9F91C20008F887 /* Enums */,
 				143AA38D2BA4D600009C28E7 /* Extensions */,
 				4E630EF52B9F7E070008F887 /* AppDelegate.swift */,
 				4E630EF72B9F7E070008F887 /* SceneDelegate.swift */,
@@ -766,15 +761,6 @@
 				E6D45DC42BB6ED8F0004CBA2 /* PowerUpComponent.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		4E630F352B9F91C20008F887 /* Enums */ = {
-			isa = PBXGroup;
-			children = (
-				4E630F362B9F91DE0008F887 /* PlayerSprite.swift */,
-				4E59E25E2BAB4134007B3FA7 /* EntityType.swift */,
-			);
-			path = Enums;
 			sourceTree = "<group>";
 		};
 		4E86605D2BA095CC0035530D /* Constants */ = {
@@ -1237,7 +1223,6 @@
 				E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */,
 				E6A745182BA057040080C1BE /* Renderer.swift in Sources */,
 				E6A115372BB9E2F90076A21F /* SpriteSystem.swift in Sources */,
-				4E59E25F2BAB4134007B3FA7 /* EntityType.swift in Sources */,
 				46D04A032BBACA490096D9F2 /* TwinkleStarAchievementPersistable.swift in Sources */,
 				460A200D2BB1DF27002597B8 /* PlayerSystem.swift in Sources */,
 				E6A745172BA057040080C1BE /* ControlView.swift in Sources */,
@@ -1256,7 +1241,6 @@
 				E6B1CC5B2BB7E00600416BCD /* ObstacleEntityPersistable.swift in Sources */,
 				4E630F342B9F8FC00008F887 /* Player.swift in Sources */,
 				14D348ED2BBEFFA800515036 /* GameMode.swift in Sources */,
-				4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */,
 				14970F502BA814D500CC1E8A /* ScoreComponent.swift in Sources */,
 				46D049FF2BBA81140096D9F2 /* PlayerAchievements.swift in Sources */,
 				E69FDDE42BADC2F10089D5F3 /* SpriteConstants.swift in Sources */,

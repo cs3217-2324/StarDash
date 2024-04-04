@@ -17,8 +17,8 @@ struct EntityFactory {
             .withPlayer(playerIndex: playerIndex)
             .withPosition(at: position)
             .withHealth(health: GameConstants.InitialHealth.player)
-            .withSprite(image: SpriteConstants.PlayerRedNose,
-                        textureSet: SpriteConstants.PlayerRedNoseTexture,
+            .withSprite(image: SpriteConstants.playerRedNose,
+                        textureSet: SpriteConstants.playerRedNoseTexture,
                         textureAtlas: nil,
                         size: PhysicsConstants.Dimensions.player)
             .withScore(score: 0)

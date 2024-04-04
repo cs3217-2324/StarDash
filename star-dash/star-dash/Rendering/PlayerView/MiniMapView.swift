@@ -38,7 +38,9 @@ class MiniMapView: UIView {
         removeAllPlayerIcons()
 
         for playerData in playersInfo {
-            let playerIcon = UIImageView(image: #imageLiteral(resourceName: "RedNoseIcon"))
+            let iconImage =
+                SpriteConstants.playerImageIconMap[playerData.spriteImage] ?? SpriteConstants.playerRedNoseIcon
+            let playerIcon = UIImageView(image: UIImage(named: iconImage))
             playerIcon.contentMode = .scaleAspectFit
             playerIcon.translatesAutoresizingMaskIntoConstraints = false
             addSubview(playerIcon)
