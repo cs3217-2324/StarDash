@@ -5,6 +5,8 @@ class PlayerDeathSystem: System {
     var dispatcher: EventModifiable?
     var entityManager: EntityManager
     var eventHandlers: [ObjectIdentifier: (Event) -> Void] = [:]
+    
+    static let DEATH_TIMER: Double = 2 // 2 seconds
 
     init(_ entityManager: EntityManager, dispatcher: EventModifiable? = nil) {
         self.isActive = true
@@ -27,7 +29,7 @@ class PlayerDeathSystem: System {
         let playerComponents = entityManager.components(ofType: PlayerComponent.self)
 
         for playerComponent in playerComponents where playerComponent.deathTimer > 0 && playerComponent.isDead {
-            playerComponent.deathTimer = max(0, playerComponent.deathTimer - Float(deltaTime))
+            playerComponent.deathTimer = max(0, playerComponent.deathTimer - deltaTime)
 
             if playerComponent.deathTimer == 0 {
                 respawnPlayer(playerComponent.entityId)
@@ -38,17 +40,19 @@ class PlayerDeathSystem: System {
     private func handlePlayerDeathEvent(event: PlayerDeathEvent) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
-              let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
-              let positionSystem = dispatcher?.system(ofType: PositionSystem.self) else {
+              let playerSystem = dispatcher?.system(ofType: PlayerSystem.self) else {
             return
         }
 
         physicsSystem.setVelocity(to: event.playerId, velocity: .zero)
         playerSystem.setCanJump(to: event.playerId, canJump: false)
         playerSystem.setCanMove(to: event.playerId, canMove: false)
-        spriteSystem.startAnimation(of: event.playerId, named: "death", repetitive: false, duration: 2)
+        spriteSystem.startAnimation(of: event.playerId,
+                                    named: "death",
+                                    repetitive: false,
+                                    duration: PlayerDeathSystem.DEATH_TIMER)
 
-        playerSystem.setDeathTimer(to: event.playerId, timer: 2)
+        playerSystem.setDeathTimer(to: event.playerId, timer: PlayerDeathSystem.DEATH_TIMER)
     }
 
     private func respawnPlayer(_ playerId: EntityId) {

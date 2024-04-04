@@ -8,7 +8,7 @@ class PlayerComponent: Component {
 
     // death properties
     var isDead = false
-    var deathTimer: Float = 0
+    var deathTimer: Double = 0
 
     init(id: ComponentId, entityId: EntityId, playerIndex: Int) {
         self.playerIndex = playerIndex
