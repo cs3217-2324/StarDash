@@ -14,7 +14,7 @@ class PowerUpSystem: System {
     }
 
     func setup() {
-        dispatcher?.registerListener(for: PowerUpBoxPlayerEvent.self, listener: self)
+        dispatcher?.registerListener(self)
 
         eventHandlers[ObjectIdentifier(PowerUpBoxPlayerEvent.self)] = { event in
             if let powerUpBoxPlayerEvent = event as? PowerUpBoxPlayerEvent {

@@ -15,4 +15,8 @@ class UseGrappleHookEvent: Event {
         self.timestamp = Date.now
         self.playerId = playerId
     }
+
+    var playerIdForEvent: EntityId? {
+        playerId
+    }
 }

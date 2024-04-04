@@ -14,8 +14,7 @@ class HomingMissileSystem: System, EventListener {
     }
 
     func setup() {
-        dispatcher?.registerListener(for: MissileHitPlayerEvent.self, listener: self)
-        dispatcher?.registerListener(for: MissileBlockedEvent.self, listener: self)
+        dispatcher?.registerListener(self)
 
         eventHandlers[ObjectIdentifier(MissileHitPlayerEvent.self)] = { event in
             if let missileHitPlayerEvent = event as? MissileHitPlayerEvent {

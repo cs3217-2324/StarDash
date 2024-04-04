@@ -17,4 +17,8 @@ class GrappleHookObstacleContactEvent: Event {
         self.grappleHookId = grappleHookId
         self.obstacleId = obstacleId
     }
+
+    var playerIdForEvent: EntityId? {
+        nil
+    }
 }

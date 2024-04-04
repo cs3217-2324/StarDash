@@ -16,6 +16,7 @@ class GameViewController: UIViewController {
     var storageManager: StorageManager?
     var level: LevelPersistable?
     var numberOfPlayers: Int = 0
+    var achievementManager: AchievementManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +77,12 @@ extension GameViewController {
         let entities = storageManager.getAllEntity(id: level.id)
         gameEngine.setupLevel(level: level, entities: entities, sceneSize: scene.size)
         gameEngine.setupPlayers(numberOfPlayers: self.numberOfPlayers)
+
+        self.achievementManager = AchievementManager(withMap: gameEngine.playerIdEntityMap)
+
+        if let achievementManager = self.achievementManager {
+            gameEngine.registerListener(achievementManager)
+        }
     }
 
     private func setupBackground(in scene: SDScene) {

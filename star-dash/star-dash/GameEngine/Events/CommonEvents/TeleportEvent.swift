@@ -10,4 +10,8 @@ class TeleportEvent: Event {
         self.entityId = entityId
         self.destination = destination
     }
+
+    var playerIdForEvent: EntityId? {
+        nil
+    }
 }
