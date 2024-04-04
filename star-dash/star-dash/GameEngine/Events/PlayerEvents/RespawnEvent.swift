@@ -9,12 +9,16 @@ import Foundation
 
 class RespawnEvent: Event {
     let timestamp: Date
-    let entityId: EntityId
+    let playerId: EntityId
     let newPosition: CGPoint
 
-    init(on entityId: EntityId, to newPosition: CGPoint) {
+    init(on playerId: EntityId, to newPosition: CGPoint) {
         self.timestamp = Date.now
-        self.entityId = entityId
+        self.playerId = playerId
         self.newPosition = newPosition
+    }
+
+    var playerIdForEvent: EntityId? {
+        playerId
     }
 }

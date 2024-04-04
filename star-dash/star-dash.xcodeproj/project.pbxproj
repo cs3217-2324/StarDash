@@ -40,7 +40,10 @@
 		461148932BA1D04B0073E7E1 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148922BA1D04B0073E7E1 /* System.swift */; };
 		461148962BA1D53D0073E7E1 /* PositionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148952BA1D53D0073E7E1 /* PositionSystem.swift */; };
 		461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */; };
+		461B1FF62BBC50220020F6C4 /* Database+Achievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461B1FF52BBC50220020F6C4 /* Database+Achievements.swift */; };
 		46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B8C0992BA328D900498705 /* GameEngine.swift */; };
+		46BB142A2BBE81E3001AE148 /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB14292BBE81E3001AE148 /* AchievementViewController.swift */; };
+		46BB142C2BBEB1EC001AE148 /* Achievements.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BB142B2BBEB1EC001AE148 /* Achievements.storyboard */; };
 		46C3B1C02BB45C2700F10574 /* EntityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1BF2BB45C2700F10574 /* EntityFactory.swift */; };
 		46C3B1C22BB467BB00F10574 /* EntityManagerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1C12BB467BB00F10574 /* EntityManagerInterface.swift */; };
 		46C3B1C42BB5055F00F10574 /* EntityBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1C32BB5055F00F10574 /* EntityBuilder.swift */; };
@@ -53,6 +56,17 @@
 		46C3B1D62BB59F9B00F10574 /* ReleaseGrappleHookEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1D52BB59F9B00F10574 /* ReleaseGrappleHookEvent.swift */; };
 		46C3B1D82BB654F400F10574 /* GrappleHook+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1D72BB654F400F10574 /* GrappleHook+Collidable.swift */; };
 		46C3B1DA2BB656F000F10574 /* GrappleHookObstacleContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1D92BB656F000F10574 /* GrappleHookObstacleContactEvent.swift */; };
+		46D049F52BB94EFA0096D9F2 /* AchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D049F42BB94EFA0096D9F2 /* AchievementManager.swift */; };
+		46D049F72BB94F100096D9F2 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D049F62BB94F100096D9F2 /* Achievement.swift */; };
+		46D049F92BB951130096D9F2 /* TwinkleStarAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D049F82BB951130096D9F2 /* TwinkleStarAchievement.swift */; };
+		46D049FB2BB99B150096D9F2 /* StellarCollectorAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D049FA2BB99B150096D9F2 /* StellarCollectorAchievement.swift */; };
+		46D049FD2BB99C5B0096D9F2 /* PowerRangerAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D049FC2BB99C5B0096D9F2 /* PowerRangerAchievement.swift */; };
+		46D049FF2BBA81140096D9F2 /* PlayerAchievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D049FE2BBA81140096D9F2 /* PlayerAchievements.swift */; };
+		46D04A032BBACA490096D9F2 /* TwinkleStarAchievementPersistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D04A022BBACA490096D9F2 /* TwinkleStarAchievementPersistable.swift */; };
+		46D04A052BBACA5D0096D9F2 /* StellarCollectorAchievementPersistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D04A042BBACA5D0096D9F2 /* StellarCollectorAchievementPersistable.swift */; };
+		46D04A072BBACA6A0096D9F2 /* PowerRangerAchievementPersistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D04A062BBACA6A0096D9F2 /* PowerRangerAchievementPersistable.swift */; };
+		46D04A092BBACA8B0096D9F2 /* AchievementPersistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D04A082BBACA8B0096D9F2 /* AchievementPersistable.swift */; };
+		46D04A0C2BBAE22F0096D9F2 /* AchievementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D04A0B2BBAE22F0096D9F2 /* AchievementFactory.swift */; };
 		46D3C5C72BB702BD008CC24F /* Rope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D3C5C62BB702BD008CC24F /* Rope.swift */; };
 		46D3C5C92BB70541008CC24F /* OwnsRopeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D3C5C82BB70541008CC24F /* OwnsRopeComponent.swift */; };
 		46D418112BA5C88B0091A38B /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418102BA5C88B0091A38B /* Wall.swift */; };
@@ -230,7 +244,10 @@
 		461148922BA1D04B0073E7E1 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		461148952BA1D53D0073E7E1 /* PositionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSystem.swift; sourceTree = "<group>"; };
 		461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsSystem.swift; sourceTree = "<group>"; };
+		461B1FF52BBC50220020F6C4 /* Database+Achievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+Achievements.swift"; sourceTree = "<group>"; };
 		46B8C0992BA328D900498705 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
+		46BB14292BBE81E3001AE148 /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
+		46BB142B2BBEB1EC001AE148 /* Achievements.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Achievements.storyboard; sourceTree = "<group>"; };
 		46C3B1BF2BB45C2700F10574 /* EntityFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityFactory.swift; sourceTree = "<group>"; };
 		46C3B1C12BB467BB00F10574 /* EntityManagerInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerInterface.swift; sourceTree = "<group>"; };
 		46C3B1C32BB5055F00F10574 /* EntityBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityBuilder.swift; sourceTree = "<group>"; };
@@ -244,6 +261,17 @@
 		46C3B1D52BB59F9B00F10574 /* ReleaseGrappleHookEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseGrappleHookEvent.swift; sourceTree = "<group>"; };
 		46C3B1D72BB654F400F10574 /* GrappleHook+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GrappleHook+Collidable.swift"; sourceTree = "<group>"; };
 		46C3B1D92BB656F000F10574 /* GrappleHookObstacleContactEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrappleHookObstacleContactEvent.swift; sourceTree = "<group>"; };
+		46D049F42BB94EFA0096D9F2 /* AchievementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementManager.swift; sourceTree = "<group>"; };
+		46D049F62BB94F100096D9F2 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
+		46D049F82BB951130096D9F2 /* TwinkleStarAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleStarAchievement.swift; sourceTree = "<group>"; };
+		46D049FA2BB99B150096D9F2 /* StellarCollectorAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StellarCollectorAchievement.swift; sourceTree = "<group>"; };
+		46D049FC2BB99C5B0096D9F2 /* PowerRangerAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerRangerAchievement.swift; sourceTree = "<group>"; };
+		46D049FE2BBA81140096D9F2 /* PlayerAchievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAchievements.swift; sourceTree = "<group>"; };
+		46D04A022BBACA490096D9F2 /* TwinkleStarAchievementPersistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinkleStarAchievementPersistable.swift; sourceTree = "<group>"; };
+		46D04A042BBACA5D0096D9F2 /* StellarCollectorAchievementPersistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StellarCollectorAchievementPersistable.swift; sourceTree = "<group>"; };
+		46D04A062BBACA6A0096D9F2 /* PowerRangerAchievementPersistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerRangerAchievementPersistable.swift; sourceTree = "<group>"; };
+		46D04A082BBACA8B0096D9F2 /* AchievementPersistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementPersistable.swift; sourceTree = "<group>"; };
+		46D04A0B2BBAE22F0096D9F2 /* AchievementFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementFactory.swift; sourceTree = "<group>"; };
 		46D3C5C62BB702BD008CC24F /* Rope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rope.swift; sourceTree = "<group>"; };
 		46D3C5C82BB70541008CC24F /* OwnsRopeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnsRopeComponent.swift; sourceTree = "<group>"; };
 		46D3C5CA2BB70DDA008CC24F /* SpriteSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteSystem.swift; sourceTree = "<group>"; };
@@ -461,6 +489,16 @@
 			path = CommonEvents;
 			sourceTree = "<group>";
 		};
+		14E58BC42BB57E8000D5ABC3 /* Persistables */ = {
+			isa = PBXGroup;
+			children = (
+				46D04A0A2BBACA950096D9F2 /* EntityPersistable */,
+				46D04A012BBACA190096D9F2 /* AchievementPersistable */,
+				E6B1CC542BB7E00500416BCD /* LevelPersistable.swift */,
+			);
+			path = Persistables;
+			sourceTree = "<group>";
+		};
 		4611488F2BA1CD9E0073E7E1 /* Systems */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,6 +536,43 @@
 				46C3B1D52BB59F9B00F10574 /* ReleaseGrappleHookEvent.swift */,
 			);
 			path = GrappleHookEvents;
+			sourceTree = "<group>";
+		};
+		46D049F32BB94ED30096D9F2 /* Achievement */ = {
+			isa = PBXGroup;
+			children = (
+				46D049F42BB94EFA0096D9F2 /* AchievementManager.swift */,
+				46D049F62BB94F100096D9F2 /* Achievement.swift */,
+				46D049F82BB951130096D9F2 /* TwinkleStarAchievement.swift */,
+				46D049FA2BB99B150096D9F2 /* StellarCollectorAchievement.swift */,
+				46D049FC2BB99C5B0096D9F2 /* PowerRangerAchievement.swift */,
+				46D049FE2BBA81140096D9F2 /* PlayerAchievements.swift */,
+				46D04A0B2BBAE22F0096D9F2 /* AchievementFactory.swift */,
+			);
+			path = Achievement;
+			sourceTree = "<group>";
+		};
+		46D04A012BBACA190096D9F2 /* AchievementPersistable */ = {
+			isa = PBXGroup;
+			children = (
+				46D04A022BBACA490096D9F2 /* TwinkleStarAchievementPersistable.swift */,
+				46D04A042BBACA5D0096D9F2 /* StellarCollectorAchievementPersistable.swift */,
+				46D04A062BBACA6A0096D9F2 /* PowerRangerAchievementPersistable.swift */,
+				46D04A082BBACA8B0096D9F2 /* AchievementPersistable.swift */,
+			);
+			path = AchievementPersistable;
+			sourceTree = "<group>";
+		};
+		46D04A0A2BBACA950096D9F2 /* EntityPersistable */ = {
+			isa = PBXGroup;
+			children = (
+				E6B1CC552BB7E00500416BCD /* ObstacleEntityPersistable.swift */,
+				E6B1CC562BB7E00500416BCD /* EntityPersistable.swift */,
+				E6B1CC572BB7E00500416BCD /* MonsterEntityPersistable.swift */,
+				E6B1CC582BB7E00500416BCD /* CollectibleEntityPersistable.swift */,
+				E64F31722BB4882D00EC5371 /* PowerUpBoxEntityPersistable.swift */,
+			);
+			path = EntityPersistable;
 			sourceTree = "<group>";
 		};
 		46D418142BA5CB760091A38B /* Collision */ = {
@@ -542,10 +617,11 @@
 		4E59E24F2BAB2DBB007B3FA7 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				E6B1CC522BB7E00500416BCD /* Persistables */,
+				14E58BC42BB57E8000D5ABC3 /* Persistables */,
 				4E59E2642BAD9A06007B3FA7 /* Data */,
 				4E59E2502BAB2EAE007B3FA7 /* StorageManager.swift */,
 				4E59E2522BAB3061007B3FA7 /* Database.swift */,
+				461B1FF52BBC50220020F6C4 /* Database+Achievements.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -596,6 +672,7 @@
 		4E630EF42B9F7E070008F887 /* star-dash */ = {
 			isa = PBXGroup;
 			children = (
+				46D049F32BB94ED30096D9F2 /* Achievement */,
 				4E59E2592BAB3FC9007B3FA7 /* Model */,
 				4E59E24F2BAB2DBB007B3FA7 /* Persistence */,
 				E6A011152BA5D111006904D9 /* GameBridge */,
@@ -608,6 +685,7 @@
 				4E630EF72B9F7E070008F887 /* SceneDelegate.swift */,
 				4EAE2C2C2BBAED1200D9E1DE /* ViewControllers */,
 				4E630EFB2B9F7E070008F887 /* Main.storyboard */,
+				46BB142B2BBEB1EC001AE148 /* Achievements.storyboard */,
 				4E18DD092BBB053A00746ACC /* LevelSelector.storyboard */,
 				4EAE2C2A2BBAECFE00D9E1DE /* Game.storyboard */,
 				4E630EFE2B9F7E090008F887 /* Assets.xcassets */,
@@ -714,6 +792,7 @@
 				4E630EF92B9F7E070008F887 /* ViewController.swift */,
 				4EAE2C2D2BBAED2400D9E1DE /* MenuViewController.swift */,
 				4E18DD072BBB050B00746ACC /* LevelSelectorViewController.swift */,
+				46BB14292BBE81E3001AE148 /* AchievementViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -829,19 +908,6 @@
 				E69EE9332BAC6CC300033AB5 /* OverlayInfo.swift */,
 			);
 			path = Rendering;
-			sourceTree = "<group>";
-		};
-		E6B1CC522BB7E00500416BCD /* Persistables */ = {
-			isa = PBXGroup;
-			children = (
-				E6B1CC542BB7E00500416BCD /* LevelPersistable.swift */,
-				E6B1CC552BB7E00500416BCD /* ObstacleEntityPersistable.swift */,
-				E6B1CC562BB7E00500416BCD /* EntityPersistable.swift */,
-				E6B1CC572BB7E00500416BCD /* MonsterEntityPersistable.swift */,
-				E6B1CC582BB7E00500416BCD /* CollectibleEntityPersistable.swift */,
-				E64F31722BB4882D00EC5371 /* PowerUpBoxEntityPersistable.swift */,
-			);
-			path = Persistables;
 			sourceTree = "<group>";
 		};
 		E6B1DC912BA34A5E00473563 /* Frameworks */ = {
@@ -990,6 +1056,7 @@
 			files = (
 				4EAE2C2B2BBAECFE00D9E1DE /* Game.storyboard in Resources */,
 				4E1A50D02BBC6495000B7900 /* level3.json in Resources */,
+				46BB142C2BBEB1EC001AE148 /* Achievements.storyboard in Resources */,
 				4E18DD0A2BBB053A00746ACC /* LevelSelector.storyboard in Resources */,
 				142D9F8F2BA15FBB005FE9E0 /* .swiftlint.yml in Resources */,
 				4E630F022B9F7E090008F887 /* LaunchScreen.storyboard in Resources */,
@@ -1058,10 +1125,12 @@
 				46C3B1CB2BB5976200F10574 /* GrappleHookOwnerComponent.swift in Sources */,
 				14E2478E2BA22FCE0071FFC0 /* MoveEvent.swift in Sources */,
 				14D14B732BA5A3CD00386C3B /* RemoveEvent.swift in Sources */,
+				461B1FF62BBC50220020F6C4 /* Database+Achievements.swift in Sources */,
 				E6A2B3A92BBBA41900DE6C79 /* GrappleHookSystem.swift in Sources */,
 				4E8660622BA0964A0035530D /* Obstacle.swift in Sources */,
 				46C3B1D62BB59F9B00F10574 /* ReleaseGrappleHookEvent.swift in Sources */,
 				1471B0A02BA6A70600878B14 /* HealthSystem.swift in Sources */,
+				46D049FB2BB99B150096D9F2 /* StellarCollectorAchievement.swift in Sources */,
 				461148932BA1D04B0073E7E1 /* System.swift in Sources */,
 				E6B0AAD12BAAE3DC009CB939 /* ViewDelegate.swift in Sources */,
 				46C3B1D82BB654F400F10574 /* GrappleHook+Collidable.swift in Sources */,
@@ -1092,6 +1161,7 @@
 				46C3B1D42BB59F9200F10574 /* SwingGrappleHookEvent.swift in Sources */,
 				E6B1CC5C2BB7E00600416BCD /* EntityPersistable.swift in Sources */,
 				4E630F322B9F887C0008F887 /* PhysicsComponent.swift in Sources */,
+				46D049F92BB951130096D9F2 /* TwinkleStarAchievement.swift in Sources */,
 				E64F316D2BB4861800EC5371 /* SpeedBoostPowerUp.swift in Sources */,
 				E6D45DC32BB6E6E30004CBA2 /* BuffComponent.swift in Sources */,
 				1471B0AD2BA6AE4E00878B14 /* UseGrappleHookEvent.swift in Sources */,
@@ -1106,20 +1176,25 @@
 				E6AB5E072BBC3FB400F2199E /* PowerUpBoxPlayerEvent.swift in Sources */,
 				46D418132BA5C9930091A38B /* Floor.swift in Sources */,
 				E64361152BA4C2CD003850FD /* GameBridge.swift in Sources */,
-				E6B1CC5A2BB7E00600416BCD /* LevelPersistable.swift in Sources */,
+				46D04A072BBACA6A0096D9F2 /* PowerRangerAchievementPersistable.swift in Sources */,
 				E6B0AAD32BAAE438009CB939 /* ControlViewDelegate.swift in Sources */,
 				4604BBD92BA81C940078B84C /* InventorySystem.swift in Sources */,
+				46D049F52BB94EFA0096D9F2 /* AchievementManager.swift in Sources */,
+				E6B1CC5A2BB7E00600416BCD /* LevelPersistable.swift in Sources */,
 				E6D45DBB2BB6E6080004CBA2 /* PowerUpFactory.swift in Sources */,
 				14E247952BA2CB480071FFC0 /* EventManager.swift in Sources */,
 				4EC561E32BB1E98400166DDC /* PlayerObstacleContactEvent.swift in Sources */,
 				E660353D2BB5EAEE00397068 /* MiniMapView.swift in Sources */,
+				46D04A0C2BBAE22F0096D9F2 /* AchievementFactory.swift in Sources */,
 				4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */,
 				46C3B1C22BB467BB00F10574 /* EntityManagerInterface.swift in Sources */,
 				E69FDDE02BAD3DAD0089D5F3 /* PointsComponent.swift in Sources */,
 				14970F542BA8163300CC1E8A /* ScoreSystem.swift in Sources */,
 				E64361112BA4C2CD003850FD /* SyncModule.swift in Sources */,
+				46D049FD2BB99C5B0096D9F2 /* PowerRangerAchievement.swift in Sources */,
 				E6A7451B2BA0C1890080C1BE /* PlayerView.swift in Sources */,
 				46D418282BA5D6800091A38B /* Floor+Collidable.swift in Sources */,
+				46D04A092BBACA8B0096D9F2 /* AchievementPersistable.swift in Sources */,
 				E69EE9322BAC6CBB00033AB5 /* GameInfo.swift in Sources */,
 				46D418222BA5D4E60091A38B /* Obstacle+Collidable.swift in Sources */,
 				E638B9CF2BAB3C5D00931CC2 /* TeleportEvent.swift in Sources */,
@@ -1133,12 +1208,15 @@
 				46D3C5C92BB70541008CC24F /* OwnsRopeComponent.swift in Sources */,
 				E64361142BA4C2CD003850FD /* CreationModule.swift in Sources */,
 				46C3B1C42BB5055F00F10574 /* EntityBuilder.swift in Sources */,
+				46D04A052BBACA5D0096D9F2 /* StellarCollectorAchievementPersistable.swift in Sources */,
 				460A200B2BB1D04F002597B8 /* AttackSystem.swift in Sources */,
+				46D049F72BB94F100096D9F2 /* Achievement.swift in Sources */,
 				E6A72FC62BB2E1E10015729E /* LayoutUtils.swift in Sources */,
 				E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */,
 				E6A745182BA057040080C1BE /* Renderer.swift in Sources */,
 				E6A115372BB9E2F90076A21F /* SpriteSystem.swift in Sources */,
 				4E59E25F2BAB4134007B3FA7 /* EntityType.swift in Sources */,
+				46D04A032BBACA490096D9F2 /* TwinkleStarAchievementPersistable.swift in Sources */,
 				460A200D2BB1DF27002597B8 /* PlayerSystem.swift in Sources */,
 				E6A745172BA057040080C1BE /* ControlView.swift in Sources */,
 				460A20092BB1B524002597B8 /* EventListener.swift in Sources */,
@@ -1152,10 +1230,12 @@
 				E6B1CC5E2BB7E00600416BCD /* CollectibleEntityPersistable.swift in Sources */,
 				46D418262BA5D6500091A38B /* Wall+Collidable.swift in Sources */,
 				E69FDDE22BAD3DC40089D5F3 /* EntityConstants.swift in Sources */,
+				46BB142A2BBE81E3001AE148 /* AchievementViewController.swift in Sources */,
 				E6B1CC5B2BB7E00600416BCD /* ObstacleEntityPersistable.swift in Sources */,
 				4E630F342B9F8FC00008F887 /* Player.swift in Sources */,
 				4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */,
 				14970F502BA814D500CC1E8A /* ScoreComponent.swift in Sources */,
+				46D049FF2BBA81140096D9F2 /* PlayerAchievements.swift in Sources */,
 				E69FDDE42BADC2F10089D5F3 /* SpriteConstants.swift in Sources */,
 				E6B1CC5D2BB7E00600416BCD /* MonsterEntityPersistable.swift in Sources */,
 				E64F31672BB3D14600EC5371 /* UIView.swift in Sources */,

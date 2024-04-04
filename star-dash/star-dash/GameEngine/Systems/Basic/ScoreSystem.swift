@@ -37,7 +37,7 @@ class ScoreSystem: System {
     }
 
     func setup() {
-        dispatcher?.registerListener(for: PickupCollectibleEvent.self, listener: self)
+        dispatcher?.registerListener(self)
 
         eventHandlers[ObjectIdentifier(PickupCollectibleEvent.self)] = { event in
             if let pickupCollectibleEvent = event as? PickupCollectibleEvent {

@@ -51,11 +51,7 @@ class GrappleHookSystem: System {
     }
 
     func setup() {
-        dispatcher?.registerListener(for: UseGrappleHookEvent.self, listener: self)
-        dispatcher?.registerListener(for: ShootGrappleHookEvent.self, listener: self)
-        dispatcher?.registerListener(for: RetractGrappleHookEvent.self, listener: self)
-        dispatcher?.registerListener(for: SwingGrappleHookEvent.self, listener: self)
-        dispatcher?.registerListener(for: ReleaseGrappleHookEvent.self, listener: self)
+        dispatcher?.registerListener(self)
 
         eventHandlers[ObjectIdentifier(UseGrappleHookEvent.self)] = { event in
             if let useGrappleHookEvent = event as? UseGrappleHookEvent {

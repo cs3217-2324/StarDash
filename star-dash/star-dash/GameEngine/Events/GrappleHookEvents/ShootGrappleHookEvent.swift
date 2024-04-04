@@ -15,4 +15,8 @@ class ShootGrappleHookEvent: Event {
         self.timestamp = Date.now
         self.hookId = hookId
     }
+
+    var playerIdForEvent: EntityId? {
+        nil
+    }
 }

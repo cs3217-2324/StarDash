@@ -10,4 +10,8 @@ class MissileHitPlayerEvent: Event {
         self.entityId = playerEntityId
         self.missileId = missileId
     }
+
+    var playerIdForEvent: EntityId? {
+        entityId
+    }
 }

@@ -16,4 +16,8 @@ class PlayerObstacleContactEvent: Event {
         self.playerId = playerId
         self.obstacleId = obstacleEntityId
     }
+
+    var playerIdForEvent: EntityId? {
+        playerId
+    }
 }

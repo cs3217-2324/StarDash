@@ -21,12 +21,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="center" axis="vertical" spacing="10" id="PUz-Cw-weV">
-                                <rect key="frame" x="556" y="372" width="65" height="79"/>
+                            <stackView opaque="NO" contentMode="center" axis="vertical" distribution="equalSpacing" spacing="30" id="PUz-Cw-weV">
+                                <rect key="frame" x="556" y="372" width="131" height="163.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIg-qy-c7E">
-                                        <rect key="frame" x="0.0" y="0.0" width="65" height="34.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="131" height="34.5"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Play"/>
                                         <connections>
@@ -34,11 +34,19 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9od-mk-aUW">
-                                        <rect key="frame" x="0.0" y="44.5" width="65" height="34.5"/>
+                                        <rect key="frame" x="0.0" y="64.5" width="131" height="34.5"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Local"/>
                                         <connections>
                                             <action selector="localMultiplayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ag1-C2-EDy"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOE-FG-tgG">
+                                        <rect key="frame" x="0.0" y="129" width="131" height="34.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Achievements"/>
+                                        <connections>
+                                            <action selector="viewAchievements:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dKg-AU-DXx"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -53,6 +61,7 @@
                     </view>
                     <connections>
                         <segue destination="JZr-ge-cSE" kind="presentation" identifier="LevelSelectSeque" modalPresentationStyle="fullScreen" id="8Tc-eW-RKF"/>
+                        <segue destination="giF-WW-Dvk" kind="presentation" identifier="AchievementsSegue" modalPresentationStyle="fullScreen" id="tAt-jF-dKZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -66,6 +75,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bvX-BA-HYf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="561" y="-56"/>
+        </scene>
+        <!--Achievements-->
+        <scene sceneID="beb-Tz-b8w">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Achievements" storyboardName="Achievements" referencedIdentifier="Achievements" id="giF-WW-Dvk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xeb-Yn-21W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="537" y="80"/>
         </scene>
     </scenes>
     <resources>

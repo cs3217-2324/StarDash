@@ -17,4 +17,8 @@ class MoveEvent: Event {
         self.entityId = entityId
         self.toLeft = toLeft
     }
+
+    var playerIdForEvent: EntityId? {
+        nil
+    }
 }

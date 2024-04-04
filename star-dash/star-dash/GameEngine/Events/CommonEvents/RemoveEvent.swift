@@ -15,4 +15,8 @@ class RemoveEvent: Event {
         self.timestamp = Date.now
         self.entityId = entityId
     }
+
+    var playerIdForEvent: EntityId? {
+        nil
+    }
 }

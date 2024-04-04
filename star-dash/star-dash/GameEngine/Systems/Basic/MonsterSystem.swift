@@ -21,7 +21,7 @@ class MonsterSystem: System {
     }
 
     func setup() {
-        dispatcher?.registerListener(for: MonsterDeathEvent.self, listener: self)
+        dispatcher?.registerListener(self)
 
         eventHandlers[ObjectIdentifier(MonsterDeathEvent.self)] = { event in
             if let monsterDeathEvent = event as? MonsterDeathEvent {

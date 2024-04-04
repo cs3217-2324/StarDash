@@ -21,8 +21,7 @@ class PlayerSystem: System {
     }
 
     func setup() {
-        dispatcher?.registerListener(for: RespawnEvent.self, listener: self)
-        dispatcher?.registerListener(for: PlayerDeathEvent.self, listener: self)
+        dispatcher?.registerListener(self)
 
         eventHandlers[ObjectIdentifier(RespawnEvent.self)] = { event in
             if let respawanEvent = event as? RespawnEvent {
@@ -68,7 +67,7 @@ class PlayerSystem: System {
     }
 
     private func handleRespawnEvent(event: RespawnEvent) {
-        dispatcher?.add(event: TeleportEvent(on: event.entityId, to: event.newPosition))
+        dispatcher?.add(event: TeleportEvent(on: event.playerId, to: event.newPosition))
     }
 
     private func handlePlayerDeathEvent(event: PlayerDeathEvent) {
