@@ -10,7 +10,7 @@ import Foundation
 class StellarCollectorAchievement: Achievement {
     let name: String = "Stellar Collector"
     let description: String = "Collect 10 Stars."
-    let imageName: String = ""
+    let imageName: String = "StellarCollector"
     let playerId: Int
 
     var starsCollected: Int

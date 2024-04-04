@@ -10,7 +10,7 @@ import Foundation
 class PowerRangerAchievement: Achievement {
     let name: String = "Power Ranger"
     let description: String = "Use at least 3 power ups in a single game."
-    let imageName: String = ""
+    let imageName: String = "PowerRanger"
     let playerId: Int
 
     var powerUpsUsed: Int

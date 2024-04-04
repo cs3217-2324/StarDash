@@ -42,12 +42,6 @@ class MenuViewController: UIViewController {
                 }
             }
         }
-
-        if segue.identifier == "AchievementsSegue" {
-            if let destinationVC = segue.destination as? AchievementViewController {
-                // Pass any necessary data to the achievements view controller here
-            }
-        }
     }
 
 }

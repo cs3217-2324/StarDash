@@ -10,7 +10,7 @@ import Foundation
 class TwinkleStarAchievement: Achievement {
     let name: String = "Twinkle Star"
     let description: String = "Collect your first star."
-    let imageName: String = ""
+    let imageName: String = "TwinkleStar"
     let playerId: Int
 
     var hasCollectedStar: Bool

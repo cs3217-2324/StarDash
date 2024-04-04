@@ -30,11 +30,35 @@
                                     <action selector="back:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="RDf-lh-ys5"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qUd-BM-uQH" userLabel="playersScrollView">
+                                <rect key="frame" x="180" y="70" width="820" height="680"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4Kr-sm-szv" userLabel="playersStackView">
+                                        <rect key="frame" x="0.0" y="0.0" width="820" height="680"/>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="4Kr-sm-szv" firstAttribute="width" secondItem="qUd-BM-uQH" secondAttribute="width" id="2oq-iE-zYa"/>
+                                    <constraint firstItem="4Kr-sm-szv" firstAttribute="top" secondItem="qUd-BM-uQH" secondAttribute="top" id="3r4-0L-kqB"/>
+                                    <constraint firstItem="4Kr-sm-szv" firstAttribute="leading" secondItem="qUd-BM-uQH" secondAttribute="leading" id="4hj-Lp-scu"/>
+                                    <constraint firstAttribute="trailing" secondItem="4Kr-sm-szv" secondAttribute="trailing" id="Kob-My-L16"/>
+                                    <constraint firstAttribute="bottom" secondItem="4Kr-sm-szv" secondAttribute="bottom" id="PrS-dA-kGu"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="dqj-iA-XYh"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="afP-RB-Xw7"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qUd-BM-uQH" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="46" id="0oS-ai-84v"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="qUd-BM-uQH" secondAttribute="trailing" constant="180" id="NJE-Mq-HTT"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="qUd-BM-uQH" secondAttribute="bottom" constant="50" id="X2I-zi-L3l"/>
+                            <constraint firstItem="qUd-BM-uQH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="180" id="ooh-5j-KTn"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="playersStackView" destination="4Kr-sm-szv" id="cnu-aV-xUB"/>
                         <segue destination="0Ce-IC-Ylf" kind="presentation" identifier="BackSegue" modalPresentationStyle="fullScreen" id="0bJ-DJ-8Hg"/>
                     </connections>
                 </viewController>
