@@ -41,7 +41,12 @@ struct Logger {
     }
 
     private static func logMessage(log: OSLog, subtitle: String, message: String, level: LogLevel) {
-        os_log("[%{public}@] %{public}@: %{public}@", log: log, type: level.osLogType, subtitle, level.description, message)
+        os_log("[%{public}@] %{public}@: %{public}@",
+               log: log,
+               type: level.osLogType,
+               subtitle,
+               level.description,
+               message)
     }
 }
 

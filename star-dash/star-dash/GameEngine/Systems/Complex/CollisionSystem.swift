@@ -113,7 +113,7 @@ class CollisionSystem: System {
         guard playerPosition.y - PhysicsConstants.Dimensions.player.height / 2 >
                 obstaclePosition.y + PhysicsConstants.Dimensions.obstacle.height / 2 else {
             if playerPosition.y + PhysicsConstants.Dimensions.player.height / 2 >
-                obstaclePosition.y + PhysicsConstants.Dimensions.obstacle.height / 2  {
+                obstaclePosition.y + PhysicsConstants.Dimensions.obstacle.height / 2 {
                 dispatcher?.add(event: StopMovingEvent(on: event.playerId))
             }
             return
