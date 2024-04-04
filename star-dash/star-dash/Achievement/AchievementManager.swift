@@ -9,7 +9,7 @@ import Foundation
 
 class AchievementManager: EventListener {
     private var entityIdMap: [EntityId: Int] = [:]
-    private var idAchievementMap: [Int: PlayerAchievements] = [:]
+    private(set) var idAchievementMap: [Int: PlayerAchievements] = [:]
     private var storageManager = StorageManager()
     private var achievementFactoryMap: [ObjectIdentifier: (Int) -> Achievement] = [:]
 

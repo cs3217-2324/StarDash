@@ -28,6 +28,10 @@ class MenuViewController: UIViewController {
                                       storageManager: storageManager))
     }
 
+    @IBAction private func viewAchievements(_ sender: Any) {
+        performSegue(withIdentifier: "AchievementsSegue", sender: nil)
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LevelSelectSeque" {
             if let destinationVC = segue.destination as? LevelSelectorViewController {
@@ -36,6 +40,12 @@ class MenuViewController: UIViewController {
                     destinationVC.numberOfPlayers = data.numberOfPlayers
                     destinationVC.storageManager = data.storageManager
                 }
+            }
+        }
+
+        if segue.identifier == "AchievementsSegue" {
+            if let destinationVC = segue.destination as? AchievementViewController {
+                // Pass any necessary data to the achievements view controller here
             }
         }
     }
