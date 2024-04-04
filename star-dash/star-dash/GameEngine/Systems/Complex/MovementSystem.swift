@@ -37,18 +37,24 @@ class MovementSystem: System {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
               let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
+              let currentVelocity = physicsSystem.velocity(of: event.entityId),
               playerSystem.canMove(for: event.entityId) else {
             return
         }
-
-        var runVelocity = (event.toLeft ? -1 : 1) * PhysicsConstants.runVelocity
-
+        let runSpeed = (event.toLeft ? -1 : 1) * PhysicsConstants.runSpeed
+        var newRunSpeed = currentVelocity.dx + runSpeed
+        if (event.toLeft && newRunSpeed > 0 || !event.toLeft && newRunSpeed < 0) {
+            newRunSpeed = runSpeed
+        }
+        if abs(newRunSpeed) > PhysicsConstants.maxRunSpeed {
+            newRunSpeed = (event.toLeft ? -1 : 1) * PhysicsConstants.maxRunSpeed
+        }
         if let buffSystem = dispatcher?.system(ofType: BuffSystem.self),
            let speedMultiplier = buffSystem.speedMultiplier(of: event.entityId) {
-            runVelocity *= CGFloat(speedMultiplier)
+            newRunSpeed *= CGFloat(speedMultiplier)
         }
-
-        physicsSystem.setVelocity(to: event.entityId, velocity: runVelocity)
+        let newVelocity = CGVector(dx: newRunSpeed, dy: currentVelocity.dy)
+        physicsSystem.setVelocity(to: event.entityId, velocity: newVelocity)
         spriteSystem.startAnimation(of: event.entityId, named: event.toLeft ? "runLeft" : "run")
     }
 
@@ -60,7 +66,6 @@ class MovementSystem: System {
         }
 
         playerSystem.setCanJump(to: event.entityId, canJump: false)
-        playerSystem.setCanMove(to: event.entityId, canMove: false)
         physicsSystem.applyImpulse(to: event.entityId, impulse: event.jumpImpulse)
     }
 
