@@ -20,7 +20,7 @@ class PowerUpFactory {
         EntityFactory.createAndAddSpeedBoostPowerUp(to: entityManager,
                                                     entityId: playerId,
                                                     duration: 15,
-                                                    multiplier: 2.5)
+                                                    multiplier: 1)
     }
 
     private static func createHomingMissilePowerUp(triggeredBy playerId: EntityId,
