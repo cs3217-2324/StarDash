@@ -35,7 +35,9 @@ class SpriteModule: SyncModule {
         }
 
         spriteObject.cancelTexture()
-        spriteObject.runTexture(named: textureAtlas)
+        spriteObject.runTexture(named: textureAtlas,
+                                repetitive: spriteComponent.repetitive ?? true,
+                                duration: spriteComponent.animationDuration)
     }
 
     func create(for object: SDObject, from entity: Entity) {

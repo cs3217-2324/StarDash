@@ -140,6 +140,7 @@ class GameEngine {
         systemManager.add(GrappleHookSystem(entityManager, dispatcher: self))
         systemManager.add(SpriteSystem(entityManager, dispatcher: self))
         systemManager.add(BuffSystem(entityManager, dispatcher: self))
+        systemManager.add(PlayerDeathSystem(entityManager, dispatcher: self))
 
         // Power-Up Systems
         systemManager.add(PowerUpSystem(entityManager, dispatcher: self))
