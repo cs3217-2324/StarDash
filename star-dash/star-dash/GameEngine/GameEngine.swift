@@ -11,16 +11,19 @@ class GameEngine {
     private let systemManager: SystemManager
     private let entityManager: EntityManager
     private let eventManager: EventManager
+    private let gameMode: GameMode
 
     let mapSize: CGSize
 
-    init(mapSize: CGSize) {
+    init(mapSize: CGSize, gameMode: GameMode) {
         self.systemManager = SystemManager()
         self.entityManager = EntityManager()
         self.eventManager = EventManager()
+        self.gameMode = gameMode
         self.mapSize = mapSize
 
-        setUpSystems()
+        setupSystems()
+        setupGameMode()
     }
 
     func setupLevel(level: LevelPersistable, entities: [EntityPersistable], sceneSize: CGSize) {
@@ -83,6 +86,7 @@ class GameEngine {
     func update(by deltaTime: TimeInterval) {
         systemManager.update(by: deltaTime)
         eventManager.executeAll(on: self)
+        checkHasGameEnded()
     }
 
     func handleCollision(_ entityOneId: EntityId, _ entityTwoId: EntityId, at contactPoint: CGPoint) {
@@ -127,7 +131,7 @@ class GameEngine {
         eventManager.add(event: UseGrappleHookEvent(from: playerEntityId))
     }
 
-    private func setUpSystems() {
+    private func setupSystems() {
         // Basic Systems
         systemManager.add(PositionSystem(entityManager, dispatcher: self))
         systemManager.add(PhysicsSystem(entityManager, dispatcher: self))
@@ -153,9 +157,19 @@ class GameEngine {
         systemManager.add(SpeedBoostPowerUpSystem(entityManager, dispatcher: self))
         systemManager.add(HomingMissileSystem(entityManager, dispatcher: self))
     }
+    
+    private func setupGameMode() {
+        self.gameMode.setTarget(self)
+    }
+    
+    private func checkHasGameEnded() {
+        if gameMode.hasGameEnded() {
+            // TODO: Handle game ending
+        }
+    }
 }
 
-extension GameEngine: EventModifiable {
+extension GameEngine: EventModifiable, GameModeModifiable {
     func system<T: System>(ofType type: T.Type) -> T? {
         systemManager.system(ofType: type)
     }

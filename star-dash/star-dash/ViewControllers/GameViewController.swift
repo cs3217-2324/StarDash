@@ -49,7 +49,7 @@ class GameViewController: UIViewController {
 
     private func createGameEngine() -> GameEngine {
         let levelSize = level?.size ?? RenderingConstants.defaultLevelSize
-        return GameEngine(mapSize: levelSize)
+        return GameEngine(mapSize: levelSize, gameMode: RaceMode(mapWidth: levelSize.width))
     }
 
     private func createGameScene(of size: CGSize) -> GameScene {

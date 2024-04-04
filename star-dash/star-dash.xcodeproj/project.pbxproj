@@ -27,6 +27,9 @@
 		14970F542BA8163300CC1E8A /* ScoreSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14970F532BA8163300CC1E8A /* ScoreSystem.swift */; };
 		14970F562BA8177B00CC1E8A /* GameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14970F552BA8177B00CC1E8A /* GameConstants.swift */; };
 		14D14B732BA5A3CD00386C3B /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */; };
+		14D348ED2BBEFFA800515036 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D348EC2BBEFFA800515036 /* GameMode.swift */; };
+		14D348EF2BBEFFFD00515036 /* GameModeModifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D348EE2BBEFFFD00515036 /* GameModeModifiable.swift */; };
+		14D348F12BBF00A700515036 /* RaceMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D348F02BBF00A700515036 /* RaceMode.swift */; };
 		14E2478E2BA22FCE0071FFC0 /* MoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */; };
 		14E247932BA2CA920071FFC0 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 14E247922BA2CA920071FFC0 /* DequeModule */; };
 		14E247952BA2CB480071FFC0 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E247942BA2CB480071FFC0 /* EventManager.swift */; };
@@ -233,6 +236,9 @@
 		14970F532BA8163300CC1E8A /* ScoreSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreSystem.swift; sourceTree = "<group>"; };
 		14970F552BA8177B00CC1E8A /* GameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConstants.swift; sourceTree = "<group>"; };
 		14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
+		14D348EC2BBEFFA800515036 /* GameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
+		14D348EE2BBEFFFD00515036 /* GameModeModifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeModifiable.swift; sourceTree = "<group>"; };
+		14D348F02BBF00A700515036 /* RaceMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceMode.swift; sourceTree = "<group>"; };
 		14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveEvent.swift; sourceTree = "<group>"; };
 		14E247942BA2CB480071FFC0 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		4604BBD42BA819C70078B84C /* InventoryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryComponent.swift; sourceTree = "<group>"; };
@@ -491,6 +497,16 @@
 			path = CommonEvents;
 			sourceTree = "<group>";
 		};
+		14D348E92BBEFF2C00515036 /* GameModes */ = {
+			isa = PBXGroup;
+			children = (
+				14D348EC2BBEFFA800515036 /* GameMode.swift */,
+				14D348F02BBF00A700515036 /* RaceMode.swift */,
+				14D348EE2BBEFFFD00515036 /* GameModeModifiable.swift */,
+			);
+			path = GameModes;
+			sourceTree = "<group>";
+		};
 		14E58BC42BB57E8000D5ABC3 /* Persistables */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,6 +536,7 @@
 				46D418142BA5CB760091A38B /* Collision */,
 				4611488F2BA1CD9E0073E7E1 /* Systems */,
 				4E630F282B9F7EC20008F887 /* Components */,
+				14D348E92BBEFF2C00515036 /* GameModes */,
 				4E630F252B9F7E500008F887 /* Entities */,
 				46B8C0992BA328D900498705 /* GameEngine.swift */,
 				E69EE9312BAC6CBB00033AB5 /* GameInfo.swift */,
@@ -1190,6 +1207,7 @@
 				4EC561E32BB1E98400166DDC /* PlayerObstacleContactEvent.swift in Sources */,
 				E660353D2BB5EAEE00397068 /* MiniMapView.swift in Sources */,
 				46D04A0C2BBAE22F0096D9F2 /* AchievementFactory.swift in Sources */,
+				14D348EF2BBEFFFD00515036 /* GameModeModifiable.swift in Sources */,
 				4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */,
 				46C3B1C22BB467BB00F10574 /* EntityManagerInterface.swift in Sources */,
 				E69FDDE02BAD3DAD0089D5F3 /* PointsComponent.swift in Sources */,
@@ -1237,11 +1255,13 @@
 				46BB142A2BBE81E3001AE148 /* AchievementViewController.swift in Sources */,
 				E6B1CC5B2BB7E00600416BCD /* ObstacleEntityPersistable.swift in Sources */,
 				4E630F342B9F8FC00008F887 /* Player.swift in Sources */,
+				14D348ED2BBEFFA800515036 /* GameMode.swift in Sources */,
 				4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */,
 				14970F502BA814D500CC1E8A /* ScoreComponent.swift in Sources */,
 				46D049FF2BBA81140096D9F2 /* PlayerAchievements.swift in Sources */,
 				E69FDDE42BADC2F10089D5F3 /* SpriteConstants.swift in Sources */,
 				E6B1CC5D2BB7E00600416BCD /* MonsterEntityPersistable.swift in Sources */,
+				14D348F12BBF00A700515036 /* RaceMode.swift in Sources */,
 				E64F31672BB3D14600EC5371 /* UIView.swift in Sources */,
 				143AA3912BA4D7AC009C28E7 /* MonsterDeathEvent.swift in Sources */,
 				E62430382BBAB780001FC686 /* HomingMissile.swift in Sources */,
