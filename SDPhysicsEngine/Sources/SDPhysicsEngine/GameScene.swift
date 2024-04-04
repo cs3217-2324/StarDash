@@ -64,7 +64,7 @@ public class GameScene: SKScene {
         var numOfAddedBackgrounds = 0
         while remainingGameWidth > 0 {
             let background = SDSpriteObject(imageNamed: backgroundImage)
-            let offset = CGFloat(numOfAddedBackgrounds) * backgroundWidth
+            let offset = numOfAddedBackgrounds * backgroundWidth
             background.position = CGPoint(x: backgroundWidth / 2 + offset, y: backgroundHeight / 2)
             background.zPosition = -1
             self.addObject(background)

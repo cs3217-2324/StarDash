@@ -47,7 +47,7 @@ class MovementSystem: System {
 
         if let buffSystem = dispatcher?.system(ofType: BuffSystem.self),
            let speedMultiplier = buffSystem.speedMultiplier(of: event.entityId) {
-            runVelocity *= CGFloat(speedMultiplier)
+            runVelocity *= speedMultiplier
         }
 
         physicsSystem.setVelocity(to: event.entityId, velocity: runVelocity)
