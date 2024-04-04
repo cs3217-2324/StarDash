@@ -17,7 +17,7 @@ public class SDSpriteObject: SDObject {
         get { spriteNode.size }
         set { spriteNode.size = newValue }
     }
-    
+
     public var texture: String? {
         willSet {
             guard let texture = newValue else {
@@ -31,19 +31,24 @@ public class SDSpriteObject: SDObject {
     /// Params:
     /// - named: Name of texture atlas
     /// - repetitive: True if the texture should be repeated indefinitely
-    /// - duration: If nil, original sprite will render immediately after animation ends. Else, it only renders after given duration.
+    /// - duration: If nil, original sprite will render immediately after animation ends.
+    ///          Else, it only renders after given duration.
     public func runTexture(named: String, repetitive: Bool, duration: Double?) {
+        let timePerFrame: Double = 0.1
         let texture = loadTexture(named: named)
-        var animation = SKAction.animate(with: texture, timePerFrame: TimeInterval(0.1), resize: false, restore: duration == nil)
+        var animation = SKAction.animate(with: texture,
+                                         timePerFrame: TimeInterval(timePerFrame),
+                                         resize: false,
+                                         restore: duration == nil)
 
         if repetitive {
             animation = SKAction.repeatForever(animation)
         }
 
         spriteNode.run(animation, withKey: SDSpriteObject.textureActionKey)
-        
+
         if let duration = duration {
-            spriteNode.run(SKAction.wait(forDuration: Double(duration))) {
+            spriteNode.run(SKAction.wait(forDuration: duration)) {
                 self.spriteNode.texture = SKTexture(imageNamed: self.originalImage)
             }
         }
