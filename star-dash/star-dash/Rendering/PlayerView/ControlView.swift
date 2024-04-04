@@ -88,12 +88,10 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
             return
         }
 
-//        if shouldSendMoveEvent(location: firstTouch.location(in: self)) {
-//            let isLeft = firstTouch.location(in: joystickView).x < joystickView.center.x
-//            controlViewDelegate?.joystickMoved(toLeft: isLeft)
-//        }
-        let isLeft = firstTouch.location(in: joystickView).x < joystickView.center.x
-        controlViewDelegate?.joystickMoved(toLeft: isLeft, from: self)
+        if shouldSendMoveEvent(location: firstTouch.location(in: self)) {
+            let isLeft = firstTouch.location(in: joystickView).x < joystickView.bounds.midX
+            controlViewDelegate?.joystickMoved(toLeft: isLeft, from: self)
+        }
 
         joystickView.moveJoystick(location: firstTouch.location(in: joystickView))
     }
@@ -135,7 +133,7 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
 
         joystickView.moveJoystick(location: gesture.location(in: joystickView))
         if shouldSendMoveEvent(location: location) {
-            let isLeft = gesture.location(in: joystickView).x < joystickView.center.x
+            let isLeft = gesture.location(in: joystickView).x < joystickView.bounds.midX
             controlViewDelegate?.joystickMoved(toLeft: isLeft, from: self)
         }
     }
