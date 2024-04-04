@@ -120,11 +120,12 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
 
     @objc
     func handlePan(_ gesture: UIPanGestureRecognizer) {
-        guard let joystickView = self.joystickView else {
+        let location = gesture.location(in: self)
+        guard let joystickView = self.joystickView,
+              location.x < self.frame.width / 2 else {
             return
         }
 
-        let location = gesture.location(in: self)
         if gesture.state == .ended {
             controlViewDelegate?.joystickReleased(from: self)
             joystickView.returnJoystick()
