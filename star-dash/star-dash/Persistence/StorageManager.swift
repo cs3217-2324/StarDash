@@ -32,11 +32,16 @@ class StorageManager {
         entityPersistables.forEach { $0.addTo(entityManager) }
     }
 
-    func loadAchievements(of id: Int) -> [Achievement] {
+    func loadAchievements(of id: Int? = nil) -> [Achievement] {
         var achievements: [Achievement] = []
-        let playerAchievements = self.database.getAllAchievements(of: id)
 
-        playerAchievements.forEach { achievements.append($0.toAchievement()) }
+        if let playerId = id {
+            let playerAchievements = self.database.getAllAchievements(of: playerId)
+            playerAchievements.forEach { achievements.append($0.toAchievement()) }
+        } else {
+            let allAchievements = self.database.getAllAchievements()
+            allAchievements.forEach { achievements.append($0.toAchievement()) }
+        }
 
         return achievements
     }

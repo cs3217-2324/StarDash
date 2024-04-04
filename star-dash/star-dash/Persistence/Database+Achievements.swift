@@ -26,6 +26,19 @@ extension Database {
         return achievements
     }
 
+    func getAllAchievements() -> [AchievementPersistable] {
+        var achievements: [AchievementPersistable] = []
+
+        achievements += getAchievement(TwinkleStarAchievementPersistable.self,
+                                       table: twinkleStarAchievementTable)
+        achievements += getAchievement(StellarCollectorAchievementPersistable.self,
+                                       table: stellarCollectorAchievementTable)
+        achievements += getAchievement(PowerRangerAchievementPersistable.self,
+                                       table: powerRangerAchievementTable)
+
+        return achievements
+    }
+
     func upsertTwinkleStar(_ achievement: TwinkleStarAchievement) {
         guard let db = db else {
             return
@@ -122,6 +135,21 @@ extension Database {
         } catch {
             print("Error fetching \(T.self) achievement: \(error)")
             return nil
+        }
+    }
+
+    func getAchievement<T: AchievementPersistable>(_ type: T.Type, table: Table) -> [T] {
+        guard let db = db else {
+            return []
+        }
+
+        do {
+            let rows = try db.prepare(table)
+            let achievements: [T] = try rows.map { try $0.decode() }
+            return achievements
+        } catch {
+            print("Error fetching \(T.self) achievements: \(error)")
+            return []
         }
     }
 
