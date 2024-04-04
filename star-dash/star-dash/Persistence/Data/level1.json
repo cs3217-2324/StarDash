@@ -1,0 +1,84 @@
+{
+"id": 0,
+  "name": "Joyride",
+  "size": [4842, 1040],
+  "background": "GameBackground",
+  "obstacles": [
+    {
+      "levelId": 0,
+      "position": [500, 150],
+      "size": [100,100]
+    },
+    {
+      "levelId": 0,
+      "position": [600, 150],
+      "size": [100,100]
+    },
+    {
+      "levelId": 0,
+      "position": [600, 250],
+      "size": [100,100]
+    },
+    {
+      "levelId": 0,
+      "position": [850, 350],
+      "size": [100,100]
+      },
+    {
+      "levelId": 0,
+      "position": [950, 350],
+      "size": [100,100]
+    },
+    {
+      "levelId": 0,
+      "position": [1100, 500],
+      "size": [100,100]
+    },
+    {
+      "levelId": 0,
+      "position": [1200, 500],
+      "size": [100,100]
+    },
+    {
+      "levelId": 0,
+      "position": [1300, 500],
+      "size": [100,100]
+    }
+  ],
+  "collectibles": [
+      {
+        "levelId": 0,
+        "position": [400, 150],
+        "radius": 25,
+        "points": 10
+      },
+      {
+        "levelId": 0,
+        "position": [700, 450],
+        "radius": 25,
+        "points": 10
+      }
+  ],
+  "monsters": [
+      {
+        "levelId": 0,
+        "position": [700, 150],
+        "size": [100,100],
+        "health": 100
+      },
+  ],
+  "powerUpBoxes": [
+    {
+      "levelId": 0,
+      "position": [500, 400],
+      "size": [60,60],
+      "type": "SpeedBoostPowerUp"
+    },
+    {
+      "levelId": 0,
+      "position": [900, 300],
+      "size": [60,60],
+      "type": "HomingMissilePowerUp"
+    }
+  ]
+}

@@ -40,7 +40,9 @@ struct Database {
                 self.db = try Connection(dbPath)
                 dropAllTables()
                 createAllTables()
-                insertJsonData()
+                insertJsonData(filename: "level1")
+                insertJsonData(filename: "level2")
+                insertJsonData(filename: "level3")
                 print("SQLiteDataStore init successfully at: \(dbPath) ")
             } catch {
                 db = nil
@@ -82,11 +84,13 @@ struct Database {
         let id = Expression<Int64>("id")
         let name = Expression<String>("name")
         let size = Expression<String>("size")
+        let background = Expression<String>("background")
         do {
             try db.run( levelTable.create { table in
                 table.column(id, primaryKey: true)
                 table.column(name)
                 table.column(size)
+                table.column(background)
             })
             print("Level table created")
         } catch {
@@ -227,8 +231,8 @@ struct Database {
 }
 
 extension Database {
-    func insertJsonData() {
-        if let fileURL = Bundle.main.url(forResource: "data", withExtension: "json") {
+    func insertJsonData(filename: String) {
+        if let fileURL = Bundle.main.url(forResource: filename, withExtension: "json") {
             // Read JSON data from the file
             do {
                 let jsonData = try Data(contentsOf: fileURL)
@@ -237,7 +241,8 @@ extension Database {
                 let levelPersistable = LevelPersistable(
                     id: levelData.id,
                     name: levelData.name,
-                    size: levelData.size
+                    size: levelData.size,
+                    background: levelData.background
                 )
                 insert(persistable: levelPersistable)
                 for persistable in levelData.collectibles {
@@ -252,7 +257,7 @@ extension Database {
                 for persistable in levelData.powerUpBoxes {
                     insert(persistable: persistable)
                 }
-
+                print("Inserted \(filename)")
             } catch {
                 print("Error reading or decoding JSON: \(error)")
             }
@@ -282,6 +287,22 @@ extension Database {
                     print("Error fetching levels \(error)")
                     return nil
                 }
+    }
+
+    func getLevels() -> [LevelPersistable] {
+        guard let database = db else {
+            return []
+        }
+        do {
+            let levels = try database.prepare(levelTable).map { row in
+                let persistable: LevelPersistable = try row.decode()
+                return persistable
+            }
+            return levels
+        } catch {
+
+        }
+        return []
     }
 
     func getAllEntities(levelId: Int64) -> [EntityPersistable] {
