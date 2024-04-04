@@ -73,6 +73,12 @@ public class GameScene: SKScene {
             remainingGameWidth -= backgroundWidth
             numOfAddedBackgrounds += 1
         }
+
+        let flag = SDSpriteObject(imageNamed: "Flag")
+        flag.position = CGPoint(x: size.width, y: 200)
+        flag.size = CGSize(width: 110, height: 100)
+        flag.zPosition = -1
+        self.addObject(flag)
     }
 }
 
