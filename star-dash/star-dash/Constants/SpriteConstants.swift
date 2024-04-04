@@ -40,4 +40,6 @@ struct SpriteConstants {
     static let speedBoostPowerUp = "SpeedBoostPowerUp"
 
     static let homingMissile = "HomingMissile"
+
+    static let flag = "Flag"
 }

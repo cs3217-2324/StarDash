@@ -55,30 +55,6 @@ public class GameScene: SKScene {
         self.camera = cameraObject.cameraNode
     }
 
-    public func setUpBackground(backgroundImage: String) {
-        let background = SDSpriteObject(imageNamed: backgroundImage)
-        let backgroundWidth = background.size.width
-        let backgroundHeight = background.size.height
-
-        var remainingGameWidth = self.size.width
-        var numOfAddedBackgrounds = 0
-        while remainingGameWidth > 0 {
-            let background = SDSpriteObject(imageNamed: backgroundImage)
-            let offset = CGFloat(numOfAddedBackgrounds) * backgroundWidth
-            background.position = CGPoint(x: backgroundWidth / 2 + offset, y: backgroundHeight / 2)
-            background.zPosition = -1
-            self.addObject(background)
-
-            remainingGameWidth -= backgroundWidth
-            numOfAddedBackgrounds += 1
-        }
-
-        let flag = SDSpriteObject(imageNamed: "Flag")
-        flag.position = CGPoint(x: size.width - 400, y: 200)
-        flag.size = CGSize(width: 110, height: 100)
-        flag.zPosition = -1
-        self.addObject(flag)
-    }
 }
 
 extension GameScene: SDScene {

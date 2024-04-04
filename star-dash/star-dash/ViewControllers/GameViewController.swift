@@ -29,24 +29,16 @@ class GameViewController: UIViewController {
         self.gameBridge = GameBridge(entityManager: gameEngine, scene: scene)
 
         setupGame()
+        setupBackground(in: scene)
+        setupFlag(in: scene)
+        setupBackButton()
 
         guard let renderer = MTKRenderer(scene: scene) else {
             return
         }
-
         renderer.viewDelegate = self
         renderer.setupViews(at: self.view, for: numberOfPlayers)
         self.renderer = renderer
-
-        let backButton = UIButton(type: .system)
-            backButton.setTitle("Back", for: .normal)
-            backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-            self.view.addSubview(backButton)
-            backButton.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-                backButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            ])
     }
 
     @objc
@@ -56,35 +48,80 @@ class GameViewController: UIViewController {
 
     private func createGameEngine() -> GameEngine {
         let levelSize = level?.size ?? RenderingConstants.defaultLevelSize
-
-        // Level size width extended for extra buffer and finish line
-        let extendedLevelSize = CGSize(
-            width: levelSize.width
-                + RenderingConstants.levelSizeLeftExtension + RenderingConstants.levelSizeRightExtension,
-            height: levelSize.height)
-        return GameEngine(mapSize: extendedLevelSize)
+        return GameEngine(mapSize: levelSize)
     }
 
     private func createGameScene(of size: CGSize) -> GameScene {
-        let scene = GameScene(size: size, for: numberOfPlayers)
+        // GameScene size width extended for finish line
+        let extendedSize = CGSize(
+            width: size.width + RenderingConstants.levelSizeRightExtension,
+            height: size.height)
+        let scene = GameScene(size: extendedSize, for: numberOfPlayers)
         scene.scaleMode = .aspectFill
         scene.sceneDelegate = self
-        if let level = level {
-            scene.setUpBackground(backgroundImage: level.background)
-        }
         return scene
     }
+}
 
+// MARK: Setup
+extension GameViewController {
     private func setupGame() {
         guard let storageManager = self.storageManager,
               let gameEngine = self.gameEngine,
+              let scene = self.scene,
               let level = self.level else {
             return
         }
 
         let entities = storageManager.getAllEntity(id: level.id)
-        gameEngine.setupLevel(level: level, entities: entities )
+        gameEngine.setupLevel(level: level, entities: entities, sceneSize: scene.size)
         gameEngine.setupPlayers(numberOfPlayers: self.numberOfPlayers)
+    }
+
+    private func setupBackground(in scene: SDScene) {
+        guard let level = self.level else {
+            return
+        }
+
+        let background = SDSpriteObject(imageNamed: level.background)
+        let backgroundWidth = background.size.width
+        let backgroundHeight = background.size.height
+
+        var remainingGameWidth = scene.size.width
+        var numOfAddedBackgrounds = 0
+        while remainingGameWidth > 0 {
+            let background = SDSpriteObject(imageNamed: level.background)
+            let offset = CGFloat(numOfAddedBackgrounds) * backgroundWidth
+            background.position = CGPoint(x: backgroundWidth / 2 + offset, y: backgroundHeight / 2)
+            background.zPosition = -1
+            scene.addObject(background)
+
+            remainingGameWidth -= backgroundWidth
+            numOfAddedBackgrounds += 1
+        }
+    }
+
+    private func setupFlag(in scene: SDScene) {
+        guard let gameEngine = gameEngine else {
+            return
+        }
+        let flag = SDSpriteObject(imageNamed: SpriteConstants.flag)
+        flag.size = PhysicsConstants.Dimensions.flag
+        flag.position = CGPoint(x: gameEngine.mapSize.width + flag.size.width / 2, y: 200)
+        flag.zPosition = -1
+        scene.addObject(flag)
+    }
+
+    private func setupBackButton() {
+        let backButton = UIButton(type: .system)
+        backButton.setTitle("Back", for: .normal)
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        self.view.addSubview(backButton)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            backButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
     }
 }
 

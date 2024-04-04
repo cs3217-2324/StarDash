@@ -23,18 +23,19 @@ class GameEngine {
         setUpSystems()
     }
 
-    func setupLevel(level: LevelPersistable, entities: [EntityPersistable]) {
+    func setupLevel(level: LevelPersistable, entities: [EntityPersistable], sceneSize: CGSize) {
         EntityFactory.createAndAddFloor(to: self,
-                                        position: CGPoint(x: level.size.width / 2, y: level.size.height / 2 - 400),
-                                        size: CGSize(width: 8_000, height: 10))
+                                        position: CGPoint(x: sceneSize.width / 2, y: 100),
+                                        size: CGSize(width: sceneSize.width, height: 1))
         EntityFactory.createAndAddWall(to: self,
-                                       position: CGPoint(x: 0, y: level.size.height / 2),
-                                       size: CGSize(width: 1, height: level.size.height))
+                                       position: CGPoint(x: 0, y: sceneSize.height / 2),
+                                       size: CGSize(width: 1, height: sceneSize.height))
         EntityFactory.createAndAddWall(to: self,
-                                       position: CGPoint(x: level.size.width, y: level.size.height / 2),
-                                       size: CGSize(width: 1, height: level.size.height))
+                                       position: CGPoint(x: sceneSize.width, y: sceneSize.height / 2),
+                                       size: CGSize(width: 1, height: sceneSize.height))
         entities.forEach({ $0.addTo(self) })
     }
+
     // TODO: Set up players with characters that are selected
     func setupPlayers(numberOfPlayers: Int) {
         for playerIndex in 0..<numberOfPlayers {
