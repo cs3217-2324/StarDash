@@ -89,7 +89,7 @@ extension MTKRenderer: MTKViewDelegate {
         )
 
         commandBuffer.commit()
-        commandBuffer.waitUntilScheduled()
+        commandBuffer.waitUntilCompleted()
         drawable.present()
     }
 
