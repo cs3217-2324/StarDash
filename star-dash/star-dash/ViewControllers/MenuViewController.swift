@@ -13,15 +13,16 @@ class MenuViewController: UIViewController {
     @IBAction private func singlePlayer(_ sender: Any) {
         let gameMode = 1
         let numberOfPlayers = 1
-        performSegue(withIdentifier: "LevelSelectSeque", sender: GameData(gameMode: gameMode,
+        performSegue(withIdentifier: "LevelSelectSegue", sender: GameData(gameMode: gameMode,
                                                                           level: nil,
                                                                           numberOfPlayers: numberOfPlayers,
                                                                           storageManager: storageManager))
     }
+
     @IBAction private func localMultiplayer(_ sender: Any) {
         let gameMode = 2
         let numberOfPlayers = 2
-        performSegue(withIdentifier: "LevelSelectSeque",
+        performSegue(withIdentifier: "LevelSelectSegue",
                      sender: GameData(gameMode: gameMode,
                                       level: nil,
                                       numberOfPlayers: numberOfPlayers,
@@ -29,7 +30,7 @@ class MenuViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "LevelSelectSeque" {
+        if segue.identifier == "LevelSelectSegue" {
             if let destinationVC = segue.destination as? LevelSelectorViewController {
                 if let data = sender as? GameData {
                     destinationVC.gameMode = data.gameMode

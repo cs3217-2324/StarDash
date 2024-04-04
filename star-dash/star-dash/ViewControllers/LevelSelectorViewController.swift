@@ -11,20 +11,23 @@ class LevelSelectorViewController: UIViewController {
     var storageManager: StorageManager?
     var gameMode: Int = 0
     var numberOfPlayers: Int = 0
-    @IBOutlet private var Levels: UIStackView!
     var levels: [LevelPersistable] = [] // Assuming Level is a struct or class representing a level
+
+    @IBOutlet private var Levels: UIStackView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchLevelsFromDatabase()
         createLevelButtons()
     }
-    func fetchLevelsFromDatabase() {
+
+    private func fetchLevelsFromDatabase() {
         if let levels = storageManager?.database.getLevels() {
-            print(levels)
             self.levels = levels
         }
     }
-    func createLevelButtons() {
+
+    private func createLevelButtons() {
         for (index, level) in levels.enumerated() {
             let button = LevelButton()
             button.tag = index // Set a tag to identify the button later
@@ -48,7 +51,7 @@ class LevelSelectorViewController: UIViewController {
         }
         let level = levels[sender.tag]
         // Perform actions related to the selected level
-        performSegue(withIdentifier: "PlaySeque",
+        performSegue(withIdentifier: "PlaySegue",
                      sender: GameData(gameMode: gameMode,
                                       level: level,
                                       numberOfPlayers: numberOfPlayers,
@@ -56,7 +59,7 @@ class LevelSelectorViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "PlaySeque" {
+        if segue.identifier == "PlaySegue" {
             if let destinationVC = segue.destination as? ViewController {
                 if let data = sender as? GameData { // Adjust types accordingly
                     destinationVC.gameMode = data.gameMode

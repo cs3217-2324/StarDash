@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var gameMode: Int = 0
     var level: LevelPersistable?
     var numberOfPlayers: Int = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,6 +49,7 @@ class ViewController: UIViewController {
                 backButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ])
     }
+
     @objc
     func backButtonTapped() {
         performSegue(withIdentifier: "BackSegue", sender: self)
@@ -83,7 +85,6 @@ class ViewController: UIViewController {
         gameEngine.setupLevel(level: level, entities: entities )
         gameEngine.setupPlayers(numberOfPlayers: self.numberOfPlayers)
     }
-
 }
 
 extension ViewController: SDSceneDelegate {
