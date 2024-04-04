@@ -11,4 +11,5 @@ struct LevelPersistable: Codable {
     var id: Int64
     var name: String
     var size: CGSize
+    var background: String
 }

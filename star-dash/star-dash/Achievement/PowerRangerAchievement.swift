@@ -33,7 +33,7 @@ class PowerRangerAchievement: Achievement {
     }
 
     func handleEvent(event: Event, saveTo storageManager: StorageManager) {
-        guard event is PowerUpPlayerEvent else {
+        guard event is PowerUpBoxPlayerEvent else {
             return
         }
 

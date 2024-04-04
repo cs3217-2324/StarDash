@@ -15,9 +15,8 @@ struct Database {
     private let levelTable = Table("level")
     private let collectibleTable = Table("collectible")
     private let obstacleTable = Table("obstacle")
-    private let toolTable = Table("tool")
     private let monsterTable = Table("monster")
-    private let powerUpTable = Table("powerUp")
+    private let powerUpBoxTable = Table("powerUpBox")
 
     let twinkleStarAchievementTable = Table("twinklestar")
     let stellarCollectorAchievementTable = Table("stellarCollector")
@@ -25,15 +24,15 @@ struct Database {
 
     var db: Connection?
 
+    // Define a dictionary to map entity types to tables
     let tableMap: [ObjectIdentifier: Table]
 
     init() {
         tableMap = [
             ObjectIdentifier(CollectibleEntityPersistable.self): self.collectibleTable,
-            ObjectIdentifier(ToolEntityPersistable.self): self.toolTable,
             ObjectIdentifier(ObstacleEntityPersistable.self): self.obstacleTable,
             ObjectIdentifier(MonsterEntityPersistable.self): self.monsterTable,
-            ObjectIdentifier(PowerUpEntityPersistable.self): self.powerUpTable,
+            ObjectIdentifier(PowerUpBoxEntityPersistable.self): self.powerUpBoxTable,
             ObjectIdentifier(TwinkleStarAchievementPersistable.self): self.twinkleStarAchievementTable,
             ObjectIdentifier(StellarCollectorAchievementPersistable.self): self.stellarCollectorAchievementTable,
             ObjectIdentifier(PowerRangerAchievementPersistable.self): self.powerRangerAchievementTable
@@ -51,7 +50,9 @@ struct Database {
                 self.db = try Connection(dbPath)
                 dropAllTables()
                 createAllTables()
-                insertJsonData()
+                insertJsonData(filename: "level1")
+                insertJsonData(filename: "level2")
+                insertJsonData(filename: "level3")
                 print("SQLiteDataStore init successfully at: \(dbPath) ")
             } catch {
                 print("SQLiteDataStore init error: \(error)")
@@ -67,9 +68,8 @@ struct Database {
             try db.run(levelTable.drop())
             try db.run(obstacleTable.drop())
             try db.run(collectibleTable.drop())
-            try db.run(toolTable.drop())
             try db.run(monsterTable.drop())
-            try db.run(powerUpTable.drop())
+            try db.run(powerUpBoxTable.drop())
 
             // Comment out below to test for persistency
             try db.run(twinkleStarAchievementTable.drop())
@@ -83,10 +83,9 @@ struct Database {
     private func createAllTables() {
         createLevelTable()
         createCollectibleTable()
-        createToolTable()
         createMonsterTable()
         createObstacleTable()
-        createPowerUpTable()
+        createPowerUpBoxTable()
         createAchievementTables()
     }
 
@@ -97,11 +96,13 @@ struct Database {
         let id = Expression<Int64>("id")
         let name = Expression<String>("name")
         let size = Expression<String>("size")
+        let background = Expression<String>("background")
         do {
             try db.run( levelTable.create { table in
                 table.column(id, primaryKey: true)
                 table.column(name)
                 table.column(size)
+                table.column(background)
             })
             print("Level table created")
         } catch {
@@ -157,29 +158,6 @@ struct Database {
         }
     }
 
-    private func createToolTable() {
-        guard let db = db else {
-            return
-        }
-        let id = Expression<Int64>("id")
-        let levelId = Expression<Int64>("levelId")
-        let position = Expression<String>("position")
-        let size = Expression<String>("size")
-
-        do {
-            try db.run( toolTable.create { table in
-                table.column(id, primaryKey: .autoincrement)
-                table.column(levelId)
-                table.column(position)
-                table.column(size)
-
-            })
-            print("Tool table created")
-        } catch {
-            print("Error creating table \(error)")
-        }
-    }
-
     private func createMonsterTable() {
         guard let db = db else {
             return
@@ -205,7 +183,7 @@ struct Database {
         }
     }
 
-    private func createPowerUpTable() {
+    private func createPowerUpBoxTable() {
         guard let db = db else {
             return
         }
@@ -216,7 +194,7 @@ struct Database {
         let type = Expression<String>("type")
 
         do {
-            try db.run( powerUpTable.create { table in
+            try db.run( powerUpBoxTable.create { table in
                 table.column(id, primaryKey: .autoincrement)
                 table.column(levelId)
                 table.column(position)
@@ -224,7 +202,7 @@ struct Database {
                 table.column(type)
 
             })
-            print("PowerUp table created")
+            print("PowerUpBox table created")
         } catch {
             print("Error creating table \(error)")
         }
@@ -264,8 +242,8 @@ struct Database {
 }
 
 extension Database {
-    func insertJsonData() {
-        if let fileURL = Bundle.main.url(forResource: "data", withExtension: "json") {
+    func insertJsonData(filename: String) {
+        if let fileURL = Bundle.main.url(forResource: filename, withExtension: "json") {
             // Read JSON data from the file
             do {
                 let jsonData = try Data(contentsOf: fileURL)
@@ -274,13 +252,11 @@ extension Database {
                 let levelPersistable = LevelPersistable(
                     id: levelData.id,
                     name: levelData.name,
-                    size: levelData.size
+                    size: levelData.size,
+                    background: levelData.background
                 )
                 insert(persistable: levelPersistable)
                 for persistable in levelData.collectibles {
-                    insert(persistable: persistable)
-                }
-                for persistable in levelData.tools {
                     insert(persistable: persistable)
                 }
                 for persistable in levelData.obstacles {
@@ -289,9 +265,10 @@ extension Database {
                 for persistable in levelData.monsters {
                     insert(persistable: persistable)
                 }
-                for persistable in levelData.powerUps {
+                for persistable in levelData.powerUpBoxes {
                     insert(persistable: persistable)
                 }
+                print("Inserted \(filename)")
             } catch {
                 print("Error reading or decoding JSON: \(error)")
             }
@@ -321,6 +298,22 @@ extension Database {
         }
     }
 
+    func getLevels() -> [LevelPersistable] {
+        guard let database = db else {
+            return []
+        }
+        do {
+            let levels = try database.prepare(levelTable).map { row in
+                let persistable: LevelPersistable = try row.decode()
+                return persistable
+            }
+            return levels
+        } catch {
+
+        }
+        return []
+    }
+
     func getAllEntities(levelId: Int64) -> [EntityPersistable] {
         guard let database = db else {
             return []
@@ -332,10 +325,6 @@ extension Database {
                 let persistable: CollectibleEntityPersistable = try row.decode()
                 return persistable
             }
-            entities += try database.prepare(toolTable.filter(levelId == levelIdColumn)).map { row in
-                let persistable: ToolEntityPersistable = try row.decode()
-                return persistable
-            }
             entities += try database.prepare(obstacleTable.filter(levelId == levelIdColumn)).map { row in
                 let persistable: ObstacleEntityPersistable = try row.decode()
                 return persistable
@@ -344,8 +333,8 @@ extension Database {
                 let persistable: MonsterEntityPersistable = try row.decode()
                 return persistable
             }
-            entities += try database.prepare(powerUpTable.filter(levelId == levelIdColumn)).map { row in
-                let persistable: PowerUpEntityPersistable = try row.decode()
+            entities += try database.prepare(powerUpBoxTable.filter(levelId == levelIdColumn)).map { row in
+                let persistable: PowerUpBoxEntityPersistable = try row.decode()
                 return persistable
             }
         } catch {

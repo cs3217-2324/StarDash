@@ -43,11 +43,6 @@ class CollisionSystem: System {
                 self.handlePlayerObstacleContactEvent(event: playerObstacleContactEvent)
             }
         }
-        eventHandlers[ObjectIdentifier(PlayerToolContactEvent.self)] = { event in
-            if let playerToolContactEvent = event as? PlayerToolContactEvent {
-                self.handlePlayerToolContactEvent(event: playerToolContactEvent)
-            }
-        }
         eventHandlers[ObjectIdentifier(GrappleHookObstacleContactEvent.self)] = { event in
             if let grappleHookObstacleContactEvent = event as? GrappleHookObstacleContactEvent {
                 self.handleGrappleHookObstacleContactEvent(event: grappleHookObstacleContactEvent)
@@ -128,10 +123,6 @@ class CollisionSystem: System {
                                     .first(where: { $0.ownerPlayerId == event.playerId }) {
             dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
         }
-    }
-
-    private func handlePlayerToolContactEvent(event: PlayerToolContactEvent) {
-        dispatcher?.add(event: RemoveEvent(on: event.toolId))
     }
 
     private func handleGrappleHookObstacleContactEvent(event: GrappleHookObstacleContactEvent) {

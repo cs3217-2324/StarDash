@@ -1,12 +1,12 @@
 import CoreGraphics
 
-extension PowerUp: Collidable {
+extension HomingMissile: Collidable {
     func collides(with collidable: Collidable, at contactPoint: CGPoint) -> Event? {
-        collidable.collideWithPowerUp(self, at: contactPoint)
+        collidable.collideWithHomingMissile(self, at: contactPoint)
     }
 
     func collideWithPlayer(_ player: Player, at contactPoint: CGPoint) -> Event? {
-        CollisionHandler.between(player: player, powerUp: self, at: contactPoint)
+        CollisionHandler.between(player: player, homingMissile: self)
     }
 
     func collideWithMonster(_ monster: Monster, at contactPoint: CGPoint) -> Event? {
@@ -18,11 +18,7 @@ extension PowerUp: Collidable {
     }
 
     func collideWithObstacle(_ obstacle: Obstacle, at contactPoint: CGPoint) -> Event? {
-        nil
-    }
-
-    func collideWithTool(_ tool: Tool, at contactPoint: CGPoint) -> Event? {
-        nil
+        CollisionHandler.between(homingMissile: self, obstacle: obstacle)
     }
 
     func collideWithWall(_ wall: Wall, at contactPoint: CGPoint) -> Event? {
@@ -30,10 +26,14 @@ extension PowerUp: Collidable {
     }
 
     func collideWithFloor(_ floor: Floor, at contactPoint: CGPoint) -> Event? {
+        CollisionHandler.between(homingMissile: self, floor: floor)
+    }
+
+    func collideWithPowerUpBox(_ powerUpBox: PowerUpBox, at contactPoint: CGPoint) -> Event? {
         nil
     }
 
-    func collideWithPowerUp(_ powerUp: PowerUp, at contactPoint: CGPoint) -> Event? {
+    func collideWithHomingMissile(_ homingMissile: HomingMissile, at contactPoint: CGPoint) -> Event? {
         nil
     }
 

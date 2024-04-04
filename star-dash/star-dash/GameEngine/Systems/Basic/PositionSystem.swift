@@ -36,12 +36,35 @@ class PositionSystem: System {
         positionComponent.rotation = newRotation
     }
 
+    func rotate(entityId: EntityId, inDirection direction: CGVector) {
+        guard let positionComponent = getPositionComponent(of: entityId) else {
+            return
+        }
+
+        let angle = atan2(direction.dy, direction.dx)
+        let newRotation = angle - CGFloat(Double.pi / 2)
+        positionComponent.rotation = newRotation
+    }
+
     func getPosition(of entityId: EntityId) -> CGPoint? {
         guard let positionComponent = getPositionComponent(of: entityId) else {
             return nil
         }
 
         return positionComponent.position
+    }
+
+    func getEntityAhead<T: Entity>(of position: CGPoint, ofType entityType: T.Type) -> EntityId? {
+        for positionComponent in entityManager.components(ofType: PositionComponent.self) {
+            guard let entity = entityManager.entity(with: positionComponent.entityId) as? T,
+                  positionComponent.position.x > position.x else {
+                continue
+            }
+
+            return entity.id
+        }
+
+        return nil
     }
 
     func setup() {
