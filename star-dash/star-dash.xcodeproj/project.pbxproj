@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		141573C02BBE763E00503EA3 /* RenderingConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141573BF2BBE763E00503EA3 /* RenderingConstants.swift */; };
 		142D9F8F2BA15FBB005FE9E0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 142D9F8E2BA15FBB005FE9E0 /* .swiftlint.yml */; };
 		143AA38C2BA4D3E3009C28E7 /* JumpEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA38B2BA4D3E3009C28E7 /* JumpEvent.swift */; };
 		143AA38F2BA4D61A009C28E7 /* CGVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA38E2BA4D61A009C28E7 /* CGVector.swift */; };
@@ -198,6 +199,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		141573BF2BBE763E00503EA3 /* RenderingConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingConstants.swift; sourceTree = "<group>"; };
 		142D9F8E2BA15FBB005FE9E0 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		143AA38B2BA4D3E3009C28E7 /* JumpEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpEvent.swift; sourceTree = "<group>"; };
 		143AA38E2BA4D61A009C28E7 /* CGVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGVector.swift; sourceTree = "<group>"; };
@@ -687,6 +689,7 @@
 				E69FDDE12BAD3DC40089D5F3 /* EntityConstants.swift */,
 				4E8660652BA097D40035530D /* PhysicsConstants.swift */,
 				14970F552BA8177B00CC1E8A /* GameConstants.swift */,
+				141573BF2BBE763E00503EA3 /* RenderingConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -1095,6 +1098,7 @@
 				145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */,
 				4E630EFA2B9F7E070008F887 /* GameViewController.swift in Sources */,
 				E6A011172BA5F4AD006904D9 /* EntitySyncInterface.swift in Sources */,
+				141573C02BBE763E00503EA3 /* RenderingConstants.swift in Sources */,
 				E6B0AAD52BAAE4EC009CB939 /* PlayerFloorContactEvent.swift in Sources */,
 				E64361132BA4C2CD003850FD /* PhysicsModule.swift in Sources */,
 				46C3B1D42BB59F9200F10574 /* SwingGrappleHookEvent.swift in Sources */,

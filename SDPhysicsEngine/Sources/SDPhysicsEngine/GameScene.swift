@@ -9,14 +9,15 @@ public class GameScene: SKScene {
     private var objectMap: [SKNode: SDObject] = [:]
 
     private var cameraPlayerMap: [Int: SDCameraObject] = [:]
-    private var playerScreenSize: CGSize = .zero
+
+    private var numberOfPlayers: Int = 0
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    public init(size: CGSize, playerScreenSize: CGSize) {
-        self.playerScreenSize = playerScreenSize
+    public init(size: CGSize, for numberOfPlayers: Int) {
+        self.numberOfPlayers = numberOfPlayers
         super.init(size: size)
     }
 
@@ -76,6 +77,7 @@ public class GameScene: SKScene {
 
 extension GameScene: SDScene {
     public func addPlayerObject(_ playerObject: SDObject, playerIndex: Int) {
+        let playerScreenSize = playerScreenSize(for: numberOfPlayers)
         let camera = SDCameraObject(player: playerObject, screenSize: playerScreenSize, sceneSize: self.size)
         cameraPlayerMap[playerIndex] = camera
 
@@ -95,6 +97,18 @@ extension GameScene: SDScene {
     public func removeObject(_ object: SDObject) {
         objectMap[object.node] = nil
         object.removeFromParent()
+    }
+
+    private func playerScreenSize(for numberOfPlayers: Int) -> CGSize {
+        let screenSize = UIScreen.main.bounds.size
+        switch numberOfPlayers {
+        case 1:
+            return screenSize
+        case 2:
+            return CGSize(width: screenSize.height, height: screenSize.width / 2)
+        default:
+            return screenSize
+        }
     }
 }
 

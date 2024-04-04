@@ -11,20 +11,16 @@ import UIKit
 class MenuViewController: UIViewController {
     var storageManager = StorageManager()
     @IBAction private func singlePlayer(_ sender: Any) {
-        let gameMode = 1
         let numberOfPlayers = 1
-        performSegue(withIdentifier: "LevelSelectSegue", sender: GameData(gameMode: gameMode,
-                                                                          level: nil,
+        performSegue(withIdentifier: "LevelSelectSegue", sender: GameData(level: nil,
                                                                           numberOfPlayers: numberOfPlayers,
                                                                           storageManager: storageManager))
     }
 
     @IBAction private func localMultiplayer(_ sender: Any) {
-        let gameMode = 2
         let numberOfPlayers = 2
         performSegue(withIdentifier: "LevelSelectSegue",
-                     sender: GameData(gameMode: gameMode,
-                                      level: nil,
+                     sender: GameData(level: nil,
                                       numberOfPlayers: numberOfPlayers,
                                       storageManager: storageManager))
     }
@@ -33,7 +29,6 @@ class MenuViewController: UIViewController {
         if segue.identifier == "LevelSelectSegue" {
             if let destinationVC = segue.destination as? LevelSelectorViewController {
                 if let data = sender as? GameData {
-                    destinationVC.gameMode = data.gameMode
                     destinationVC.numberOfPlayers = data.numberOfPlayers
                     destinationVC.storageManager = data.storageManager
                 }

@@ -14,7 +14,6 @@ class GameViewController: UIViewController {
     var gameBridge: GameBridge?
     var gameEngine: GameEngine?
     var storageManager: StorageManager?
-    var gameMode: Int = 0
     var level: LevelPersistable?
     var numberOfPlayers: Int = 0
 
@@ -36,7 +35,7 @@ class GameViewController: UIViewController {
         }
 
         renderer.viewDelegate = self
-        renderer.setupViews(at: self.view, for: gameMode)
+        renderer.setupViews(at: self.view, for: numberOfPlayers)
         self.renderer = renderer
 
         let backButton = UIButton(type: .system)
@@ -56,16 +55,12 @@ class GameViewController: UIViewController {
     }
 
     private func createGameEngine() -> GameEngine {
-        let levelSize = self.storageManager?.getLevelSize(id: 0) ?? CGSize(width: 4_842, height: 1_040)
+        let levelSize = level?.size ?? RenderingConstants.defaultLevelSize
         return GameEngine(mapSize: levelSize)
     }
 
     private func createGameScene(of size: CGSize) -> GameScene {
-        var playerScreenSize = UIScreen.main.bounds.size
-        if gameMode == 2 {
-            playerScreenSize = CGSize(width: playerScreenSize.height, height: playerScreenSize.width / 2)
-        }
-        let scene = GameScene(size: size, playerScreenSize: playerScreenSize)
+        let scene = GameScene(size: size, for: numberOfPlayers)
         scene.scaleMode = .aspectFill
         scene.sceneDelegate = self
         if let level = level {
