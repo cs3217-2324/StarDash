@@ -21,43 +21,71 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="center" axis="vertical" distribution="equalSpacing" spacing="30" id="PUz-Cw-weV">
-                                <rect key="frame" x="556" y="372" width="131" height="163.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="w4P-6v-KJ5">
+                                <rect key="frame" x="98" y="134" width="984" height="552"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIg-qy-c7E">
-                                        <rect key="frame" x="0.0" y="0.0" width="131" height="34.5"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Play"/>
-                                        <connections>
-                                            <action selector="singlePlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DWz-tS-T6E"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9od-mk-aUW">
-                                        <rect key="frame" x="0.0" y="64.5" width="131" height="34.5"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Local"/>
-                                        <connections>
-                                            <action selector="localMultiplayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ag1-C2-EDy"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOE-FG-tgG">
-                                        <rect key="frame" x="0.0" y="129" width="131" height="34.5"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Achievements"/>
-                                        <connections>
-                                            <action selector="viewAchievements:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dKg-AU-DXx"/>
-                                        </connections>
-                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Title" translatesAutoresizingMaskIntoConstraints="NO" id="YIl-Ja-bXk">
+                                        <rect key="frame" x="0.0" y="0.0" width="984" height="315"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="center" axis="vertical" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="PUz-Cw-weV">
+                                        <rect key="frame" x="369.5" y="315" width="245.5" height="237"/>
+                                        <subviews>
+                                            <button opaque="NO" alpha="0.90000000000000002" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIg-qy-c7E">
+                                                <rect key="frame" x="0.0" y="0.0" width="245.5" height="59"/>
+                                                <color key="tintColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Play">
+                                                    <fontDescription key="titleFontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                                    <directionalEdgeInsets key="contentInsets" top="10" leading="30" bottom="10" trailing="30"/>
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="baseBackgroundColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="singlePlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DWz-tS-T6E"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" alpha="0.90000000000000002" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9od-mk-aUW">
+                                                <rect key="frame" x="0.0" y="89" width="245.5" height="59"/>
+                                                <color key="tintColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Local">
+                                                    <fontDescription key="titleFontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                                    <directionalEdgeInsets key="contentInsets" top="10" leading="30" bottom="10" trailing="30"/>
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="baseBackgroundColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="localMultiplayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ag1-C2-EDy"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" alpha="0.90000000000000002" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOE-FG-tgG">
+                                                <rect key="frame" x="0.0" y="178" width="245.5" height="59"/>
+                                                <color key="tintColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Achievements">
+                                                    <fontDescription key="titleFontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                                    <directionalEdgeInsets key="contentInsets" top="10" leading="30" bottom="10" trailing="30"/>
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="baseBackgroundColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="viewAchievements:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dKg-AU-DXx"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="984" id="nT9-44-sEU"/>
+                                </constraints>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Title" translatesAutoresizingMaskIntoConstraints="NO" id="YIl-Ja-bXk">
-                                <rect key="frame" x="115" y="89" width="984" height="315"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="w4P-6v-KJ5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="n8G-Lx-75b"/>
+                            <constraint firstItem="w4P-6v-KJ5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tcP-Mv-Tsa"/>
+                        </constraints>
                     </view>
                     <connections>
                         <segue destination="JZr-ge-cSE" kind="presentation" identifier="LevelSelectSeque" modalPresentationStyle="fullScreen" id="8Tc-eW-RKF"/>
