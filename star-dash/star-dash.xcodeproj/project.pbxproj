@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		141573C02BBE763E00503EA3 /* RenderingConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141573BF2BBE763E00503EA3 /* RenderingConstants.swift */; };
-		141573C22BBEAAB500503EA3 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141573C12BBEAAB500503EA3 /* CGFloat.swift */; };
 		142D9F8F2BA15FBB005FE9E0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 142D9F8E2BA15FBB005FE9E0 /* .swiftlint.yml */; };
 		143AA38C2BA4D3E3009C28E7 /* JumpEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA38B2BA4D3E3009C28E7 /* JumpEvent.swift */; };
 		143AA38F2BA4D61A009C28E7 /* CGVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA38E2BA4D61A009C28E7 /* CGVector.swift */; };
@@ -201,7 +200,6 @@
 
 /* Begin PBXFileReference section */
 		141573BF2BBE763E00503EA3 /* RenderingConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingConstants.swift; sourceTree = "<group>"; };
-		141573C12BBEAAB500503EA3 /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
 		142D9F8E2BA15FBB005FE9E0 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		143AA38B2BA4D3E3009C28E7 /* JumpEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpEvent.swift; sourceTree = "<group>"; };
 		143AA38E2BA4D61A009C28E7 /* CGVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGVector.swift; sourceTree = "<group>"; };
@@ -399,7 +397,6 @@
 			isa = PBXGroup;
 			children = (
 				143AA38E2BA4D61A009C28E7 /* CGVector.swift */,
-				141573C12BBEAAB500503EA3 /* CGFloat.swift */,
 				E64F31662BB3D14600EC5371 /* UIView.swift */,
 			);
 			path = Extensions;
@@ -1092,7 +1089,6 @@
 				E624303A2BBAB787001FC686 /* HomingMissileComponent.swift in Sources */,
 				4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */,
 				143AA3952BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift in Sources */,
-				141573C22BBEAAB500503EA3 /* CGFloat.swift in Sources */,
 				143AA3932BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift in Sources */,
 				E6A115392BB9E3010076A21F /* MovementSystem.swift in Sources */,
 				46D418162BA5CBD60091A38B /* Collidable.swift in Sources */,

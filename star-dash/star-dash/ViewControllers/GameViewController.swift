@@ -56,7 +56,13 @@ class GameViewController: UIViewController {
 
     private func createGameEngine() -> GameEngine {
         let levelSize = level?.size ?? RenderingConstants.defaultLevelSize
-        return GameEngine(mapSize: levelSize)
+
+        // Level size width extended for extra buffer and finish line
+        let extendedLevelSize = CGSize(
+            width: levelSize.width
+                + RenderingConstants.levelSizeLeftExtension + RenderingConstants.levelSizeRightExtension,
+            height: levelSize.height)
+        return GameEngine(mapSize: extendedLevelSize)
     }
 
     private func createGameScene(of size: CGSize) -> GameScene {

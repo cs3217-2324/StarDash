@@ -9,4 +9,6 @@ import Foundation
 
 struct RenderingConstants {
     static let defaultLevelSize = CGSize(width: 4_842, height: 1_040)
+    static let levelSizeLeftExtension = CGFloat(200)
+    static let levelSizeRightExtension = CGFloat(200)
 }

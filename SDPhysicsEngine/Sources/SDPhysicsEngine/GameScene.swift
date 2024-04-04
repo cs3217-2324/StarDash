@@ -60,11 +60,12 @@ public class GameScene: SKScene {
         let backgroundWidth = background.size.width
         let backgroundHeight = background.size.height
 
-        var remainingGameWidth = self.size.width
+        // Offset game width to make background overflow into safe area
+        var remainingGameWidth = self.size.width + 50
         var numOfAddedBackgrounds = 0
         while remainingGameWidth > 0 {
             let background = SDSpriteObject(imageNamed: backgroundImage)
-            let offset = numOfAddedBackgrounds * backgroundWidth
+            let offset = CGFloat(numOfAddedBackgrounds) * backgroundWidth - 50
             background.position = CGPoint(x: backgroundWidth / 2 + offset, y: backgroundHeight / 2)
             background.zPosition = -1
             self.addObject(background)
