@@ -11,11 +11,11 @@ class RaceMode: GameMode {
     var target: GameModeModifiable?
     let mapWidth: CGFloat
 
-    init(target: GameModeModifiable? = nil, mapWidth: CGFloat) {
-        self.target = target
+    init(mapWidth: CGFloat, target: GameModeModifiable? = nil) {
         self.mapWidth = mapWidth
+        self.target = target
     }
-    
+
     func setTarget(_ target: any GameModeModifiable) {
         self.target = target
     }

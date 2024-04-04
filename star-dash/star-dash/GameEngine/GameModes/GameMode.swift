@@ -7,7 +7,7 @@
 
 protocol GameMode {
     var target: GameModeModifiable? { get set }
-    
+
     func setTarget(_ target: GameModeModifiable)
     func setup()
     func hasGameEnded() -> Bool
