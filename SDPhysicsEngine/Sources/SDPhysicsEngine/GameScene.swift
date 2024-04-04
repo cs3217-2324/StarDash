@@ -60,12 +60,11 @@ public class GameScene: SKScene {
         let backgroundWidth = background.size.width
         let backgroundHeight = background.size.height
 
-        // Offset game width to make background overflow into safe area
-        var remainingGameWidth = self.size.width + 50
+        var remainingGameWidth = self.size.width
         var numOfAddedBackgrounds = 0
         while remainingGameWidth > 0 {
             let background = SDSpriteObject(imageNamed: backgroundImage)
-            let offset = CGFloat(numOfAddedBackgrounds) * backgroundWidth - 50
+            let offset = CGFloat(numOfAddedBackgrounds) * backgroundWidth
             background.position = CGPoint(x: backgroundWidth / 2 + offset, y: backgroundHeight / 2)
             background.zPosition = -1
             self.addObject(background)
@@ -75,7 +74,7 @@ public class GameScene: SKScene {
         }
 
         let flag = SDSpriteObject(imageNamed: "Flag")
-        flag.position = CGPoint(x: size.width, y: 200)
+        flag.position = CGPoint(x: size.width - 400, y: 200)
         flag.size = CGSize(width: 110, height: 100)
         flag.zPosition = -1
         self.addObject(flag)

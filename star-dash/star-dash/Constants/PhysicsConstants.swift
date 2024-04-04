@@ -50,7 +50,7 @@ struct PhysicsConstants {
         static let collectible = CollisionCategory.player
         static let obstacle = CollisionCategory.homingMissile
         static let powerUpBox = CollisionCategory.player
-        static let wall = CollisionCategory.player
+        static let wall = CollisionCategory.player | CollisionCategory.homingMissile
         static let floor = CollisionCategory.player | CollisionCategory.homingMissile
         static let hook = CollisionCategory.obstacle
         static let homingMissile = CollisionCategory.player | CollisionCategory.obstacle | CollisionMask.floor

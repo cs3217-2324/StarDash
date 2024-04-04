@@ -115,7 +115,11 @@ struct EntityFactory {
         wallBuilder
             .withPosition(at: position)
             .withPhysics(rectangleOf: size)
+                .configureCategoryBitMask(PhysicsConstants.CollisionCategory.wall)
+                .configureContactTestMask(PhysicsConstants.ContactMask.wall)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.wall)
+                .configureIsDynamic(false)
+                .configureRestitution(0.0)
             .addToGame()
     }
 

@@ -27,6 +27,12 @@ class GameEngine {
         EntityFactory.createAndAddFloor(to: self,
                                         position: CGPoint(x: level.size.width / 2, y: level.size.height / 2 - 400),
                                         size: CGSize(width: 8_000, height: 10))
+        EntityFactory.createAndAddWall(to: self,
+                                       position: CGPoint(x: 0, y: level.size.height / 2),
+                                       size: CGSize(width: 1, height: level.size.height))
+        EntityFactory.createAndAddWall(to: self,
+                                       position: CGPoint(x: level.size.width, y: level.size.height / 2),
+                                       size: CGSize(width: 1, height: level.size.height))
         entities.forEach({ $0.addTo(self) })
     }
     // TODO: Set up players with characters that are selected
