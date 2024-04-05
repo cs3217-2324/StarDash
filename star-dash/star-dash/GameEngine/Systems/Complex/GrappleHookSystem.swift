@@ -44,9 +44,7 @@ class GrappleHookSystem: System {
                 continue
             }
 
-            let event = hookHandler(hookEntity.id)
-
-            dispatcher?.add(event: event)
+            dispatcher?.add(event: hookHandler(hookEntity.id))
         }
     }
 
@@ -81,6 +79,11 @@ class GrappleHookSystem: System {
         eventHandlers[ObjectIdentifier(PlayerObstacleContactEvent.self)] = { event in
             if let playerObstacleContactEvent = event as? PlayerObstacleContactEvent {
                 self.handlePlayerObstacleContactEvent(event: playerObstacleContactEvent)
+            }
+        }
+        eventHandlers[ObjectIdentifier(GrappleHookObstacleContactEvent.self)] = { event in
+            if let grappleHookObstacleContactEvent = event as? GrappleHookObstacleContactEvent {
+                self.handleGrappleHookObstacleContactEvent(event: grappleHookObstacleContactEvent)
             }
         }
     }
@@ -274,6 +277,25 @@ class GrappleHookSystem: System {
                                     .components(ofType: GrappleHookOwnerComponent.self)
                                     .first(where: { $0.ownerPlayerId == event.playerId }) {
             dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
+        }
+    }
+
+    private func handleGrappleHookObstacleContactEvent(event: GrappleHookObstacleContactEvent) {
+        guard let hookSystem = dispatcher?.system(ofType: GrappleHookSystem.self),
+              let hookState = hookSystem.getHookState(of: event.grappleHookId) else {
+            return
+        }
+
+        hookSystem.setSwingAngle(for: event.grappleHookId)
+
+        guard hookState == .shooting else {
+            return
+        }
+
+        if hookSystem.length(of: event.grappleHookId) >= GameConstants.Hook.minLength {
+            hookSystem.setHookState(of: event.grappleHookId, to: .retracting)
+        } else {
+            dispatcher?.add(event: ReleaseGrappleHookEvent(using: event.grappleHookId))
         }
     }
 

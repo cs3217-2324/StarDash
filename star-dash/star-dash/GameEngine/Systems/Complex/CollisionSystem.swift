@@ -43,11 +43,6 @@ class CollisionSystem: System {
                 self.handlePlayerObstacleContactEvent(event: playerObstacleContactEvent)
             }
         }
-        eventHandlers[ObjectIdentifier(GrappleHookObstacleContactEvent.self)] = { event in
-            if let grappleHookObstacleContactEvent = event as? GrappleHookObstacleContactEvent {
-                self.handleGrappleHookObstacleContactEvent(event: grappleHookObstacleContactEvent)
-            }
-        }
     }
 
     private func handleRemoveEvent(event: RemoveEvent) {
@@ -117,24 +112,5 @@ class CollisionSystem: System {
 
         playerSystem.setCanJump(to: event.playerId, canJump: true)
         playerSystem.setCanMove(to: event.playerId, canMove: true)
-    }
-
-    private func handleGrappleHookObstacleContactEvent(event: GrappleHookObstacleContactEvent) {
-        guard let hookSystem = dispatcher?.system(ofType: GrappleHookSystem.self),
-              let hookState = hookSystem.getHookState(of: event.grappleHookId) else {
-            return
-        }
-
-        hookSystem.setSwingAngle(for: event.grappleHookId)
-
-        guard hookState == .shooting else {
-            return
-        }
-
-        if hookSystem.length(of: event.grappleHookId) >= GameConstants.Hook.minLength {
-            hookSystem.setHookState(of: event.grappleHookId, to: .retracting)
-        } else {
-            dispatcher?.add(event: ReleaseGrappleHookEvent(using: event.grappleHookId))
-        }
     }
 }
