@@ -63,19 +63,19 @@ class HomingMissileSystem: System, EventListener {
         if component.targetId == nil {
             aimMissileForward(component: component)
         } else {
-            aimMissle(component: component)
-        }        
+            aimMissile(component: component)
+        }
     }
 
-    private func aimMissileForward(component: HomingMissleComponent) {
+    private func aimMissileForward(component: HomingMissileComponent) {
         guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self) else {
             return
         }
 
-        positionSystem.rotate(entityId: component.entityId, inDirection: CGVector(x: 1, y: 0))
+        positionSystem.rotate(entityId: component.entityId, inDirection: CGVector(dx: 1, dy: 0))
     }
 
-    private func aimMissile(component: HomingMissleComponent) {
+    private func aimMissile(component: HomingMissileComponent) {
         guard let targetId = component.targetId,
               let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
