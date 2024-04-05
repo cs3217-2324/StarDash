@@ -44,7 +44,7 @@ struct EntityFactory {
                         textureSet: SpriteConstants.monsterTexture,
                         textureAtlas: nil,
                         size: size)
-            .withPhysics(rectangleOf: PhysicsConstants.Dimensions.monster)
+            .withPhysics(rectangleOf: size)
                 .configureVelocity(PhysicsConstants.Monster.moveVelocityLeft)
                 .configureCategoryBitMask(PhysicsConstants.CollisionCategory.monster)
                 .configureContactTestMask(PhysicsConstants.ContactMask.monster)
