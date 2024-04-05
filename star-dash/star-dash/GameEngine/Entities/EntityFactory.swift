@@ -41,11 +41,16 @@ struct EntityFactory {
             .withPosition(at: position)
             .withHealth(health: health)
             .withSprite(image: SpriteConstants.monster,
-                        textureSet: nil,
+                        textureSet: SpriteConstants.monsterTexture,
                         textureAtlas: nil,
                         size: size)
             .withPhysics(rectangleOf: PhysicsConstants.Dimensions.monster)
+                .configureVelocity(PhysicsConstants.Monster.moveVelocityLeft)
+                .configureCategoryBitMask(PhysicsConstants.CollisionCategory.monster)
+                .configureContactTestMask(PhysicsConstants.ContactMask.monster)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.monster)
+                .configureAffectedByGravity(true)
+                .configureRestitution(0.0)
             .addToGame()
     }
 

@@ -43,6 +43,7 @@ class PhysicsModule: SyncModule {
             object.physicsBody = createCirclePhysicsBody(physicsComponent: physicsComponent)
         }
 
+        object.physicsBody?.velocity = physicsComponent.velocity
         object.physicsBody?.restitution = physicsComponent.restitution
         object.physicsBody?.isDynamic = physicsComponent.isDynamic
         object.physicsBody?.affectedByGravity = physicsComponent.affectedByGravity

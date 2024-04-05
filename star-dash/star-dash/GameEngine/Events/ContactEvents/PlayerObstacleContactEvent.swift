@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 class PlayerObstacleContactEvent: Event {
     let timestamp: Date
     let playerId: EntityId

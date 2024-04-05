@@ -48,6 +48,11 @@ class CollisionSystem: System {
                 self.handleGrappleHookObstacleContactEvent(event: grappleHookObstacleContactEvent)
             }
         }
+        eventHandlers[ObjectIdentifier(MonsterObstacleContactEvent.self)] = { event in
+            if let monsterObstacleContactEvent = event as? MonsterObstacleContactEvent {
+                self.handleMonsterObstacleContactEvent(event: monsterObstacleContactEvent)
+            }
+        }
     }
 
     private func handleRemoveEvent(event: RemoveEvent) {
@@ -134,5 +139,16 @@ class CollisionSystem: System {
         if hookState == .shooting && hookSystem.length(of: event.grappleHookId) >= GameConstants.Hook.minLength {
             hookSystem.setHookState(of: event.grappleHookId, to: .retracting)
         }
+    }
+
+    private func handleMonsterObstacleContactEvent(event: MonsterObstacleContactEvent) {
+        guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
+              let monsterPosition = positionSystem.getPosition(of: event.monsterId) else {
+            return
+        }
+
+        let isLeft = monsterPosition.x < event.contactPoint.x
+
+        dispatcher?.add(event: MonsterMovementReversalEvent(on: event.monsterId, isLeft: isLeft))
     }
 }

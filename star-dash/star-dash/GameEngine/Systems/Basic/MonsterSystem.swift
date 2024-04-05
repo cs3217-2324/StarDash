@@ -28,9 +28,28 @@ class MonsterSystem: System {
                 self.handleMonsterDeathEvent(event: monsterDeathEvent)
             }
         }
+        eventHandlers[ObjectIdentifier(MonsterMovementReversalEvent.self)] = { event in
+            if let monsterMovementReversalEvent = event as? MonsterMovementReversalEvent {
+                self.handleMonsterMovementReversalEvent(event: monsterMovementReversalEvent)
+            }
+        }
     }
 
     private func handleMonsterDeathEvent(event: MonsterDeathEvent) {
         dispatcher?.add(event: RemoveEvent(on: event.monsterId))
+    }
+
+    private func handleMonsterMovementReversalEvent(event: MonsterMovementReversalEvent) {
+        guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
+              let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self) else {
+            return
+        }
+
+        let newVelocity = event.isLeft
+                          ? PhysicsConstants.Monster.moveVelocityRight
+                          : PhysicsConstants.Monster.moveVelocityLeft
+
+        physicsSystem.setVelocity(to: event.monsterId, velocity: newVelocity)
+        spriteSystem.startAnimation(of: event.monsterId, named: event.isLeft ? "runLeft" : "run")
     }
 }
