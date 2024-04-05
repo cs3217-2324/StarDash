@@ -16,7 +16,7 @@ class PlayerDeathSystem: System {
     }
 
     func setup() {
-        dispatcher?.registerListener(for: PlayerDeathEvent.self, listener: self)
+        dispatcher?.registerListener(self)
 
         eventHandlers[ObjectIdentifier(PlayerDeathEvent.self)] = { event in
             if let playerDeathEvent = event as? PlayerDeathEvent {
@@ -26,12 +26,16 @@ class PlayerDeathSystem: System {
     }
 
     func update(by deltaTime: TimeInterval) {
+        guard let playerSystem = dispatcher?.system(ofType: PlayerSystem.self) else {
+            return
+        }
+
         let playerComponents = entityManager.components(ofType: PlayerComponent.self)
+        for playerComponent in playerComponents where playerComponent.deathTimer > 0 {
+            playerSystem.setDeathTimer(to: playerComponent.entityId,
+                                       timer: max(0, playerComponent.deathTimer - deltaTime))
 
-        for playerComponent in playerComponents where playerComponent.deathTimer > 0 && playerComponent.isDead {
-            playerComponent.deathTimer = max(0, playerComponent.deathTimer - deltaTime)
-
-            if playerComponent.deathTimer == 0 {
+            if playerComponent.deathTimer <= 0 {
                 respawnPlayer(playerComponent.entityId)
             }
         }
@@ -40,7 +44,9 @@ class PlayerDeathSystem: System {
     private func handlePlayerDeathEvent(event: PlayerDeathEvent) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
-              let playerSystem = dispatcher?.system(ofType: PlayerSystem.self) else {
+              let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
+              let isDead = playerSystem.isDead(entityId: event.playerId),
+              !isDead else {
             return
         }
 

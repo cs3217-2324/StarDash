@@ -21,7 +21,7 @@ class PlayerSystem: System {
     }
 
     func setup() {
-        dispatcher?.registerListener(for: RespawnEvent.self, listener: self)
+        dispatcher?.registerListener(self)
 
         eventHandlers[ObjectIdentifier(RespawnEvent.self)] = { event in
             if let respawanEvent = event as? RespawnEvent {
@@ -45,6 +45,7 @@ class PlayerSystem: System {
 
         return playerComponent.canMove
     }
+
     func setCanJump(to entityId: EntityId, canJump: Bool) {
         guard let playerComponent = getPlayerComponent(of: entityId) else {
             return
@@ -61,17 +62,26 @@ class PlayerSystem: System {
         playerComponent.canMove = canMove
     }
 
+    // MARK: Death related methods
+
     func setDeathTimer(to entityId: EntityId, timer: Double) {
         guard let playerComponent = getPlayerComponent(of: entityId) else {
             return
         }
 
-        playerComponent.isDead = timer > 0
         playerComponent.deathTimer = timer
+    }
+    
+    func isDead(entityId: EntityId) -> Bool? {
+        guard let playerComponent = getPlayerComponent(of: entityId) else {
+            return nil
+        }
+        
+        return playerComponent.deathTimer > 0
     }
 
     private func handleRespawnEvent(event: RespawnEvent) {
-        dispatcher?.add(event: TeleportEvent(on: event.entityId, to: event.newPosition))
+        dispatcher?.add(event: TeleportEvent(on: event.playerId, to: event.newPosition))
     }
 
     private func getPlayerComponent(of entityId: EntityId) -> PlayerComponent? {

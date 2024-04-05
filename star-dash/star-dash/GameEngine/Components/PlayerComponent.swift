@@ -7,7 +7,6 @@ class PlayerComponent: Component {
     var canHook = true
 
     // death properties
-    var isDead = false
     var deathTimer: Double = 0
 
     init(id: ComponentId, entityId: EntityId, playerIndex: Int) {
