@@ -78,6 +78,11 @@ class GrappleHookSystem: System {
                 self.handleReleaseEvent(event: playerAttackMonsterEvent)
             }
         }
+        eventHandlers[ObjectIdentifier(PlayerObstacleContactEvent.self)] = { event in
+            if let playerObstacleContactEvent = event as? PlayerObstacleContactEvent {
+                self.handlePlayerObstacleContactEvent(event: playerObstacleContactEvent)
+            }
+        }
     }
 
     func extendHook(of hookEntityId: EntityId) {
@@ -262,6 +267,14 @@ class GrappleHookSystem: System {
 
         dispatcher?.add(event: RemoveEvent(on: ropeId))
         dispatcher?.add(event: RemoveEvent(on: event.hookId))
+    }
+
+    private func handlePlayerObstacleContactEvent(event: PlayerObstacleContactEvent) {
+        if let hookOwnerComponent = entityManager
+                                    .components(ofType: GrappleHookOwnerComponent.self)
+                                    .first(where: { $0.ownerPlayerId == event.playerId }) {
+            dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
+        }
     }
 
     private func getHookComponent(of entityId: EntityId) -> GrappleHookComponent? {

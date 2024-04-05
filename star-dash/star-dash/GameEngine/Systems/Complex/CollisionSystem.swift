@@ -104,12 +104,6 @@ class CollisionSystem: System {
     }
 
     private func handlePlayerObstacleContactEvent(event: PlayerObstacleContactEvent) {
-        if let hookOwnerComponent = entityManager
-                                    .components(ofType: GrappleHookOwnerComponent.self)
-                                    .first(where: { $0.ownerPlayerId == event.playerId }) {
-            dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
-        }
-
         guard let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
               let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let playerPosition = positionSystem.getPosition(of: event.playerId),
