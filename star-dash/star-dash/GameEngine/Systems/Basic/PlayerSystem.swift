@@ -71,12 +71,12 @@ class PlayerSystem: System {
 
         playerComponent.deathTimer = timer
     }
-    
+
     func isDead(entityId: EntityId) -> Bool? {
         guard let playerComponent = getPlayerComponent(of: entityId) else {
             return nil
         }
-        
+
         return playerComponent.deathTimer > 0
     }
 
