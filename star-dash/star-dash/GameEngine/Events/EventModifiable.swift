@@ -12,5 +12,5 @@ protocol EventModifiable {
     func system<T: System>(ofType type: T.Type) -> T?
     func add(event: Event)
     func add(entity: Entity)
-    func registerListener<T: Event>(for eventType: T.Type, listener: EventListener)
+    func registerListener(_ listener: EventListener)
 }

@@ -17,15 +17,25 @@ struct Database {
     private let obstacleTable = Table("obstacle")
     private let monsterTable = Table("monster")
     private let powerUpBoxTable = Table("powerUpBox")
-    private var db: Connection?
+
+    let twinkleStarAchievementTable = Table("twinklestar")
+    let stellarCollectorAchievementTable = Table("stellarCollector")
+    let powerRangerAchievementTable = Table("powerranger")
+
+    var db: Connection?
+
     // Define a dictionary to map entity types to tables
     let tableMap: [ObjectIdentifier: Table]
+
     init() {
         tableMap = [
             ObjectIdentifier(CollectibleEntityPersistable.self): self.collectibleTable,
             ObjectIdentifier(ObstacleEntityPersistable.self): self.obstacleTable,
             ObjectIdentifier(MonsterEntityPersistable.self): self.monsterTable,
-            ObjectIdentifier(PowerUpBoxEntityPersistable.self): self.powerUpBoxTable
+            ObjectIdentifier(PowerUpBoxEntityPersistable.self): self.powerUpBoxTable,
+            ObjectIdentifier(TwinkleStarAchievementPersistable.self): self.twinkleStarAchievementTable,
+            ObjectIdentifier(StellarCollectorAchievementPersistable.self): self.stellarCollectorAchievementTable,
+            ObjectIdentifier(PowerRangerAchievementPersistable.self): self.powerRangerAchievementTable
         ]
 
         if let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
@@ -45,11 +55,8 @@ struct Database {
                 insertJsonData(filename: "level3")
                 print("SQLiteDataStore init successfully at: \(dbPath) ")
             } catch {
-                db = nil
                 print("SQLiteDataStore init error: \(error)")
             }
-        } else {
-            db = nil
         }
     }
 
@@ -63,10 +70,14 @@ struct Database {
             try db.run(collectibleTable.drop())
             try db.run(monsterTable.drop())
             try db.run(powerUpBoxTable.drop())
+
+            // Comment out below to test for persistency
+            try db.run(twinkleStarAchievementTable.drop())
+            try db.run(stellarCollectorAchievementTable.drop())
+            try db.run(powerRangerAchievementTable.drop())
         } catch {
             print("Error deleting table \(error)")
         }
-
     }
 
     private func createAllTables() {
@@ -75,6 +86,7 @@ struct Database {
         createMonsterTable()
         createObstacleTable()
         createPowerUpBoxTable()
+        createAchievementTables()
     }
 
     private func createLevelTable() {
@@ -227,7 +239,6 @@ struct Database {
             print("Error saving level \(error)")
         }
     }
-
 }
 
 extension Database {
@@ -268,25 +279,23 @@ extension Database {
 
     func getLevelPersistable(id: Int64) -> LevelPersistable? {
         guard let database = db else {
-                    return nil
-                }
+            return nil
+        }
         let idColumn = Expression<Int64>("id")
-                do {
-                    let loadedLevel: [LevelPersistable] =
-                    try database.prepare(levelTable.filter(id == idColumn)).map { row in
-                        let persistable: LevelPersistable = try row.decode()
-                        return persistable
-
-                    }
-                    if loadedLevel.isEmpty {
-                        return nil
-                    }
-                    return loadedLevel[0]
-
-                } catch {
-                    print("Error fetching levels \(error)")
-                    return nil
-                }
+        do {
+            let loadedLevel: [LevelPersistable] =
+            try database.prepare(levelTable.filter(id == idColumn)).map { row in
+                let persistable: LevelPersistable = try row.decode()
+                return persistable
+            }
+            if loadedLevel.isEmpty {
+                return nil
+            }
+            return loadedLevel[0]
+        } catch {
+            print("Error fetching levels \(error)")
+            return nil
+        }
     }
 
     func getLevels() -> [LevelPersistable] {
@@ -330,11 +339,8 @@ extension Database {
             }
         } catch {
             print("Error retriving \(error)")
-
         }
 
         return entities
-
     }
-
 }

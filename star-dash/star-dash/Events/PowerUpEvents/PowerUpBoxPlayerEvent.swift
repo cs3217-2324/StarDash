@@ -10,4 +10,8 @@ class PowerUpBoxPlayerEvent: Event {
         self.entityId = playerEntityId
         self.powerUpBoxId = powerUpBoxId
     }
+
+    var playerIdForEvent: EntityId? {
+        entityId
+    }
 }

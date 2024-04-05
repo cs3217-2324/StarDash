@@ -8,4 +8,8 @@ class MissileBlockedEvent: Event {
         self.timestamp = Date.now
         self.missileId = missileId
     }
+
+    var playerIdForEvent: EntityId? {
+        nil
+    }
 }

@@ -12,11 +12,11 @@ typealias EventQueue = Deque<Event>
 
 class EventManager {
     private var events: EventQueue
-    private var listeners: [ObjectIdentifier: [EventListener]]
+    private var listeners: [EventListener]
 
     init() {
         self.events = EventQueue()
-        self.listeners = [:]
+        self.listeners = []
     }
 
     func add(event: Event) {
@@ -29,20 +29,11 @@ class EventManager {
         }
     }
 
-    func registerListener<T: Event>(for eventType: T.Type, listener: EventListener) {
-        let key = ObjectIdentifier(eventType)
-        if listeners[key] == nil {
-            listeners[key] = []
-        }
-        listeners[key]?.append(listener)
+    func registerListener(_ listener: EventListener) {
+        listeners.append(listener)
     }
 
     private func emit(event: Event) {
-        let key = ObjectIdentifier(type(of: event))
-        if let eventListeners = listeners[key] {
-            for listener in eventListeners {
-                listener.handleEvent(event: event)
-            }
-        }
+        listeners.forEach { $0.handleEvent(event: event) }
     }
 }

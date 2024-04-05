@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     var gameMode: Int = 0
     var level: LevelPersistable?
     var numberOfPlayers: Int = 0
+    var achievementManager: AchievementManager?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -82,6 +84,12 @@ class ViewController: UIViewController {
         let entities = storageManager.getAllEntity(id: level.id)
         gameEngine.setupLevel(level: level, entities: entities )
         gameEngine.setupPlayers(numberOfPlayers: self.numberOfPlayers)
+
+        self.achievementManager = AchievementManager(withMap: gameEngine.playerIdEntityMap)
+
+        if let achievementManager = self.achievementManager {
+            gameEngine.registerListener(achievementManager)
+        }
     }
 
 }
