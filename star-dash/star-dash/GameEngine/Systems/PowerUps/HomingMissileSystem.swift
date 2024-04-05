@@ -33,7 +33,6 @@ class HomingMissileSystem: System, EventListener {
         for homingMissileComponent in entityManager.components(ofType: HomingMissileComponent.self) {
             if !homingMissileComponent.isActivated {
                 fireMissile(component: homingMissileComponent)
-                continue
             }
 
             updateMissile(component: homingMissileComponent)
@@ -61,6 +60,22 @@ class HomingMissileSystem: System, EventListener {
     }
 
     private func updateMissile(component: HomingMissileComponent) {
+        if component.targetId == nil {
+            aimMissileForward(component: component)
+        } else {
+            aimMissle(component: component)
+        }        
+    }
+
+    private func aimMissileForward(component: HomingMissleComponent) {
+        guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self) else {
+            return
+        }
+
+        positionSystem.rotate(entityId: component.entityId, inDirection: CGVector(x: 1, y: 0))
+    }
+
+    private func aimMissile(component: HomingMissleComponent) {
         guard let targetId = component.targetId,
               let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
