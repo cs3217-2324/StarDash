@@ -99,11 +99,20 @@ class CollisionSystem: System {
             dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
         }
 
-        let isPlayerAbove = playerPosition.y - (playerSize.height / 2) >= monsterPosition.y + (monsterSize.height / 2)
+        let isPlayerAbove = playerPosition.y - (playerSize.height / 2 - 10)
+                            >= monsterPosition.y + (monsterSize.height / 2 - 10)
+        let isPlayerWithinMonsterWidth = playerPosition.x < (monsterPosition.x + (monsterSize.width / 2))
+                                         || playerPosition.x > (monsterPosition.x - (monsterSize.width / 2))
+        let isPlayerAttack = isPlayerAbove && isPlayerWithinMonsterWidth
 
-        if isPlayerAbove {
+        let isLeft = monsterPosition.x < playerPosition.x
+        dispatcher?.add(event: MonsterMovementReversalEvent(on: event.monsterId, isLeft: isLeft))
+
+        if isPlayerAttack {
+            print("Player attack monster")
             dispatcher?.add(event: PlayerAttackMonsterEvent(from: event.playerId, on: event.monsterId))
         } else {
+            print("Monster attack player")
             dispatcher?.add(event: MonsterAttackPlayerEvent(from: event.monsterId, on: event.playerId))
         }
     }

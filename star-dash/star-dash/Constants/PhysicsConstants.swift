@@ -48,7 +48,7 @@ struct PhysicsConstants {
 
     struct ContactMask {
         static let player = CollisionCategory.floor | CollisionCategory.collectible | CollisionCategory.powerUpBox |
-        CollisionCategory.homingMissile
+        CollisionCategory.homingMissile | CollisionCategory.monster
         static let monster = CollisionCategory.player
         | CollisionCategory.floor
         | CollisionCategory.obstacle

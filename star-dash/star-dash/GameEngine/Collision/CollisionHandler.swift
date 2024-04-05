@@ -9,8 +9,7 @@ import Foundation
 
 struct CollisionHandler {
     static func between(player: Player, monster: Monster) -> Event? {
-        print("collide between player and monster")
-        return PlayerMonsterContactEvent(from: player.id, on: monster.id)
+        PlayerMonsterContactEvent(from: player.id, on: monster.id)
     }
 
     static func between(player: Player, collectible: Collectible) -> Event? {
