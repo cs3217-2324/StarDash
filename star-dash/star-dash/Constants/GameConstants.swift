@@ -23,7 +23,7 @@ struct GameConstants {
     }
 
     struct DamageImpulse {
-        static let attackedByMonster = CGVector(dx: 500, dy: 0)
+        static let attackedByMonster = CGVector(dx: 2_500, dy: 0)
     }
 
     struct AttackImpulse {

@@ -127,7 +127,6 @@ class GameEngine {
         systemManager.add(PhysicsSystem(entityManager, dispatcher: self))
         systemManager.add(ScoreSystem(entityManager, dispatcher: self))
         systemManager.add(HealthSystem(entityManager, dispatcher: self))
-        systemManager.add(MonsterSystem(entityManager, dispatcher: self))
         systemManager.add(SpriteSystem(entityManager, dispatcher: self))
 
         // Complex Systems
@@ -135,11 +134,9 @@ class GameEngine {
         systemManager.add(InventorySystem(entityManager, dispatcher: self))
         systemManager.add(AttackSystem(entityManager, dispatcher: self))
         systemManager.add(PlayerSystem(entityManager, dispatcher: self))
-        systemManager.add(MovementSystem(entityManager, dispatcher: self))
-        systemManager.add(CollisionSystem(entityManager, dispatcher: self))
         systemManager.add(MonsterSystem(entityManager, dispatcher: self))
+        systemManager.add(MovementSystem(entityManager, dispatcher: self))
         systemManager.add(GrappleHookSystem(entityManager, dispatcher: self))
-        systemManager.add(SpriteSystem(entityManager, dispatcher: self))
         systemManager.add(BuffSystem(entityManager, dispatcher: self))
 
         // Power-Up Systems

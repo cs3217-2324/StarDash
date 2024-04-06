@@ -44,8 +44,8 @@ struct CollisionHandler {
         nil
     }
 
-    static func between(monster: Monster, obstacle: Obstacle) -> Event? {
-        nil
+    static func between(monster: Monster, obstacle: Obstacle, at contactPoint: CGPoint) -> Event? {
+        MonsterObstacleContactEvent(from: monster.id, on: obstacle.id, at: contactPoint)
     }
 
     static func between(grappleHook: GrappleHook, floor: Floor) -> Event? {

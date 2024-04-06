@@ -123,6 +123,17 @@ class EntityBuilder {
         return self
     }
 
+    func configureVelocity(_ initialVelocity: CGVector) -> Self {
+        let componentType = ObjectIdentifier(PhysicsComponent.self)
+
+        guard let physicsComponent = self.components[componentType] as? PhysicsComponent else {
+            return self
+        }
+
+        physicsComponent.velocity = initialVelocity
+        return self
+    }
+
     func configureCategoryBitMask(_ categoryBitMask: UInt32) -> Self {
         let componentType = ObjectIdentifier(PhysicsComponent.self)
 

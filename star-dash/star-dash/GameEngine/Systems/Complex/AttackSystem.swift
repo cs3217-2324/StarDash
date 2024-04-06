@@ -62,13 +62,11 @@ class AttackSystem: System {
     }
 
     private func handlePlayerAttackMonsterEvent(event: PlayerAttackMonsterEvent) {
-        guard let healthSystem = dispatcher?.system(ofType: HealthSystem.self),
-              let physicSystem = dispatcher?.system(ofType: PhysicsSystem.self) else {
+        guard let healthSystem = dispatcher?.system(ofType: HealthSystem.self) else {
             return
         }
 
         healthSystem.applyHealthChange(to: event.monsterId, healthChange: GameConstants.HealthChange.attackedByPlayer)
-        physicSystem.applyImpulse(to: event.monsterId, impulse: GameConstants.AttackImpulse.attackedByPlayer)
 
         if !healthSystem.hasHealth(for: event.monsterId) {
             dispatcher?.add(event: MonsterDeathEvent(on: event.monsterId, causedBy: event.playerId))
