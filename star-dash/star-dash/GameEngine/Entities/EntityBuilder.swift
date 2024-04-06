@@ -99,9 +99,9 @@ class EntityBuilder {
         return self
     }
 
-    func withGrappleHook(at startpoint: CGPoint) -> Self {
+    func withGrappleHook(at startpoint: CGPoint, isLeft: Bool) -> Self {
         let componentType = ObjectIdentifier(GrappleHookComponent.self)
-        let component = GrappleHookComponent(entityId: entityId, startpoint: startpoint)
+        let component = GrappleHookComponent(entityId: entityId, startpoint: startpoint, isLeft: isLeft)
 
         self.components[componentType] = component
         return self

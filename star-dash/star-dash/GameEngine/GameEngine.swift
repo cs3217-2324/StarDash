@@ -113,11 +113,12 @@ class GameEngine {
     }
 
     func handlePlayerHook(playerIndex: Int) {
-        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex),
+              let positionComponent = entityManager.component(ofType: PositionComponent.self, of: playerEntityId) else {
             return
         }
 
-        eventManager.add(event: UseGrappleHookEvent(from: playerEntityId))
+        eventManager.add(event: UseGrappleHookEvent(from: playerEntityId, isLeft: positionComponent.isFacingLeft))
     }
 
     private func setUpSystems() {
