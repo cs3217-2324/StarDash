@@ -116,6 +116,7 @@
 		4E630F342B9F8FC00008F887 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F332B9F8FC00008F887 /* Player.swift */; };
 		4E630F372B9F91DE0008F887 /* PlayerSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F362B9F91DE0008F887 /* PlayerSprite.swift */; };
 		4E630F392B9F943B0008F887 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F382B9F943B0008F887 /* EntityManager.swift */; };
+		4E64294E2BBF1773005E3D7E /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E64294D2BBF1773005E3D7E /* Logger.swift */; };
 		4E86605C2BA095460035530D /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86605B2BA095460035530D /* Monster.swift */; };
 		4E86605F2BA095E30035530D /* Collectible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86605E2BA095E30035530D /* Collectible.swift */; };
 		4E8660622BA0964A0035530D /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660612BA0964A0035530D /* Obstacle.swift */; };
@@ -331,6 +332,7 @@
 		4E630F332B9F8FC00008F887 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4E630F362B9F91DE0008F887 /* PlayerSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSprite.swift; sourceTree = "<group>"; };
 		4E630F382B9F943B0008F887 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
+		4E64294D2BBF1773005E3D7E /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		4E86605B2BA095460035530D /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		4E86605E2BA095E30035530D /* Collectible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collectible.swift; sourceTree = "<group>"; };
 		4E8660612BA0964A0035530D /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
@@ -680,6 +682,7 @@
 		4E630EF42B9F7E070008F887 /* star-dash */ = {
 			isa = PBXGroup;
 			children = (
+				4E64294C2BBF1718005E3D7E /* Logger */,
 				46D049F32BB94ED30096D9F2 /* Achievement */,
 				4E59E2592BAB3FC9007B3FA7 /* Model */,
 				4E59E24F2BAB2DBB007B3FA7 /* Persistence */,
@@ -764,6 +767,14 @@
 				4E59E25E2BAB4134007B3FA7 /* EntityType.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		4E64294C2BBF1718005E3D7E /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				4E64294D2BBF1773005E3D7E /* Logger.swift */,
+			);
+			path = Logger;
 			sourceTree = "<group>";
 		};
 		4E86605D2BA095CC0035530D /* Constants */ = {
@@ -1266,6 +1277,7 @@
 				46BB14322BBFD9E3001AE148 /* MonsterMovementReversalEvent.swift in Sources */,
 				4E59E2632BACB9E2007B3FA7 /* LevelData.swift in Sources */,
 				145F2C802BA203B400457549 /* Event.swift in Sources */,
+				4E64294E2BBF1773005E3D7E /* Logger.swift in Sources */,
 				460A200F2BB1E1F1002597B8 /* CollisionSystem.swift in Sources */,
 				1471B0A22BA6AA2200878B14 /* RespawnEvent.swift in Sources */,
 				46D418112BA5C88B0091A38B /* Wall.swift in Sources */,

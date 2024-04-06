@@ -25,6 +25,7 @@ class EventManager {
 
     func executeAll(on target: EventModifiable) {
         while let event = events.popFirst() {
+            Logger.logEvent(subtitle: "Event Manager", message: "\(event) execute", level: .info)
             emit(event: event)
         }
     }

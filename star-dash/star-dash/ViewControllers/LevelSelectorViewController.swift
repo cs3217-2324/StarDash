@@ -20,7 +20,6 @@ class LevelSelectorViewController: UIViewController {
     }
     func fetchLevelsFromDatabase() {
         if let levels = storageManager?.database.getLevels() {
-            print(levels)
             self.levels = levels
         }
     }
