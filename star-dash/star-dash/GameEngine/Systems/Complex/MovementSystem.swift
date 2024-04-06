@@ -35,6 +35,7 @@ class MovementSystem: System {
 
     private func handleMoveEvent(event: MoveEvent) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
+              let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
               let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
               playerSystem.canMove(for: event.entityId) else {
@@ -49,6 +50,7 @@ class MovementSystem: System {
         }
 
         physicsSystem.setVelocity(to: event.entityId, velocity: runVelocity)
+        positionSystem.setEntityFacingLeft(event.toLeft, entityId: event.entityId)
         spriteSystem.startAnimation(of: event.entityId, named: event.toLeft ? "runLeft" : "run")
     }
 
@@ -66,10 +68,12 @@ class MovementSystem: System {
 
     private func handleStopMovingEvent(event: StopMovingEvent) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
+              let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self) else {
             return
         }
 
+        positionSystem.setEntityFacingLeft(false, entityId: event.entityId)
         physicsSystem.setVelocity(to: event.entityId,
                                   velocity: .zero)
         spriteSystem.endAnimation(of: event.entityId)
