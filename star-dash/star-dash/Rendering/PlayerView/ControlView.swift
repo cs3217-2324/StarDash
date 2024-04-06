@@ -12,7 +12,7 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
     let buttonSize: CGFloat = 100
     let joystickBackgroundWidth: CGFloat = 256
     let panThreshold: CGFloat = 15
-
+    private var longPressTimer: Timer?
     var controlViewDelegate: ControlViewDelegate?
 
     func setupSubviews() {
@@ -64,6 +64,11 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
         panGesture.cancelsTouchesInView = false
         panGesture.delegate = self
         addGestureRecognizer(panGesture)
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+            longPressGesture.minimumPressDuration = 0.2 // Adjust the duration as needed
+            longPressGesture.delegate = self
+            addGestureRecognizer(panGesture)
+            addGestureRecognizer(longPressGesture)
     }
 
     // MARK: Gesture handler methods
@@ -92,7 +97,6 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
             let isLeft = firstTouch.location(in: joystickView).x < joystickView.bounds.midX
             controlViewDelegate?.joystickMoved(toLeft: isLeft, from: self)
         }
-
         joystickView.moveJoystick(location: firstTouch.location(in: joystickView))
     }
 
@@ -118,6 +122,41 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
         return true
     }
 
+    @objc private func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
+        switch gesture.state {
+        case .began:
+            startLongPressTimer(gesture)
+        case .ended, .cancelled:
+            stopLongPressTimer()
+        default:
+            break
+        }
+    }
+
+    private func startLongPressTimer(_ gesture: UILongPressGestureRecognizer) {
+        longPressTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self] _ in
+
+            guard let self = self, let joystickView = self.joystickView else {
+                return
+            }
+
+            let touchPoint = gesture.location(in: self)
+            if shouldSendMoveEvent(location: touchPoint) {
+                let isLeft = gesture.location(in: joystickView).x < joystickView.bounds.midX
+                controlViewDelegate?.joystickMoved(toLeft: isLeft, from: self)
+            }
+        }
+    }
+
+    private func stopLongPressTimer() {
+        guard let joystickView = self.joystickView else {
+            return
+        }
+        controlViewDelegate?.joystickReleased(from: self)
+        joystickView.returnJoystick()
+        longPressTimer?.invalidate()
+        longPressTimer = nil
+    }
     @objc
     func handlePan(_ gesture: UIPanGestureRecognizer) {
         let location = gesture.location(in: self)
