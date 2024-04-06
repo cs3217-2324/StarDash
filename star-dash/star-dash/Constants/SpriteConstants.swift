@@ -37,7 +37,8 @@ struct SpriteConstants {
     static let monster = "Monster"
     static let monsterTexture = TextureSet(
         run: "MonsterWalk",
-        runLeft: "MonsterWalkLeft"
+        runLeft: "MonsterWalkLeft",
+        death: "MonsterWalk"
     )
 
     static let obstacle = "Obstacle"
