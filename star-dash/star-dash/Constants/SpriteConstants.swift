@@ -1,6 +1,7 @@
 struct TextureSet {
     let run: String
     let runLeft: String
+    let death: String
 
     func getValueFor(key: String) -> String? {
         let mirror = Mirror(reflecting: self)
@@ -22,7 +23,8 @@ struct SpriteConstants {
     static let PlayerRedNose = "PlayerRedNose"
     static let PlayerRedNoseTexture = TextureSet(
         run: "PlayerRedNoseRun",
-        runLeft: "PlayerRedNoseRunLeft"
+        runLeft: "PlayerRedNoseRunLeft",
+        death: "PlayerRedNoseDeath"
     )
 
     static let star = "Star"

@@ -152,6 +152,7 @@
 		E6A115372BB9E2F90076A21F /* SpriteSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A115362BB9E2F90076A21F /* SpriteSystem.swift */; };
 		E6A115392BB9E3010076A21F /* MovementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A115382BB9E3010076A21F /* MovementSystem.swift */; };
 		E6A2B3A92BBBA41900DE6C79 /* GrappleHookSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2B3A82BBBA41900DE6C79 /* GrappleHookSystem.swift */; };
+		E6A492962BBD5C0C00A8A374 /* PlayerDeathSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A492952BBD5C0C00A8A374 /* PlayerDeathSystem.swift */; };
 		E6A72FC52BB2E1E10015729E /* PlayerViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A72FC32BB2E1E10015729E /* PlayerViewLayout.swift */; };
 		E6A72FC62BB2E1E10015729E /* LayoutUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A72FC42BB2E1E10015729E /* LayoutUtils.swift */; };
 		E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745112BA057040080C1BE /* MTKRenderer.swift */; };
@@ -366,6 +367,7 @@
 		E6A115362BB9E2F90076A21F /* SpriteSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpriteSystem.swift; path = "star-dash/GameEngine/Systems/Basic/SpriteSystem.swift"; sourceTree = SOURCE_ROOT; };
 		E6A115382BB9E3010076A21F /* MovementSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementSystem.swift; sourceTree = "<group>"; };
 		E6A2B3A82BBBA41900DE6C79 /* GrappleHookSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrappleHookSystem.swift; sourceTree = "<group>"; };
+		E6A492952BBD5C0C00A8A374 /* PlayerDeathSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDeathSystem.swift; sourceTree = "<group>"; };
 		E6A72FC32BB2E1E10015729E /* PlayerViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewLayout.swift; sourceTree = "<group>"; };
 		E6A72FC42BB2E1E10015729E /* LayoutUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutUtils.swift; sourceTree = "<group>"; };
 		E6A745112BA057040080C1BE /* MTKRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKRenderer.swift; sourceTree = "<group>"; };
@@ -885,6 +887,7 @@
 		E6A115352BB9D7200076A21F /* Complex */ = {
 			isa = PBXGroup;
 			children = (
+				E6A492952BBD5C0C00A8A374 /* PlayerDeathSystem.swift */,
 				E6A2B3A82BBBA41900DE6C79 /* GrappleHookSystem.swift */,
 				E6A115382BB9E3010076A21F /* MovementSystem.swift */,
 				460A200A2BB1D04F002597B8 /* AttackSystem.swift */,
@@ -1178,6 +1181,7 @@
 				46C3B1D22BB59F8600F10574 /* RetractGrappleHookEvent.swift in Sources */,
 				4E630F2A2B9F7EF60008F887 /* PositionComponent.swift in Sources */,
 				E6D45DC52BB6ED8F0004CBA2 /* PowerUpComponent.swift in Sources */,
+				E6A492962BBD5C0C00A8A374 /* PlayerDeathSystem.swift in Sources */,
 				E6A1030C2BBAF0F7005BDFFA /* MissileHitPlayerEvent.swift in Sources */,
 				E6AB5E072BBC3FB400F2199E /* PowerUpBoxPlayerEvent.swift in Sources */,
 				46D418132BA5C9930091A38B /* Floor.swift in Sources */,
@@ -1384,7 +1388,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1441,7 +1445,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
