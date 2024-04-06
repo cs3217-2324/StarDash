@@ -83,11 +83,13 @@ extension GameScene: SDScene {
 
     private func playerScreenSize(for numberOfPlayers: Int) -> CGSize {
         let screenSize = UIScreen.main.bounds.size
+        let width = screenSize.width > screenSize.height ? screenSize.width : screenSize.height
+        let height = screenSize.width > screenSize.height ? screenSize.height : screenSize.width
         switch numberOfPlayers {
         case 1:
-            return CGSize(width: screenSize.height, height: screenSize.width)
+            return CGSize(width: width, height: height)
         case 2:
-            return CGSize(width: screenSize.width, height: screenSize.height / 2)
+            return CGSize(width: screenSize.height, height: screenSize.width / 2)
         default:
             return screenSize
         }
