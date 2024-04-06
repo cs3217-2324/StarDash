@@ -44,6 +44,8 @@
 		46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B8C0992BA328D900498705 /* GameEngine.swift */; };
 		46BB142A2BBE81E3001AE148 /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB14292BBE81E3001AE148 /* AchievementViewController.swift */; };
 		46BB142C2BBEB1EC001AE148 /* Achievements.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BB142B2BBEB1EC001AE148 /* Achievements.storyboard */; };
+		46BB14302BBFCD4D001AE148 /* MonsterObstacleContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB142F2BBFCD4D001AE148 /* MonsterObstacleContactEvent.swift */; };
+		46BB14322BBFD9E3001AE148 /* MonsterMovementReversalEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB14312BBFD9E3001AE148 /* MonsterMovementReversalEvent.swift */; };
 		46C3B1C02BB45C2700F10574 /* EntityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1BF2BB45C2700F10574 /* EntityFactory.swift */; };
 		46C3B1C22BB467BB00F10574 /* EntityManagerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1C12BB467BB00F10574 /* EntityManagerInterface.swift */; };
 		46C3B1C42BB5055F00F10574 /* EntityBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1C32BB5055F00F10574 /* EntityBuilder.swift */; };
@@ -249,6 +251,8 @@
 		46B8C0992BA328D900498705 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		46BB14292BBE81E3001AE148 /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		46BB142B2BBEB1EC001AE148 /* Achievements.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Achievements.storyboard; sourceTree = "<group>"; };
+		46BB142F2BBFCD4D001AE148 /* MonsterObstacleContactEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterObstacleContactEvent.swift; sourceTree = "<group>"; };
+		46BB14312BBFD9E3001AE148 /* MonsterMovementReversalEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterMovementReversalEvent.swift; sourceTree = "<group>"; };
 		46C3B1BF2BB45C2700F10574 /* EntityFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityFactory.swift; sourceTree = "<group>"; };
 		46C3B1C12BB467BB00F10574 /* EntityManagerInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerInterface.swift; sourceTree = "<group>"; };
 		46C3B1C32BB5055F00F10574 /* EntityBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityBuilder.swift; sourceTree = "<group>"; };
@@ -465,6 +469,7 @@
 				4EC561E22BB1E98400166DDC /* PlayerObstacleContactEvent.swift */,
 				4EC561E42BB1E9A300166DDC /* PlayerToolContactEvent.swift */,
 				46C3B1D92BB656F000F10574 /* GrappleHookObstacleContactEvent.swift */,
+				46BB142F2BBFCD4D001AE148 /* MonsterObstacleContactEvent.swift */,
 			);
 			path = ContactEvents;
 			sourceTree = "<group>";
@@ -475,6 +480,7 @@
 				143AA3942BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift */,
 				1471B0A52BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift */,
 				143AA3902BA4D7AC009C28E7 /* MonsterDeathEvent.swift */,
+				46BB14312BBFD9E3001AE148 /* MonsterMovementReversalEvent.swift */,
 			);
 			path = MonsterEvents;
 			sourceTree = "<group>";
@@ -1207,6 +1213,7 @@
 				46D418282BA5D6800091A38B /* Floor+Collidable.swift in Sources */,
 				46D04A092BBACA8B0096D9F2 /* AchievementPersistable.swift in Sources */,
 				E69EE9322BAC6CBB00033AB5 /* GameInfo.swift in Sources */,
+				46BB14302BBFCD4D001AE148 /* MonsterObstacleContactEvent.swift in Sources */,
 				46D418222BA5D4E60091A38B /* Obstacle+Collidable.swift in Sources */,
 				E638B9CF2BAB3C5D00931CC2 /* TeleportEvent.swift in Sources */,
 				143AA3972BA4E0D9009C28E7 /* PickupCollectibleEvent.swift in Sources */,
@@ -1263,6 +1270,7 @@
 				4E630F2E2B9F81850008F887 /* HealthComponent.swift in Sources */,
 				E6A103102BBAF9B4005BDFFA /* MissileBlockedEvent.swift in Sources */,
 				4E86605C2BA095460035530D /* Monster.swift in Sources */,
+				46BB14322BBFD9E3001AE148 /* MonsterMovementReversalEvent.swift in Sources */,
 				4E59E2632BACB9E2007B3FA7 /* LevelData.swift in Sources */,
 				145F2C802BA203B400457549 /* Event.swift in Sources */,
 				4E64294E2BBF1773005E3D7E /* Logger.swift in Sources */,
@@ -1462,7 +1470,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VFS4882B2L;
+				DEVELOPMENT_TEAM = URDC7SC6B3;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "star-dash/Info.plist";
@@ -1477,7 +1485,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ruihan-sd";
+				PRODUCT_BUNDLE_IDENTIFIER = "junhao-bid";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1496,7 +1504,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VFS4882B2L;
+				DEVELOPMENT_TEAM = URDC7SC6B3;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "star-dash/Info.plist";
@@ -1511,7 +1519,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ruihan-sd";
+				PRODUCT_BUNDLE_IDENTIFIER = "junhao-bid";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

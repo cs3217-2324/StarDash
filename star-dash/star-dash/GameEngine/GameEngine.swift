@@ -113,11 +113,12 @@ class GameEngine {
     }
 
     func handlePlayerHook(playerIndex: Int) {
-        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex),
+              let positionComponent = entityManager.component(ofType: PositionComponent.self, of: playerEntityId) else {
             return
         }
 
-        eventManager.add(event: UseGrappleHookEvent(from: playerEntityId))
+        eventManager.add(event: UseGrappleHookEvent(from: playerEntityId, isLeft: positionComponent.isFacingLeft))
     }
 
     private func setUpSystems() {
@@ -126,7 +127,6 @@ class GameEngine {
         systemManager.add(PhysicsSystem(entityManager, dispatcher: self))
         systemManager.add(ScoreSystem(entityManager, dispatcher: self))
         systemManager.add(HealthSystem(entityManager, dispatcher: self))
-        systemManager.add(MonsterSystem(entityManager, dispatcher: self))
         systemManager.add(SpriteSystem(entityManager, dispatcher: self))
 
         // Complex Systems
@@ -134,11 +134,9 @@ class GameEngine {
         systemManager.add(InventorySystem(entityManager, dispatcher: self))
         systemManager.add(AttackSystem(entityManager, dispatcher: self))
         systemManager.add(PlayerSystem(entityManager, dispatcher: self))
-        systemManager.add(MovementSystem(entityManager, dispatcher: self))
-        systemManager.add(CollisionSystem(entityManager, dispatcher: self))
         systemManager.add(MonsterSystem(entityManager, dispatcher: self))
+        systemManager.add(MovementSystem(entityManager, dispatcher: self))
         systemManager.add(GrappleHookSystem(entityManager, dispatcher: self))
-        systemManager.add(SpriteSystem(entityManager, dispatcher: self))
         systemManager.add(BuffSystem(entityManager, dispatcher: self))
 
         // Power-Up Systems

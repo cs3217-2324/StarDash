@@ -24,29 +24,35 @@ struct PhysicsConstants {
 
     struct CollisionMask {
         static let player = CollisionCategory.max
-                            ^ CollisionCategory.player
-                            ^ CollisionCategory.collectible
-                            ^ CollisionCategory.hook
-                            ^ CollisionCategory.powerUpBox
-                            ^ CollisionCategory.homingMissile
+        ^ CollisionCategory.player
+        ^ CollisionCategory.collectible
+        ^ CollisionCategory.hook
+        ^ CollisionCategory.powerUpBox
+        ^ CollisionCategory.homingMissile
         static let monster = CollisionCategory.player
+        | CollisionCategory.floor
+        | CollisionCategory.obstacle
+        | CollisionCategory.wall
         static let collectible = CollisionCategory.none
         static let obstacle = CollisionCategory.player | CollisionCategory.monster
         static let powerUpBox = CollisionCategory.none
         static let wall = CollisionCategory.player | CollisionCategory.monster
         static let floor = CollisionCategory.player | CollisionCategory.monster
         static let hook = CollisionCategory.max
-                            ^ CollisionCategory.collectible
-                            ^ CollisionCategory.powerUpBox
-                            ^ CollisionCategory.player
-                            ^ CollisionCategory.hook
+        ^ CollisionCategory.collectible
+        ^ CollisionCategory.powerUpBox
+        ^ CollisionCategory.player
+        ^ CollisionCategory.hook
         static let homingMissile = CollisionCategory.none
     }
 
     struct ContactMask {
         static let player = CollisionCategory.floor | CollisionCategory.collectible | CollisionCategory.powerUpBox |
-                            CollisionCategory.homingMissile
+        CollisionCategory.homingMissile | CollisionCategory.monster
         static let monster = CollisionCategory.player
+        | CollisionCategory.floor
+        | CollisionCategory.obstacle
+        | CollisionCategory.wall
         static let collectible = CollisionCategory.player
         static let obstacle = CollisionCategory.homingMissile
         static let powerUpBox = CollisionCategory.player
@@ -77,4 +83,9 @@ struct PhysicsConstants {
     static let jumpImpulse = CGVector(dx: 0, dy: 7_500)
     static let runSpeed: CGFloat = 20
     static let maxRunSpeed: CGFloat = 150
+
+    struct Monster {
+        static let moveVelocityRight = CGVector(dx: 100, dy: 0)
+        static let moveVelocityLeft = CGVector(dx: -100, dy: 0)
+    }
 }

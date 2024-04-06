@@ -23,7 +23,7 @@ struct GameConstants {
     }
 
     struct DamageImpulse {
-        static let attackedByMonster = CGVector(dx: 500, dy: 0)
+        static let attackedByMonster = CGVector(dx: 2_500, dy: 0)
     }
 
     struct AttackImpulse {
@@ -31,10 +31,11 @@ struct GameConstants {
     }
 
     struct Hook {
-        static let deltaPositionVector = CGVector(dx: 10, dy: 10)
+        static let deltaPositionVectorRight = CGVector(dx: 10, dy: 10)
+        static let deltaPositionVectorLeft = CGVector(dx: -10, dy: 10)
         static let deltaAngle: Double = 3
-        static let minLength: Double = 150
-        static let maxLength: Double = 600
+        static let minLength: Double = 280
+        static let maxLength: Double = 900
         static let defaultRetractLength: Double = 140
         static let defaultSwingAngle: Double = 120
     }
