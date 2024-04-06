@@ -122,7 +122,8 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
         return true
     }
 
-    @objc private func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
+    @objc
+    private func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
         switch gesture.state {
         case .began:
             startLongPressTimer(gesture)
