@@ -41,11 +41,16 @@ struct EntityFactory {
             .withPosition(at: position)
             .withHealth(health: health)
             .withSprite(image: SpriteConstants.monster,
-                        textureSet: nil,
+                        textureSet: SpriteConstants.monsterTexture,
                         textureAtlas: nil,
                         size: size)
-            .withPhysics(rectangleOf: PhysicsConstants.Dimensions.monster)
+            .withPhysics(rectangleOf: size)
+                .configureVelocity(PhysicsConstants.Monster.moveVelocityLeft)
+                .configureCategoryBitMask(PhysicsConstants.CollisionCategory.monster)
+                .configureContactTestMask(PhysicsConstants.ContactMask.monster)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.monster)
+                .configureAffectedByGravity(true)
+                .configureRestitution(0.0)
             .addToGame()
     }
 
@@ -139,6 +144,7 @@ struct EntityFactory {
 
     static func createAndAddGrappleHook(to entityManager: EntityManagerInterface,
                                         playerId: EntityId,
+                                        isLeft: Bool,
                                         startpoint: CGPoint) {
         let ropeId = UUID()
         let ropeBuilder = EntityBuilder(entity: Rope(id: ropeId), entityManager: entityManager)
@@ -163,13 +169,13 @@ struct EntityFactory {
         grappleHookBuilder
             .withHookOwner(playerId: playerId)
             .withOwnsRope(ropeId: ropeId)
-            .withGrappleHook(at: startpoint)
+            .withGrappleHook(at: startpoint, isLeft: isLeft)
             .withPosition(at: startpoint)
             .withSprite(image: SpriteConstants.hook,
                         textureSet: nil,
                         textureAtlas: nil,
                         size: CGSize(width: 20, height: 20))
-            .withPhysics(circleOf: 20)
+            .withPhysics(rectangleOf: CGSize(width: 20, height: 20))
                 .configureCategoryBitMask(PhysicsConstants.CollisionCategory.hook)
                 .configureContactTestMask(PhysicsConstants.ContactMask.hook)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.hook)

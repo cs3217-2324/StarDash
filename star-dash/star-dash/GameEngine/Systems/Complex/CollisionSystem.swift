@@ -43,9 +43,9 @@ class CollisionSystem: System {
                 self.handlePlayerObstacleContactEvent(event: playerObstacleContactEvent)
             }
         }
-        eventHandlers[ObjectIdentifier(GrappleHookObstacleContactEvent.self)] = { event in
-            if let grappleHookObstacleContactEvent = event as? GrappleHookObstacleContactEvent {
-                self.handleGrappleHookObstacleContactEvent(event: grappleHookObstacleContactEvent)
+        eventHandlers[ObjectIdentifier(MonsterObstacleContactEvent.self)] = { event in
+            if let monsterObstacleContactEvent = event as? MonsterObstacleContactEvent {
+                self.handleMonsterObstacleContactEvent(event: monsterObstacleContactEvent)
             }
         }
     }
@@ -94,11 +94,20 @@ class CollisionSystem: System {
             dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
         }
 
-        let isPlayerAbove = playerPosition.y - (playerSize.height / 2) >= monsterPosition.y + (monsterSize.height / 2)
+        let isPlayerAbove = playerPosition.y - (playerSize.height / 2 - 10)
+                            >= monsterPosition.y + (monsterSize.height / 2 - 10)
+        let isPlayerWithinMonsterWidth = playerPosition.x < (monsterPosition.x + (monsterSize.width / 2))
+                                         || playerPosition.x > (monsterPosition.x - (monsterSize.width / 2))
+        let isPlayerAttack = isPlayerAbove && isPlayerWithinMonsterWidth
 
-        if isPlayerAbove {
+        let isLeft = monsterPosition.x < playerPosition.x
+        dispatcher?.add(event: MonsterMovementReversalEvent(on: event.monsterId, isLeft: isLeft))
+
+        if isPlayerAttack {
+            print("Player attack monster")
             dispatcher?.add(event: PlayerAttackMonsterEvent(from: event.playerId, on: event.monsterId))
         } else {
+            print("Monster attack player")
             dispatcher?.add(event: MonsterAttackPlayerEvent(from: event.monsterId, on: event.playerId))
         }
     }
@@ -107,32 +116,30 @@ class CollisionSystem: System {
         guard let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
               let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let playerPosition = positionSystem.getPosition(of: event.playerId),
-              let obstaclePosition = positionSystem.getPosition(of: event.obstacleId),
-              playerPosition.y - PhysicsConstants.Dimensions.player.height / 2 >
-              obstaclePosition.y + PhysicsConstants.Dimensions.obstacle.height / 2 else {
-
-            dispatcher?.add(event: StopMovingEvent(on: event.playerId))
+              let obstaclePosition = positionSystem.getPosition(of: event.obstacleId) else {
+            return
+        }
+        guard playerPosition.y - PhysicsConstants.Dimensions.player.height / 2 >
+                obstaclePosition.y + PhysicsConstants.Dimensions.obstacle.height / 2 else {
+            if playerPosition.y + PhysicsConstants.Dimensions.player.height / 2 >
+                obstaclePosition.y + PhysicsConstants.Dimensions.obstacle.height / 2 {
+                dispatcher?.add(event: StopMovingEvent(on: event.playerId))
+            }
             return
         }
 
         playerSystem.setCanJump(to: event.playerId, canJump: true)
         playerSystem.setCanMove(to: event.playerId, canMove: true)
-
-        if let hookOwnerComponent = entityManager
-                                    .components(ofType: GrappleHookOwnerComponent.self)
-                                    .first(where: { $0.ownerPlayerId == event.playerId }) {
-            dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
-        }
     }
 
-    private func handleGrappleHookObstacleContactEvent(event: GrappleHookObstacleContactEvent) {
-        guard let hookSystem = dispatcher?.system(ofType: GrappleHookSystem.self),
-              let hookState = hookSystem.getHookState(of: event.grappleHookId) else {
+    private func handleMonsterObstacleContactEvent(event: MonsterObstacleContactEvent) {
+        guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
+              let monsterPosition = positionSystem.getPosition(of: event.monsterId) else {
             return
         }
 
-        if hookState == .shooting && hookSystem.length(of: event.grappleHookId) >= GameConstants.Hook.minLength {
-            hookSystem.setHookState(of: event.grappleHookId, to: .retracting)
-        }
+        let isLeft = monsterPosition.x < event.contactPoint.x
+
+        dispatcher?.add(event: MonsterMovementReversalEvent(on: event.monsterId, isLeft: isLeft))
     }
 }

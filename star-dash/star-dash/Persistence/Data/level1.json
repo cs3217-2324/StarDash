@@ -43,6 +43,21 @@
       "levelId": 0,
       "position": [1300, 500],
       "size": [100,100]
+    },
+    {
+      "levelId": 0,
+      "position": [1450, 350],
+      "size": [100,100]
+    },
+    {
+      "levelId": 0,
+      "position": [1550, 350],
+      "size": [100,100]
+    },
+    {
+      "levelId": 0,
+      "position": [1800, 150],
+      "size": [100,100]
     }
   ],
   "collectibles": [

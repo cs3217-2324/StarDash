@@ -13,6 +13,10 @@ class SpriteComponent: Component {
     var textureAtlas: String?
     var size: CGSize?
 
+    // animation properties
+    var repetitive: Bool?
+    var animationDuration: Double?
+
     init(
         id: ComponentId,
         entityId: EntityId,

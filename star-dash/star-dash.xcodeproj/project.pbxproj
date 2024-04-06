@@ -48,6 +48,8 @@
 		46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B8C0992BA328D900498705 /* GameEngine.swift */; };
 		46BB142A2BBE81E3001AE148 /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB14292BBE81E3001AE148 /* AchievementViewController.swift */; };
 		46BB142C2BBEB1EC001AE148 /* Achievements.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BB142B2BBEB1EC001AE148 /* Achievements.storyboard */; };
+		46BB14302BBFCD4D001AE148 /* MonsterObstacleContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB142F2BBFCD4D001AE148 /* MonsterObstacleContactEvent.swift */; };
+		46BB14322BBFD9E3001AE148 /* MonsterMovementReversalEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB14312BBFD9E3001AE148 /* MonsterMovementReversalEvent.swift */; };
 		46C3B1C02BB45C2700F10574 /* EntityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1BF2BB45C2700F10574 /* EntityFactory.swift */; };
 		46C3B1C22BB467BB00F10574 /* EntityManagerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1C12BB467BB00F10574 /* EntityManagerInterface.swift */; };
 		46C3B1C42BB5055F00F10574 /* EntityBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3B1C32BB5055F00F10574 /* EntityBuilder.swift */; };
@@ -116,6 +118,7 @@
 		4E630F322B9F887C0008F887 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F312B9F887C0008F887 /* PhysicsComponent.swift */; };
 		4E630F342B9F8FC00008F887 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F332B9F8FC00008F887 /* Player.swift */; };
 		4E630F392B9F943B0008F887 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630F382B9F943B0008F887 /* EntityManager.swift */; };
+		4E64294E2BBF1773005E3D7E /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E64294D2BBF1773005E3D7E /* Logger.swift */; };
 		4E86605C2BA095460035530D /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86605B2BA095460035530D /* Monster.swift */; };
 		4E86605F2BA095E30035530D /* Collectible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86605E2BA095E30035530D /* Collectible.swift */; };
 		4E8660622BA0964A0035530D /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660612BA0964A0035530D /* Obstacle.swift */; };
@@ -152,6 +155,7 @@
 		E6A115372BB9E2F90076A21F /* SpriteSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A115362BB9E2F90076A21F /* SpriteSystem.swift */; };
 		E6A115392BB9E3010076A21F /* MovementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A115382BB9E3010076A21F /* MovementSystem.swift */; };
 		E6A2B3A92BBBA41900DE6C79 /* GrappleHookSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2B3A82BBBA41900DE6C79 /* GrappleHookSystem.swift */; };
+		E6A492962BBD5C0C00A8A374 /* PlayerDeathSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A492952BBD5C0C00A8A374 /* PlayerDeathSystem.swift */; };
 		E6A72FC52BB2E1E10015729E /* PlayerViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A72FC32BB2E1E10015729E /* PlayerViewLayout.swift */; };
 		E6A72FC62BB2E1E10015729E /* LayoutUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A72FC42BB2E1E10015729E /* LayoutUtils.swift */; };
 		E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745112BA057040080C1BE /* MTKRenderer.swift */; };
@@ -254,6 +258,8 @@
 		46B8C0992BA328D900498705 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		46BB14292BBE81E3001AE148 /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		46BB142B2BBEB1EC001AE148 /* Achievements.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Achievements.storyboard; sourceTree = "<group>"; };
+		46BB142F2BBFCD4D001AE148 /* MonsterObstacleContactEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterObstacleContactEvent.swift; sourceTree = "<group>"; };
+		46BB14312BBFD9E3001AE148 /* MonsterMovementReversalEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterMovementReversalEvent.swift; sourceTree = "<group>"; };
 		46C3B1BF2BB45C2700F10574 /* EntityFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityFactory.swift; sourceTree = "<group>"; };
 		46C3B1C12BB467BB00F10574 /* EntityManagerInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerInterface.swift; sourceTree = "<group>"; };
 		46C3B1C32BB5055F00F10574 /* EntityBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityBuilder.swift; sourceTree = "<group>"; };
@@ -330,6 +336,7 @@
 		4E630F312B9F887C0008F887 /* PhysicsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsComponent.swift; sourceTree = "<group>"; };
 		4E630F332B9F8FC00008F887 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4E630F382B9F943B0008F887 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
+		4E64294D2BBF1773005E3D7E /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		4E86605B2BA095460035530D /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		4E86605E2BA095E30035530D /* Collectible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collectible.swift; sourceTree = "<group>"; };
 		4E8660612BA0964A0035530D /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
@@ -366,6 +373,7 @@
 		E6A115362BB9E2F90076A21F /* SpriteSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpriteSystem.swift; path = "star-dash/GameEngine/Systems/Basic/SpriteSystem.swift"; sourceTree = SOURCE_ROOT; };
 		E6A115382BB9E3010076A21F /* MovementSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementSystem.swift; sourceTree = "<group>"; };
 		E6A2B3A82BBBA41900DE6C79 /* GrappleHookSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrappleHookSystem.swift; sourceTree = "<group>"; };
+		E6A492952BBD5C0C00A8A374 /* PlayerDeathSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDeathSystem.swift; sourceTree = "<group>"; };
 		E6A72FC32BB2E1E10015729E /* PlayerViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewLayout.swift; sourceTree = "<group>"; };
 		E6A72FC42BB2E1E10015729E /* LayoutUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutUtils.swift; sourceTree = "<group>"; };
 		E6A745112BA057040080C1BE /* MTKRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKRenderer.swift; sourceTree = "<group>"; };
@@ -467,6 +475,7 @@
 				4EC561E22BB1E98400166DDC /* PlayerObstacleContactEvent.swift */,
 				4EC561E42BB1E9A300166DDC /* PlayerToolContactEvent.swift */,
 				46C3B1D92BB656F000F10574 /* GrappleHookObstacleContactEvent.swift */,
+				46BB142F2BBFCD4D001AE148 /* MonsterObstacleContactEvent.swift */,
 			);
 			path = ContactEvents;
 			sourceTree = "<group>";
@@ -477,6 +486,7 @@
 				143AA3942BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift */,
 				1471B0A52BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift */,
 				143AA3902BA4D7AC009C28E7 /* MonsterDeathEvent.swift */,
+				46BB14312BBFD9E3001AE148 /* MonsterMovementReversalEvent.swift */,
 			);
 			path = MonsterEvents;
 			sourceTree = "<group>";
@@ -687,6 +697,7 @@
 		4E630EF42B9F7E070008F887 /* star-dash */ = {
 			isa = PBXGroup;
 			children = (
+				4E64294C2BBF1718005E3D7E /* Logger */,
 				46D049F32BB94ED30096D9F2 /* Achievement */,
 				4E59E2592BAB3FC9007B3FA7 /* Model */,
 				4E59E24F2BAB2DBB007B3FA7 /* Persistence */,
@@ -761,6 +772,23 @@
 				E6D45DC42BB6ED8F0004CBA2 /* PowerUpComponent.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		4E630F352B9F91C20008F887 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				4E630F362B9F91DE0008F887 /* PlayerSprite.swift */,
+				4E59E25E2BAB4134007B3FA7 /* EntityType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		4E64294C2BBF1718005E3D7E /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				4E64294D2BBF1773005E3D7E /* Logger.swift */,
+			);
+			path = Logger;
 			sourceTree = "<group>";
 		};
 		4E86605D2BA095CC0035530D /* Constants */ = {
@@ -885,6 +913,7 @@
 		E6A115352BB9D7200076A21F /* Complex */ = {
 			isa = PBXGroup;
 			children = (
+				E6A492952BBD5C0C00A8A374 /* PlayerDeathSystem.swift */,
 				E6A2B3A82BBBA41900DE6C79 /* GrappleHookSystem.swift */,
 				E6A115382BB9E3010076A21F /* MovementSystem.swift */,
 				460A200A2BB1D04F002597B8 /* AttackSystem.swift */,
@@ -1179,6 +1208,7 @@
 				46C3B1D22BB59F8600F10574 /* RetractGrappleHookEvent.swift in Sources */,
 				4E630F2A2B9F7EF60008F887 /* PositionComponent.swift in Sources */,
 				E6D45DC52BB6ED8F0004CBA2 /* PowerUpComponent.swift in Sources */,
+				E6A492962BBD5C0C00A8A374 /* PlayerDeathSystem.swift in Sources */,
 				E6A1030C2BBAF0F7005BDFFA /* MissileHitPlayerEvent.swift in Sources */,
 				E6AB5E072BBC3FB400F2199E /* PowerUpBoxPlayerEvent.swift in Sources */,
 				46D418132BA5C9930091A38B /* Floor.swift in Sources */,
@@ -1204,6 +1234,7 @@
 				46D418282BA5D6800091A38B /* Floor+Collidable.swift in Sources */,
 				46D04A092BBACA8B0096D9F2 /* AchievementPersistable.swift in Sources */,
 				E69EE9322BAC6CBB00033AB5 /* GameInfo.swift in Sources */,
+				46BB14302BBFCD4D001AE148 /* MonsterObstacleContactEvent.swift in Sources */,
 				46D418222BA5D4E60091A38B /* Obstacle+Collidable.swift in Sources */,
 				E638B9CF2BAB3C5D00931CC2 /* TeleportEvent.swift in Sources */,
 				143AA3972BA4E0D9009C28E7 /* PickupCollectibleEvent.swift in Sources */,
@@ -1260,8 +1291,10 @@
 				4E630F2E2B9F81850008F887 /* HealthComponent.swift in Sources */,
 				E6A103102BBAF9B4005BDFFA /* MissileBlockedEvent.swift in Sources */,
 				4E86605C2BA095460035530D /* Monster.swift in Sources */,
+				46BB14322BBFD9E3001AE148 /* MonsterMovementReversalEvent.swift in Sources */,
 				4E59E2632BACB9E2007B3FA7 /* LevelData.swift in Sources */,
 				145F2C802BA203B400457549 /* Event.swift in Sources */,
+				4E64294E2BBF1773005E3D7E /* Logger.swift in Sources */,
 				460A200F2BB1E1F1002597B8 /* CollisionSystem.swift in Sources */,
 				1471B0A22BA6AA2200878B14 /* RespawnEvent.swift in Sources */,
 				46D418112BA5C88B0091A38B /* Wall.swift in Sources */,
@@ -1384,7 +1417,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1441,7 +1474,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1458,7 +1491,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VFS4882B2L;
+				DEVELOPMENT_TEAM = URDC7SC6B3;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "star-dash/Info.plist";
@@ -1473,7 +1506,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ruihan-sd";
+				PRODUCT_BUNDLE_IDENTIFIER = "junhao-bid";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1492,7 +1525,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VFS4882B2L;
+				DEVELOPMENT_TEAM = URDC7SC6B3;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "star-dash/Info.plist";
@@ -1507,7 +1540,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ruihan-sd";
+				PRODUCT_BUNDLE_IDENTIFIER = "junhao-bid";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

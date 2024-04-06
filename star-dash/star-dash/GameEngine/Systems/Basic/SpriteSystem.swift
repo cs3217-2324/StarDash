@@ -21,12 +21,18 @@ class SpriteSystem: System {
     }
 
     func startAnimation(of entityId: EntityId, named: String) {
+        startAnimation(of: entityId, named: named, repetitive: true, duration: nil)
+    }
+
+    func startAnimation(of entityId: EntityId, named: String, repetitive: Bool, duration: Double?) {
         guard let spriteComponent = getSpriteComponent(of: entityId),
               let textureAtlas = spriteComponent.textureSet?.getValueFor(key: named) else {
             return
         }
 
         spriteComponent.textureAtlas = textureAtlas
+        spriteComponent.repetitive = repetitive
+        spriteComponent.animationDuration = duration
     }
 
     func endAnimation(of entityId: EntityId) {

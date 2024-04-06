@@ -46,6 +46,22 @@ class PositionSystem: System {
         positionComponent.rotation = newRotation
     }
 
+    func isEntityFacingLeft(entityId: EntityId) -> Bool {
+        guard let positionComponent = getPositionComponent(of: entityId) else {
+            return false
+        }
+
+        return positionComponent.isFacingLeft
+    }
+
+    func setEntityFacingLeft(_ isFacingLeft: Bool, entityId: EntityId) {
+        guard let positionComponent = getPositionComponent(of: entityId) else {
+            return
+        }
+
+        positionComponent.isFacingLeft = isFacingLeft
+    }
+
     func getPosition(of entityId: EntityId) -> CGPoint? {
         guard let positionComponent = getPositionComponent(of: entityId) else {
             return nil

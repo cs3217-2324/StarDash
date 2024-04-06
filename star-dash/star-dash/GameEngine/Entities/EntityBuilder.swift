@@ -99,9 +99,9 @@ class EntityBuilder {
         return self
     }
 
-    func withGrappleHook(at startpoint: CGPoint) -> Self {
+    func withGrappleHook(at startpoint: CGPoint, isLeft: Bool) -> Self {
         let componentType = ObjectIdentifier(GrappleHookComponent.self)
-        let component = GrappleHookComponent(entityId: entityId, startpoint: startpoint)
+        let component = GrappleHookComponent(entityId: entityId, startpoint: startpoint, isLeft: isLeft)
 
         self.components[componentType] = component
         return self
@@ -120,6 +120,17 @@ class EntityBuilder {
         let component = PhysicsComponent(entityId: entityId, circleOf: radius)
 
         self.components[componentType] = component
+        return self
+    }
+
+    func configureVelocity(_ initialVelocity: CGVector) -> Self {
+        let componentType = ObjectIdentifier(PhysicsComponent.self)
+
+        guard let physicsComponent = self.components[componentType] as? PhysicsComponent else {
+            return self
+        }
+
+        physicsComponent.velocity = initialVelocity
         return self
     }
 
