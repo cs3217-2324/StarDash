@@ -32,7 +32,6 @@ class GameViewController: UIViewController {
         setupGame()
         setupBackground(in: scene)
         setupFlag(in: scene)
-        setupBackButton()
 
         guard let renderer = MTKRenderer(scene: scene) else {
             return
@@ -40,6 +39,7 @@ class GameViewController: UIViewController {
         renderer.viewDelegate = self
         renderer.setupViews(at: self.view, for: numberOfPlayers)
         self.renderer = renderer
+        setupBackButton()
     }
 
     @objc
@@ -124,6 +124,7 @@ extension GameViewController {
         backButton.setTitle("Back", for: .normal)
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         self.view.addSubview(backButton)
+
         backButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
