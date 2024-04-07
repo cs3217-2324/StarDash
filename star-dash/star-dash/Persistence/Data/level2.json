@@ -196,7 +196,7 @@
   "collectibles": [
       {
         "levelId": 1,
-        "position": [400, 150],
+        "position": [400, 250],
         "radius": 25,
         "points": 20
       },
