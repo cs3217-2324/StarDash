@@ -19,8 +19,8 @@ public class SDCameraObject: SDObject {
         let boundsOrigin = CGPoint(x: screenSize.width / 2, y: screenSize.height / 2)
         let boundsSize = CGSize(width: sceneSize.width - screenSize.width, height: sceneSize.height - screenSize.height)
         self.bounds = CGRect(origin: boundsOrigin, size: boundsSize)
-        if sceneSize.height > 1024 {
-            scale = 1024/sceneSize.height
+        if sceneSize.height > 1_024 {
+            scale = 1_024 / sceneSize.height
         }
         super.init(node: cameraNode)
     }
@@ -41,7 +41,7 @@ public class SDCameraObject: SDObject {
         if player.position.x > bounds.maxX - 200 {
             newPosition.x = bounds.maxX - 200
         }
-        if player.position.y < bounds.minY  {
+        if player.position.y < bounds.minY {
             newPosition.y = bounds.minY
         }
         if player.position.y > bounds.maxY {
