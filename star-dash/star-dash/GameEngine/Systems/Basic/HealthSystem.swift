@@ -20,6 +20,14 @@ class HealthSystem: System {
         setup()
     }
 
+    func health(of entityId: EntityId) -> Int? {
+        guard let healthComponent = getHealthComponent(of: entityId) else {
+            return nil
+        }
+
+        return healthComponent.health
+    }
+
     func hasHealth(for entityId: EntityId) -> Bool {
         guard let healthComponent = getHealthComponent(of: entityId) else {
             return false
