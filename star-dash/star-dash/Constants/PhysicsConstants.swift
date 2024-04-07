@@ -56,7 +56,7 @@ struct PhysicsConstants {
         static let collectible = CollisionCategory.player
         static let obstacle = CollisionCategory.homingMissile
         static let powerUpBox = CollisionCategory.player
-        static let wall = CollisionCategory.player
+        static let wall = CollisionCategory.player | CollisionCategory.homingMissile
         static let floor = CollisionCategory.player | CollisionCategory.homingMissile
         static let hook = CollisionCategory.obstacle
         static let homingMissile = CollisionCategory.player | CollisionCategory.obstacle | CollisionMask.floor
@@ -74,6 +74,7 @@ struct PhysicsConstants {
         static let hook = CGSize(width: 100, height: 100)
         static let powerUp = CGSize(width: 60, height: 60)
         static let homingMissile = CGSize(width: 50, height: 100)
+        static let flag = CGSize(width: 110, height: 100)
     }
 
     struct Mass {

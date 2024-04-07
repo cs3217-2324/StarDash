@@ -9,14 +9,15 @@ public class GameScene: SKScene {
     private var objectMap: [SKNode: SDObject] = [:]
 
     private var cameraPlayerMap: [Int: SDCameraObject] = [:]
-    private var playerScreenSize: CGSize = .zero
+
+    private var numberOfPlayers: Int = 0
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    public init(size: CGSize, playerScreenSize: CGSize) {
-        self.playerScreenSize = playerScreenSize
+    public init(size: CGSize, for numberOfPlayers: Int) {
+        self.numberOfPlayers = numberOfPlayers
         super.init(size: size)
     }
 
@@ -54,28 +55,11 @@ public class GameScene: SKScene {
         self.camera = cameraObject.cameraNode
     }
 
-    public func setUpBackground(backgroundImage: String) {
-        let background = SDSpriteObject(imageNamed: backgroundImage)
-        let backgroundWidth = background.size.width
-        let backgroundHeight = background.size.height
-
-        var remainingGameWidth = self.size.width
-        var numOfAddedBackgrounds = 0
-        while remainingGameWidth > 0 {
-            let background = SDSpriteObject(imageNamed: backgroundImage)
-            let offset = CGFloat(numOfAddedBackgrounds) * backgroundWidth
-            background.position = CGPoint(x: backgroundWidth / 2 + offset, y: backgroundHeight / 2)
-            background.zPosition = -1
-            self.addObject(background)
-
-            remainingGameWidth -= backgroundWidth
-            numOfAddedBackgrounds += 1
-        }
-    }
 }
 
 extension GameScene: SDScene {
     public func addPlayerObject(_ playerObject: SDObject, playerIndex: Int) {
+        let playerScreenSize = playerScreenSize(for: numberOfPlayers)
         let camera = SDCameraObject(player: playerObject, screenSize: playerScreenSize, sceneSize: self.size)
         cameraPlayerMap[playerIndex] = camera
 
@@ -95,6 +79,20 @@ extension GameScene: SDScene {
     public func removeObject(_ object: SDObject) {
         objectMap[object.node] = nil
         object.removeFromParent()
+    }
+
+    private func playerScreenSize(for numberOfPlayers: Int) -> CGSize {
+        let screenSize = UIScreen.main.bounds.size
+        let width = screenSize.width > screenSize.height ? screenSize.width : screenSize.height
+        let height = screenSize.width > screenSize.height ? screenSize.height : screenSize.width
+        switch numberOfPlayers {
+        case 1:
+            return CGSize(width: width, height: height)
+        case 2:
+            return CGSize(width: screenSize.height, height: screenSize.width / 2)
+        default:
+            return screenSize
+        }
     }
 }
 

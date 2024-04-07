@@ -3,21 +3,23 @@ import SpriteKit
 public class SDCameraObject: SDObject {
     let cameraNode: SKCameraNode
     let player: SDObject?
-    let screenSize: CGSize
-    let sceneSize: CGSize
+    let bounds: CGRect
+
     override public init() {
-        player = nil
-        cameraNode = SKCameraNode()
-        screenSize = .zero
-        sceneSize = .zero
+        self.cameraNode = SKCameraNode()
+        self.player = nil
+        self.bounds = .zero
         super.init(node: cameraNode)
     }
 
     init(player: SDObject, screenSize: CGSize, sceneSize: CGSize) {
+        self.cameraNode = SKCameraNode()
         self.player = player
-        self.screenSize = screenSize
-        self.sceneSize = sceneSize
-        cameraNode = SKCameraNode()
+
+        let boundsOrigin = CGPoint(x: screenSize.width / 2, y: screenSize.height / 2)
+        let boundsSize = CGSize(width: sceneSize.width - screenSize.width, height: sceneSize.height - screenSize.height)
+        self.bounds = CGRect(origin: boundsOrigin, size: boundsSize)
+
         super.init(node: cameraNode)
     }
 
@@ -27,25 +29,21 @@ public class SDCameraObject: SDObject {
     }
 
     func update() {
-        guard let player = self.player else {
+        guard let player = player else {
             return
         }
-
-        // TODO: Improve on camera position handling
         var newPosition = player.position
-        if player.position.x < screenSize.width / 2 + 200 {
-            newPosition.x = screenSize.width / 2 + 200
+        if player.position.x < bounds.minX {
+            newPosition.x = bounds.minX
         }
-
-        if player.position.x > sceneSize.width - screenSize.width / 2 - 200 {
-            newPosition.x = sceneSize.width - screenSize.width / 2 - 200
+        if player.position.x > bounds.maxX {
+            newPosition.x = bounds.maxX
         }
-        if player.position.y < screenSize.height / 2 + 100 {
-            newPosition.y = screenSize.height / 2 + 100
+        if player.position.y < bounds.minY {
+            newPosition.y = bounds.minY
         }
-
-        if player.position.y > sceneSize.height - screenSize.height / 2 - 100 {
-            newPosition.y = sceneSize.height - screenSize.height / 2 - 100
+        if player.position.y > bounds.maxY {
+            newPosition.y = bounds.maxY
         }
         self.position = newPosition
     }

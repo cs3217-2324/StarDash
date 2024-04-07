@@ -20,19 +20,25 @@ struct TextureSet {
 }
 
 struct SpriteConstants {
-    static let PlayerRedNose = "PlayerRedNose"
-    static let PlayerRedNoseTexture = TextureSet(
+    static let playerRedNose = "PlayerRedNose"
+    static let playerRedNoseTexture = TextureSet(
         run: "PlayerRedNoseRun",
         runLeft: "PlayerRedNoseRunLeft",
         death: "PlayerRedNoseDeath"
     )
+    static let playerRedNoseIcon = "PlayerRedNoseIcon"
+
+    static let playerImageIconMap = [
+        playerRedNose: playerRedNoseIcon
+    ]
 
     static let star = "Star"
 
     static let monster = "Monster"
     static let monsterTexture = TextureSet(
         run: "MonsterWalk",
-        runLeft: "MonsterWalkLeft"
+        runLeft: "MonsterWalkLeft",
+        death: "MonsterWalk"
     )
 
     static let obstacle = "Obstacle"
@@ -46,4 +52,6 @@ struct SpriteConstants {
     static let speedBoostPowerUp = "SpeedBoostPowerUp"
 
     static let homingMissile = "HomingMissile"
+
+    static let flag = "Flag"
 }

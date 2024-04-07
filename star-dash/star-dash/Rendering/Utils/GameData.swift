@@ -7,7 +7,6 @@
 
 import Foundation
 struct GameData {
-    let gameMode: Int
     let level: LevelPersistable?
     let numberOfPlayers: Int
     let storageManager: StorageManager

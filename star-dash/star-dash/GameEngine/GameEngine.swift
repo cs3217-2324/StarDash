@@ -11,24 +11,34 @@ class GameEngine {
     private let systemManager: SystemManager
     private let entityManager: EntityManager
     private let eventManager: EventManager
+    private let gameMode: GameMode
 
     let mapSize: CGSize
 
-    init(mapSize: CGSize) {
+    init(mapSize: CGSize, gameMode: GameMode) {
         self.systemManager = SystemManager()
         self.entityManager = EntityManager()
         self.eventManager = EventManager()
+        self.gameMode = gameMode
         self.mapSize = mapSize
 
-        setUpSystems()
+        setupSystems()
+        setupGameMode()
     }
 
-    func setupLevel(level: LevelPersistable, entities: [EntityPersistable]) {
+    func setupLevel(level: LevelPersistable, entities: [EntityPersistable], sceneSize: CGSize) {
         EntityFactory.createAndAddFloor(to: self,
-                                        position: CGPoint(x: level.size.width / 2, y: level.size.height / 2 - 400),
-                                        size: CGSize(width: 8_000, height: 10))
+                                        position: CGPoint(x: sceneSize.width / 2, y: 100),
+                                        size: CGSize(width: sceneSize.width, height: 1))
+        EntityFactory.createAndAddWall(to: self,
+                                       position: CGPoint(x: 0, y: sceneSize.height / 2),
+                                       size: CGSize(width: 1, height: sceneSize.height))
+        EntityFactory.createAndAddWall(to: self,
+                                       position: CGPoint(x: sceneSize.width, y: sceneSize.height / 2),
+                                       size: CGSize(width: 1, height: sceneSize.height))
         entities.forEach({ $0.addTo(self) })
     }
+
     // TODO: Set up players with characters that are selected
     func setupPlayers(numberOfPlayers: Int) {
         for playerIndex in 0..<numberOfPlayers {
@@ -58,15 +68,16 @@ class GameEngine {
     }
 
     func playersInfo() -> [PlayerInfo] {
-        guard let positionSystem = systemManager.system(ofType: PositionSystem.self) else {
+        guard let positionSystem = systemManager.system(ofType: PositionSystem.self),
+              let spriteSystem = systemManager.system(ofType: SpriteSystem.self) else {
             return []
         }
         let playerEntities = entityManager.playerEntities()
         var playersInfo = [PlayerInfo]()
-        // TODO: Replace with actual icon sprite
         for playerEntity in playerEntities {
-            if let position = positionSystem.getPosition(of: playerEntity.id) {
-                playersInfo.append(PlayerInfo(position: position, player: .RedNose))
+            if let position = positionSystem.getPosition(of: playerEntity.id),
+               let spriteImage = spriteSystem.getImage(of: playerEntity.id) {
+                playersInfo.append(PlayerInfo(position: position, spriteImage: spriteImage))
             }
         }
         return playersInfo
@@ -76,6 +87,7 @@ class GameEngine {
     func update(by deltaTime: TimeInterval) {
         systemManager.update(by: deltaTime)
         eventManager.executeAll(on: self)
+        checkHasGameEnded()
     }
 
     func handleCollision(_ entityOneId: EntityId, _ entityTwoId: EntityId, at contactPoint: CGPoint) {
@@ -121,7 +133,7 @@ class GameEngine {
         eventManager.add(event: UseGrappleHookEvent(from: playerEntityId, isLeft: positionComponent.isFacingLeft))
     }
 
-    private func setUpSystems() {
+    private func setupSystems() {
         // Basic Systems
         systemManager.add(PositionSystem(entityManager, dispatcher: self))
         systemManager.add(PhysicsSystem(entityManager, dispatcher: self))
@@ -145,9 +157,19 @@ class GameEngine {
         systemManager.add(SpeedBoostPowerUpSystem(entityManager, dispatcher: self))
         systemManager.add(HomingMissileSystem(entityManager, dispatcher: self))
     }
+
+    private func setupGameMode() {
+        self.gameMode.setTarget(self)
+    }
+
+    private func checkHasGameEnded() {
+        if gameMode.hasGameEnded() {
+            // TODO: Handle game ending
+        }
+    }
 }
 
-extension GameEngine: EventModifiable {
+extension GameEngine: EventModifiable, GameModeModifiable {
     func system<T: System>(ofType type: T.Type) -> T? {
         systemManager.system(ofType: type)
     }

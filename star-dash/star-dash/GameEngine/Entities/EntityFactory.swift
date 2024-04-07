@@ -17,8 +17,8 @@ struct EntityFactory {
             .withPlayer(playerIndex: playerIndex)
             .withPosition(at: position)
             .withHealth(health: GameConstants.InitialHealth.player)
-            .withSprite(image: SpriteConstants.PlayerRedNose,
-                        textureSet: SpriteConstants.PlayerRedNoseTexture,
+            .withSprite(image: SpriteConstants.playerRedNose,
+                        textureSet: SpriteConstants.playerRedNoseTexture,
                         textureAtlas: nil,
                         size: PhysicsConstants.Dimensions.player)
             .withScore(score: 0)
@@ -120,7 +120,11 @@ struct EntityFactory {
         wallBuilder
             .withPosition(at: position)
             .withPhysics(rectangleOf: size)
+                .configureCategoryBitMask(PhysicsConstants.CollisionCategory.wall)
+                .configureContactTestMask(PhysicsConstants.ContactMask.wall)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.wall)
+                .configureIsDynamic(false)
+                .configureRestitution(0.0)
             .addToGame()
     }
 

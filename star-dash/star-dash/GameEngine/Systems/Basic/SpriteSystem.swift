@@ -13,6 +13,13 @@ class SpriteSystem: System {
         setup()
     }
 
+    func getImage(of entityId: EntityId) -> String? {
+        guard let spriteComponent = getSpriteComponent(of: entityId) else {
+            return nil
+        }
+        return spriteComponent.image
+    }
+
     func startAnimation(of entityId: EntityId, named: String) {
         startAnimation(of: entityId, named: named, repetitive: true, duration: nil)
     }
