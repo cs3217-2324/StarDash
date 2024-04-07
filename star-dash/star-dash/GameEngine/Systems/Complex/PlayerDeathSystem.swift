@@ -63,12 +63,14 @@ class PlayerDeathSystem: System {
 
     private func respawnPlayer(_ playerId: EntityId) {
         guard let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
-              let playerSystem = dispatcher?.system(ofType: PlayerSystem.self) else {
+              let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
+              let healthSystem = dispatcher?.system(ofType: HealthSystem.self) else {
             return
         }
 
         playerSystem.setCanJump(to: playerId, canJump: true)
         playerSystem.setCanMove(to: playerId, canMove: true)
+        healthSystem.setHealth(to: playerId, health: GameConstants.InitialHealth.player)
         spriteSystem.endAnimation(of: playerId)
     }
 }
