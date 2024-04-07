@@ -53,7 +53,7 @@ class PlayerView {
     }
 
     func update(_ overlayInfo: OverlayInfo) {
-        overlayView.update(overlayInfo.score)
+        overlayView.update(score: overlayInfo.score, health: overlayInfo.health)
         minimapView.update(playersInfo: overlayInfo.playersInfo, mapSize: overlayInfo.mapSize)
     }
 
