@@ -36,6 +36,14 @@ class HealthSystem: System {
         healthComponent.health += healthChange
     }
 
+    func setHealth(to entityId: EntityId, health: Int) {
+        guard let healthComponent = getHealthComponent(of: entityId) else {
+            return
+        }
+
+        healthComponent.health = health
+    }
+
     func setup() {}
 
     private func getHealthComponent(of entityId: EntityId) -> HealthComponent? {
