@@ -25,8 +25,9 @@ class GameEngine {
 
     func setupLevel(level: LevelPersistable, entities: [EntityPersistable]) {
         EntityFactory.createAndAddFloor(to: self,
-                                        position: CGPoint(x: level.size.width / 2, y: level.size.height / 2 - 400),
+                                        position: CGPoint(x: level.size.width / 2, y: 100),
                                         size: CGSize(width: 8_000, height: 10))
+        print(CGPoint(x: level.size.width / 2, y: level.size.height / 2 - 400))
         entities.forEach({ $0.addTo(self) })
     }
     // TODO: Set up players with characters that are selected

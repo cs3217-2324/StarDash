@@ -52,6 +52,7 @@ public class GameScene: SKScene {
         }
         cameraObject.zRotation = rotation
         self.camera = cameraObject.cameraNode
+        
     }
 
     public func setUpBackground(backgroundImage: String) {

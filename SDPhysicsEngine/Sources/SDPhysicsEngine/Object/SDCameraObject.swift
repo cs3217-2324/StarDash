@@ -18,7 +18,9 @@ public class SDCameraObject: SDObject {
         self.screenSize = screenSize
         self.sceneSize = sceneSize
         cameraNode = SKCameraNode()
+        
         super.init(node: cameraNode)
+        
     }
 
     var zRotation: CGFloat {
@@ -30,23 +32,31 @@ public class SDCameraObject: SDObject {
         guard let player = self.player else {
             return
         }
+        var scale: CGFloat = 1
+        // Calculate the distance between the player and the screen edges
+        if sceneSize.height > 1024 {
+            scale = 1024 / sceneSize.height
+        }
+//        let distanceToLeftEdge = player.position.x
+//        let distanceToRightEdge = sceneSize.width - player.position.x
+//        let distanceToTopEdge = sceneSize.height - player.position.y
+//        let distanceToBottomEdge = player.position.y
+//        
+//        // Calculate the scale factor based on the minimum distance to the screen edges
+//        let scaleX = min(screenSize.width / (distanceToLeftEdge + distanceToRightEdge), 1.0)
+//        let scaleY = min(screenSize.height / (distanceToTopEdge + distanceToBottomEdge), 1.0)
+//        let scale = min(scaleX, scaleY)
 
-        // TODO: Improve on camera position handling
-        var newPosition = player.position
-        if player.position.x < screenSize.width / 2 + 200 {
-            newPosition.x = screenSize.width / 2 + 200
-        }
+        // Set the scale of the camera node
+        cameraNode.setScale(scale)
 
-        if player.position.x > sceneSize.width - screenSize.width / 2 - 200 {
-            newPosition.x = sceneSize.width - screenSize.width / 2 - 200
-        }
-        if player.position.y < screenSize.height / 2 + 100 {
-            newPosition.y = screenSize.height / 2 + 100
-        }
+        // Calculate the new camera position based on the player's position
+        let newCameraPosition = player.position
 
-        if player.position.y > sceneSize.height - screenSize.height / 2 - 100 {
-            newPosition.y = sceneSize.height - screenSize.height / 2 - 100
-        }
-        self.position = newPosition
+        // Update the camera position
+        cameraNode.position = newCameraPosition
+
+
+
     }
 }

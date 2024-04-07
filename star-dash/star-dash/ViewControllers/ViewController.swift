@@ -56,7 +56,10 @@ class ViewController: UIViewController {
     }
 
     private func createGameEngine() -> GameEngine {
-        let levelSize = self.storageManager?.getLevelSize(id: 0) ?? CGSize(width: 4_842, height: 1_040)
+        guard let level = level else {
+            return GameEngine(mapSize: CGSize(width: 4_842, height: 1_040))
+        }
+        let levelSize = self.storageManager?.getLevelSize(id: level.id) ?? CGSize(width: 4_842, height: 1_040)
         return GameEngine(mapSize: levelSize)
     }
 
