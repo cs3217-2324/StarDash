@@ -51,8 +51,8 @@ class PlayerDeathSystem: System {
         }
 
         physicsSystem.setVelocity(to: event.playerId, velocity: .zero)
-        playerSystem.setCanJump(to: event.playerId, canJump: false)
-        playerSystem.setCanMove(to: event.playerId, canMove: false)
+        //playerSystem.setCanJump(to: event.playerId, canJump: false)
+        //playerSystem.setCanMove(to: event.playerId, canMove: false)
         spriteSystem.startAnimation(of: event.playerId,
                                     named: "death",
                                     repetitive: false,
@@ -63,13 +63,12 @@ class PlayerDeathSystem: System {
 
     private func respawnPlayer(_ playerId: EntityId) {
         guard let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
-              let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
               let healthSystem = dispatcher?.system(ofType: HealthSystem.self) else {
             return
         }
 
-        playerSystem.setCanJump(to: playerId, canJump: true)
-        playerSystem.setCanMove(to: playerId, canMove: true)
+        //playerSystem.setCanJump(to: playerId, canJump: true)
+        //playerSystem.setCanMove(to: playerId, canMove: true)
         healthSystem.setHealth(to: playerId, health: GameConstants.InitialHealth.player)
         spriteSystem.endAnimation(of: playerId)
     }

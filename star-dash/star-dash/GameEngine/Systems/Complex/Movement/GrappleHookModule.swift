@@ -54,6 +54,12 @@ class GrappleHookModule: MovementModule {
             }
             return nil
         }
+        eventHandlers[ObjectIdentifier(PlayerFloorContactEvent.self)] = { event in
+            if let playerFloorContactEvent = event as? PlayerFloorContactEvent {
+                return self.handlePlayerFloorContactEvent(event: PlayerFloorContactEvent)
+            }
+            return nil
+        }
         eventHandlers[ObjectIdentifier(GrappleHookObstacleContactEvent.self)] = { event in
             if let grappleHookObstacleContactEvent = event as? GrappleHookObstacleContactEvent {
                 return self.handleGrappleHookObstacleContactEvent(event: grappleHookObstacleContactEvent)
@@ -269,6 +275,17 @@ class GrappleHookModule: MovementModule {
     }
 
     private func handlePlayerObstacleContactEvent(event: PlayerObstacleContactEvent) -> Event? {
+        guard let hookOwnerComponent = entityManager
+            .components(ofType: GrappleHookOwnerComponent.self)
+            .first(where: { $0.ownerPlayerId == event.playerId }) else {
+            return event
+        }
+
+        dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
+        return event
+    }
+
+    private func handlePlayerFloorContactEvent(event: PlayerFloorContactEvent) -> Event? {
         guard let hookOwnerComponent = entityManager
             .components(ofType: GrappleHookOwnerComponent.self)
             .first(where: { $0.ownerPlayerId == event.playerId }) else {
