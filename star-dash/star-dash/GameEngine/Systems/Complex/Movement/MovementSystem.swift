@@ -1,9 +1,11 @@
+import Foundation
+
 class MovementSystem: System {
     var isActive: Bool
     var dispatcher: EventModifiable?
     var entityManager: EntityManager
     var eventHandlers: [ObjectIdentifier: (Event) -> Void] = [:]
-    var modules: [MovementModule]
+    var modules: [MovementModule] = []
 
     init(_ entityManager: EntityManager, dispatcher: EventModifiable? = nil) {
         self.isActive = true
@@ -53,9 +55,10 @@ class MovementSystem: System {
     private func handleEvent(_ event: Event) {
         var passingEvent = event
         for module in modules {
-            guard passingEvent = module.handleEvent(passingEvent) {
-               break 
+            guard let newEvent = module.handleEvent(passingEvent) else {
+               break
             }
+            passingEvent = newEvent
         }
     }
 }

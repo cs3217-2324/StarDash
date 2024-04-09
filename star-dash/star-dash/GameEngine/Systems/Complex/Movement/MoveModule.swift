@@ -1,9 +1,11 @@
+import Foundation
+
 class MoveModule: MovementModule {
     let entityManager: EntityManager
     let dispatcher: EventModifiable?
 
-    var eventHandlers: [ObjectIdentifier: (Event, EventModifiable?) -> Void] = [:]
-    var listenableEvents: [ObjectIdentifier] = Array(eventHandlers.key)
+    var eventHandlers: [ObjectIdentifier: (Event) -> Event?] = [:]
+    lazy var listenableEvents: [ObjectIdentifier] = Array(eventHandlers.keys)
 
     init(entityManager: EntityManager, dispatcher: EventModifiable?) {
         self.entityManager = entityManager
@@ -11,14 +13,16 @@ class MoveModule: MovementModule {
 
         eventHandlers[ObjectIdentifier(MoveEvent.self)] = { event in
             if let moveEvent = event as? MoveEvent {
-                self.handleMoveEvent(event: moveEvent)
+                return self.handleMoveEvent(event: moveEvent)
             }
+            return nil
         }
 
         eventHandlers[ObjectIdentifier(StopMovingEvent.self)] = { event in
             if let stopMovingEvent = event as? StopMovingEvent {
-                self.handleStopMovingEvent(event: stopMovingEvent)
+                return self.handleStopMovingEvent(event: stopMovingEvent)
             }
+            return nil
         }
     }
 

@@ -1,24 +1,35 @@
+import Foundation
+
 class JumpModule: MovementModule {
-    var eventHandlers: [ObjectIdentifier: (Event, EventModifiable?) -> Void] = [:]
-    var listenableEvents: [ObjectIdentifier] = Array(eventHandlers.key)
+    let entityManager: EntityManager
+    let dispatcher: EventModifiable?
+
+    var eventHandlers: [ObjectIdentifier: (Event) -> Event?] = [:]
+    lazy var listenableEvents: [ObjectIdentifier] = Array(eventHandlers.keys)
 
     init(entityManager: EntityManager, dispatcher: EventModifiable?) {
-        let entityManager: EntityManager
-        let dispatcher: EventModifiable?
-
         self.entityManager = entityManager
         self.dispatcher = dispatcher
 
         eventHandlers[ObjectIdentifier(JumpEvent.self)] = { event in
             if let jumpEvent = event as? JumpEvent {
-                self.handleJumpEvent(event: jumpEvent)
+                return self.handleJumpEvent(event: jumpEvent)
             }
+            return nil
         }
 
         eventHandlers[ObjectIdentifier(PlayerFloorContactEvent.self)] = { event in
             if let playerFloorContactEvent = event as? PlayerFloorContactEvent {
-                self.handlePlayerFloorContactEvent(event: playerFloorContactEvent)
+                return self.handlePlayerFloorContactEvent(event: playerFloorContactEvent)
             }
+            return nil
+        }
+
+        eventHandlers[ObjectIdentifier(PlayerObstacleContactEvent.self)] = { event in
+            if let playerObstacleContactEvent = event as? PlayerObstacleContactEvent {
+                return self.handlePlayerObstacleContactEvent(event: playerObstacleContactEvent)
+            }
+            return nil
         }
     }
 
@@ -38,7 +49,7 @@ class JumpModule: MovementModule {
     }
 
     private func removeJumpComponent(for entityId: EntityId) {
-        guard let jumpComponent = entityManager.component(ofType: JumpComponent.self, of: event.entityId) {
+        guard let jumpComponent = entityManager.component(ofType: JumpComponent.self, of: entityId) else {
             return
         }
         entityManager.remove(component: jumpComponent)
@@ -51,7 +62,7 @@ class JumpModule: MovementModule {
                   entityManager.component(ofType: JumpComponent.self, of: event.entityId) == nil else {
             return nil
         }
-        
+
         createJumpComponent(for: event.entityId)
         physicsSystem.applyImpulse(to: event.entityId, impulse: event.jumpImpulse)
 
@@ -75,7 +86,6 @@ class JumpModule: MovementModule {
               playerPosition.y > event.contactPoint.y else {
             return event
         }
-
 
         removeJumpComponent(for: event.playerId)
         return event
