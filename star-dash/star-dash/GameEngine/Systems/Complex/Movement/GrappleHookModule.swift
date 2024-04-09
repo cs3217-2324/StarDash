@@ -56,7 +56,7 @@ class GrappleHookModule: MovementModule {
         }
         eventHandlers[ObjectIdentifier(PlayerFloorContactEvent.self)] = { event in
             if let playerFloorContactEvent = event as? PlayerFloorContactEvent {
-                return self.handlePlayerFloorContactEvent(event: PlayerFloorContactEvent)
+                return self.handlePlayerFloorContactEvent(event: playerFloorContactEvent)
             }
             return nil
         }
