@@ -90,7 +90,7 @@ class GrappleHookModule: MovementModule {
         guard let playerId = event.playerIdForEvent,
               let hookOwnerComponent = entityManager.components(ofType: GrappleHookOwnerComponent.self)
                                                     .first(where: { $0.ownerPlayerId == playerId }),
-              let hookState = getHookState(of: hookOwnerComponent.entityId) else {
+              getHookState(of: hookOwnerComponent.entityId) != nil else {
             return event // player is hooking, block event
         }
 

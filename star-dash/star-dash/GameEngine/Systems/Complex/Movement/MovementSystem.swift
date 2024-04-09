@@ -54,12 +54,26 @@ class MovementSystem: System {
     /// the event is passed down to the lower priority ones.
     /// Modules can also modify the event that is passed down.
     private func handleEvent(_ event: Event) {
-        var passingEvent = event
+        guard canMakeMovement(for: event.playerIdForEvent) else {
+            return
+        }
+
+        var newEvent = event
         for module in modules {
-            guard let newEvent = module.handleEvent(passingEvent) else {
+            guard let nextEvent = module.handleEvent(newEvent) else {
                return
             }
-            passingEvent = newEvent
+            newEvent = nextEvent
         }
+    }
+
+    private func canMakeMovement(for playerId: EntityId?) -> Bool {
+        guard let playerId = playerId,
+              let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
+              let isDead = playerSystem.isDead(entityId: playerId) else {
+            return true
+        }
+
+        return !isDead
     }
 }
