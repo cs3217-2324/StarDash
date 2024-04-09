@@ -153,7 +153,6 @@
 		E6A1030C2BBAF0F7005BDFFA /* MissileHitPlayerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1030B2BBAF0F7005BDFFA /* MissileHitPlayerEvent.swift */; };
 		E6A103102BBAF9B4005BDFFA /* MissileBlockedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1030F2BBAF9B4005BDFFA /* MissileBlockedEvent.swift */; };
 		E6A115372BB9E2F90076A21F /* SpriteSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A115362BB9E2F90076A21F /* SpriteSystem.swift */; };
-		E6A2B3A92BBBA41900DE6C79 /* GrappleHookSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2B3A82BBBA41900DE6C79 /* GrappleHookSystem.swift */; };
 		E6A492962BBD5C0C00A8A374 /* PlayerDeathSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A492952BBD5C0C00A8A374 /* PlayerDeathSystem.swift */; };
 		E6A72FC52BB2E1E10015729E /* PlayerViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A72FC32BB2E1E10015729E /* PlayerViewLayout.swift */; };
 		E6A72FC62BB2E1E10015729E /* LayoutUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A72FC42BB2E1E10015729E /* LayoutUtils.swift */; };
@@ -169,6 +168,7 @@
 		E6ADAEDF2BC555B7007BB12E /* MovementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADAEDB2BC555B7007BB12E /* MovementSystem.swift */; };
 		E6ADAEE02BC555B7007BB12E /* MovementModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADAEDC2BC555B7007BB12E /* MovementModule.swift */; };
 		E6ADAEE32BC555CC007BB12E /* JumpComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADAEE22BC555CC007BB12E /* JumpComponent.swift */; };
+		E6ADAEE52BC56F7A007BB12E /* GrappleHookModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADAEE42BC56F7A007BB12E /* GrappleHookModule.swift */; };
 		E6B0AAD12BAAE3DC009CB939 /* ViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0AAD02BAAE3DC009CB939 /* ViewDelegate.swift */; };
 		E6B0AAD32BAAE438009CB939 /* ControlViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0AAD22BAAE438009CB939 /* ControlViewDelegate.swift */; };
 		E6B0AAD52BAAE4EC009CB939 /* PlayerFloorContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0AAD42BAAE4EC009CB939 /* PlayerFloorContactEvent.swift */; };
@@ -375,7 +375,6 @@
 		E6A1030D2BBAF3B1005BDFFA /* HomingMissile+Collidable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomingMissile+Collidable.swift"; sourceTree = "<group>"; };
 		E6A1030F2BBAF9B4005BDFFA /* MissileBlockedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MissileBlockedEvent.swift; path = "star-dash/GameEngine/Collision/MissileBlockedEvent.swift"; sourceTree = SOURCE_ROOT; };
 		E6A115362BB9E2F90076A21F /* SpriteSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpriteSystem.swift; path = "star-dash/GameEngine/Systems/Basic/SpriteSystem.swift"; sourceTree = SOURCE_ROOT; };
-		E6A2B3A82BBBA41900DE6C79 /* GrappleHookSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrappleHookSystem.swift; sourceTree = "<group>"; };
 		E6A492952BBD5C0C00A8A374 /* PlayerDeathSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDeathSystem.swift; sourceTree = "<group>"; };
 		E6A72FC32BB2E1E10015729E /* PlayerViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewLayout.swift; sourceTree = "<group>"; };
 		E6A72FC42BB2E1E10015729E /* LayoutUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutUtils.swift; sourceTree = "<group>"; };
@@ -391,6 +390,7 @@
 		E6ADAEDB2BC555B7007BB12E /* MovementSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementSystem.swift; sourceTree = "<group>"; };
 		E6ADAEDC2BC555B7007BB12E /* MovementModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementModule.swift; sourceTree = "<group>"; };
 		E6ADAEE22BC555CC007BB12E /* JumpComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpComponent.swift; sourceTree = "<group>"; };
+		E6ADAEE42BC56F7A007BB12E /* GrappleHookModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrappleHookModule.swift; sourceTree = "<group>"; };
 		E6B0AAD02BAAE3DC009CB939 /* ViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDelegate.swift; sourceTree = "<group>"; };
 		E6B0AAD22BAAE438009CB939 /* ControlViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewDelegate.swift; sourceTree = "<group>"; };
 		E6B0AAD42BAAE4EC009CB939 /* PlayerFloorContactEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerFloorContactEvent.swift; sourceTree = "<group>"; };
@@ -915,7 +915,6 @@
 			children = (
 				E6ADAED82BC555B7007BB12E /* Movement */,
 				E6A492952BBD5C0C00A8A374 /* PlayerDeathSystem.swift */,
-				E6A2B3A82BBBA41900DE6C79 /* GrappleHookSystem.swift */,
 				460A200A2BB1D04F002597B8 /* AttackSystem.swift */,
 				460A200E2BB1E1F1002597B8 /* CollisionSystem.swift */,
 			);
@@ -952,6 +951,7 @@
 				E6ADAEDA2BC555B7007BB12E /* JumpModule.swift */,
 				E6ADAEDB2BC555B7007BB12E /* MovementSystem.swift */,
 				E6ADAEDC2BC555B7007BB12E /* MovementModule.swift */,
+				E6ADAEE42BC56F7A007BB12E /* GrappleHookModule.swift */,
 			);
 			path = Movement;
 			sourceTree = "<group>";
@@ -1182,7 +1182,6 @@
 				14E2478E2BA22FCE0071FFC0 /* MoveEvent.swift in Sources */,
 				14D14B732BA5A3CD00386C3B /* RemoveEvent.swift in Sources */,
 				461B1FF62BBC50220020F6C4 /* Database+Achievements.swift in Sources */,
-				E6A2B3A92BBBA41900DE6C79 /* GrappleHookSystem.swift in Sources */,
 				4E8660622BA0964A0035530D /* Obstacle.swift in Sources */,
 				46C3B1D62BB59F9B00F10574 /* ReleaseGrappleHookEvent.swift in Sources */,
 				1471B0A02BA6A70600878B14 /* HealthSystem.swift in Sources */,
@@ -1279,6 +1278,7 @@
 				460A200D2BB1DF27002597B8 /* PlayerSystem.swift in Sources */,
 				E6A745172BA057040080C1BE /* ControlView.swift in Sources */,
 				460A20092BB1B524002597B8 /* EventListener.swift in Sources */,
+				E6ADAEE52BC56F7A007BB12E /* GrappleHookModule.swift in Sources */,
 				14970F562BA8177B00CC1E8A /* GameConstants.swift in Sources */,
 				1471B0A42BA6AAF200878B14 /* PlayerDeathEvent.swift in Sources */,
 				E69FDDE62BADD11B0089D5F3 /* StopMovingEvent.swift in Sources */,

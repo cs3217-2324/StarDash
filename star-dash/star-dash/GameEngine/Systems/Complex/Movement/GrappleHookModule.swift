@@ -1,38 +1,65 @@
-//
-//  GrappleHookSystem.swift
-//  star-dash
-//
-//  Created by Ho Jun Hao on 28/3/24.
-//
-
 import Foundation
 
-class GrappleHookSystem: System {
-    var isActive: Bool
-    var dispatcher: EventModifiable?
-    var entityManager: EntityManager
-    var stateHandler: [HookState: (EntityId) -> Event] = [:]
-    var eventHandlers: [ObjectIdentifier: (Event) -> Void] = [:]
+class GrappleHookModule: MovementModule {
+    let entityManager: EntityManager
+    let dispatcher: EventModifiable?
 
-    init(_ entityManager: EntityManager, dispatcher: EventModifiable? = nil) {
-        self.isActive = true
-        self.dispatcher = dispatcher
+    var eventHandlers: [ObjectIdentifier: (Event) -> Event?] = [:]
+    lazy var listenableEvents: [ObjectIdentifier] = Array(eventHandlers.keys)
+
+    var stateHandler: [HookState: (EntityId) -> Event] = [
+        .shooting: { entityId in ShootGrappleHookEvent(using: entityId) },
+        .retracting: { entityId in RetractGrappleHookEvent(using: entityId) },
+        .swinging: { entityId in SwingGrappleHookEvent(using: entityId) },
+        .releasing: { entityId in ReleaseGrappleHookEvent(using: entityId) }
+    ]
+
+    init(entityManager: EntityManager, dispatcher: EventModifiable?) {
         self.entityManager = entityManager
-        self.stateHandler = [
-             .shooting: { entityId in
-                 ShootGrappleHookEvent(using: entityId)
-             },
-             .retracting: { entityId in
-                 RetractGrappleHookEvent(using: entityId)
-             },
-             .swinging: { entityId in
-                 SwingGrappleHookEvent(using: entityId)
-             },
-             .releasing: { entityId in
-                 ReleaseGrappleHookEvent(using: entityId)
-             }
-         ]
-        setup()
+        self.dispatcher = dispatcher
+
+        eventHandlers[ObjectIdentifier(UseGrappleHookEvent.self)] = { event in
+            if let useGrappleHookEvent = event as? UseGrappleHookEvent {
+                return self.activateHook(event: useGrappleHookEvent)
+            }
+            return nil
+        }
+        eventHandlers[ObjectIdentifier(ShootGrappleHookEvent.self)] = { event in
+            if let shootGrappleHookEvent = event as? ShootGrappleHookEvent {
+                return self.handleShootEvent(event: shootGrappleHookEvent)
+            }
+            return nil
+        }
+        eventHandlers[ObjectIdentifier(RetractGrappleHookEvent.self)] = { event in
+            if let playerAttackMonsterEvent = event as? RetractGrappleHookEvent {
+                return self.handleRetractEvent(event: playerAttackMonsterEvent)
+            }
+            return nil
+        }
+        eventHandlers[ObjectIdentifier(SwingGrappleHookEvent.self)] = { event in
+            if let monsterAttackPlayerEvent = event as? SwingGrappleHookEvent {
+                return self.handleSwingEvent(event: monsterAttackPlayerEvent)
+            }
+            return nil
+        }
+        eventHandlers[ObjectIdentifier(ReleaseGrappleHookEvent.self)] = { event in
+            if let playerAttackMonsterEvent = event as? ReleaseGrappleHookEvent {
+                return self.handleReleaseEvent(event: playerAttackMonsterEvent)
+            }
+            return nil
+        }
+        eventHandlers[ObjectIdentifier(PlayerObstacleContactEvent.self)] = { event in
+            if let playerObstacleContactEvent = event as? PlayerObstacleContactEvent {
+                return self.handlePlayerObstacleContactEvent(event: playerObstacleContactEvent)
+            }
+            return nil
+        }
+        eventHandlers[ObjectIdentifier(GrappleHookObstacleContactEvent.self)] = { event in
+            if let grappleHookObstacleContactEvent = event as? GrappleHookObstacleContactEvent {
+                return self.handleGrappleHookObstacleContactEvent(event: grappleHookObstacleContactEvent)
+            }
+            return nil
+        }
     }
 
     func update(by deltaTime: TimeInterval) {
@@ -48,44 +75,20 @@ class GrappleHookSystem: System {
         }
     }
 
-    func setup() {
-        dispatcher?.registerListener(self)
+    func handleEvent(_ event: Event) -> Event? {
+        let eventType = ObjectIdentifier(type(of: event))
+        if let handler = eventHandlers[eventType] {
+            return handler(event)
+        }
 
-        eventHandlers[ObjectIdentifier(UseGrappleHookEvent.self)] = { event in
-            if let useGrappleHookEvent = event as? UseGrappleHookEvent {
-                self.activateHook(event: useGrappleHookEvent)
-            }
+        guard let playerId = event.playerIdForEvent,
+              let hookOwnerComponent = entityManager.components(ofType: GrappleHookOwnerComponent.self)
+                                                    .first(where: { $0.ownerPlayerId == playerId }),
+              let hookState = getHookState(of: hookOwnerComponent.entityId) else {
+            return event // player is hooking, block event
         }
-        eventHandlers[ObjectIdentifier(ShootGrappleHookEvent.self)] = { event in
-            if let shootGrappleHookEvent = event as? ShootGrappleHookEvent {
-                self.handleShootEvent(event: shootGrappleHookEvent)
-            }
-        }
-        eventHandlers[ObjectIdentifier(RetractGrappleHookEvent.self)] = { event in
-            if let playerAttackMonsterEvent = event as? RetractGrappleHookEvent {
-                self.handleRetractEvent(event: playerAttackMonsterEvent)
-            }
-        }
-        eventHandlers[ObjectIdentifier(SwingGrappleHookEvent.self)] = { event in
-            if let monsterAttackPlayerEvent = event as? SwingGrappleHookEvent {
-                self.handleSwingEvent(event: monsterAttackPlayerEvent)
-            }
-        }
-        eventHandlers[ObjectIdentifier(ReleaseGrappleHookEvent.self)] = { event in
-            if let playerAttackMonsterEvent = event as? ReleaseGrappleHookEvent {
-                self.handleReleaseEvent(event: playerAttackMonsterEvent)
-            }
-        }
-        eventHandlers[ObjectIdentifier(PlayerObstacleContactEvent.self)] = { event in
-            if let playerObstacleContactEvent = event as? PlayerObstacleContactEvent {
-                self.handlePlayerObstacleContactEvent(event: playerObstacleContactEvent)
-            }
-        }
-        eventHandlers[ObjectIdentifier(GrappleHookObstacleContactEvent.self)] = { event in
-            if let grappleHookObstacleContactEvent = event as? GrappleHookObstacleContactEvent {
-                self.handleGrappleHookObstacleContactEvent(event: grappleHookObstacleContactEvent)
-            }
-        }
+
+        return nil
     }
 
     func extendHook(of hookEntityId: EntityId) {
@@ -98,8 +101,8 @@ class GrappleHookSystem: System {
         }
 
         let vector = hookComponent.isLeft
-                     ? GameConstants.Hook.deltaPositionVectorLeft
-                     : GameConstants.Hook.deltaPositionVectorRight
+        ? GameConstants.Hook.deltaPositionVectorLeft
+        : GameConstants.Hook.deltaPositionVectorRight
         let newEndPoint = CGPoint(x: oldEndPoint.x + vector.dx, y: oldEndPoint.y + vector.dy)
         hookComponent.startpoint = ownerPosition
 
@@ -115,8 +118,8 @@ class GrappleHookSystem: System {
         }
 
         let vector = hookComponent.isLeft
-                     ? GameConstants.Hook.deltaPositionVectorLeft
-                     : GameConstants.Hook.deltaPositionVectorRight
+        ? GameConstants.Hook.deltaPositionVectorLeft
+        : GameConstants.Hook.deltaPositionVectorRight
         let newStartPoint = CGPoint(x: oldStartPoint.x + vector.dx, y: oldStartPoint.y + vector.dy)
         let lengthRetracted = hypot(vector.dx, vector.dy)
 
@@ -206,97 +209,93 @@ class GrappleHookSystem: System {
         return hookComponent.state
     }
 
-    private func activateHook(event: UseGrappleHookEvent) {
-        guard let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: event.playerId),
-              playerComponent.canHook,
-              let entityManager = dispatcher as? EntityManagerInterface,
-              let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
-              let position = positionSystem.getPosition(of: event.playerId) else {
-            return
+    private func activateHook(event: UseGrappleHookEvent) -> Event? {
+        guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
+              let position = positionSystem.getPosition(of: event.playerId),
+              getHookState(of: event.playerId) == nil else {
+            return nil
         }
-
-        playerComponent.canHook = false
-        playerComponent.canMove = false
-        playerComponent.canJump = false
 
         EntityFactory.createAndAddGrappleHook(to: entityManager,
                                               playerId: event.playerId,
                                               isLeft: event.isLeft,
                                               startpoint: position)
+        return nil
     }
 
-    private func handleShootEvent(event: ShootGrappleHookEvent) {
+    private func handleShootEvent(event: ShootGrappleHookEvent) -> Event? {
         guard length(of: event.hookId) < GameConstants.Hook.maxLength else {
             setHookState(of: event.hookId, to: .releasing)
-            return
+            return nil
         }
 
         extendHook(of: event.hookId)
         adjustRope(of: event.hookId)
+        return nil
     }
 
-    private func handleRetractEvent(event: RetractGrappleHookEvent) {
+    private func handleRetractEvent(event: RetractGrappleHookEvent) -> Event? {
         guard let lengthRemaining = lengthLeftToRetract(of: event.hookId),
               lengthRemaining > 0 else {
             setHookState(of: event.hookId, to: .swinging)
-            return
+            return nil
         }
 
         retractHook(of: event.hookId)
         adjustRope(of: event.hookId)
+        return nil
     }
 
-    private func handleSwingEvent(event: SwingGrappleHookEvent) {
+    private func handleSwingEvent(event: SwingGrappleHookEvent) -> Event? {
         guard let angleRemaining = angleLeftToSwing(of: event.hookId),
               angleRemaining > 0 else {
             setHookState(of: event.hookId, to: .releasing)
-            return
+            return nil
         }
 
         swing(using: event.hookId)
         adjustRope(of: event.hookId)
+        return nil
     }
 
-    private func handleReleaseEvent(event: ReleaseGrappleHookEvent) {
-        guard let playerOwnerId = getHookOwner(of: event.hookId),
-              let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: playerOwnerId),
-              let ropeId = getRopeId(of: event.hookId) else {
-            return
+    private func handleReleaseEvent(event: ReleaseGrappleHookEvent) -> Event? {
+        guard let ropeId = getRopeId(of: event.hookId) else {
+            return nil
         }
-
-        playerComponent.canHook = true
-        playerComponent.canJump = true
-        playerComponent.canMove = true
 
         dispatcher?.add(event: RemoveEvent(on: ropeId))
         dispatcher?.add(event: RemoveEvent(on: event.hookId))
+        return nil
     }
 
-    private func handlePlayerObstacleContactEvent(event: PlayerObstacleContactEvent) {
-        if let hookOwnerComponent = entityManager
-                                    .components(ofType: GrappleHookOwnerComponent.self)
-                                    .first(where: { $0.ownerPlayerId == event.playerId }) {
-            dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
+    private func handlePlayerObstacleContactEvent(event: PlayerObstacleContactEvent) -> Event? {
+        guard let hookOwnerComponent = entityManager
+            .components(ofType: GrappleHookOwnerComponent.self)
+            .first(where: { $0.ownerPlayerId == event.playerId }) else {
+            return event
         }
+
+        dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
+        return event
     }
 
-    private func handleGrappleHookObstacleContactEvent(event: GrappleHookObstacleContactEvent) {
-        guard let hookSystem = dispatcher?.system(ofType: GrappleHookSystem.self),
-              let hookState = hookSystem.getHookState(of: event.grappleHookId) else {
-            return
+    private func handleGrappleHookObstacleContactEvent(event: GrappleHookObstacleContactEvent) -> Event? {
+        guard let hookState = getHookState(of: event.grappleHookId) else {
+            return nil
         }
 
-        hookSystem.setSwingAngle(for: event.grappleHookId)
+        setSwingAngle(for: event.grappleHookId)
 
         guard hookState == .shooting else {
-            return
+            return nil
         }
 
-        if hookSystem.length(of: event.grappleHookId) >= GameConstants.Hook.minLength {
-            hookSystem.setHookState(of: event.grappleHookId, to: .retracting)
+        if length(of: event.grappleHookId) >= GameConstants.Hook.minLength {
+            setHookState(of: event.grappleHookId, to: .retracting)
         } else {
             dispatcher?.add(event: ReleaseGrappleHookEvent(using: event.grappleHookId))
         }
+        return nil
     }
 
     private func getHookComponent(of entityId: EntityId) -> GrappleHookComponent? {
@@ -304,7 +303,7 @@ class GrappleHookSystem: System {
     }
 }
 
-extension GrappleHookSystem {
+extension GrappleHookModule {
     private func angleBetweenPoints(S: CGPoint, P: CGPoint, E: CGPoint) -> CGFloat {
         let SP = distanceBetweenPoints(S, P)
         let SE = distanceBetweenPoints(S, E)

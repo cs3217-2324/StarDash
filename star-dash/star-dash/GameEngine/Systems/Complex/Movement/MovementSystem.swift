@@ -18,6 +18,7 @@ class MovementSystem: System {
 
     private func registerModules() {
         // Highest Priority
+        registerModule(GrappleHookModule(entityManager: entityManager, dispatcher: dispatcher))
         registerModule(JumpModule(entityManager: entityManager, dispatcher: dispatcher))
         registerModule(MoveModule(entityManager: entityManager, dispatcher: dispatcher))
         // Lowest Priority
@@ -56,7 +57,7 @@ class MovementSystem: System {
         var passingEvent = event
         for module in modules {
             guard let newEvent = module.handleEvent(passingEvent) else {
-               break
+               return
             }
             passingEvent = newEvent
         }

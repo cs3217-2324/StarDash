@@ -19,6 +19,6 @@ class MoveEvent: Event {
     }
 
     var playerIdForEvent: EntityId? {
-        nil
+        entityId
     }
 }
