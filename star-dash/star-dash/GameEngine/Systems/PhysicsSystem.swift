@@ -68,61 +68,7 @@ class PhysicsSystem: System {
         physicsComponent.size = newSize
     }
 
-    func setup() {
-        dispatcher?.registerListener(self)
-
-        eventHandlers[ObjectIdentifier(MoveEvent.self)] = { event in
-            if let moveEvent = event as? MoveEvent {
-                self.handleMoveEvent(event: moveEvent)
-            }
-        }
-        eventHandlers[ObjectIdentifier(JumpEvent.self)] = { event in
-            if let jumpEvent = event as? JumpEvent {
-                self.handleJumpEvent(event: jumpEvent)
-            }
-        }
-        eventHandlers[ObjectIdentifier(StopMovingEvent.self)] = { event in
-            if let stopMovingEvent = event as? StopMovingEvent {
-                self.handleStopMovingEvent(event: stopMovingEvent)
-            }
-        }
-    }
-
-    private func handleMoveEvent(event: MoveEvent) {
-        guard let physicsComponent = getPhysicsComponent(of: event.entityId),
-              let spriteComponent = entityManager.component(ofType: SpriteComponent.self, of: event.entityId),
-              let textureSet = spriteComponent.textureSet else {
-            return
-        }
-
-        var runVelocity = (event.toLeft ? -1 : 1) * PhysicsConstants.runVelocity
-
-        if let buffComponent = entityManager.component(ofType: BuffComponent.self, of: event.entityId) {
-            runVelocity *= CGFloat(buffComponent.speedMultiplier)
-        }
-
-        physicsComponent.velocity = runVelocity
-        spriteComponent.textureAtlas = textureSet.run
-    }
-
-    private func handleJumpEvent(event: JumpEvent) {
-        guard let playerComponent = entityManager.component(ofType: PlayerComponent.self, of: event.entityId),
-              playerComponent.canJump else {
-            return
-        }
-        playerComponent.canJump = false
-        playerComponent.canMove = false
-        applyImpulse(to: event.entityId, impulse: event.jumpImpulse)
-    }
-
-    private func handleStopMovingEvent(event: StopMovingEvent) {
-        guard let physicsComponent = getPhysicsComponent(of: event.entityId),
-              let spriteComponent = entityManager.component(ofType: SpriteComponent.self, of: event.entityId) else {
-            return
-        }
-        physicsComponent.velocity = .zero
-        spriteComponent.textureAtlas = nil
-    }
+    func setup() { }
 
     private func getPhysicsComponent(of entityId: EntityId) -> PhysicsComponent? {
         entityManager.component(ofType: PhysicsComponent.self, of: entityId)

@@ -10,6 +10,6 @@ class StopMovingEvent: Event {
     }
 
     var playerIdForEvent: EntityId? {
-        nil
+        entityId
     }
 }
