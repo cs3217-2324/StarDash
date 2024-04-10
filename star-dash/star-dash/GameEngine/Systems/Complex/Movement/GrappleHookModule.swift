@@ -97,7 +97,7 @@ class GrappleHookModule: MovementModule {
         return nil
     }
 
-    func extendHook(of hookEntityId: EntityId) {
+    private func extendHook(of hookEntityId: EntityId) {
         guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let oldEndPoint = positionSystem.getPosition(of: hookEntityId),
               let hookComponent = getHookComponent(of: hookEntityId),
@@ -115,7 +115,7 @@ class GrappleHookModule: MovementModule {
         positionSystem.move(entityId: hookEntityId, to: newEndPoint)
     }
 
-    func retractHook(of hookEntityId: EntityId) {
+    private func retractHook(of hookEntityId: EntityId) {
         guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let hookOwnerId = getHookOwner(of: hookEntityId),
               let oldStartPoint = getStartPoint(of: hookEntityId),
@@ -134,7 +134,7 @@ class GrappleHookModule: MovementModule {
         positionSystem.move(entityId: hookOwnerId, to: newStartPoint)
     }
 
-    func swing(using hookEntityId: EntityId) {
+    private func swing(using hookEntityId: EntityId) {
         guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let hookOwnerId = getHookOwner(of: hookEntityId),
               let endPoint = getEndPoint(of: hookEntityId),
@@ -162,63 +162,10 @@ class GrappleHookModule: MovementModule {
         positionSystem.move(entityId: hookOwnerId, to: newStartPoint)
     }
 
-    func setSwingAngle(for hookEntityId: EntityId) {
-        guard let hookPosition = getEndPoint(of: hookEntityId),
-              let currPosition = getStartPoint(of: hookEntityId),
-              let hookComponent = getHookComponent(of: hookEntityId) else {
-            return
-        }
-
-        let firePosition = hookComponent.shootPoint
-
-        let dx = firePosition.x - hookPosition.x
-        let dy = firePosition.y - hookPosition.y
-        let distance = hypot(dx, dy)
-        let angle = atan2(dy, dx)
-        var newAngle: CGFloat
-        if hookComponent.isLeft {
-            newAngle = angle - GameConstants.Hook.defaultSwingAngle * .pi / 180.0
-        } else {
-            newAngle = angle + GameConstants.Hook.defaultSwingAngle * .pi / 180.0
-        }
-        let newX = hookPosition.x + distance * cos(newAngle)
-        let newY = hookPosition.y + distance * sin(newAngle)
-        let eventualSwingEndPoint = CGPoint(x: newX, y: newY)
-
-        let angleToSwing = angleBetweenPoints(S: hookPosition, P: currPosition, E: eventualSwingEndPoint)
-
-        hookComponent.angleToSwing = angleToSwing
-    }
-
-    func length(of hookEntityId: EntityId) -> CGFloat {
-        guard let startPoint = getStartPoint(of: hookEntityId),
-              let endPoint = getEndPoint(of: hookEntityId) else {
-            return 0
-        }
-
-        return hypot(endPoint.x - startPoint.x, endPoint.y - startPoint.y)
-    }
-
-    func setHookState(of hookEntityId: EntityId, to state: HookState) {
-        guard let hookComponent = getHookComponent(of: hookEntityId) else {
-            return
-        }
-
-        hookComponent.state = state
-    }
-
-    func getHookState(of hookEntityId: EntityId) -> HookState? {
-        guard let hookComponent = getHookComponent(of: hookEntityId) else {
-            return nil
-        }
-
-        return hookComponent.state
-    }
-
     private func activateHook(event: UseGrappleHookEvent) -> Event? {
         guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let position = positionSystem.getPosition(of: event.playerId),
-              getHookState(of: event.playerId) == nil else {
+              !hasHook(playerEntityId: event.playerId) else {
             return nil
         }
 
@@ -314,52 +261,43 @@ class GrappleHookModule: MovementModule {
         }
         return nil
     }
-
-    private func getHookComponent(of entityId: EntityId) -> GrappleHookComponent? {
-        entityManager.component(ofType: GrappleHookComponent.self, of: entityId)
-    }
 }
 
 extension GrappleHookModule {
-    private func angleBetweenPoints(S: CGPoint, P: CGPoint, E: CGPoint) -> CGFloat {
-        let SP = distanceBetweenPoints(S, P)
-        let SE = distanceBetweenPoints(S, E)
-        let PE = distanceBetweenPoints(P, E)
+    private func setSwingAngle(for hookEntityId: EntityId) {
+        guard let hookPosition = getEndPoint(of: hookEntityId),
+              let currPosition = getStartPoint(of: hookEntityId),
+              let hookComponent = getHookComponent(of: hookEntityId) else {
+            return
+        }
 
-        let cosAngle = (SP * SP + SE * SE - PE * PE) / (2 * SP * SE)
-        let angle = acos(cosAngle)
-        return angle * 180 / .pi
+        let firePosition = hookComponent.shootPoint
+
+        let dx = firePosition.x - hookPosition.x
+        let dy = firePosition.y - hookPosition.y
+        let distance = hypot(dx, dy)
+        let angle = atan2(dy, dx)
+        var newAngle: CGFloat
+        if hookComponent.isLeft {
+            newAngle = angle - GameConstants.Hook.defaultSwingAngle * .pi / 180.0
+        } else {
+            newAngle = angle + GameConstants.Hook.defaultSwingAngle * .pi / 180.0
+        }
+        let newX = hookPosition.x + distance * cos(newAngle)
+        let newY = hookPosition.y + distance * sin(newAngle)
+        let eventualSwingEndPoint = CGPoint(x: newX, y: newY)
+
+        let angleToSwing = angleBetweenPoints(S: hookPosition, P: currPosition, E: eventualSwingEndPoint)
+
+        hookComponent.angleToSwing = angleToSwing
     }
 
-    private func distanceBetweenPoints(_ a: CGPoint, _ b: CGPoint) -> CGFloat {
-        let dx = b.x - a.x
-        let dy = b.y - a.y
-        return sqrt(dx * dx + dy * dy)
-    }
-
-    private func lengthLeftToRetract(of hookEntityId: EntityId) -> CGFloat? {
+    private func setHookState(of hookEntityId: EntityId, to state: HookState) {
         guard let hookComponent = getHookComponent(of: hookEntityId) else {
-            return nil
+            return
         }
 
-        return hookComponent.lengthToRetract
-    }
-
-    private func angleLeftToSwing(of hookEntityId: EntityId) -> CGFloat? {
-        guard let hookComponent = getHookComponent(of: hookEntityId) else {
-            return nil
-        }
-
-        return hookComponent.angleToSwing
-    }
-
-    private func getHookOwner(of hookEntityId: EntityId) -> EntityId? {
-        guard let hookOwnerComponent = entityManager.component(ofType: GrappleHookOwnerComponent.self,
-                                                               of: hookEntityId) else {
-            return nil
-        }
-
-        return hookOwnerComponent.ownerPlayerId
+        hookComponent.state = state
     }
 
     private func adjustRope(of hookEntityId: EntityId) {
@@ -385,31 +323,5 @@ extension GrappleHookModule {
         let deltaY = endPoint.y - startPoint.y
         let angle = atan2(deltaY, deltaX) - (.pi / 2)
         positionSystem.rotate(entityId: ropeId, to: angle)
-    }
-
-    private func getRopeId(of hookEntityId: EntityId) -> EntityId? {
-        guard let ropeComponent = entityManager.component(ofType: OwnsRopeComponent.self,
-                                                          of: hookEntityId) else {
-            return nil
-        }
-
-        return ropeComponent.ropeId
-    }
-
-    private func getStartPoint(of hookEntityId: EntityId) -> CGPoint? {
-        guard let grappleHookComponent = getHookComponent(of: hookEntityId) else {
-            return nil
-        }
-
-        return grappleHookComponent.startpoint
-    }
-
-    private func getEndPoint(of hookEntityId: EntityId) -> CGPoint? {
-        guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
-              let hookPosition = positionSystem.getPosition(of: hookEntityId) else {
-            return nil
-        }
-
-        return hookPosition
     }
 }
