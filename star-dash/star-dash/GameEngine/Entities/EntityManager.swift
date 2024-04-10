@@ -73,7 +73,7 @@ class EntityManager: EntityManagerInterface {
 
     func remove(component: Component) {
         componentMap[component.id] = nil
-        entityComponentMap[component.entityId]?.remove(component.id)
+        entityComponentMap[component.entityId]?[ObjectIdentifier(type(of: component))] = nil
     }
 
     func entity(with entityId: EntityId) -> Entity? {

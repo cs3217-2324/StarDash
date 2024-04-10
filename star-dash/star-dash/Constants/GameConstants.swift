@@ -35,7 +35,6 @@ struct GameConstants {
         static let deltaPositionVectorRight = CGVector(dx: 10, dy: 10)
         static let deltaPositionVectorLeft = CGVector(dx: -10, dy: 10)
         static let deltaAngle: Double = 3
-        static let minLength: Double = 280
         static let maxLength: Double = 900
         static let defaultRetractLength: Double = 140
         static let defaultSwingAngle: Double = 120
