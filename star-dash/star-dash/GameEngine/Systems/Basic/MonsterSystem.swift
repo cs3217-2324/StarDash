@@ -26,6 +26,9 @@ class MonsterSystem: System {
 
         for monsterEntity in monsterEntities {
             guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
+                  let deathSystem = dispatcher?.system(ofType: DeathSystem.self),
+                  let isDead = deathSystem.isDead(entityId: monsterEntity.id),
+                  !isDead,
                   let monsterVelocity = physicsSystem.velocity(of: monsterEntity.id) else {
                 continue
             }
@@ -41,20 +44,11 @@ class MonsterSystem: System {
     func setup() {
         dispatcher?.registerListener(self)
 
-        eventHandlers[ObjectIdentifier(MonsterDeathEvent.self)] = { event in
-            if let monsterDeathEvent = event as? MonsterDeathEvent {
-                self.handleMonsterDeathEvent(event: monsterDeathEvent)
-            }
-        }
         eventHandlers[ObjectIdentifier(MonsterMovementReversalEvent.self)] = { event in
             if let monsterMovementReversalEvent = event as? MonsterMovementReversalEvent {
                 self.handleMonsterMovementReversalEvent(event: monsterMovementReversalEvent)
             }
         }
-    }
-
-    private func handleMonsterDeathEvent(event: MonsterDeathEvent) {
-        dispatcher?.add(event: RemoveEvent(on: event.monsterId))
     }
 
     private func handleMonsterMovementReversalEvent(event: MonsterMovementReversalEvent) {

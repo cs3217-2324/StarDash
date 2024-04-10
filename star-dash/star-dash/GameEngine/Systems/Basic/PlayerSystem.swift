@@ -32,20 +32,8 @@ class PlayerSystem: System {
 
     // MARK: Death related methods
 
-    func setDeathTimer(to entityId: EntityId, timer: Double) {
-        guard let playerComponent = getPlayerComponent(of: entityId) else {
-            return
-        }
-
-        playerComponent.deathTimer = timer
-    }
-
-    func isDead(entityId: EntityId) -> Bool? {
-        guard let playerComponent = getPlayerComponent(of: entityId) else {
-            return nil
-        }
-
-        return playerComponent.deathTimer > 0
+    func isPlayer(entityId: EntityId) -> Bool {
+        getPlayerComponent(of: entityId) != nil
     }
 
     private func handleRespawnEvent(event: RespawnEvent) {

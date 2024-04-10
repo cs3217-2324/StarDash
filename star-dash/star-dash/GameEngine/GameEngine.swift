@@ -152,7 +152,7 @@ class GameEngine {
         systemManager.add(MonsterSystem(entityManager, dispatcher: self))
         systemManager.add(MovementSystem(entityManager, dispatcher: self))
         systemManager.add(BuffSystem(entityManager, dispatcher: self))
-        systemManager.add(PlayerDeathSystem(entityManager, dispatcher: self))
+        systemManager.add(DeathSystem(entityManager, dispatcher: self))
 
         // Power-Up Systems
         systemManager.add(PowerUpSystem(entityManager, dispatcher: self))
