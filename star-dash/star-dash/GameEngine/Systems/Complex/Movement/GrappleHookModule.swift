@@ -165,7 +165,7 @@ class GrappleHookModule: MovementModule {
     private func activateHook(event: UseGrappleHookEvent) -> Event? {
         guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let position = positionSystem.getPosition(of: event.playerId),
-              getHookState(of: event.playerId) == nil else {
+              !hasHook(playerEntityId: event.playerId) else {
             return nil
         }
 

@@ -70,6 +70,11 @@ extension GrappleHookModule {
         return hookOwnerComponent.ownerPlayerId
     }
 
+    func hasHook(playerEntityId: EntityId) -> Bool {
+        let hookOwnerComponents = entityManager.components(ofType: GrappleHookOwnerComponent.self)
+        return hookOwnerComponents.contains(where: { $0.ownerPlayerId == playerEntityId })
+    }
+
     func getRopeId(of hookEntityId: EntityId) -> EntityId? {
         guard let ropeComponent = entityManager.component(ofType: OwnsRopeComponent.self,
                                                           of: hookEntityId) else {
