@@ -7,10 +7,10 @@
 
 import Foundation
 
-typealias ComponentSet = Set<ComponentId>
 typealias ComponentMap = [ComponentId: Component]
 typealias EntityMap = [EntityId: Entity]
-typealias EntityComponentMap = [EntityId: ComponentSet]
+typealias ComponentTypeIdentifier = ObjectIdentifier
+typealias EntityComponentMap = [EntityId: [ComponentTypeIdentifier: ComponentId]]
 
 class EntityManager: EntityManagerInterface {
     private var componentMap: ComponentMap
@@ -36,7 +36,9 @@ class EntityManager: EntityManagerInterface {
             return
         }
         self.componentMap[component.id] = component
-        self.entityComponentMap[component.entityId]?.insert(component.id)
+
+        let componentTypeIdentifier = ObjectIdentifier(type(of: component))
+        self.entityComponentMap[component.entityId]?[componentTypeIdentifier] = component.id
     }
 
     func add(entity: Entity) {
@@ -44,17 +46,17 @@ class EntityManager: EntityManagerInterface {
             return
         }
         self.entityMap[entity.id] = entity
-        self.entityComponentMap[entity.id] = Set()
+        self.entityComponentMap[entity.id] = [:]
     }
 
     func remove(entity: Entity) {
         entityMap[entity.id] = nil
 
-        guard let componentIds = entityComponentMap[entity.id] else {
+        guard let componentTypeIdMap = entityComponentMap[entity.id] else {
             return
         }
 
-        for componentId in componentIds {
+        for componentId in componentTypeIdMap.values {
             componentMap[componentId] = nil
         }
 
@@ -97,11 +99,12 @@ class EntityManager: EntityManagerInterface {
     }
 
     func component<T: Component>(ofType type: T.Type, of entityId: EntityId) -> T? {
-        guard let components = entityComponentMap[entityId] else {
+        guard let componentTypeIdMap = entityComponentMap[entityId] else {
             return nil
         }
 
-        guard let componentId = components.first(where: { componentMap[$0] is T }) else {
+        let componentTypeIdentifier = ObjectIdentifier(type)
+        guard let componentId = componentTypeIdMap[componentTypeIdentifier] else {
             return nil
         }
 
