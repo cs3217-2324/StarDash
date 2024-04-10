@@ -9,7 +9,6 @@ protocol EventListener: AnyObject {
     var eventHandlers: [ObjectIdentifier: (Event) -> Void] { get set }
 
     func handleEvent(event: Event)
-    func setup()
 }
 
 extension EventListener {

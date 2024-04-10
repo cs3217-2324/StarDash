@@ -1,46 +1,50 @@
 import Foundation
 
-class MovementSystem: System {
-    var isActive: Bool
-    var dispatcher: EventModifiable?
-    var entityManager: EntityManager
-    var eventHandlers: [ObjectIdentifier: (Event) -> Void] = [:]
+class MoveModule: MovementModule {
+    let entityManager: EntityManager
+    let dispatcher: EventModifiable?
 
-    init(_ entityManager: EntityManager, dispatcher: EventModifiable? = nil) {
-        self.isActive = true
+    var eventHandlers: [ObjectIdentifier: (Event) -> Event?] = [:]
+    lazy var listenableEvents: [ObjectIdentifier] = Array(eventHandlers.keys)
+
+    init(entityManager: EntityManager, dispatcher: EventModifiable?) {
         self.entityManager = entityManager
         self.dispatcher = dispatcher
-        setup()
-    }
-
-    func setup() {
-        dispatcher?.registerListener(self)
 
         eventHandlers[ObjectIdentifier(MoveEvent.self)] = { event in
             if let moveEvent = event as? MoveEvent {
-                self.handleMoveEvent(event: moveEvent)
+                return self.handleMoveEvent(event: moveEvent)
             }
+            return nil
         }
-        eventHandlers[ObjectIdentifier(JumpEvent.self)] = { event in
-            if let jumpEvent = event as? JumpEvent {
-                self.handleJumpEvent(event: jumpEvent)
-            }
-        }
+
         eventHandlers[ObjectIdentifier(StopMovingEvent.self)] = { event in
             if let stopMovingEvent = event as? StopMovingEvent {
-                self.handleStopMovingEvent(event: stopMovingEvent)
+                return self.handleStopMovingEvent(event: stopMovingEvent)
             }
+            return nil
         }
     }
 
-    private func handleMoveEvent(event: MoveEvent) {
+    func update(by deltaTime: TimeInterval) { }
+
+    func handleEvent(_ event: Event) -> Event? {
+        let eventType = ObjectIdentifier(type(of: event))
+        guard let handler = eventHandlers[eventType] else {
+            return event
+        }
+
+        return handler(event)
+    }
+
+    // MARK: Event Handlers
+
+    private func handleMoveEvent(event: MoveEvent) -> Event? {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
-              let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
-              let currentVelocity = physicsSystem.velocity(of: event.entityId),
-              playerSystem.canMove(for: event.entityId) else {
-            return
+              let currentVelocity = physicsSystem.velocity(of: event.entityId) else {
+            return nil
         }
         let runSpeed = (event.toLeft ? -1 : 1) * PhysicsConstants.runSpeed
         var newRunSpeed = currentVelocity.dx + runSpeed
@@ -59,29 +63,22 @@ class MovementSystem: System {
 
         positionSystem.setEntityFacingLeft(event.toLeft, entityId: event.entityId)
         spriteSystem.startAnimation(of: event.entityId, named: event.toLeft ? "runLeft" : "run")
+
+        return nil
     }
 
-    private func handleJumpEvent(event: JumpEvent) {
-        guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
-              let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
-              playerSystem.canJump(for: event.entityId) else {
-            return
-        }
-
-        playerSystem.setCanJump(to: event.entityId, canJump: false)
-        physicsSystem.applyImpulse(to: event.entityId, impulse: event.jumpImpulse)
-    }
-
-    private func handleStopMovingEvent(event: StopMovingEvent) {
+    private func handleStopMovingEvent(event: StopMovingEvent) -> Event? {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self) else {
-            return
+            return nil
         }
 
         positionSystem.setEntityFacingLeft(false, entityId: event.entityId)
         physicsSystem.setVelocity(to: event.entityId,
                                   velocity: .zero)
         spriteSystem.endAnimation(of: event.entityId)
+
+        return nil
     }
 }

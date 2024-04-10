@@ -30,38 +30,6 @@ class PlayerSystem: System {
         }
     }
 
-    func canJump(for entityId: EntityId) -> Bool {
-        guard let playerComponent = getPlayerComponent(of: entityId) else {
-            return false
-        }
-
-        return playerComponent.canJump
-    }
-
-    func canMove(for entityId: EntityId) -> Bool {
-        guard let playerComponent = getPlayerComponent(of: entityId) else {
-            return false
-        }
-
-        return playerComponent.canMove
-    }
-
-    func setCanJump(to entityId: EntityId, canJump: Bool) {
-        guard let playerComponent = getPlayerComponent(of: entityId) else {
-            return
-        }
-
-        playerComponent.canJump = canJump
-    }
-
-    func setCanMove(to entityId: EntityId, canMove: Bool) {
-        guard let playerComponent = getPlayerComponent(of: entityId) else {
-            return
-        }
-
-        playerComponent.canMove = canMove
-    }
-
     // MARK: Death related methods
 
     func setDeathTimer(to entityId: EntityId, timer: Double) {

@@ -19,6 +19,6 @@ class JumpEvent: Event {
     }
 
     var playerIdForEvent: EntityId? {
-        nil
+        entityId
     }
 }
