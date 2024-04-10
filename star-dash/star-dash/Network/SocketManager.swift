@@ -48,8 +48,15 @@ class SocketManager: NSObject, WebSocketDelegate {
 //
 //            socket.disconnect()
         }
+    
+    func emit(data: Data) {
+        guard let socket = socket else {
+            return
+        }
+        socket.write(data: data)
+    }
     func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocketClient) {
-
+        print(event)
         switch event {
         case .connected(let headers):
             isConnected = true
@@ -60,6 +67,7 @@ class SocketManager: NSObject, WebSocketDelegate {
         case .text(let string):
             if let jsonData = string.data(using: .utf8) {
                 // Decode JSON into a generic Decodable type
+                print(jsonData)
                 self.delegate?.socketManager(self, didReceiveMessage: jsonData)
                 break
             }

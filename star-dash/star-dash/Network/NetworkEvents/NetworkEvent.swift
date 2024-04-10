@@ -6,12 +6,11 @@
 //
 
 import Foundation
-protocol NetworkEvent {
-    var event: NetworkEventType {
-        get
+class NetworkEvent: Codable {
+    let event: NetworkEventType
+    let playerIndex: Int
+    init(event: NetworkEventType, playerIndex: Int) {
+        self.event = event
+        self.playerIndex = playerIndex
     }
-    var playerIndex: Int {
-        get
-    }
-
 }

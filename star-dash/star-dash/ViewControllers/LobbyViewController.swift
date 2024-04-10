@@ -75,16 +75,59 @@ class LobbyViewController: UIViewController {
         }
         self.label.text = "Waiting for players (\(totalNumberOfPlayers) / 4)"
     }
-
+    
+    func moveToLevelSelection() {
+        guard let totalNumberOfPlayers = totalNumberOfPlayers,
+        let playerIndex = playerIndex else {
+            return
+        }
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "MoveLevelSelection", sender: GameData(level: nil,
+                                                                                numberOfPlayers: totalNumberOfPlayers,
+                                                                                viewLayout: 1,
+                                                                                storageManager: StorageManager(),
+                                                                                networkManager: self.networkManager,
+                                                                                     playerIndex: playerIndex))
+        }
+        
+    }
+    
+    @IBAction func start(_ sender: Any) {
+        guard let totalNumberOfPlayers = totalNumberOfPlayers,
+        let playerIndex = playerIndex else {
+            return
+        }
+        networkManager?.sendEvent(event: NetworkMoveToLevelSelectionEvent(playerIndex: playerIndex))
+//        moveToLevelSelection()
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MoveLevelSelection" {
+            if let destinationVC = segue.destination as? LevelSelectorViewController {
+                if let data = sender as? GameData {
+                    destinationVC.viewLayout = data.viewLayout
+                    destinationVC.numberOfPlayers = data.numberOfPlayers
+                    destinationVC.storageManager = data.storageManager
+                    destinationVC.networkManager = data.networkManager
+                    destinationVC.playerIndex = data.playerIndex
+                }
+            }
+        }
+    }
 }
 
 extension LobbyViewController: NetworkManagerDelegate {
     func networkManager(_ networkManager: NetworkManager, didReceiveEvent response: Data) {
-        guard let event = decodeNetworkEvent(from: response) as? NetworkPlayerJoinEvent else {
-            return
+        if let event = decodeNetworkEvent(from: response) as? NetworkPlayerJoinEvent  {
+            totalNumberOfPlayers = event.totalNumberOfPlayers
+            updateLabel()
         }
-        totalNumberOfPlayers = event.totalNumberOfPlayers
-        updateLabel()
+        
+        if let event = decodeNetworkEvent(from: response) as? NetworkMoveToLevelSelectionEvent {
+            moveToLevelSelection()
+        }
+         
+        
         
     }
 

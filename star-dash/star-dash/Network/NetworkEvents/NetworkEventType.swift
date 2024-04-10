@@ -12,4 +12,8 @@ enum NetworkEventType: String, Codable {
     case PlayerMove = "player-move"
     case PlayerJump = "player-jump"
     case PlayerHook = "player-hook"
+    case PlayerStop = "player-stop"
+    case MoveToLevelSelection = "move-to-level-selection"
+    case SelectLevel = "select-level"
+
 }

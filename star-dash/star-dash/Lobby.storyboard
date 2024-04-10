@@ -236,6 +236,9 @@
                                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="baseBackgroundColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="start:" destination="KjF-tb-21F" eventType="touchUpInside" id="wb9-50-Iy6"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -255,6 +258,7 @@
                     <connections>
                         <outlet property="RoomCodeContainer" destination="eli-Qi-YUy" id="6rE-rz-8tL"/>
                         <outlet property="label" destination="t7N-xG-2X2" id="XvN-q9-OhT"/>
+                        <segue destination="H20-uu-gS2" kind="presentation" identifier="MoveLevelSelection" modalPresentationStyle="fullScreen" id="iUD-uV-B1k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGi-DZ-vbj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -304,6 +308,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t1D-9h-c7R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2003" y="144"/>
+        </scene>
+        <!--LevelSelector-->
+        <scene sceneID="Wvz-ga-KmQ">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="LevelSelector" storyboardName="LevelSelector" referencedIdentifier="LevelSelector" id="H20-uu-gS2" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UWy-oB-TAV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3362" y="143"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

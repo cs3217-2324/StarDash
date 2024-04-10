@@ -14,13 +14,18 @@ class GameViewController: UIViewController {
     var gameBridge: GameBridge?
     var gameEngine: GameEngine?
     var storageManager: StorageManager?
+    var networkManager: NetworkManager?
     var level: LevelPersistable?
     var numberOfPlayers: Int = 0
+    // to change to enum
+    var viewLayout: Int = 0
     var achievementManager: AchievementManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if let networkManager = networkManager {
+            networkManager.delegate = self
+        }
         let gameEngine = createGameEngine()
         self.gameEngine = gameEngine
 
@@ -37,7 +42,7 @@ class GameViewController: UIViewController {
             return
         }
         renderer.viewDelegate = self
-        renderer.setupViews(at: self.view, for: numberOfPlayers)
+        renderer.setupViews(at: self.view, for: viewLayout)
         self.renderer = renderer
         setupBackButton()
     }
@@ -154,19 +159,35 @@ extension GameViewController: SDSceneDelegate {
 extension GameViewController: ViewDelegate {
 
     func joystickMoved(toLeft: Bool, playerIndex: Int) {
-        gameEngine?.handlePlayerMove(toLeft: toLeft, playerIndex: playerIndex)
+        if let networkManager = networkManager {
+            let networkEvent = NetworkPlayerMoveEvent(playerIndex: playerIndex, isLeft: toLeft)
+            networkManager.sendEvent(event: networkEvent)
+        }
+//        gameEngine?.handlePlayerMove(toLeft: toLeft, playerIndex: playerIndex)
     }
 
     func joystickReleased(playerIndex: Int) {
-        gameEngine?.handlePlayerStoppedMoving(playerIndex: playerIndex)
+        if let networkManager = networkManager {
+            let networkEvent = NetworkPlayerStopEvent(playerIndex: playerIndex)
+            networkManager.sendEvent(event: networkEvent)
+        }
+//        gameEngine?.handlePlayerStoppedMoving(playerIndex: playerIndex)
     }
 
     func jumpButtonPressed(playerIndex: Int) {
-        gameEngine?.handlePlayerJump(playerIndex: playerIndex)
+        if let networkManager = networkManager {
+            let networkEvent = NetworkPlayerJumpEvent(playerIndex: playerIndex)
+            networkManager.sendEvent(event: networkEvent)
+        }
+//        gameEngine?.handlePlayerJump(playerIndex: playerIndex)
     }
 
     func hookButtonPressed(playerIndex: Int) {
-        gameEngine?.handlePlayerHook(playerIndex: playerIndex)
+        if let networkManager = networkManager {
+            let networkEvent = NetworkPlayerHookEvent(playerIndex: playerIndex)
+            networkManager.sendEvent(event: networkEvent)
+        }
+//        gameEngine?.handlePlayerHook(playerIndex: playerIndex)
     }
 
     func overlayInfo(forPlayer playerIndex: Int) -> OverlayInfo? {
@@ -180,4 +201,33 @@ extension GameViewController: ViewDelegate {
             mapSize: gameInfo.mapSize
         )
     }
+}
+extension GameViewController: NetworkManagerDelegate {
+    func networkManager(_ networkManager: NetworkManager, didReceiveEvent response: Data) {
+        if let event = decodeNetworkEvent(from: response) as? NetworkPlayerMoveEvent {
+            gameEngine?.handlePlayerMove(toLeft: event.isLeft, playerIndex: event.playerIndex)
+        }
+        if let event = decodeNetworkEvent(from: response) as? NetworkPlayerStopEvent {
+            gameEngine?.handlePlayerStoppedMoving(playerIndex: event.playerIndex)
+        }
+        if let event = decodeNetworkEvent(from: response) as? NetworkPlayerJumpEvent {
+            gameEngine?.handlePlayerJump(playerIndex: event.playerIndex)
+        }
+        if let event = decodeNetworkEvent(from: response) as? NetworkPlayerHookEvent {
+            gameEngine?.handlePlayerHook(playerIndex: event.playerIndex)
+        }
+    }
+
+    func networkManager(_ networkManager: NetworkManager, didReceiveMessage message: String) {
+        print(message)
+    }
+
+    func networkManager(_ networkManager: NetworkManager, didEncounterError error: Error) {
+        print(error)
+    }
+
+    func networkManager(_ networkManager: NetworkManager, didReceiveAPIResponse response: Any) {
+        
+    }
+
 }

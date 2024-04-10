@@ -57,6 +57,7 @@ extension RoomJoiningViewController: NetworkManagerDelegate {
         guard let event = decodeNetworkEvent(from: response) as? NetworkPlayerJoinEvent else {
             return
         }
+        print(event)
         moveToLobby(playerIndex: event.playerIndex, totalNumberOfPlayers: event.totalNumberOfPlayers)
     }
 

@@ -7,6 +7,6 @@
 
 import Foundation
 class NetworkConstants {
-    static let serverUrl = "https://c080-137-132-26-178.ngrok-free.app"
+    static let serverUrl = "https://star-dash-server.onrender.com"
     static let serverPort = 10_000
 }

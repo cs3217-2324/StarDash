@@ -29,32 +29,56 @@ class NetworkManager {
         self.init(serverAddress: NetworkConstants.serverUrl, serverPort: NetworkConstants.serverPort)
     }
     func createRoom() {
+        print("craeating room")
         self.performGETRequest(prefix: "/create_room")
     }
     func joinRoom(room: String) {
         self.socketManager = SocketManager(address: NetworkConstants.serverUrl + "/join_room/" + room)
         self.socketManager?.delegate = self
     }
+    func encodeNetworkEvent<T: Encodable>(_ event: T) throws -> Data {
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
 
+        return try encoder.encode(event)
+    }
+    
+    func sendEvent(event: NetworkEvent) {
+        do {
+             let data = try encodeNetworkEvent(event)
+            socketManager?.emit(data: data)
+        } catch {
+            print("error sending event \(error)")
+        }
+    }
     func performGETRequest(prefix: String) {
         guard let url = URL(string: self.serverAddress + prefix) else {
             delegate?.networkManager(self, didEncounterError: NetworkManagerError.invalidURL)
             return
         }
-
+        // TODO: CLEAN UP
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
                 self.delegate?.networkManager(self, didEncounterError: error)
                 return
             }
-
             guard let data = data else {
                 self.delegate?.networkManager(self, didEncounterError: NetworkManagerError.noDataReceived)
                 return
             }
-            self.delegate?.networkManager(self, didReceiveEvent: data)
+            do {
+                guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+                    print("Failed to convert JSON data to [String: Any]")
+                    exit(1)
+                }
+                self.delegate?.networkManager(self, didReceiveAPIResponse: json)
+
+            } catch {
+                
+            }
 
         }
+        task.resume()
     }
 }
 
