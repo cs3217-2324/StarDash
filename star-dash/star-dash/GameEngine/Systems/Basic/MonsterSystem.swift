@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 class MonsterSystem: System {
     var isActive: Bool
@@ -29,9 +30,10 @@ class MonsterSystem: System {
                 continue
             }
 
-            let newVelocity = monsterVelocity.dx > 0
-                              ? PhysicsConstants.Monster.moveVelocityRight
-                              : PhysicsConstants.Monster.moveVelocityLeft
+            let newXVelocity = monsterVelocity.dx > 0
+                              ? PhysicsConstants.Monster.moveSpeed
+                              : -PhysicsConstants.Monster.moveSpeed
+            let newVelocity = CGVector(dx: newXVelocity, dy: monsterVelocity.dy)
             physicsSystem.setVelocity(to: monsterEntity.id, velocity: newVelocity)
         }
     }
@@ -57,13 +59,15 @@ class MonsterSystem: System {
 
     private func handleMonsterMovementReversalEvent(event: MonsterMovementReversalEvent) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
-              let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self) else {
+              let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
+              let monsterVelocity = physicsSystem.velocity(of: event.monsterId) else {
             return
         }
 
-        let newVelocity = event.isLeft
-                          ? PhysicsConstants.Monster.moveVelocityLeft
-                          : PhysicsConstants.Monster.moveVelocityRight
+        let newXVelocity = event.isLeft
+                          ? -PhysicsConstants.Monster.moveSpeed
+                          : PhysicsConstants.Monster.moveSpeed
+        let newVelocity = CGVector(dx: newXVelocity, dy: monsterVelocity.dy)
 
         physicsSystem.setVelocity(to: event.monsterId, velocity: newVelocity)
         spriteSystem.startAnimation(of: event.monsterId, named: event.isLeft ? "runLeft" : "run")

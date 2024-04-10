@@ -86,7 +86,6 @@ struct PhysicsConstants {
     static let maxRunSpeed: CGFloat = 150
 
     struct Monster {
-        static let moveVelocityRight = CGVector(dx: 100, dy: 0)
-        static let moveVelocityLeft = CGVector(dx: -100, dy: 0)
+        static let moveSpeed: Double = 100
     }
 }
