@@ -84,6 +84,14 @@ class PhysicsSystem: System {
         physicsComponent.size = size
     }
 
+    func setAffectedByGravity(of entityId: EntityId, affectedByGravity: Bool) {
+        guard let physicsComponent = getPhysicsComponent(of: entityId) else {
+            return
+        }
+
+        physicsComponent.affectedByGravity = affectedByGravity
+    }
+
     func setup() {}
 
     private func getPhysicsComponent(of entityId: EntityId) -> PhysicsComponent? {
