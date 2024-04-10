@@ -56,12 +56,15 @@ class GameEngine {
     func gameInfo(forPlayer playerIndex: Int) -> GameInfo? {
         guard let scoreSystem = systemManager.system(ofType: ScoreSystem.self),
               let playerEntityId = entityManager.playerEntityId(with: playerIndex),
-              let score = scoreSystem.score(of: playerEntityId) else {
+              let healthSystem = systemManager.system(ofType: HealthSystem.self),
+              let score = scoreSystem.score(of: playerEntityId),
+              let health = healthSystem.health(of: playerEntityId) else {
             return nil
         }
 
         return GameInfo(
             playerScore: score,
+            playerHealth: health,
             playersInfo: playersInfo(),
             mapSize: mapSize
         )
@@ -148,7 +151,6 @@ class GameEngine {
         systemManager.add(PlayerSystem(entityManager, dispatcher: self))
         systemManager.add(MonsterSystem(entityManager, dispatcher: self))
         systemManager.add(MovementSystem(entityManager, dispatcher: self))
-        systemManager.add(GrappleHookSystem(entityManager, dispatcher: self))
         systemManager.add(BuffSystem(entityManager, dispatcher: self))
         systemManager.add(PlayerDeathSystem(entityManager, dispatcher: self))
 

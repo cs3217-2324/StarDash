@@ -13,7 +13,7 @@ extension Obstacle: Collidable {
     }
 
     func collideWithPlayer(_ player: Player, at contactPoint: CGPoint) -> Event? {
-        CollisionHandler.between(player: player, obstacle: self)
+        CollisionHandler.between(player: player, obstacle: self, at: contactPoint)
     }
 
     func collideWithMonster(_ monster: Monster, at contactPoint: CGPoint) -> Event? {

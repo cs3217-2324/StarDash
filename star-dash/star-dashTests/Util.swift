@@ -17,5 +17,5 @@ func createEntityManager() -> EntityManager {
 }
 
 func createTextureSet() -> TextureSet {
-    TextureSet(run: "")
+    TextureSet(run: "", runLeft: "", death: "")
 }

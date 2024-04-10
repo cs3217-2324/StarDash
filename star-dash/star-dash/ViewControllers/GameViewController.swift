@@ -197,6 +197,7 @@ extension GameViewController: ViewDelegate {
 
         return OverlayInfo(
             score: gameInfo.playerScore,
+            health: gameInfo.playerHealth,
             playersInfo: gameInfo.playersInfo,
             mapSize: gameInfo.mapSize
         )

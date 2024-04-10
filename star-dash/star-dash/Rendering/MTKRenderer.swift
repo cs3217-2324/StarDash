@@ -94,7 +94,7 @@ extension MTKRenderer: MTKViewDelegate {
     }
 
     func updateScene(forPlayer playerIndex: Int) {
-        guard let overlayInfo = viewDelegate?.overlayInfo(forPlayer: playerIndex) else {
+    guard let overlayInfo = viewDelegate?.overlayInfo(forPlayer: playerIndex) else {
             return
         }
 

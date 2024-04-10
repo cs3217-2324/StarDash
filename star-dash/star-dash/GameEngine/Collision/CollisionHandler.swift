@@ -16,8 +16,8 @@ struct CollisionHandler {
         PickupCollectibleEvent(by: player.id, collectibleEntityId: collectible.id)
     }
 
-    static func between(player: Player, obstacle: Obstacle) -> Event? {
-        PlayerObstacleContactEvent(from: player.id, on: obstacle.id)
+    static func between(player: Player, obstacle: Obstacle, at contactPoint: CGPoint) -> Event? {
+        PlayerObstacleContactEvent(from: player.id, on: obstacle.id, at: contactPoint)
     }
 
     static func between(player: Player, floor: Floor, at contactPoint: CGPoint) -> Event? {
