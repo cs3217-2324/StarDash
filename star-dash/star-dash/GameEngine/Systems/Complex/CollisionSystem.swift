@@ -45,7 +45,14 @@ class CollisionSystem: System {
     }
 
     private func handlePlayerMonsterContactEvent(event: PlayerMonsterContactEvent) {
+        if let hookOwnerComponent = entityManager
+                                    .components(ofType: GrappleHookOwnerComponent.self)
+                                    .first(where: { $0.ownerPlayerId == event.playerId }) {
+            dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
+        }
+
         guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
+              let deathSystem = dispatcher?.system(ofType: DeathSystem.self),
               let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self) else {
             return
         }
@@ -60,12 +67,6 @@ class CollisionSystem: System {
             return
         }
 
-        if let hookOwnerComponent = entityManager
-                                    .components(ofType: GrappleHookOwnerComponent.self)
-                                    .first(where: { $0.ownerPlayerId == event.playerId }) {
-            dispatcher?.add(event: ReleaseGrappleHookEvent(using: hookOwnerComponent.entityId))
-        }
-
         let isPlayerAbove = playerPosition.y - (playerSize.height / 2 - 10)
                             >= monsterPosition.y + (monsterSize.height / 2 - 10)
         let isPlayerWithinMonsterWidth = playerPosition.x < (monsterPosition.x + (monsterSize.width / 2))
@@ -74,6 +75,12 @@ class CollisionSystem: System {
 
         let isLeft = monsterPosition.x < playerPosition.x
         dispatcher?.add(event: MonsterMovementReversalEvent(on: event.monsterId, isLeft: isLeft))
+
+        guard let isPlayerDead = deathSystem.isDead(entityId: event.playerId),
+              let isMonsterDead = deathSystem.isDead(entityId: event.monsterId),
+              !isPlayerDead && !isMonsterDead else {
+            return
+        }
 
         if isPlayerAttack {
             print("Player attack monster")

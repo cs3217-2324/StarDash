@@ -84,6 +84,14 @@ class PhysicsSystem: System {
         physicsComponent.size = size
     }
 
+    func setPinned(of entityId: EntityId, to pinned: Bool) {
+        guard let physicsComponent = getPhysicsComponent(of: entityId) else {
+            return
+        }
+
+        physicsComponent.pinned = pinned
+    }
+
     func setup() {}
 
     private func getPhysicsComponent(of entityId: EntityId) -> PhysicsComponent? {

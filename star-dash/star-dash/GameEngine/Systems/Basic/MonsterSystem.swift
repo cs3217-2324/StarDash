@@ -54,7 +54,10 @@ class MonsterSystem: System {
     private func handleMonsterMovementReversalEvent(event: MonsterMovementReversalEvent) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
-              let monsterVelocity = physicsSystem.velocity(of: event.monsterId) else {
+              let deathSystem = dispatcher?.system(ofType: DeathSystem.self),
+              let monsterVelocity = physicsSystem.velocity(of: event.monsterId),
+              let isMonsterDead = deathSystem.isDead(entityId: event.monsterId),
+              !isMonsterDead else {
             return
         }
 

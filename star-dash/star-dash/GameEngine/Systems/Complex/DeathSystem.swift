@@ -66,6 +66,7 @@ class DeathSystem: System {
         }
 
         physicsSystem.setVelocity(to: event.playerId, velocity: .zero)
+        physicsSystem.setPinned(of: event.playerId, to: true)
         spriteSystem.startAnimation(of: event.playerId,
                                     named: "death",
                                     repetitive: false,
@@ -83,6 +84,7 @@ class DeathSystem: System {
         }
 
         physicsSystem.setVelocity(to: event.monsterId, velocity: .zero)
+        physicsSystem.setPinned(of: event.monsterId, to: true)
         spriteSystem.startAnimation(of: event.monsterId,
                                     named: "death",
                                     repetitive: false,
@@ -93,10 +95,12 @@ class DeathSystem: System {
 
     private func respawnPlayer(_ playerId: EntityId) {
         guard let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
+              let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let healthSystem = dispatcher?.system(ofType: HealthSystem.self) else {
             return
         }
 
+        physicsSystem.setPinned(of: playerId, to: false)
         healthSystem.setHealth(to: playerId, health: GameConstants.InitialHealth.player)
         spriteSystem.endAnimation(of: playerId)
     }

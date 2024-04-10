@@ -28,6 +28,11 @@ public class SDPhysicsBody {
 //         set { body.force = newValue }
         CGVector(dx: 0, dy: 0)
     }
+    
+    public var pinned: Bool {
+        get { body.pinned }
+        set { body.pinned = newValue }
+    }
 
     public var restitution: CGFloat {
         get { body.restitution }
