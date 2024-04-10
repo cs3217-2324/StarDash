@@ -45,6 +45,6 @@ class PowerUpFactory {
     private static func startEntityFlying(triggeredBy playerId: EntityId,
                                           to entityManager: EntityManager,
                                           with eventManager: EventModifiable?) {
-        eventManager.add(event: StartFlyingEvent(on: playerId))
+        eventManager?.add(event: StartFlyingEvent(on: playerId))
     }
 }

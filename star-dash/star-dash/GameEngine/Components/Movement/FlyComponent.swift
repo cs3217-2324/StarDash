@@ -1,9 +1,9 @@
 import Foundation
 
-class JumpComponent: Component {
+class FlyComponent: Component {
     var duration: Double
 
-    init(entityId: EntityId, duation: Double) {
+    init(entityId: EntityId, duration: Double) {
         self.duration = duration
         super.init(id: UUID(), entityId: entityId)
     }

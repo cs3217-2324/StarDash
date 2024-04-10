@@ -1,6 +1,6 @@
 import Foundation
 
-class FlyingModule  : MovementModule {
+class FlyingModule: MovementModule {
     let entityManager: EntityManager
     let dispatcher: EventModifiable?
 
@@ -31,14 +31,24 @@ class FlyingModule  : MovementModule {
             }
             return nil
         }
+
+        eventHandlers[ObjectIdentifier(PlayerFloorContactEvent.self)] = { event in
+            if let playerFloorContactEvent = event as? PlayerFloorContactEvent {
+                return self.handlePlayerFloorContactEvent(event: playerFloorContactEvent)
+            }
+            return nil
+        }
+
+        eventHandlers[ObjectIdentifier(MoveEvent.self)] = { event in self.interceptMove(event: event) }
+        eventHandlers[ObjectIdentifier(StopMovingEvent.self)] = { event in self.interceptMove(event: event) }
     }
 
-    func update(by deltaTime: TimeInterval) { 
-        for flyingComponent in entityManager.components(ofType: FlyComponent.self) {
-            updateFlyingEntity(of: flyComponent.entityId)
+    func update(by deltaTime: TimeInterval) {
+        for flyComponent in entityManager.components(ofType: FlyComponent.self) {
+            updateFlyingEntity(for: flyComponent.entityId)
 
             flyComponent.duration = max(0, flyComponent.duration - deltaTime)
-            if flyingComponent.duration <= 0 {
+            if flyComponent.duration <= 0 {
                 cancelFlying(for: flyComponent.entityId)
             }
         }
@@ -46,15 +56,20 @@ class FlyingModule  : MovementModule {
 
     func handleEvent(_ event: Event) -> Event? {
         let eventType = ObjectIdentifier(type(of: event))
-        guard let handler = eventHandlers[eventType] else {
+        if let handler = eventHandlers[eventType] {
+            return handler(event)
+        }
+
+        guard let playerId = event.playerIdForEvent,
+              entityIsFlying(for: playerId) else {
             return event
         }
 
-        return handler(event)
+        return nil
     }
 
     private func createFlyComponent(for entityId: EntityId) {
-        entityManager.add(component: FlyComponent(entityId: entityId))
+        entityManager.add(component: FlyComponent(entityId: entityId, duration: 10))
     }
 
     private func removeFlyComponent(for entityId: EntityId) {
@@ -64,29 +79,42 @@ class FlyingModule  : MovementModule {
         entityManager.remove(component: flyComponent)
     }
 
+    private func entityIsFlying(for entityId: EntityId) -> Bool {
+        entityManager.component(ofType: FlyComponent.self, of: entityId) != nil
+    }
+
     private func updateFlyingEntity(for entityId: EntityId) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self) else {
             return
         }
+
         physicsSystem.applyImpulse(to: entityId, impulse: CGVector(dx: 0, dy: -50))
     }
 
     private func startFlying(for entityId: EntityId) {
-        createFlyComponent(for: event.entityId)
-        physicsSystem.setAffectedByGravity(of: event.entityId, affectedByGravity: false)
-        physicsSystem.applyImpulse(to: event.entityId, impulse: event.jumpImpulse)
+        guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self) else {
+            return
+        }
+
+        createFlyComponent(for: entityId)
+        physicsSystem.setAffectedByGravity(of: entityId, affectedByGravity: false)
+        physicsSystem.applyImpulse(to: entityId, impulse: CGVector(dx: 4_000, dy: 2_000))
     }
 
     private func cancelFlying(for entityId: EntityId) {
-        removeFlyComponent(for: entityid)
-        physicsSystem.setAffectedByGravity(of: event.entityId, affectedByGravity: false)
+        guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self) else {
+            return
+        }
+
+        removeFlyComponent(for: entityId)
+        physicsSystem.setAffectedByGravity(of: entityId, affectedByGravity: true)
+        physicsSystem.setVelocity(to: entityId, velocity: .zero)
     }
 
     // MARK: Event Handlers
 
     private func handleFlyEvent(event: StartFlyingEvent) -> Event? {
-        guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
-                  entityManager.component(ofType: FlyComponent.self, of: event.entityId) == nil else {
+        guard !entityIsFlying(for: event.entityId) else {
             return nil
         }
 
@@ -95,15 +123,42 @@ class FlyingModule  : MovementModule {
     }
 
     private func handleJumpEvent(event: JumpEvent) -> Event? {
-        guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self) else {
-            return
+        guard entityIsFlying(for: event.entityId) else {
+            return event
         }
 
-        physicsSystem.applyImpulse(to: entityId, impulse: CGVector(dx: 0, dy: 200))
+        guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self) else {
+            return nil
+        }
+
+        physicsSystem.applyImpulse(to: event.entityId, impulse: CGVector(dx: 0, dy: 4_000))
+        return nil
     }
 
     private func handlePlayerObstacleContactEvent(event: PlayerObstacleContactEvent) -> Event? {
+        guard entityIsFlying(for: event.playerId) else {
+            return event
+        }
+
         cancelFlying(for: event.playerId)
         return event
+    }
+
+    private func handlePlayerFloorContactEvent(event: PlayerFloorContactEvent) -> Event? {
+        guard entityIsFlying(for: event.playerId) else {
+            return event
+        }
+
+        cancelFlying(for: event.playerId)
+        return event
+    }
+
+    private func interceptMove(event: Event) -> Event? {
+        guard let playerId = event.playerIdForEvent,
+              entityIsFlying(for: playerId) else {
+            return event
+        }
+
+        return nil
     }
 }

@@ -97,9 +97,9 @@
     },
     {
       "levelId": 0,
-      "position": [800, 300],
+      "position": [600, 500],
       "size": [60,60],
-      "type": "HomingMissilePowerUp"
+      "type": "FlyingPowerUp"
     }
   ]
 }
