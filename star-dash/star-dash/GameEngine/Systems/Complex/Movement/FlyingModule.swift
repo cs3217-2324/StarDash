@@ -68,7 +68,7 @@ class FlyingModule: MovementModule {
         return nil
     }
 
-    private func createFlyComponent(for entityId: EntityId) {
+    private func createFlyComponent(for entityId: EntityId, duration: Double) {
         entityManager.add(component: FlyComponent(entityId: entityId, duration: 10))
     }
 
@@ -92,23 +92,28 @@ class FlyingModule: MovementModule {
     }
 
     private func startFlying(for entityId: EntityId) {
-        guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self) else {
+        guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
+              let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self) else {
             return
         }
+        let duration = 10 // 10 seconds
 
-        createFlyComponent(for: entityId)
+        createFlyComponent(for: entityId, duration: duration)
         physicsSystem.setAffectedByGravity(of: entityId, affectedByGravity: false)
         physicsSystem.applyImpulse(to: entityId, impulse: CGVector(dx: 4_000, dy: 2_000))
+        spriteSystem.startAnimation(of: entityId, named: "fly")
     }
 
     private func cancelFlying(for entityId: EntityId) {
-        guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self) else {
+        guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
+              let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self) else {
             return
         }
 
         removeFlyComponent(for: entityId)
         physicsSystem.setAffectedByGravity(of: entityId, affectedByGravity: true)
         physicsSystem.setVelocity(to: entityId, velocity: .zero)
+        spriteSystem.endAnimation()
     }
 
     // MARK: Event Handlers
