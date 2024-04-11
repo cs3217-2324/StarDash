@@ -168,6 +168,7 @@
 		E660353D2BB5EAEE00397068 /* MiniMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E660353C2BB5EAEE00397068 /* MiniMapView.swift */; };
 		E69EE9322BAC6CBB00033AB5 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69EE9312BAC6CBB00033AB5 /* GameInfo.swift */; };
 		E69EE9342BAC6CC300033AB5 /* OverlayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69EE9332BAC6CC300033AB5 /* OverlayInfo.swift */; };
+		E69F180C2BC7C3A4008A6498 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69F180B2BC7C3A4008A6498 /* UIImage.swift */; };
 		E69FDDE02BAD3DAD0089D5F3 /* PointsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69FDDDF2BAD3DAD0089D5F3 /* PointsComponent.swift */; };
 		E69FDDE22BAD3DC40089D5F3 /* EntityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69FDDE12BAD3DC40089D5F3 /* EntityConstants.swift */; };
 		E69FDDE42BADC2F10089D5F3 /* SpriteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69FDDE32BADC2F10089D5F3 /* SpriteConstants.swift */; };
@@ -411,6 +412,7 @@
 		E660353C2BB5EAEE00397068 /* MiniMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniMapView.swift; sourceTree = "<group>"; };
 		E69EE9312BAC6CBB00033AB5 /* GameInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
 		E69EE9332BAC6CC300033AB5 /* OverlayInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayInfo.swift; sourceTree = "<group>"; };
+		E69F180B2BC7C3A4008A6498 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		E69FDDDF2BAD3DAD0089D5F3 /* PointsComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointsComponent.swift; sourceTree = "<group>"; };
 		E69FDDE12BAD3DC40089D5F3 /* EntityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityConstants.swift; sourceTree = "<group>"; };
 		E69FDDE32BADC2F10089D5F3 /* SpriteConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteConstants.swift; sourceTree = "<group>"; };
@@ -490,6 +492,7 @@
 			children = (
 				143AA38E2BA4D61A009C28E7 /* CGVector.swift */,
 				E64F31662BB3D14600EC5371 /* UIView.swift */,
+				E69F180B2BC7C3A4008A6498 /* UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1375,6 +1378,7 @@
 				E6A72FC62BB2E1E10015729E /* LayoutUtils.swift in Sources */,
 				E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */,
 				E6A745182BA057040080C1BE /* Renderer.swift in Sources */,
+				E69F180C2BC7C3A4008A6498 /* UIImage.swift in Sources */,
 				E6A115372BB9E2F90076A21F /* SpriteSystem.swift in Sources */,
 				4E9B4A232BC3DE6E00B096A0 /* NetworkPlayerJoinEvent.swift in Sources */,
 				46D04A032BBACA490096D9F2 /* TwinkleStarAchievementPersistable.swift in Sources */,

@@ -72,14 +72,8 @@ class EntityManager: EntityManagerInterface {
     }
 
     func remove(component: Component) {
-            // Remove the component from the component map
-            componentMap[component.id] = nil
-            
-            // Remove the component from the entity's component map
-            if var entityComponents = entityComponentMap[component.entityId] {
-                entityComponents[ObjectIdentifier(type(of: component))] = nil
-                entityComponentMap[component.entityId] = entityComponents
-            }
+        componentMap[component.id] = nil
+        entityComponentMap[component.entityId]?[ObjectIdentifier(type(of: component))] = nil
     }
 
     func entity(with entityId: EntityId) -> Entity? {

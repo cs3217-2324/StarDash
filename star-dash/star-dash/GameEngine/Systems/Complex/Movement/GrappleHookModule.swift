@@ -249,21 +249,34 @@ class GrappleHookModule: MovementModule {
         }
 
         setSwingAngle(for: event.grappleHookId)
+        setRetractLength(for: event.grappleHookId)
 
         guard hookState == .shooting else {
             return nil
         }
 
-        if length(of: event.grappleHookId) >= GameConstants.Hook.minLength {
-            setHookState(of: event.grappleHookId, to: .retracting)
-        } else {
-            dispatcher?.add(event: ReleaseGrappleHookEvent(using: event.grappleHookId))
-        }
+        setHookState(of: event.grappleHookId, to: .retracting)
+
         return nil
     }
 }
 
 extension GrappleHookModule {
+    private func setRetractLength(for hookEntityId: EntityId) {
+        guard let hookPosition = getEndPoint(of: hookEntityId),
+              let currPosition = getStartPoint(of: hookEntityId),
+              let hookComponent = getHookComponent(of: hookEntityId) else {
+            return
+        }
+
+        let dx = hookPosition.x - currPosition.x
+        let dy = hookPosition.y - currPosition.y
+        let distance = hypot(dx, dy)
+        let angle = atan2(dy, dx)
+        let retractLength = distance - sin(angle) * distance
+        hookComponent.lengthToRetract = retractLength * 1.5
+    }
+
     private func setSwingAngle(for hookEntityId: EntityId) {
         guard let hookPosition = getEndPoint(of: hookEntityId),
               let currPosition = getStartPoint(of: hookEntityId),

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad10_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,9 +21,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="082-om-3rK">
-                                <rect key="frame" x="144" y="306" width="893" height="110"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFill" ambiguous="YES" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="082-om-3rK">
+                                <rect key="frame" x="440" y="355" width="300" height="110"/>
                             </stackView>
                             <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cC-rx-xoZ">
                                 <rect key="frame" x="61" y="44" width="95" height="53"/>
@@ -44,9 +43,13 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="082-om-3rK" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Ug7-ab-cf7"/>
+                            <constraint firstItem="082-om-3rK" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="um6-R8-ezq"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="Levels" destination="082-om-3rK" id="AIR-ND-XdX"/>
+                        <outlet property="levelsStackView" destination="082-om-3rK" id="2FC-RX-kkd"/>
                         <segue destination="mNQ-qS-eLr" kind="presentation" identifier="PlaySegue" modalPresentationStyle="fullScreen" id="aiG-TG-S8q"/>
                         <segue destination="Udy-xB-ztY" kind="presentation" identifier="BackSegue" modalPresentationStyle="fullScreen" id="jWw-gn-mqM"/>
                     </connections>
