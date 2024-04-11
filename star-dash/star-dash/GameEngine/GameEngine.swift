@@ -145,7 +145,7 @@ class GameEngine {
         systemManager.add(SpriteSystem(entityManager, dispatcher: self))
 
         // Complex Systems
-        systemManager.add(CollisionSystem(entityManager, dispatcher: self))
+        systemManager.add(RemovalSystem(entityManager, dispatcher: self))
         systemManager.add(InventorySystem(entityManager, dispatcher: self))
         systemManager.add(AttackSystem(entityManager, dispatcher: self))
         systemManager.add(PlayerSystem(entityManager, dispatcher: self))

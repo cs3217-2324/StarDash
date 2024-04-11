@@ -38,7 +38,7 @@
 		460A20092BB1B524002597B8 /* EventListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A20082BB1B524002597B8 /* EventListener.swift */; };
 		460A200B2BB1D04F002597B8 /* AttackSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A200A2BB1D04F002597B8 /* AttackSystem.swift */; };
 		460A200D2BB1DF27002597B8 /* PlayerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A200C2BB1DF27002597B8 /* PlayerSystem.swift */; };
-		460A200F2BB1E1F1002597B8 /* CollisionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A200E2BB1E1F1002597B8 /* CollisionSystem.swift */; };
+		460A200F2BB1E1F1002597B8 /* RemovalSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A200E2BB1E1F1002597B8 /* RemovalSystem.swift */; };
 		460A20112BB1E6DF002597B8 /* MonsterSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A20102BB1E6DF002597B8 /* MonsterSystem.swift */; };
 		461148912BA1CDBF0073E7E1 /* SystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148902BA1CDBF0073E7E1 /* SystemManager.swift */; };
 		461148932BA1D04B0073E7E1 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148922BA1D04B0073E7E1 /* System.swift */; };
@@ -254,7 +254,7 @@
 		460A20082BB1B524002597B8 /* EventListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListener.swift; sourceTree = "<group>"; };
 		460A200A2BB1D04F002597B8 /* AttackSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackSystem.swift; sourceTree = "<group>"; };
 		460A200C2BB1DF27002597B8 /* PlayerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSystem.swift; sourceTree = "<group>"; };
-		460A200E2BB1E1F1002597B8 /* CollisionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionSystem.swift; sourceTree = "<group>"; };
+		460A200E2BB1E1F1002597B8 /* RemovalSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemovalSystem.swift; sourceTree = "<group>"; };
 		460A20102BB1E6DF002597B8 /* MonsterSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterSystem.swift; sourceTree = "<group>"; };
 		461148902BA1CDBF0073E7E1 /* SystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemManager.swift; sourceTree = "<group>"; };
 		461148922BA1D04B0073E7E1 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
@@ -906,6 +906,7 @@
 				E6D45DC02BB6E6CF0004CBA2 /* BuffSystem.swift */,
 				1471B09F2BA6A70600878B14 /* HealthSystem.swift */,
 				14970F532BA8163300CC1E8A /* ScoreSystem.swift */,
+				460A200E2BB1E1F1002597B8 /* RemovalSystem.swift */,
 				461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */,
 				461148952BA1D53D0073E7E1 /* PositionSystem.swift */,
 				460A20102BB1E6DF002597B8 /* MonsterSystem.swift */,
@@ -921,7 +922,6 @@
 				E6ADAED82BC555B7007BB12E /* Movement */,
 				E6A492952BBD5C0C00A8A374 /* DeathSystem.swift */,
 				460A200A2BB1D04F002597B8 /* AttackSystem.swift */,
-				460A200E2BB1E1F1002597B8 /* CollisionSystem.swift */,
 			);
 			path = Complex;
 			sourceTree = "<group>";
@@ -1326,7 +1326,7 @@
 				E6ADAEDE2BC555B7007BB12E /* JumpModule.swift in Sources */,
 				145F2C802BA203B400457549 /* Event.swift in Sources */,
 				4E64294E2BBF1773005E3D7E /* Logger.swift in Sources */,
-				460A200F2BB1E1F1002597B8 /* CollisionSystem.swift in Sources */,
+				460A200F2BB1E1F1002597B8 /* RemovalSystem.swift in Sources */,
 				1471B0A22BA6AA2200878B14 /* RespawnEvent.swift in Sources */,
 				46D418112BA5C88B0091A38B /* Wall.swift in Sources */,
 				E6D45DBC2BB6E6080004CBA2 /* SpeedBoostPowerUpSystem.swift in Sources */,
