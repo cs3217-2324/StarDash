@@ -17,6 +17,7 @@ class GameViewController: UIViewController {
     var networkManager: NetworkManager?
     var level: LevelPersistable?
     var numberOfPlayers: Int = 0
+    var playerIndex: Int?
     // to change to enum
     var viewLayout: Int = 0
     var achievementManager: AchievementManager?
@@ -41,7 +42,11 @@ class GameViewController: UIViewController {
         guard let renderer = MTKRenderer(scene: scene) else {
             return
         }
+        if let playerIndex = playerIndex {
+            renderer.playerIndex = playerIndex
+        }
         renderer.viewDelegate = self
+        print("view layout \(viewLayout)")
         renderer.setupViews(at: self.view, for: viewLayout)
         self.renderer = renderer
         setupBackButton()
@@ -107,7 +112,6 @@ extension GameViewController {
             background.position = CGPoint(x: backgroundWidth / 2 + offset, y: backgroundHeight / 2)
             background.zPosition = -1
             scene.addObject(background)
-
             remainingGameWidth -= backgroundWidth
             numOfAddedBackgrounds += 1
         }
@@ -159,35 +163,41 @@ extension GameViewController: SDSceneDelegate {
 extension GameViewController: ViewDelegate {
 
     func joystickMoved(toLeft: Bool, playerIndex: Int) {
-        if let networkManager = networkManager {
-            let networkEvent = NetworkPlayerMoveEvent(playerIndex: playerIndex, isLeft: toLeft)
-            networkManager.sendEvent(event: networkEvent)
+        guard let networkManager = networkManager  else {
+            gameEngine?.handlePlayerMove(toLeft: toLeft, playerIndex: playerIndex)
+            return
         }
-//        gameEngine?.handlePlayerMove(toLeft: toLeft, playerIndex: playerIndex)
+        let networkEvent = NetworkPlayerMoveEvent(playerIndex: playerIndex, isLeft: toLeft)
+        networkManager.sendEvent(event: networkEvent)
+
     }
 
     func joystickReleased(playerIndex: Int) {
-        if let networkManager = networkManager {
-            let networkEvent = NetworkPlayerStopEvent(playerIndex: playerIndex)
-            networkManager.sendEvent(event: networkEvent)
+        guard let networkManager = networkManager else {
+            gameEngine?.handlePlayerStoppedMoving(playerIndex: playerIndex)
+            return
         }
-//        gameEngine?.handlePlayerStoppedMoving(playerIndex: playerIndex)
+        let networkEvent = NetworkPlayerStopEvent(playerIndex: playerIndex)
+        networkManager.sendEvent(event: networkEvent)
     }
 
     func jumpButtonPressed(playerIndex: Int) {
-        if let networkManager = networkManager {
-            let networkEvent = NetworkPlayerJumpEvent(playerIndex: playerIndex)
-            networkManager.sendEvent(event: networkEvent)
+        guard let networkManager = networkManager else {
+            gameEngine?.handlePlayerJump(playerIndex: playerIndex)
+            return
         }
-//        gameEngine?.handlePlayerJump(playerIndex: playerIndex)
+        let networkEvent = NetworkPlayerJumpEvent(playerIndex: playerIndex)
+        networkManager.sendEvent(event: networkEvent)
+
     }
 
     func hookButtonPressed(playerIndex: Int) {
-        if let networkManager = networkManager {
-            let networkEvent = NetworkPlayerHookEvent(playerIndex: playerIndex)
-            networkManager.sendEvent(event: networkEvent)
+        guard let networkManager = networkManager else {
+            gameEngine?.handlePlayerHook(playerIndex: playerIndex)
+            return
         }
-//        gameEngine?.handlePlayerHook(playerIndex: playerIndex)
+        let networkEvent = NetworkPlayerHookEvent(playerIndex: playerIndex)
+        networkManager.sendEvent(event: networkEvent)
     }
 
     func overlayInfo(forPlayer playerIndex: Int) -> OverlayInfo? {

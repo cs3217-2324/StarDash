@@ -83,7 +83,7 @@ struct PhysicsConstants {
 
     static let jumpImpulse = CGVector(dx: 0, dy: 8_500)
     static let runSpeed: CGFloat = 20
-    static let maxRunSpeed: CGFloat = 150
+    static let maxRunSpeed: CGFloat = 200
 
     struct Monster {
         static let moveVelocityRight = CGVector(dx: 100, dy: 0)

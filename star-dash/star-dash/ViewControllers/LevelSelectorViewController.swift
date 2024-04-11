@@ -47,18 +47,18 @@ class LevelSelectorViewController: UIViewController {
     }
     
     private func moveToGame(level: LevelPersistable) {
-        guard let storageManager = storageManager,
-              let playerIndex = playerIndex  else {
+        guard let storageManager = storageManager else {
             return
         }
-        DispatchQueue.main.async {
+        
+        DispatchQueue.main.async { [self] in
             self.performSegue(withIdentifier: "PlaySegue",
                          sender: GameData(level: level,
                                           numberOfPlayers: self.numberOfPlayers,
                                           viewLayout: self.viewLayout,
                                           storageManager: storageManager,
                                           networkManager: self.networkManager,
-                                          playerIndex: playerIndex))
+                                          playerIndex: self.playerIndex))
         }
         
     }
@@ -69,17 +69,22 @@ class LevelSelectorViewController: UIViewController {
 
     @objc
     func levelButtonTapped(_ sender: UIButton) {
-        guard let storageManager = storageManager,
-              let playerIndex = playerIndex  else {
+        guard let storageManager = storageManager
+               else {
             return
         }
         let level = levels[sender.tag]
-        if let networkManager = networkManager {
-            let networkEvent = NetworkSelectLevelEvent(playerIndex: playerIndex , level: level)
-            networkManager.sendEvent(event: networkEvent)
+        print(level)
+        guard let networkManager = networkManager else {
+            moveToGame(level: level)
+            return
         }
-//        moveToGame(level: level)
-        
+        print("have network")
+        guard let playerIndex = playerIndex else {
+            return
+        }
+        let networkEvent = NetworkSelectLevelEvent(playerIndex: playerIndex , level: level)
+        networkManager.sendEvent(event: networkEvent)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -93,6 +98,7 @@ class LevelSelectorViewController: UIViewController {
                     destinationVC.numberOfPlayers = data.numberOfPlayers
                     destinationVC.storageManager = data.storageManager
                     destinationVC.networkManager = data.networkManager
+                    destinationVC.playerIndex = data.playerIndex
                 }
             }
         }

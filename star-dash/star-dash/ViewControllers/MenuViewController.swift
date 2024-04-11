@@ -14,9 +14,9 @@ class MenuViewController: UIViewController {
         let numberOfPlayers = 1
         performSegue(withIdentifier: "LevelSelectSegue", sender: GameData(level: nil,
                                                                           numberOfPlayers: numberOfPlayers,
-
                                                                           viewLayout: numberOfPlayers,
-                                                                          storageManager: storageManager, networkManager: nil, playerIndex: 0))
+                                                                          storageManager: storageManager, networkManager: nil, 
+                                                                          playerIndex: nil))
     }
 
     @IBAction private func localMultiplayer(_ sender: Any) {
@@ -27,7 +27,8 @@ class MenuViewController: UIViewController {
 
                                       viewLayout: numberOfPlayers,
                                       storageManager: storageManager,
-                                     networkManager: nil, playerIndex: 0))
+                                      networkManager: nil,
+                                      playerIndex: nil))
     }
 
     @IBAction private func viewAchievements(_ sender: Any) {
@@ -40,6 +41,7 @@ class MenuViewController: UIViewController {
                 if let data = sender as? GameData {
                     destinationVC.numberOfPlayers = data.numberOfPlayers
                     destinationVC.storageManager = data.storageManager
+                    destinationVC.viewLayout = data.viewLayout
                 }
             }
         }

@@ -12,5 +12,5 @@ struct GameData {
     let viewLayout: Int
     let storageManager: StorageManager
     let networkManager: NetworkManager?
-    let playerIndex: Int
+    let playerIndex: Int?
 }

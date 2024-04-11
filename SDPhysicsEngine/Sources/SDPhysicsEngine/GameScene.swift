@@ -11,7 +11,6 @@ public class GameScene: SKScene {
     private var cameraPlayerMap: [Int: SDCameraObject] = [:]
 
     private var numberOfPlayers: Int = 0
-
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -23,17 +22,18 @@ public class GameScene: SKScene {
 
     override public func sceneDidLoad() {
         super.sceneDidLoad()
-
+        
         physicsWorld.contactDelegate = self
     }
 
     override public func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
-
+        
         guard let lastUpdateTime = lastUpdateTime else {
             lastUpdateTime = currentTime
             return
         }
+        
         let deltaTime = currentTime - lastUpdateTime
         self.lastUpdateTime = currentTime
 

@@ -21,7 +21,7 @@ class PhysicsComponent: Component {
     var size: CGSize?
     var radius: CGFloat?
     var linearDamping: CGFloat = 0.1
-
+    var impulse: CGVector = .zero
     init(entityId: EntityId, rectangleOf size: CGSize) {
         self.shape = .rectangle
         self.size = size
