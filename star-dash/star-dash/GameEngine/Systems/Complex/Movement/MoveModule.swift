@@ -63,7 +63,7 @@ class MoveModule: MovementModule {
 
         positionSystem.setEntityFacingLeft(event.toLeft, entityId: event.entityId)
         spriteSystem.startAnimation(of: event.entityId, named: event.toLeft ? "runLeft" : "run")
-        spriteSystem.setImage(of: event.entityId, to: event.toLeft ? "PlayerRedNoseLeft" : "PlayerRedNose")
+        spriteSystem.setImageDirection(of: event.entityId, to: event.toLeft ? "faceLeft" : "faceRight")
 
         return nil
     }

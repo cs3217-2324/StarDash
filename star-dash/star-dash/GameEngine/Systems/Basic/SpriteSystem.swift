@@ -13,18 +13,18 @@ class SpriteSystem: System {
         setup()
     }
 
-    func getImage(of entityId: EntityId) -> String? {
+    func getImage(of entityId: EntityId) -> ImageSet? {
         guard let spriteComponent = getSpriteComponent(of: entityId) else {
             return nil
         }
         return spriteComponent.image
     }
 
-    func setImage(of entityId: EntityId, to image: String) {
+    func setImageDirection(of entityId: EntityId, to direction: String) {
         guard let spriteComponent = getSpriteComponent(of: entityId) else {
             return
         }
-        spriteComponent.image = image
+        spriteComponent.imageMode = direction
     }
 
     func startAnimation(of entityId: EntityId, named: String) {

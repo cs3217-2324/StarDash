@@ -38,7 +38,12 @@ class SpriteModule: SyncModule {
         spriteObject.runTexture(named: textureAtlas,
                                 repetitive: spriteComponent.repetitive ?? true,
                                 duration: spriteComponent.animationDuration)
-        spriteObject.texture = spriteComponent.image
+
+        guard let image = spriteComponent.image,
+              let imageMode = spriteComponent.imageMode else {
+            return
+        }
+        spriteObject.texture = image.getValueFor(key: imageMode)
     }
 
     func create(for object: SDObject, from entity: Entity) {
@@ -48,8 +53,10 @@ class SpriteModule: SyncModule {
 extension SpriteModule: CreationModule {
     func createObject(from entity: Entity) -> SDObject? {
         var newObject = SDObject()
-        if let spriteComponent = entityManager.component(ofType: SpriteComponent.self, of: entity.id) {
-            let spriteObject = SDSpriteObject(imageNamed: spriteComponent.image)
+        if let spriteComponent = entityManager.component(ofType: SpriteComponent.self, of: entity.id),
+           let image = spriteComponent.image,
+           let imageMode = spriteComponent.imageMode {
+            let spriteObject = SDSpriteObject(imageNamed: image.getValueFor(key: imageMode) ?? "")
 
             if let size = spriteComponent.size {
                 spriteObject.size = size
