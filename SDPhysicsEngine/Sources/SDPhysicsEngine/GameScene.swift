@@ -37,14 +37,7 @@ public class GameScene: SKScene {
         let deltaTime = currentTime - lastUpdateTime
         self.lastUpdateTime = currentTime
 
-        self.updateCameras()
         sceneDelegate?.update(self, deltaTime: deltaTime)
-    }
-
-    func updateCameras() {
-        for camera in cameraPlayerMap.values {
-           camera.update()
-        }
     }
 
     public func useCamera(of playerIndex: Int, rotatedBy rotation: CGFloat) {
@@ -59,7 +52,7 @@ public class GameScene: SKScene {
 
 extension GameScene: SDScene {
     public func addPlayerObject(_ playerObject: SDObject, playerIndex: Int) {
-        let playerScreenSize = playerScreenSize(for: numberOfPlayers)
+        let playerScreenSize = scaledPlayerScreenSize(for: numberOfPlayers)
         let camera = SDCameraObject(player: playerObject, screenSize: playerScreenSize, sceneSize: self.size)
         cameraPlayerMap[playerIndex] = camera
 
@@ -81,17 +74,26 @@ extension GameScene: SDScene {
         object.removeFromParent()
     }
 
-    private func playerScreenSize(for numberOfPlayers: Int) -> CGSize {
+    private func scaledPlayerScreenSize(for numberOfPlayers: Int) -> CGSize {
         let screenSize = UIScreen.main.bounds.size
-        let width = max(screenSize.width, screenSize.height)
-        let height = min(screenSize.width, screenSize.height)
+
+        // Default to horizontal orientation
+        let screenWidth = max(screenSize.width, screenSize.height)
+        let screenHeight = min(screenSize.width, screenSize.height)
+
+        // Scale screen size using aspectFill method
+        let xScale = screenWidth / self.size.width
+        let yScale = screenHeight / self.size.height
+        let scale = max(xScale, yScale)
+        let scaledScreenSize = screenSize.applying(CGAffineTransform(scaleX: 1 / scale, y: 1 / scale))
+
         switch numberOfPlayers {
         case 1:
-            return CGSize(width: width, height: height)
+            return scaledScreenSize
         case 2:
-            return CGSize(width: screenSize.height, height: screenSize.width / 2)
+            return CGSize(width: scaledScreenSize.height, height: scaledScreenSize.width / 2)
         default:
-            return screenSize
+            return scaledScreenSize
         }
     }
 }
