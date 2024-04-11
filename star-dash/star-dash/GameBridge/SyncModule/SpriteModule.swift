@@ -38,6 +38,7 @@ class SpriteModule: SyncModule {
         spriteObject.runTexture(named: textureAtlas,
                                 repetitive: spriteComponent.repetitive ?? true,
                                 duration: spriteComponent.animationDuration)
+        spriteObject.texture = spriteComponent.image
     }
 
     func create(for object: SDObject, from entity: Entity) {

@@ -63,6 +63,7 @@ class MoveModule: MovementModule {
 
         positionSystem.setEntityFacingLeft(event.toLeft, entityId: event.entityId)
         spriteSystem.startAnimation(of: event.entityId, named: event.toLeft ? "runLeft" : "run")
+        spriteSystem.setImage(of: event.entityId, to: event.toLeft ? "PlayerRedNoseLeft" : "PlayerRedNose")
 
         return nil
     }
@@ -74,7 +75,6 @@ class MoveModule: MovementModule {
             return nil
         }
 
-        positionSystem.setEntityFacingLeft(false, entityId: event.entityId)
         physicsSystem.setVelocity(to: event.entityId,
                                   velocity: .zero)
         spriteSystem.endAnimation(of: event.entityId)
