@@ -12,7 +12,7 @@ class LevelSelectorViewController: UIViewController {
     var numberOfPlayers: Int = 0
     var levels: [LevelPersistable] = [] // Assuming Level is a struct or class representing a level
 
-    @IBOutlet private var Levels: UIStackView!
+    @IBOutlet private var levelsStackView: UIStackView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +28,8 @@ class LevelSelectorViewController: UIViewController {
 
     private func createLevelButtons() {
         for (index, level) in levels.enumerated() {
-            let button = LevelButton()
-            button.tag = index
-            button.levelNameLabel.text = "\(level.name)"
-            button.levelImageView.image = UIImage(named: level.background)
-            button.backgroundColor = .clear
-            button.layer.cornerRadius = 8
-            button.addTarget(self, action: #selector(levelButtonTapped(_:)), for: .touchUpInside)
-            Levels.addArrangedSubview(button)
+            let button = createLevelButton(name: level.name, imageName: level.background, index: index)
+            levelsStackView.addArrangedSubview(button)
         }
     }
 
@@ -68,46 +62,24 @@ class LevelSelectorViewController: UIViewController {
             }
         }
     }
-}
 
-class LevelButton: UIButton {
-    let levelImageView = UIImageView()
-    let levelNameLabel = UILabel()
+    private func createLevelButton(name: String, imageName: String, index: Int) -> UIButton {
+        let button = UIButton()
+        var config = UIButton.Configuration.plain()
+        config.attributedTitle = AttributedString(
+            name,
+            attributes: AttributeContainer([NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 30)])
+        )
+        config.baseForegroundColor = .white
+        config.image = UIImage(named: imageName)?.resizeImage(CGSize(width: 300, height: 200), opaque: true)
+        config.imagePlacement = .top
+        config.imagePadding = 10
+        button.configuration = config
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupUI()
-    }
-
-    private func setupUI() {
-        // Set up image view
-        levelImageView.contentMode = .scaleAspectFit
-        levelImageView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(levelImageView)
-
-        // Set up label
-        levelNameLabel.textAlignment = .center
-        levelNameLabel.textColor = .white
-        levelNameLabel.font = .boldSystemFont(ofSize: 20)
-        levelNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(levelNameLabel)
-
-        // Add constraints
-        NSLayoutConstraint.activate([
-            levelImageView.topAnchor.constraint(equalTo: topAnchor),
-            levelImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            levelImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            levelImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.7),
-
-            levelNameLabel.topAnchor.constraint(equalTo: levelImageView.bottomAnchor),
-            levelNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            levelNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            levelNameLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        button.tag = index
+        button.backgroundColor = .clear
+        button.layer.cornerRadius = 8
+        button.addTarget(self, action: #selector(levelButtonTapped(_:)), for: .touchUpInside)
+        return button
     }
 }
