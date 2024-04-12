@@ -16,7 +16,8 @@ class NetworkEventFactory {
             "player-join-room": { jsonData in try decoder.decode(NetworkPlayerJoinEvent.self, from: jsonData) },
             "select-level": { jsonData in try decoder.decode(NetworkSelectLevelEvent.self, from: jsonData) },
             "player-move": { jsonData in try decoder.decode(NetworkPlayerMoveEvent.self, from: jsonData) },
-            "move-to-level-selection": { jsonData in try decoder.decode(NetworkMoveToLevelSelectionEvent.self, from: jsonData) },
+            "move-to-level-selection": { jsonData in
+                try decoder.decode(NetworkMoveToLevelSelectionEvent.self, from: jsonData) },
             "player-jump": { jsonData in try decoder.decode(NetworkPlayerJumpEvent.self, from: jsonData) },
             "player-hook": { jsonData in try decoder.decode(NetworkPlayerHookEvent.self, from: jsonData) },
             "player-stop": { jsonData in try decoder.decode(NetworkPlayerStopEvent.self, from: jsonData) }
@@ -46,4 +47,3 @@ class NetworkEventFactory {
         return nil
     }
 }
-

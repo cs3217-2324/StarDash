@@ -15,7 +15,7 @@ class PlayerToolContactEvent: Event {
         self.toolId = toolEntityId
         super.init(playerIdForEvent: playerId, timestamp: timestamp)
     }
-    
+
     convenience init(from playerId: EntityId, on toolEntityId: EntityId ) {
         self.init(from: playerId, on: toolEntityId)
     }

@@ -9,7 +9,7 @@ class MissileHitPlayerEvent: Event {
         self.missileId = missileId
         super.init(playerIdForEvent: playerEntityId, timestamp: timestamp)
     }
-    
+
     convenience init(from playerEntityId: EntityId, missile missileId: EntityId) {
         self.init(from: playerEntityId, missile: missileId, timestamp: Date.now)
     }

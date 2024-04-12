@@ -20,5 +20,4 @@ class PlayerMonsterContactEvent: Event {
         self.init(from: playerId, on: monsterId, timestamp: Date.now)
     }
 
-
 }

@@ -216,7 +216,9 @@ extension GameViewController: ViewDelegate {
 extension GameViewController: NetworkManagerDelegate {
     func networkManager(_ networkManager: NetworkManager, didReceiveEvent response: Data) {
         if let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkPlayerMoveEvent {
-            gameEngine?.handlePlayerMove(toLeft: event.isLeft, playerIndex: event.playerIndex, timestamp: event.timestamp)
+            gameEngine?.handlePlayerMove(toLeft: event.isLeft,
+                                         playerIndex: event.playerIndex,
+                                         timestamp: event.timestamp)
         }
         if let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkPlayerStopEvent {
             gameEngine?.handlePlayerStoppedMoving(playerIndex: event.playerIndex, timestamp: event.timestamp)

@@ -16,10 +16,9 @@ class GrappleHookObstacleContactEvent: Event {
         self.obstacleId = obstacleId
         super.init(timestamp: timestamp)
     }
-    
+
     convenience init(betweenHook grappleHookId: EntityId, andObstacle obstacleId: EntityId) {
         self.init(betweenHook: grappleHookId, andObstacle: obstacleId, timestamp: Date.now)
     }
-
 
 }

@@ -16,10 +16,9 @@ class PickupCollectibleEvent: Event {
         self.collectibleEntityId = collectibleEntityId
         super.init(playerIdForEvent: playerId, timestamp: timestamp)
     }
-    
+
     convenience init(by playerId: EntityId, collectibleEntityId: EntityId) {
         self.init(by: playerId, collectibleEntityId: collectibleEntityId, timestamp: Date.now)
     }
-
 
 }

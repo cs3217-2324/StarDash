@@ -107,7 +107,7 @@ class GameEngine {
         guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
             return
         }
-        
+
         eventManager.add(event: JumpEvent(on: playerEntityId, by: PhysicsConstants.jumpImpulse, timestamp: timestamp))
     }
 
@@ -133,7 +133,9 @@ class GameEngine {
             return
         }
 
-        eventManager.add(event: UseGrappleHookEvent(from: playerEntityId, isLeft: positionComponent.isFacingLeft, timestamp: timestamp))
+        eventManager.add(event: UseGrappleHookEvent(from: playerEntityId,
+                                                    isLeft: positionComponent.isFacingLeft,
+                                                    timestamp: timestamp))
     }
 
     private func setupSystems() {

@@ -16,7 +16,7 @@ class PlayerAttackMonsterEvent: Event {
         self.monsterId = monsterId
         super.init(playerIdForEvent: playerId, timestamp: timestamp)
     }
-    
+
     convenience init(from playerId: EntityId, on monsterId: EntityId) {
         self.init(from: playerId, on: monsterId, timestamp: Date.now)
     }

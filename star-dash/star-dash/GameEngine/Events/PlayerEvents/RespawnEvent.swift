@@ -20,5 +20,4 @@ class RespawnEvent: Event {
         self.init(on: playerId, to: newPosition, timestamp: Date.now)
     }
 
-
 }

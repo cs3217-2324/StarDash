@@ -18,7 +18,7 @@ class PlayerObstacleContactEvent: Event {
         self.contactPoint = contactPoint
         super.init(playerIdForEvent: playerId, timestamp: timestamp)
     }
-    
+
     convenience init(from playerId: EntityId, on obstacleEntityId: EntityId, at contactPoint: CGPoint) {
         self.init(from: playerId, on: obstacleEntityId, at: contactPoint, timestamp: Date.now)
     }

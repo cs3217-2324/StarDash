@@ -10,7 +10,7 @@ class PlayerFloorContactEvent: Event {
         self.contactPoint = contactPoint
         super.init(playerIdForEvent: playerId, timestamp: timestamp)
     }
-    
+
     convenience init(from playerId: EntityId, at contactPoint: CGPoint) {
         self.init(from: playerId, at: contactPoint, timestamp: Date.now)
     }

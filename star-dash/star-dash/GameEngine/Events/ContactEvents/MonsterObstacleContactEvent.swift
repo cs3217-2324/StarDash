@@ -22,5 +22,4 @@ class MonsterObstacleContactEvent: Event {
         self.init(from: monsterId, on: obstacleEntityId, at: contactPoint, timestamp: Date.now)
     }
 
-
 }

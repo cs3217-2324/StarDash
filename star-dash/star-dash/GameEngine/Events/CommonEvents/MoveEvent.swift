@@ -10,10 +10,10 @@ import Foundation
 class MoveEvent: Event {
     let entityId: EntityId
     let toLeft: Bool
-    
+
     init(on entityId: EntityId, toLeft: Bool, timestamp: Date) {
         self.entityId = entityId
-        
+
         self.toLeft = toLeft
         super.init(playerIdForEvent: entityId, timestamp: timestamp)
     }

@@ -63,21 +63,17 @@ class SocketManager: NSObject, WebSocketDelegate {
             }
         case .binary(let data):
             print("Received data: \(data.count)")
-        case .ping:
+        case .ping, .pong:
             break
-        case .pong:
-            break
-        case .viabilityChanged:
-            break
-        case .reconnectSuggested:
+        case .viabilityChanged, .reconnectSuggested:
             break
         case .cancelled:
             isConnected = false
         case .error(let error):
             isConnected = false
             print("\(String(describing: error))")
-            case .peerClosed:
-                   break
+        case .peerClosed:
+            break
         }
     }
 }

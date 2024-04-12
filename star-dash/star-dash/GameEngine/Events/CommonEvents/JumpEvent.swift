@@ -20,5 +20,4 @@ class JumpEvent: Event {
         self.init(on: entityId, by: jumpImpulse, timestamp: Date.now)
     }
 
-  
 }
