@@ -47,11 +47,13 @@ class ScoreSystem: System {
     }
 
     private func handlePickupCollectibleEvent(event: PickupCollectibleEvent) {
-        guard let pointsComponent = entityManager.component(ofType: PointsComponent.self,
+        guard let soundSystem = dispatcher?.system(ofType: GameSoundSystem.self),
+              let pointsComponent = entityManager.component(ofType: PointsComponent.self,
                                                             of: event.collectibleEntityId) else {
             return
         }
 
+        soundSystem.playSoundEffect(SoundEffect.collectible)
         applyScoreChange(to: event.playerId, scoreChange: pointsComponent.points)
         dispatcher?.add(event: RemoveEvent(on: event.collectibleEntityId))
     }
