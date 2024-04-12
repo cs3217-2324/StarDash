@@ -40,9 +40,11 @@ public class GameScene: SKScene {
         sceneDelegate?.update(self, deltaTime: deltaTime)
     }
 
-    public func setupCameras(playerScreenSize: CGSize) {
+    public func setupCameras(levelViewHeight: CGFloat, playerScreenSize: CGSize) {
         for camera in cameraPlayerMap.values {
-            camera.setup(playerScreenSize: playerScreenSize, sceneSize: self.size)
+            camera.setup(levelViewHeight: levelViewHeight,
+                         playerScreenSize: playerScreenSize,
+                         sceneSize: self.size)
         }
     }
 

@@ -21,8 +21,8 @@ public class SDCameraObject: SDObject {
         set { cameraNode.zRotation = newValue }
     }
 
-    func setup(playerScreenSize: CGSize, sceneSize: CGSize) {
-        let scale = sceneSize.height > 1_200 ? 0.5 : 1
+    func setup(levelViewHeight: CGFloat, playerScreenSize: CGSize, sceneSize: CGSize) {
+        let scale = levelViewHeight / sceneSize.height
         self.cameraNode.setScale(scale)
 
         var constraints = [SKConstraint]()
