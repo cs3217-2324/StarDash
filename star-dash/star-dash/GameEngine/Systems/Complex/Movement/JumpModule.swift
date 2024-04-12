@@ -59,7 +59,9 @@ class JumpModule: MovementModule {
 
     private func handleJumpEvent(event: JumpEvent) -> Event? {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
-                  entityManager.component(ofType: JumpComponent.self, of: event.entityId) == nil else {
+              let velocity = physicsSystem.velocity(of: event.entityId),
+              entityManager.component(ofType: JumpComponent.self, of: event.entityId) == nil,
+              velocity.dy == 0 else {
             return nil
         }
 
