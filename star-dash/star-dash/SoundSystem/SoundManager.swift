@@ -64,6 +64,8 @@ class SoundManager: SoundSystem {
             backgroundMusicPlayer?.pause()
         case .ended:
             backgroundMusicPlayer?.play()
+        @unknown default:
+            return
         }
     }
 
