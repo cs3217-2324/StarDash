@@ -7,15 +7,15 @@
 
 import Foundation
 class NetworkPlayerMoveEvent: NetworkEvent {
-    
+
     var isLeft: Bool
-    
+
     init( playerIndex: Int, isLeft: Bool) {
 
         self.isLeft = isLeft
-        super.init(event: .PlayerMove, playerIndex: playerIndex)
+        super.init(event: .PlayerMove, playerIndex: playerIndex, timestamp: Date.now)
     }
-    
+
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         isLeft = try container.decode(Bool.self, forKey: .isLeft)
@@ -23,14 +23,12 @@ class NetworkPlayerMoveEvent: NetworkEvent {
     }
     override func encode(to encoder: Encoder) throws {
         try super.encode(to: encoder) // Call super implementation first
-        
+
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(isLeft, forKey: .isLeft)
     }
     private enum CodingKeys: String, CodingKey {
         case isLeft
     }
-    
+
 }
-
-

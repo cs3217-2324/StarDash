@@ -7,12 +7,12 @@
 
 import Foundation
 
-class NetworkMoveToLevelSelectionEvent: NetworkEvent{
+class NetworkMoveToLevelSelectionEvent: NetworkEvent {
 
     init(playerIndex: Int) {
-        super.init(event: .MoveToLevelSelection, playerIndex: playerIndex)
+        super.init(event: .MoveToLevelSelection, playerIndex: playerIndex, timestamp: Date.now)
     }
-    
+
     required init(from decoder: Decoder) throws {
         try super.init(from: decoder)
     }

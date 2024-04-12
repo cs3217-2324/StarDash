@@ -1,31 +1,21 @@
-//
-//  EventManager.swift
-//  star-dash
-//
-//  Created by Jason Qiu on 14/3/24.
-//
-
-import DequeModule
 import Foundation
-
-typealias EventQueue = Deque<Event>
+typealias EventQueue = Heap<Event>
 
 class EventManager {
     private var events: EventQueue
     private var listeners: [EventListener]
 
     init() {
-        self.events = EventQueue()
+        self.events = EventQueue(comparator: { $0.timestamp < $1.timestamp })
         self.listeners = []
     }
 
     func add(event: Event) {
-        events.append(event)
+        events.insert(item: event)
     }
 
     func executeAll(on target: EventModifiable) {
-        while let event = events.popFirst() {
-            // Logger.logEvent(subtitle: "Event Manager", message: "\(event) execute", level: .info)
+        while let event = events.popTop() {
             emit(event: event)
         }
     }

@@ -9,10 +9,10 @@ import Foundation
 class NetworkPlayerStopEvent: NetworkEvent {
 
     init(playerIndex: Int) {
-        super.init(event: .PlayerStop, playerIndex: playerIndex)
-        
+        super.init(event: .PlayerStop, playerIndex: playerIndex, timestamp: Date.now)
+
     }
-    
+
     required init(from decoder: Decoder) throws {
         try super.init(from: decoder)
     }

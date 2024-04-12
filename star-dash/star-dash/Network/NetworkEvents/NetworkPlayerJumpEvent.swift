@@ -8,10 +8,10 @@
 import Foundation
 class NetworkPlayerJumpEvent: NetworkEvent {
     init(playerIndex: Int) {
-        super.init(event: .PlayerJump, playerIndex: playerIndex)
-        
+        super.init(event: .PlayerJump, playerIndex: playerIndex, timestamp: Date.now)
+
     }
-    
+
     required init(from decoder: Decoder) throws {
         try super.init(from: decoder)
     }

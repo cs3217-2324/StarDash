@@ -21,7 +21,7 @@ class LevelSelectorViewController: UIViewController {
         super.viewDidLoad()
         fetchLevelsFromDatabase()
         createLevelButtons()
-        
+
         guard let networkManager = networkManager else {
             return
         }
@@ -40,22 +40,22 @@ class LevelSelectorViewController: UIViewController {
             levelsStackView.addArrangedSubview(button)
         }
     }
-    
+
     private func moveToGame(level: LevelPersistable) {
         guard let storageManager = storageManager else {
             return
         }
-        
+
         DispatchQueue.main.async { [self] in
             self.performSegue(withIdentifier: "PlaySegue",
-                         sender: GameData(level: level,
-                                          numberOfPlayers: self.numberOfPlayers,
-                                          viewLayout: self.viewLayout,
-                                          storageManager: storageManager,
-                                          networkManager: self.networkManager,
-                                          playerIndex: self.playerIndex))
+                              sender: GameData(level: level,
+                                               numberOfPlayers: self.numberOfPlayers,
+                                               viewLayout: self.viewLayout,
+                                               storageManager: storageManager,
+                                               networkManager: self.networkManager,
+                                               playerIndex: self.playerIndex))
         }
-        
+
     }
 
     @IBAction private func back(_ sender: Any) {
@@ -78,7 +78,7 @@ class LevelSelectorViewController: UIViewController {
         guard let playerIndex = playerIndex else {
             return
         }
-        let networkEvent = NetworkSelectLevelEvent(playerIndex: playerIndex , level: level)
+        let networkEvent = NetworkSelectLevelEvent(playerIndex: playerIndex, level: level)
         networkManager.sendEvent(event: networkEvent)
     }
 
@@ -120,10 +120,9 @@ class LevelSelectorViewController: UIViewController {
     }
 }
 
-
 extension LevelSelectorViewController: NetworkManagerDelegate {
     func networkManager(_ networkManager: NetworkManager, didReceiveEvent response: Data) {
-        if let event = decodeNetworkEvent(from: response) as? NetworkSelectLevelEvent {
+        if let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkSelectLevelEvent {
             moveToGame(level: event.level)
         }
     }
@@ -137,7 +136,7 @@ extension LevelSelectorViewController: NetworkManagerDelegate {
     }
 
     func networkManager(_ networkManager: NetworkManager, didReceiveAPIResponse response: Any) {
-        
+
     }
 
 }

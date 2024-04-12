@@ -8,10 +8,10 @@
 import Foundation
 class NetworkPlayerHookEvent: NetworkEvent {
     init(playerIndex: Int) {
-        super.init(event: .PlayerHook, playerIndex: playerIndex)
-        
+        super.init(event: .PlayerHook, playerIndex: playerIndex, timestamp: Date.now)
+
     }
-    
+
     required init(from decoder: Decoder) throws {
         try super.init(from: decoder)
     }

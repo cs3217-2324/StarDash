@@ -8,17 +8,18 @@
 import Foundation
 
 class GrappleHookObstacleContactEvent: Event {
-    let timestamp: Date
     let grappleHookId: EntityId
     let obstacleId: EntityId
 
-    init(betweenHook grappleHookId: EntityId, andObstacle obstacleId: EntityId) {
-        self.timestamp = Date.now
+    init(betweenHook grappleHookId: EntityId, andObstacle obstacleId: EntityId, timestamp: Date) {
         self.grappleHookId = grappleHookId
         self.obstacleId = obstacleId
+        super.init(timestamp: timestamp)
+    }
+    
+    convenience init(betweenHook grappleHookId: EntityId, andObstacle obstacleId: EntityId) {
+        self.init(betweenHook: grappleHookId, andObstacle: obstacleId, timestamp: Date.now)
     }
 
-    var playerIdForEvent: EntityId? {
-        nil
-    }
+
 }

@@ -22,18 +22,18 @@ public class GameScene: SKScene {
 
     override public func sceneDidLoad() {
         super.sceneDidLoad()
-        
+
         physicsWorld.contactDelegate = self
     }
 
     override public func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
-        
+
         guard let lastUpdateTime = lastUpdateTime else {
             lastUpdateTime = currentTime
             return
         }
-        
+
         let deltaTime = currentTime - lastUpdateTime
         self.lastUpdateTime = currentTime
 

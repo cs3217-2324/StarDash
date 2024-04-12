@@ -15,7 +15,8 @@ class MenuViewController: UIViewController {
         performSegue(withIdentifier: "LevelSelectSegue", sender: GameData(level: nil,
                                                                           numberOfPlayers: numberOfPlayers,
                                                                           viewLayout: numberOfPlayers,
-                                                                          storageManager: storageManager, networkManager: nil, 
+                                                                          storageManager: storageManager,
+                                                                          networkManager: nil,
                                                                           playerIndex: nil))
     }
 

@@ -42,7 +42,7 @@ class NetworkManager {
 
         return try encoder.encode(event)
     }
-    
+
     func sendEvent(event: NetworkEvent) {
         do {
              let data = try encodeNetworkEvent(event)
@@ -74,7 +74,7 @@ class NetworkManager {
                 self.delegate?.networkManager(self, didReceiveAPIResponse: json)
 
             } catch {
-                
+
             }
 
         }

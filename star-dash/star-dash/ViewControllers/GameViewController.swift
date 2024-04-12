@@ -164,7 +164,7 @@ extension GameViewController: ViewDelegate {
 
     func joystickMoved(toLeft: Bool, playerIndex: Int) {
         guard let networkManager = networkManager  else {
-            gameEngine?.handlePlayerMove(toLeft: toLeft, playerIndex: playerIndex)
+            gameEngine?.handlePlayerMove(toLeft: toLeft, playerIndex: playerIndex, timestamp: Date.now)
             return
         }
         let networkEvent = NetworkPlayerMoveEvent(playerIndex: playerIndex, isLeft: toLeft)
@@ -174,7 +174,7 @@ extension GameViewController: ViewDelegate {
 
     func joystickReleased(playerIndex: Int) {
         guard let networkManager = networkManager else {
-            gameEngine?.handlePlayerStoppedMoving(playerIndex: playerIndex)
+            gameEngine?.handlePlayerStoppedMoving(playerIndex: playerIndex, timestamp: Date.now)
             return
         }
         let networkEvent = NetworkPlayerStopEvent(playerIndex: playerIndex)
@@ -183,7 +183,7 @@ extension GameViewController: ViewDelegate {
 
     func jumpButtonPressed(playerIndex: Int) {
         guard let networkManager = networkManager else {
-            gameEngine?.handlePlayerJump(playerIndex: playerIndex)
+            gameEngine?.handlePlayerJump(playerIndex: playerIndex, timestamp: Date.now)
             return
         }
         let networkEvent = NetworkPlayerJumpEvent(playerIndex: playerIndex)
@@ -193,7 +193,7 @@ extension GameViewController: ViewDelegate {
 
     func hookButtonPressed(playerIndex: Int) {
         guard let networkManager = networkManager else {
-            gameEngine?.handlePlayerHook(playerIndex: playerIndex)
+            gameEngine?.handlePlayerHook(playerIndex: playerIndex, timestamp: Date.now)
             return
         }
         let networkEvent = NetworkPlayerHookEvent(playerIndex: playerIndex)
@@ -215,17 +215,17 @@ extension GameViewController: ViewDelegate {
 }
 extension GameViewController: NetworkManagerDelegate {
     func networkManager(_ networkManager: NetworkManager, didReceiveEvent response: Data) {
-        if let event = decodeNetworkEvent(from: response) as? NetworkPlayerMoveEvent {
-            gameEngine?.handlePlayerMove(toLeft: event.isLeft, playerIndex: event.playerIndex)
+        if let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkPlayerMoveEvent {
+            gameEngine?.handlePlayerMove(toLeft: event.isLeft, playerIndex: event.playerIndex, timestamp: event.timestamp)
         }
-        if let event = decodeNetworkEvent(from: response) as? NetworkPlayerStopEvent {
-            gameEngine?.handlePlayerStoppedMoving(playerIndex: event.playerIndex)
+        if let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkPlayerStopEvent {
+            gameEngine?.handlePlayerStoppedMoving(playerIndex: event.playerIndex, timestamp: event.timestamp)
         }
-        if let event = decodeNetworkEvent(from: response) as? NetworkPlayerJumpEvent {
-            gameEngine?.handlePlayerJump(playerIndex: event.playerIndex)
+        if let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkPlayerJumpEvent {
+            gameEngine?.handlePlayerJump(playerIndex: event.playerIndex, timestamp: event.timestamp)
         }
-        if let event = decodeNetworkEvent(from: response) as? NetworkPlayerHookEvent {
-            gameEngine?.handlePlayerHook(playerIndex: event.playerIndex)
+        if let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkPlayerHookEvent {
+            gameEngine?.handlePlayerHook(playerIndex: event.playerIndex, timestamp: event.timestamp)
         }
     }
 
@@ -238,7 +238,7 @@ extension GameViewController: NetworkManagerDelegate {
     }
 
     func networkManager(_ networkManager: NetworkManager, didReceiveAPIResponse response: Any) {
-        
+
     }
 
 }

@@ -57,7 +57,9 @@ class JoinRoomViewController: UIViewController {
     func setupCurrentCodeTapGesture() {
         for view in CurrentCode.arrangedSubviews {
             guard let label = view as? UILabel else { continue }
-            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(currentCodeLabelTapped(_:)))
+            let tapGestureRecognizer = UITapGestureRecognizer(
+                target: self,
+                action: #selector(currentCodeLabelTapped(_:)))
             label.isUserInteractionEnabled = true
             label.addGestureRecognizer(tapGestureRecognizer)
         }
@@ -116,14 +118,15 @@ class JoinRoomViewController: UIViewController {
 
                 // Apply constraints to the UIImageView to add padding
                 NSLayoutConstraint.activate([
-                    imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10), // Adjust padding as needed
-                    imageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10), // Adjust padding as needed
-                    imageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10), // Adjust padding as needed
-                    imageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10) // Adjust padding as needed
+                    imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+                    imageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+                    imageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
+                    imageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10)
                 ])
 
                 // Add tap gesture recognizer to the container view
-                let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(currentCodeLabelTapped(_:)))
+                let tapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                                  action: #selector(currentCodeLabelTapped(_:)))
                 containerView.addGestureRecognizer(tapGestureRecognizer)
 
                 // Add the container view to the arranged subviews of CurrentCode

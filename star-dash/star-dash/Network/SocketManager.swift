@@ -40,15 +40,6 @@ class SocketManager: NSObject, WebSocketDelegate {
 
     }
 
-    func closeConnection() {
-
-//            guard let socket = manager?.defaultSocket else {
-//                return
-//            }
-//
-//            socket.disconnect()
-        }
-    
     func emit(data: Data) {
         guard let socket = socket else {
             return
@@ -56,7 +47,6 @@ class SocketManager: NSObject, WebSocketDelegate {
         socket.write(data: data)
     }
     func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocketClient) {
-        print(event)
         switch event {
         case .connected(let headers):
             isConnected = true
@@ -85,6 +75,7 @@ class SocketManager: NSObject, WebSocketDelegate {
             isConnected = false
         case .error(let error):
             isConnected = false
+            print("\(String(describing: error))")
             case .peerClosed:
                    break
         }

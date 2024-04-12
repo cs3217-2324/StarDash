@@ -20,9 +20,9 @@ class MTKRenderer: NSObject, Renderer {
     var playerViews: [PlayerView]
 
     var viewDelegate: ViewDelegate?
-    //TODO: To be refined on how to follow the correct player index if on network
+    // TODO: To be refined on how to follow the correct player index if on network
     var playerIndex: Int?
-    
+
     init?(scene: GameScene) {
         self.scene = scene
 
@@ -35,7 +35,7 @@ class MTKRenderer: NSObject, Renderer {
         self.commandQueue = commandQueue
         self.renderer = SKRenderer(device: device)
         renderer.scene = scene
-        
+
         super.init()
     }
 
@@ -106,7 +106,7 @@ extension MTKRenderer: MTKViewDelegate {
                 return
         }
         var index = playerIndex
-        //TODO: Refine how playerindex is passed
+        // TODO: Refine how playerindex is passed
         if let playerIndex = self.playerIndex {
             index = 0
         } else {

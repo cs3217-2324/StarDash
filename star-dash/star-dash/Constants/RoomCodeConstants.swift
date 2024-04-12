@@ -16,11 +16,11 @@ struct RoomCodeConstants {
         "Watermelon": "6"
     ]
     static let numberToFruit: [String: String] = [
-        "1": "Banana" ,
-        "2": "Cherry" ,
-        "3": "Grapes" ,
-        "4": "Mango" ,
-        "5": "Strawberry" ,
+        "1": "Banana",
+        "2": "Cherry",
+        "3": "Grapes",
+        "4": "Mango",
+        "5": "Strawberry",
         "6": "Watermelon"
     ]
 }

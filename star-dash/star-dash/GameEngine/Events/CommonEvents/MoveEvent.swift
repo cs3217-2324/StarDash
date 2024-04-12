@@ -8,17 +8,17 @@
 import Foundation
 
 class MoveEvent: Event {
-    let timestamp: Date
     let entityId: EntityId
     let toLeft: Bool
-
-    init(on entityId: EntityId, toLeft: Bool) {
-        self.timestamp = Date.now
+    
+    init(on entityId: EntityId, toLeft: Bool, timestamp: Date) {
         self.entityId = entityId
+        
         self.toLeft = toLeft
+        super.init(playerIdForEvent: entityId, timestamp: timestamp)
+    }
+    convenience init(on entityId: EntityId, toLeft: Bool) {
+        self.init(on: entityId, toLeft: toLeft, timestamp: Date.now)
     }
 
-    var playerIdForEvent: EntityId? {
-        entityId
-    }
 }

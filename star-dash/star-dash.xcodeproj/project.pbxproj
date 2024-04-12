@@ -130,6 +130,7 @@
 		4E8660622BA0964A0035530D /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660612BA0964A0035530D /* Obstacle.swift */; };
 		4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8660652BA097D40035530D /* PhysicsConstants.swift */; };
 		4E8A77BA2BBB471C002238A9 /* level2.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E18DD0D2BBB45AD00746ACC /* level2.json */; };
+		4E9732122BC98EA5004A1244 /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9732112BC98EA5004A1244 /* Heap.swift */; };
 		4E9B4A1D2BC3DCC400B096A0 /* NetworkEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9B4A1C2BC3DCC400B096A0 /* NetworkEvent.swift */; };
 		4E9B4A1F2BC3DD5100B096A0 /* NetworkEventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9B4A1E2BC3DD5100B096A0 /* NetworkEventType.swift */; };
 		4E9B4A212BC3DDC700B096A0 /* NetworkEventFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9B4A202BC3DDC700B096A0 /* NetworkEventFactory.swift */; };
@@ -375,6 +376,7 @@
 		4E86605E2BA095E30035530D /* Collectible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collectible.swift; sourceTree = "<group>"; };
 		4E8660612BA0964A0035530D /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		4E8660652BA097D40035530D /* PhysicsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsConstants.swift; sourceTree = "<group>"; };
+		4E9732112BC98EA5004A1244 /* Heap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heap.swift; sourceTree = "<group>"; };
 		4E9B4A1C2BC3DCC400B096A0 /* NetworkEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEvent.swift; sourceTree = "<group>"; };
 		4E9B4A1E2BC3DD5100B096A0 /* NetworkEventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEventType.swift; sourceTree = "<group>"; };
 		4E9B4A202BC3DDC700B096A0 /* NetworkEventFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEventFactory.swift; sourceTree = "<group>"; };
@@ -851,6 +853,7 @@
 				14970F552BA8177B00CC1E8A /* GameConstants.swift */,
 				141573BF2BBE763E00503EA3 /* RenderingConstants.swift */,
 				4E5928E22BC334A900F84237 /* RoomCodeConstants.swift */,
+				4E9732112BC98EA5004A1244 /* Heap.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -1280,6 +1283,7 @@
 				461B1FF62BBC50220020F6C4 /* Database+Achievements.swift in Sources */,
 				4E8660622BA0964A0035530D /* Obstacle.swift in Sources */,
 				46C3B1D62BB59F9B00F10574 /* ReleaseGrappleHookEvent.swift in Sources */,
+				4E9732122BC98EA5004A1244 /* Heap.swift in Sources */,
 				1471B0A02BA6A70600878B14 /* HealthSystem.swift in Sources */,
 				46D049FB2BB99B150096D9F2 /* StellarCollectorAchievement.swift in Sources */,
 				461148932BA1D04B0073E7E1 /* System.swift in Sources */,

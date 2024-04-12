@@ -54,7 +54,7 @@ class RoomJoiningViewController: UIViewController {
 
 extension RoomJoiningViewController: NetworkManagerDelegate {
     func networkManager(_ networkManager: NetworkManager, didReceiveEvent response: Data) {
-        guard let event = decodeNetworkEvent(from: response) as? NetworkPlayerJoinEvent else {
+        guard let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkPlayerJoinEvent else {
             return
         }
         print(event)

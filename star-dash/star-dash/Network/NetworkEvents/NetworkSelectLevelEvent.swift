@@ -8,14 +8,13 @@
 import Foundation
 class NetworkSelectLevelEvent: NetworkEvent {
 
-    
     var level: LevelPersistable
-    
+
     init(playerIndex: Int, level: LevelPersistable) {
         self.level = level
-        super.init(event: .SelectLevel, playerIndex: playerIndex)
+        super.init(event: .SelectLevel, playerIndex: playerIndex, timestamp: Date.now)
     }
-    
+
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         level = try container.decode(LevelPersistable.self, forKey: .level)
@@ -23,7 +22,7 @@ class NetworkSelectLevelEvent: NetworkEvent {
     }
     override func encode(to encoder: Encoder) throws {
         try super.encode(to: encoder) // Call super implementation first
-        
+
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(level, forKey: .level)
     }

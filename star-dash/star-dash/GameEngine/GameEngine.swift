@@ -103,37 +103,37 @@ class GameEngine {
         eventManager.add(event: event)
     }
 
-    func handlePlayerJump(playerIndex: Int) {
+    func handlePlayerJump(playerIndex: Int, timestamp: Date) {
+        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
+            return
+        }
+        
+        eventManager.add(event: JumpEvent(on: playerEntityId, by: PhysicsConstants.jumpImpulse, timestamp: timestamp))
+    }
+
+    func handlePlayerMove(toLeft: Bool, playerIndex: Int, timestamp: Date) {
         guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
             return
         }
 
-        eventManager.add(event: JumpEvent(on: playerEntityId, by: PhysicsConstants.jumpImpulse))
+        eventManager.add(event: MoveEvent(on: playerEntityId, toLeft: toLeft, timestamp: timestamp))
     }
 
-    func handlePlayerMove(toLeft: Bool, playerIndex: Int) {
+    func handlePlayerStoppedMoving(playerIndex: Int, timestamp: Date) {
         guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
             return
         }
 
-        eventManager.add(event: MoveEvent(on: playerEntityId, toLeft: toLeft))
+        eventManager.add(event: StopMovingEvent(on: playerEntityId, timestamp: timestamp))
     }
 
-    func handlePlayerStoppedMoving(playerIndex: Int) {
-        guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
-            return
-        }
-
-        eventManager.add(event: StopMovingEvent(on: playerEntityId))
-    }
-
-    func handlePlayerHook(playerIndex: Int) {
+    func handlePlayerHook(playerIndex: Int, timestamp: Date) {
         guard let playerEntityId = entityManager.playerEntityId(with: playerIndex),
               let positionComponent = entityManager.component(ofType: PositionComponent.self, of: playerEntityId) else {
             return
         }
 
-        eventManager.add(event: UseGrappleHookEvent(from: playerEntityId, isLeft: positionComponent.isFacingLeft))
+        eventManager.add(event: UseGrappleHookEvent(from: playerEntityId, isLeft: positionComponent.isFacingLeft, timestamp: timestamp))
     }
 
     private func setupSystems() {
