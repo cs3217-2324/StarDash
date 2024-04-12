@@ -44,6 +44,7 @@
 		461148962BA1D53D0073E7E1 /* PositionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148952BA1D53D0073E7E1 /* PositionSystem.swift */; };
 		461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */; };
 		461B1FF62BBC50220020F6C4 /* Database+Achievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461B1FF52BBC50220020F6C4 /* Database+Achievements.swift */; };
+		4630F0082BC95E4500FFA1C8 /* DeathEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4630F0072BC95E4500FFA1C8 /* DeathEvent.swift */; };
 		46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B8C0992BA328D900498705 /* GameEngine.swift */; };
 		46BB142A2BBE81E3001AE148 /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB14292BBE81E3001AE148 /* AchievementViewController.swift */; };
 		46BB142C2BBEB1EC001AE148 /* Achievements.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BB142B2BBEB1EC001AE148 /* Achievements.storyboard */; };
@@ -265,6 +266,7 @@
 		461148952BA1D53D0073E7E1 /* PositionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSystem.swift; sourceTree = "<group>"; };
 		461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsSystem.swift; sourceTree = "<group>"; };
 		461B1FF52BBC50220020F6C4 /* Database+Achievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+Achievements.swift"; sourceTree = "<group>"; };
+		4630F0072BC95E4500FFA1C8 /* DeathEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathEvent.swift; sourceTree = "<group>"; };
 		46B8C0992BA328D900498705 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		46BB14292BBE81E3001AE148 /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		46BB142B2BBEB1EC001AE148 /* Achievements.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Achievements.storyboard; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 				143AA38B2BA4D3E3009C28E7 /* JumpEvent.swift */,
 				14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */,
 				E638B9CE2BAB3C5D00931CC2 /* TeleportEvent.swift */,
+				4630F0072BC95E4500FFA1C8 /* DeathEvent.swift */,
 			);
 			path = CommonEvents;
 			sourceTree = "<group>";
@@ -1287,6 +1290,7 @@
 				E69EE9322BAC6CBB00033AB5 /* GameInfo.swift in Sources */,
 				46BB14302BBFCD4D001AE148 /* MonsterObstacleContactEvent.swift in Sources */,
 				46D418222BA5D4E60091A38B /* Obstacle+Collidable.swift in Sources */,
+				4630F0082BC95E4500FFA1C8 /* DeathEvent.swift in Sources */,
 				E638B9CF2BAB3C5D00931CC2 /* TeleportEvent.swift in Sources */,
 				143AA3972BA4E0D9009C28E7 /* PickupCollectibleEvent.swift in Sources */,
 				46C3B1C72BB596DE00F10574 /* GrappleHook.swift in Sources */,
