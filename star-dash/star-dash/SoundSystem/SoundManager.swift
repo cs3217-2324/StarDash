@@ -2,16 +2,16 @@ import AVFoundation
 import UIKit
 
 class SoundManager: SoundSystem {
-    static var instance: SoundManager?
+    private static var instance: SoundManager?
 
     static let backgroundMusicFile = "background_music"
 
     static let delay = 0.1 // 0.1 seconds break between sound effect
 
     let soundEffects: [SoundEffect: String] = [
-        SoundEffect.playerJump: "game_won",
-        SoundEffect.playerDamaged: "game_lost",
-        SoundEffect.monsterDeath: "explosion"
+        SoundEffect.playerJump: "player_jump",
+        SoundEffect.playerDamaged: "player_damaged",
+        SoundEffect.monsterDeath: "monster_death"
     ]
 
     var backgroundMusicPlayer: AVAudioPlayer?

@@ -143,6 +143,7 @@ class GameEngine {
         systemManager.add(ScoreSystem(entityManager, dispatcher: self))
         systemManager.add(HealthSystem(entityManager, dispatcher: self))
         systemManager.add(SpriteSystem(entityManager, dispatcher: self))
+        systemManager.add(GameSoundSystem(entityManager, dispatcher: self))
 
         // Complex Systems
         systemManager.add(CollisionSystem(entityManager, dispatcher: self))
