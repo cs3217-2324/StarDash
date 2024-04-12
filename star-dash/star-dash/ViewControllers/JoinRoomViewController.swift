@@ -56,27 +56,25 @@ class JoinRoomViewController: UIViewController {
 
     func setupCurrentCodeTapGesture() {
         for view in CurrentCode.arrangedSubviews {
-            guard let label = view as? UILabel else { continue }
             let tapGestureRecognizer = UITapGestureRecognizer(
                 target: self,
                 action: #selector(currentCodeLabelTapped(_:)))
-            label.isUserInteractionEnabled = true
-            label.addGestureRecognizer(tapGestureRecognizer)
+            view.isUserInteractionEnabled = true
+            view.addGestureRecognizer(tapGestureRecognizer)
         }
     }
 
     @objc func currentCodeLabelTapped(_ sender: UITapGestureRecognizer) {
-        guard let tappedLabel = sender.view as? UILabel,
-              let tappedIndex = CurrentCode.arrangedSubviews.firstIndex(of: tappedLabel),
+        guard let tappedView = sender.view,
+              let tappedIndex = CurrentCode.arrangedSubviews.firstIndex(of: tappedView),
               tappedIndex < selectedFruits.count else { return }
 
         let removedFruit = selectedFruits.remove(at: tappedIndex)
-        tappedLabel.removeFromSuperview()
+        tappedView.removeFromSuperview()
 
         // Shift remaining fruits to the left
         updateCurrentCodeUI()
 
-        print("Removed fruit: \(removedFruit)")
     }
 
     @objc func fruitButtonTapped(_ sender: FruitButton) {
