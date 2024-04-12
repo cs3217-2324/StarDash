@@ -1,8 +1,8 @@
-mport AVFoundation
+import AVFoundation
 import UIKit
 
 class SoundManager: SoundSystem {
-    static let instance: SoundManager?
+    static var instance: SoundManager?
 
     static let backgroundMusicFile = "background_music"
 
@@ -11,8 +11,7 @@ class SoundManager: SoundSystem {
     let soundEffects: [SoundEffect: String] = [
         SoundEffect.playerJump: "game_won",
         SoundEffect.playerDamaged: "game_lost",
-        SoundEffect.monsterDeath: "explosion",
-        SoundEffect.ballHit: "ball_hit"
+        SoundEffect.monsterDeath: "explosion"
     ]
 
     var backgroundMusicPlayer: AVAudioPlayer?

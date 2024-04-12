@@ -16,7 +16,7 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
 
         soundSystem = SoundManager.getInstance()
-        soundSystem.startBackgroundMusic()
+        soundSystem?.startBackgroundMusic()
     }
 
     @IBAction private func singlePlayer(_ sender: Any) {

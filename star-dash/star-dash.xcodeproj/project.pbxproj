@@ -143,6 +143,9 @@
 		E64F316D2BB4861800EC5371 /* SpeedBoostPowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64F316B2BB4861800EC5371 /* SpeedBoostPowerUp.swift */; };
 		E64F31712BB4862700EC5371 /* SpeedBoostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64F31702BB4862700EC5371 /* SpeedBoostComponent.swift */; };
 		E64F31732BB4882D00EC5371 /* PowerUpBoxEntityPersistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64F31722BB4882D00EC5371 /* PowerUpBoxEntityPersistable.swift */; };
+		E65993702BC9116500DB845D /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E659936D2BC9116500DB845D /* SoundManager.swift */; };
+		E65993712BC9116500DB845D /* SoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E659936E2BC9116500DB845D /* SoundSystem.swift */; };
+		E65993722BC9116500DB845D /* SoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E659936F2BC9116500DB845D /* SoundEffect.swift */; };
 		E660353D2BB5EAEE00397068 /* MiniMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E660353C2BB5EAEE00397068 /* MiniMapView.swift */; };
 		E69EE9322BAC6CBB00033AB5 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69EE9312BAC6CBB00033AB5 /* GameInfo.swift */; };
 		E69EE9342BAC6CC300033AB5 /* OverlayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69EE9332BAC6CC300033AB5 /* OverlayInfo.swift */; };
@@ -366,6 +369,9 @@
 		E64F316B2BB4861800EC5371 /* SpeedBoostPowerUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedBoostPowerUp.swift; sourceTree = "<group>"; };
 		E64F31702BB4862700EC5371 /* SpeedBoostComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedBoostComponent.swift; sourceTree = "<group>"; };
 		E64F31722BB4882D00EC5371 /* PowerUpBoxEntityPersistable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerUpBoxEntityPersistable.swift; sourceTree = "<group>"; };
+		E659936D2BC9116500DB845D /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		E659936E2BC9116500DB845D /* SoundSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundSystem.swift; sourceTree = "<group>"; };
+		E659936F2BC9116500DB845D /* SoundEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
 		E660353C2BB5EAEE00397068 /* MiniMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniMapView.swift; sourceTree = "<group>"; };
 		E69EE9312BAC6CBB00033AB5 /* GameInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
 		E69EE9332BAC6CC300033AB5 /* OverlayInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayInfo.swift; sourceTree = "<group>"; };
@@ -710,6 +716,7 @@
 		4E630EF42B9F7E070008F887 /* star-dash */ = {
 			isa = PBXGroup;
 			children = (
+				E659936C2BC9116500DB845D /* SoundSystem */,
 				4E64294C2BBF1718005E3D7E /* Logger */,
 				46D049F32BB94ED30096D9F2 /* Achievement */,
 				4E59E2592BAB3FC9007B3FA7 /* Model */,
@@ -877,6 +884,16 @@
 				E64F31702BB4862700EC5371 /* SpeedBoostComponent.swift */,
 			);
 			path = PowerUps;
+			sourceTree = "<group>";
+		};
+		E659936C2BC9116500DB845D /* SoundSystem */ = {
+			isa = PBXGroup;
+			children = (
+				E659936D2BC9116500DB845D /* SoundManager.swift */,
+				E659936E2BC9116500DB845D /* SoundSystem.swift */,
+				E659936F2BC9116500DB845D /* SoundEffect.swift */,
+			);
+			path = SoundSystem;
 			sourceTree = "<group>";
 		};
 		E660353B2BB5EAD300397068 /* Recovered References */ = {
@@ -1198,6 +1215,7 @@
 				1471B0A62BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift in Sources */,
 				4E630F392B9F943B0008F887 /* EntityManager.swift in Sources */,
 				46C3B1C02BB45C2700F10574 /* EntityFactory.swift in Sources */,
+				E65993712BC9116500DB845D /* SoundSystem.swift in Sources */,
 				4E630F302B9F83DE0008F887 /* SpriteComponent.swift in Sources */,
 				46D4181A2BA5CDBD0091A38B /* CollisionHandler.swift in Sources */,
 				4E86605F2BA095E30035530D /* Collectible.swift in Sources */,
@@ -1240,6 +1258,7 @@
 				46D418132BA5C9930091A38B /* Floor.swift in Sources */,
 				E64361152BA4C2CD003850FD /* GameBridge.swift in Sources */,
 				46D04A072BBACA6A0096D9F2 /* PowerRangerAchievementPersistable.swift in Sources */,
+				E65993702BC9116500DB845D /* SoundManager.swift in Sources */,
 				E6B0AAD32BAAE438009CB939 /* ControlViewDelegate.swift in Sources */,
 				4604BBD92BA81C940078B84C /* InventorySystem.swift in Sources */,
 				46D049F52BB94EFA0096D9F2 /* AchievementManager.swift in Sources */,
@@ -1281,6 +1300,7 @@
 				E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */,
 				E6A745182BA057040080C1BE /* Renderer.swift in Sources */,
 				E69F180C2BC7C3A4008A6498 /* UIImage.swift in Sources */,
+				E65993722BC9116500DB845D /* SoundEffect.swift in Sources */,
 				E6A115372BB9E2F90076A21F /* SpriteSystem.swift in Sources */,
 				46D04A032BBACA490096D9F2 /* TwinkleStarAchievementPersistable.swift in Sources */,
 				460A200D2BB1DF27002597B8 /* PlayerSystem.swift in Sources */,
@@ -1522,7 +1542,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VFS4882B2L;
+				DEVELOPMENT_TEAM = EBN5NJJVSU;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "star-dash/Info.plist";
@@ -1538,7 +1558,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ruihan-sd";
+				PRODUCT_BUNDLE_IDENTIFIER = "jyjy-sd";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1557,7 +1577,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VFS4882B2L;
+				DEVELOPMENT_TEAM = EBN5NJJVSU;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "star-dash/Info.plist";
@@ -1573,7 +1593,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ruihan-sd";
+				PRODUCT_BUNDLE_IDENTIFIER = "jyjy-sd";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
