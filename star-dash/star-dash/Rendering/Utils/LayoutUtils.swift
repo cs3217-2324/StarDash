@@ -40,4 +40,27 @@ class LayoutUtils {
             PlayerViewLayout(superview: player2View, rotation: .pi * 3 / 2)
         ]
     }
+
+    static func scaledPlayerScreenSize(sceneSize: CGSize, for numberOfPlayers: Int) -> CGSize {
+        let screenSize = UIScreen.main.bounds.size
+
+        // Assume device is in horizontal orientation
+        let screenWidth = max(screenSize.width, screenSize.height)
+        let screenHeight = min(screenSize.width, screenSize.height)
+
+        // Scale screen size using .aspectFill
+        let xScale = screenWidth / sceneSize.width
+        let yScale = screenHeight / sceneSize.height
+        let scale = max(xScale, yScale)
+        let scaledScreenSize = screenSize.applying(CGAffineTransform(scaleX: 1 / scale, y: 1 / scale))
+
+        switch numberOfPlayers {
+        case 1:
+            return scaledScreenSize
+        case 2:
+            return CGSize(width: scaledScreenSize.height, height: scaledScreenSize.width / 2)
+        default:
+            return scaledScreenSize
+        }
+    }
 }

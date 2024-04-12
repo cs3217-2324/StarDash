@@ -40,6 +40,12 @@ public class GameScene: SKScene {
         sceneDelegate?.update(self, deltaTime: deltaTime)
     }
 
+    public func setupCameras(playerScreenSize: CGSize) {
+        for camera in cameraPlayerMap.values {
+            camera.setup(playerScreenSize: playerScreenSize, sceneSize: self.size)
+        }
+    }
+
     public func useCamera(of playerIndex: Int, rotatedBy rotation: CGFloat) {
         guard let cameraObject = cameraPlayerMap[playerIndex] else {
             return
@@ -47,17 +53,16 @@ public class GameScene: SKScene {
         cameraObject.zRotation = rotation
         self.camera = cameraObject.cameraNode
     }
-
 }
 
 extension GameScene: SDScene {
     public func addPlayerObject(_ playerObject: SDObject, playerIndex: Int) {
-        let playerScreenSize = scaledPlayerScreenSize(for: numberOfPlayers)
-        let camera = SDCameraObject(player: playerObject, screenSize: playerScreenSize, sceneSize: self.size)
+        let camera = SDCameraObject(player: playerObject)
         cameraPlayerMap[playerIndex] = camera
 
         addObject(camera)
         addObject(playerObject)
+        sceneDelegate?.setupCameras()
     }
 
     public func addObject(_ object: SDObject) {
@@ -72,29 +77,6 @@ extension GameScene: SDScene {
     public func removeObject(_ object: SDObject) {
         objectMap[object.node] = nil
         object.removeFromParent()
-    }
-
-    private func scaledPlayerScreenSize(for numberOfPlayers: Int) -> CGSize {
-        let screenSize = UIScreen.main.bounds.size
-
-        // Default to horizontal orientation
-        let screenWidth = max(screenSize.width, screenSize.height)
-        let screenHeight = min(screenSize.width, screenSize.height)
-
-        // Scale screen size using aspectFill method
-        let xScale = screenWidth / self.size.width
-        let yScale = screenHeight / self.size.height
-        let scale = max(xScale, yScale)
-        let scaledScreenSize = screenSize.applying(CGAffineTransform(scaleX: 1 / scale, y: 1 / scale))
-
-        switch numberOfPlayers {
-        case 1:
-            return scaledScreenSize
-        case 2:
-            return CGSize(width: scaledScreenSize.height, height: scaledScreenSize.width / 2)
-        default:
-            return scaledScreenSize
-        }
     }
 }
 
