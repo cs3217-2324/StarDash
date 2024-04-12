@@ -61,7 +61,7 @@ class JumpModule: MovementModule {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let velocity = physicsSystem.velocity(of: event.entityId),
               entityManager.component(ofType: JumpComponent.self, of: event.entityId) == nil,
-              velocity.dy == 0 else {
+              abs(velocity.dy) < 0.000001 else {
             return nil
         }
 
