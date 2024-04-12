@@ -22,6 +22,7 @@ struct EntityFactory {
                         textureAtlas: nil,
                         size: PhysicsConstants.Dimensions.player)
             .withScore(score: 0)
+            .withDeathTimer()
             .withPhysics(rectangleOf: PhysicsConstants.Dimensions.player)
                 .configureCategoryBitMask(PhysicsConstants.CollisionCategory.player)
                 .configureContactTestMask(PhysicsConstants.ContactMask.player)
@@ -44,8 +45,9 @@ struct EntityFactory {
                         textureSet: SpriteConstants.monsterTexture,
                         textureAtlas: nil,
                         size: size)
+            .withDeathTimer()
             .withPhysics(rectangleOf: size)
-                .configureVelocity(PhysicsConstants.Monster.moveVelocityLeft)
+                .configureVelocity(CGVector(dx: PhysicsConstants.Monster.moveSpeed, dy: 0))
                 .configureCategoryBitMask(PhysicsConstants.CollisionCategory.monster)
                 .configureContactTestMask(PhysicsConstants.ContactMask.monster)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.monster)
