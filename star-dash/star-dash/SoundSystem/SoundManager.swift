@@ -11,7 +11,8 @@ class SoundManager: SoundSystem {
     let soundEffects: [SoundEffect: String] = [
         SoundEffect.playerJump: "player_jump",
         SoundEffect.playerDeath: "player_death",
-        SoundEffect.monsterDeath: "monster_death"
+        SoundEffect.monsterDeath: "monster_death",
+        SoundEffect.collectible: "collectible" 
     ]
 
     var backgroundMusicPlayer: AVAudioPlayer?
