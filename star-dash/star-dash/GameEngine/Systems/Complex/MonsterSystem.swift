@@ -33,11 +33,7 @@ class MonsterSystem: System {
                 continue
             }
 
-            let newXVelocity = monsterVelocity.dx > 0
-                              ? PhysicsConstants.Monster.moveSpeed
-                              : -PhysicsConstants.Monster.moveSpeed
-            let newVelocity = CGVector(dx: newXVelocity, dy: monsterVelocity.dy)
-            physicsSystem.setVelocity(to: monsterEntity.id, velocity: newVelocity)
+            dispatcher?.add(event: MoveEvent(on: monsterEntity.id, toLeft: monsterVelocity.dx < 0))
         }
     }
 
@@ -71,12 +67,7 @@ class MonsterSystem: System {
             return
         }
 
-        let newXVelocity = event.isLeft
-                          ? -PhysicsConstants.Monster.moveSpeed
-                          : PhysicsConstants.Monster.moveSpeed
-        let newVelocity = CGVector(dx: newXVelocity, dy: monsterVelocity.dy)
-
-        physicsSystem.setVelocity(to: event.monsterId, velocity: newVelocity)
+        dispatcher?.add(event: MoveEvent(on: event.monsterId, toLeft: event.isLeft))
         spriteSystem.startAnimation(of: event.monsterId, named: event.isLeft ? "runLeft" : "run")
     }
 
