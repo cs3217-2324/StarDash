@@ -70,7 +70,6 @@ class MoveModule: MovementModule {
 
     private func handleStopMovingEvent(event: StopMovingEvent) -> Event? {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
-              let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self) else {
             return nil
         }
