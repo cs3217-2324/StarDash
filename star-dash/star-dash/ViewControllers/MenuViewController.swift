@@ -9,7 +9,16 @@ import Foundation
 import UIKit
 
 class MenuViewController: UIViewController {
+    var soundSystem: SoundSystem?
     var storageManager = StorageManager()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        soundSystem = SoundManager.getInstance()
+        soundSystem?.startBackgroundMusic()
+    }
+
     @IBAction private func singlePlayer(_ sender: Any) {
         let numberOfPlayers = 1
         performSegue(withIdentifier: "LevelSelectSegue", sender: GameData(level: nil,

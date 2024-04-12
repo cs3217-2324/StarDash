@@ -36,7 +36,7 @@ struct PhysicsConstants {
         static let collectible = CollisionCategory.none
         static let obstacle = CollisionCategory.player | CollisionCategory.monster
         static let powerUpBox = CollisionCategory.none
-        static let wall = CollisionCategory.player | CollisionCategory.monster
+        static let wall = CollisionCategory.monster
         static let floor = CollisionCategory.player | CollisionCategory.monster
         static let hook = CollisionCategory.max
         ^ CollisionCategory.collectible
@@ -56,7 +56,7 @@ struct PhysicsConstants {
         static let collectible = CollisionCategory.player
         static let obstacle = CollisionCategory.homingMissile
         static let powerUpBox = CollisionCategory.player
-        static let wall = CollisionCategory.player | CollisionCategory.homingMissile
+        static let wall = CollisionCategory.monster
         static let floor = CollisionCategory.player | CollisionCategory.homingMissile
         static let hook = CollisionCategory.obstacle
         static let homingMissile = CollisionCategory.player | CollisionCategory.obstacle | CollisionMask.floor
@@ -86,7 +86,6 @@ struct PhysicsConstants {
     static let maxRunSpeed: CGFloat = 200
 
     struct Monster {
-        static let moveVelocityRight = CGVector(dx: 100, dy: 0)
-        static let moveVelocityLeft = CGVector(dx: -100, dy: 0)
+        static let moveSpeed: Double = 100
     }
 }

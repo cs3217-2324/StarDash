@@ -9,15 +9,13 @@ import Foundation
 
 class MonsterDeathEvent: Event {
     let monsterId: EntityId
-    let playerId: EntityId
 
-    init(on monsterId: EntityId, causedBy playerId: EntityId, timestamp: Date) {
+    init(on monsterId: EntityId, timestamp: Date) {
         self.monsterId = monsterId
-        self.playerId = playerId
-        super.init(playerIdForEvent: playerId, timestamp: timestamp)
+        super.init(timestamp: timestamp)
     }
 
-    convenience init(on monsterId: EntityId, causedBy playerId: EntityId) {
-        self.init(on: monsterId, causedBy: playerId, timestamp: Date.now)
+    convenience init(on monsterId: EntityId) {
+        self.init(on: monsterId, timestamp: Date.now)
     }
 }

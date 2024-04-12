@@ -145,16 +145,17 @@ class GameEngine {
         systemManager.add(ScoreSystem(entityManager, dispatcher: self))
         systemManager.add(HealthSystem(entityManager, dispatcher: self))
         systemManager.add(SpriteSystem(entityManager, dispatcher: self))
+        systemManager.add(GameSoundSystem(entityManager, dispatcher: self))
 
         // Complex Systems
-        systemManager.add(CollisionSystem(entityManager, dispatcher: self))
+        systemManager.add(RemovalSystem(entityManager, dispatcher: self))
         systemManager.add(InventorySystem(entityManager, dispatcher: self))
         systemManager.add(AttackSystem(entityManager, dispatcher: self))
         systemManager.add(PlayerSystem(entityManager, dispatcher: self))
         systemManager.add(MonsterSystem(entityManager, dispatcher: self))
         systemManager.add(MovementSystem(entityManager, dispatcher: self))
         systemManager.add(BuffSystem(entityManager, dispatcher: self))
-        systemManager.add(PlayerDeathSystem(entityManager, dispatcher: self))
+        systemManager.add(DeathSystem(entityManager, dispatcher: self))
 
         // Power-Up Systems
         systemManager.add(PowerUpSystem(entityManager, dispatcher: self))

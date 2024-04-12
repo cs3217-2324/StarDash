@@ -16,6 +16,7 @@ class PhysicsComponent: Component {
     var contactTestMask: UInt32 = 0x0
     var collisionBitMask: UInt32 = 0xFFFFFFFF
     var isDynamic = true
+    var pinned = false
     var affectedByGravity = false
     var restitution: CGFloat = 0.2
     var size: CGSize?

@@ -121,7 +121,7 @@ extension GameViewController {
         guard let gameEngine = gameEngine else {
             return
         }
-        let flag = SDSpriteObject(imageNamed: SpriteConstants.flag)
+        let flag = SDSpriteObject(imageNamed: SpriteConstants.flag.faceRight)
         flag.size = PhysicsConstants.Dimensions.flag
         flag.position = CGPoint(x: gameEngine.mapSize.width + flag.size.width / 2, y: 200)
         flag.zPosition = -1
