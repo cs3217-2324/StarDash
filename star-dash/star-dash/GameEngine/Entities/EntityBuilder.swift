@@ -67,6 +67,14 @@ class EntityBuilder {
         return self
     }
 
+    func withDeathTimer() -> Self {
+        let componentType = ObjectIdentifier(DeathTimerComponent.self)
+        let component = DeathTimerComponent(entityId: entityId)
+
+        self.components[componentType] = component
+        return self
+    }
+
     func withScore(score: Int) -> Self {
         let componentType = ObjectIdentifier(ScoreComponent.self)
         let component = ScoreComponent(entityId: entityId, score: score)

@@ -69,8 +69,8 @@ class MovementSystem: System {
 
     private func canMakeMovement(for playerId: EntityId?) -> Bool {
         guard let playerId = playerId,
-              let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
-              let isDead = playerSystem.isDead(entityId: playerId) else {
+              let deathSystem = dispatcher?.system(ofType: DeathSystem.self),
+              let isDead = deathSystem.isDead(entityId: playerId) else {
             return true
         }
 

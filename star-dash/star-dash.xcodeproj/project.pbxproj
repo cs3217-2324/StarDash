@@ -38,7 +38,7 @@
 		460A20092BB1B524002597B8 /* EventListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A20082BB1B524002597B8 /* EventListener.swift */; };
 		460A200B2BB1D04F002597B8 /* AttackSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A200A2BB1D04F002597B8 /* AttackSystem.swift */; };
 		460A200D2BB1DF27002597B8 /* PlayerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A200C2BB1DF27002597B8 /* PlayerSystem.swift */; };
-		460A200F2BB1E1F1002597B8 /* CollisionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A200E2BB1E1F1002597B8 /* CollisionSystem.swift */; };
+		460A200F2BB1E1F1002597B8 /* RemovalSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A200E2BB1E1F1002597B8 /* RemovalSystem.swift */; };
 		460A20112BB1E6DF002597B8 /* MonsterSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A20102BB1E6DF002597B8 /* MonsterSystem.swift */; };
 		461148912BA1CDBF0073E7E1 /* SystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148902BA1CDBF0073E7E1 /* SystemManager.swift */; };
 		461148932BA1D04B0073E7E1 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148922BA1D04B0073E7E1 /* System.swift */; };
@@ -86,6 +86,7 @@
 		46D418262BA5D6500091A38B /* Wall+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418252BA5D6500091A38B /* Wall+Collidable.swift */; };
 		46D418282BA5D6800091A38B /* Floor+Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D418272BA5D6800091A38B /* Floor+Collidable.swift */; };
 		46F0ECDF2BC66ADE00687961 /* GrappleHookModule+HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F0ECDE2BC66ADE00687961 /* GrappleHookModule+HelperExtensions.swift */; };
+		46F0ECE32BC685BB00687961 /* DeathTimerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F0ECE22BC685BB00687961 /* DeathTimerComponent.swift */; };
 		4E0905FF2BB4A4EB00DE666B /* PlayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0905FE2BB4A4EB00DE666B /* PlayerInfo.swift */; };
 		4E18DD082BBB050B00746ACC /* LevelSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E18DD072BBB050B00746ACC /* LevelSelectorViewController.swift */; };
 		4E18DD0A2BBB053A00746ACC /* LevelSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E18DD092BBB053A00746ACC /* LevelSelector.storyboard */; };
@@ -158,7 +159,7 @@
 		E6A1030C2BBAF0F7005BDFFA /* MissileHitPlayerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1030B2BBAF0F7005BDFFA /* MissileHitPlayerEvent.swift */; };
 		E6A103102BBAF9B4005BDFFA /* MissileBlockedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1030F2BBAF9B4005BDFFA /* MissileBlockedEvent.swift */; };
 		E6A115372BB9E2F90076A21F /* SpriteSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A115362BB9E2F90076A21F /* SpriteSystem.swift */; };
-		E6A492962BBD5C0C00A8A374 /* PlayerDeathSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A492952BBD5C0C00A8A374 /* PlayerDeathSystem.swift */; };
+		E6A492962BBD5C0C00A8A374 /* DeathSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A492952BBD5C0C00A8A374 /* DeathSystem.swift */; };
 		E6A72FC52BB2E1E10015729E /* PlayerViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A72FC32BB2E1E10015729E /* PlayerViewLayout.swift */; };
 		E6A72FC62BB2E1E10015729E /* LayoutUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A72FC42BB2E1E10015729E /* LayoutUtils.swift */; };
 		E6A745162BA057040080C1BE /* MTKRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A745112BA057040080C1BE /* MTKRenderer.swift */; };
@@ -257,7 +258,7 @@
 		460A20082BB1B524002597B8 /* EventListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListener.swift; sourceTree = "<group>"; };
 		460A200A2BB1D04F002597B8 /* AttackSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackSystem.swift; sourceTree = "<group>"; };
 		460A200C2BB1DF27002597B8 /* PlayerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSystem.swift; sourceTree = "<group>"; };
-		460A200E2BB1E1F1002597B8 /* CollisionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionSystem.swift; sourceTree = "<group>"; };
+		460A200E2BB1E1F1002597B8 /* RemovalSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemovalSystem.swift; sourceTree = "<group>"; };
 		460A20102BB1E6DF002597B8 /* MonsterSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterSystem.swift; sourceTree = "<group>"; };
 		461148902BA1CDBF0073E7E1 /* SystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemManager.swift; sourceTree = "<group>"; };
 		461148922BA1D04B0073E7E1 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
@@ -307,6 +308,7 @@
 		46D418252BA5D6500091A38B /* Wall+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wall+Collidable.swift"; sourceTree = "<group>"; };
 		46D418272BA5D6800091A38B /* Floor+Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Floor+Collidable.swift"; sourceTree = "<group>"; };
 		46F0ECDE2BC66ADE00687961 /* GrappleHookModule+HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GrappleHookModule+HelperExtensions.swift"; sourceTree = "<group>"; };
+		46F0ECE22BC685BB00687961 /* DeathTimerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathTimerComponent.swift; sourceTree = "<group>"; };
 		4E0905FC2BB4A15600DE666B /* MiniMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniMapView.swift; sourceTree = "<group>"; };
 		4E0905FE2BB4A4EB00DE666B /* PlayerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfo.swift; sourceTree = "<group>"; };
 		4E18DD072BBB050B00746ACC /* LevelSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectorViewController.swift; sourceTree = "<group>"; };
@@ -385,7 +387,7 @@
 		E6A1030D2BBAF3B1005BDFFA /* HomingMissile+Collidable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomingMissile+Collidable.swift"; sourceTree = "<group>"; };
 		E6A1030F2BBAF9B4005BDFFA /* MissileBlockedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MissileBlockedEvent.swift; path = "star-dash/GameEngine/Collision/MissileBlockedEvent.swift"; sourceTree = SOURCE_ROOT; };
 		E6A115362BB9E2F90076A21F /* SpriteSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpriteSystem.swift; path = "star-dash/GameEngine/Systems/Basic/SpriteSystem.swift"; sourceTree = SOURCE_ROOT; };
-		E6A492952BBD5C0C00A8A374 /* PlayerDeathSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDeathSystem.swift; sourceTree = "<group>"; };
+		E6A492952BBD5C0C00A8A374 /* DeathSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeathSystem.swift; sourceTree = "<group>"; };
 		E6A72FC32BB2E1E10015729E /* PlayerViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewLayout.swift; sourceTree = "<group>"; };
 		E6A72FC42BB2E1E10015729E /* LayoutUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutUtils.swift; sourceTree = "<group>"; };
 		E6A745112BA057040080C1BE /* MTKRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTKRenderer.swift; sourceTree = "<group>"; };
@@ -779,6 +781,7 @@
 				E64F316F2BB4862700EC5371 /* PowerUps */,
 				E6D45DC22BB6E6E30004CBA2 /* BuffComponent.swift */,
 				E69FDDDF2BAD3DAD0089D5F3 /* PointsComponent.swift */,
+				46F0ECE22BC685BB00687961 /* DeathTimerComponent.swift */,
 				E6B34A462BAA03AF0009A60B /* PlayerComponent.swift */,
 				4E630F292B9F7EF60008F887 /* PositionComponent.swift */,
 				14970F4F2BA814D500CC1E8A /* ScoreComponent.swift */,
@@ -923,6 +926,7 @@
 				E6D45DC02BB6E6CF0004CBA2 /* BuffSystem.swift */,
 				1471B09F2BA6A70600878B14 /* HealthSystem.swift */,
 				14970F532BA8163300CC1E8A /* ScoreSystem.swift */,
+				460A200E2BB1E1F1002597B8 /* RemovalSystem.swift */,
 				461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */,
 				461148952BA1D53D0073E7E1 /* PositionSystem.swift */,
 				460A20102BB1E6DF002597B8 /* MonsterSystem.swift */,
@@ -936,9 +940,8 @@
 			isa = PBXGroup;
 			children = (
 				E6ADAED82BC555B7007BB12E /* Movement */,
-				E6A492952BBD5C0C00A8A374 /* PlayerDeathSystem.swift */,
+				E6A492952BBD5C0C00A8A374 /* DeathSystem.swift */,
 				460A200A2BB1D04F002597B8 /* AttackSystem.swift */,
-				460A200E2BB1E1F1002597B8 /* CollisionSystem.swift */,
 			);
 			path = Complex;
 			sourceTree = "<group>";
@@ -1251,7 +1254,7 @@
 				46C3B1D22BB59F8600F10574 /* RetractGrappleHookEvent.swift in Sources */,
 				4E630F2A2B9F7EF60008F887 /* PositionComponent.swift in Sources */,
 				E6D45DC52BB6ED8F0004CBA2 /* PowerUpComponent.swift in Sources */,
-				E6A492962BBD5C0C00A8A374 /* PlayerDeathSystem.swift in Sources */,
+				E6A492962BBD5C0C00A8A374 /* DeathSystem.swift in Sources */,
 				E6A1030C2BBAF0F7005BDFFA /* MissileHitPlayerEvent.swift in Sources */,
 				46F0ECDF2BC66ADE00687961 /* GrappleHookModule+HelperExtensions.swift in Sources */,
 				E6AB5E072BBC3FB400F2199E /* PowerUpBoxPlayerEvent.swift in Sources */,
@@ -1325,6 +1328,7 @@
 				14970F502BA814D500CC1E8A /* ScoreComponent.swift in Sources */,
 				46D049FF2BBA81140096D9F2 /* PlayerAchievements.swift in Sources */,
 				E69FDDE42BADC2F10089D5F3 /* SpriteConstants.swift in Sources */,
+				46F0ECE32BC685BB00687961 /* DeathTimerComponent.swift in Sources */,
 				E6B1CC5D2BB7E00600416BCD /* MonsterEntityPersistable.swift in Sources */,
 				14D348F12BBF00A700515036 /* RaceMode.swift in Sources */,
 				E64F31672BB3D14600EC5371 /* UIView.swift in Sources */,
@@ -1346,7 +1350,7 @@
 				E6ADAEDE2BC555B7007BB12E /* JumpModule.swift in Sources */,
 				145F2C802BA203B400457549 /* Event.swift in Sources */,
 				4E64294E2BBF1773005E3D7E /* Logger.swift in Sources */,
-				460A200F2BB1E1F1002597B8 /* CollisionSystem.swift in Sources */,
+				460A200F2BB1E1F1002597B8 /* RemovalSystem.swift in Sources */,
 				1471B0A22BA6AA2200878B14 /* RespawnEvent.swift in Sources */,
 				46D418112BA5C88B0091A38B /* Wall.swift in Sources */,
 				E6D45DBC2BB6E6080004CBA2 /* SpeedBoostPowerUpSystem.swift in Sources */,
