@@ -43,10 +43,15 @@ class EntityBuilder {
         return self
     }
 
-    func withSprite(image: String, textureSet: TextureSet?, textureAtlas: String?, size: CGSize?) -> Self {
+    func withSprite(image: ImageSet?,
+                    imageMode: String?,
+                    textureSet: TextureSet?,
+                    textureAtlas: String?,
+                    size: CGSize?) -> Self {
         let componentType = ObjectIdentifier(SpriteComponent.self)
         let component = SpriteComponent(entityId: entityId,
                                         image: image,
+                                        imageMode: imageMode,
                                         textureSet: textureSet,
                                         textureAtlas: textureAtlas,
                                         size: size)
@@ -55,10 +60,15 @@ class EntityBuilder {
         return self
     }
 
-    func withSprite(image: String, textureSet: TextureSet?, textureAtlas: String?, radius: CGFloat?) -> Self {
+    func withSprite(image: ImageSet?,
+                    imageMode: String?,
+                    textureSet: TextureSet?,
+                    textureAtlas: String?,
+                    radius: CGFloat?) -> Self {
         let componentType = ObjectIdentifier(SpriteComponent.self)
         let component = SpriteComponent(entityId: entityId,
                                         image: image,
+                                        imageMode: imageMode,
                                         textureSet: textureSet,
                                         textureAtlas: textureAtlas,
                                         radius: radius)
