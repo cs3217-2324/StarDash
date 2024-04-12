@@ -64,7 +64,8 @@ class JoinRoomViewController: UIViewController {
         }
     }
 
-    @objc func currentCodeLabelTapped(_ sender: UITapGestureRecognizer) {
+    @objc
+    func currentCodeLabelTapped(_ sender: UITapGestureRecognizer) {
         guard let tappedView = sender.view,
               let tappedIndex = CurrentCode.arrangedSubviews.firstIndex(of: tappedView),
               tappedIndex < selectedFruits.count else { return }
@@ -77,7 +78,8 @@ class JoinRoomViewController: UIViewController {
 
     }
 
-    @objc func fruitButtonTapped(_ sender: FruitButton) {
+    @objc
+    func fruitButtonTapped(_ sender: FruitButton) {
         guard let imageName = sender.imageName,
               selectedFruits.count < 4 else { return }
 
