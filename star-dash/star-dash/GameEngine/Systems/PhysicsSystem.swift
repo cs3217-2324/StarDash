@@ -28,6 +28,15 @@ class PhysicsSystem: System {
         }
     }
 
+    func velocity(of entityId: EntityId) -> CGVector? {
+        guard let physicsComponent = getPhysicsComponent(of: entityId) else {
+            return nil
+        }
+        print(physicsComponent.velocity)
+
+        return physicsComponent.velocity
+    }
+
     func isMoving(_ entityId: EntityId) -> Bool {
         guard let physicsComponent = getPhysicsComponent(of: entityId) else {
             return false
