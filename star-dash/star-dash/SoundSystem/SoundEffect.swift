@@ -1,5 +1,5 @@
 enum SoundEffect {
     case playerJump
-    case playerDamaged
+    case playerDeath
     case monsterDeath
 }

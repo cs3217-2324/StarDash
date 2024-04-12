@@ -10,7 +10,7 @@ class SoundManager: SoundSystem {
 
     let soundEffects: [SoundEffect: String] = [
         SoundEffect.playerJump: "player_jump",
-        SoundEffect.playerDamaged: "player_damaged",
+        SoundEffect.playerDeath: "player_death",
         SoundEffect.monsterDeath: "monster_death"
     ]
 

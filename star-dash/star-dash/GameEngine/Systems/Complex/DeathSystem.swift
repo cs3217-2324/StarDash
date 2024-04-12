@@ -60,11 +60,13 @@ class DeathSystem: System {
     private func handlePlayerDeathEvent(event: PlayerDeathEvent) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
+              let soundSystem = dispatcher?.system(ofType: GameSoundSystem.self),
               let isDead = isDead(entityId: event.playerId),
               !isDead else {
             return
         }
 
+        soundSystem.playSoundEffect(SoundEffect.playerDeath)
         physicsSystem.setVelocity(to: event.playerId, velocity: .zero)
         physicsSystem.setPinned(of: event.playerId, to: true)
         spriteSystem.startAnimation(of: event.playerId,
@@ -78,11 +80,13 @@ class DeathSystem: System {
     private func handleMonsterDeathEvent(event: MonsterDeathEvent) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
+              let soundSystem = dispatcher?.system(ofType: GameSoundSystem.self),
               let isDead = isDead(entityId: event.monsterId),
               !isDead else {
             return
         }
 
+        soundSystem.playSoundEffect(SoundEffect.playerDeath)
         physicsSystem.setVelocity(to: event.monsterId, velocity: .zero)
         physicsSystem.setPinned(of: event.monsterId, to: true)
         spriteSystem.startAnimation(of: event.monsterId,
