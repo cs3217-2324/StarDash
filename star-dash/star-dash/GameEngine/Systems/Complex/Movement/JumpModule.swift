@@ -59,11 +59,11 @@ class JumpModule: MovementModule {
 
     private func handleJumpEvent(event: JumpEvent) -> Event? {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
-              let soundSystem = dispatcher?.system(ofType: GameSoundSystem.self)
+              let soundSystem = dispatcher?.system(ofType: GameSoundSystem.self),
               entityManager.component(ofType: JumpComponent.self, of: event.entityId) == nil else {
             return nil
         }
-        
+
         createJumpComponent(for: event.entityId)
         physicsSystem.applyImpulse(to: event.entityId, impulse: event.jumpImpulse)
         soundSystem.playSoundEffect(SoundEffect.playerJump)

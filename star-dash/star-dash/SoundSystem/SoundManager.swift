@@ -12,7 +12,7 @@ class SoundManager: SoundSystem {
         SoundEffect.playerJump: "player_jump",
         SoundEffect.playerDeath: "player_death",
         SoundEffect.monsterDeath: "monster_death",
-        SoundEffect.collectible: "collectible" 
+        SoundEffect.collectible: "collectible"
     ]
 
     var backgroundMusicPlayer: AVAudioPlayer?
@@ -42,7 +42,7 @@ class SoundManager: SoundSystem {
         do {
             soundEffectsPlayer = try AVAudioPlayer(data: effectData, fileTypeHint: "mp3")
             soundEffectsPlayer?.numberOfLoops = 0
-            soundEffectsPlayer?.volume = 0.3
+            soundEffectsPlayer?.volume = 0.5
             soundEffectsPlayer?.play()
 
             lastEffectPlayedTime = CACurrentMediaTime()

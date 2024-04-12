@@ -24,7 +24,6 @@
 		1471B0AD2BA6AE4E00878B14 /* UseGrappleHookEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471B0AC2BA6AE4E00878B14 /* UseGrappleHookEvent.swift */; };
 		14970F502BA814D500CC1E8A /* ScoreComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14970F4F2BA814D500CC1E8A /* ScoreComponent.swift */; };
 		14970F522BA8159800CC1E8A /* ScoreComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14970F512BA8159800CC1E8A /* ScoreComponentTests.swift */; };
-		14970F542BA8163300CC1E8A /* ScoreSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14970F532BA8163300CC1E8A /* ScoreSystem.swift */; };
 		14970F562BA8177B00CC1E8A /* GameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14970F552BA8177B00CC1E8A /* GameConstants.swift */; };
 		14D14B732BA5A3CD00386C3B /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */; };
 		14D348ED2BBEFFA800515036 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D348EC2BBEFFA800515036 /* GameMode.swift */; };
@@ -147,6 +146,8 @@
 		E65993702BC9116500DB845D /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E659936D2BC9116500DB845D /* SoundManager.swift */; };
 		E65993712BC9116500DB845D /* SoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E659936E2BC9116500DB845D /* SoundSystem.swift */; };
 		E65993722BC9116500DB845D /* SoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E659936F2BC9116500DB845D /* SoundEffect.swift */; };
+		E65993742BC91E0B00DB845D /* GameSoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65993732BC91E0B00DB845D /* GameSoundSystem.swift */; };
+		E65993762BC923EB00DB845D /* ScoreSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65993752BC923EB00DB845D /* ScoreSystem.swift */; };
 		E660353D2BB5EAEE00397068 /* MiniMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E660353C2BB5EAEE00397068 /* MiniMapView.swift */; };
 		E69EE9322BAC6CBB00033AB5 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69EE9312BAC6CBB00033AB5 /* GameInfo.swift */; };
 		E69EE9342BAC6CC300033AB5 /* OverlayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69EE9332BAC6CC300033AB5 /* OverlayInfo.swift */; };
@@ -245,7 +246,6 @@
 		1471B0AC2BA6AE4E00878B14 /* UseGrappleHookEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseGrappleHookEvent.swift; sourceTree = "<group>"; };
 		14970F4F2BA814D500CC1E8A /* ScoreComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreComponent.swift; sourceTree = "<group>"; };
 		14970F512BA8159800CC1E8A /* ScoreComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreComponentTests.swift; sourceTree = "<group>"; };
-		14970F532BA8163300CC1E8A /* ScoreSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreSystem.swift; sourceTree = "<group>"; };
 		14970F552BA8177B00CC1E8A /* GameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConstants.swift; sourceTree = "<group>"; };
 		14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		14D348EC2BBEFFA800515036 /* GameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
@@ -374,6 +374,8 @@
 		E659936D2BC9116500DB845D /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		E659936E2BC9116500DB845D /* SoundSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundSystem.swift; sourceTree = "<group>"; };
 		E659936F2BC9116500DB845D /* SoundEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
+		E65993732BC91E0B00DB845D /* GameSoundSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSoundSystem.swift; sourceTree = "<group>"; };
+		E65993752BC923EB00DB845D /* ScoreSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreSystem.swift; sourceTree = "<group>"; };
 		E660353C2BB5EAEE00397068 /* MiniMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniMapView.swift; sourceTree = "<group>"; };
 		E69EE9312BAC6CBB00033AB5 /* GameInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
 		E69EE9332BAC6CC300033AB5 /* OverlayInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayInfo.swift; sourceTree = "<group>"; };
@@ -922,10 +924,10 @@
 		E6A115332BB9D6EB0076A21F /* Basic */ = {
 			isa = PBXGroup;
 			children = (
+				E65993732BC91E0B00DB845D /* GameSoundSystem.swift */,
 				460A200C2BB1DF27002597B8 /* PlayerSystem.swift */,
 				E6D45DC02BB6E6CF0004CBA2 /* BuffSystem.swift */,
 				1471B09F2BA6A70600878B14 /* HealthSystem.swift */,
-				14970F532BA8163300CC1E8A /* ScoreSystem.swift */,
 				460A200E2BB1E1F1002597B8 /* RemovalSystem.swift */,
 				461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */,
 				461148952BA1D53D0073E7E1 /* PositionSystem.swift */,
@@ -940,6 +942,7 @@
 			isa = PBXGroup;
 			children = (
 				E6ADAED82BC555B7007BB12E /* Movement */,
+				E65993752BC923EB00DB845D /* ScoreSystem.swift */,
 				E6A492952BBD5C0C00A8A374 /* DeathSystem.swift */,
 				460A200A2BB1D04F002597B8 /* AttackSystem.swift */,
 			);
@@ -1275,7 +1278,6 @@
 				4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */,
 				46C3B1C22BB467BB00F10574 /* EntityManagerInterface.swift in Sources */,
 				E69FDDE02BAD3DAD0089D5F3 /* PointsComponent.swift in Sources */,
-				14970F542BA8163300CC1E8A /* ScoreSystem.swift in Sources */,
 				E64361112BA4C2CD003850FD /* SyncModule.swift in Sources */,
 				46D049FD2BB99C5B0096D9F2 /* PowerRangerAchievement.swift in Sources */,
 				E6ADAEE02BC555B7007BB12E /* MovementModule.swift in Sources */,
@@ -1320,6 +1322,7 @@
 				46C3B1C92BB5974D00F10574 /* GrappleHookComponent.swift in Sources */,
 				E6B1CC5E2BB7E00600416BCD /* CollectibleEntityPersistable.swift in Sources */,
 				46D418262BA5D6500091A38B /* Wall+Collidable.swift in Sources */,
+				E65993742BC91E0B00DB845D /* GameSoundSystem.swift in Sources */,
 				E69FDDE22BAD3DC40089D5F3 /* EntityConstants.swift in Sources */,
 				46BB142A2BBE81E3001AE148 /* AchievementViewController.swift in Sources */,
 				E6B1CC5B2BB7E00600416BCD /* ObstacleEntityPersistable.swift in Sources */,
@@ -1336,6 +1339,7 @@
 				E62430382BBAB780001FC686 /* HomingMissile.swift in Sources */,
 				E64361102BA4C2CD003850FD /* SpriteModule.swift in Sources */,
 				4604BBD52BA819C70078B84C /* InventoryComponent.swift in Sources */,
+				E65993762BC923EB00DB845D /* ScoreSystem.swift in Sources */,
 				46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */,
 				E6B34A472BAA03AF0009A60B /* PlayerComponent.swift in Sources */,
 				46D3C5C72BB702BD008CC24F /* Rope.swift in Sources */,

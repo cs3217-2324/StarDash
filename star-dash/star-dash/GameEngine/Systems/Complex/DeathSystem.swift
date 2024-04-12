@@ -86,7 +86,7 @@ class DeathSystem: System {
             return
         }
 
-        soundSystem.playSoundEffect(SoundEffect.playerDeath)
+        soundSystem.playSoundEffect(SoundEffect.monsterDeath)
         physicsSystem.setVelocity(to: event.monsterId, velocity: .zero)
         physicsSystem.setPinned(of: event.monsterId, to: true)
         spriteSystem.startAnimation(of: event.monsterId,
