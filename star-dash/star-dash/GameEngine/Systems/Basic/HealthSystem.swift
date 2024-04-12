@@ -20,6 +20,22 @@ class HealthSystem: System {
         setup()
     }
 
+    func update(by deltaTime: TimeInterval) {
+        guard let playerSystem = dispatcher?.system(ofType: PlayerSystem.self) else {
+            return
+        }
+
+        let healthComponents = entityManager.components(ofType: HealthComponent.self)
+
+        for healthComponent in healthComponents where healthComponent.health <= 0 {
+            if playerSystem.isPlayer(entityId: healthComponent.entityId) {
+                dispatcher?.add(event: PlayerDeathEvent(on: healthComponent.entityId))
+            } else {
+                dispatcher?.add(event: MonsterDeathEvent(on: healthComponent.entityId))
+            }
+        }
+    }
+
     func health(of entityId: EntityId) -> Int? {
         guard let healthComponent = getHealthComponent(of: entityId) else {
             return nil
