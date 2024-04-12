@@ -51,7 +51,7 @@ class SocketManager: NSObject, WebSocketDelegate {
         case .connected(let headers):
             isConnected = true
             print("websocket is connected: \(headers)")
-        case .disconnected(let reason, let code):
+        case .disconnected(let reason, var code):
             isConnected = false
             print("websocket is disconnected: \(reason) with code: \(code)")
         case .text(let string):
