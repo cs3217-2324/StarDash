@@ -5,7 +5,7 @@ class GameSoundSystem: System {
     var dispatcher: EventModifiable?
     var entityManager: EntityManager
     var eventHandlers: [ObjectIdentifier: (Event) -> Void] = [:]
-    
+
     let soundSystem: SoundSystem
 
     init(_ entityManager: EntityManager, dispatcher: EventModifiable? = nil) {
