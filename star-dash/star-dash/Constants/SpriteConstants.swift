@@ -71,18 +71,18 @@ struct SpriteConstants {
         runLeft: "PlayerJackRunLeft",
         death: "PlayerJackDeath"
     )
-    static let playerJackIcon = "PlayerRedNoseIcon"
+    static let playerJackIcon = "PlayerJackIcon"
 
     static let playerNinja = ImageSet(
         faceRight: "PlayerNinja",
         faceLeft: "PlayerNinjaLeft"
     )
     static let playerNinjaTexture = TextureSet(
-        run: "PlayerRedNoseRun",
-        runLeft: "PlayerRedNoseRunLeft",
-        death: "PlayerRedNoseDeath"
+        run: "PlayerNinjaRun",
+        runLeft: "PlayerNinjaRunLeft",
+        death: "PlayerNinjaDeath"
     )
-    static let playerNinjaIcon = "PlayerRedNoseIcon"
+    static let playerNinjaIcon = "PlayerNinjaIcon"
 
     static let playerImageIconMap = [
         playerRedNose: playerRedNoseIcon,
