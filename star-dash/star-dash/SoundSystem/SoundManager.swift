@@ -52,7 +52,8 @@ class SoundManager: SoundSystem {
 
     }
 
-    @objc func handleInterruption(notification: Notification) {
+    @objc
+    func handleInterruption(notification: Notification) {
         guard let userInfo = notification.userInfo,
             let interruptionTypeRawValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
             let interruptionType = AVAudioSession.InterruptionType(rawValue: interruptionTypeRawValue) else {
