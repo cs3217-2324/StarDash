@@ -60,7 +60,9 @@ class JumpModule: MovementModule {
     private func handleJumpEvent(event: JumpEvent) -> Event? {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let soundSystem = dispatcher?.system(ofType: GameSoundSystem.self),
-              entityManager.component(ofType: JumpComponent.self, of: event.entityId) == nil else {
+              let velocity = physicsSystem.velocity(of: event.entityId),
+              entityManager.component(ofType: JumpComponent.self, of: event.entityId) == nil,
+              abs(velocity.dy) < 0.000001 else {
             return nil
         }
 
