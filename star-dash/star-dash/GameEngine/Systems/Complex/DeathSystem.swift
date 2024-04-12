@@ -18,6 +18,11 @@ class DeathSystem: System {
     func setup() {
         dispatcher?.registerListener(self)
 
+        eventHandlers[ObjectIdentifier(DeathEvent.self)] = { event in
+            if let deathEvent = event as? DeathEvent {
+                self.handleDeathEvent(event: deathEvent)
+            }
+        }
         eventHandlers[ObjectIdentifier(PlayerDeathEvent.self)] = { event in
             if let playerDeathEvent = event as? PlayerDeathEvent {
                 self.handlePlayerDeathEvent(event: playerDeathEvent)
@@ -55,6 +60,18 @@ class DeathSystem: System {
         }
 
         return deathTimerComponenet.deathTimer > 0
+    }
+
+    private func handleDeathEvent(event: DeathEvent) {
+        guard let playerSystem = dispatcher?.system(ofType: PlayerSystem.self) else {
+            return
+        }
+
+        if playerSystem.isPlayer(entityId: event.entityId) {
+            dispatcher?.add(event: PlayerDeathEvent(on: event.entityId))
+        } else {
+            dispatcher?.add(event: MonsterDeathEvent(on: event.entityId))
+        }
     }
 
     private func handlePlayerDeathEvent(event: PlayerDeathEvent) {
