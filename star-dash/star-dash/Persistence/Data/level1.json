@@ -82,6 +82,7 @@
         "health": 100
       },
   ],
+  "walls": [],
   "powerUpBoxes": [
     {
       "levelId": 0,

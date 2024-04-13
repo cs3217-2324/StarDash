@@ -189,9 +189,6 @@
       "position": [4200, 750],
       "size": [100,100]
     },
-    
-    
- 
   ],
   "collectibles": [
       {
@@ -260,10 +257,7 @@
         "radius": 25,
         "points": 20
       },
-      
-      
   ],
-  
   "tools": [
       {
         "levelId": 1,
@@ -307,6 +301,18 @@
         "position": [4050, 150],
         "size": [100,100],
         "health": 100
+      },
+  ],
+  "walls": [
+      {
+        "levelId": 1,
+        "position": [1000, 600],
+        "size": [10,10]
+      },
+      {
+        "levelId": 1,
+        "position": [1400, 600],
+        "size": [10,10]
       },
   ],
   "powerUpBoxes": [

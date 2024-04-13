@@ -55,13 +55,16 @@ class MonsterSystem: System {
                 self.handleMonsterObstacleContactEvent(event: monsterObstacleContactEvent)
             }
         }
+        eventHandlers[ObjectIdentifier(MonsterWallContactEvent.self)] = { event in
+            if let monsterWallContactEvent = event as? MonsterWallContactEvent {
+                self.handleMonsterWallContactEvent(event: monsterWallContactEvent)
+            }
+        }
     }
 
     private func handleMonsterMovementReversalEvent(event: MonsterMovementReversalEvent) {
-        guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
-              let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
+        guard let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
               let deathSystem = dispatcher?.system(ofType: DeathSystem.self),
-              let monsterVelocity = physicsSystem.velocity(of: event.monsterId),
               let isMonsterDead = deathSystem.isDead(entityId: event.monsterId),
               !isMonsterDead else {
             return
@@ -117,6 +120,18 @@ class MonsterSystem: System {
     }
 
     private func handleMonsterObstacleContactEvent(event: MonsterObstacleContactEvent) {
+        guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
+              let monsterPosition = positionSystem.getPosition(of: event.monsterId),
+              abs(monsterPosition.y - event.contactPoint.y) <= 49.99 else {
+            return
+        }
+
+        let isLeft = monsterPosition.x < event.contactPoint.x
+
+        dispatcher?.add(event: MonsterMovementReversalEvent(on: event.monsterId, isLeft: isLeft))
+    }
+
+    private func handleMonsterWallContactEvent(event: MonsterWallContactEvent) {
         guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let monsterPosition = positionSystem.getPosition(of: event.monsterId) else {
             return

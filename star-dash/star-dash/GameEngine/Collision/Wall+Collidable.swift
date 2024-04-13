@@ -17,7 +17,7 @@ extension Wall: Collidable {
     }
 
     func collideWithMonster(_ monster: Monster, at contactPoint: CGPoint) -> Event? {
-        CollisionHandler.between(monster: monster, wall: self)
+        CollisionHandler.between(monster: monster, wall: self, at: contactPoint)
     }
 
     func collideWithCollectible(_ collectible: Collectible, at contactPoint: CGPoint) -> Event? {
