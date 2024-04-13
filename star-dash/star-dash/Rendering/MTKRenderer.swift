@@ -50,12 +50,6 @@ class MTKRenderer: NSObject, Renderer {
         }
     }
 
-    func setupCameras(for numberOfPlayers: Int) {
-        let playerScreenSize = LayoutUtils.scaledPlayerScreenSize(sceneSize: scene.size, for: numberOfPlayers)
-        scene.setupCameras(levelViewHeight: RenderingConstants.levelViewHeight,
-                           playerScreenSize: playerScreenSize)
-    }
-
     private func playerIndex(from mtkView: MTKView) -> Int? {
         for i in 0..<playerViews.count where playerViews[i].sceneView == mtkView {
             return i
