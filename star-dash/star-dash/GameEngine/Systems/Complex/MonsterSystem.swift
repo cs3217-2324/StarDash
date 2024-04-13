@@ -110,10 +110,8 @@ class MonsterSystem: System {
         }
 
         if isPlayerAttack {
-            print("Player attack monster")
             dispatcher?.add(event: PlayerAttackMonsterEvent(from: event.playerId, on: event.monsterId))
         } else {
-            print("Monster attack player")
             dispatcher?.add(event: MonsterAttackPlayerEvent(from: event.monsterId, on: event.playerId))
         }
     }
