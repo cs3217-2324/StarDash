@@ -5,5 +5,4 @@ import UIKit
  */
 protocol Renderer {
     func setupViews(at rootView: UIView, for numberOfPlayers: Int)
-    func setupCameras(for numberOfPlayers: Int)
 }

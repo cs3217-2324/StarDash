@@ -12,6 +12,8 @@ public class GameScene: SKScene {
 
     private var numberOfPlayers: Int = 0
 
+    public private(set) var areAllCamerasSetup = true
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -46,6 +48,7 @@ public class GameScene: SKScene {
                          playerScreenSize: playerScreenSize,
                          sceneSize: self.size)
         }
+        areAllCamerasSetup = true
     }
 
     public func useCamera(of playerIndex: Int, rotatedBy rotation: CGFloat) {
@@ -64,7 +67,7 @@ extension GameScene: SDScene {
 
         addObject(camera)
         addObject(playerObject)
-        sceneDelegate?.setupCameras()
+        areAllCamerasSetup = false
     }
 
     public func addObject(_ object: SDObject) {

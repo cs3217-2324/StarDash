@@ -100,7 +100,7 @@ extension MTKRenderer: MTKViewDelegate {
     }
 
     func updateScene(forPlayer playerIndex: Int) {
-    guard let overlayInfo = viewDelegate?.overlayInfo(forPlayer: playerIndex) else {
+        guard let overlayInfo = viewDelegate?.overlayInfo(forPlayer: playerIndex) else {
             return
         }
 
@@ -111,6 +111,13 @@ extension MTKRenderer: MTKViewDelegate {
         }
         playerViews[playerIndex].update(overlayInfo)
         scene.useCamera(of: playerIndex, rotatedBy: playerViews[playerIndex].rotation)
+
+        if !scene.areAllCamerasSetup {
+            let numberOfPlayers = playerViews.count
+            let playerScreenSize = LayoutUtils.scaledPlayerScreenSize(sceneSize: scene.size, for: numberOfPlayers)
+            scene.setupCameras(levelViewHeight: RenderingConstants.levelViewHeight,
+                               playerScreenSize: playerScreenSize)
+        }
     }
 }
 

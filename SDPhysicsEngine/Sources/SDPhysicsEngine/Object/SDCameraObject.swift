@@ -25,6 +25,10 @@ public class SDCameraObject: SDObject {
         let scale = levelViewHeight / sceneSize.height
         self.cameraNode.setScale(scale)
 
+        setupConstraints(scale: scale, playerScreenSize: playerScreenSize, sceneSize: sceneSize)
+    }
+
+    private func setupConstraints(scale: CGFloat, playerScreenSize: CGSize, sceneSize: CGSize) {
         var constraints = [SKConstraint]()
 
         if let player = player {

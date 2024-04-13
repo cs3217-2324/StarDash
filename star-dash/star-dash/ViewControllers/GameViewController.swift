@@ -149,10 +149,6 @@ extension GameViewController: SDSceneDelegate {
 
         gameEngine?.handleCollision(entityA, entityB, at: contactPoint)
     }
-
-    func setupCameras() {
-        renderer?.setupCameras(for: numberOfPlayers)
-    }
 }
 
 extension GameViewController: ViewDelegate {
