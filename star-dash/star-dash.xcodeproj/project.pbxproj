@@ -934,7 +934,6 @@
 				460A200E2BB1E1F1002597B8 /* RemovalSystem.swift */,
 				461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */,
 				461148952BA1D53D0073E7E1 /* PositionSystem.swift */,
-				460A20102BB1E6DF002597B8 /* MonsterSystem.swift */,
 				4604BBD82BA81C940078B84C /* InventorySystem.swift */,
 				E6A115362BB9E2F90076A21F /* SpriteSystem.swift */,
 			);
@@ -948,6 +947,7 @@
 				E65993752BC923EB00DB845D /* ScoreSystem.swift */,
 				E6A492952BBD5C0C00A8A374 /* DeathSystem.swift */,
 				460A200A2BB1D04F002597B8 /* AttackSystem.swift */,
+				460A20102BB1E6DF002597B8 /* MonsterSystem.swift */,
 			);
 			path = Complex;
 			sourceTree = "<group>";
