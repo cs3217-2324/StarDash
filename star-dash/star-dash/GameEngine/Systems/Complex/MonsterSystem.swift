@@ -123,10 +123,10 @@ class MonsterSystem: System {
         guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let monsterPosition = positionSystem.getPosition(of: event.monsterId),
               abs(monsterPosition.y - event.contactPoint.y) <= 49.99,
-              abs(monsterPosition.x - event.contactPoint.x) <= 49.99 else {
+              abs(monsterPosition.x - event.contactPoint.x) > 49.99 else {
             return
         }
-        print("obstacle caused reversal")
+
         let isLeft = monsterPosition.x < event.contactPoint.x
 
         dispatcher?.add(event: MonsterMovementReversalEvent(on: event.monsterId, isLeft: isLeft))
@@ -137,7 +137,7 @@ class MonsterSystem: System {
               let monsterPosition = positionSystem.getPosition(of: event.monsterId) else {
             return
         }
-        print("wall caused reversal")
+
         let isLeft = monsterPosition.x < event.contactPoint.x
 
         dispatcher?.add(event: MonsterMovementReversalEvent(on: event.monsterId, isLeft: isLeft))
