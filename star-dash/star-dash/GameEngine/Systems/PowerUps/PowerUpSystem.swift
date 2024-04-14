@@ -30,6 +30,9 @@ class PowerUpSystem: System {
         }
 
         entityManager.remove(entity: powerUp)
-        PowerUpFactory.createPowerUp(triggeredBy: event.entityId, type: type, to: entityManager)
+        PowerUpFactory.createPowerUp(triggeredBy: event.entityId,
+                                     type: type,
+                                     to: entityManager,
+                                     with: dispatcher)
     }
 }
