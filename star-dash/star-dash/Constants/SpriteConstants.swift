@@ -85,7 +85,7 @@ struct SpriteConstants {
         run: "PlayerNinjaRun",
         runLeft: "PlayerNinjaRunLeft",
         death: "PlayerNinjaDeath",
-        fly: "Plane" 
+        fly: "Plane"
     )
     static let playerNinjaIcon = "PlayerNinjaIcon"
 
