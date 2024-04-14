@@ -31,7 +31,6 @@ class GameViewController: UIViewController {
 
         setupGame()
         setupBackground(in: scene)
-        setupFlag(in: scene)
 
         guard let renderer = MTKRenderer(scene: scene) else {
             return
@@ -106,17 +105,6 @@ extension GameViewController {
             remainingGameWidth -= backgroundWidth
             numOfAddedBackgrounds += 1
         }
-    }
-
-    private func setupFlag(in scene: SDScene) {
-        guard let gameEngine = gameEngine else {
-            return
-        }
-        let flag = SDSpriteObject(imageNamed: SpriteConstants.flag.faceRight)
-        flag.size = PhysicsConstants.Dimensions.flag
-        flag.position = CGPoint(x: gameEngine.mapSize.width + flag.size.width / 2, y: 200)
-        flag.zPosition = -1
-        scene.addObject(flag)
     }
 
     private func setupBackButton() {

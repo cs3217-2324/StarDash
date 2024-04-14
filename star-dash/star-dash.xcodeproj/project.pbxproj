@@ -15,6 +15,7 @@
 		143AA3932BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3922BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift */; };
 		143AA3952BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3942BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift */; };
 		143AA3972BA4E0D9009C28E7 /* PickupCollectibleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3962BA4E0D9009C28E7 /* PickupCollectibleEvent.swift */; };
+		1443C9B92BCB7514006A3D81 /* FinishLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1443C9B82BCB7514006A3D81 /* FinishLine.swift */; };
 		145F2C802BA203B400457549 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F2C7F2BA203B400457549 /* Event.swift */; };
 		145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F2C832BA22CA300457549 /* EventModifiable.swift */; };
 		1471B0A02BA6A70600878B14 /* HealthSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471B09F2BA6A70600878B14 /* HealthSystem.swift */; };
@@ -238,6 +239,7 @@
 		143AA3922BA4DBE7009C28E7 /* PlayerMonsterContactEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMonsterContactEvent.swift; sourceTree = "<group>"; };
 		143AA3942BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterAttackPlayerEvent.swift; sourceTree = "<group>"; };
 		143AA3962BA4E0D9009C28E7 /* PickupCollectibleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupCollectibleEvent.swift; sourceTree = "<group>"; };
+		1443C9B82BCB7514006A3D81 /* FinishLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishLine.swift; sourceTree = "<group>"; };
 		145F2C7F2BA203B400457549 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		145F2C832BA22CA300457549 /* EventModifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModifiable.swift; sourceTree = "<group>"; };
 		1471B09F2BA6A70600878B14 /* HealthSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthSystem.swift; sourceTree = "<group>"; };
@@ -836,6 +838,7 @@
 				46D418122BA5C9930091A38B /* Floor.swift */,
 				46C3B1C62BB596DE00F10574 /* GrappleHook.swift */,
 				46D3C5C62BB702BD008CC24F /* Rope.swift */,
+				1443C9B82BCB7514006A3D81 /* FinishLine.swift */,
 			);
 			path = GameEntities;
 			sourceTree = "<group>";
@@ -1255,6 +1258,7 @@
 				1471B0AD2BA6AE4E00878B14 /* UseGrappleHookEvent.swift in Sources */,
 				E6D45DC72BB6F8680004CBA2 /* PowerUpBox+Collidable.swift in Sources */,
 				4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */,
+				1443C9B92BCB7514006A3D81 /* FinishLine.swift in Sources */,
 				461148962BA1D53D0073E7E1 /* PositionSystem.swift in Sources */,
 				143AA38C2BA4D3E3009C28E7 /* JumpEvent.swift in Sources */,
 				46C3B1D22BB59F8600F10574 /* RetractGrappleHookEvent.swift in Sources */,

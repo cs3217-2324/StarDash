@@ -237,4 +237,17 @@ struct EntityFactory {
             .withHomingMissile(impulse: impulse)
             .addToGame()
     }
+
+    static func createAndAddFinishLine(to entityManager: EntityManagerInterface, position: CGPoint) {
+        let finishLine = EntityBuilder(entity: FinishLine(id: UUID()), entityManager: entityManager)
+
+        finishLine
+            .withPosition(at: position)
+            .withSprite(image: SpriteConstants.flag,
+                        imageMode: "faceRight",
+                        textureSet: nil,
+                        textureAtlas: nil,
+                        size: PhysicsConstants.Dimensions.flag)
+            .addToGame()
+    }
 }
