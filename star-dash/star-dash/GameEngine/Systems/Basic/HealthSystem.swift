@@ -20,6 +20,14 @@ class HealthSystem: System {
         setup()
     }
 
+    func update(by deltaTime: TimeInterval) {
+        let healthComponents = entityManager.components(ofType: HealthComponent.self)
+
+        for healthComponent in healthComponents where healthComponent.health <= 0 {
+            dispatcher?.add(event: DeathEvent(on: healthComponent.entityId))
+        }
+    }
+
     func health(of entityId: EntityId) -> Int? {
         guard let healthComponent = getHealthComponent(of: entityId) else {
             return nil

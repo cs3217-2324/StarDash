@@ -8,7 +8,8 @@
 import Foundation
 
 class SpriteComponent: Component {
-    var image: String
+    var image: ImageSet?
+    var imageMode: String?
     var textureSet: TextureSet?
     var textureAtlas: String?
     var size: CGSize?
@@ -20,12 +21,14 @@ class SpriteComponent: Component {
     init(
         id: ComponentId,
         entityId: EntityId,
-        image: String,
+        image: ImageSet?,
+        imageMode: String?,
         textureSet: TextureSet?,
         textureAtlas: String?,
         size: CGSize?
     ) {
         self.image = image
+        self.imageMode = imageMode
         self.size = size
         self.textureSet = textureSet
         self.textureAtlas = textureAtlas
@@ -34,7 +37,8 @@ class SpriteComponent: Component {
 
     convenience init(
         entityId: EntityId,
-        image: String,
+        image: ImageSet?,
+        imageMode: String?,
         textureSet: TextureSet?,
         textureAtlas: String?,
         size: CGSize?
@@ -43,6 +47,7 @@ class SpriteComponent: Component {
             id: UUID(),
             entityId: entityId,
             image: image,
+            imageMode: imageMode,
             textureSet: textureSet,
             textureAtlas: textureAtlas,
             size: size
@@ -51,7 +56,8 @@ class SpriteComponent: Component {
 
     convenience init(
         entityId: EntityId,
-        image: String,
+        image: ImageSet?,
+        imageMode: String?,
         textureSet: TextureSet?,
         textureAtlas: String?,
         radius: CGFloat?
@@ -60,6 +66,7 @@ class SpriteComponent: Component {
             self.init(
                 entityId: entityId,
                 image: image,
+                imageMode: imageMode,
                 textureSet: textureSet,
                 textureAtlas: textureAtlas,
                 size: nil
@@ -70,6 +77,7 @@ class SpriteComponent: Component {
         self.init(
             entityId: entityId,
             image: image,
+            imageMode: imageMode,
             textureSet: textureSet,
             textureAtlas: textureAtlas,
             size: size

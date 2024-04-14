@@ -63,18 +63,17 @@ class MoveModule: MovementModule {
 
         positionSystem.setEntityFacingLeft(event.toLeft, entityId: event.entityId)
         spriteSystem.startAnimation(of: event.entityId, named: event.toLeft ? "runLeft" : "run")
+        spriteSystem.setImageDirection(of: event.entityId, to: event.toLeft ? "faceLeft" : "faceRight")
 
         return nil
     }
 
     private func handleStopMovingEvent(event: StopMovingEvent) -> Event? {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
-              let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self) else {
             return nil
         }
 
-        positionSystem.setEntityFacingLeft(false, entityId: event.entityId)
         physicsSystem.setVelocity(to: event.entityId,
                                   velocity: .zero)
         spriteSystem.endAnimation(of: event.entityId)

@@ -13,12 +13,24 @@ struct EntityFactory {
                                    position: CGPoint) {
         let playerBuilder = EntityBuilder(entity: Player(id: UUID()), entityManager: entityManager)
 
+        let playerImageSets: [Int: (ImageSet, TextureSet)] = [
+            2: (SpriteConstants.playerRedNose, SpriteConstants.playerRedNoseTexture),
+            3: (SpriteConstants.playerAdventurer, SpriteConstants.playerAdventurerTexture),
+            0: (SpriteConstants.playerJack, SpriteConstants.playerJackTexture),
+            1: (SpriteConstants.playerNinja, SpriteConstants.playerNinjaTexture)
+        ]
+
+        guard let (imageSet, textureSet) = playerImageSets[playerIndex] else {
+            return
+        }
+
         playerBuilder
             .withPlayer(playerIndex: playerIndex)
             .withPosition(at: position)
             .withHealth(health: GameConstants.InitialHealth.player)
-            .withSprite(image: SpriteConstants.playerRedNose,
-                        textureSet: SpriteConstants.playerRedNoseTexture,
+            .withSprite(image: imageSet,
+                        imageMode: "faceRight",
+                        textureSet: textureSet,
                         textureAtlas: nil,
                         size: PhysicsConstants.Dimensions.player)
             .withScore(score: 0)
@@ -42,6 +54,7 @@ struct EntityFactory {
             .withPosition(at: position)
             .withHealth(health: health)
             .withSprite(image: SpriteConstants.monster,
+                        imageMode: "faceRight",
                         textureSet: SpriteConstants.monsterTexture,
                         textureAtlas: nil,
                         size: size)
@@ -65,6 +78,7 @@ struct EntityFactory {
         collectibleBuilder
             .withPosition(at: position)
             .withSprite(image: SpriteConstants.star,
+                        imageMode: "faceRight",
                         textureSet: nil,
                         textureAtlas: nil,
                         radius: radius)
@@ -86,6 +100,7 @@ struct EntityFactory {
         obstacleBuilder
             .withPosition(at: position)
             .withSprite(image: SpriteConstants.obstacle,
+                        imageMode: "faceRight",
                         textureSet: nil,
                         textureAtlas: nil,
                         size: size)
@@ -104,6 +119,7 @@ struct EntityFactory {
         powerUpBoxBuilder
             .withPosition(at: position)
             .withSprite(image: SpriteConstants.powerUpBox,
+                        imageMode: "faceRight",
                         textureSet: nil,
                         textureAtlas: nil,
                         size: size)
@@ -154,6 +170,7 @@ struct EntityFactory {
         ropeBuilder
             .withPosition(at: startpoint)
             .withSprite(image: SpriteConstants.rope,
+                        imageMode: "faceRight",
                         textureSet: nil,
                         textureAtlas: nil,
                         size: .zero)
@@ -174,6 +191,7 @@ struct EntityFactory {
             .withGrappleHook(at: startpoint, isLeft: isLeft)
             .withPosition(at: startpoint)
             .withSprite(image: SpriteConstants.hook,
+                        imageMode: "faceRight",
                         textureSet: nil,
                         textureAtlas: nil,
                         size: CGSize(width: 20, height: 20))
@@ -206,6 +224,7 @@ struct EntityFactory {
         powerUpBuilder
             .withPosition(at: position)
             .withSprite(image: SpriteConstants.homingMissile,
+                        imageMode: "faceRight",
                         textureSet: nil,
                         textureAtlas: nil,
                         size: PhysicsConstants.Dimensions.homingMissile)

@@ -18,6 +18,11 @@ class DeathSystem: System {
     func setup() {
         dispatcher?.registerListener(self)
 
+        eventHandlers[ObjectIdentifier(DeathEvent.self)] = { event in
+            if let deathEvent = event as? DeathEvent {
+                self.handleDeathEvent(event: deathEvent)
+            }
+        }
         eventHandlers[ObjectIdentifier(PlayerDeathEvent.self)] = { event in
             if let playerDeathEvent = event as? PlayerDeathEvent {
                 self.handlePlayerDeathEvent(event: playerDeathEvent)
@@ -57,14 +62,28 @@ class DeathSystem: System {
         return deathTimerComponenet.deathTimer > 0
     }
 
+    private func handleDeathEvent(event: DeathEvent) {
+        guard let playerSystem = dispatcher?.system(ofType: PlayerSystem.self) else {
+            return
+        }
+
+        if playerSystem.isPlayer(entityId: event.entityId) {
+            dispatcher?.add(event: PlayerDeathEvent(on: event.entityId))
+        } else {
+            dispatcher?.add(event: MonsterDeathEvent(on: event.entityId))
+        }
+    }
+
     private func handlePlayerDeathEvent(event: PlayerDeathEvent) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
+              let soundSystem = dispatcher?.system(ofType: GameSoundSystem.self),
               let isDead = isDead(entityId: event.playerId),
               !isDead else {
             return
         }
 
+        soundSystem.playSoundEffect(SoundEffect.playerDeath)
         physicsSystem.setVelocity(to: event.playerId, velocity: .zero)
         physicsSystem.setPinned(of: event.playerId, to: true)
         spriteSystem.startAnimation(of: event.playerId,
@@ -78,11 +97,13 @@ class DeathSystem: System {
     private func handleMonsterDeathEvent(event: MonsterDeathEvent) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
+              let soundSystem = dispatcher?.system(ofType: GameSoundSystem.self),
               let isDead = isDead(entityId: event.monsterId),
               !isDead else {
             return
         }
 
+        soundSystem.playSoundEffect(SoundEffect.monsterDeath)
         physicsSystem.setVelocity(to: event.monsterId, velocity: .zero)
         physicsSystem.setPinned(of: event.monsterId, to: true)
         spriteSystem.startAnimation(of: event.monsterId,

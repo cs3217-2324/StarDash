@@ -10,15 +10,13 @@ import Foundation
 class MonsterDeathEvent: Event {
     let timestamp: Date
     let monsterId: EntityId
-    let playerId: EntityId
 
-    init(on monsterId: EntityId, causedBy playerId: EntityId) {
+    init(on monsterId: EntityId) {
         self.timestamp = Date.now
         self.monsterId = monsterId
-        self.playerId = playerId
     }
 
     var playerIdForEvent: EntityId? {
-        playerId
+        nil
     }
 }
