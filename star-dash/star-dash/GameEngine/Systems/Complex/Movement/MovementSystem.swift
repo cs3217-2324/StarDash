@@ -73,7 +73,11 @@ class MovementSystem: System {
               let isDead = deathSystem.isDead(entityId: playerId) else {
             return true
         }
+        guard let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
+              let hasPlayerFinishedGame = playerSystem.hasPlayerFinishedGame(entityId: playerId) else {
+            return true
+        }
 
-        return !isDead
+        return !isDead && !hasPlayerFinishedGame
     }
 }

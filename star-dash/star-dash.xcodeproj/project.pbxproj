@@ -16,6 +16,8 @@
 		143AA3952BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3942BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift */; };
 		143AA3972BA4E0D9009C28E7 /* PickupCollectibleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA3962BA4E0D9009C28E7 /* PickupCollectibleEvent.swift */; };
 		1443C9B92BCB7514006A3D81 /* FinishLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1443C9B82BCB7514006A3D81 /* FinishLine.swift */; };
+		1443C9BC2BCBC906006A3D81 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1443C9BB2BCBC906006A3D81 /* Result.swift */; };
+		1443C9BE2BCBC99B006A3D81 /* LocalRaceModeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1443C9BD2BCBC99B006A3D81 /* LocalRaceModeResult.swift */; };
 		145F2C802BA203B400457549 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F2C7F2BA203B400457549 /* Event.swift */; };
 		145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F2C832BA22CA300457549 /* EventModifiable.swift */; };
 		1471B0A02BA6A70600878B14 /* HealthSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1471B09F2BA6A70600878B14 /* HealthSystem.swift */; };
@@ -26,10 +28,11 @@
 		14970F502BA814D500CC1E8A /* ScoreComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14970F4F2BA814D500CC1E8A /* ScoreComponent.swift */; };
 		14970F522BA8159800CC1E8A /* ScoreComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14970F512BA8159800CC1E8A /* ScoreComponentTests.swift */; };
 		14970F562BA8177B00CC1E8A /* GameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14970F552BA8177B00CC1E8A /* GameConstants.swift */; };
+		14C5044F2BCC33D700817F53 /* FinishSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C5044E2BCC33D700817F53 /* FinishSystem.swift */; };
 		14D14B732BA5A3CD00386C3B /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */; };
 		14D348ED2BBEFFA800515036 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D348EC2BBEFFA800515036 /* GameMode.swift */; };
 		14D348EF2BBEFFFD00515036 /* GameModeModifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D348EE2BBEFFFD00515036 /* GameModeModifiable.swift */; };
-		14D348F12BBF00A700515036 /* RaceMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D348F02BBF00A700515036 /* RaceMode.swift */; };
+		14D348F12BBF00A700515036 /* LocalRaceMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D348F02BBF00A700515036 /* LocalRaceMode.swift */; };
 		14E2478E2BA22FCE0071FFC0 /* MoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */; };
 		14E247932BA2CA920071FFC0 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 14E247922BA2CA920071FFC0 /* DequeModule */; };
 		14E247952BA2CB480071FFC0 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E247942BA2CB480071FFC0 /* EventManager.swift */; };
@@ -240,6 +243,8 @@
 		143AA3942BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterAttackPlayerEvent.swift; sourceTree = "<group>"; };
 		143AA3962BA4E0D9009C28E7 /* PickupCollectibleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupCollectibleEvent.swift; sourceTree = "<group>"; };
 		1443C9B82BCB7514006A3D81 /* FinishLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishLine.swift; sourceTree = "<group>"; };
+		1443C9BB2BCBC906006A3D81 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		1443C9BD2BCBC99B006A3D81 /* LocalRaceModeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRaceModeResult.swift; sourceTree = "<group>"; };
 		145F2C7F2BA203B400457549 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		145F2C832BA22CA300457549 /* EventModifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModifiable.swift; sourceTree = "<group>"; };
 		1471B09F2BA6A70600878B14 /* HealthSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthSystem.swift; sourceTree = "<group>"; };
@@ -250,10 +255,11 @@
 		14970F4F2BA814D500CC1E8A /* ScoreComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreComponent.swift; sourceTree = "<group>"; };
 		14970F512BA8159800CC1E8A /* ScoreComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreComponentTests.swift; sourceTree = "<group>"; };
 		14970F552BA8177B00CC1E8A /* GameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConstants.swift; sourceTree = "<group>"; };
+		14C5044E2BCC33D700817F53 /* FinishSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishSystem.swift; sourceTree = "<group>"; };
 		14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		14D348EC2BBEFFA800515036 /* GameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
 		14D348EE2BBEFFFD00515036 /* GameModeModifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeModifiable.swift; sourceTree = "<group>"; };
-		14D348F02BBF00A700515036 /* RaceMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceMode.swift; sourceTree = "<group>"; };
+		14D348F02BBF00A700515036 /* LocalRaceMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRaceMode.swift; sourceTree = "<group>"; };
 		14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveEvent.swift; sourceTree = "<group>"; };
 		14E247942BA2CB480071FFC0 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		4604BBD42BA819C70078B84C /* InventoryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryComponent.swift; sourceTree = "<group>"; };
@@ -467,6 +473,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		1443C9BA2BCBC8F4006A3D81 /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				1443C9BB2BCBC906006A3D81 /* Result.swift */,
+				1443C9BD2BCBC99B006A3D81 /* LocalRaceModeResult.swift */,
+			);
+			path = Results;
+			sourceTree = "<group>";
+		};
 		145F2C7E2BA2039700457549 /* Events */ = {
 			isa = PBXGroup;
 			children = (
@@ -534,8 +549,9 @@
 		14D348E92BBEFF2C00515036 /* GameModes */ = {
 			isa = PBXGroup;
 			children = (
+				1443C9BA2BCBC8F4006A3D81 /* Results */,
 				14D348EC2BBEFFA800515036 /* GameMode.swift */,
-				14D348F02BBF00A700515036 /* RaceMode.swift */,
+				14D348F02BBF00A700515036 /* LocalRaceMode.swift */,
 				14D348EE2BBEFFFD00515036 /* GameModeModifiable.swift */,
 			);
 			path = GameModes;
@@ -950,6 +966,7 @@
 				E6ADAED82BC555B7007BB12E /* Movement */,
 				E65993752BC923EB00DB845D /* ScoreSystem.swift */,
 				E6A492952BBD5C0C00A8A374 /* DeathSystem.swift */,
+				14C5044E2BCC33D700817F53 /* FinishSystem.swift */,
 				460A200A2BB1D04F002597B8 /* AttackSystem.swift */,
 			);
 			path = Complex;
@@ -1211,6 +1228,7 @@
 				E6ADAEDD2BC555B7007BB12E /* MoveModule.swift in Sources */,
 				E64F31712BB4862700EC5371 /* SpeedBoostComponent.swift in Sources */,
 				4E630F2C2B9F7F460008F887 /* Component.swift in Sources */,
+				14C5044F2BCC33D700817F53 /* FinishSystem.swift in Sources */,
 				E6ADAEE32BC555CC007BB12E /* JumpComponent.swift in Sources */,
 				143AA38F2BA4D61A009C28E7 /* CGVector.swift in Sources */,
 				46C3B1CB2BB5976200F10574 /* GrappleHookOwnerComponent.swift in Sources */,
@@ -1244,6 +1262,7 @@
 				460A20112BB1E6DF002597B8 /* MonsterSystem.swift in Sources */,
 				4E59E2512BAB2EAE007B3FA7 /* StorageManager.swift in Sources */,
 				145F2C842BA22CA300457549 /* EventModifiable.swift in Sources */,
+				1443C9BE2BCBC99B006A3D81 /* LocalRaceModeResult.swift in Sources */,
 				4E630EFA2B9F7E070008F887 /* GameViewController.swift in Sources */,
 				E6A011172BA5F4AD006904D9 /* EntitySyncInterface.swift in Sources */,
 				141573C02BBE763E00503EA3 /* RenderingConstants.swift in Sources */,
@@ -1303,6 +1322,7 @@
 				E64F31732BB4882D00EC5371 /* PowerUpBoxEntityPersistable.swift in Sources */,
 				E6AB5E052BBC3F5900F2199E /* PowerUpBox.swift in Sources */,
 				E62430362BBAB777001FC686 /* HomingMissileSystem.swift in Sources */,
+				1443C9BC2BCBC906006A3D81 /* Result.swift in Sources */,
 				46D3C5C92BB70541008CC24F /* OwnsRopeComponent.swift in Sources */,
 				E64361142BA4C2CD003850FD /* CreationModule.swift in Sources */,
 				46C3B1C42BB5055F00F10574 /* EntityBuilder.swift in Sources */,
@@ -1341,7 +1361,7 @@
 				E69FDDE42BADC2F10089D5F3 /* SpriteConstants.swift in Sources */,
 				46F0ECE32BC685BB00687961 /* DeathTimerComponent.swift in Sources */,
 				E6B1CC5D2BB7E00600416BCD /* MonsterEntityPersistable.swift in Sources */,
-				14D348F12BBF00A700515036 /* RaceMode.swift in Sources */,
+				14D348F12BBF00A700515036 /* LocalRaceMode.swift in Sources */,
 				E64F31672BB3D14600EC5371 /* UIView.swift in Sources */,
 				143AA3912BA4D7AC009C28E7 /* MonsterDeathEvent.swift in Sources */,
 				E62430382BBAB780001FC686 /* HomingMissile.swift in Sources */,

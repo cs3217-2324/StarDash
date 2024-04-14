@@ -160,6 +160,7 @@ class GameEngine {
         systemManager.add(MovementSystem(entityManager, dispatcher: self))
         systemManager.add(BuffSystem(entityManager, dispatcher: self))
         systemManager.add(DeathSystem(entityManager, dispatcher: self))
+        systemManager.add(FinishSystem(entityManager, dispatcher: self))
 
         // Power-Up Systems
         systemManager.add(PowerUpSystem(entityManager, dispatcher: self))
@@ -174,6 +175,7 @@ class GameEngine {
     private func checkHasGameEnded() {
         if gameMode.hasGameEnded() {
             // TODO: Handle game ending
+            // Display end results with
         }
     }
 }

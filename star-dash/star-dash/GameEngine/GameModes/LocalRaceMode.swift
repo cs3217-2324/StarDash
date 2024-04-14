@@ -7,7 +7,7 @@
 
 import CoreGraphics
 
-class RaceMode: GameMode {
+class LocalRaceMode: GameMode {
     var target: GameModeModifiable?
     let mapWidth: CGFloat
 
