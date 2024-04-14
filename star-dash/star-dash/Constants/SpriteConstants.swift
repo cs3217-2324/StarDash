@@ -60,7 +60,8 @@ struct SpriteConstants {
     static let playerAdventurerTexture = TextureSet(
         run: "PlayerAdventurerRun",
         runLeft: "PlayerAdventurerRunLeft",
-        death: "PlayerAdventurerDeath"
+        death: "PlayerAdventurerDeath",
+        fly: "Plane"
     )
     static let playerAdventurerIcon = "PlayerAdventurerIcon"
 
@@ -71,7 +72,8 @@ struct SpriteConstants {
     static let playerJackTexture = TextureSet(
         run: "PlayerJackRun",
         runLeft: "PlayerJackRunLeft",
-        death: "PlayerJackDeath"
+        death: "PlayerJackDeath",
+        fly: "Plane"
     )
     static let playerJackIcon = "PlayerJackIcon"
 
@@ -82,7 +84,8 @@ struct SpriteConstants {
     static let playerNinjaTexture = TextureSet(
         run: "PlayerNinjaRun",
         runLeft: "PlayerNinjaRunLeft",
-        death: "PlayerNinjaDeath"
+        death: "PlayerNinjaDeath",
+        fly: "Plane" 
     )
     static let playerNinjaIcon = "PlayerNinjaIcon"
 
