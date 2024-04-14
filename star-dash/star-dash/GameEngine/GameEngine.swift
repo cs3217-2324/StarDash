@@ -36,6 +36,9 @@ class GameEngine {
         EntityFactory.createAndAddWall(to: self,
                                        position: CGPoint(x: sceneSize.width, y: sceneSize.height / 2),
                                        size: CGSize(width: 1, height: sceneSize.height))
+        EntityFactory.createAndAddWall(to: self,
+                                       position: CGPoint(x: sceneSize.width / 2, y: sceneSize.height),
+                                       size: CGSize(width: sceneSize.width, height: 1))
         entities.forEach({ $0.addTo(self) })
     }
 
@@ -50,7 +53,6 @@ class GameEngine {
                                                 playerIndex: playerIndex,
                                                 position: position)
         }
-
     }
 
     func gameInfo(forPlayer playerIndex: Int) -> GameInfo? {
