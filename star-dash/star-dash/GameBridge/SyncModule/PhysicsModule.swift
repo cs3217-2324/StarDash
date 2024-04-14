@@ -29,6 +29,7 @@ class PhysicsModule: SyncModule {
         body.mass = physicsComponent.mass
         body.velocity = physicsComponent.velocity
         body.pinned = physicsComponent.pinned
+        body.affectedByGravity = physicsComponent.affectedByGravity
         // body.force = physicsComponent.force
     }
 

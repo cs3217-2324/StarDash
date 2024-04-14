@@ -94,6 +94,12 @@
       "position": [900, 300],
       "size": [60,60],
       "type": "HomingMissilePowerUp"
+    },
+    {
+      "levelId": 0,
+      "position": [600, 500],
+      "size": [60,60],
+      "type": "FlyingPowerUp"
     }
   ]
 }

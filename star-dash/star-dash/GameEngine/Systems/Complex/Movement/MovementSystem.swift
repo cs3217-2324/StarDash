@@ -13,15 +13,17 @@ class MovementSystem: System {
         self.dispatcher = dispatcher
 
         registerModules()
-        registerEvents()
     }
 
     private func registerModules() {
         // Highest Priority
+        registerModule(FlyingModule(entityManager: entityManager, dispatcher: dispatcher))
         registerModule(GrappleHookModule(entityManager: entityManager, dispatcher: dispatcher))
         registerModule(JumpModule(entityManager: entityManager, dispatcher: dispatcher))
         registerModule(MoveModule(entityManager: entityManager, dispatcher: dispatcher))
         // Lowest Priority
+
+        registerEvents()
     }
 
     /// Register a `MovementModule`` in the system.
