@@ -9,7 +9,8 @@ class OverlayView: UIView {
     let margin: CGFloat = 50
 
     let scoreLabel = UILabel()
-    let healthLabel = UILabel()
+    // let healthLabel = UILabel()
+    let healthBarView = HealthBarView()
 
     func setupSubviews() {
         scoreLabel.numberOfLines = 1
@@ -17,10 +18,10 @@ class OverlayView: UIView {
         scoreLabel.textColor = .black
         addSubview(scoreLabel)
 
-        healthLabel.numberOfLines = 1
-        healthLabel.translatesAutoresizingMaskIntoConstraints = false
-        healthLabel.textColor = .black
-        addSubview(healthLabel)
+        // healthLabel.numberOfLines = 1
+        // healthLabel.translatesAutoresizingMaskIntoConstraints = false
+        // healthLabel.textColor = .black
+        addSubview(healthBarView)
 
         NSLayoutConstraint.activate([
             scoreLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: margin),
@@ -29,9 +30,9 @@ class OverlayView: UIView {
         ])
 
         NSLayoutConstraint.activate([
-            healthLabel.topAnchor.constraint(equalTo: scoreLabel.topAnchor, constant: margin),
-            healthLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -1 * margin),
-            healthLabel.leadingAnchor.constraint(greaterThanOrEqualTo: self.leadingAnchor, constant: margin)
+            healthBarView.topAnchor.constraint(equalTo: scoreLabel.topAnchor, constant: margin),
+            healthBarView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -1 * margin),
+            healthBarView.leadingAnchor.constraint(greaterThanOrEqualTo: self.leadingAnchor, constant: margin)
         ])
 
         update(score: 0, health: 0)
@@ -39,6 +40,6 @@ class OverlayView: UIView {
 
     func update(score: Int, health: Int) {
         scoreLabel.text = "Score: \(score)"
-        healthLabel.text = "Health: \(health)"
+        healthBarView.currentHealth = CGFloat(health)
     }
 }
