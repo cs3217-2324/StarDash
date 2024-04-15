@@ -9,6 +9,8 @@ import CoreGraphics
 
 protocol GameMode {
     var target: GameModeModifiable? { get set }
+    
+    // Number of players on a single device screen
     var numberOfPlayers: Int { get }
 
     func setTarget(_ target: GameModeModifiable)
@@ -25,7 +27,6 @@ extension GameMode {
             return
         }
         for playerIndex in 0..<numberOfPlayers {
-            print("Test")
             let position = CGPoint(x: 200, y: 200)
             EntityFactory.createAndAddPlayer(to: target,
                                              playerIndex: playerIndex,

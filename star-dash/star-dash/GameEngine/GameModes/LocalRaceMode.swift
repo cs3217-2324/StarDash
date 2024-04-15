@@ -21,9 +21,10 @@ class LocalRaceMode: GameMode {
     }
 
     func hasGameEnded() -> Bool {
-        guard let target = target else {
+        guard let target = target,
+              let playerSystem = target.system(ofType: PlayerSystem.self) else {
             return false
         }
-        return false
+        return playerSystem.haveAllPlayersFinishedGame()
     }
 }
