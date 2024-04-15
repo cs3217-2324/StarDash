@@ -20,17 +20,17 @@ class MenuViewController: UIViewController {
     }
 
     @IBAction private func singlePlayer(_ sender: Any) {
-        let numberOfPlayers = 1
+        let singleRaceMode = SingleRaceMode()
         performSegue(withIdentifier: "LevelSelectSegue", sender: GameData(level: nil,
-                                                                          numberOfPlayers: numberOfPlayers,
+                                                                          gameMode: singleRaceMode,
                                                                           storageManager: storageManager))
     }
 
     @IBAction private func localMultiplayer(_ sender: Any) {
-        let numberOfPlayers = 2
+        let localRaceMode = LocalRaceMode()
         performSegue(withIdentifier: "LevelSelectSegue",
                      sender: GameData(level: nil,
-                                      numberOfPlayers: numberOfPlayers,
+                                      gameMode: localRaceMode,
                                       storageManager: storageManager))
     }
 
@@ -42,7 +42,7 @@ class MenuViewController: UIViewController {
         if segue.identifier == "LevelSelectSegue" {
             if let destinationVC = segue.destination as? LevelSelectorViewController {
                 if let data = sender as? GameData {
-                    destinationVC.numberOfPlayers = data.numberOfPlayers
+                    destinationVC.gameMode = data.gameMode
                     destinationVC.storageManager = data.storageManager
                 }
             }

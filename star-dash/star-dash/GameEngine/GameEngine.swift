@@ -46,19 +46,6 @@ class GameEngine {
         entities.forEach({ $0.addTo(self) })
     }
 
-    // TODO: Set up players with characters that are selected
-    func setupPlayers(numberOfPlayers: Int) {
-        for playerIndex in 0..<numberOfPlayers {
-               // Calculate position for each player
-               let position = CGPoint(x: 200, y: 200)
-
-               // Create and add player
-               EntityFactory.createAndAddPlayer(to: self,
-                                                playerIndex: playerIndex,
-                                                position: position)
-        }
-    }
-
     func gameInfo(forPlayer playerIndex: Int) -> GameInfo? {
         guard let scoreSystem = systemManager.system(ofType: ScoreSystem.self),
               let playerEntityId = entityManager.playerEntityId(with: playerIndex),

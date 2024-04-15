@@ -29,6 +29,7 @@
 		14970F522BA8159800CC1E8A /* ScoreComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14970F512BA8159800CC1E8A /* ScoreComponentTests.swift */; };
 		14970F562BA8177B00CC1E8A /* GameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14970F552BA8177B00CC1E8A /* GameConstants.swift */; };
 		14C5044F2BCC33D700817F53 /* FinishSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C5044E2BCC33D700817F53 /* FinishSystem.swift */; };
+		14C504512BCD2D7F00817F53 /* SingleRaceMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C504502BCD2D7F00817F53 /* SingleRaceMode.swift */; };
 		14D14B732BA5A3CD00386C3B /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */; };
 		14D348ED2BBEFFA800515036 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D348EC2BBEFFA800515036 /* GameMode.swift */; };
 		14D348EF2BBEFFFD00515036 /* GameModeModifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D348EE2BBEFFFD00515036 /* GameModeModifiable.swift */; };
@@ -259,6 +260,7 @@
 		14970F512BA8159800CC1E8A /* ScoreComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreComponentTests.swift; sourceTree = "<group>"; };
 		14970F552BA8177B00CC1E8A /* GameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConstants.swift; sourceTree = "<group>"; };
 		14C5044E2BCC33D700817F53 /* FinishSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishSystem.swift; sourceTree = "<group>"; };
+		14C504502BCD2D7F00817F53 /* SingleRaceMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleRaceMode.swift; sourceTree = "<group>"; };
 		14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		14D348EC2BBEFFA800515036 /* GameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
 		14D348EE2BBEFFFD00515036 /* GameModeModifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeModifiable.swift; sourceTree = "<group>"; };
@@ -559,6 +561,7 @@
 				1443C9BA2BCBC8F4006A3D81 /* Results */,
 				14D348EC2BBEFFA800515036 /* GameMode.swift */,
 				14D348F02BBF00A700515036 /* LocalRaceMode.swift */,
+				14C504502BCD2D7F00817F53 /* SingleRaceMode.swift */,
 				14D348EE2BBEFFFD00515036 /* GameModeModifiable.swift */,
 			);
 			path = GameModes;
@@ -1248,6 +1251,7 @@
 				46C3B1D62BB59F9B00F10574 /* ReleaseGrappleHookEvent.swift in Sources */,
 				1471B0A02BA6A70600878B14 /* HealthSystem.swift in Sources */,
 				46D049FB2BB99B150096D9F2 /* StellarCollectorAchievement.swift in Sources */,
+				14C504512BCD2D7F00817F53 /* SingleRaceMode.swift in Sources */,
 				461148932BA1D04B0073E7E1 /* System.swift in Sources */,
 				E64F84582BC6C5AA007649D4 /* FlyingModule.swift in Sources */,
 				E6B0AAD12BAAE3DC009CB939 /* ViewDelegate.swift in Sources */,

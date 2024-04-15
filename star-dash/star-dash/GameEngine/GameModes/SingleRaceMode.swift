@@ -1,16 +1,16 @@
 //
-//  LocalRaceMode.swift
+//  SingleRaceMode.swift
 //  star-dash
 //
-//  Created by Jason Qiu on 4/4/24.
+//  Created by Jason Qiu on 15/4/24.
 //
 
-import CoreGraphics
+import Foundation
 
-class LocalRaceMode: GameMode {
+class SingleRaceMode: GameMode {
     var target: GameModeModifiable?
     
-    let numberOfPlayers = 2
+    let numberOfPlayers = 1
 
     init(target: GameModeModifiable? = nil) {
         self.target = target

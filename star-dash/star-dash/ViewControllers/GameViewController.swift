@@ -15,7 +15,7 @@ class GameViewController: UIViewController {
     var gameEngine: GameEngine?
     var storageManager: StorageManager?
     var level: LevelPersistable?
-    var numberOfPlayers: Int = 0
+    var gameMode: GameMode?
     var achievementManager: AchievementManager?
 
     override func viewDidLoad() {
@@ -36,7 +36,7 @@ class GameViewController: UIViewController {
             return
         }
         renderer.viewDelegate = self
-        renderer.setupViews(at: self.view, for: numberOfPlayers)
+        renderer.setupViews(at: self.view, for: gameMode?.numberOfPlayers ?? 0)
         self.renderer = renderer
         setupBackButton()
     }
@@ -48,7 +48,7 @@ class GameViewController: UIViewController {
 
     private func createGameEngine() -> GameEngine {
         let levelSize = level?.size ?? RenderingConstants.defaultLevelSize
-        return GameEngine(mapSize: levelSize, gameMode: LocalRaceMode(mapWidth: levelSize.width))
+        return GameEngine(mapSize: levelSize, gameMode: gameMode ?? SingleRaceMode())
     }
 
     private func createGameScene(of size: CGSize) -> GameScene {
@@ -56,7 +56,7 @@ class GameViewController: UIViewController {
         let extendedSize = CGSize(
             width: size.width + RenderingConstants.levelSizeRightExtension,
             height: size.height)
-        let scene = GameScene(size: extendedSize, for: numberOfPlayers)
+        let scene = GameScene(size: extendedSize, for: gameMode?.numberOfPlayers ?? 0)
         scene.scaleMode = .aspectFill
         scene.sceneDelegate = self
         return scene
@@ -69,13 +69,16 @@ extension GameViewController {
         guard let storageManager = self.storageManager,
               let gameEngine = self.gameEngine,
               let scene = self.scene,
-              let level = self.level else {
+              let level = self.level,
+              let gameMode = self.gameMode else {
             return
         }
 
         let entities = storageManager.getAllEntity(id: level.id)
         gameEngine.setupLevel(level: level, entities: entities, sceneSize: scene.size)
-        gameEngine.setupPlayers(numberOfPlayers: self.numberOfPlayers)
+
+        gameMode.setupGameMode()
+        gameMode.setupPlayers()
 
         self.achievementManager = AchievementManager(withMap: gameEngine.playerIdEntityMap)
 

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 class LevelSelectorViewController: UIViewController {
     var storageManager: StorageManager?
-    var numberOfPlayers: Int = 0
+    var gameMode: GameMode?
     var levels: [LevelPersistable] = [] // Assuming Level is a struct or class representing a level
 
     @IBOutlet private var levelsStackView: UIStackView!
@@ -39,13 +39,14 @@ class LevelSelectorViewController: UIViewController {
 
     @objc
     func levelButtonTapped(_ sender: UIButton) {
-        guard let storageManager = storageManager else {
+        guard let storageManager = storageManager,
+              let gameMode = gameMode else {
             return
         }
         let level = levels[sender.tag]
         performSegue(withIdentifier: "PlaySegue",
                      sender: GameData(level: level,
-                                      numberOfPlayers: numberOfPlayers,
+                                      gameMode: gameMode,
                                       storageManager: storageManager))
     }
 
@@ -56,7 +57,7 @@ class LevelSelectorViewController: UIViewController {
                     if let level = data.level {
                         destinationVC.level = level
                     }
-                    destinationVC.numberOfPlayers = data.numberOfPlayers
+                    destinationVC.gameMode = data.gameMode
                     destinationVC.storageManager = data.storageManager
                 }
             }
