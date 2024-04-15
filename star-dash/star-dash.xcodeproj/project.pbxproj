@@ -148,6 +148,9 @@
 		E64F316D2BB4861800EC5371 /* SpeedBoostPowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64F316B2BB4861800EC5371 /* SpeedBoostPowerUp.swift */; };
 		E64F31712BB4862700EC5371 /* SpeedBoostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64F31702BB4862700EC5371 /* SpeedBoostComponent.swift */; };
 		E64F31732BB4882D00EC5371 /* PowerUpBoxEntityPersistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64F31722BB4882D00EC5371 /* PowerUpBoxEntityPersistable.swift */; };
+		E64F84582BC6C5AA007649D4 /* FlyingModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64F84572BC6C5AA007649D4 /* FlyingModule.swift */; };
+		E64F845A2BC6C5CF007649D4 /* FlyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64F84592BC6C5CF007649D4 /* FlyComponent.swift */; };
+		E64F845C2BC6C633007649D4 /* StartFlyingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64F845B2BC6C633007649D4 /* StartFlyingEvent.swift */; };
 		E65993702BC9116500DB845D /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E659936D2BC9116500DB845D /* SoundManager.swift */; };
 		E65993712BC9116500DB845D /* SoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E659936E2BC9116500DB845D /* SoundSystem.swift */; };
 		E65993722BC9116500DB845D /* SoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E659936F2BC9116500DB845D /* SoundEffect.swift */; };
@@ -381,6 +384,9 @@
 		E64F316B2BB4861800EC5371 /* SpeedBoostPowerUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedBoostPowerUp.swift; sourceTree = "<group>"; };
 		E64F31702BB4862700EC5371 /* SpeedBoostComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedBoostComponent.swift; sourceTree = "<group>"; };
 		E64F31722BB4882D00EC5371 /* PowerUpBoxEntityPersistable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerUpBoxEntityPersistable.swift; sourceTree = "<group>"; };
+		E64F84572BC6C5AA007649D4 /* FlyingModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyingModule.swift; sourceTree = "<group>"; };
+		E64F84592BC6C5CF007649D4 /* FlyComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyComponent.swift; sourceTree = "<group>"; };
+		E64F845B2BC6C633007649D4 /* StartFlyingEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartFlyingEvent.swift; sourceTree = "<group>"; };
 		E659936D2BC9116500DB845D /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		E659936E2BC9116500DB845D /* SoundSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundSystem.swift; sourceTree = "<group>"; };
 		E659936F2BC9116500DB845D /* SoundEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
@@ -536,6 +542,7 @@
 		14D14B792BA5AC1900386C3B /* CommonEvents */ = {
 			isa = PBXGroup;
 			children = (
+				E64F845B2BC6C633007649D4 /* StartFlyingEvent.swift */,
 				E69FDDE52BADD11B0089D5F3 /* StopMovingEvent.swift */,
 				14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */,
 				143AA38B2BA4D3E3009C28E7 /* JumpEvent.swift */,
@@ -998,6 +1005,7 @@
 		E6ADAED82BC555B7007BB12E /* Movement */ = {
 			isa = PBXGroup;
 			children = (
+				E64F84572BC6C5AA007649D4 /* FlyingModule.swift */,
 				E6ADAED92BC555B7007BB12E /* MoveModule.swift */,
 				E6ADAEDA2BC555B7007BB12E /* JumpModule.swift */,
 				E6ADAEDB2BC555B7007BB12E /* MovementSystem.swift */,
@@ -1011,6 +1019,7 @@
 		E6ADAEE12BC555CC007BB12E /* Movement */ = {
 			isa = PBXGroup;
 			children = (
+				E64F84592BC6C5CF007649D4 /* FlyComponent.swift */,
 				E6ADAEE22BC555CC007BB12E /* JumpComponent.swift */,
 			);
 			path = Movement;
@@ -1240,6 +1249,7 @@
 				1471B0A02BA6A70600878B14 /* HealthSystem.swift in Sources */,
 				46D049FB2BB99B150096D9F2 /* StellarCollectorAchievement.swift in Sources */,
 				461148932BA1D04B0073E7E1 /* System.swift in Sources */,
+				E64F84582BC6C5AA007649D4 /* FlyingModule.swift in Sources */,
 				E6B0AAD12BAAE3DC009CB939 /* ViewDelegate.swift in Sources */,
 				46C3B1D82BB654F400F10574 /* GrappleHook+Collidable.swift in Sources */,
 				1471B0A62BA6AC2D00878B14 /* PlayerAttackMonsterEvent.swift in Sources */,
@@ -1253,6 +1263,7 @@
 				4E0905FF2BB4A4EB00DE666B /* PlayerInfo.swift in Sources */,
 				4E59E2532BAB3061007B3FA7 /* Database.swift in Sources */,
 				E6A72FC52BB2E1E10015729E /* PlayerViewLayout.swift in Sources */,
+				E64F845C2BC6C633007649D4 /* StartFlyingEvent.swift in Sources */,
 				E624303A2BBAB787001FC686 /* HomingMissileComponent.swift in Sources */,
 				4E8660662BA097D40035530D /* PhysicsConstants.swift in Sources */,
 				143AA3952BA4DF1C009C28E7 /* MonsterAttackPlayerEvent.swift in Sources */,
@@ -1307,6 +1318,7 @@
 				E64361112BA4C2CD003850FD /* SyncModule.swift in Sources */,
 				46D049FD2BB99C5B0096D9F2 /* PowerRangerAchievement.swift in Sources */,
 				E6ADAEE02BC555B7007BB12E /* MovementModule.swift in Sources */,
+				E64F845A2BC6C5CF007649D4 /* FlyComponent.swift in Sources */,
 				E6A7451B2BA0C1890080C1BE /* PlayerView.swift in Sources */,
 				46D418282BA5D6800091A38B /* Floor+Collidable.swift in Sources */,
 				46D04A092BBACA8B0096D9F2 /* AchievementPersistable.swift in Sources */,
@@ -1582,6 +1594,8 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "star-dash/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Star Dash";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.racing-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1617,6 +1631,8 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "star-dash/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Star Dash";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.racing-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

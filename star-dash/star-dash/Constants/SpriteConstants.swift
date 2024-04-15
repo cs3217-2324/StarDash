@@ -2,6 +2,7 @@ struct TextureSet {
     let run: String
     let runLeft: String
     let death: String
+    let fly: String
 
     func getValueFor(key: String) -> String? {
         let mirror = Mirror(reflecting: self)
@@ -47,7 +48,8 @@ struct SpriteConstants {
     static let playerRedNoseTexture = TextureSet(
         run: "PlayerRedNoseRun",
         runLeft: "PlayerRedNoseRunLeft",
-        death: "PlayerRedNoseDeath"
+        death: "PlayerRedNoseDeath",
+        fly: "Plane"
     )
     static let playerRedNoseIcon = "PlayerRedNoseIcon"
 
@@ -58,7 +60,8 @@ struct SpriteConstants {
     static let playerAdventurerTexture = TextureSet(
         run: "PlayerAdventurerRun",
         runLeft: "PlayerAdventurerRunLeft",
-        death: "PlayerAdventurerDeath"
+        death: "PlayerAdventurerDeath",
+        fly: "Plane"
     )
     static let playerAdventurerIcon = "PlayerAdventurerIcon"
 
@@ -69,7 +72,8 @@ struct SpriteConstants {
     static let playerJackTexture = TextureSet(
         run: "PlayerJackRun",
         runLeft: "PlayerJackRunLeft",
-        death: "PlayerJackDeath"
+        death: "PlayerJackDeath",
+        fly: "Plane"
     )
     static let playerJackIcon = "PlayerJackIcon"
 
@@ -80,7 +84,8 @@ struct SpriteConstants {
     static let playerNinjaTexture = TextureSet(
         run: "PlayerNinjaRun",
         runLeft: "PlayerNinjaRunLeft",
-        death: "PlayerNinjaDeath"
+        death: "PlayerNinjaDeath",
+        fly: "Plane"
     )
     static let playerNinjaIcon = "PlayerNinjaIcon"
 
@@ -103,7 +108,8 @@ struct SpriteConstants {
     static let monsterTexture = TextureSet(
         run: "MonsterWalk",
         runLeft: "MonsterWalkLeft",
-        death: "MonsterDeath"
+        death: "MonsterDeath",
+        fly: "Plane"
     )
 
     static let obstacle = ImageSet(

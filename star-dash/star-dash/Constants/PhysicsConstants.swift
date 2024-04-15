@@ -75,6 +75,7 @@ struct PhysicsConstants {
         static let powerUp = CGSize(width: 60, height: 60)
         static let homingMissile = CGSize(width: 50, height: 100)
         static let flag = CGSize(width: 110, height: 100)
+        static let plane = CGSize(width: 110, height: 70)
     }
 
     struct Mass {
