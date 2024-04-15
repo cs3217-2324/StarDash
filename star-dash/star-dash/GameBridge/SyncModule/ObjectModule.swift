@@ -12,9 +12,11 @@ class ObjectModule: SyncModule {
         guard let positionComponent = entityManager.component(ofType: PositionComponent.self, of: entity.id) else {
             return
         }
-
-        positionComponent.position = object.position
-        positionComponent.rotation = object.rotation
+        if let entityManager = entityManager as? GameEngine {
+            entityManager.add(event: UpdatePositionEvent(on: entity.id, position: object.position, rotation: object.rotation))
+        }
+//        positionComponent.position = object.position
+//        positionComponent.rotation = object.rotation
     }
 
     func sync(object: SDObject, from entity: Entity) {
