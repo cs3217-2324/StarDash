@@ -45,6 +45,8 @@
 		461148982BA1E41F0073E7E1 /* PhysicsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */; };
 		461B1FF62BBC50220020F6C4 /* Database+Achievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461B1FF52BBC50220020F6C4 /* Database+Achievements.swift */; };
 		4630F0082BC95E4500FFA1C8 /* DeathEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4630F0072BC95E4500FFA1C8 /* DeathEvent.swift */; };
+		467740E32BCAB3E200539DBE /* WallEntityPersistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467740E22BCAB3E100539DBE /* WallEntityPersistable.swift */; };
+		467740E52BCAC38000539DBE /* MonsterWallContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467740E42BCAC38000539DBE /* MonsterWallContactEvent.swift */; };
 		46B8C09A2BA328D900498705 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B8C0992BA328D900498705 /* GameEngine.swift */; };
 		46BB142A2BBE81E3001AE148 /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB14292BBE81E3001AE148 /* AchievementViewController.swift */; };
 		46BB142C2BBEB1EC001AE148 /* Achievements.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BB142B2BBEB1EC001AE148 /* Achievements.storyboard */; };
@@ -270,6 +272,8 @@
 		461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsSystem.swift; sourceTree = "<group>"; };
 		461B1FF52BBC50220020F6C4 /* Database+Achievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+Achievements.swift"; sourceTree = "<group>"; };
 		4630F0072BC95E4500FFA1C8 /* DeathEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathEvent.swift; sourceTree = "<group>"; };
+		467740E22BCAB3E100539DBE /* WallEntityPersistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallEntityPersistable.swift; sourceTree = "<group>"; };
+		467740E42BCAC38000539DBE /* MonsterWallContactEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterWallContactEvent.swift; sourceTree = "<group>"; };
 		46B8C0992BA328D900498705 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		46BB14292BBE81E3001AE148 /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		46BB142B2BBEB1EC001AE148 /* Achievements.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Achievements.storyboard; sourceTree = "<group>"; };
@@ -507,6 +511,7 @@
 				4EC561E42BB1E9A300166DDC /* PlayerToolContactEvent.swift */,
 				46C3B1D92BB656F000F10574 /* GrappleHookObstacleContactEvent.swift */,
 				46BB142F2BBFCD4D001AE148 /* MonsterObstacleContactEvent.swift */,
+				467740E42BCAC38000539DBE /* MonsterWallContactEvent.swift */,
 			);
 			path = ContactEvents;
 			sourceTree = "<group>";
@@ -629,6 +634,7 @@
 				E6B1CC572BB7E00500416BCD /* MonsterEntityPersistable.swift */,
 				E6B1CC582BB7E00500416BCD /* CollectibleEntityPersistable.swift */,
 				E64F31722BB4882D00EC5371 /* PowerUpBoxEntityPersistable.swift */,
+				467740E22BCAB3E100539DBE /* WallEntityPersistable.swift */,
 			);
 			path = EntityPersistable;
 			sourceTree = "<group>";
@@ -941,7 +947,6 @@
 				460A200E2BB1E1F1002597B8 /* RemovalSystem.swift */,
 				461148972BA1E41F0073E7E1 /* PhysicsSystem.swift */,
 				461148952BA1D53D0073E7E1 /* PositionSystem.swift */,
-				460A20102BB1E6DF002597B8 /* MonsterSystem.swift */,
 				4604BBD82BA81C940078B84C /* InventorySystem.swift */,
 				E6A115362BB9E2F90076A21F /* SpriteSystem.swift */,
 			);
@@ -955,6 +960,7 @@
 				E65993752BC923EB00DB845D /* ScoreSystem.swift */,
 				E6A492952BBD5C0C00A8A374 /* DeathSystem.swift */,
 				460A200A2BB1D04F002597B8 /* AttackSystem.swift */,
+				460A20102BB1E6DF002597B8 /* MonsterSystem.swift */,
 			);
 			path = Complex;
 			sourceTree = "<group>";
@@ -1287,6 +1293,7 @@
 				14E247952BA2CB480071FFC0 /* EventManager.swift in Sources */,
 				4EC561E32BB1E98400166DDC /* PlayerObstacleContactEvent.swift in Sources */,
 				E660353D2BB5EAEE00397068 /* MiniMapView.swift in Sources */,
+				467740E32BCAB3E200539DBE /* WallEntityPersistable.swift in Sources */,
 				46D04A0C2BBAE22F0096D9F2 /* AchievementFactory.swift in Sources */,
 				14D348EF2BBEFFFD00515036 /* GameModeModifiable.swift in Sources */,
 				4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */,
@@ -1352,6 +1359,7 @@
 				14D348F12BBF00A700515036 /* RaceMode.swift in Sources */,
 				E64F31672BB3D14600EC5371 /* UIView.swift in Sources */,
 				143AA3912BA4D7AC009C28E7 /* MonsterDeathEvent.swift in Sources */,
+				467740E52BCAC38000539DBE /* MonsterWallContactEvent.swift in Sources */,
 				E62430382BBAB780001FC686 /* HomingMissile.swift in Sources */,
 				E64361102BA4C2CD003850FD /* SpriteModule.swift in Sources */,
 				4604BBD52BA819C70078B84C /* InventoryComponent.swift in Sources */,

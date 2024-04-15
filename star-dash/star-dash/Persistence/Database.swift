@@ -17,6 +17,7 @@ struct Database {
     private let obstacleTable = Table("obstacle")
     private let monsterTable = Table("monster")
     private let powerUpBoxTable = Table("powerUpBox")
+    private let wallTable = Table("Wall")
 
     let twinkleStarAchievementTable = Table("twinklestar")
     let stellarCollectorAchievementTable = Table("stellarCollector")
@@ -33,6 +34,7 @@ struct Database {
             ObjectIdentifier(ObstacleEntityPersistable.self): self.obstacleTable,
             ObjectIdentifier(MonsterEntityPersistable.self): self.monsterTable,
             ObjectIdentifier(PowerUpBoxEntityPersistable.self): self.powerUpBoxTable,
+            ObjectIdentifier(WallEntityPersistable.self): self.wallTable,
             ObjectIdentifier(TwinkleStarAchievementPersistable.self): self.twinkleStarAchievementTable,
             ObjectIdentifier(StellarCollectorAchievementPersistable.self): self.stellarCollectorAchievementTable,
             ObjectIdentifier(PowerRangerAchievementPersistable.self): self.powerRangerAchievementTable
@@ -70,11 +72,12 @@ struct Database {
             try db.run(collectibleTable.drop())
             try db.run(monsterTable.drop())
             try db.run(powerUpBoxTable.drop())
+            try db.run(wallTable.drop())
 
             // Comment out below to test for persistency
-            try db.run(twinkleStarAchievementTable.drop())
-            try db.run(stellarCollectorAchievementTable.drop())
-            try db.run(powerRangerAchievementTable.drop())
+//            try db.run(twinkleStarAchievementTable.drop())
+//            try db.run(stellarCollectorAchievementTable.drop())
+//            try db.run(powerRangerAchievementTable.drop())
         } catch {
             print("Error deleting table \(error)")
         }
@@ -86,6 +89,7 @@ struct Database {
         createMonsterTable()
         createObstacleTable()
         createPowerUpBoxTable()
+        createWallTable()
         createAchievementTables()
     }
 
@@ -153,6 +157,29 @@ struct Database {
 
             })
             print("Obstacle table created")
+        } catch {
+            print("Error creating table \(error)")
+        }
+    }
+
+    private func createWallTable() {
+        guard let db = db else {
+            return
+        }
+        let id = Expression<Int64>("id")
+        let levelId = Expression<Int64>("levelId")
+        let position = Expression<String>("position")
+        let size = Expression<String>("size")
+
+        do {
+            try db.run( wallTable.create { table in
+                table.column(id, primaryKey: .autoincrement)
+                table.column(levelId)
+                table.column(position)
+                table.column(size)
+
+            })
+            print("Wall table created")
         } catch {
             print("Error creating table \(error)")
         }
@@ -268,6 +295,9 @@ extension Database {
                 for persistable in levelData.powerUpBoxes {
                     insert(persistable: persistable)
                 }
+                for persistable in levelData.walls {
+                    insert(persistable: persistable)
+                }
                 print("Inserted \(filename)")
             } catch {
                 print("Error reading or decoding JSON: \(error)")
@@ -335,6 +365,10 @@ extension Database {
             }
             entities += try database.prepare(powerUpBoxTable.filter(levelId == levelIdColumn)).map { row in
                 let persistable: PowerUpBoxEntityPersistable = try row.decode()
+                return persistable
+            }
+            entities += try database.prepare(wallTable.filter(levelId == levelIdColumn)).map { row in
+                let persistable: WallEntityPersistable = try row.decode()
                 return persistable
             }
         } catch {
