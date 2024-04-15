@@ -20,7 +20,8 @@ class NetworkEventFactory {
                 try decoder.decode(NetworkMoveToLevelSelectionEvent.self, from: jsonData) },
             "player-jump": { jsonData in try decoder.decode(NetworkPlayerJumpEvent.self, from: jsonData) },
             "player-hook": { jsonData in try decoder.decode(NetworkPlayerHookEvent.self, from: jsonData) },
-            "player-stop": { jsonData in try decoder.decode(NetworkPlayerStopEvent.self, from: jsonData) }
+            "player-stop": { jsonData in try decoder.decode(NetworkPlayerStopEvent.self, from: jsonData) },
+            "sync": {jsonData in try decoder.decode(NetworkSyncEvent.self, from: jsonData)}
         ]
 
         do {

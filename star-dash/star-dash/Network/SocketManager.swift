@@ -57,7 +57,6 @@ class SocketManager: NSObject, WebSocketDelegate {
         case .text(let string):
             if let jsonData = string.data(using: .utf8) {
                 // Decode JSON into a generic Decodable type
-                print(jsonData)
                 self.delegate?.socketManager(self, didReceiveMessage: jsonData)
                 break
             }

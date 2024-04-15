@@ -16,8 +16,7 @@ class EventManager {
 
     func executeAll(on target: EventModifiable) {
         while let event = events.popTop() {
-            print(events.count)
-            print(event)
+
             emit(event: event)
         }
     }

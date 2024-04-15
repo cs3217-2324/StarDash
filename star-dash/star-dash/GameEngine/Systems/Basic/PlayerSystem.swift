@@ -43,4 +43,5 @@ class PlayerSystem: System {
     private func getPlayerComponent(of entityId: EntityId) -> PlayerComponent? {
         entityManager.component(ofType: PlayerComponent.self, of: entityId)
     }
+    
 }

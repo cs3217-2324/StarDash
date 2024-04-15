@@ -108,6 +108,8 @@
 		4E59E2582BAB3B5B007B3FA7 /* level1.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E59E2572BAB3B5B007B3FA7 /* level1.json */; };
 		4E59E25B2BAB3FDB007B3FA7 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59E25A2BAB3FDB007B3FA7 /* Level.swift */; };
 		4E59E2632BACB9E2007B3FA7 /* LevelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59E2622BACB9E2007B3FA7 /* LevelData.swift */; };
+		4E6154EA2BCCD6AB002EB42B /* UpdatePositionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6154E92BCCD6AB002EB42B /* UpdatePositionEvent.swift */; };
+		4E6154EC2BCCDB8B002EB42B /* NetworkSyncEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6154EB2BCCDB8B002EB42B /* NetworkSyncEvent.swift */; };
 		4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF52B9F7E070008F887 /* AppDelegate.swift */; };
 		4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF72B9F7E070008F887 /* SceneDelegate.swift */; };
 		4E630EFA2B9F7E070008F887 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E630EF92B9F7E070008F887 /* GameViewController.swift */; };
@@ -357,6 +359,8 @@
 		4E59E2572BAB3B5B007B3FA7 /* level1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = level1.json; sourceTree = "<group>"; };
 		4E59E25A2BAB3FDB007B3FA7 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		4E59E2622BACB9E2007B3FA7 /* LevelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelData.swift; sourceTree = "<group>"; };
+		4E6154E92BCCD6AB002EB42B /* UpdatePositionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePositionEvent.swift; sourceTree = "<group>"; };
+		4E6154EB2BCCDB8B002EB42B /* NetworkSyncEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSyncEvent.swift; sourceTree = "<group>"; };
 		4E630EF22B9F7E070008F887 /* star-dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "star-dash.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E630EF52B9F7E070008F887 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E630EF72B9F7E070008F887 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -571,6 +575,7 @@
 				14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */,
 				E638B9CE2BAB3C5D00931CC2 /* TeleportEvent.swift */,
 				4630F0072BC95E4500FFA1C8 /* DeathEvent.swift */,
+				4E6154E92BCCD6AB002EB42B /* UpdatePositionEvent.swift */,
 			);
 			path = CommonEvents;
 			sourceTree = "<group>";
@@ -903,6 +908,7 @@
 				4EE00EF02BC4351C00D88085 /* NetworkPlayerStopEvent.swift */,
 				4EE00EF22BC4354B00D88085 /* NetworkPlayerHookEvent.swift */,
 				4EE00EF42BC4358B00D88085 /* NetworkPlayerJumpEvent.swift */,
+				4E6154EB2BCCDB8B002EB42B /* NetworkSyncEvent.swift */,
 			);
 			path = NetworkEvents;
 			sourceTree = "<group>";
@@ -1346,6 +1352,7 @@
 				46C3B1D42BB59F9200F10574 /* SwingGrappleHookEvent.swift in Sources */,
 				4E5928E92BC3938B00F84237 /* LobbyViewController.swift in Sources */,
 				E6B1CC5C2BB7E00600416BCD /* EntityPersistable.swift in Sources */,
+				4E6154EA2BCCD6AB002EB42B /* UpdatePositionEvent.swift in Sources */,
 				4E630F322B9F887C0008F887 /* PhysicsComponent.swift in Sources */,
 				46D049F92BB951130096D9F2 /* TwinkleStarAchievement.swift in Sources */,
 				E64F316D2BB4861800EC5371 /* SpeedBoostPowerUp.swift in Sources */,
@@ -1420,6 +1427,7 @@
 				E6A745172BA057040080C1BE /* ControlView.swift in Sources */,
 				460A20092BB1B524002597B8 /* EventListener.swift in Sources */,
 				E6ADAEE52BC56F7A007BB12E /* GrappleHookModule.swift in Sources */,
+				4E6154EC2BCCDB8B002EB42B /* NetworkSyncEvent.swift in Sources */,
 				14970F562BA8177B00CC1E8A /* GameConstants.swift in Sources */,
 				1471B0A42BA6AAF200878B14 /* PlayerDeathEvent.swift in Sources */,
 				4E5928E72BC38FC600F84237 /* RoomCreationViewController.swift in Sources */,

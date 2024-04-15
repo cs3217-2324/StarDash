@@ -21,7 +21,9 @@ class GameViewController: UIViewController {
     // to change to enum
     var viewLayout: Int = 0
     var achievementManager: AchievementManager?
-
+    var syncEvent: NetworkSyncEvent?
+    var timeSinceLastSync: Double = 0
+    var networkSyncInterval: Double = 1
     override func viewDidLoad() {
         super.viewDidLoad()
         if let networkManager = networkManager {
@@ -143,11 +145,40 @@ extension GameViewController {
 }
 
 extension GameViewController: SDSceneDelegate {
+    func sync() {
+        let data = gameEngine?.getPositionInJson()
+        if let data = data, let playerIndex = playerIndex {
+            networkManager?.sendEvent(event: NetworkSyncEvent(playerIndex: playerIndex, data: data))
 
+        }
+    }
     func update(_ scene: SDScene, deltaTime: Double) {
         gameBridge?.syncToEntities()
+        
         gameEngine?.update(by: deltaTime)
+        timeSinceLastSync += deltaTime
+        if let syncEvent = syncEvent,
+            let playerIndex = playerIndex,
+           playerIndex != syncEvent.playerIndex {
+            updateTest(data: syncEvent.data, for: syncEvent.playerIndex)
+            self.syncEvent = nil
+        }
+        if timeSinceLastSync > networkSyncInterval {
+            sync()
+            timeSinceLastSync -= networkSyncInterval
+        }
         gameBridge?.syncFromEntities()
+
+    }
+    
+    func updateTest(data: Data, for playerIndex: Int) {
+        do {
+            let decoder = JSONDecoder()
+            let positions = try decoder.decode([NetworkPlayerPosition].self, from: data)
+            gameEngine?.syncPositions(positions: positions, except: playerIndex)
+        } catch {
+            print("Error decoding: \(error)")
+        }
     }
 
     func contactOccurred(objectA: SDObject, objectB: SDObject, contactPoint: CGPoint) {
@@ -228,6 +259,10 @@ extension GameViewController: NetworkManagerDelegate {
         }
         if let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkPlayerHookEvent {
             gameEngine?.handlePlayerHook(playerIndex: event.playerIndex, timestamp: event.timestamp)
+        }
+        if let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkSyncEvent {
+            syncEvent = event
+            print("received sync event from \(event.playerIndex)")
         }
     }
 

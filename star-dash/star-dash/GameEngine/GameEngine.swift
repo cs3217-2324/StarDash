@@ -172,6 +172,44 @@ class GameEngine {
             // TODO: Handle game ending
         }
     }
+    
+    func getPositionInJson() -> Data? {
+        guard let positionSystem = systemManager.system(ofType: PositionSystem.self) else {
+            return nil
+        }
+        let playerComponents = entityManager.components(ofType: PlayerComponent.self)
+        var playerPositions = [NetworkPlayerPosition]()
+        for player in playerComponents {
+            if let position = positionSystem.getPosition(of: player.entityId) {
+                playerPositions.append(NetworkPlayerPosition(playerIndex: player.playerIndex, position: position))
+            }
+            
+        }
+        do {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted // Optional: Makes the JSON output more readable
+            let jsonData = try encoder.encode(playerPositions)
+            return jsonData
+        } catch {
+            print("Error encoding: \(error)")
+        }
+        return nil
+    }
+    func syncPositions(positions: [NetworkPlayerPosition], except playerIndex: Int) {
+        guard let positionSystem = systemManager.system(ofType: PositionSystem.self) else {
+            return
+        }
+        let playerComponents = entityManager.components(ofType: PlayerComponent.self).sorted(by: { $0.playerIndex < $1.playerIndex })
+        for position in positions {
+            if position.playerIndex == playerIndex {
+                let player = playerComponents[position.playerIndex]
+                let positionComp = entityManager.component(ofType: PositionComponent.self, of: player.entityId)
+                positionComp?.position = position.position
+            }
+            
+//            positionSystem.move(entityId: player.entityId, to: position.position)
+        }
+    }
 }
 
 extension GameEngine: EventModifiable, GameModeModifiable {
@@ -217,4 +255,10 @@ extension GameEngine: EntityManagerInterface {
     func add(component: Component) {
         entityManager.add(component: component)
     }
+}
+
+
+struct NetworkPlayerPosition: Codable {
+    let playerIndex: Int
+    let position: CGPoint
 }
