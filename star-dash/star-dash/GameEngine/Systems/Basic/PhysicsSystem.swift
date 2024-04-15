@@ -56,6 +56,7 @@ class PhysicsSystem: System {
         guard let physicsComponent = getPhysicsComponent(of: entityId) else {
             return nil
         }
+        print(physicsComponent.velocity)
 
         return physicsComponent.velocity
     }
@@ -82,6 +83,14 @@ class PhysicsSystem: System {
         }
 
         physicsComponent.size = size
+    }
+
+    func setAffectedByGravity(of entityId: EntityId, affectedByGravity: Bool) {
+        guard let physicsComponent = getPhysicsComponent(of: entityId) else {
+            return
+        }
+
+        physicsComponent.affectedByGravity = affectedByGravity
     }
 
     func setPinned(of entityId: EntityId, to pinned: Bool) {

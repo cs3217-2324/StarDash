@@ -14,10 +14,10 @@ struct EntityFactory {
         let playerBuilder = EntityBuilder(entity: Player(id: UUID()), entityManager: entityManager)
 
         let playerImageSets: [Int: (ImageSet, TextureSet)] = [
-            2: (SpriteConstants.playerRedNose, SpriteConstants.playerRedNoseTexture),
-            3: (SpriteConstants.playerAdventurer, SpriteConstants.playerAdventurerTexture),
-            0: (SpriteConstants.playerJack, SpriteConstants.playerJackTexture),
-            1: (SpriteConstants.playerNinja, SpriteConstants.playerNinjaTexture)
+            0: (SpriteConstants.playerRedNose, SpriteConstants.playerRedNoseTexture),
+            1: (SpriteConstants.playerAdventurer, SpriteConstants.playerAdventurerTexture),
+            2: (SpriteConstants.playerJack, SpriteConstants.playerJackTexture),
+            3: (SpriteConstants.playerNinja, SpriteConstants.playerNinjaTexture)
         ]
 
         guard let (imageSet, textureSet) = playerImageSets[playerIndex] else {

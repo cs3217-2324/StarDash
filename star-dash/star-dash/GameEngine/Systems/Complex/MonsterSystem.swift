@@ -33,11 +33,7 @@ class MonsterSystem: System {
                 continue
             }
 
-            let newXVelocity = monsterVelocity.dx > 0
-                              ? PhysicsConstants.Monster.moveSpeed
-                              : -PhysicsConstants.Monster.moveSpeed
-            let newVelocity = CGVector(dx: newXVelocity, dy: monsterVelocity.dy)
-            physicsSystem.setVelocity(to: monsterEntity.id, velocity: newVelocity)
+            dispatcher?.add(event: MoveEvent(on: monsterEntity.id, toLeft: monsterVelocity.dx < 0))
         }
     }
 
@@ -59,24 +55,22 @@ class MonsterSystem: System {
                 self.handleMonsterObstacleContactEvent(event: monsterObstacleContactEvent)
             }
         }
+        eventHandlers[ObjectIdentifier(MonsterWallContactEvent.self)] = { event in
+            if let monsterWallContactEvent = event as? MonsterWallContactEvent {
+                self.handleMonsterWallContactEvent(event: monsterWallContactEvent)
+            }
+        }
     }
 
     private func handleMonsterMovementReversalEvent(event: MonsterMovementReversalEvent) {
-        guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
-              let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
+        guard let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
               let deathSystem = dispatcher?.system(ofType: DeathSystem.self),
-              let monsterVelocity = physicsSystem.velocity(of: event.monsterId),
               let isMonsterDead = deathSystem.isDead(entityId: event.monsterId),
               !isMonsterDead else {
             return
         }
 
-        let newXVelocity = event.isLeft
-                          ? -PhysicsConstants.Monster.moveSpeed
-                          : PhysicsConstants.Monster.moveSpeed
-        let newVelocity = CGVector(dx: newXVelocity, dy: monsterVelocity.dy)
-
-        physicsSystem.setVelocity(to: event.monsterId, velocity: newVelocity)
+        dispatcher?.add(event: MoveEvent(on: event.monsterId, toLeft: event.isLeft))
         spriteSystem.startAnimation(of: event.monsterId, named: event.isLeft ? "runLeft" : "run")
     }
 
@@ -119,15 +113,26 @@ class MonsterSystem: System {
         }
 
         if isPlayerAttack {
-            print("Player attack monster")
             dispatcher?.add(event: PlayerAttackMonsterEvent(from: event.playerId, on: event.monsterId))
         } else {
-            print("Monster attack player")
             dispatcher?.add(event: MonsterAttackPlayerEvent(from: event.monsterId, on: event.playerId))
         }
     }
 
     private func handleMonsterObstacleContactEvent(event: MonsterObstacleContactEvent) {
+        guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
+              let monsterPosition = positionSystem.getPosition(of: event.monsterId),
+              abs(monsterPosition.y - event.contactPoint.y) <= 49.99,
+              abs(monsterPosition.x - event.contactPoint.x) > 49.99 else {
+            return
+        }
+
+        let isLeft = monsterPosition.x < event.contactPoint.x
+
+        dispatcher?.add(event: MonsterMovementReversalEvent(on: event.monsterId, isLeft: isLeft))
+    }
+
+    private func handleMonsterWallContactEvent(event: MonsterWallContactEvent) {
         guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let monsterPosition = positionSystem.getPosition(of: event.monsterId) else {
             return
