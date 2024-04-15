@@ -9,7 +9,7 @@ import CoreGraphics
 
 class LocalRaceMode: GameMode {
     var target: GameModeModifiable?
-    
+
     let numberOfPlayers = 2
 
     init(target: GameModeModifiable? = nil) {

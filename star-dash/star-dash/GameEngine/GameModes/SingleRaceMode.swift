@@ -9,7 +9,7 @@ import Foundation
 
 class SingleRaceMode: GameMode {
     var target: GameModeModifiable?
-    
+
     let numberOfPlayers = 1
 
     init(target: GameModeModifiable? = nil) {
