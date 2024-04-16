@@ -9,6 +9,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Main-->
+        <scene sceneID="bhV-8R-LzL">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Menu" storyboardName="Main" id="uvj-6J-MAc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dAd-pL-l8i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-344" y="-6"/>
+        </scene>
         <!--Online Multiplayer Menu View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
@@ -22,13 +30,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yKG-ia-5nN">
-                                <rect key="frame" x="98" y="178.5" width="984" height="463"/>
+                                <rect key="frame" x="98" y="134" width="984" height="552"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Title" translatesAutoresizingMaskIntoConstraints="NO" id="W7b-cS-63Z">
                                         <rect key="frame" x="0.0" y="0.0" width="984" height="315"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="center" axis="vertical" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="4Xz-vA-887">
-                                        <rect key="frame" x="416" y="315" width="152" height="148"/>
+                                        <rect key="frame" x="416" y="315" width="152" height="237"/>
                                         <subviews>
                                             <button opaque="NO" alpha="0.89999997615814209" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZr-wp-WOC">
                                                 <rect key="frame" x="0.0" y="0.0" width="152" height="59"/>
@@ -56,6 +64,20 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <segue destination="9UG-vN-zGx" kind="presentation" modalPresentationStyle="fullScreen" id="ZIN-Kz-bf5"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" alpha="0.89999997615814209" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVu-W9-WAx">
+                                                <rect key="frame" x="0.0" y="178" width="152" height="59"/>
+                                                <color key="tintColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Back">
+                                                    <fontDescription key="titleFontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                                    <directionalEdgeInsets key="contentInsets" top="10" leading="30" bottom="10" trailing="30"/>
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="baseBackgroundColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <segue destination="uvj-6J-MAc" kind="presentation" modalPresentationStyle="fullScreen" id="DWp-if-Vn4"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -263,6 +285,22 @@
                                     <constraint firstAttribute="width" constant="984" id="l66-tC-sPE"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDn-Bg-1jm">
+                                <rect key="frame" x="54" y="36" width="95" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Back">
+                                    <fontDescription key="titleFontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                    <directionalEdgeInsets key="contentInsets" top="10" leading="20" bottom="10" trailing="20"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="backButton:" destination="KjF-tb-21F" eventType="touchUpInside" id="hpq-qu-a2f"/>
+                                    <action selector="backButton:" destination="9UG-vN-zGx" eventType="touchUpInside" id="vpJ-Go-OZj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XZM-k4-VFV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -275,6 +313,7 @@
                         <outlet property="RoomCodeContainer" destination="eli-Qi-YUy" id="6rE-rz-8tL"/>
                         <outlet property="label" destination="t7N-xG-2X2" id="XvN-q9-OhT"/>
                         <segue destination="H20-uu-gS2" kind="presentation" identifier="MoveLevelSelection" modalPresentationStyle="fullScreen" id="iUD-uV-B1k"/>
+                        <segue destination="Y6W-OH-hqX" kind="presentation" identifier="BackMenuSegue" modalPresentationStyle="fullScreen" id="EBR-0A-9aJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGi-DZ-vbj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -336,9 +375,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="n0I-Cy-Dv9"/>
         <segue reference="SgP-xc-8TM"/>
         <segue reference="ZIN-Kz-bf5"/>
+        <segue reference="EBR-0A-9aJ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="MenuBG" width="1920" height="1080"/>

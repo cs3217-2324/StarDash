@@ -14,6 +14,7 @@ class NetworkEventFactory {
         let decoder = JSONDecoder()
         let decodingMap: [String: (Data) throws -> NetworkEvent] = [
             "player-join-room": { jsonData in try decoder.decode(NetworkPlayerJoinEvent.self, from: jsonData) },
+            "player-leave-room": { jsonData in try decoder.decode(NetworkPlayerLeaveRoomEvent.self, from: jsonData) },
             "select-level": { jsonData in try decoder.decode(NetworkSelectLevelEvent.self, from: jsonData) },
             "player-move": { jsonData in try decoder.decode(NetworkPlayerMoveEvent.self, from: jsonData) },
             "move-to-level-selection": { jsonData in

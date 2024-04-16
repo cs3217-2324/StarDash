@@ -46,6 +46,11 @@ class SocketManager: NSObject, WebSocketDelegate {
         }
         socket.write(data: data)
     }
+
+    func closeConnection() {
+        socket?.disconnect()
+    }
+
     func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocketClient) {
 
         switch event {

@@ -92,11 +92,39 @@ class LobbyViewController: UIViewController {
 
     }
 
+    func moveToMenu() {
+        networkManager?.disconnect()
+
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "BackMenuSegue",
+                              sender: self)
+        }
+    }
+
     @IBAction private func start(_ sender: Any) {
         guard let playerIndex = playerIndex else {
             return
         }
         networkManager?.sendEvent(event: NetworkMoveToLevelSelectionEvent(playerIndex: playerIndex))
+    }
+
+    @IBAction private func backButton(_ sender: Any) {
+        let alert = UIAlertController(title: "Was that an accident?",
+                                      message: "Do you want to go back to main menu?",
+                                      preferredStyle: .alert)
+
+                // You can add actions using the following code
+        alert.addAction(UIAlertAction(title: "Yes",
+                                      style: .default,
+                                      handler: { _ in
+                self.moveToMenu()
+            }))
+        alert.addAction(UIAlertAction(title: "No",
+                                      style: .default,
+                                      handler: nil))
+
+                // This part of code inits alert view
+        self.present(alert, animated: true, completion: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -118,6 +146,11 @@ extension LobbyViewController: NetworkManagerDelegate {
     func networkManager(_ networkManager: NetworkManager, didReceiveEvent response: Data) {
         if let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkPlayerJoinEvent {
             totalNumberOfPlayers = event.totalNumberOfPlayers
+            updateLabel()
+        }
+        if let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkPlayerLeaveRoomEvent {
+            totalNumberOfPlayers = event.totalNumberOfPlayers
+            playerIndex = event.newPlayerIndex
             updateLabel()
         }
 

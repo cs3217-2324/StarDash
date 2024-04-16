@@ -81,6 +81,10 @@ class NetworkManager {
         }
         task.resume()
     }
+
+    func disconnect() {
+        socketManager?.closeConnection()
+    }
 }
 
 // extension NetworkManager: SocketManagerDelegate {

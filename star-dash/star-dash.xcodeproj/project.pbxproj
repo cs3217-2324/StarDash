@@ -100,6 +100,7 @@
 		4E3458EB2BA75E8B00E817C6 /* PhysicsComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3458EA2BA75E8B00E817C6 /* PhysicsComponentTests.swift */; };
 		4E3458ED2BA75F1200E817C6 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3458EC2BA75F1200E817C6 /* Util.swift */; };
 		4E5769CA2BCECF860030A3FC /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5769C92BCECF860030A3FC /* NetworkError.swift */; };
+		4E5769CC2BCEE3C30030A3FC /* NetworkPlayerLeaveRoomEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5769CB2BCEE3C30030A3FC /* NetworkPlayerLeaveRoomEvent.swift */; };
 		4E5928E32BC334A900F84237 /* RoomCodeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5928E22BC334A900F84237 /* RoomCodeConstants.swift */; };
 		4E5928E52BC38DAC00F84237 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5928E42BC38DAC00F84237 /* LoadingViewController.swift */; };
 		4E5928E72BC38FC600F84237 /* RoomCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5928E62BC38FC600F84237 /* RoomCreationViewController.swift */; };
@@ -358,6 +359,7 @@
 		4E3458EA2BA75E8B00E817C6 /* PhysicsComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsComponentTests.swift; sourceTree = "<group>"; };
 		4E3458EC2BA75F1200E817C6 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		4E5769C92BCECF860030A3FC /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		4E5769CB2BCEE3C30030A3FC /* NetworkPlayerLeaveRoomEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPlayerLeaveRoomEvent.swift; sourceTree = "<group>"; };
 		4E5928E22BC334A900F84237 /* RoomCodeConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCodeConstants.swift; sourceTree = "<group>"; };
 		4E5928E42BC38DAC00F84237 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		4E5928E62BC38FC600F84237 /* RoomCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCreationViewController.swift; sourceTree = "<group>"; };
@@ -936,6 +938,7 @@
 				4EE00EF22BC4354B00D88085 /* NetworkPlayerHookEvent.swift */,
 				4EE00EF42BC4358B00D88085 /* NetworkPlayerJumpEvent.swift */,
 				4E6154EB2BCCDB8B002EB42B /* NetworkSyncEvent.swift */,
+				4E5769CB2BCEE3C30030A3FC /* NetworkPlayerLeaveRoomEvent.swift */,
 			);
 			path = NetworkEvents;
 			sourceTree = "<group>";
@@ -1430,6 +1433,7 @@
 				E69EE9322BAC6CBB00033AB5 /* GameInfo.swift in Sources */,
 				46BB14302BBFCD4D001AE148 /* MonsterObstacleContactEvent.swift in Sources */,
 				46D418222BA5D4E60091A38B /* Obstacle+Collidable.swift in Sources */,
+				4E5769CC2BCEE3C30030A3FC /* NetworkPlayerLeaveRoomEvent.swift in Sources */,
 				4630F0082BC95E4500FFA1C8 /* DeathEvent.swift in Sources */,
 				E638B9CF2BAB3C5D00931CC2 /* TeleportEvent.swift in Sources */,
 				4E5769CA2BCECF860030A3FC /* NetworkError.swift in Sources */,
