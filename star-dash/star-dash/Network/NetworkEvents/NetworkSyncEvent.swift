@@ -6,6 +6,11 @@
 //
 
 import Foundation
+struct NetworkPlayerPosition: Codable {
+    let playerIndex: Int
+    let position: CGPoint
+}
+
 class NetworkSyncEvent: NetworkEvent {
     let data: Data
     init(playerIndex: Int, data: Data) {

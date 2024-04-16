@@ -7,6 +7,8 @@
 
 import UIKit
 import SDPhysicsEngine
+import DequeModule
+typealias NetworkSyncQueue = Deque<NetworkSyncEvent>
 
 class GameViewController: UIViewController {
     var scene: SDScene?
@@ -21,9 +23,9 @@ class GameViewController: UIViewController {
     // to change to enum
     var viewLayout: Int = 0
     var achievementManager: AchievementManager?
-    var syncEvent: NetworkSyncEvent?
+    var networkSyncQueue: NetworkSyncQueue = .init()
     var timeSinceLastSync: Double = 0
-    var networkSyncInterval: Double = 1
+    var networkSyncInterval: Double = 0.3
     override func viewDidLoad() {
         super.viewDidLoad()
         if let networkManager = networkManager {
@@ -48,7 +50,6 @@ class GameViewController: UIViewController {
             renderer.playerIndex = playerIndex
         }
         renderer.viewDelegate = self
-        print("view layout \(viewLayout)")
         renderer.setupViews(at: self.view, for: viewLayout)
         self.renderer = renderer
         setupBackButton()
@@ -145,37 +146,51 @@ extension GameViewController {
 }
 
 extension GameViewController: SDSceneDelegate {
-    func sync() {
-        let data = gameEngine?.getPositionInJson()
-        if let data = data, let playerIndex = playerIndex {
-            networkManager?.sendEvent(event: NetworkSyncEvent(playerIndex: playerIndex, data: data))
-
+    func sendNetworkSync(deltaTime: Double) {
+        guard let networkManager = networkManager else {
+            return
         }
-    }
-    func update(_ scene: SDScene, deltaTime: Double) {
-        gameBridge?.syncToEntities()
-        
-        gameEngine?.update(by: deltaTime)
         timeSinceLastSync += deltaTime
-        if let syncEvent = syncEvent,
-            let playerIndex = playerIndex,
-           playerIndex != syncEvent.playerIndex {
-            updateTest(data: syncEvent.data, for: syncEvent.playerIndex)
-            self.syncEvent = nil
-        }
+
         if timeSinceLastSync > networkSyncInterval {
-            sync()
             timeSinceLastSync -= networkSyncInterval
         }
+        guard let playerIndex = playerIndex,
+              let position = gameEngine?.getPositionOf(playerIndex: playerIndex) else {
+            return
+        }
+        do {
+            let json = try JSONEncoder().encode(position)
+            networkManager.sendEvent(event: NetworkSyncEvent(playerIndex: playerIndex, data: json))
+        } catch {
+            print("error in sending sync \(error)")
+        }
+        
+    }
+
+    func doNetworkSync() {
+        while let event = networkSyncQueue.popFirst() {
+            if playerIndex != event.playerIndex {
+                syncNetworkPlayer(event: event)
+            }
+        }
+    }
+    
+    func update(_ scene: SDScene, deltaTime: Double) {
+        gameBridge?.syncToEntities()
+        doNetworkSync()
+        gameEngine?.update(by: deltaTime)
+        sendNetworkSync(deltaTime: deltaTime)
         gameBridge?.syncFromEntities()
 
     }
     
-    func updateTest(data: Data, for playerIndex: Int) {
+    func syncNetworkPlayer(event: NetworkSyncEvent) {
         do {
             let decoder = JSONDecoder()
-            let positions = try decoder.decode([NetworkPlayerPosition].self, from: data)
-            gameEngine?.syncPositions(positions: positions, except: playerIndex)
+            let position = try decoder.decode(CGPoint.self, from: event.data)
+            gameEngine?.syncPosition(position: position, of: event.playerIndex)
+
         } catch {
             print("Error decoding: \(error)")
         }
@@ -261,7 +276,7 @@ extension GameViewController: NetworkManagerDelegate {
             gameEngine?.handlePlayerHook(playerIndex: event.playerIndex, timestamp: event.timestamp)
         }
         if let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkSyncEvent {
-            syncEvent = event
+            networkSyncQueue.append(event)
             print("received sync event from \(event.playerIndex)")
         }
     }

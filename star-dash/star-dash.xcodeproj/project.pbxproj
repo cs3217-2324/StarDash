@@ -729,6 +729,18 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		4E5769C82BCEC8070030A3FC /* Multiplayer */ = {
+			isa = PBXGroup;
+			children = (
+				4EDB58142BC32E6000E4C4B2 /* JoinRoomViewController.swift */,
+				4E5928E42BC38DAC00F84237 /* LoadingViewController.swift */,
+				4E5928E62BC38FC600F84237 /* RoomCreationViewController.swift */,
+				4E5928E82BC3938B00F84237 /* LobbyViewController.swift */,
+				4E5928EA2BC3982E00F84237 /* RoomJoiningViewController.swift */,
+			);
+			path = Multiplayer;
+			sourceTree = "<group>";
+		};
 		4E59E24F2BAB2DBB007B3FA7 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
@@ -929,16 +941,12 @@
 		4EAE2C2C2BBAED1200D9E1DE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4E5769C82BCEC8070030A3FC /* Multiplayer */,
 				4E630EF92B9F7E070008F887 /* GameViewController.swift */,
 				4EAE2C2D2BBAED2400D9E1DE /* MenuViewController.swift */,
 				4E18DD072BBB050B00746ACC /* LevelSelectorViewController.swift */,
 				46BB14292BBE81E3001AE148 /* AchievementViewController.swift */,
 				4EDB580F2BC3058E00E4C4B2 /* OnlineMultiplayerMenuViewController.swift */,
-				4EDB58142BC32E6000E4C4B2 /* JoinRoomViewController.swift */,
-				4E5928E42BC38DAC00F84237 /* LoadingViewController.swift */,
-				4E5928E62BC38FC600F84237 /* RoomCreationViewController.swift */,
-				4E5928E82BC3938B00F84237 /* LobbyViewController.swift */,
-				4E5928EA2BC3982E00F84237 /* RoomJoiningViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
