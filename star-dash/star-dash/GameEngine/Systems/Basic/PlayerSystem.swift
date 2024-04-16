@@ -40,19 +40,6 @@ class PlayerSystem: System {
         return playerComponent.hasFinishedGame
     }
 
-    func haveAllPlayersFinishedGame() -> Bool {
-        let players = entityManager.playerEntities()
-        for player in players {
-            guard let hasPlayerFinishedGame = hasPlayerFinishedGame(entityId: player.id) else {
-                continue
-            }
-            guard !hasPlayerFinishedGame else {
-                return false
-            }
-        }
-        return true
-    }
-
     func setHasFinishedGame(of entityId: EntityId, to hasFinishedGame: Bool) {
         guard let playerComponent = getPlayerComponent(of: entityId) else {
             return

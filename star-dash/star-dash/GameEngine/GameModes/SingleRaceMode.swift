@@ -21,10 +21,13 @@ class SingleRaceMode: GameMode {
     }
 
     func hasGameEnded() -> Bool {
-        guard let target = target,
-              let playerSystem = target.system(ofType: PlayerSystem.self) else {
+        guard let target = target else {
             return false
         }
-        return playerSystem.haveAllPlayersFinishedGame()
+        return haveAllPlayersFinishedGame(target: target)
+    }
+
+    func results() -> GameResult {
+        GameResult(displayText: "")
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import CoreGraphics
+import Foundation
 
 protocol GameMode {
     var target: GameModeModifiable? { get set }
@@ -16,7 +17,9 @@ protocol GameMode {
     func setTarget(_ target: GameModeModifiable)
     func setupGameMode()
     func setupPlayers()
+    func update(by deltaTime: TimeInterval)
     func hasGameEnded() -> Bool
+    func results() -> GameResult
 }
 
 extension GameMode {
@@ -33,4 +36,6 @@ extension GameMode {
                                              position: position)
         }
     }
+
+    func update(by deltaTime: TimeInterval) {}
 }

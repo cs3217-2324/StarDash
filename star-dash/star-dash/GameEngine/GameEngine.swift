@@ -82,6 +82,7 @@ class GameEngine {
 
     func update(by deltaTime: TimeInterval) {
         systemManager.update(by: deltaTime)
+        gameMode.update(by: deltaTime)
         eventManager.executeAll(on: self)
         checkHasGameEnded()
     }
@@ -161,13 +162,16 @@ class GameEngine {
 
     private func checkHasGameEnded() {
         if gameMode.hasGameEnded() {
+            print("Game has ended")
             // TODO: Handle game ending
+            // generate results from GameMode
+            // pass results to delegate to display results
             // Display end results with
         }
     }
 }
 
-extension GameEngine: EventModifiable, GameModeModifiable {
+extension GameEngine: EventModifiable {
     func system<T: System>(ofType type: T.Type) -> T? {
         systemManager.system(ofType: type)
     }
@@ -178,6 +182,12 @@ extension GameEngine: EventModifiable, GameModeModifiable {
 
     func registerListener(_ listener: EventListener) {
         eventManager.registerListener(listener)
+    }
+}
+
+extension GameEngine: GameModeModifiable {
+    func playerIds() -> [PlayerId] {
+        entityManager.playerEntities().compactMap({ $0.id })
     }
 }
 
