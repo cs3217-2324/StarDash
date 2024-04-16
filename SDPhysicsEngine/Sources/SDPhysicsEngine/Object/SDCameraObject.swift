@@ -3,25 +3,16 @@ import SpriteKit
 public class SDCameraObject: SDObject {
     let cameraNode: SKCameraNode
     let player: SDObject?
-    let bounds: CGRect
-    var scale: CGFloat = 1
+
     override public init() {
         self.cameraNode = SKCameraNode()
         self.player = nil
-        self.bounds = .zero
         super.init(node: cameraNode)
     }
 
-    init(player: SDObject, screenSize: CGSize, sceneSize: CGSize) {
+    init(player: SDObject) {
         self.cameraNode = SKCameraNode()
         self.player = player
-
-        let boundsOrigin = CGPoint(x: screenSize.width / 2, y: screenSize.height / 2)
-        let boundsSize = CGSize(width: sceneSize.width - screenSize.width, height: sceneSize.height - screenSize.height)
-        self.bounds = CGRect(origin: boundsOrigin, size: boundsSize)
-        if sceneSize.height > 1_024 {
-            scale = 1_024 / sceneSize.height
-        }
         super.init(node: cameraNode)
     }
 
@@ -30,24 +21,30 @@ public class SDCameraObject: SDObject {
         set { cameraNode.zRotation = newValue }
     }
 
-    func update() {
-        guard let player = player else {
-            return
-        }
-        var newPosition = player.position
-        if player.position.x < bounds.minX + 200 {
-            newPosition.x = bounds.minX + 200
-        }
-        if player.position.x > bounds.maxX - 200 {
-            newPosition.x = bounds.maxX - 200
-        }
-        if player.position.y < bounds.minY {
-            newPosition.y = bounds.minY
-        }
-        if player.position.y > bounds.maxY {
-            newPosition.y = bounds.maxY
-        }
-        self.position = newPosition
+    func setup(levelViewHeight: CGFloat, playerScreenSize: CGSize, sceneSize: CGSize) {
+        let scale = levelViewHeight / sceneSize.height
         self.cameraNode.setScale(scale)
+
+        setupConstraints(scale: scale, playerScreenSize: playerScreenSize, sceneSize: sceneSize)
+    }
+
+    private func setupConstraints(scale: CGFloat, playerScreenSize: CGSize, sceneSize: CGSize) {
+        var constraints = [SKConstraint]()
+
+        if let player = player {
+            let zeroRange = SKRange(constantValue: 0.0)
+            let playerLocationConstraint = SKConstraint.distance(zeroRange, to: player.node)
+            constraints.append(playerLocationConstraint)
+        }
+
+        let sceneRect = CGRect(origin: .zero, size: sceneSize)
+        let scaledScreenSize = playerScreenSize.applying(CGAffineTransform(scaleX: scale, y: scale))
+        let insetSceneRect = sceneRect.insetBy(dx: scaledScreenSize.width / 2, dy: scaledScreenSize.height / 2)
+        let xRange = SKRange(lowerLimit: insetSceneRect.minX, upperLimit: insetSceneRect.maxX)
+        let yRange = SKRange(lowerLimit: insetSceneRect.minY, upperLimit: insetSceneRect.maxY)
+        let sceneEdgeConstraint = SKConstraint.positionX(xRange, y: yRange)
+        constraints.append(sceneEdgeConstraint)
+
+        self.cameraNode.constraints = constraints
     }
 }
