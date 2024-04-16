@@ -1,7 +1,7 @@
 { 
   "id": 2,
   "name": "Sky High",
-  "size": [4842, 4024],
+  "size": [5129, 2244],
   "background": "SkyHigh",
   "obstacles": [
     {

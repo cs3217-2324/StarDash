@@ -120,7 +120,14 @@ extension MTKRenderer: MTKViewDelegate {
         }
         playerViews[index].update(overlayInfo)
         scene.useCamera(of: playerIndex, rotatedBy: playerViews[index].rotation)
+
+        if !scene.areAllCamerasSetup {
+            let numberOfPlayers = playerViews.count
+            let playerScreenSize = LayoutUtils.scaledPlayerScreenSize(sceneSize: scene.size, for: numberOfPlayers)
+            scene.setupCameras(levelViewHeight: RenderingConstants.levelViewHeight,
+                               playerScreenSize: playerScreenSize)
         }
+    }
 }
 
 extension MTKRenderer: ControlViewDelegate {
