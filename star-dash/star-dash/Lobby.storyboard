@@ -81,7 +81,7 @@
         <!--Join Room View Controller-->
         <scene sceneID="Ahp-48-fAL">
             <objects>
-                <viewController id="9UG-vN-zGx" customClass="JoinRoomViewController" customModule="star_dash" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="9UG-vN-zGx" customClass="JoinRoomViewController" customModule="star_dash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tJO-I6-IkV">
                         <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,6 +131,21 @@
                                     <constraint firstAttribute="width" constant="984" id="EVi-Tf-eMa"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckd-EU-PgO">
+                                <rect key="frame" x="39" y="33" width="95" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Back">
+                                    <fontDescription key="titleFontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                    <directionalEdgeInsets key="contentInsets" top="10" leading="20" bottom="10" trailing="20"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="backButton:" destination="9UG-vN-zGx" eventType="touchUpInside" id="etG-pQ-rYT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="l3R-eg-EuB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -143,6 +158,7 @@
                         <outlet property="ButtonSelection" destination="e39-oW-Yau" id="CDy-vx-CAl"/>
                         <outlet property="CurrentCode" destination="bY0-oZ-oUE" id="PPQ-Qc-LMO"/>
                         <segue destination="WYk-cn-7xh" kind="presentation" identifier="joinRoomSegue" modalPresentationStyle="fullScreen" id="SgP-xc-8TM"/>
+                        <segue destination="Y6W-OH-hqX" kind="presentation" identifier="BackMenuSegue" modalPresentationStyle="fullScreen" id="n0I-Cy-Dv9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJv-jS-pJO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -303,6 +319,7 @@
                     </view>
                     <connections>
                         <segue destination="KjF-tb-21F" kind="presentation" identifier="lobbySegue" modalPresentationStyle="fullScreen" id="cGT-ZK-JHh"/>
+                        <segue destination="9UG-vN-zGx" kind="presentation" identifier="BackJoinSegue" modalPresentationStyle="fullScreen" id="IOR-8Z-YWP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t1D-9h-c7R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -319,7 +336,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="n0I-Cy-Dv9"/>
         <segue reference="SgP-xc-8TM"/>
+        <segue reference="ZIN-Kz-bf5"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="MenuBG" width="1920" height="1080"/>

@@ -99,6 +99,7 @@
 		4E3458E92BA75E7C00E817C6 /* SpriteComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3458E82BA75E7C00E817C6 /* SpriteComponentTests.swift */; };
 		4E3458EB2BA75E8B00E817C6 /* PhysicsComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3458EA2BA75E8B00E817C6 /* PhysicsComponentTests.swift */; };
 		4E3458ED2BA75F1200E817C6 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3458EC2BA75F1200E817C6 /* Util.swift */; };
+		4E5769CA2BCECF860030A3FC /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5769C92BCECF860030A3FC /* NetworkError.swift */; };
 		4E5928E32BC334A900F84237 /* RoomCodeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5928E22BC334A900F84237 /* RoomCodeConstants.swift */; };
 		4E5928E52BC38DAC00F84237 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5928E42BC38DAC00F84237 /* LoadingViewController.swift */; };
 		4E5928E72BC38FC600F84237 /* RoomCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5928E62BC38FC600F84237 /* RoomCreationViewController.swift */; };
@@ -356,6 +357,7 @@
 		4E3458E82BA75E7C00E817C6 /* SpriteComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteComponentTests.swift; sourceTree = "<group>"; };
 		4E3458EA2BA75E8B00E817C6 /* PhysicsComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsComponentTests.swift; sourceTree = "<group>"; };
 		4E3458EC2BA75F1200E817C6 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		4E5769C92BCECF860030A3FC /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		4E5928E22BC334A900F84237 /* RoomCodeConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCodeConstants.swift; sourceTree = "<group>"; };
 		4E5928E42BC38DAC00F84237 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		4E5928E62BC38FC600F84237 /* RoomCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCreationViewController.swift; sourceTree = "<group>"; };
@@ -958,6 +960,7 @@
 				4EDB58072BC3028900E4C4B2 /* NetworkManager.swift */,
 				4EDB58092BC3037600E4C4B2 /* SocketManager.swift */,
 				4EDB580B2BC303AB00E4C4B2 /* NetworkConstants.swift */,
+				4E5769C92BCECF860030A3FC /* NetworkError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1429,6 +1432,7 @@
 				46D418222BA5D4E60091A38B /* Obstacle+Collidable.swift in Sources */,
 				4630F0082BC95E4500FFA1C8 /* DeathEvent.swift in Sources */,
 				E638B9CF2BAB3C5D00931CC2 /* TeleportEvent.swift in Sources */,
+				4E5769CA2BCECF860030A3FC /* NetworkError.swift in Sources */,
 				143AA3972BA4E0D9009C28E7 /* PickupCollectibleEvent.swift in Sources */,
 				46C3B1C72BB596DE00F10574 /* GrappleHook.swift in Sources */,
 				4E18DD082BBB050B00746ACC /* LevelSelectorViewController.swift in Sources */,

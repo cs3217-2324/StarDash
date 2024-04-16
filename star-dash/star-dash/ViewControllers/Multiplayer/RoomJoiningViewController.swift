@@ -18,6 +18,7 @@ struct NetworkData {
 class RoomJoiningViewController: UIViewController {
     let networkManager: NetworkManager = .init()
     var roomCode: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         networkManager.delegate = self
@@ -50,6 +51,26 @@ class RoomJoiningViewController: UIViewController {
             }
         }
     }
+    
+    func moveBackToJoinRoom() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "BackJoinSegue", sender: self)
+        }
+    }
+    
+    func handleRoomNotFound() {
+        let alert = UIAlertController(title: "Oops!", message: "Theres no such room!", preferredStyle: .alert)
+
+                // You can add actions using the following code
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Back", comment:"This moves back to join room page"), style: .default,handler: { _ in
+                self.moveBackToJoinRoom()
+            }))
+
+                // This part of code inits alert view
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
 }
 
 extension RoomJoiningViewController: NetworkManagerDelegate {
@@ -57,7 +78,6 @@ extension RoomJoiningViewController: NetworkManagerDelegate {
         guard let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkPlayerJoinEvent else {
             return
         }
-        print(event)
         moveToLobby(playerIndex: event.playerIndex, totalNumberOfPlayers: event.totalNumberOfPlayers)
     }
 
@@ -65,13 +85,20 @@ extension RoomJoiningViewController: NetworkManagerDelegate {
         print(message)
 
     }
+    
 
     func networkManager(_ networkManager: NetworkManager, didEncounterError error: Error) {
-        print(error)
+        guard let error = error as? NetworkError else {
+            return
+        }
+        
+        if (error == .RoomNotFound) {
+            handleRoomNotFound()
+        }
     }
 
     func networkManager(_ networkManager: NetworkManager, didReceiveAPIResponse response: Any) {
-
+        
     }
 
 }

@@ -70,14 +70,17 @@ class JoinRoomViewController: UIViewController {
               let tappedIndex = CurrentCode.arrangedSubviews.firstIndex(of: tappedView),
               tappedIndex < selectedFruits.count else { return }
 
-        let removedFruit = selectedFruits.remove(at: tappedIndex)
+        selectedFruits.remove(at: tappedIndex)
         tappedView.removeFromSuperview()
 
         // Shift remaining fruits to the left
         updateCurrentCodeUI()
 
     }
-
+    @IBAction func backButton(_ sender: Any) {
+        performSegue(withIdentifier: "BackMenuSegue", sender: self)
+    }
+    
     @objc
     func fruitButtonTapped(_ sender: FruitButton) {
         guard let imageName = sender.imageName,

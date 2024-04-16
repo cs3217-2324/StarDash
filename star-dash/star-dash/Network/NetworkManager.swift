@@ -53,17 +53,18 @@ class NetworkManager {
     }
     func performGETRequest(prefix: String) {
         guard let url = URL(string: self.serverAddress + prefix) else {
-            delegate?.networkManager(self, didEncounterError: NetworkManagerError.invalidURL)
+            delegate?.networkManager(self, didEncounterError: NetworkError.invalidURL)
             return
         }
         // TODO: CLEAN UP
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
                 self.delegate?.networkManager(self, didEncounterError: error)
+                print(error)
                 return
             }
             guard let data = data else {
-                self.delegate?.networkManager(self, didEncounterError: NetworkManagerError.noDataReceived)
+                self.delegate?.networkManager(self, didEncounterError: NetworkError.noDataReceived)
                 return
             }
             do {
@@ -94,19 +95,13 @@ class NetworkManager {
 //    
 // }
 
-enum NetworkManagerError: Error {
-    case invalidURL
-    case noDataReceived
-    // Add more errors as needed
-}
-
 extension NetworkManager: SocketManagerDelegate {
     func socketManager(_ socketManager: SocketManager, didReceiveMessage message: Data) {
         self.delegate?.networkManager(self, didReceiveEvent: message)
     }
 
     func socketManager(_ socketManager: SocketManager, didEncounterError error: Error) {
-
+        self.delegate?.networkManager(self, didEncounterError: error)
     }
 
 }

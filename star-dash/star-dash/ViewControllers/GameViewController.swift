@@ -277,7 +277,6 @@ extension GameViewController: NetworkManagerDelegate {
         }
         if let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkSyncEvent {
             networkSyncQueue.append(event)
-            print("received sync event from \(event.playerIndex)")
         }
     }
 

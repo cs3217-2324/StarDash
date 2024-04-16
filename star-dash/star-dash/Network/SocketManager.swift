@@ -8,7 +8,7 @@
 import Foundation
 import Starscream
  protocol SocketManagerDelegate: AnyObject {
-     func socketManager(_ socketManager: SocketManager, didReceiveMessage message: Data)
+    func socketManager(_ socketManager: SocketManager, didReceiveMessage message: Data)
     func socketManager(_ socketManager: SocketManager, didEncounterError error: Error)
  }
 
@@ -47,19 +47,16 @@ class SocketManager: NSObject, WebSocketDelegate {
         socket.write(data: data)
     }
     func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocketClient) {
+        
         switch event {
         case .connected(let headers):
             isConnected = true
             print("websocket is connected: \(headers)")
-        case .disconnected(let reason, var code):
+        case .disconnected(let reason, let code):
             isConnected = false
-            print("websocket is disconnected: \(reason) with code: \(code)")
+            handleDisconnect(reason: reason)
         case .text(let string):
-            if let jsonData = string.data(using: .utf8) {
-                // Decode JSON into a generic Decodable type
-                self.delegate?.socketManager(self, didReceiveMessage: jsonData)
-                break
-            }
+            handleEvent(string: string)
         case .binary(let data):
             print("Received data: \(data.count)")
         case .ping, .pong:
@@ -68,12 +65,27 @@ class SocketManager: NSObject, WebSocketDelegate {
             break
         case .cancelled:
             isConnected = false
-        case .error(let error):
+        case .error:
             isConnected = false
-            print("\(String(describing: error))")
         case .peerClosed:
             break
         }
+    }
+    
+    private func handleEvent(string: String) {
+        if let data = string.data(using: .utf8) {
+            // Decode JSON into a generic Decodable type
+            self.delegate?.socketManager(self, didReceiveMessage: data)
+        }
+            
+    }
+    
+    private func handleDisconnect(reason: String) {
+        guard let networkError = NetworkError(rawValue: reason) else {
+            self.delegate?.socketManager(self, didEncounterError: NetworkError.UnknownError)
+            return
+        }
+        self.delegate?.socketManager(self, didEncounterError: networkError)
     }
 }
 
