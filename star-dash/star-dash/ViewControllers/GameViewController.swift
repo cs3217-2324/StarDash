@@ -123,6 +123,14 @@ extension GameViewController {
     }
 }
 
+// MARK: Results
+extension GameViewController {
+    @objc
+    func showResultsModalSegue() {
+        performSegue(withIdentifier: "ShowResultsModalSegue", sender: self)
+    }
+}
+
 extension GameViewController: SDSceneDelegate {
 
     func update(_ scene: SDScene, deltaTime: Double) {

@@ -50,9 +50,15 @@ class LocalRaceMode: GameMode {
 
     }
 
-    func results() -> GameResult {
-        // get scores of all the playesr
-        GameResult(displayText: "")
+    func results() -> GameResult? {
+        guard let target = target,
+              let scoreSystem = target.system(ofType: ScoreSystem.self) else {
+            return nil
+        }
+        for playerId in target.playerIds() {
+            let score = scoreSystem.score(of: playerId)
+        }
+        return GameResult(displayText: "")
     }
 }
 

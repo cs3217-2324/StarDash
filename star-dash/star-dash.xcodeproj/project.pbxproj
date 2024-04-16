@@ -35,6 +35,7 @@
 		14D348ED2BBEFFA800515036 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D348EC2BBEFFA800515036 /* GameMode.swift */; };
 		14D348EF2BBEFFFD00515036 /* GameModeModifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D348EE2BBEFFFD00515036 /* GameModeModifiable.swift */; };
 		14D348F12BBF00A700515036 /* LocalRaceMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D348F02BBF00A700515036 /* LocalRaceMode.swift */; };
+		14DDD8E52BCED4D000AB3967 /* ResultsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DDD8E42BCED4D000AB3967 /* ResultsModalViewController.swift */; };
 		14E2478E2BA22FCE0071FFC0 /* MoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */; };
 		14E247932BA2CA920071FFC0 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 14E247922BA2CA920071FFC0 /* DequeModule */; };
 		14E247952BA2CB480071FFC0 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E247942BA2CB480071FFC0 /* EventManager.swift */; };
@@ -269,6 +270,7 @@
 		14D348EC2BBEFFA800515036 /* GameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
 		14D348EE2BBEFFFD00515036 /* GameModeModifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeModifiable.swift; sourceTree = "<group>"; };
 		14D348F02BBF00A700515036 /* LocalRaceMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRaceMode.swift; sourceTree = "<group>"; };
+		14DDD8E42BCED4D000AB3967 /* ResultsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsModalViewController.swift; sourceTree = "<group>"; };
 		14E2478D2BA22FCE0071FFC0 /* MoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveEvent.swift; sourceTree = "<group>"; };
 		14E247942BA2CB480071FFC0 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		4604BBD42BA819C70078B84C /* InventoryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryComponent.swift; sourceTree = "<group>"; };
@@ -877,6 +879,7 @@
 				4EAE2C2D2BBAED2400D9E1DE /* MenuViewController.swift */,
 				4E18DD072BBB050B00746ACC /* LevelSelectorViewController.swift */,
 				46BB14292BBE81E3001AE148 /* AchievementViewController.swift */,
+				14DDD8E42BCED4D000AB3967 /* ResultsModalViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1321,6 +1324,7 @@
 				4E630EF82B9F7E070008F887 /* SceneDelegate.swift in Sources */,
 				46C3B1C22BB467BB00F10574 /* EntityManagerInterface.swift in Sources */,
 				E69FDDE02BAD3DAD0089D5F3 /* PointsComponent.swift in Sources */,
+				14DDD8E52BCED4D000AB3967 /* ResultsModalViewController.swift in Sources */,
 				E64361112BA4C2CD003850FD /* SyncModule.swift in Sources */,
 				46D049FD2BB99C5B0096D9F2 /* PowerRangerAchievement.swift in Sources */,
 				E6ADAEE02BC555B7007BB12E /* MovementModule.swift in Sources */,
