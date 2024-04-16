@@ -172,7 +172,7 @@ class GameEngine {
             // TODO: Handle game ending
         }
     }
-    
+
     func getPositionOf(playerIndex: Int) -> CGPoint? {
         guard let positionSystem = systemManager.system(ofType: PositionSystem.self),
               let playerSystem = systemManager.system(ofType: PlayerSystem.self) else {
@@ -182,11 +182,11 @@ class GameEngine {
               let position = positionSystem.getPosition(of: playerComponent.entityId) else {
             return nil
         }
-        
+
         return position
-        
+
     }
-    
+
     func syncPosition(position: CGPoint, of playerIndex: Int) {
         guard let positionSystem = systemManager.system(ofType: PositionSystem.self),
               let playerSystem = systemManager.system(ofType: PlayerSystem.self) else {
@@ -195,9 +195,9 @@ class GameEngine {
         guard let playerComponent = playerSystem.getPlayerComponent(of: playerIndex) else {
             return
         }
-        
+
         positionSystem.move(entityId: playerComponent.entityId, to: position)
-        
+
     }
 }
 
@@ -245,6 +245,3 @@ extension GameEngine: EntityManagerInterface {
         entityManager.add(component: component)
     }
 }
-
-
-

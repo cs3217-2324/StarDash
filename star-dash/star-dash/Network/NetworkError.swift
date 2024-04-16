@@ -13,4 +13,3 @@ public enum NetworkError: String, Codable, Error {
     case invalidURL = "invalid-url"
     case noDataReceived = "no-data-received"
 }
-

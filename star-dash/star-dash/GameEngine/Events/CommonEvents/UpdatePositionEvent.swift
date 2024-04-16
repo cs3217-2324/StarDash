@@ -17,7 +17,7 @@ class UpdatePositionEvent: Event {
         super.init(timestamp: timestamp)
     }
     convenience init(on entityId: EntityId, position: CGPoint, rotation: CGFloat) {
-        
+
         self.init(on: entityId, position: position, rotation: rotation, timestamp: Date.now)
     }
 }

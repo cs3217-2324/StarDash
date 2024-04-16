@@ -87,7 +87,6 @@ class PositionSystem: System {
         dispatcher?.registerListener(self)
         dispatcher?.registerListener(self)
 
-        
         eventHandlers[ObjectIdentifier(TeleportEvent.self)] = { event in
             if let teleportEvent = event as? TeleportEvent {
                 self.handleTeleportEvent(event: teleportEvent)
@@ -103,7 +102,7 @@ class PositionSystem: System {
     private func handleTeleportEvent(event: TeleportEvent) {
         move(entityId: event.entityId, to: event.destination)
     }
-    
+
     private func handleUpdatePosition(event: UpdatePositionEvent) {
         move(entityId: event.entityId, to: event.position)
     }

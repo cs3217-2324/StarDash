@@ -165,7 +165,7 @@ extension GameViewController: SDSceneDelegate {
         } catch {
             print("error in sending sync \(error)")
         }
-        
+
     }
 
     func doNetworkSync() {
@@ -175,7 +175,7 @@ extension GameViewController: SDSceneDelegate {
             }
         }
     }
-    
+
     func update(_ scene: SDScene, deltaTime: Double) {
         gameBridge?.syncToEntities()
         doNetworkSync()
@@ -184,7 +184,7 @@ extension GameViewController: SDSceneDelegate {
         gameBridge?.syncFromEntities()
 
     }
-    
+
     func syncNetworkPlayer(event: NetworkSyncEvent) {
         do {
             let decoder = JSONDecoder()

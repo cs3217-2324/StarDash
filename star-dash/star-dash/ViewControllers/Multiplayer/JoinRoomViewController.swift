@@ -77,10 +77,10 @@ class JoinRoomViewController: UIViewController {
         updateCurrentCodeUI()
 
     }
-    @IBAction func backButton(_ sender: Any) {
+    @IBAction private func backButton(_ sender: Any) {
         performSegue(withIdentifier: "BackMenuSegue", sender: self)
     }
-    
+
     @objc
     func fruitButtonTapped(_ sender: FruitButton) {
         guard let imageName = sender.imageName,

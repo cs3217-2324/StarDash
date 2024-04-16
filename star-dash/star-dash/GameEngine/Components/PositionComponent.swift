@@ -22,7 +22,7 @@ class PositionComponent: Component, Codable {
     convenience init(entityId: UUID, position: CGPoint, rotation: CGFloat, isFacingLeft: Bool = false) {
         self.init(id: UUID(), entityId: entityId, position: position, rotation: rotation, isFacingLeft: isFacingLeft)
     }
-    
+
     enum CodingKeys: String, CodingKey {
            case id, entityId, position, rotation, isFacingLeft
        }

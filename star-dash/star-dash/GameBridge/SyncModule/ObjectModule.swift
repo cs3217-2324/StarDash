@@ -12,7 +12,7 @@ class ObjectModule: SyncModule {
         guard let positionComponent = entityManager.component(ofType: PositionComponent.self, of: entity.id) else {
             return
         }
- 
+
         positionComponent.position = object.position
         positionComponent.rotation = object.rotation
     }

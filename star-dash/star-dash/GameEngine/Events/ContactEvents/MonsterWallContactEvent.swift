@@ -18,10 +18,9 @@ class MonsterWallContactEvent: Event {
         self.contactPoint = contactPoint
         super.init(timestamp: timestamp)
     }
-    
+
     convenience init(from monsterId: EntityId, on wallId: EntityId, at contactPoint: CGPoint) {
         self.init(from: monsterId, on: wallId, at: contactPoint, timestamp: Date.now)
     }
-
 
 }

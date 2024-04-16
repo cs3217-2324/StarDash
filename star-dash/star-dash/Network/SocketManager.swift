@@ -47,12 +47,12 @@ class SocketManager: NSObject, WebSocketDelegate {
         socket.write(data: data)
     }
     func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocketClient) {
-        
+
         switch event {
         case .connected(let headers):
             isConnected = true
             print("websocket is connected: \(headers)")
-        case .disconnected(let reason, let code):
+        case .disconnected(let reason, _):
             isConnected = false
             handleDisconnect(reason: reason)
         case .text(let string):
@@ -71,15 +71,15 @@ class SocketManager: NSObject, WebSocketDelegate {
             break
         }
     }
-    
+
     private func handleEvent(string: String) {
         if let data = string.data(using: .utf8) {
             // Decode JSON into a generic Decodable type
             self.delegate?.socketManager(self, didReceiveMessage: data)
         }
-            
+
     }
-    
+
     private func handleDisconnect(reason: String) {
         guard let networkError = NetworkError(rawValue: reason) else {
             self.delegate?.socketManager(self, didEncounterError: NetworkError.UnknownError)
