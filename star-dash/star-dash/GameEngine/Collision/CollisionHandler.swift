@@ -36,8 +36,8 @@ struct CollisionHandler {
         ReleaseGrappleHookEvent(using: grappleHook.id)
     }
 
-    static func between(monster: Monster, wall: Wall) -> Event? {
-        nil
+    static func between(monster: Monster, wall: Wall, at contactPoint: CGPoint) -> Event? {
+        MonsterWallContactEvent(from: monster.id, on: wall.id, at: contactPoint)
     }
 
     static func between(monster: Monster, floor: Floor) -> Event? {
