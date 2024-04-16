@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		141573C02BBE763E00503EA3 /* RenderingConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141573BF2BBE763E00503EA3 /* RenderingConstants.swift */; };
 		1416FF762BCEA2DC00133B73 /* GameMode+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1416FF752BCEA2DC00133B73 /* GameMode+Common.swift */; };
+		1416FF782BCEAB4900133B73 /* GameModeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1416FF772BCEAB4900133B73 /* GameModeConstants.swift */; };
 		142D9F8F2BA15FBB005FE9E0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 142D9F8E2BA15FBB005FE9E0 /* .swiftlint.yml */; };
 		143AA38C2BA4D3E3009C28E7 /* JumpEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA38B2BA4D3E3009C28E7 /* JumpEvent.swift */; };
 		143AA38F2BA4D61A009C28E7 /* CGVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AA38E2BA4D61A009C28E7 /* CGVector.swift */; };
@@ -242,6 +243,7 @@
 /* Begin PBXFileReference section */
 		141573BF2BBE763E00503EA3 /* RenderingConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingConstants.swift; sourceTree = "<group>"; };
 		1416FF752BCEA2DC00133B73 /* GameMode+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameMode+Common.swift"; sourceTree = "<group>"; };
+		1416FF772BCEAB4900133B73 /* GameModeConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeConstants.swift; sourceTree = "<group>"; };
 		142D9F8E2BA15FBB005FE9E0 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		143AA38B2BA4D3E3009C28E7 /* JumpEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpEvent.swift; sourceTree = "<group>"; };
 		143AA38E2BA4D61A009C28E7 /* CGVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGVector.swift; sourceTree = "<group>"; };
@@ -844,6 +846,7 @@
 				E69FDDE12BAD3DC40089D5F3 /* EntityConstants.swift */,
 				4E8660652BA097D40035530D /* PhysicsConstants.swift */,
 				14970F552BA8177B00CC1E8A /* GameConstants.swift */,
+				1416FF772BCEAB4900133B73 /* GameModeConstants.swift */,
 				141573BF2BBE763E00503EA3 /* RenderingConstants.swift */,
 			);
 			path = Constants;
@@ -1381,6 +1384,7 @@
 				143AA3912BA4D7AC009C28E7 /* MonsterDeathEvent.swift in Sources */,
 				467740E52BCAC38000539DBE /* MonsterWallContactEvent.swift in Sources */,
 				E62430382BBAB780001FC686 /* HomingMissile.swift in Sources */,
+				1416FF782BCEAB4900133B73 /* GameModeConstants.swift in Sources */,
 				E64361102BA4C2CD003850FD /* SpriteModule.swift in Sources */,
 				4604BBD52BA819C70078B84C /* InventoryComponent.swift in Sources */,
 				E65993762BC923EB00DB845D /* ScoreSystem.swift in Sources */,
