@@ -8,6 +8,8 @@
 import Foundation
 
 struct GameModeConstants {
+    static let playerStartingPosition = CGPoint(x: 200, y: 200)
+
     struct LocalRaceMode {
         static let rankingScoreChangeMap = [
             1: 100,

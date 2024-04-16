@@ -16,7 +16,6 @@ protocol GameMode {
 
     func setTarget(_ target: GameModeModifiable)
     func setupGameMode()
-    func setupPlayers()
     func update(by deltaTime: TimeInterval)
     func hasGameEnded() -> Bool
     func results() -> GameResult
@@ -24,18 +23,6 @@ protocol GameMode {
 
 extension GameMode {
     func setupGameMode() {}
-
-    func setupPlayers() {
-        guard let target = target else {
-            return
-        }
-        for playerIndex in 0..<numberOfPlayers {
-            let position = CGPoint(x: 200, y: 200)
-            EntityFactory.createAndAddPlayer(to: target,
-                                             playerIndex: playerIndex,
-                                             position: position)
-        }
-    }
 
     func update(by deltaTime: TimeInterval) {}
 }

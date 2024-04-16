@@ -7,6 +7,18 @@
 
 import Foundation
 
+// MARK: Common game-mode setup
+extension GameMode {
+    func setupPlayers(target: GameModeModifiable) {
+        for playerIndex in 0..<numberOfPlayers {
+            EntityFactory.createAndAddPlayer(to: target,
+                                             playerIndex: playerIndex,
+                                             position: GameModeConstants.playerStartingPosition)
+        }
+    }
+}
+
+// MARK: Common game-mode checks
 extension GameMode {
     func haveAllPlayersFinishedGame(target: GameModeModifiable) -> Bool {
         guard let playerSystem = target.system(ofType: PlayerSystem.self) else {

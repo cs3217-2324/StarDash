@@ -78,7 +78,6 @@ extension GameViewController {
         gameEngine.setupLevel(level: level, entities: entities, sceneSize: scene.size)
 
         gameMode.setupGameMode()
-        gameMode.setupPlayers()
 
         self.achievementManager = AchievementManager(withMap: gameEngine.playerIdEntityMap)
 

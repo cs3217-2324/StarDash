@@ -20,6 +20,13 @@ class SingleRaceMode: GameMode {
         self.target = target
     }
 
+    func setupGameMode() {
+        guard let target = target else {
+            return
+        }
+        setupPlayers(target: target)
+    }
+
     func hasGameEnded() -> Bool {
         guard let target = target else {
             return false
