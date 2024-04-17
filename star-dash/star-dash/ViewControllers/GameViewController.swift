@@ -30,6 +30,11 @@ class GameViewController: UIViewController {
     var areResultsDisplayed = false
     var joystickIsLeft = [Bool?]()
     override func viewDidLoad() {
+        if let numberOfPlayers = numberOfPlayers as? (any Sequence) {
+            for _ in numberOfPlayers {
+                joystickIsLeft.append(nil)
+            }
+        }
         super.viewDidLoad()
         if let networkManager = networkManager {
             networkManager.delegate = self
@@ -55,11 +60,7 @@ class GameViewController: UIViewController {
         renderer.setupViews(at: self.view, for: viewLayout)
         self.renderer = renderer
         setupBackButton()
-        if let numberOfPlayers = numberOfPlayers as? (any Sequence) {
-            for _ in numberOfPlayers {
-                joystickIsLeft.append(nil)
-            }
-        }
+        
         
     }
 
@@ -239,8 +240,10 @@ extension GameViewController: ViewDelegate {
             gameEngine?.handlePlayerMove(toLeft: toLeft, playerIndex: playerIndex, timestamp: Date.now)
             return
         }
-        
-        joystickIsLeft[playerIndex] = toLeft
+        if joystickIsLeft.count > playerIndex {
+            joystickIsLeft[playerIndex] = toLeft
+
+        }
         let networkEvent = NetworkPlayerMoveEvent(playerIndex: playerIndex, isLeft: toLeft)
         networkManager.sendEvent(event: networkEvent)
         
@@ -252,7 +255,10 @@ extension GameViewController: ViewDelegate {
             gameEngine?.handlePlayerStoppedMoving(playerIndex: playerIndex, timestamp: Date.now)
             return
         }
-        joystickIsLeft[playerIndex] = nil
+        if joystickIsLeft.count > playerIndex {
+            joystickIsLeft[playerIndex] = nil
+
+        }
         let networkEvent = NetworkPlayerStopEvent(playerIndex: playerIndex)
         networkManager.sendEvent(event: networkEvent)
     }
