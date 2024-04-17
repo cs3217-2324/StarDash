@@ -29,7 +29,7 @@ class FinishSystem: System {
 
         for player in entityManager.playerEntities() {
             guard let hasPlayerFinishedGame =
-                    playerSystem.hasPlayerFinishedGame(entityId: player.id), !hasPlayerFinishedGame else {
+                    playerSystem.hasPlayerFinishedGame(entityId: player.id) else {
                 break
             }
 
