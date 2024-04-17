@@ -9,5 +9,5 @@ import Foundation
 
 struct PlayerResult {
     let spriteImage: ImageSet
-    let result: String
+    let result: CGFloat
 }

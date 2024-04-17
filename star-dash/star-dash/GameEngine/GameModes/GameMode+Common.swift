@@ -29,7 +29,7 @@ extension GameMode {
                     playerSystem.hasPlayerFinishedGame(entityId: playerId) else {
                 continue
             }
-            guard !hasPlayerFinishedGame else {
+            guard hasPlayerFinishedGame else {
                 return false
             }
         }

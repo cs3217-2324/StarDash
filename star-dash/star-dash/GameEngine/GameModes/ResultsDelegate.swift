@@ -6,5 +6,7 @@
 //
 
 protocol ResultsDelegate: AnyObject {
+    var areResultsDisplayed: Bool { get }
+
     func displayResults(_ results: GameResults)
 }

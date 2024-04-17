@@ -165,7 +165,8 @@ class GameEngine {
 
     private func checkHasGameEnded() {
         if gameMode.hasGameEnded() {
-            guard let results = gameMode.results() else {
+            guard let results = gameMode.results(),
+                  !resultsDelegate.areResultsDisplayed else {
                 return
             }
             resultsDelegate.displayResults(results)

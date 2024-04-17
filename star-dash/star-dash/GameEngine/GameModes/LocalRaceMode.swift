@@ -59,8 +59,8 @@ class LocalRaceMode: GameMode {
         var gameResults = GameResults()
         for playerId in target.playerIds() {
             let spriteImage = spriteSystem.getImage(of: playerId) ?? SpriteConstants.playerRedNose
-            let score = String(scoreSystem.score(of: playerId) ?? 0)
-            let playerResult = PlayerResult(spriteImage: spriteImage, result: score)
+            let score = scoreSystem.score(of: playerId) ?? 0
+            let playerResult = PlayerResult(spriteImage: spriteImage, result: CGFloat(score))
             gameResults.addPlayerResult(playerResult)
         }
         return gameResults

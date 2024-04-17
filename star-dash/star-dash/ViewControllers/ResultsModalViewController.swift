@@ -11,9 +11,9 @@ import UIKit
 class ResultsModalViewController: UIViewController {
     var gameResults: GameResults?
 
-    @IBOutlet var resultsModalView: UIView!
-    @IBOutlet var homeButton: UIButton!
-    @IBOutlet var resultsStackView: UIStackView!
+    @IBOutlet private var resultsModalView: UIView!
+    @IBOutlet private var homeButton: UIButton!
+    @IBOutlet private var resultsStackView: UIStackView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,20 +22,21 @@ class ResultsModalViewController: UIViewController {
     }
 
     private func setupUI() {
-        resultsModalView.layer.cornerRadius = 50
+        resultsModalView.layer.cornerRadius = 20
     }
 
     private func populateResults() {
         guard let gameResults = gameResults else {
             return
         }
-        for playerResult in gameResults.playerResults {
+        let sortedPlayerResults = gameResults.playerResults.sorted(by: { $0.result <= $1.result })
+        for playerResult in sortedPlayerResults {
             let playerResultView = PlayerResultView.createPlayerResultView(from: playerResult)
             resultsStackView.addArrangedSubview(playerResultView)
         }
     }
 
-    @IBAction func back(_ sender: Any) {
+    @IBAction private func back(_ sender: Any) {
         performSegue(withIdentifier: "BackSegue", sender: nil)
     }
 }
@@ -55,20 +56,24 @@ class PlayerResultView: UIView {
     }
 
     private func setupUI() {
-        let horizontalStackView = UIStackView()
         playerIconView.contentMode = .scaleAspectFit
         playerIconView.translatesAutoresizingMaskIntoConstraints = false
-        horizontalStackView.addArrangedSubview(playerIconView)
+        addSubview(playerIconView)
 
         resultLabel.textAlignment = .center
         resultLabel.font = UIFont(name: "Futura-Medium", size: 50)
         resultLabel.translatesAutoresizingMaskIntoConstraints = false
-        horizontalStackView.addArrangedSubview(resultLabel)
-
-        addSubview(horizontalStackView)
+        addSubview(resultLabel)
 
         NSLayoutConstraint.activate([
-            playerIconView.widthAnchor.constraint(equalToConstant: 30)
+            playerIconView.widthAnchor.constraint(equalToConstant: 50),
+            playerIconView.heightAnchor.constraint(equalToConstant: 50),
+            playerIconView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            playerIconView.leadingAnchor.constraint(equalTo: leadingAnchor),
+
+            resultLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            resultLabel.leadingAnchor.constraint(equalTo: playerIconView.trailingAnchor, constant: 20),
+            resultLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 
@@ -77,7 +82,7 @@ class PlayerResultView: UIView {
         let iconImage =
             SpriteConstants.playerImageIconMap[playerResult.spriteImage] ?? SpriteConstants.playerRedNoseIcon
         playerResultView.playerIconView.image = UIImage(named: iconImage)
-        playerResultView.resultLabel.text = playerResult.result
+        playerResultView.resultLabel.text = String(Int(playerResult.result))
         return playerResultView
     }
 }

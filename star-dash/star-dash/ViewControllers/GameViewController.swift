@@ -18,6 +18,8 @@ class GameViewController: UIViewController {
     var gameMode: GameMode?
     var achievementManager: AchievementManager?
 
+    var areResultsDisplayed: Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -127,6 +129,7 @@ extension GameViewController {
 extension GameViewController: ResultsDelegate {
     func displayResults(_ results: GameResults) {
         performSegue(withIdentifier: "ShowResultsModalSegue", sender: results)
+        areResultsDisplayed = true
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
