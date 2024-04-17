@@ -30,7 +30,22 @@ class PlayerSystem: System {
         }
     }
 
-    // MARK: Death related methods
+    func hasPlayerFinishedGame(entityId: EntityId) -> Bool? {
+        guard isPlayer(entityId: entityId) else {
+            return nil
+        }
+        guard let playerComponent = getPlayerComponent(of: entityId) else {
+            return nil
+        }
+        return playerComponent.hasFinishedGame
+    }
+
+    func setHasFinishedGame(of entityId: EntityId, to hasFinishedGame: Bool) {
+        guard let playerComponent = getPlayerComponent(of: entityId) else {
+            return
+        }
+        playerComponent.hasFinishedGame = hasFinishedGame
+    }
 
     func isPlayer(entityId: EntityId) -> Bool {
         getPlayerComponent(of: entityId) != nil

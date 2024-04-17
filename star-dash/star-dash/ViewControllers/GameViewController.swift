@@ -26,6 +26,9 @@ class GameViewController: UIViewController {
     var networkSyncQueue: NetworkSyncQueue = .init()
     var timeSinceLastSync: Double = 0
     var networkSyncInterval: Double = 0.3
+    var gameMode: GameMode?
+    var areResultsDisplayed = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if let networkManager = networkManager {
@@ -41,7 +44,6 @@ class GameViewController: UIViewController {
 
         setupGame()
         setupBackground(in: scene)
-        setupFlag(in: scene)
 
         guard let renderer = MTKRenderer(scene: scene) else {
             return
@@ -62,7 +64,7 @@ class GameViewController: UIViewController {
 
     private func createGameEngine() -> GameEngine {
         let levelSize = level?.size ?? RenderingConstants.defaultLevelSize
-        return GameEngine(mapSize: levelSize, gameMode: RaceMode(mapWidth: levelSize.width))
+        return GameEngine(mapSize: levelSize, gameMode: gameMode ?? SingleRaceMode(), resultsDelegate: self)
     }
 
     private func createGameScene(of size: CGSize) -> GameScene {
@@ -70,7 +72,7 @@ class GameViewController: UIViewController {
         let extendedSize = CGSize(
             width: size.width + RenderingConstants.levelSizeRightExtension,
             height: size.height)
-        let scene = GameScene(size: extendedSize, for: numberOfPlayers)
+        let scene = GameScene(size: extendedSize, for: gameMode?.numberOfPlayers ?? 0)
         scene.scaleMode = .aspectFill
         scene.sceneDelegate = self
         return scene
@@ -83,13 +85,15 @@ extension GameViewController {
         guard let storageManager = self.storageManager,
               let gameEngine = self.gameEngine,
               let scene = self.scene,
-              let level = self.level else {
+              let level = self.level,
+              let gameMode = self.gameMode else {
             return
         }
 
         let entities = storageManager.getAllEntity(id: level.id)
         gameEngine.setupLevel(level: level, entities: entities, sceneSize: scene.size)
-        gameEngine.setupPlayers(numberOfPlayers: self.numberOfPlayers)
+
+        gameMode.setupGameMode()
 
         self.achievementManager = AchievementManager(withMap: gameEngine.playerIdEntityMap)
 
@@ -120,17 +124,6 @@ extension GameViewController {
         }
     }
 
-    private func setupFlag(in scene: SDScene) {
-        guard let gameEngine = gameEngine else {
-            return
-        }
-        let flag = SDSpriteObject(imageNamed: SpriteConstants.flag.faceRight)
-        flag.size = PhysicsConstants.Dimensions.flag
-        flag.position = CGPoint(x: gameEngine.mapSize.width + flag.size.width / 2, y: 200)
-        flag.zPosition = -1
-        scene.addObject(flag)
-    }
-
     private func setupBackButton() {
         let backButton = UIButton(type: .system)
         backButton.setTitle("Back", for: .normal)
@@ -142,6 +135,24 @@ extension GameViewController {
             backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             backButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+    }
+}
+
+// MARK: Results
+extension GameViewController: ResultsDelegate {
+    func displayResults(_ results: GameResults) {
+        performSegue(withIdentifier: "ShowResultsModalSegue", sender: results)
+        areResultsDisplayed = true
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowResultsModalSegue" {
+            if let destinationVC = segue.destination as? ResultsModalViewController {
+                if let data = sender as? GameResults {
+                    destinationVC.gameResults = data
+                }
+            }
+        }
     }
 }
 

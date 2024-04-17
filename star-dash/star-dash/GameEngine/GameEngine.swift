@@ -13,14 +13,17 @@ class GameEngine {
     private let eventManager: EventManager
     private let gameMode: GameMode
 
+    var resultsDelegate: ResultsDelegate
+
     let mapSize: CGSize
 
-    init(mapSize: CGSize, gameMode: GameMode) {
+    init(mapSize: CGSize, gameMode: GameMode, resultsDelegate: ResultsDelegate) {
         self.systemManager = SystemManager()
         self.entityManager = EntityManager()
         self.eventManager = EventManager()
         self.gameMode = gameMode
         self.mapSize = mapSize
+        self.resultsDelegate = resultsDelegate
 
         setupSystems()
         setupGameMode()
@@ -36,21 +39,14 @@ class GameEngine {
         EntityFactory.createAndAddWall(to: self,
                                        position: CGPoint(x: sceneSize.width, y: sceneSize.height / 2),
                                        size: CGSize(width: 1, height: sceneSize.height))
+        EntityFactory.createAndAddWall(to: self,
+                                       position: CGPoint(x: sceneSize.width / 2, y: sceneSize.height),
+                                       size: CGSize(width: sceneSize.width, height: 1))
+        EntityFactory.createAndAddFinishLine(to: self,
+                                             position: CGPoint(
+                                                x: mapSize.width + PhysicsConstants.Dimensions.flag.width / 2,
+                                                y: 200))
         entities.forEach({ $0.addTo(self) })
-    }
-
-    // TODO: Set up players with characters that are selected
-    func setupPlayers(numberOfPlayers: Int) {
-        for playerIndex in 0..<numberOfPlayers {
-               // Calculate position for each player
-               let position = CGPoint(x: 200, y: 200)
-
-               // Create and add player
-               EntityFactory.createAndAddPlayer(to: self,
-                                                playerIndex: playerIndex,
-                                                position: position)
-        }
-
     }
 
     func gameInfo(forPlayer playerIndex: Int) -> GameInfo? {
@@ -89,6 +85,7 @@ class GameEngine {
 
     func update(by deltaTime: TimeInterval) {
         systemManager.update(by: deltaTime)
+        gameMode.update(by: deltaTime)
         eventManager.executeAll(on: self)
         checkHasGameEnded()
     }
@@ -156,6 +153,7 @@ class GameEngine {
         systemManager.add(MovementSystem(entityManager, dispatcher: self))
         systemManager.add(BuffSystem(entityManager, dispatcher: self))
         systemManager.add(DeathSystem(entityManager, dispatcher: self))
+        systemManager.add(FinishSystem(entityManager, dispatcher: self))
 
         // Power-Up Systems
         systemManager.add(PowerUpSystem(entityManager, dispatcher: self))
@@ -169,7 +167,11 @@ class GameEngine {
 
     private func checkHasGameEnded() {
         if gameMode.hasGameEnded() {
-            // TODO: Handle game ending
+            guard let results = gameMode.results(),
+                  !resultsDelegate.areResultsDisplayed else {
+                return
+            }
+            resultsDelegate.displayResults(results)
         }
     }
 
@@ -201,7 +203,7 @@ class GameEngine {
     }
 }
 
-extension GameEngine: EventModifiable, GameModeModifiable {
+extension GameEngine: EventModifiable {
     func system<T: System>(ofType type: T.Type) -> T? {
         systemManager.system(ofType: type)
     }
@@ -212,6 +214,12 @@ extension GameEngine: EventModifiable, GameModeModifiable {
 
     func registerListener(_ listener: EventListener) {
         eventManager.registerListener(listener)
+    }
+}
+
+extension GameEngine: GameModeModifiable {
+    func playerIds() -> [PlayerId] {
+        entityManager.playerEntities().compactMap({ $0.id })
     }
 }
 

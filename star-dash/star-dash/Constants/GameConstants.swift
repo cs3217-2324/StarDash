@@ -13,11 +13,6 @@ struct GameConstants {
         static let monster = 100
     }
 
-    static let rankingScoreChangeMap = [
-        1: 100,
-        2: 50
-    ]
-
     struct HealthChange {
         static let attackedByMonster = -20
         static let attackedByPlayer = -200

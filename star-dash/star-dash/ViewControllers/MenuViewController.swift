@@ -20,22 +20,24 @@ class MenuViewController: UIViewController {
     }
 
     @IBAction private func singlePlayer(_ sender: Any) {
-        let numberOfPlayers = 1
+        let singleRaceMode = SingleRaceMode()
         performSegue(withIdentifier: "LevelSelectSegue", sender: GameData(level: nil,
-                                                                          numberOfPlayers: numberOfPlayers,
-                                                                          viewLayout: numberOfPlayers,
+                                                                          numberOfPlayers: 1,
+                                                                          viewLayout: 1,
+                                                                          gameMode: LocalRaceMode(),
                                                                           storageManager: storageManager,
                                                                           networkManager: nil,
                                                                           playerIndex: nil))
     }
 
     @IBAction private func localMultiplayer(_ sender: Any) {
-        let numberOfPlayers = 2
+        let localRaceMode = LocalRaceMode()
         performSegue(withIdentifier: "LevelSelectSegue",
                      sender: GameData(level: nil,
-                                      numberOfPlayers: numberOfPlayers,
+                                      numberOfPlayers: 2,
 
-                                      viewLayout: numberOfPlayers,
+                                      viewLayout: 2,
+                                      gameMode: LocalRaceMode(),
                                       storageManager: storageManager,
                                       networkManager: nil,
                                       playerIndex: nil))
@@ -49,7 +51,7 @@ class MenuViewController: UIViewController {
         if segue.identifier == "LevelSelectSegue" {
             if let destinationVC = segue.destination as? LevelSelectorViewController {
                 if let data = sender as? GameData {
-                    destinationVC.numberOfPlayers = data.numberOfPlayers
+                    destinationVC.gameMode = data.gameMode
                     destinationVC.storageManager = data.storageManager
                     destinationVC.viewLayout = data.viewLayout
                 }
