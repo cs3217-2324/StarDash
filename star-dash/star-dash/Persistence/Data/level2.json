@@ -1,7 +1,7 @@
 {
   "id": 1,
   "name": "Monster Frenzy",
-  "size": [4842, 1040],
+  "size": [10000, 1040],
   "background": "Mountains",
   "obstacles": [
     {
@@ -189,6 +189,199 @@
       "position": [4200, 750],
       "size": [100,100]
     },
+    {
+      "levelId": 1,
+      "position": [4500, 150],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [4600, 250],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [4600, 1000],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [4800, 350],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [4900, 350],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [4900,1000],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [5000,450],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [5100,550],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [5200,1000],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [5300,650],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [5400,550],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [5500,550],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [5600,550],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [5700,550],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [5400,150],
+      "size": [100,100]
+    },
+    
+    {
+      "levelId": 1,
+      "position": [5700,150],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [5800,650],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [6100,350],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [6200,350],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [6500,250],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [6700,250],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [6700,900],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [6800,350],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [7000,350],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [7400,150],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [7400,250],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [7700,800],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [7700,250],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [8000,425],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [8150,425],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [8300,550],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [8400,450],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [8500,150],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [8700,150],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [8700,250],
+      "size": [100,100]
+    },
+    
+    {
+      "levelId": 1,
+      "position": [9000,200],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [9100,300],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [9200, 400],
+      "size": [100,100]
+    },
+    
   ],
   "collectibles": [
       {
@@ -257,6 +450,132 @@
         "radius": 25,
         "points": 20
       },
+      {
+        "levelId": 1,
+        "position": [4000, 150],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [4100, 550],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [4800, 450],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [4900, 250],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [4700, 150],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [5200, 450],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [5200, 350],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [5200, 250],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [5600, 250],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [5700, 650],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [6000, 500],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [6500, 450],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [6700, 450],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [7400, 350],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [7200, 150],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [7900, 400],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [8150, 500],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [8150, 600],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [8300, 650],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [8700, 350],
+        "radius": 25,
+        "points": 20
+      },
+      {
+        "levelId": 1,
+        "position": [9200, 550],
+        "radius": 25,
+        "points": 20
+      },
   ],
   "tools": [
       {
@@ -302,18 +621,39 @@
         "size": [100,100],
         "health": 100
       },
+      {
+        "levelId": 1,
+        "position": [4050, 150],
+        "size": [100,100],
+        "health": 100
+      },
+      {
+        "levelId": 1,
+        "position": [5050, 150],
+        "size": [100,100],
+        "health": 100
+      },
+      {
+        "levelId": 1,
+        "position": [6050, 150],
+        "size": [100,100],
+        "health": 100
+      },
+      {
+        "levelId": 1,
+        "position": [7050, 150],
+        "size": [100,100],
+        "health": 100
+      },
+      {
+        "levelId": 1,
+        "position": [8050, 150],
+        "size": [100,100],
+        "health": 100
+      },
   ],
   "walls": [
-      {
-        "levelId": 1,
-        "position": [1000, 600],
-        "size": [10,10]
-      },
-      {
-        "levelId": 1,
-        "position": [1400, 600],
-        "size": [10,10]
-      },
+      
   ],
   "powerUpBoxes": [
     {
@@ -322,5 +662,47 @@
       "size": [60,60],
       "type": "SpeedBoostPowerUp"
     },
+    {
+      "levelId": 1,
+      "position": [4900, 450],
+      "size": [60,60],
+      "type": "HomingMissilePowerUp"
+    },
+    {
+      "levelId": 1,
+      "position": [5000, 650],
+      "size": [60,60],
+      "type": "SpeedBoostPowerUp"
+    },
+    {
+      "levelId": 2,
+      "position": [5000, 150],
+      "size": [60,60],
+      "type": "HomingMissilePowerUp"
+    },
+    {
+      "levelId": 1,
+      "position": [1200, 350],
+      "size": [60,60],
+      "type": "HomingMissilePowerUp"
+    },
+    {
+      "levelId": 1,
+      "position": [8400, 550],
+      "size": [60,60],
+      "type": "FlyingPowerUp"
+    },
+    {
+      "levelId": 1,
+      "position": [2700, 750],
+      "size": [60,60],
+      "type": "FlyingPowerUp"
+    },
+    {
+        "levelId": 1,
+        "position": [9200, 700],
+        "size": [60,60],
+        "type": "FlyingPowerUp"
+      }
   ]
 }
