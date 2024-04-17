@@ -24,7 +24,6 @@ class GameEngine {
         self.gameMode = gameMode
         self.mapSize = mapSize
         self.resultsDelegate = resultsDelegate
-
         setupSystems()
         setupGameMode()
     }

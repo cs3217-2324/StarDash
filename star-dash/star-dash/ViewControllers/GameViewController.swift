@@ -86,10 +86,10 @@ extension GameViewController {
               let gameEngine = self.gameEngine,
               let scene = self.scene,
               let level = self.level,
-              let gameMode = self.gameMode else {
+              var gameMode = self.gameMode else {
             return
         }
-
+        gameMode.numberOfPlayers = numberOfPlayers
         let entities = storageManager.getAllEntity(id: level.id)
         gameEngine.setupLevel(level: level, entities: entities, sceneSize: scene.size)
 
