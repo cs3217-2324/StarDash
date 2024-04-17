@@ -55,6 +55,12 @@ class GameViewController: UIViewController {
         renderer.setupViews(at: self.view, for: viewLayout)
         self.renderer = renderer
         setupBackButton()
+        if let numberOfPlayers = numberOfPlayers as? (any Sequence) {
+            for _ in numberOfPlayers {
+                joystickIsLeft.append(nil)
+            }
+        }
+        
     }
 
     @objc
