@@ -54,6 +54,7 @@ class MenuViewController: UIViewController {
                     destinationVC.gameMode = data.gameMode
                     destinationVC.storageManager = data.storageManager
                     destinationVC.viewLayout = data.viewLayout
+                    destinationVC.numberOfPlayers = data.numberOfPlayers
                 }
             }
         }
