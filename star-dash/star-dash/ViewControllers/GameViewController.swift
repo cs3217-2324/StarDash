@@ -18,7 +18,7 @@ class GameViewController: UIViewController {
     var gameMode: GameMode?
     var achievementManager: AchievementManager?
 
-    var areResultsDisplayed: Bool = false
+    var areResultsDisplayed = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
