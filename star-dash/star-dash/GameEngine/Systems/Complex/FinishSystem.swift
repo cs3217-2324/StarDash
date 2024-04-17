@@ -40,6 +40,7 @@ class FinishSystem: System {
             }
             if playerPosition.x >= finishLinePosition.x {
                 playerSystem.setHasFinishedGame(of: player.id, to: true)
+                print("player has finished game \(player.id)")
             }
         }
     }
