@@ -91,7 +91,6 @@ class EntityManager: EntityManagerInterface {
                 return entityId
             }
         }
-
         return nil
     }
 
@@ -101,6 +100,13 @@ class EntityManager: EntityManagerInterface {
             playerEntities.append(entity)
         }
         return playerEntities
+    }
+
+    func finishLineEntity() -> Entity? {
+        for entity in entityMap.values where entity is FinishLine {
+            return entity
+        }
+        return nil
     }
 
     func component<T: Component>(ofType type: T.Type, of entityId: EntityId) -> T? {

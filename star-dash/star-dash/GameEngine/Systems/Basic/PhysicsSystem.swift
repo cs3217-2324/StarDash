@@ -56,7 +56,6 @@ class PhysicsSystem: System {
         guard let physicsComponent = getPhysicsComponent(of: entityId) else {
             return nil
         }
-        print(physicsComponent.velocity)
 
         return physicsComponent.velocity
     }
