@@ -29,13 +29,13 @@ class FinishSystem: System {
 
         for player in entityManager.playerEntities() {
             guard let hasPlayerFinishedGame =
-                    playerSystem.hasPlayerFinishedGame(entityId: player.id) else {
+                    playerSystem.hasPlayerFinishedGame(entityId: player.id), !hasPlayerFinishedGame else {
                 break
             }
-            if hasPlayerFinishedGame {
-                break
-            }
+
             guard let playerPosition = positionSystem.getPosition(of: player.id) else {
+                print("Player has no posiiton")
+
                 break
             }
             if playerPosition.x >= finishLinePosition.x {
