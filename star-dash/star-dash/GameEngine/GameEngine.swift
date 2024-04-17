@@ -13,14 +13,17 @@ class GameEngine {
     private let eventManager: EventManager
     private let gameMode: GameMode
 
+    var resultsDelegate: ResultsDelegate
+
     let mapSize: CGSize
 
-    init(mapSize: CGSize, gameMode: GameMode) {
+    init(mapSize: CGSize, gameMode: GameMode, resultsDelegate: ResultsDelegate) {
         self.systemManager = SystemManager()
         self.entityManager = EntityManager()
         self.eventManager = EventManager()
         self.gameMode = gameMode
         self.mapSize = mapSize
+        self.resultsDelegate = resultsDelegate
 
         setupSystems()
         setupGameMode()
@@ -162,11 +165,10 @@ class GameEngine {
 
     private func checkHasGameEnded() {
         if gameMode.hasGameEnded() {
-            print("Game has ended")
-            // TODO: Handle game ending
-            // generate results from GameMode
-            // pass results to delegate to display results
-            // Display end results with
+            guard let results = gameMode.results() else {
+                return
+            }
+            resultsDelegate.displayResults(results)
         }
     }
 }

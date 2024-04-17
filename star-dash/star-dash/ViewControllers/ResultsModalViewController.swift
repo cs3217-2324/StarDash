@@ -9,26 +9,40 @@ import Foundation
 import UIKit
 
 class ResultsModalViewController: UIViewController {
-    @IBOutlet weak var resultsModalView: UIView!
-    @IBOutlet weak var homeButton: UIButton!
-    
+    var gameResults: GameResults?
+
+    @IBOutlet var resultsModalView: UIView!
+    @IBOutlet var homeButton: UIButton!
+    @IBOutlet var resultsStackView: UIStackView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        populateResults()
     }
 
     private func setupUI() {
         resultsModalView.layer.cornerRadius = 50
     }
-    
+
+    private func populateResults() {
+        guard let gameResults = gameResults else {
+            return
+        }
+        for playerResult in gameResults.playerResults {
+            let playerResultView = PlayerResultView.createPlayerResultView(from: playerResult)
+            resultsStackView.addArrangedSubview(playerResultView)
+        }
+    }
+
     @IBAction func back(_ sender: Any) {
         performSegue(withIdentifier: "BackSegue", sender: nil)
     }
 }
 
-class ScoreView: UIView {
-    let titleLabel = UILabel()
-    let scoreLabel = UILabel()
+class PlayerResultView: UIView {
+    private var playerIconView = UIImageView()
+    private var resultLabel = UILabel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,28 +55,29 @@ class ScoreView: UIView {
     }
 
     private func setupUI() {
-        titleLabel.textAlignment = .center
-        titleLabel.font = UIFont(name: "Futura-Medium", size: 50)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(titleLabel)
+        let horizontalStackView = UIStackView()
+        playerIconView.contentMode = .scaleAspectFit
+        playerIconView.translatesAutoresizingMaskIntoConstraints = false
+        horizontalStackView.addArrangedSubview(playerIconView)
 
-        scoreLabel.textAlignment = .center
-        scoreLabel.font = UIFont(name: "Futura-Medium", size: 50)
-        scoreLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(scoreLabel)
+        resultLabel.textAlignment = .center
+        resultLabel.font = UIFont(name: "Futura-Medium", size: 50)
+        resultLabel.translatesAutoresizingMaskIntoConstraints = false
+        horizontalStackView.addArrangedSubview(resultLabel)
+
+        addSubview(horizontalStackView)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor),
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            
-            scoreLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
-            scoreLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            playerIconView.widthAnchor.constraint(equalToConstant: 30)
         ])
     }
 
-    static func createScoreView(score: CGFloat) -> ScoreView {
-        let scoreView = ScoreView()
-        scoreView.scoreLabel.text = String(Int(score))
-        return scoreView
+    static func createPlayerResultView(from playerResult: PlayerResult) -> PlayerResultView {
+        let playerResultView = PlayerResultView()
+        let iconImage =
+            SpriteConstants.playerImageIconMap[playerResult.spriteImage] ?? SpriteConstants.playerRedNoseIcon
+        playerResultView.playerIconView.image = UIImage(named: iconImage)
+        playerResultView.resultLabel.text = playerResult.result
+        return playerResultView
     }
 }

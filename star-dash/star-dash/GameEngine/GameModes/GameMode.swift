@@ -18,7 +18,7 @@ protocol GameMode {
     func setupGameMode()
     func update(by deltaTime: TimeInterval)
     func hasGameEnded() -> Bool
-    func results() -> GameResult?
+    func results() -> GameResults?
 }
 
 extension GameMode {

@@ -34,7 +34,19 @@ class SingleRaceMode: GameMode {
         return haveAllPlayersFinishedGame(target: target)
     }
 
-    func results() -> GameResult {
-        GameResult(displayText: "")
+    func results() -> GameResults? {
+        guard let target = target,
+              let scoreSystem = target.system(ofType: ScoreSystem.self),
+              let spriteSystem = target.system(ofType: SpriteSystem.self) else {
+            return nil
+        }
+        var gameResults = GameResults()
+        for playerId in target.playerIds() {
+            let spriteImage = spriteSystem.getImage(of: playerId) ?? SpriteConstants.playerRedNose
+            let score = String(scoreSystem.score(of: playerId) ?? 0)
+            let playerResult = PlayerResult(spriteImage: spriteImage, result: score)
+            gameResults.addPlayerResult(playerResult)
+        }
+        return gameResults
     }
 }

@@ -48,7 +48,7 @@ class GameViewController: UIViewController {
 
     private func createGameEngine() -> GameEngine {
         let levelSize = level?.size ?? RenderingConstants.defaultLevelSize
-        return GameEngine(mapSize: levelSize, gameMode: gameMode ?? SingleRaceMode())
+        return GameEngine(mapSize: levelSize, gameMode: gameMode ?? SingleRaceMode(), resultsDelegate: self)
     }
 
     private func createGameScene(of size: CGSize) -> GameScene {
@@ -124,10 +124,19 @@ extension GameViewController {
 }
 
 // MARK: Results
-extension GameViewController {
-    @objc
-    func showResultsModalSegue() {
-        performSegue(withIdentifier: "ShowResultsModalSegue", sender: self)
+extension GameViewController: ResultsDelegate {
+    func displayResults(_ results: GameResults) {
+        performSegue(withIdentifier: "ShowResultsModalSegue", sender: results)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowResultsModalSegue" {
+            if let destinationVC = segue.destination as? ResultsModalViewController {
+                if let data = sender as? GameResults {
+                    destinationVC.gameResults = data
+                }
+            }
+        }
     }
 }
 

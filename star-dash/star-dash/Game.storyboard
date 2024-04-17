@@ -75,16 +75,23 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5HA-xn-ddc">
+                                            <rect key="frame" x="20" y="72" width="360" height="298"/>
+                                        </stackView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.8392156959" green="0.90196079019999997" blue="0.84313726430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
+                                        <constraint firstItem="siN-nK-zxD" firstAttribute="top" secondItem="5HA-xn-ddc" secondAttribute="bottom" constant="20" id="1I7-Yf-PPg"/>
+                                        <constraint firstItem="5HA-xn-ddc" firstAttribute="top" secondItem="LCy-i1-2uz" secondAttribute="bottom" constant="20" id="1W8-Iq-FpW"/>
                                         <constraint firstItem="siN-nK-zxD" firstAttribute="centerX" secondItem="suw-Od-Xif" secondAttribute="centerX" id="6Qh-WP-1JU"/>
                                         <constraint firstAttribute="trailing" secondItem="siN-nK-zxD" secondAttribute="trailing" constant="20" id="DvR-HH-kCh"/>
                                         <constraint firstItem="siN-nK-zxD" firstAttribute="leading" secondItem="suw-Od-Xif" secondAttribute="leading" constant="20" id="HK6-iT-BzI"/>
+                                        <constraint firstAttribute="trailing" secondItem="5HA-xn-ddc" secondAttribute="trailing" constant="20" id="MqM-Lf-Kj8"/>
                                         <constraint firstItem="LCy-i1-2uz" firstAttribute="top" secondItem="suw-Od-Xif" secondAttribute="top" constant="10" id="N0n-xj-O82"/>
                                         <constraint firstItem="LCy-i1-2uz" firstAttribute="centerX" secondItem="suw-Od-Xif" secondAttribute="centerX" id="SAo-ZH-gcw"/>
                                         <constraint firstAttribute="height" constant="450" id="WC9-Qk-Eqw"/>
                                         <constraint firstAttribute="width" constant="400" id="o4N-x8-SS6"/>
+                                        <constraint firstItem="5HA-xn-ddc" firstAttribute="leading" secondItem="suw-Od-Xif" secondAttribute="leading" constant="20" id="s5a-SG-XKl"/>
                                         <constraint firstAttribute="bottom" secondItem="siN-nK-zxD" secondAttribute="bottom" constant="20" id="uaR-Ga-REx"/>
                                     </constraints>
                                 </view>
@@ -99,6 +106,7 @@
                     <connections>
                         <outlet property="homeButton" destination="siN-nK-zxD" id="yht-GS-2xu"/>
                         <outlet property="resultsModalView" destination="suw-Od-Xif" id="atk-Ru-JTd"/>
+                        <outlet property="resultsStackView" destination="5HA-xn-ddc" id="MDP-oF-m9w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O7E-v6-0VN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

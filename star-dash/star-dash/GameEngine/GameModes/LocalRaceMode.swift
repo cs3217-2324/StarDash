@@ -50,15 +50,20 @@ class LocalRaceMode: GameMode {
 
     }
 
-    func results() -> GameResult? {
+    func results() -> GameResults? {
         guard let target = target,
-              let scoreSystem = target.system(ofType: ScoreSystem.self) else {
+              let scoreSystem = target.system(ofType: ScoreSystem.self),
+              let spriteSystem = target.system(ofType: SpriteSystem.self) else {
             return nil
         }
+        var gameResults = GameResults()
         for playerId in target.playerIds() {
-            let score = scoreSystem.score(of: playerId)
+            let spriteImage = spriteSystem.getImage(of: playerId) ?? SpriteConstants.playerRedNose
+            let score = String(scoreSystem.score(of: playerId) ?? 0)
+            let playerResult = PlayerResult(spriteImage: spriteImage, result: score)
+            gameResults.addPlayerResult(playerResult)
         }
-        return GameResult(displayText: "")
+        return gameResults
     }
 }
 
