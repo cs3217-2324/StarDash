@@ -72,7 +72,7 @@ class GameViewController: UIViewController {
         let extendedSize = CGSize(
             width: size.width + RenderingConstants.levelSizeRightExtension,
             height: size.height)
-        let scene = GameScene(size: extendedSize, for: gameMode?.numberOfPlayers ?? 0)
+        let scene = GameScene(size: extendedSize, for: numberOfPlayers )
         scene.scaleMode = .aspectFill
         scene.sceneDelegate = self
         return scene
