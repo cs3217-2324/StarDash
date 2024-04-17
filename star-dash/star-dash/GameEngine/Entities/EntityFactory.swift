@@ -110,28 +110,6 @@ struct EntityFactory {
             .addToGame()
     }
 
-    static func createAndAddPowerUpBox(to entityManager: EntityManagerInterface,
-                                       position: CGPoint,
-                                       size: CGSize,
-                                       type: String) {
-        let powerUpBoxBuilder = EntityBuilder(entity: PowerUpBox(id: UUID()), entityManager: entityManager)
-
-        powerUpBoxBuilder
-            .withPosition(at: position)
-            .withSprite(image: SpriteConstants.powerUpBox,
-                        imageMode: "faceRight",
-                        textureSet: nil,
-                        textureAtlas: nil,
-                        size: size)
-            .withPhysics(rectangleOf: size)
-                .configureCategoryBitMask(PhysicsConstants.CollisionCategory.powerUpBox)
-                .configureContactTestMask(PhysicsConstants.ContactMask.powerUpBox)
-                .configureCollisionBitMask(PhysicsConstants.CollisionMask.powerUpBox)
-                .configureIsDynamic(false)
-            .withPowerUpType(type: type)
-            .addToGame()
-    }
-
     static func createAndAddWall(to entityManager: EntityManagerInterface, position: CGPoint, size: CGSize) {
         let wallBuilder = EntityBuilder(entity: Wall(id: UUID()), entityManager: entityManager)
 
@@ -205,6 +183,44 @@ struct EntityFactory {
             .addToGame()
     }
 
+    static func createAndAddFinishLine(to entityManager: EntityManagerInterface, position: CGPoint) {
+        let finishLine = EntityBuilder(entity: FinishLine(id: UUID()), entityManager: entityManager)
+
+        finishLine
+            .withPosition(at: position)
+            .withSprite(image: SpriteConstants.flag,
+                        imageMode: "faceRight",
+                        textureSet: nil,
+                        textureAtlas: nil,
+                        size: PhysicsConstants.Dimensions.flag)
+            .addToGame()
+    }
+}
+
+// MARK: Power-ups
+extension EntityFactory {
+    static func createAndAddPowerUpBox(to entityManager: EntityManagerInterface,
+                                       position: CGPoint,
+                                       size: CGSize,
+                                       type: String) {
+        let powerUpBoxBuilder = EntityBuilder(entity: PowerUpBox(id: UUID()), entityManager: entityManager)
+
+        powerUpBoxBuilder
+            .withPosition(at: position)
+            .withSprite(image: SpriteConstants.powerUpBox,
+                        imageMode: "faceRight",
+                        textureSet: nil,
+                        textureAtlas: nil,
+                        size: size)
+            .withPhysics(rectangleOf: size)
+                .configureCategoryBitMask(PhysicsConstants.CollisionCategory.powerUpBox)
+                .configureContactTestMask(PhysicsConstants.ContactMask.powerUpBox)
+                .configureCollisionBitMask(PhysicsConstants.CollisionMask.powerUpBox)
+                .configureIsDynamic(false)
+            .withPowerUpType(type: type)
+            .addToGame()
+    }
+
     static func createAndAddSpeedBoostPowerUp(to entityManager: EntityManagerInterface,
                                               entityId: EntityId,
                                               duration: Float,
@@ -235,19 +251,6 @@ struct EntityFactory {
                 .configureAffectedByGravity(false)
                 .configureLinearDamping(0)
             .withHomingMissile(impulse: impulse)
-            .addToGame()
-    }
-
-    static func createAndAddFinishLine(to entityManager: EntityManagerInterface, position: CGPoint) {
-        let finishLine = EntityBuilder(entity: FinishLine(id: UUID()), entityManager: entityManager)
-
-        finishLine
-            .withPosition(at: position)
-            .withSprite(image: SpriteConstants.flag,
-                        imageMode: "faceRight",
-                        textureSet: nil,
-                        textureAtlas: nil,
-                        size: PhysicsConstants.Dimensions.flag)
             .addToGame()
     }
 }
