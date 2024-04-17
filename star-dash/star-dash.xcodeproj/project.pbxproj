@@ -155,6 +155,7 @@
 		E65993742BC91E0B00DB845D /* GameSoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65993732BC91E0B00DB845D /* GameSoundSystem.swift */; };
 		E65993762BC923EB00DB845D /* ScoreSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65993752BC923EB00DB845D /* ScoreSystem.swift */; };
 		E660353D2BB5EAEE00397068 /* MiniMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E660353C2BB5EAEE00397068 /* MiniMapView.swift */; };
+		E69EA6972BCC47DD00211423 /* HealthBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69EA6962BCC47DD00211423 /* HealthBarView.swift */; };
 		E69EE9322BAC6CBB00033AB5 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69EE9312BAC6CBB00033AB5 /* GameInfo.swift */; };
 		E69EE9342BAC6CC300033AB5 /* OverlayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69EE9332BAC6CC300033AB5 /* OverlayInfo.swift */; };
 		E69F180C2BC7C3A4008A6498 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69F180B2BC7C3A4008A6498 /* UIImage.swift */; };
@@ -389,6 +390,7 @@
 		E65993732BC91E0B00DB845D /* GameSoundSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSoundSystem.swift; sourceTree = "<group>"; };
 		E65993752BC923EB00DB845D /* ScoreSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreSystem.swift; sourceTree = "<group>"; };
 		E660353C2BB5EAEE00397068 /* MiniMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniMapView.swift; sourceTree = "<group>"; };
+		E69EA6962BCC47DD00211423 /* HealthBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthBarView.swift; sourceTree = "<group>"; };
 		E69EE9312BAC6CBB00033AB5 /* GameInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
 		E69EE9332BAC6CC300033AB5 /* OverlayInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayInfo.swift; sourceTree = "<group>"; };
 		E69F180B2BC7C3A4008A6498 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -879,6 +881,7 @@
 		E64F31682BB400CB00EC5371 /* PlayerView */ = {
 			isa = PBXGroup;
 			children = (
+				E69EA6962BCC47DD00211423 /* HealthBarView.swift */,
 				E660353C2BB5EAEE00397068 /* MiniMapView.swift */,
 				E6A7451A2BA0C1890080C1BE /* PlayerView.swift */,
 				E6A7451C2BA0CAD90080C1BE /* JoystickView.swift */,
@@ -1231,6 +1234,7 @@
 				461B1FF62BBC50220020F6C4 /* Database+Achievements.swift in Sources */,
 				4E8660622BA0964A0035530D /* Obstacle.swift in Sources */,
 				46C3B1D62BB59F9B00F10574 /* ReleaseGrappleHookEvent.swift in Sources */,
+				E69EA6972BCC47DD00211423 /* HealthBarView.swift in Sources */,
 				1471B0A02BA6A70600878B14 /* HealthSystem.swift in Sources */,
 				46D049FB2BB99B150096D9F2 /* StellarCollectorAchievement.swift in Sources */,
 				461148932BA1D04B0073E7E1 /* System.swift in Sources */,

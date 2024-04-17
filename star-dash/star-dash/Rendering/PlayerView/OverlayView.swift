@@ -10,6 +10,7 @@ class OverlayView: UIView {
 
     let scoreLabel = UILabel()
     let healthLabel = UILabel()
+    let healthBarView = HealthBarView()
 
     func setupSubviews() {
         scoreLabel.numberOfLines = 1
@@ -20,25 +21,35 @@ class OverlayView: UIView {
         healthLabel.numberOfLines = 1
         healthLabel.translatesAutoresizingMaskIntoConstraints = false
         healthLabel.textColor = .black
+        healthLabel.text = "Health"
         addSubview(healthLabel)
 
+        healthBarView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(healthBarView)
+
         NSLayoutConstraint.activate([
-            scoreLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: margin),
+            healthBarView.topAnchor.constraint(equalTo: self.topAnchor, constant: margin),
+            healthBarView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -1 * margin),
+            healthBarView.widthAnchor.constraint(equalToConstant: 300),
+            healthBarView.heightAnchor.constraint(equalToConstant: 50)
+        ])
+
+        NSLayoutConstraint.activate([
+            healthLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: margin),
+            healthLabel.trailingAnchor.constraint(equalTo: healthBarView.leadingAnchor, constant: -1 * margin / 2),
+            healthLabel.heightAnchor.constraint(equalToConstant: 50)
+        ])
+
+        NSLayoutConstraint.activate([
+            scoreLabel.topAnchor.constraint(equalTo: healthBarView.bottomAnchor, constant: margin / 2),
             scoreLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -1 * margin),
             scoreLabel.leadingAnchor.constraint(greaterThanOrEqualTo: self.leadingAnchor, constant: margin)
         ])
-
-        NSLayoutConstraint.activate([
-            healthLabel.topAnchor.constraint(equalTo: scoreLabel.topAnchor, constant: margin),
-            healthLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -1 * margin),
-            healthLabel.leadingAnchor.constraint(greaterThanOrEqualTo: self.leadingAnchor, constant: margin)
-        ])
-
-        update(score: 0, health: 0)
+        update(score: 0, health: 100)
     }
 
     func update(score: Int, health: Int) {
         scoreLabel.text = "Score: \(score)"
-        healthLabel.text = "Health: \(health)"
+        healthBarView.currentHealth = CGFloat(health)
     }
 }
