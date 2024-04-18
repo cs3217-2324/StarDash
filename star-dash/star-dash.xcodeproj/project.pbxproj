@@ -1526,7 +1526,7 @@
 				E69FDDE42BADC2F10089D5F3 /* SpriteConstants.swift in Sources */,
 				46F0ECE32BC685BB00687961 /* DeathTimerComponent.swift in Sources */,
 				E6B1CC5D2BB7E00600416BCD /* MonsterEntityPersistable.swift in Sources */,
-				14D348F12BBF00A700515036 /* RaceMode.swift in Sources */,
+				14D348F12BBF00A700515036 /* LocalRaceMode.swift in Sources */,
 				4E9B4A1F2BC3DD5100B096A0 /* NetworkEventType.swift in Sources */,
 				4E9B4A252BC3E5FC00B096A0 /* NetworkMoveToLevelSelectionEvent.swift in Sources */,
 				14D348F12BBF00A700515036 /* LocalRaceMode.swift in Sources */,
@@ -1760,6 +1760,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1797,6 +1798,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

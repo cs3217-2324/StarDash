@@ -7,6 +7,11 @@ class FlyingModule: MovementModule {
     var eventHandlers: [ObjectIdentifier: (Event) -> Event?] = [:]
     lazy var listenableEvents: [ObjectIdentifier] = Array(eventHandlers.keys)
 
+    static let duration: Double = 10 // 10 seconds
+    static let forwardSpeed: CGFloat = 500
+    static let initialImpulse = CGVector(dx: 0, dy: 2_000)
+    static let jumpImpulse = CGVector(dx: 0, dy: 4_000)
+
     init(entityManager: EntityManager, dispatcher: EventModifiable?) {
         self.entityManager = entityManager
         self.dispatcher = dispatcher
@@ -93,14 +98,16 @@ class FlyingModule: MovementModule {
 
     private func startFlying(for entityId: EntityId) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
-              let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self) else {
+              let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
+              let currentVelocity = physicsSystem.velocity(of: entityId) else {
             return
         }
-        let duration: Double = 10 // 10 seconds
 
-        createFlyComponent(for: entityId, duration: duration)
+        createFlyComponent(for: entityId, duration: FlyingModule.duration)
         physicsSystem.setAffectedByGravity(of: entityId, affectedByGravity: false)
-        physicsSystem.applyImpulse(to: entityId, impulse: CGVector(dx: 4_000, dy: 2_000))
+        physicsSystem.setVelocity(to: entityId,
+                                  velocity: CGVector(dx: FlyingModule.forwardSpeed, dy: currentVelocity.dy))
+        physicsSystem.applyImpulse(to: entityId, impulse: FlyingModule.initialImpulse)
         spriteSystem.startAnimation(of: entityId, named: "fly")
         spriteSystem.setSize(of: entityId, to: PhysicsConstants.Dimensions.plane)
     }
@@ -138,7 +145,7 @@ class FlyingModule: MovementModule {
             return nil
         }
 
-        physicsSystem.applyImpulse(to: event.entityId, impulse: CGVector(dx: 0, dy: 4_000))
+        physicsSystem.applyImpulse(to: event.entityId, impulse: FlyingModule.jumpImpulse)
         return nil
     }
 
