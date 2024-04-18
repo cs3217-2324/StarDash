@@ -43,7 +43,8 @@ class MoveModule: MovementModule {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
-              let currentVelocity = physicsSystem.velocity(of: event.entityId) else {
+              let currentVelocity = physicsSystem.velocity(of: event.entityId),
+              let maxRunSpeed = physicsSystem.maxRunSpeed(of: event.entityId) else {
             return nil
         }
         let runSpeed = (event.toLeft ? -1 : 1) * PhysicsConstants.runSpeed
@@ -51,8 +52,8 @@ class MoveModule: MovementModule {
         if event.toLeft && newRunSpeed > 0 || !event.toLeft && newRunSpeed < 0 {
             newRunSpeed = runSpeed
         }
-        if abs(newRunSpeed) > PhysicsConstants.maxRunSpeed {
-            newRunSpeed = (event.toLeft ? -1 : 1) * PhysicsConstants.maxRunSpeed
+        if abs(newRunSpeed) > maxRunSpeed {
+            newRunSpeed = (event.toLeft ? -1 : 1) * maxRunSpeed
         }
         if let buffSystem = dispatcher?.system(ofType: BuffSystem.self),
            let speedMultiplier = buffSystem.speedMultiplier(of: event.entityId) {
