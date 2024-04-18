@@ -29,7 +29,7 @@ class ResultsModalViewController: UIViewController {
         guard let gameResults = gameResults else {
             return
         }
-        let sortedPlayerResults = gameResults.playerResults.sorted(by: { $0.result <= $1.result })
+        let sortedPlayerResults = gameResults.playerResults.sorted(by: { $0.result >= $1.result })
         for playerResult in sortedPlayerResults {
             let playerResultView = PlayerResultView.createPlayerResultView(from: playerResult)
             resultsStackView.addArrangedSubview(playerResultView)
