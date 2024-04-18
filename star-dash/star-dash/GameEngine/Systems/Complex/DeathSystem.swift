@@ -83,9 +83,12 @@ class DeathSystem: System {
             return
         }
 
+        if let jumpComponent = entityManager.component(ofType: JumpComponent.self, of: event.playerId) {
+            entityManager.remove(component: jumpComponent)
+        }
+
         soundSystem.playSoundEffect(SoundEffect.playerDeath)
         physicsSystem.setVelocity(to: event.playerId, velocity: .zero)
-        physicsSystem.setPinned(of: event.playerId, to: true)
         spriteSystem.startAnimation(of: event.playerId,
                                     named: "death",
                                     repetitive: false,
@@ -121,7 +124,6 @@ class DeathSystem: System {
             return
         }
 
-        physicsSystem.setPinned(of: playerId, to: false)
         healthSystem.setHealth(to: playerId, health: GameConstants.InitialHealth.player)
         spriteSystem.endAnimation(of: playerId)
     }
