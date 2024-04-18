@@ -12,14 +12,16 @@ class JoystickView: UIView {
     let joystickControl: UIView
 
     let joystickSize: CGFloat
+    let alpha: CGFloat
 
-    override convenience init(frame: CGRect) {
-        self.init(frame: frame, joystickSize: JoystickView.DEFAULT_JOYSTICK_SIZE)
+    override convenience init(frame: CGRect, alpha: CGFloat) {
+        self.init(frame: frame, joystickSize: JoystickView.DEFAULT_JOYSTICK_SIZE, alpha: alpha)
     }
 
-    init(frame: CGRect, joystickSize: CGFloat) {
+    init(frame: CGRect, joystickSize: CGFloat, alpha: CGFloat) {
         joystickBackground = UIImageView(image: #imageLiteral(resourceName: "JoystickBackground"))
         joystickControl = UIImageView(image: #imageLiteral(resourceName: "JoystickControl"))
+        self.alpha = alpha
         self.joystickSize = JoystickView.DEFAULT_JOYSTICK_SIZE
 
         super.init(frame: frame)
@@ -46,6 +48,7 @@ class JoystickView: UIView {
             width: joystickSize,
             height: joystickSize
         )
+        joystickControl.alpha = self.alpha
         addSubview(joystickControl)
     }
 
