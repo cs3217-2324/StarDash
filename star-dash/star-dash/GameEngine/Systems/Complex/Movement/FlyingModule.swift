@@ -7,10 +7,10 @@ class FlyingModule: MovementModule {
     var eventHandlers: [ObjectIdentifier: (Event) -> Event?] = [:]
     lazy var listenableEvents: [ObjectIdentifier] = Array(eventHandlers.keys)
 
-    static let duration = 10 // 10 seconds
+    static let duration: Double = 10 // 10 seconds
     static let forwardSpeed: CGFloat = 500
-    static let initialImpulse: CGVector = CGVector(dx: 0, dy: 2_000)
-    static let jumpImpulse: CGVector = CGVector(dx: 0, dy: 4_000)
+    static let initialImpulse = CGVector(dx: 0, dy: 2_000)
+    static let jumpImpulse = CGVector(dx: 0, dy: 4_000)
 
     init(entityManager: EntityManager, dispatcher: EventModifiable?) {
         self.entityManager = entityManager
