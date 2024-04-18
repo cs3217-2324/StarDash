@@ -64,11 +64,12 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
         panGesture.cancelsTouchesInView = false
         panGesture.delegate = self
         addGestureRecognizer(panGesture)
+
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
-            longPressGesture.minimumPressDuration = 0.2 // Adjust the duration as needed
-            longPressGesture.delegate = self
-            addGestureRecognizer(panGesture)
-            addGestureRecognizer(longPressGesture)
+        longPressGesture.minimumPressDuration = 0.2 // Adjust the duration as needed
+        longPressGesture.allowableMovement = joystickBackgroundWidth * 2
+        longPressGesture.delegate = self
+        addGestureRecognizer(longPressGesture)
     }
 
     // MARK: Gesture handler methods
@@ -121,6 +122,11 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
         }
         return true
     }
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                           shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        true
+     }
 
     @objc
     private func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
