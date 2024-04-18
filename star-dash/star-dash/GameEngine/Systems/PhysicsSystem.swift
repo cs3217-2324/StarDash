@@ -52,6 +52,14 @@ class PhysicsSystem: System {
         physicsComponent.velocity += (impulse / physicsComponent.mass)
     }
 
+    func setVelocity(to entityId: EntityId, velocity: CGVector) {
+        guard let physicsComponent = getPhysicsComponent(of: entityId) else {
+            return
+        }
+
+        physicsComponent.velocity = velocity
+    }
+
     func getSize(of entityId: EntityId) -> CGSize? {
         guard let physicsComponent = getPhysicsComponent(of: entityId) else {
             return nil

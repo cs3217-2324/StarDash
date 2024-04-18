@@ -93,14 +93,17 @@ class FlyingModule: MovementModule {
 
     private func startFlying(for entityId: EntityId) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
-              let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self) else {
+              let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
+              let currentVelocity = physicsSystem.velocity(of: entityId) else {
             return
         }
         let duration: Double = 10 // 10 seconds
 
         createFlyComponent(for: entityId, duration: duration)
         physicsSystem.setAffectedByGravity(of: entityId, affectedByGravity: false)
-        physicsSystem.applyImpulse(to: entityId, impulse: CGVector(dx: 4_000, dy: 2_000))
+        physicsSystem.setVelocity(to: entityId,
+                                  velocity: CGVector(dx: 4_000, dy: currentVelocity.dy))
+        physicsSystem.applyImpulse(to: entityId, impulse: CGVector(dx: 0, dy: 2_000))
         spriteSystem.startAnimation(of: entityId, named: "fly")
         spriteSystem.setSize(of: entityId, to: PhysicsConstants.Dimensions.plane)
     }
