@@ -28,13 +28,7 @@ class GameViewController: UIViewController {
     var networkSyncInterval: Double = 0.3
     var gameMode: GameMode?
     var areResultsDisplayed = false
-    var joystickIsLeft = [Bool?]()
     override func viewDidLoad() {
-        if let numberOfPlayers = numberOfPlayers as? (any Sequence) {
-            for _ in numberOfPlayers {
-                joystickIsLeft.append(nil)
-            }
-        }
         super.viewDidLoad()
         if let networkManager = networkManager {
             networkManager.delegate = self
@@ -196,14 +190,6 @@ extension GameViewController: SDSceneDelegate {
     func update(_ scene: SDScene, deltaTime: Double) {
         gameBridge?.syncToEntities()
         doNetworkSync()
-        for (index, isLeft) in joystickIsLeft.enumerated() {
-            // Use 'index' and 'isLeft' here
-            guard let isLeft = isLeft else {
-                gameEngine?.handlePlayerStoppedMoving(playerIndex: index, timestamp: Date.now)
-                continue
-            }
-            gameEngine?.handlePlayerMove(toLeft: isLeft, playerIndex: index, timestamp: Date.now)
-        }
         gameEngine?.update(by: deltaTime)
         sendNetworkSync(deltaTime: deltaTime)
         gameBridge?.syncFromEntities()
@@ -238,10 +224,7 @@ extension GameViewController: ViewDelegate {
             gameEngine?.handlePlayerMove(toLeft: toLeft, playerIndex: playerIndex, timestamp: Date.now)
             return
         }
-        if joystickIsLeft.count > playerIndex {
-            joystickIsLeft[playerIndex] = toLeft
 
-        }
         let networkEvent = NetworkPlayerMoveEvent(playerIndex: playerIndex, isLeft: toLeft)
         networkManager.sendEvent(event: networkEvent)
 
@@ -252,10 +235,7 @@ extension GameViewController: ViewDelegate {
             gameEngine?.handlePlayerStoppedMoving(playerIndex: playerIndex, timestamp: Date.now)
             return
         }
-        if joystickIsLeft.count > playerIndex {
-            joystickIsLeft[playerIndex] = nil
 
-        }
         let networkEvent = NetworkPlayerStopEvent(playerIndex: playerIndex)
         networkManager.sendEvent(event: networkEvent)
     }
