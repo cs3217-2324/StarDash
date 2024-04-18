@@ -41,12 +41,14 @@ class HomingMissileSystem: System, EventListener {
 
     private func fireMissile(component: HomingMissileComponent) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
+              let soundSystem = dispatcher?.system(ofType: GameSoundSystem.self),
               !component.isActivated else {
             return
         }
 
         component.isActivated = true
         physicsSystem.applyImpulse(to: component.entityId, impulse: component.impulse)
+        soundSystem.playSoundEffect(SoundEffect.missile)
 
         // search for a target
         guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
