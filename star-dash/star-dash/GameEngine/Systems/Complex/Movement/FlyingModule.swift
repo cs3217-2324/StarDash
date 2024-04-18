@@ -102,7 +102,7 @@ class FlyingModule: MovementModule {
         createFlyComponent(for: entityId, duration: duration)
         physicsSystem.setAffectedByGravity(of: entityId, affectedByGravity: false)
         physicsSystem.setVelocity(to: entityId,
-                                  velocity: CGVector(dx: 4_000, dy: currentVelocity.dy))
+                                  velocity: CGVector(dx: 500, dy: currentVelocity.dy))
         physicsSystem.applyImpulse(to: entityId, impulse: CGVector(dx: 0, dy: 2_000))
         spriteSystem.startAnimation(of: entityId, named: "fly")
         spriteSystem.setSize(of: entityId, to: PhysicsConstants.Dimensions.plane)
