@@ -60,8 +60,7 @@ class GameViewController: UIViewController {
         renderer.setupViews(at: self.view, for: viewLayout)
         self.renderer = renderer
         setupBackButton()
-        
-        
+
     }
 
     @objc
@@ -208,7 +207,6 @@ extension GameViewController: SDSceneDelegate {
         gameEngine?.update(by: deltaTime)
         sendNetworkSync(deltaTime: deltaTime)
         gameBridge?.syncFromEntities()
-        
 
     }
 
@@ -246,7 +244,6 @@ extension GameViewController: ViewDelegate {
         }
         let networkEvent = NetworkPlayerMoveEvent(playerIndex: playerIndex, isLeft: toLeft)
         networkManager.sendEvent(event: networkEvent)
-        
 
     }
 

@@ -24,7 +24,7 @@ class MenuViewController: UIViewController {
         performSegue(withIdentifier: "LevelSelectSegue", sender: GameData(level: nil,
                                                                           numberOfPlayers: 1,
                                                                           viewLayout: 1,
-                                                                          gameMode: LocalRaceMode(),
+                                                                          gameMode: SingleRaceMode(),
                                                                           storageManager: storageManager,
                                                                           networkManager: nil,
                                                                           playerIndex: nil))

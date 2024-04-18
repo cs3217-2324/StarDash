@@ -66,7 +66,7 @@ class LevelSelectorViewController: UIViewController {
 
     @objc
     func levelButtonTapped(_ sender: UIButton) {
-        guard let storageManager = storageManager
+        guard storageManager != nil
                else {
             return
         }

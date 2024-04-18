@@ -34,8 +34,8 @@ class Heap<T: Comparable> {
     /// Heapify the current heap.  This method walks down the children and rearranges them in comparator order.
     /// - Parameter idx: index to heapify.
     private func heapify(_ idx: Int) {
-        var left = idx * 2 + 1
-        var right = idx * 2 + 2
+        let left = idx * 2 + 1
+        let right = idx * 2 + 2
 
         var comp = idx
 
@@ -71,7 +71,7 @@ class Heap<T: Comparable> {
     /// Remove the top item.  This is a O(log n) operation
     /// - Returns: returns top item based on comparator or nil if empty.
     func popTop() -> T? {
-        var item: T? = heap.first
+        let item: T? = heap.first
         if count > 1 {
             // set the top to the last element and heapify
             // this means we can remove the last after "poping" the first.
