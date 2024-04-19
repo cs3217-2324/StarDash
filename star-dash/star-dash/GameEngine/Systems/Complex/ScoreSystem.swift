@@ -36,6 +36,14 @@ class ScoreSystem: System {
         scoreComponent.score += scoreChange
     }
 
+    func setScore(of entityId: EntityId, score: Int) {
+        guard let scoreComponent = getScoreComponent(of: entityId) else {
+            return
+        }
+
+        scoreComponent.score += score
+    }
+
     func setup() {
         dispatcher?.registerListener(self)
 

@@ -20,7 +20,7 @@ class MenuViewController: UIViewController {
     }
 
     @IBAction private func singlePlayer(_ sender: Any) {
-        let singleRaceMode = SingleRaceMode()
+        let singleRaceMode = RaceMode()
         performSegue(withIdentifier: "LevelSelectSegue", sender: GameData(level: nil,
                                                                           numberOfPlayers: 1,
                                                                           viewLayout: 1,
@@ -31,7 +31,7 @@ class MenuViewController: UIViewController {
     }
 
     @IBAction private func localMultiplayer(_ sender: Any) {
-        let localRaceMode = LocalRaceMode()
+        let localRaceMode = RaceMode()
         performSegue(withIdentifier: "LevelSelectSegue",
                      sender: GameData(level: nil,
                                       numberOfPlayers: 2,

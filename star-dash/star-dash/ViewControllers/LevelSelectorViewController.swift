@@ -52,7 +52,7 @@ class LevelSelectorViewController: UIViewController {
             self.performSegue(withIdentifier: "PlaySegue",
                               sender: GameData(level: level,
                                                numberOfPlayers: self.numberOfPlayers,
-                                               viewLayout: self.viewLayout, gameMode: LocalRaceMode(),
+                                               viewLayout: self.viewLayout, gameMode: RaceMode(),
                                                storageManager: storageManager,
                                                networkManager: self.networkManager,
                                                playerIndex: self.playerIndex))

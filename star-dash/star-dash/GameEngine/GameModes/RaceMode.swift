@@ -1,5 +1,5 @@
 //
-//  LocalRaceMode.swift
+//  RaceMode.swift
 //  star-dash
 //
 //  Created by Jason Qiu on 4/4/24.
@@ -8,7 +8,7 @@
 import CoreGraphics
 import Foundation
 
-class LocalRaceMode: GameMode {
+class RaceMode: GameMode {
     var target: GameModeModifiable?
 
     var numberOfPlayers: Int
@@ -69,7 +69,7 @@ class LocalRaceMode: GameMode {
 }
 
 // MARK: Game-mode specific rules
-extension LocalRaceMode {
+extension RaceMode {
     private func updateFinishLineScoreRule(target: GameModeModifiable) {
         guard let playerSystem = target.system(ofType: PlayerSystem.self),
               let scoreSystem = target.system(ofType: ScoreSystem.self) else {
