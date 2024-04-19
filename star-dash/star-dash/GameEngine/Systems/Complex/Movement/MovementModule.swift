@@ -5,4 +5,5 @@ protocol MovementModule {
 
     func update(by deltaTime: TimeInterval)
     func handleEvent(_ event: Event) -> Event?
+    func cancelMovement(for entityId: EntityId)
 }

@@ -71,6 +71,11 @@
     },
     {
       "levelId": 1,
+      "position": [2100, 850],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
       "position": [2200, 850],
       "size": [100,100]
     },
@@ -81,12 +86,7 @@
     },
     {
       "levelId": 1,
-      "position": [2500, 850],
-      "size": [100,100]
-    },
-    {
-      "levelId": 1,
-      "position": [2600, 850],
+      "position": [2400, 850],
       "size": [100,100]
     },
     {
@@ -664,7 +664,7 @@
     },
     {
       "levelId": 1,
-      "position": [4900, 450],
+      "position": [4500, 550],
       "size": [60,60],
       "type": "HomingMissilePowerUp"
     },
@@ -673,12 +673,6 @@
       "position": [5000, 650],
       "size": [60,60],
       "type": "SpeedBoostPowerUp"
-    },
-    {
-      "levelId": 2,
-      "position": [5000, 150],
-      "size": [60,60],
-      "type": "HomingMissilePowerUp"
     },
     {
       "levelId": 1,
@@ -694,7 +688,7 @@
     },
     {
       "levelId": 1,
-      "position": [2700, 750],
+      "position": [2700, 650],
       "size": [60,60],
       "type": "FlyingPowerUp"
     },

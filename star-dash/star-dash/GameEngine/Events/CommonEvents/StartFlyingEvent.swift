@@ -1,15 +1,16 @@
 import Foundation
 
 class StartFlyingEvent: Event {
-    let timestamp: Date
+
     let entityId: EntityId
 
-    init(on entityId: EntityId) {
-        self.timestamp = Date.now
+    init(on entityId: EntityId, timestamp: Date) {
         self.entityId = entityId
+        super.init(playerIdForEvent: entityId, timestamp: timestamp)
     }
 
-    var playerIdForEvent: EntityId? {
-        entityId
+    convenience init(on entityId: EntityId) {
+        self.init(on: entityId, timestamp: Date.now)
     }
+
 }

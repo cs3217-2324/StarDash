@@ -8,15 +8,14 @@
 import Foundation
 
 class MonsterDeathEvent: Event {
-    let timestamp: Date
     let monsterId: EntityId
 
-    init(on monsterId: EntityId) {
-        self.timestamp = Date.now
+    init(on monsterId: EntityId, timestamp: Date) {
         self.monsterId = monsterId
+        super.init(timestamp: timestamp)
     }
 
-    var playerIdForEvent: EntityId? {
-        nil
+    convenience init(on monsterId: EntityId) {
+        self.init(on: monsterId, timestamp: Date.now)
     }
 }

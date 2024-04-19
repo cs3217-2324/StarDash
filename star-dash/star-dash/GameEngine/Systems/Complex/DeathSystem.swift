@@ -63,9 +63,14 @@ class DeathSystem: System {
     }
 
     private func handleDeathEvent(event: DeathEvent) {
-        guard let playerSystem = dispatcher?.system(ofType: PlayerSystem.self) else {
+        guard let playerSystem = dispatcher?.system(ofType: PlayerSystem.self),
+              let movementSystem = dispatcher?.system(ofType: MovementSystem.self),
+              let positionSystem = dispatcher?.system(ofType: PositionSystem.self) else {
             return
         }
+
+        movementSystem.cancelAllMovement(for: event.entityId)
+        positionSystem.setEntityFacingLeft(false, entityId: event.entityId)
 
         if playerSystem.isPlayer(entityId: event.entityId) {
             dispatcher?.add(event: PlayerDeathEvent(on: event.entityId))
@@ -85,7 +90,6 @@ class DeathSystem: System {
 
         soundSystem.playSoundEffect(SoundEffect.playerDeath)
         physicsSystem.setVelocity(to: event.playerId, velocity: .zero)
-        physicsSystem.setPinned(of: event.playerId, to: true)
         spriteSystem.startAnimation(of: event.playerId,
                                     named: "death",
                                     repetitive: false,
@@ -116,12 +120,10 @@ class DeathSystem: System {
 
     private func respawnPlayer(_ playerId: EntityId) {
         guard let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
-              let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let healthSystem = dispatcher?.system(ofType: HealthSystem.self) else {
             return
         }
 
-        physicsSystem.setPinned(of: playerId, to: false)
         healthSystem.setHealth(to: playerId, health: GameConstants.InitialHealth.player)
         spriteSystem.endAnimation(of: playerId)
     }

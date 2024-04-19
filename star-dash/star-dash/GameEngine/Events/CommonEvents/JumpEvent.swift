@@ -8,17 +8,16 @@
 import Foundation
 
 class JumpEvent: Event {
-    let timestamp: Date
     let entityId: EntityId
     let jumpImpulse: CGVector
 
-    init(on entityId: EntityId, by jumpImpulse: CGVector) {
-        self.timestamp = Date.now
+    init(on entityId: EntityId, by jumpImpulse: CGVector, timestamp: Date) {
         self.entityId = entityId
         self.jumpImpulse = jumpImpulse
+        super.init(playerIdForEvent: entityId, timestamp: timestamp)
+    }
+    convenience init(on entityId: EntityId, by jumpImpulse: CGVector) {
+        self.init(on: entityId, by: jumpImpulse, timestamp: Date.now)
     }
 
-    var playerIdForEvent: EntityId? {
-        entityId
-    }
 }

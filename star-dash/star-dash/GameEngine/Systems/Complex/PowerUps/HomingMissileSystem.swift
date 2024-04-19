@@ -99,6 +99,12 @@ class HomingMissileSystem: System, EventListener {
     // Event Handlers
 
     private func handleMissileHitPlayerEvent(event: MissileHitPlayerEvent) {
+        if let missileComponent = entityManager.component(ofType: HomingMissileComponent.self, of: event.missileId),
+           let sourceId = missileComponent.sourceId,
+           sourceId == event.entityId {
+            return
+        }
+
         dispatcher?.add(event: PlayerDeathEvent(on: event.entityId))
         entityManager.remove(entityId: event.missileId)
     }

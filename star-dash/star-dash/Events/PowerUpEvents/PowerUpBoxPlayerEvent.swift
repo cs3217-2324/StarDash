@@ -1,17 +1,16 @@
 import Foundation
 
 class PowerUpBoxPlayerEvent: Event {
-    let timestamp: Date
     let entityId: EntityId
     let powerUpBoxId: EntityId
 
-    init(from playerEntityId: EntityId, pickedUp powerUpBoxId: EntityId) {
-        self.timestamp = Date.now
+    init(from playerEntityId: EntityId, pickedUp powerUpBoxId: EntityId, timestamp: Date) {
         self.entityId = playerEntityId
         self.powerUpBoxId = powerUpBoxId
+        super.init(playerIdForEvent: playerEntityId, timestamp: timestamp)
     }
 
-    var playerIdForEvent: EntityId? {
-        entityId
+    convenience init(from playerEntityId: EntityId, pickedUp powerUpBoxId: EntityId) {
+        self.init(from: playerEntityId, pickedUp: powerUpBoxId, timestamp: Date.now)
     }
 }

@@ -9,6 +9,7 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
     var joystickView: JoystickView?
 
     let buttonMargin: CGFloat = 50
+    let buttonAlpha: CGFloat = 0.7
     let buttonSize: CGFloat = 100
     let joystickBackgroundWidth: CGFloat = 256
     let panThreshold: CGFloat = 15
@@ -26,11 +27,12 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
     private func setupMovementControls() {
         let joystickY = bounds.height - buttonSize - buttonMargin
         let joystickView = JoystickView(frame: CGRect(
-            x: buttonMargin,
-            y: joystickY,
-            width: joystickBackgroundWidth,
-            height: buttonSize
-        ))
+                                            x: buttonMargin,
+                                            y: joystickY,
+                                            width: joystickBackgroundWidth,
+                                            height: buttonSize
+                                        ),
+                                        alpha: buttonAlpha)
         joystickView.setupSubviews()
 
         addSubview(joystickView)
@@ -43,6 +45,7 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
         let buttonX = bounds.width - buttonSize - buttonMargin
         let buttonY = bounds.height - buttonSize - buttonMargin
         jumpButton.frame = CGRect(x: buttonX, y: buttonY, width: buttonSize, height: buttonSize)
+        jumpButton.alpha = buttonAlpha
         jumpButton.addTarget(self, action: #selector(jumpButtonTapped), for: .touchUpInside)
         jumpButton.setImage(#imageLiteral(resourceName: "JumpButton"), for: .normal)
         jumpButton.setImage(#imageLiteral(resourceName: "JumpButtonDown"), for: .highlighted)
@@ -53,6 +56,7 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
         let hookButtonX = bounds.width - (buttonSize + buttonMargin) * 2
         let hookButtonY = bounds.height - buttonSize - buttonMargin
         hookButton.frame = CGRect(x: hookButtonX, y: hookButtonY, width: buttonSize, height: buttonSize)
+        hookButton.alpha = buttonAlpha
         hookButton.addTarget(self, action: #selector(hookButtonTapped), for: .touchUpInside)
         hookButton.setImage(#imageLiteral(resourceName: "GrapplingHookButton"), for: .normal)
         hookButton.setImage(#imageLiteral(resourceName: "GrapplingHookButtonDown"), for: .highlighted)
@@ -64,11 +68,12 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
         panGesture.cancelsTouchesInView = false
         panGesture.delegate = self
         addGestureRecognizer(panGesture)
+
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
-            longPressGesture.minimumPressDuration = 0.2 // Adjust the duration as needed
-            longPressGesture.delegate = self
-            addGestureRecognizer(panGesture)
-            addGestureRecognizer(longPressGesture)
+        longPressGesture.minimumPressDuration = 0.2 // Adjust the duration as needed
+        longPressGesture.allowableMovement = joystickBackgroundWidth * 2
+        longPressGesture.delegate = self
+        addGestureRecognizer(longPressGesture)
     }
 
     // MARK: Gesture handler methods
@@ -121,6 +126,11 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
         }
         return true
     }
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                           shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        true
+     }
 
     @objc
     private func handleLongPress(_ gesture: UILongPressGestureRecognizer) {

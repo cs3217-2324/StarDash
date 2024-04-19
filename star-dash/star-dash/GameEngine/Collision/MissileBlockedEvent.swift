@@ -1,15 +1,15 @@
 import Foundation
 
 class MissileBlockedEvent: Event {
-    let timestamp: Date
     let missileId: EntityId
 
-    init(missile missileId: EntityId) {
-        self.timestamp = Date.now
+    init(missile missileId: EntityId, timestamp: Date) {
         self.missileId = missileId
+        super.init(timestamp: timestamp)
     }
 
-    var playerIdForEvent: EntityId? {
-        nil
+    convenience init(missile missileId: EntityId) {
+        self.init(missile: missileId, timestamp: Date.now)
     }
+
 }

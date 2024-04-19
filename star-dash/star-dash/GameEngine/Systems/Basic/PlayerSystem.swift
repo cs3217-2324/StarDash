@@ -58,4 +58,13 @@ class PlayerSystem: System {
     private func getPlayerComponent(of entityId: EntityId) -> PlayerComponent? {
         entityManager.component(ofType: PlayerComponent.self, of: entityId)
     }
+
+    func getPlayerComponent(of playerIndex: Int) -> PlayerComponent? {
+        var playerComponents = entityManager.components(ofType: PlayerComponent.self)
+        for player in playerComponents where player.playerIndex == playerIndex {
+            return player
+        }
+        return nil
+    }
+
 }

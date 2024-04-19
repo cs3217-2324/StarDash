@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad10_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main-->
+        <scene sceneID="bhV-8R-LzL">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Menu" storyboardName="Main" id="uvj-6J-MAc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dAd-pL-l8i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-344" y="-6"/>
+        </scene>
+        <!--Online Multiplayer Menu View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="lobby" modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="OnlineMultiplayerMenuViewController" customModule="star_dash" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="center" id="tqW-LT-CaT">
+                        <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="MenuBG" translatesAutoresizingMaskIntoConstraints="NO" id="9Xf-zW-TaP">
+                                <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yKG-ia-5nN">
+                                <rect key="frame" x="98" y="134" width="984" height="552"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Title" translatesAutoresizingMaskIntoConstraints="NO" id="W7b-cS-63Z">
+                                        <rect key="frame" x="0.0" y="0.0" width="984" height="315"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="center" axis="vertical" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="4Xz-vA-887">
+                                        <rect key="frame" x="416" y="315" width="152" height="237"/>
+                                        <subviews>
+                                            <button opaque="NO" alpha="0.89999997615814209" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZr-wp-WOC">
+                                                <rect key="frame" x="0.0" y="0.0" width="152" height="59"/>
+                                                <color key="tintColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Create">
+                                                    <fontDescription key="titleFontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                                    <directionalEdgeInsets key="contentInsets" top="10" leading="30" bottom="10" trailing="30"/>
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="baseBackgroundColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <segue destination="PjF-ro-PVE" kind="presentation" modalPresentationStyle="fullScreen" id="PlT-0y-s2f"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" alpha="0.89999997615814209" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcq-f9-Xfp">
+                                                <rect key="frame" x="0.0" y="89" width="152" height="59"/>
+                                                <color key="tintColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Join">
+                                                    <fontDescription key="titleFontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                                    <directionalEdgeInsets key="contentInsets" top="10" leading="30" bottom="10" trailing="30"/>
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="baseBackgroundColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <segue destination="9UG-vN-zGx" kind="presentation" modalPresentationStyle="fullScreen" id="ZIN-Kz-bf5"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" alpha="0.89999997615814209" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVu-W9-WAx">
+                                                <rect key="frame" x="0.0" y="178" width="152" height="59"/>
+                                                <color key="tintColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Back">
+                                                    <fontDescription key="titleFontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                                    <directionalEdgeInsets key="contentInsets" top="10" leading="30" bottom="10" trailing="30"/>
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="baseBackgroundColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <segue destination="uvj-6J-MAc" kind="presentation" modalPresentationStyle="fullScreen" id="DWp-if-Vn4"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="984" id="P2U-ZK-NIb"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Jce-PE-vgH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yKG-ia-5nN" firstAttribute="centerY" secondItem="tqW-LT-CaT" secondAttribute="centerY" id="Jcg-XW-WmZ"/>
+                            <constraint firstItem="yKG-ia-5nN" firstAttribute="centerX" secondItem="tqW-LT-CaT" secondAttribute="centerX" id="iFs-UT-Q3g"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="-24"/>
+        </scene>
+        <!--Join Room View Controller-->
+        <scene sceneID="Ahp-48-fAL">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="9UG-vN-zGx" customClass="JoinRoomViewController" customModule="star_dash" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tJO-I6-IkV">
+                        <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" image="MenuBG" translatesAutoresizingMaskIntoConstraints="NO" id="jST-8D-RhW">
+                                <rect key="frame" x="-370" y="0.0" width="1920" height="820"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="820" id="faZ-2T-WJE"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LOK-7e-VNS">
+                                <rect key="frame" x="98" y="33" width="984" height="695"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a room code..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOL-oZ-2RR">
+                                        <rect key="frame" x="293.5" y="0.0" width="397.5" height="38.5"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="33"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="bY0-oZ-oUE">
+                                        <rect key="frame" x="392" y="48.5" width="200" height="457.5"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="e39-oW-Yau">
+                                        <rect key="frame" x="392" y="516" width="200" height="110"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="center" ambiguous="YES" axis="vertical" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="2g8-qW-w1P">
+                                        <rect key="frame" x="435" y="636" width="114.5" height="59"/>
+                                        <subviews>
+                                            <button opaque="NO" alpha="0.89999997615814209" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYs-za-Jip">
+                                                <rect key="frame" x="0.0" y="0.0" width="114.5" height="59"/>
+                                                <color key="tintColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Join">
+                                                    <fontDescription key="titleFontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                                    <directionalEdgeInsets key="contentInsets" top="10" leading="30" bottom="10" trailing="30"/>
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="baseBackgroundColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="joinRoom:" destination="9UG-vN-zGx" eventType="touchUpInside" id="jnG-2b-dDO"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="984" id="EVi-Tf-eMa"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckd-EU-PgO">
+                                <rect key="frame" x="39" y="33" width="95" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Back">
+                                    <fontDescription key="titleFontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                    <directionalEdgeInsets key="contentInsets" top="10" leading="20" bottom="10" trailing="20"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="backButton:" destination="9UG-vN-zGx" eventType="touchUpInside" id="etG-pQ-rYT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="l3R-eg-EuB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LOK-7e-VNS" firstAttribute="centerY" secondItem="tJO-I6-IkV" secondAttribute="centerY" id="87a-PI-rWZ"/>
+                            <constraint firstItem="LOK-7e-VNS" firstAttribute="centerX" secondItem="tJO-I6-IkV" secondAttribute="centerX" id="rkh-yF-UUi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ButtonSelection" destination="e39-oW-Yau" id="CDy-vx-CAl"/>
+                        <outlet property="CurrentCode" destination="bY0-oZ-oUE" id="PPQ-Qc-LMO"/>
+                        <segue destination="WYk-cn-7xh" kind="presentation" identifier="joinRoomSegue" modalPresentationStyle="fullScreen" id="SgP-xc-8TM"/>
+                        <segue destination="Y6W-OH-hqX" kind="presentation" identifier="BackMenuSegue" modalPresentationStyle="fullScreen" id="n0I-Cy-Dv9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HJv-jS-pJO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1026" y="528"/>
+        </scene>
+        <!--Room Creation View Controller-->
+        <scene sceneID="Tr8-KM-gEV">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="PjF-ro-PVE" customClass="RoomCreationViewController" customModule="star_dash" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xxj-hM-P25">
+                        <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="MenuBG" translatesAutoresizingMaskIntoConstraints="NO" id="j9v-pe-rBj">
+                                <rect key="frame" x="-370" y="-130" width="1920" height="1080"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lAU-a5-Mue">
+                                <rect key="frame" x="98" y="212" width="984" height="396"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creating Room ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSZ-IX-ujs">
+                                        <rect key="frame" x="323" y="0.0" width="338" height="396"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="33"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="984" id="9Y9-J4-MlU"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZDL-r2-A55"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lAU-a5-Mue" firstAttribute="centerX" secondItem="Xxj-hM-P25" secondAttribute="centerX" id="QWm-bz-3tS"/>
+                            <constraint firstItem="lAU-a5-Mue" firstAttribute="centerY" secondItem="j9v-pe-rBj" secondAttribute="centerY" id="Re1-7y-12E"/>
+                            <constraint firstItem="lAU-a5-Mue" firstAttribute="top" secondItem="ZDL-r2-A55" secondAttribute="top" constant="212" id="RzY-eN-YUr"/>
+                            <constraint firstItem="lAU-a5-Mue" firstAttribute="centerX" secondItem="j9v-pe-rBj" secondAttribute="centerX" id="WW5-4A-tMN"/>
+                            <constraint firstItem="lAU-a5-Mue" firstAttribute="centerY" secondItem="Xxj-hM-P25" secondAttribute="centerY" id="ZQS-Le-tRe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="WYk-cn-7xh" kind="presentation" identifier="joinRoomSegue" modalPresentationStyle="fullScreen" id="lnd-sk-mu1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2ul-FP-bGv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1026" y="-277"/>
+        </scene>
+        <!--Lobby View Controller-->
+        <scene sceneID="42M-oq-g4E">
+            <objects>
+                <viewController id="KjF-tb-21F" customClass="LobbyViewController" customModule="star_dash" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bqg-jS-1gl">
+                        <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="MenuBG" translatesAutoresizingMaskIntoConstraints="NO" id="vZC-Ql-bvJ">
+                                <rect key="frame" x="-370" y="-130" width="1920" height="1080"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wOU-s3-VBh">
+                                <rect key="frame" x="98" y="212" width="984" height="396"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your room code:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nc6-Yx-q8H">
+                                        <rect key="frame" x="343" y="0.0" width="298.5" height="38.5"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="33"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="eli-Qi-YUy">
+                                        <rect key="frame" x="392" y="48.5" width="200" height="230"/>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Waiting for players (1 / 4)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7N-xG-2X2">
+                                        <rect key="frame" x="224" y="288.5" width="536.5" height="38.5"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="33"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="center" ambiguous="YES" axis="vertical" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ewL-xt-r9j">
+                                        <rect key="frame" x="429.5" y="337" width="125" height="59"/>
+                                        <subviews>
+                                            <button opaque="NO" alpha="0.89999997615814209" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rgk-4p-Lud">
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="59"/>
+                                                <color key="tintColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Start">
+                                                    <fontDescription key="titleFontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                                    <directionalEdgeInsets key="contentInsets" top="10" leading="30" bottom="10" trailing="30"/>
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="baseBackgroundColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="start:" destination="KjF-tb-21F" eventType="touchUpInside" id="wb9-50-Iy6"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="984" id="l66-tC-sPE"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDn-Bg-1jm">
+                                <rect key="frame" x="54" y="36" width="95" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Back">
+                                    <fontDescription key="titleFontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                    <directionalEdgeInsets key="contentInsets" top="10" leading="20" bottom="10" trailing="20"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="backButton:" destination="KjF-tb-21F" eventType="touchUpInside" id="hpq-qu-a2f"/>
+                                    <action selector="backButton:" destination="9UG-vN-zGx" eventType="touchUpInside" id="vpJ-Go-OZj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XZM-k4-VFV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wOU-s3-VBh" firstAttribute="centerY" secondItem="bqg-jS-1gl" secondAttribute="centerY" id="GuX-WS-Pqf"/>
+                            <constraint firstItem="wOU-s3-VBh" firstAttribute="centerX" secondItem="bqg-jS-1gl" secondAttribute="centerX" id="tgZ-fG-QR8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="RoomCodeContainer" destination="eli-Qi-YUy" id="6rE-rz-8tL"/>
+                        <outlet property="label" destination="t7N-xG-2X2" id="XvN-q9-OhT"/>
+                        <segue destination="H20-uu-gS2" kind="presentation" identifier="MoveLevelSelection" modalPresentationStyle="fullScreen" id="iUD-uV-B1k"/>
+                        <segue destination="Y6W-OH-hqX" kind="presentation" identifier="BackMenuSegue" modalPresentationStyle="fullScreen" id="EBR-0A-9aJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TGi-DZ-vbj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2840" y="143"/>
+        </scene>
+        <!--Room Joining View Controller-->
+        <scene sceneID="mUm-cq-rZa">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="WYk-cn-7xh" customClass="RoomJoiningViewController" customModule="star_dash" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rKV-Du-Pcn">
+                        <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="MenuBG" translatesAutoresizingMaskIntoConstraints="NO" id="yxs-uy-LXf">
+                                <rect key="frame" x="-370" y="-130" width="1920" height="1080"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="652-wD-53b">
+                                <rect key="frame" x="98" y="212" width="984" height="396"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joining Room ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRL-8X-Exw">
+                                        <rect key="frame" x="333" y="0.0" width="318" height="396"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="33"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="984" id="Eun-tx-E4C"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lNK-vS-P97"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="652-wD-53b" firstAttribute="centerX" secondItem="yxs-uy-LXf" secondAttribute="centerX" id="9hk-yy-yv0"/>
+                            <constraint firstItem="652-wD-53b" firstAttribute="top" secondItem="lNK-vS-P97" secondAttribute="top" constant="212" id="Bci-qH-r6s"/>
+                            <constraint firstItem="652-wD-53b" firstAttribute="centerY" secondItem="yxs-uy-LXf" secondAttribute="centerY" id="V8a-Pz-1Lm"/>
+                            <constraint firstItem="652-wD-53b" firstAttribute="centerY" secondItem="rKV-Du-Pcn" secondAttribute="centerY" id="cZs-8y-ybA"/>
+                            <constraint firstItem="652-wD-53b" firstAttribute="centerX" secondItem="rKV-Du-Pcn" secondAttribute="centerX" id="kqn-yd-8L9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="KjF-tb-21F" kind="presentation" identifier="lobbySegue" modalPresentationStyle="fullScreen" id="cGT-ZK-JHh"/>
+                        <segue destination="9UG-vN-zGx" kind="presentation" identifier="BackJoinSegue" modalPresentationStyle="fullScreen" id="IOR-8Z-YWP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t1D-9h-c7R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2003" y="144"/>
+        </scene>
+        <!--LevelSelector-->
+        <scene sceneID="Wvz-ga-KmQ">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="LevelSelector" storyboardName="LevelSelector" referencedIdentifier="LevelSelector" id="H20-uu-gS2" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UWy-oB-TAV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3362" y="143"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="SgP-xc-8TM"/>
+        <segue reference="ZIN-Kz-bf5"/>
+        <segue reference="EBR-0A-9aJ"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="MenuBG" width="1920" height="1080"/>
+        <image name="Title" width="984" height="315"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -82,4 +82,8 @@ class MovementSystem: System {
 
         return !isDead && !hasPlayerFinishedGame
     }
+
+    func cancelAllMovement(for entityId: EntityId) {
+        modules.forEach { $0.cancelMovement(for: entityId) }
+    }
 }
