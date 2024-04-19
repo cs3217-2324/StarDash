@@ -120,7 +120,7 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
         let touchLocation = touch.location(in: self)
         var frameWidth = self.frame.width
         var frameHeight = self.frame.height
-        
+
         if rotatedBy == .pi / 2 || rotatedBy == .pi * 3 / 2 {
             frameWidth = self.frame.height
             frameHeight = self.frame.width
@@ -175,7 +175,7 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
                 joystickView.moveJoystick(location: gesture.location(in: joystickView))
 
             }
-        }
+            }
     }
 
     private func stopLongPressTimer() {
