@@ -217,7 +217,6 @@ class GameEngine {
         }
 
         positionSystem.move(entityId: playerComponent.entityId, to: position)
-        print(score)
         scoreSystem.setScore(of: playerComponent.entityId, score: score)
 
     }

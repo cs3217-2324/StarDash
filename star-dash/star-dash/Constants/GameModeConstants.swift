@@ -17,7 +17,7 @@ struct GameModeConstants {
             3: 50
         ]
     }
-    
+
     struct TimedMode {
         static let timeLimit: TimeInterval = 120
     }

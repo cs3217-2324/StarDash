@@ -52,12 +52,10 @@ class RaceMode: GameMode {
         return haveAllPlayerFinalScore()
 
     }
-    
+
     private func haveAllPlayerFinalScore() -> Bool {
-        for (playerId, hasFinishLineScore) in playerHasFinishLineScoreMap {
-            if !hasFinishLineScore {
-                return false
-            }
+        for (playerId, hasFinishLineScore) in playerHasFinishLineScoreMap where !hasFinishLineScore {
+            return false
         }
         return true
     }
@@ -92,7 +90,7 @@ extension RaceMode {
                     playerSystem.hasPlayerFinishedGame(entityId: playerId) else {
                 continue
             }
-            if !hasPlayerFinishedGame \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\{
+            if !hasPlayerFinishedGame {
                 continue
             }
 

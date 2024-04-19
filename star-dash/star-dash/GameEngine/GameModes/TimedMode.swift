@@ -40,7 +40,6 @@ class TimedMode: GameMode {
         if time <= 0 && !isGameEnded {
             endGame()
         }
-        print(deltaTime)
     }
 
     func hasGameEnded() -> Bool {
