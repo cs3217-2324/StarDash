@@ -14,7 +14,6 @@ class RaceMode: GameMode {
     var target: GameModeModifiable?
     var hasFinishLine = true
     var numberOfPlayers: Int
-    var extraRewards = [150, 100, 50, 0]
     private var playerHasFinishLineScoreMap: [PlayerId: Bool] = [:]
     private var nextPlayerRanking = 1
 
@@ -32,7 +31,7 @@ class RaceMode: GameMode {
             return
         }
         setupPlayers(target: target)
-
+        time = 0
         for playerId in target.playerIds() {
             playerHasFinishLineScoreMap[playerId] = false
         }
@@ -50,8 +49,17 @@ class RaceMode: GameMode {
         guard let target = target else {
             return false
         }
-        return haveAllPlayersFinishedGame(target: target)
+        return haveAllPlayerFinalScore()
 
+    }
+    
+    private func haveAllPlayerFinalScore() -> Bool {
+        for (playerId, hasFinishLineScore) in playerHasFinishLineScoreMap {
+            if !hasFinishLineScore {
+                return false
+            }
+        }
+        return true
     }
 
     func results() -> GameResults? {
@@ -63,8 +71,7 @@ class RaceMode: GameMode {
         var gameResults = GameResults()
         for playerId in target.playerIds() {
             let spriteImage = spriteSystem.getImage(of: playerId) ?? SpriteConstants.playerRedNose
-            var score = scoreSystem.score(of: playerId) ?? 0
-            score += self.extraRewards[nextPlayerRanking - 1]
+            let score = scoreSystem.score(of: playerId) ?? 0
             let playerResult = PlayerResult(spriteImage: spriteImage, result: CGFloat(score))
             gameResults.addPlayerResult(playerResult)
         }
@@ -85,9 +92,10 @@ extension RaceMode {
                     playerSystem.hasPlayerFinishedGame(entityId: playerId) else {
                 continue
             }
-            guard hasPlayerFinishedGame else {
+            if !hasPlayerFinishedGame \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\{
                 continue
             }
+
             let scoreChange = GameModeConstants.LocalRaceMode.rankingScoreChangeMap[nextPlayerRanking] ?? 0
             scoreSystem.applyScoreChange(to: playerId, scoreChange: scoreChange)
             playerHasFinishLineScoreMap[playerId] = true

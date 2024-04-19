@@ -8,10 +8,11 @@
 import Foundation
 
 class TimedMode: GameMode {
+    static let timeLimit = 120
     var numberOfPlayers: Int
     var hasFinishLine = false
     var target: GameModeModifiable?
-    var time: TimeInterval = 120
+    var time: TimeInterval = GameModeConstants.TimedMode.timeLimit
     private var isGameEnded = false
 
     init(target: GameModeModifiable? = nil, numberOfPlayers: Int = 2) {
@@ -27,6 +28,7 @@ class TimedMode: GameMode {
         guard let target = target else {
             return
         }
+        time = GameModeConstants.TimedMode.timeLimit
         setupPlayers(target: target)
     }
 
@@ -38,6 +40,7 @@ class TimedMode: GameMode {
         if time <= 0 && !isGameEnded {
             endGame()
         }
+        print(deltaTime)
     }
 
     func hasGameEnded() -> Bool {

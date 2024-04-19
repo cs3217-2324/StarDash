@@ -12,8 +12,13 @@ struct GameModeConstants {
 
     struct LocalRaceMode {
         static let rankingScoreChangeMap = [
-            1: 100,
-            2: 50
+            1: 150,
+            2: 100,
+            3: 50
         ]
+    }
+    
+    struct TimedMode {
+        static let timeLimit: TimeInterval = 120
     }
 }
