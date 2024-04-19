@@ -14,7 +14,7 @@ class RaceMode: GameMode {
     var target: GameModeModifiable?
     var hasFinishLine = true
     var numberOfPlayers: Int
-
+    var extraRewards = [150, 100, 50, 0]
     private var playerHasFinishLineScoreMap: [PlayerId: Bool] = [:]
     private var nextPlayerRanking = 1
 
@@ -63,7 +63,8 @@ class RaceMode: GameMode {
         var gameResults = GameResults()
         for playerId in target.playerIds() {
             let spriteImage = spriteSystem.getImage(of: playerId) ?? SpriteConstants.playerRedNose
-            let score = scoreSystem.score(of: playerId) ?? 0
+            var score = scoreSystem.score(of: playerId) ?? 0
+            score += self.extraRewards[nextPlayerRanking - 1]
             let playerResult = PlayerResult(spriteImage: spriteImage, result: CGFloat(score))
             gameResults.addPlayerResult(playerResult)
         }
