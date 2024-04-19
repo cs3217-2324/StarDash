@@ -256,9 +256,9 @@ class EntityBuilder {
         return self
     }
 
-    func withHomingMissile(impulse: CGVector) -> Self {
+    func withHomingMissile(sourceId: EntityId, impulse: CGVector) -> Self {
         let componentType = ObjectIdentifier(HomingMissileComponent.self)
-        let component = HomingMissileComponent(entityId: entityId, targetId: nil, impulse: impulse)
+        let component = HomingMissileComponent(entityId: entityId, targetId: nil, sourceId: sourceId, impulse: impulse)
 
         self.components[componentType] = component
         return self
