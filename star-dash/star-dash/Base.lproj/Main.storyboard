@@ -17,18 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="MenuBG" translatesAutoresizingMaskIntoConstraints="NO" id="46R-rd-hAr">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="MenuBG" translatesAutoresizingMaskIntoConstraints="NO" id="46R-rd-hAr">
                                 <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="w4P-6v-KJ5">
-                                <rect key="frame" x="98" y="134" width="984" height="552"/>
+                                <rect key="frame" x="98" y="89.5" width="984" height="641"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Title" translatesAutoresizingMaskIntoConstraints="NO" id="YIl-Ja-bXk">
                                         <rect key="frame" x="0.0" y="0.0" width="984" height="315"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="center" axis="vertical" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="PUz-Cw-weV">
-                                        <rect key="frame" x="369.5" y="315" width="245.5" height="237"/>
+                                        <rect key="frame" x="369.5" y="315" width="245.5" height="326"/>
                                         <subviews>
                                             <button opaque="NO" alpha="0.90000000000000002" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIg-qy-c7E">
                                                 <rect key="frame" x="0.0" y="0.0" width="245.5" height="59"/>
@@ -58,8 +57,22 @@
                                                     <action selector="localMultiplayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ag1-C2-EDy"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" alpha="0.90000000000000002" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOE-FG-tgG">
+                                            <button opaque="NO" alpha="0.89999997615814209" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTn-oA-BEN">
                                                 <rect key="frame" x="0.0" y="178" width="245.5" height="59"/>
+                                                <color key="tintColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Online">
+                                                    <fontDescription key="titleFontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                                    <directionalEdgeInsets key="contentInsets" top="10" leading="30" bottom="10" trailing="30"/>
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="baseBackgroundColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <segue destination="mNE-cE-s6D" kind="presentation" modalPresentationStyle="fullScreen" id="JRJ-lW-qIn"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" alpha="0.90000000000000002" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOE-FG-tgG">
+                                                <rect key="frame" x="0.0" y="267" width="245.5" height="59"/>
                                                 <color key="tintColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Achievements">
@@ -79,9 +92,9 @@
                                     <constraint firstAttribute="width" constant="984" id="nT9-44-sEU"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uK9-fi-bqN">
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uK9-fi-bqN">
                                 <rect key="frame" x="1080" y="51" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button" image="HelpButton">
                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -94,7 +107,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="46R-rd-hAr" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="HR5-vL-uhf"/>
+                            <constraint firstItem="46R-rd-hAr" firstAttribute="centerX" secondItem="w4P-6v-KJ5" secondAttribute="centerX" id="Ia2-Ie-c3o"/>
+                            <constraint firstItem="uK9-fi-bqN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="51" id="Pdh-ZJ-qsa"/>
+                            <constraint firstItem="uK9-fi-bqN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="1080" id="XBA-xO-3kz"/>
+                            <constraint firstItem="46R-rd-hAr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hED-2m-uOP"/>
                             <constraint firstItem="w4P-6v-KJ5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="n8G-Lx-75b"/>
+                            <constraint firstItem="46R-rd-hAr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pwH-uP-s4M"/>
                             <constraint firstItem="w4P-6v-KJ5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tcP-Mv-Tsa"/>
                         </constraints>
                     </view>
@@ -161,6 +180,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xeb-Yn-21W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="537" y="80"/>
+        </scene>
+        <!--lobby-->
+        <scene sceneID="tm6-m8-tBt">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="lobby" storyboardName="Lobby" referencedIdentifier="lobby" id="mNE-cE-s6D" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ybx-NV-PyS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="537" y="124"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Ojh-Ka-sNY">

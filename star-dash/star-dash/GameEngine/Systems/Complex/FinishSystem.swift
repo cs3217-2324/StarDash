@@ -32,14 +32,15 @@ class FinishSystem: System {
                     playerSystem.hasPlayerFinishedGame(entityId: player.id) else {
                 break
             }
-            if hasPlayerFinishedGame {
-                break
-            }
+
             guard let playerPosition = positionSystem.getPosition(of: player.id) else {
+                print("Player has no posiiton")
+
                 break
             }
             if playerPosition.x >= finishLinePosition.x {
                 playerSystem.setHasFinishedGame(of: player.id, to: true)
+                print("player has finished game \(player.id)")
             }
         }
     }

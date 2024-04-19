@@ -8,19 +8,19 @@
 import Foundation
 
 class PlayerObstacleContactEvent: Event {
-    let timestamp: Date
     let playerId: EntityId
     let obstacleId: EntityId
     let contactPoint: CGPoint
 
-    init(from playerId: EntityId, on obstacleEntityId: EntityId, at contactPoint: CGPoint) {
-        self.timestamp = Date.now
+    init(from playerId: EntityId, on obstacleEntityId: EntityId, at contactPoint: CGPoint, timestamp: Date) {
         self.playerId = playerId
         self.obstacleId = obstacleEntityId
         self.contactPoint = contactPoint
+        super.init(playerIdForEvent: playerId, timestamp: timestamp)
     }
 
-    var playerIdForEvent: EntityId? {
-        playerId
+    convenience init(from playerId: EntityId, on obstacleEntityId: EntityId, at contactPoint: CGPoint) {
+        self.init(from: playerId, on: obstacleEntityId, at: contactPoint, timestamp: Date.now)
     }
+
 }

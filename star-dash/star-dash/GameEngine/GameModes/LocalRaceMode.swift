@@ -11,13 +11,14 @@ import Foundation
 class LocalRaceMode: GameMode {
     var target: GameModeModifiable?
 
-    let numberOfPlayers = 2
+    var numberOfPlayers: Int
 
     private var playerHasFinishLineScoreMap: [PlayerId: Bool] = [:]
     private var nextPlayerRanking = 1
 
-    init(target: GameModeModifiable? = nil) {
+    init(target: GameModeModifiable? = nil, numberOfPlayers: Int = 2) {
         self.target = target
+        self.numberOfPlayers = numberOfPlayers
     }
 
     func setTarget(_ target: GameModeModifiable) {

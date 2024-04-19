@@ -24,7 +24,6 @@ class GameEngine {
         self.gameMode = gameMode
         self.mapSize = mapSize
         self.resultsDelegate = resultsDelegate
-
         setupSystems()
         setupGameMode()
     }
@@ -100,37 +99,39 @@ class GameEngine {
         eventManager.add(event: event)
     }
 
-    func handlePlayerJump(playerIndex: Int) {
+    func handlePlayerJump(playerIndex: Int, timestamp: Date) {
         guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
             return
         }
 
-        eventManager.add(event: JumpEvent(on: playerEntityId, by: PhysicsConstants.jumpImpulse))
+        eventManager.add(event: JumpEvent(on: playerEntityId, by: PhysicsConstants.jumpImpulse, timestamp: timestamp))
     }
 
-    func handlePlayerMove(toLeft: Bool, playerIndex: Int) {
+    func handlePlayerMove(toLeft: Bool, playerIndex: Int, timestamp: Date) {
         guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
             return
         }
 
-        eventManager.add(event: MoveEvent(on: playerEntityId, toLeft: toLeft))
+        eventManager.add(event: MoveEvent(on: playerEntityId, toLeft: toLeft, timestamp: timestamp))
     }
 
-    func handlePlayerStoppedMoving(playerIndex: Int) {
+    func handlePlayerStoppedMoving(playerIndex: Int, timestamp: Date) {
         guard let playerEntityId = entityManager.playerEntityId(with: playerIndex) else {
             return
         }
 
-        eventManager.add(event: StopMovingEvent(on: playerEntityId))
+        eventManager.add(event: StopMovingEvent(on: playerEntityId, timestamp: timestamp))
     }
 
-    func handlePlayerHook(playerIndex: Int) {
+    func handlePlayerHook(playerIndex: Int, timestamp: Date) {
         guard let playerEntityId = entityManager.playerEntityId(with: playerIndex),
               let positionComponent = entityManager.component(ofType: PositionComponent.self, of: playerEntityId) else {
             return
         }
 
-        eventManager.add(event: UseGrappleHookEvent(from: playerEntityId, isLeft: positionComponent.isFacingLeft))
+        eventManager.add(event: UseGrappleHookEvent(from: playerEntityId,
+                                                    isLeft: positionComponent.isFacingLeft,
+                                                    timestamp: timestamp))
     }
 
     private func setupSystems() {
@@ -171,6 +172,33 @@ class GameEngine {
             }
             resultsDelegate.displayResults(results)
         }
+    }
+
+    func getPositionOf(playerIndex: Int) -> CGPoint? {
+        guard let positionSystem = systemManager.system(ofType: PositionSystem.self),
+              let playerSystem = systemManager.system(ofType: PlayerSystem.self) else {
+            return nil
+        }
+        guard let playerComponent = playerSystem.getPlayerComponent(of: playerIndex),
+              let position = positionSystem.getPosition(of: playerComponent.entityId) else {
+            return nil
+        }
+
+        return position
+
+    }
+
+    func syncPosition(position: CGPoint, of playerIndex: Int) {
+        guard let positionSystem = systemManager.system(ofType: PositionSystem.self),
+              let playerSystem = systemManager.system(ofType: PlayerSystem.self) else {
+            return
+        }
+        guard let playerComponent = playerSystem.getPlayerComponent(of: playerIndex) else {
+            return
+        }
+
+        positionSystem.move(entityId: playerComponent.entityId, to: position)
+
     }
 }
 
