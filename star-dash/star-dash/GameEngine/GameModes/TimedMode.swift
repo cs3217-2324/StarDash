@@ -1,22 +1,25 @@
 //
-//  SingleRaceMode.swift
+//  TimedMode.swift
 //  star-dash
 //
-//  Created by Jason Qiu on 15/4/24.
+//  Created by Lau Rui han on 19/4/24.
 //
 
 import Foundation
 
-class SingleRaceMode: GameMode {
+class TimedMode: GameMode {
+    var numberOfPlayers: Int
+    var hasFinishLine = true
     var target: GameModeModifiable?
+    var time: TimeInterval = 60
+    private var isGameEnded = false
 
-    var numberOfPlayers = 1
-
-    init(target: GameModeModifiable? = nil) {
+    init(target: GameModeModifiable? = nil, numberOfPlayers: Int = 2) {
         self.target = target
+        self.numberOfPlayers = numberOfPlayers
     }
 
-    func setTarget(_ target: any GameModeModifiable) {
+    func setTarget(_ target: GameModeModifiable) {
         self.target = target
     }
 
@@ -27,11 +30,18 @@ class SingleRaceMode: GameMode {
         setupPlayers(target: target)
     }
 
-    func hasGameEnded() -> Bool {
-        guard let target = target else {
-            return false
+    func update(by deltaTime: TimeInterval) {
+        guard target != nil else {
+            return
         }
-        return haveAllPlayersFinishedGame(target: target)
+        time -= deltaTime
+        if time <= 0 && !isGameEnded {
+            endGame()
+        }
+    }
+
+    func hasGameEnded() -> Bool {
+        isGameEnded
     }
 
     func results() -> GameResults? {
@@ -48,5 +58,9 @@ class SingleRaceMode: GameMode {
             gameResults.addPlayerResult(playerResult)
         }
         return gameResults
+    }
+
+    private func endGame() {
+        isGameEnded = true
     }
 }

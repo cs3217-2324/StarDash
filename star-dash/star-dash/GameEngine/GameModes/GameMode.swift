@@ -10,15 +10,16 @@ import Foundation
 
 protocol GameMode {
     var target: GameModeModifiable? { get set }
-
+    var hasFinishLine: Bool { get }
     // Number of players on a single device screen
     var numberOfPlayers: Int { get set }
-
+    var time: TimeInterval {get}
     func setTarget(_ target: GameModeModifiable)
     func setupGameMode()
     func update(by deltaTime: TimeInterval)
     func hasGameEnded() -> Bool
     func results() -> GameResults?
+
 }
 
 extension GameMode {

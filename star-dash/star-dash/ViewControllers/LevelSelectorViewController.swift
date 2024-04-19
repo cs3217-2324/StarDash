@@ -13,7 +13,7 @@ class LevelSelectorViewController: UIViewController {
     var numberOfPlayers: Int = 0
     var viewLayout: Int = 0
     var playerIndex: Int?
-    var gameMode: GameMode?
+    var gameMode: GameMode = RaceMode()
     var levels: [LevelPersistable] = [] // Assuming Level is a struct or class representing a level
     var networkManager: NetworkManager?
 
@@ -52,7 +52,8 @@ class LevelSelectorViewController: UIViewController {
             self.performSegue(withIdentifier: "PlaySegue",
                               sender: GameData(level: level,
                                                numberOfPlayers: self.numberOfPlayers,
-                                               viewLayout: self.viewLayout, gameMode: RaceMode(),
+                                               viewLayout: self.viewLayout,
+                                               gameMode: self.gameMode,
                                                storageManager: storageManager,
                                                networkManager: self.networkManager,
                                                playerIndex: self.playerIndex))

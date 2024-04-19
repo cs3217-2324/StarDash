@@ -41,10 +41,13 @@ class GameEngine {
         EntityFactory.createAndAddWall(to: self,
                                        position: CGPoint(x: sceneSize.width / 2, y: sceneSize.height),
                                        size: CGSize(width: sceneSize.width, height: 1))
-        EntityFactory.createAndAddFinishLine(to: self,
-                                             position: CGPoint(
-                                                x: mapSize.width + PhysicsConstants.Dimensions.flag.width / 2,
-                                                y: 200))
+        if gameMode.hasFinishLine {
+            EntityFactory.createAndAddFinishLine(to: self,
+                                                 position: CGPoint(
+                                                    x: mapSize.width + PhysicsConstants.Dimensions.flag.width / 2,
+                                                    y: 200))
+        }
+
         entities.forEach({ $0.addTo(self) })
     }
 
@@ -61,7 +64,8 @@ class GameEngine {
             playerScore: score,
             playerHealth: health,
             playersInfo: playersInfo(),
-            mapSize: mapSize
+            mapSize: mapSize,
+            time: gameMode.time
         )
     }
 

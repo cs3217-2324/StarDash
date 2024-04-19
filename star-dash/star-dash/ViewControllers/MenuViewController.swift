@@ -20,7 +20,7 @@ class MenuViewController: UIViewController {
     }
 
     @IBAction private func singlePlayer(_ sender: Any) {
-        let singleRaceMode = RaceMode()
+        let singleRaceMode = TimedMode()
         performSegue(withIdentifier: "LevelSelectSegue", sender: GameData(level: nil,
                                                                           numberOfPlayers: 1,
                                                                           viewLayout: 1,

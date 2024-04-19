@@ -9,8 +9,10 @@ import CoreGraphics
 import Foundation
 
 class RaceMode: GameMode {
-    var target: GameModeModifiable?
+    var time: TimeInterval = 0
 
+    var target: GameModeModifiable?
+    var hasFinishLine = true
     var numberOfPlayers: Int
 
     private var playerHasFinishLineScoreMap: [PlayerId: Bool] = [:]
@@ -40,6 +42,7 @@ class RaceMode: GameMode {
         guard let target = target else {
             return
         }
+        time += deltaTime
         updateFinishLineScoreRule(target: target)
     }
 
