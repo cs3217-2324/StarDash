@@ -21,6 +21,7 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
         setupActionControls()
         setupGestureRecognizers()
     }
+    var rotatedBy: CGFloat = 0
 
     // MARK: Private methods for setup
 
@@ -117,8 +118,15 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
     // To ensure gesture recognise only in a specific area
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         let touchLocation = touch.location(in: self)
-        let halfScreenWidth = self.frame.width / 2
-        let ignoredAreaRect = CGRect(x: halfScreenWidth, y: 0, width: .infinity, height: self.frame.height)
+        var frameWidth = self.frame.width
+        var frameHeight = self.frame.height
+        
+        if rotatedBy == .pi / 2 || rotatedBy == .pi * 3 / 2 {
+            frameWidth = self.frame.height
+            frameHeight = self.frame.width
+        }
+        let halfScreenWidth = frameWidth / 2
+        let ignoredAreaRect = CGRect(x: halfScreenWidth, y: 0, width: frameWidth, height: frameHeight)
         if ignoredAreaRect.contains(touchLocation) {
             return false
         }
@@ -164,8 +172,10 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
             if shouldSendMoveEvent(location: touchPoint) {
                 let isLeft = gesture.location(in: joystickView).x < joystickView.bounds.midX
                 controlViewDelegate?.joystickMoved(toLeft: isLeft, from: self)
+                joystickView.moveJoystick(location: gesture.location(in: joystickView))
+
             }
-            }
+        }
     }
 
     private func stopLongPressTimer() {

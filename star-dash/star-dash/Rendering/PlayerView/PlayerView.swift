@@ -35,6 +35,7 @@ class PlayerView {
         superview.addSubview(self.minimapView)
 
         self.controlView = ControlView(frame: superview.bounds, rotatedBy: rotation)
+        controlView.rotatedBy = rotation
         superview.addSubview(self.controlView)
     }
 
