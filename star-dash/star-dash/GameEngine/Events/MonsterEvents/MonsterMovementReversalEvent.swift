@@ -8,17 +8,16 @@
 import Foundation
 
 class MonsterMovementReversalEvent: Event {
-    let timestamp: Date
     let monsterId: EntityId
     let isLeft: Bool
 
-    init(on monsterId: EntityId, isLeft: Bool) {
-        self.timestamp = Date.now
+    init(on monsterId: EntityId, isLeft: Bool, timestamp: Date) {
         self.monsterId = monsterId
         self.isLeft = isLeft
+        super.init(timestamp: timestamp)
     }
 
-    var playerIdForEvent: EntityId? {
-        nil
+    convenience init(on monsterId: EntityId, isLeft: Bool) {
+        self.init(on: monsterId, isLeft: isLeft, timestamp: Date.now)
     }
 }

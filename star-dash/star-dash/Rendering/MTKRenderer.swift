@@ -20,6 +20,8 @@ class MTKRenderer: NSObject, Renderer {
     var playerViews: [PlayerView]
 
     var viewDelegate: ViewDelegate?
+    // TODO: To be refined on how to follow the correct player index if on network
+    var playerIndex: Int?
 
     init?(scene: GameScene) {
         self.scene = scene
@@ -51,19 +53,25 @@ class MTKRenderer: NSObject, Renderer {
     }
 
     private func playerIndex(from mtkView: MTKView) -> Int? {
-        for i in 0..<playerViews.count where playerViews[i].sceneView == mtkView {
-            return i
+        guard let playerIndex = playerIndex else {
+            for i in 0..<playerViews.count where playerViews[i].sceneView == mtkView {
+                return i
+            }
+            return nil
         }
 
-        return nil
+        return playerIndex
     }
 
     private func playerIndex(from controlView: ControlView) -> Int? {
-        for i in 0..<playerViews.count where playerViews[i].controlView == controlView {
-            return i
+        guard let playerIndex = playerIndex else {
+            for i in 0..<playerViews.count where playerViews[i].controlView == controlView {
+                return i
+            }
+            return nil
         }
 
-        return nil
+        return playerIndex
     }
 }
 
@@ -95,16 +103,23 @@ extension MTKRenderer: MTKViewDelegate {
 
     func updateScene(forPlayer playerIndex: Int) {
         guard let overlayInfo = viewDelegate?.overlayInfo(forPlayer: playerIndex) else {
-            return
+                return
+        }
+        var index = playerIndex
+        // TODO: Refine how playerindex is passed
+        if self.playerIndex != nil {
+            index = 0
+        } else {
+            index = playerIndex
         }
 
-        if playerIndex == 0 {
+        if index == 0 {
             // Ensures all views displays the game scene of the same state
             // Assumption: The first view is always the start of the every cycle of updates
             renderer.update(atTime: CACurrentMediaTime())
         }
-        playerViews[playerIndex].update(overlayInfo)
-        scene.useCamera(of: playerIndex, rotatedBy: playerViews[playerIndex].rotation)
+        playerViews[index].update(overlayInfo)
+        scene.useCamera(of: playerIndex, rotatedBy: playerViews[index].rotation)
 
         if !scene.areAllCamerasSetup {
             let numberOfPlayers = playerViews.count

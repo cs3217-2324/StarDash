@@ -12,7 +12,7 @@ protocol GameMode {
     var target: GameModeModifiable? { get set }
 
     // Number of players on a single device screen
-    var numberOfPlayers: Int { get }
+    var numberOfPlayers: Int { get set }
 
     func setTarget(_ target: GameModeModifiable)
     func setupGameMode()

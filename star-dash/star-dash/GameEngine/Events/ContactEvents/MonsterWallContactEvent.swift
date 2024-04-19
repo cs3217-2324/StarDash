@@ -8,19 +8,19 @@
 import Foundation
 
 class MonsterWallContactEvent: Event {
-    let timestamp: Date
     let monsterId: EntityId
     let wallId: EntityId
     let contactPoint: CGPoint
 
-    init(from monsterId: EntityId, on wallId: EntityId, at contactPoint: CGPoint) {
-        self.timestamp = Date.now
+    init(from monsterId: EntityId, on wallId: EntityId, at contactPoint: CGPoint, timestamp: Date) {
         self.monsterId = monsterId
         self.wallId = wallId
         self.contactPoint = contactPoint
+        super.init(timestamp: timestamp)
     }
 
-    var playerIdForEvent: EntityId? {
-        nil
+    convenience init(from monsterId: EntityId, on wallId: EntityId, at contactPoint: CGPoint) {
+        self.init(from: monsterId, on: wallId, at: contactPoint, timestamp: Date.now)
     }
+
 }

@@ -1,64 +1,10 @@
 {
   "id": 0,
   "name": "Joyride",
-  "size": [4842, 1040],
+  "size": [500, 1040],
   "background": "GameBackground",
   "obstacles": [
-    {
-      "levelId": 0,
-      "position": [500, 150],
-      "size": [100,100]
-    },
-    {
-      "levelId": 0,
-      "position": [600, 150],
-      "size": [100,100]
-    },
-    {
-      "levelId": 0,
-      "position": [600, 250],
-      "size": [100,100]
-    },
-    {
-      "levelId": 0,
-      "position": [850, 350],
-      "size": [100,100]
-      },
-    {
-      "levelId": 0,
-      "position": [950, 350],
-      "size": [100,100]
-    },
-    {
-      "levelId": 0,
-      "position": [1100, 500],
-      "size": [100,100]
-    },
-    {
-      "levelId": 0,
-      "position": [1200, 500],
-      "size": [100,100]
-    },
-    {
-      "levelId": 0,
-      "position": [1300, 500],
-      "size": [100,100]
-    },
-    {
-      "levelId": 0,
-      "position": [1450, 350],
-      "size": [100,100]
-    },
-    {
-      "levelId": 0,
-      "position": [1550, 350],
-      "size": [100,100]
-    },
-    {
-      "levelId": 0,
-      "position": [1800, 150],
-      "size": [100,100]
-    }
+    
   ],
   "collectibles": [
       {
