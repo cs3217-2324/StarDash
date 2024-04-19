@@ -14,7 +14,8 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
     let panThreshold: CGFloat = 15
     private var longPressTimer: Timer?
     var controlViewDelegate: ControlViewDelegate?
-
+    var jumpButton: UIButton?
+    var hookButton: UIButton?
     func setupSubviews() {
         setupMovementControls()
         setupActionControls()
@@ -47,7 +48,7 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
         jumpButton.setImage(#imageLiteral(resourceName: "JumpButton"), for: .normal)
         jumpButton.setImage(#imageLiteral(resourceName: "JumpButtonDown"), for: .highlighted)
         addSubview(jumpButton)
-
+        self.jumpButton = jumpButton
         // Hook Button
         let hookButton = UIButton(type: .custom)
         let hookButtonX = bounds.width - (buttonSize + buttonMargin) * 2
@@ -57,6 +58,7 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
         hookButton.setImage(#imageLiteral(resourceName: "GrapplingHookButton"), for: .normal)
         hookButton.setImage(#imageLiteral(resourceName: "GrapplingHookButtonDown"), for: .highlighted)
         addSubview(hookButton)
+        self.hookButton = hookButton
     }
 
     private func setupGestureRecognizers() {
@@ -116,7 +118,7 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         let touchLocation = touch.location(in: self)
         let halfScreenWidth = self.frame.width / 2
-        let ignoredAreaRect = CGRect(x: halfScreenWidth, y: 0, width: halfScreenWidth, height: self.frame.height)
+        let ignoredAreaRect = CGRect(x: halfScreenWidth, y: 0, width: .infinity, height: self.frame.height)
         if ignoredAreaRect.contains(touchLocation) {
             return false
         }
@@ -139,15 +141,26 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
             break
         }
     }
+    
+    private func touchInActionButton(touchPoint: CGPoint) -> Bool {
+        guard let jumpButton = jumpButton,
+              let hookButton = hookButton else {
+            return false
+        }
+        return jumpButton.frame.contains(touchPoint) || hookButton.frame.contains(touchPoint)
+    }
 
     private func startLongPressTimer(_ gesture: UILongPressGestureRecognizer) {
-        longPressTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self] _ in
-
-            guard let self = self, let joystickView = self.joystickView else {
+            
+            longPressTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self] _ in
+            let touchPoint = gesture.location(in: self)
+        
+            guard let self = self,
+                let joystickView = self.joystickView,
+                  !touchInActionButton(touchPoint: touchPoint) else {
                 return
             }
-
-            let touchPoint = gesture.location(in: self)
+            
             if shouldSendMoveEvent(location: touchPoint) {
                 let isLeft = gesture.location(in: joystickView).x < joystickView.bounds.midX
                 controlViewDelegate?.joystickMoved(toLeft: isLeft, from: self)
