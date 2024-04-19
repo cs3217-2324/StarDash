@@ -141,7 +141,7 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
             break
         }
     }
-    
+
     private func touchInActionButton(touchPoint: CGPoint) -> Bool {
         guard let jumpButton = jumpButton,
               let hookButton = hookButton else {
@@ -151,21 +151,21 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
     }
 
     private func startLongPressTimer(_ gesture: UILongPressGestureRecognizer) {
-            
+
             longPressTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self] _ in
             let touchPoint = gesture.location(in: self)
-        
+
             guard let self = self,
                 let joystickView = self.joystickView,
                   !touchInActionButton(touchPoint: touchPoint) else {
                 return
             }
-            
+
             if shouldSendMoveEvent(location: touchPoint) {
                 let isLeft = gesture.location(in: joystickView).x < joystickView.bounds.midX
                 controlViewDelegate?.joystickMoved(toLeft: isLeft, from: self)
             }
-        }
+            }
     }
 
     private func stopLongPressTimer() {
