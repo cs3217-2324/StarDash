@@ -18,7 +18,7 @@ protocol GameMode {
     var hasFinishLine: Bool { get }
     // Number of players on a single device screen
     var numberOfPlayers: Int { get set }
-    var time: TimeInterval {get}
+    var time: TimeInterval { get }
     func setTarget(_ target: GameModeModifiable)
     func setupGameMode()
     func update(by deltaTime: TimeInterval)

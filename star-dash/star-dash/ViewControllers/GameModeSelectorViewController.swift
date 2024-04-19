@@ -115,7 +115,8 @@ class GameModeSelectorViewController: UIViewController {
     }
 
     // Helper method to resize image while preserving aspect ratio
-    @objc func buttonTapped(_ sender: UIButton) {
+    @objc
+    func buttonTapped(_ sender: UIButton) {
             // Handle button tap
         guard let gameModeType = GameModeType(rawValue: sender.tag) else {
             return
