@@ -17,9 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="MenuBG" translatesAutoresizingMaskIntoConstraints="NO" id="46R-rd-hAr">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="MenuBG" translatesAutoresizingMaskIntoConstraints="NO" id="46R-rd-hAr">
                                 <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="w4P-6v-KJ5">
                                 <rect key="frame" x="98" y="89.5" width="984" height="641"/>
@@ -93,9 +92,9 @@
                                     <constraint firstAttribute="width" constant="984" id="nT9-44-sEU"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uK9-fi-bqN">
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uK9-fi-bqN">
                                 <rect key="frame" x="1080" y="51" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button" image="HelpButton">
                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -108,7 +107,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="46R-rd-hAr" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="HR5-vL-uhf"/>
+                            <constraint firstItem="46R-rd-hAr" firstAttribute="centerX" secondItem="w4P-6v-KJ5" secondAttribute="centerX" id="Ia2-Ie-c3o"/>
+                            <constraint firstItem="uK9-fi-bqN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="51" id="Pdh-ZJ-qsa"/>
+                            <constraint firstItem="uK9-fi-bqN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="1080" id="XBA-xO-3kz"/>
+                            <constraint firstItem="46R-rd-hAr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hED-2m-uOP"/>
                             <constraint firstItem="w4P-6v-KJ5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="n8G-Lx-75b"/>
+                            <constraint firstItem="46R-rd-hAr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pwH-uP-s4M"/>
                             <constraint firstItem="w4P-6v-KJ5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tcP-Mv-Tsa"/>
                         </constraints>
                     </view>

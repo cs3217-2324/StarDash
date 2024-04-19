@@ -41,6 +41,7 @@ struct EntityFactory {
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.player)
                 .configureAffectedByGravity(true)
                 .configureRestitution(0.0)
+                .configureMaxRunSpeed(PhysicsConstants.maxPlayerRunSpeed)
             .addToGame()
     }
 
@@ -66,6 +67,7 @@ struct EntityFactory {
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.monster)
                 .configureAffectedByGravity(true)
                 .configureRestitution(0.0)
+                .configureMaxRunSpeed(PhysicsConstants.maxMonsterRunSpeed)
             .addToGame()
     }
 
