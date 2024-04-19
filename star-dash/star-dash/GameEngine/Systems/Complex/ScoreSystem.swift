@@ -41,7 +41,7 @@ class ScoreSystem: System {
             return
         }
 
-        scoreComponent.score += score
+        scoreComponent.score = score
     }
 
     func setup() {
