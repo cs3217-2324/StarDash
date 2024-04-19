@@ -107,7 +107,7 @@ extension MTKRenderer: MTKViewDelegate {
         }
         var index = playerIndex
         // TODO: Refine how playerindex is passed
-        if let playerIndex = self.playerIndex {
+        if self.playerIndex != nil {
             index = 0
         } else {
             index = playerIndex
