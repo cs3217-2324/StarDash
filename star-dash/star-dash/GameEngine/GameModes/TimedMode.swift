@@ -9,7 +9,7 @@ import Foundation
 
 class TimedMode: GameMode {
     var numberOfPlayers: Int
-    var hasFinishLine = true
+    var hasFinishLine = false
     var target: GameModeModifiable?
     var time: TimeInterval = 60
     private var isGameEnded = false

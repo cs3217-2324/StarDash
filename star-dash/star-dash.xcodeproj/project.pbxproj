@@ -108,6 +108,7 @@
 		4E3458EB2BA75E8B00E817C6 /* PhysicsComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3458EA2BA75E8B00E817C6 /* PhysicsComponentTests.swift */; };
 		4E3458ED2BA75F1200E817C6 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3458EC2BA75F1200E817C6 /* Util.swift */; };
 		4E3517122BD27D4200ED0132 /* TimedMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3517112BD27D4200ED0132 /* TimedMode.swift */; };
+		4E3517142BD28F6600ED0132 /* GameModeSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3517132BD28F6600ED0132 /* GameModeSelectorViewController.swift */; };
 		4E5769CA2BCECF860030A3FC /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5769C92BCECF860030A3FC /* NetworkError.swift */; };
 		4E5769CC2BCEE3C30030A3FC /* NetworkPlayerLeaveRoomEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5769CB2BCEE3C30030A3FC /* NetworkPlayerLeaveRoomEvent.swift */; };
 		4E5928E32BC334A900F84237 /* RoomCodeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5928E22BC334A900F84237 /* RoomCodeConstants.swift */; };
@@ -157,6 +158,8 @@
 		4EAE2C2E2BBAED2400D9E1DE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAE2C2D2BBAED2400D9E1DE /* MenuViewController.swift */; };
 		4EB557912BBD141400E5D433 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A50CB2BBC5E82000B7900 /* GameData.swift */; };
 		4EC561E32BB1E98400166DDC /* PlayerObstacleContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC561E22BB1E98400166DDC /* PlayerObstacleContactEvent.swift */; };
+		4EDA68082BD2AA49004794C3 /* NetworkSelectGameModeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA68072BD2AA49004794C3 /* NetworkSelectGameModeEvent.swift */; };
+		4EDA680A2BD2AF36004794C3 /* GameModeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA68092BD2AF36004794C3 /* GameModeFactory.swift */; };
 		4EDB58082BC3028900E4C4B2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDB58072BC3028900E4C4B2 /* NetworkManager.swift */; };
 		4EDB580A2BC3037600E4C4B2 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDB58092BC3037600E4C4B2 /* SocketManager.swift */; };
 		4EDB580C2BC303AB00E4C4B2 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDB580B2BC303AB00E4C4B2 /* NetworkConstants.swift */; };
@@ -377,6 +380,7 @@
 		4E3458EA2BA75E8B00E817C6 /* PhysicsComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsComponentTests.swift; sourceTree = "<group>"; };
 		4E3458EC2BA75F1200E817C6 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		4E3517112BD27D4200ED0132 /* TimedMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimedMode.swift; sourceTree = "<group>"; };
+		4E3517132BD28F6600ED0132 /* GameModeSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeSelectorViewController.swift; sourceTree = "<group>"; };
 		4E5769C92BCECF860030A3FC /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		4E5769CB2BCEE3C30030A3FC /* NetworkPlayerLeaveRoomEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPlayerLeaveRoomEvent.swift; sourceTree = "<group>"; };
 		4E5928E22BC334A900F84237 /* RoomCodeConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCodeConstants.swift; sourceTree = "<group>"; };
@@ -428,6 +432,8 @@
 		4EAE2C2D2BBAED2400D9E1DE /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		4EC561E22BB1E98400166DDC /* PlayerObstacleContactEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerObstacleContactEvent.swift; sourceTree = "<group>"; };
 		4EC561E42BB1E9A300166DDC /* PlayerToolContactEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerToolContactEvent.swift; sourceTree = "<group>"; };
+		4EDA68072BD2AA49004794C3 /* NetworkSelectGameModeEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSelectGameModeEvent.swift; sourceTree = "<group>"; };
+		4EDA68092BD2AF36004794C3 /* GameModeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeFactory.swift; sourceTree = "<group>"; };
 		4EDB58072BC3028900E4C4B2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4EDB58092BC3037600E4C4B2 /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
 		4EDB580B2BC303AB00E4C4B2 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
@@ -627,6 +633,7 @@
 				14DDD8E82BCF77E400AB3967 /* ResultsDelegate.swift */,
 				14D348EE2BBEFFFD00515036 /* GameModeModifiable.swift */,
 				4E3517112BD27D4200ED0132 /* TimedMode.swift */,
+				4EDA68092BD2AF36004794C3 /* GameModeFactory.swift */,
 			);
 			path = GameModes;
 			sourceTree = "<group>";
@@ -966,6 +973,7 @@
 				4EE00EF42BC4358B00D88085 /* NetworkPlayerJumpEvent.swift */,
 				4E6154EB2BCCDB8B002EB42B /* NetworkSyncEvent.swift */,
 				4E5769CB2BCEE3C30030A3FC /* NetworkPlayerLeaveRoomEvent.swift */,
+				4EDA68072BD2AA49004794C3 /* NetworkSelectGameModeEvent.swift */,
 			);
 			path = NetworkEvents;
 			sourceTree = "<group>";
@@ -980,6 +988,7 @@
 				46BB14292BBE81E3001AE148 /* AchievementViewController.swift */,
 				4EDB580F2BC3058E00E4C4B2 /* OnlineMultiplayerMenuViewController.swift */,
 				14DDD8E42BCED4D000AB3967 /* ResultsModalViewController.swift */,
+				4E3517132BD28F6600ED0132 /* GameModeSelectorViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1353,6 +1362,8 @@
 				4E59E25B2BAB3FDB007B3FA7 /* Level.swift in Sources */,
 				46D4181E2BA5D2620091A38B /* Monster+Collidable.swift in Sources */,
 				E69EE9342BAC6CC300033AB5 /* OverlayInfo.swift in Sources */,
+				4EDA68082BD2AA49004794C3 /* NetworkSelectGameModeEvent.swift in Sources */,
+				4E3517142BD28F6600ED0132 /* GameModeSelectorViewController.swift in Sources */,
 				E6B1DC902BA34A4800473563 /* SDPhysicsEngine in Sources */,
 				4EE00EF32BC4354B00D88085 /* NetworkPlayerHookEvent.swift in Sources */,
 				4E5928EB2BC3982E00F84237 /* RoomJoiningViewController.swift in Sources */,
@@ -1512,6 +1523,7 @@
 				E6B550A12BA15E9C00DC7396 /* OverlayView.swift in Sources */,
 				4EDB58082BC3028900E4C4B2 /* NetworkManager.swift in Sources */,
 				46C3B1C92BB5974D00F10574 /* GrappleHookComponent.swift in Sources */,
+				4EDA680A2BD2AF36004794C3 /* GameModeFactory.swift in Sources */,
 				E6B1CC5E2BB7E00600416BCD /* CollectibleEntityPersistable.swift in Sources */,
 				46D418262BA5D6500091A38B /* Wall+Collidable.swift in Sources */,
 				E65993742BC91E0B00DB845D /* GameSoundSystem.swift in Sources */,

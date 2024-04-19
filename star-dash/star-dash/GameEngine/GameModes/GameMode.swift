@@ -8,6 +8,11 @@
 import CoreGraphics
 import Foundation
 
+public enum GameModeType: Int, Codable {
+    case Timed = 1
+    case Race = 2
+}
+
 protocol GameMode {
     var target: GameModeModifiable? { get set }
     var hasFinishLine: Bool { get }
@@ -26,4 +31,5 @@ extension GameMode {
     func setupGameMode() {}
 
     func update(by deltaTime: TimeInterval) {}
+
 }

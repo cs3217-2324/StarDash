@@ -85,7 +85,7 @@ class LobbyViewController: UIViewController {
                               sender: GameData(level: nil,
                                                numberOfPlayers: totalNumberOfPlayers,
                                                viewLayout: 1,
-                                               gameMode: RaceMode(),
+                                               gameMode: nil,
                                                storageManager: StorageManager(),
                                                networkManager: self.networkManager,
                                                playerIndex: playerIndex))

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad10_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -50,8 +50,8 @@
                     </view>
                     <connections>
                         <outlet property="levelsStackView" destination="082-om-3rK" id="2FC-RX-kkd"/>
-                        <segue destination="mNQ-qS-eLr" kind="presentation" identifier="PlaySegue" modalPresentationStyle="fullScreen" id="aiG-TG-S8q"/>
                         <segue destination="Udy-xB-ztY" kind="presentation" identifier="BackSegue" modalPresentationStyle="fullScreen" id="jWw-gn-mqM"/>
+                        <segue destination="fZg-yn-y1r" kind="presentation" identifier="MoveToModeSelectSegue" modalPresentationStyle="fullScreen" id="eJI-93-oa4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -65,7 +65,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="GameVC" storyboardName="Game" referencedIdentifier="GameVC" id="mNQ-qS-eLr" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qMX-aM-ESd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="537" y="-24"/>
+            <point key="canvasLocation" x="1367" y="-24"/>
         </scene>
         <!--Main-->
         <scene sceneID="aUF-dF-eq5">
@@ -74,6 +74,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ADL-FG-c1X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="537" y="-195"/>
+        </scene>
+        <!--Game Mode Selector View Controller-->
+        <scene sceneID="cRZ-6c-UUG">
+            <objects>
+                <viewController storyboardIdentifier="GameModeSelector" id="fZg-yn-y1r" customClass="GameModeSelectorViewController" customModule="star_dash" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ykf-t5-vfY">
+                        <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="MenuBG" translatesAutoresizingMaskIntoConstraints="NO" id="c9v-yg-uSm">
+                                <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleAspectFill" ambiguous="YES" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="VD7-sT-x13">
+                                <rect key="frame" x="490" y="265.5" width="200" height="289"/>
+                            </stackView>
+                            <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Tv-Zz-cVG">
+                                <rect key="frame" x="61" y="44" width="95" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Back">
+                                    <fontDescription key="titleFontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                    <directionalEdgeInsets key="contentInsets" top="10" leading="20" bottom="10" trailing="20"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="back:" destination="fZg-yn-y1r" eventType="touchUpInside" id="0Tv-sz-AzJ"/>
+                                    <action selector="back:" destination="lJP-Qb-9Fm" eventType="touchUpInside" id="Edu-W5-S82"/>
+                                    <action selector="back:" destination="66r-Pg-xpC" eventType="touchUpInside" id="vDt-a0-31y"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0UJ-Os-bNa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VD7-sT-x13" firstAttribute="centerX" secondItem="Ykf-t5-vfY" secondAttribute="centerX" id="gQT-Ja-Vol"/>
+                            <constraint firstItem="VD7-sT-x13" firstAttribute="centerY" secondItem="Ykf-t5-vfY" secondAttribute="centerY" id="uPL-hR-QP3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="selectionContainer" destination="VD7-sT-x13" id="9oe-iC-e6I"/>
+                        <segue destination="mNQ-qS-eLr" kind="presentation" identifier="MoveToGameSegue" modalPresentationStyle="fullScreen" id="q1j-0x-Lv4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="564-rl-Ewt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="66r-Pg-xpC" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="929" y="-24"/>
         </scene>
     </scenes>
     <resources>
