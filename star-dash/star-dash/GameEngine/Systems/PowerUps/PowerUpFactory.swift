@@ -39,6 +39,7 @@ class PowerUpFactory {
 
         EntityFactory.createAndAddHomingMissilePowerUp(to: entityManager,
                                                        position: missilePosition,
+                                                       triggeredBy: playerId,
                                                        impulse: CGVector(dx: 4_000, dy: 0))
     }
 
