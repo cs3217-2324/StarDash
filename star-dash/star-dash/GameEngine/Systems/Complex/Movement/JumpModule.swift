@@ -55,6 +55,10 @@ class JumpModule: MovementModule {
         entityManager.remove(component: jumpComponent)
     }
 
+    func cancelMovement(for entityId: EntityId) {
+        removeJumpComponent(for: entityId)
+    }
+
     // MARK: Event Handlers
 
     private func handleJumpEvent(event: JumpEvent) -> Event? {
