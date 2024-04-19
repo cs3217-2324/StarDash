@@ -16,7 +16,7 @@ class GameModeSelectorViewController: UIViewController {
     var gameMode: GameMode?
     var networkManager: NetworkManager?
     var level: LevelPersistable?
-    @IBOutlet var selectionContainer: UIStackView!
+    @IBOutlet private var selectionContainer: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
         if playerIndex == nil || playerIndex == 0 {
@@ -46,9 +46,9 @@ class GameModeSelectorViewController: UIViewController {
 
         // Create Button 2
         let button2 = createButton(imageName: "RaceMode",
-                                    title: "Race mode",
-                                    subtitle: "Collect as many points as possible and finish first to get extra points!",
-                                    tag: 2)
+                                   title: "Race mode",
+                                   subtitle: "Collect as many points as possible and finish first to get extra points!",
+                                   tag: 2)
         button2.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
 
         // Add buttons to view
@@ -161,7 +161,7 @@ class GameModeSelectorViewController: UIViewController {
             }
         }
     }
-    @IBAction func back(_ sender: Any) {
+    @IBAction private func back(_ sender: Any) {
 
     }
 }
