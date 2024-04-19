@@ -591,7 +591,6 @@
 			children = (
 				E6A115332BB9D6EB0076A21F /* Basic */,
 				E6A115352BB9D7200076A21F /* Complex */,
-				E6D45DB62BB6E6080004CBA2 /* PowerUps */,
 				461148902BA1CDBF0073E7E1 /* SystemManager.swift */,
 				461148922BA1D04B0073E7E1 /* System.swift */,
 			);
@@ -985,6 +984,7 @@
 		E6A115352BB9D7200076A21F /* Complex */ = {
 			isa = PBXGroup;
 			children = (
+				E6D45DB62BB6E6080004CBA2 /* PowerUps */,
 				E6ADAED82BC555B7007BB12E /* Movement */,
 				E65993752BC923EB00DB845D /* ScoreSystem.swift */,
 				E6A492952BBD5C0C00A8A374 /* DeathSystem.swift */,
@@ -1614,7 +1614,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = URDC7SC6B3;
+				DEVELOPMENT_TEAM = EBN5NJJVSU;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "star-dash/Info.plist";
@@ -1633,7 +1633,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "junhao-bid";
+				PRODUCT_BUNDLE_IDENTIFIER = "jyjy-sdd";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1652,7 +1652,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = URDC7SC6B3;
+				DEVELOPMENT_TEAM = EBN5NJJVSU;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "star-dash/Info.plist";
@@ -1671,7 +1671,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "junhao-bid";
+				PRODUCT_BUNDLE_IDENTIFIER = "jyjy-sdd";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
