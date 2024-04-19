@@ -30,6 +30,10 @@ class GameModeSelectorViewController: UIViewController {
         networkManager.delegate = self
     }
 
+    @IBAction private func back(_ sender: Any) {
+        self.performSegue(withIdentifier: "BackSegue",
+                          sender: nil)
+    }
     func setUpWaiting() {
         let label = UILabel()
         label.text = "Waiting for host to select game mode"
@@ -160,9 +164,6 @@ class GameModeSelectorViewController: UIViewController {
                 }
             }
         }
-    }
-    @IBAction private func back(_ sender: Any) {
-
     }
 }
 

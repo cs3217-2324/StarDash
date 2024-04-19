@@ -102,8 +102,8 @@
                                     <color key="baseBackgroundColor" red="0.49019607840000001" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="back:" destination="fZg-yn-y1r" eventType="touchUpInside" id="0Tv-sz-AzJ"/>
                                     <action selector="back:" destination="lJP-Qb-9Fm" eventType="touchUpInside" id="Edu-W5-S82"/>
+                                    <action selector="back:" destination="fZg-yn-y1r" eventType="touchUpInside" id="tR7-OQ-sbx"/>
                                     <action selector="back:" destination="66r-Pg-xpC" eventType="touchUpInside" id="vDt-a0-31y"/>
                                 </connections>
                             </button>
@@ -118,6 +118,7 @@
                     <connections>
                         <outlet property="selectionContainer" destination="VD7-sT-x13" id="9oe-iC-e6I"/>
                         <segue destination="mNQ-qS-eLr" kind="presentation" identifier="MoveToGameSegue" modalPresentationStyle="fullScreen" id="q1j-0x-Lv4"/>
+                        <segue destination="Udy-xB-ztY" kind="presentation" identifier="BackSegue" modalPresentationStyle="fullScreen" id="2qC-X4-l9V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="564-rl-Ewt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -126,6 +127,9 @@
             <point key="canvasLocation" x="929" y="-24"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="jWw-gn-mqM"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="MenuBG" width="1920" height="1080"/>
         <systemColor name="systemBackgroundColor">
