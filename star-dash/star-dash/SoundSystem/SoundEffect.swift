@@ -3,4 +3,7 @@ enum SoundEffect {
     case playerDeath
     case monsterDeath
     case collectible
+    case powerUp
+    case missile
+    case plane
 }

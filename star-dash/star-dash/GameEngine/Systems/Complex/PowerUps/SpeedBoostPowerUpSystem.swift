@@ -30,12 +30,14 @@ class SpeedBoostPowerUpSystem: System {
 
     private func activatePowerUp(component: SpeedBoostComponent) {
         guard let buffSystem = dispatcher?.system(ofType: BuffSystem.self),
+              let soundSystem = dispatcher?.system(ofType: GameSoundSystem.self),
               !component.isActivated else {
             return
         }
 
         buffSystem.applySpeedMultiplier(component.multiplier, for: component.entityId)
         component.isActivated = true
+        soundSystem.playSoundEffect(SoundEffect.powerUp)
     }
 
     private func deactivatePowerUp(component: SpeedBoostComponent) {

@@ -99,6 +99,7 @@ class FlyingModule: MovementModule {
     private func startFlying(for entityId: EntityId) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self),
+              let soundSystem = dispatcher?.system(ofType: GameSoundSystem.self),
               let currentVelocity = physicsSystem.velocity(of: entityId) else {
             return
         }
@@ -110,6 +111,7 @@ class FlyingModule: MovementModule {
         physicsSystem.applyImpulse(to: entityId, impulse: FlyingModule.initialImpulse)
         spriteSystem.startAnimation(of: entityId, named: "fly")
         spriteSystem.setSize(of: entityId, to: PhysicsConstants.Dimensions.plane)
+        soundSystem.playSoundEffect(SoundEffect.plane)
     }
 
     func cancelMovement(for entityId: EntityId) {
