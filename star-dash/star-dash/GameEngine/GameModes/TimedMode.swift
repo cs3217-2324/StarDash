@@ -11,7 +11,7 @@ class TimedMode: GameMode {
     var numberOfPlayers: Int
     var hasFinishLine = false
     var target: GameModeModifiable?
-    var time: TimeInterval = 60
+    var time: TimeInterval = 120
     private var isGameEnded = false
 
     init(target: GameModeModifiable? = nil, numberOfPlayers: Int = 2) {
