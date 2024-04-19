@@ -112,7 +112,11 @@ class FlyingModule: MovementModule {
         spriteSystem.setSize(of: entityId, to: PhysicsConstants.Dimensions.plane)
     }
 
-    private func cancelFlying(for entityId: EntityId) {
+    func cancelMovement(for entityId: EntityId) {
+        cancelFlying(for: entityId, endAnimation: false)
+    }
+
+    private func cancelFlying(for entityId: EntityId, endAnimation: Bool = true) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self) else {
             return
@@ -121,7 +125,9 @@ class FlyingModule: MovementModule {
         removeFlyComponent(for: entityId)
         physicsSystem.setAffectedByGravity(of: entityId, affectedByGravity: true)
         physicsSystem.setVelocity(to: entityId, velocity: .zero)
-        spriteSystem.endAnimation(of: entityId)
+        if endAnimation {
+            spriteSystem.endAnimation(of: entityId)
+        }
         spriteSystem.setSize(of: entityId, to: PhysicsConstants.Dimensions.player)
     }
 

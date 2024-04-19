@@ -69,16 +69,24 @@ class MoveModule: MovementModule {
         return nil
     }
 
-    private func handleStopMovingEvent(event: StopMovingEvent) -> Event? {
+    func cancelMovement(for entityId: EntityId) {
+        cancelMovement(of: entityId, endAnimation: false)
+    }
+
+    private func cancelMovement(of entityId: EntityId, endAnimation: Bool = true) {
         guard let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self),
               let spriteSystem = dispatcher?.system(ofType: SpriteSystem.self) else {
-            return nil
+            return
         }
 
-        physicsSystem.setVelocity(to: event.entityId,
-                                  velocity: .zero)
-        spriteSystem.endAnimation(of: event.entityId)
+        if endAnimation {
+            spriteSystem.endAnimation(of: entityId)
+        }
+        physicsSystem.setVelocity(to: entityId, velocity: .zero)
+    }
 
+    private func handleStopMovingEvent(event: StopMovingEvent, endAnimation: Bool = true) -> Event? {
+        cancelMovement(of: event.entityId)
         return nil
     }
 }
