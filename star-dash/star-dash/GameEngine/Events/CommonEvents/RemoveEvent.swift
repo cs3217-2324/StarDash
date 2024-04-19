@@ -8,15 +8,13 @@
 import Foundation
 
 class RemoveEvent: Event {
-    let timestamp: Date
     let entityId: EntityId
 
-    init(on entityId: EntityId) {
-        self.timestamp = Date.now
+    init(on entityId: EntityId, timestamp: Date) {
         self.entityId = entityId
+        super.init(playerIdForEvent: nil, timestamp: timestamp)
     }
-
-    var playerIdForEvent: EntityId? {
-        nil
+    convenience init(on entityId: EntityId) {
+        self.init(on: entityId, timestamp: Date.now)
     }
 }

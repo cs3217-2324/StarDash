@@ -10,8 +10,12 @@ import UIKit
 
 class LevelSelectorViewController: UIViewController {
     var storageManager: StorageManager?
+    var numberOfPlayers: Int = 0
+    var viewLayout: Int = 0
+    var playerIndex: Int?
     var gameMode: GameMode?
     var levels: [LevelPersistable] = [] // Assuming Level is a struct or class representing a level
+    var networkManager: NetworkManager?
 
     @IBOutlet private var levelsStackView: UIStackView!
 
@@ -19,6 +23,11 @@ class LevelSelectorViewController: UIViewController {
         super.viewDidLoad()
         fetchLevelsFromDatabase()
         createLevelButtons()
+
+        guard let networkManager = networkManager else {
+            return
+        }
+        networkManager.delegate = self
     }
 
     private func fetchLevelsFromDatabase() {
@@ -34,21 +43,45 @@ class LevelSelectorViewController: UIViewController {
         }
     }
 
+    private func moveToGame(level: LevelPersistable) {
+        guard let storageManager = storageManager else {
+            return
+        }
+
+        DispatchQueue.main.async { [self] in
+            self.performSegue(withIdentifier: "PlaySegue",
+                              sender: GameData(level: level,
+                                               numberOfPlayers: self.numberOfPlayers,
+                                               viewLayout: self.viewLayout, gameMode: LocalRaceMode(),
+                                               storageManager: storageManager,
+                                               networkManager: self.networkManager,
+                                               playerIndex: self.playerIndex))
+        }
+
+    }
+
     @IBAction private func back(_ sender: Any) {
         performSegue(withIdentifier: "BackSegue", sender: nil)
     }
 
     @objc
     func levelButtonTapped(_ sender: UIButton) {
-        guard let storageManager = storageManager,
-              let gameMode = gameMode else {
+        guard storageManager != nil
+               else {
             return
         }
         let level = levels[sender.tag]
-        performSegue(withIdentifier: "PlaySegue",
-                     sender: GameData(level: level,
-                                      gameMode: gameMode,
-                                      storageManager: storageManager))
+        print(level)
+        guard let networkManager = networkManager else {
+            moveToGame(level: level)
+            return
+        }
+        print("have network")
+        guard let playerIndex = playerIndex else {
+            return
+        }
+        let networkEvent = NetworkSelectLevelEvent(playerIndex: playerIndex, level: level)
+        networkManager.sendEvent(event: networkEvent)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -58,8 +91,12 @@ class LevelSelectorViewController: UIViewController {
                     if let level = data.level {
                         destinationVC.level = level
                     }
+                    destinationVC.viewLayout = data.viewLayout
+                    destinationVC.numberOfPlayers = data.numberOfPlayers
                     destinationVC.gameMode = data.gameMode
                     destinationVC.storageManager = data.storageManager
+                    destinationVC.networkManager = data.networkManager
+                    destinationVC.playerIndex = data.playerIndex
                 }
             }
         }
@@ -84,4 +121,25 @@ class LevelSelectorViewController: UIViewController {
         button.addTarget(self, action: #selector(levelButtonTapped(_:)), for: .touchUpInside)
         return button
     }
+}
+
+extension LevelSelectorViewController: NetworkManagerDelegate {
+    func networkManager(_ networkManager: NetworkManager, didReceiveEvent response: Data) {
+        if let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkSelectLevelEvent {
+            moveToGame(level: event.level)
+        }
+    }
+
+    func networkManager(_ networkManager: NetworkManager, didReceiveMessage message: String) {
+        print(message)
+    }
+
+    func networkManager(_ networkManager: NetworkManager, didEncounterError error: Error) {
+        print(error)
+    }
+
+    func networkManager(_ networkManager: NetworkManager, didReceiveAPIResponse response: Any) {
+
+    }
+
 }

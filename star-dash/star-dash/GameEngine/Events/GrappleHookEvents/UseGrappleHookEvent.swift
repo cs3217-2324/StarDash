@@ -8,17 +8,16 @@
 import Foundation
 
 class UseGrappleHookEvent: Event {
-    let timestamp: Date
     let playerId: EntityId
     let isLeft: Bool
 
-    init(from playerId: EntityId, isLeft: Bool) {
-        self.timestamp = Date.now
+    init(from playerId: EntityId, isLeft: Bool, timestamp: Date) {
         self.playerId = playerId
         self.isLeft = isLeft
+        super.init(playerIdForEvent: playerId, timestamp: timestamp)
     }
 
-    var playerIdForEvent: EntityId? {
-        playerId
+    convenience init(from playerId: EntityId, isLeft: Bool) {
+        self.init(from: playerId, isLeft: isLeft, timestamp: Date.now)
     }
 }

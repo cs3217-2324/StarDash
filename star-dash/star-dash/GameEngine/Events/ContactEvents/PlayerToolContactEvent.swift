@@ -7,17 +7,17 @@
 
 import Foundation
 class PlayerToolContactEvent: Event {
-    let timestamp: Date
     let playerId: EntityId
     let toolId: EntityId
 
-    init(from playerId: EntityId, on toolEntityId: EntityId) {
-        self.timestamp = Date.now
+    init(from playerId: EntityId, on toolEntityId: EntityId, timestamp: Date) {
         self.playerId = playerId
         self.toolId = toolEntityId
+        super.init(playerIdForEvent: playerId, timestamp: timestamp)
     }
 
-    var playerIdForEvent: EntityId? {
-        playerId
+    convenience init(from playerId: EntityId, on toolEntityId: EntityId ) {
+        self.init(from: playerId, on: toolEntityId)
     }
+
 }

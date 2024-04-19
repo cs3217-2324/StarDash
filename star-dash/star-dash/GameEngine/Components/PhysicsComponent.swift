@@ -23,6 +23,8 @@ class PhysicsComponent: Component {
     var radius: CGFloat?
     var linearDamping: CGFloat = 0.1
 
+    var maxRunSpeed: CGFloat = 0
+
     init(entityId: EntityId, rectangleOf size: CGSize) {
         self.shape = .rectangle
         self.size = size

@@ -125,4 +125,5 @@ class EntityManager: EntityManagerInterface {
     func components<T: Component>(ofType type: T.Type) -> [T] {
         componentMap.values.compactMap({ $0 as? T })
     }
+
 }

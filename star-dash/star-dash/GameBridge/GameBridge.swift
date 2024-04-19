@@ -9,14 +9,12 @@ class GameBridge {
     var objectsMap: [SDObjectId: EntityId]
     var modules: [SyncModule]
     var creationModule: CreationModule?
-
     init(entityManager: EntitySyncInterface, scene: SDScene) {
         self.entityManager = entityManager
         self.scene = scene
         modules = []
         entitiesMap = [:]
         objectsMap = [:]
-
         registerModules()
     }
 
