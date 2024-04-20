@@ -174,6 +174,7 @@ class GameEngine {
                   !resultsDelegate.areResultsDisplayed else {
                 return
             }
+            eventManager.add(event: FinishEvent(results: results))
             resultsDelegate.displayResults(results)
         }
     }
