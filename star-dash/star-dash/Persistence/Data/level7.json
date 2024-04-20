@@ -1,0 +1,91 @@
+{
+  "id": 6,
+  "name": "Grapple Hook Test",
+  "size": [5129, 2244],
+  "background": "SkyHigh",
+  "obstacles": [
+    {
+      "levelId": 6,
+      "position": [550, 600],
+      "size": [100,100]
+      },
+    {
+      "levelId": 6,
+      "position": [650, 600],
+      "size": [100,100]
+      },
+    {
+      "levelId": 6,
+      "position": [750, 600],
+      "size": [100,100]
+      },
+    {
+      "levelId": 6,
+      "position": [850, 600],
+      "size": [100,100]
+      },
+    {
+      "levelId": 6,
+      "position": [1050, 800],
+      "size": [100,100]
+      },
+    {
+      "levelId": 6,
+      "position": [1150, 800],
+      "size": [100,100]
+      },
+    {
+      "levelId": 6,
+      "position": [1250, 800],
+      "size": [100,100]
+      },
+    {
+      "levelId": 6,
+      "position": [1350, 800],
+      "size": [100,100]
+      },
+    {
+      "levelId": 6,
+      "position": [1450, 800],
+      "size": [100,100]
+      },
+    {
+      "levelId": 6,
+      "position": [1750, 300],
+      "size": [100,100]
+      },
+    {
+      "levelId": 6,
+      "position": [1850, 300],
+      "size": [100,100]
+      },
+    {
+      "levelId": 6,
+      "position": [1950, 300],
+      "size": [100,100]
+      },
+    {
+      "levelId": 6,
+      "position": [2050, 300],
+      "size": [100,100]
+      },
+    
+    
+  ],
+  "collectibles": [
+
+  ],
+  
+  "tools": [
+
+  ],
+  "monsters": [
+
+  ],
+  "walls": [],
+  "powerUpBoxes": [
+
+    
+  ]
+}
+

@@ -17,13 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="MenuBG" translatesAutoresizingMaskIntoConstraints="NO" id="AWf-3s-RjH">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="MenuBG" translatesAutoresizingMaskIntoConstraints="NO" id="AWf-3s-RjH">
                                 <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleAspectFill" ambiguous="YES" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="082-om-3rK">
-                                <rect key="frame" x="440" y="355" width="300" height="110"/>
-                            </stackView>
                             <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cC-rx-xoZ">
                                 <rect key="frame" x="61" y="44" width="95" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -40,16 +36,41 @@
                                     <action selector="back:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="HFz-Hl-2Ub"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q5M-Lm-Ynf">
+                                <rect key="frame" x="100" y="274" width="980" height="276"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="IEr-rH-yup">
+                                        <rect key="frame" x="0.0" y="0.0" width="2000" height="276"/>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="IEr-rH-yup" firstAttribute="height" secondItem="Xxk-76-McF" secondAttribute="height" id="2cg-lP-wZD"/>
+                                    <constraint firstItem="IEr-rH-yup" firstAttribute="top" secondItem="Xxk-76-McF" secondAttribute="top" id="Q9J-hD-j3W"/>
+                                    <constraint firstItem="IEr-rH-yup" firstAttribute="width" secondItem="izj-ft-PHu" secondAttribute="width" id="Reu-U2-qYM"/>
+                                    <constraint firstItem="IEr-rH-yup" firstAttribute="bottom" secondItem="Q5M-Lm-Ynf" secondAttribute="bottom" id="YF0-CM-ccr"/>
+                                    <constraint firstItem="IEr-rH-yup" firstAttribute="leading" secondItem="Xxk-76-McF" secondAttribute="leading" id="v8a-E4-6go"/>
+                                    <constraint firstItem="IEr-rH-yup" firstAttribute="trailing" secondItem="Q5M-Lm-Ynf" secondAttribute="trailing" id="wKh-9I-oiQ"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="izj-ft-PHu"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="Xxk-76-McF"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="082-om-3rK" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Ug7-ab-cf7"/>
-                            <constraint firstItem="082-om-3rK" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="um6-R8-ezq"/>
+                            <constraint firstItem="Q5M-Lm-Ynf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="100" id="1Uk-Xj-BSD"/>
+                            <constraint firstItem="AWf-3s-RjH" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="6TV-Qm-Ynf"/>
+                            <constraint firstItem="AWf-3s-RjH" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="MXk-5D-vRU"/>
+                            <constraint firstItem="Q5M-Lm-Ynf" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="250" id="Ncx-dC-MNz"/>
+                            <constraint firstItem="AWf-3s-RjH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Osu-ye-nUT"/>
+                            <constraint firstAttribute="bottom" secondItem="AWf-3s-RjH" secondAttribute="bottom" id="QQp-9r-1jA"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Q5M-Lm-Ynf" secondAttribute="bottom" constant="250" id="VkB-NB-cKl"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Q5M-Lm-Ynf" secondAttribute="trailing" constant="100" id="hls-hZ-GFE"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="levelsStackView" destination="082-om-3rK" id="2FC-RX-kkd"/>
+                        <outlet property="levelStackView" destination="IEr-rH-yup" id="j4D-eb-qVG"/>
+                        <segue destination="mNQ-qS-eLr" kind="presentation" identifier="PlaySegue" modalPresentationStyle="fullScreen" id="aiG-TG-S8q"/>
                         <segue destination="Udy-xB-ztY" kind="presentation" identifier="BackSegue" modalPresentationStyle="fullScreen" id="jWw-gn-mqM"/>
                         <segue destination="fZg-yn-y1r" kind="presentation" identifier="MoveToModeSelectSegue" modalPresentationStyle="fullScreen" id="eJI-93-oa4"/>
                     </connections>
@@ -129,6 +150,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="jWw-gn-mqM"/>
+        <segue reference="aiG-TG-S8q"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="MenuBG" width="1920" height="1080"/>

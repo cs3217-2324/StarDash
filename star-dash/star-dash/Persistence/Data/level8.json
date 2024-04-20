@@ -1,0 +1,40 @@
+{
+  "id": 7,
+  "name": "Monster Test",
+  "size": [5129, 2244],
+  "background": "SkyHigh",
+  "obstacles": [
+    {
+      "levelId": 7,
+      "position": [550, 150],
+      "size": [100,100]
+      },
+    {
+      "levelId": 7,
+      "position": [1050, 150],
+      "size": [100,100]
+      }
+    
+  ],
+  "collectibles": [
+
+  ],
+  
+  "tools": [
+
+  ],
+  "monsters": [
+    {
+      "levelId": 7,
+      "position": [600, 150],
+      "size": [100,100],
+      "health": 100
+    },
+  ],
+  "walls": [],
+  "powerUpBoxes": [
+
+    
+  ]
+}
+
