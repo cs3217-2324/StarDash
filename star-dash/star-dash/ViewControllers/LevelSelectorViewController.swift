@@ -14,10 +14,10 @@ class LevelSelectorViewController: UIViewController {
     var viewLayout: Int = 0
     var playerIndex: Int?
     var gameMode: GameMode?
-    var levels: [LevelPersistable] = [] // Assuming Level is a struct or class representing a level
-    var networkManager: NetworkManager?
+    var levels: [LevelPersistable] = []
 
-    @IBOutlet private var levelsStackView: UIStackView!
+    @IBOutlet private var levelScrollView: UIScrollView!
+    var networkManager: NetworkManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +37,29 @@ class LevelSelectorViewController: UIViewController {
     }
 
     private func createLevelButtons() {
+        var previous: UIView?
+        levelScrollView.translatesAutoresizingMaskIntoConstraints = true
+
         for (index, level) in levels.enumerated() {
             let button = createLevelButton(name: level.name, imageName: level.background, index: index)
-            levelsStackView.addArrangedSubview(button)
+
+            levelScrollView.addSubview(button)
+            button.translatesAutoresizingMaskIntoConstraints = false
+
+            button.widthAnchor.constraint(equalToConstant: 300).isActive = true
+            button.heightAnchor.constraint(equalToConstant: 300).isActive = true
+            button.topAnchor.constraint(equalTo: levelScrollView.topAnchor).isActive = true
+            button.bottomAnchor.constraint(equalTo: levelScrollView.bottomAnchor).isActive = true
+            if let previous = previous {
+                button.leadingAnchor.constraint(equalTo: previous.trailingAnchor, constant: 20).isActive = true
+            } else {
+                button.leadingAnchor.constraint(equalTo: levelScrollView.leadingAnchor, constant: 20).isActive = true
+            }
+            previous = button
+
         }
+        levelScrollView.isScrollEnabled = true
+        levelScrollView.contentSize = CGSize(width: 400, height: 500)
     }
 
     private func moveToGame(level: LevelPersistable) {
@@ -104,23 +123,53 @@ class LevelSelectorViewController: UIViewController {
 
     private func createLevelButton(name: String, imageName: String, index: Int) -> UIButton {
         let button = UIButton()
-        var config = UIButton.Configuration.plain()
-        config.attributedTitle = AttributedString(
-            name,
-            attributes: AttributeContainer([NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 30)])
-        )
-        config.baseForegroundColor = .white
-        config.image = UIImage(named: imageName)?.resizeImage(CGSize(width: 300, height: 200), opaque: true)
-        config.imagePlacement = .top
-        config.imagePadding = 10
-        button.configuration = config
 
-        button.tag = index
+        // Create image view
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.image = UIImage(named: imageName)?.resizeImage(CGSize(width: 300, height: 200), opaque: true)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+
+        // Add image view to button
+        button.addSubview(imageView)
+
+        // Add constraints for image view
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: button.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: button.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: button.trailingAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: 200) // Adjust height as needed
+        ])
+
+        // Create label for title
+        let titleLabel = UILabel()
+        titleLabel.text = name
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 30)
+        titleLabel.textAlignment = .center
+        titleLabel.textColor = .white
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        // Add label to button
+        button.addSubview(titleLabel)
+
+        // Add constraints for label
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: button.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: button.trailingAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: button.bottomAnchor)
+        ])
+
+        // Other button customization
         button.backgroundColor = .clear
         button.layer.cornerRadius = 8
+        button.tag = index
         button.addTarget(self, action: #selector(levelButtonTapped(_:)), for: .touchUpInside)
+
         return button
     }
+
 }
 
 extension LevelSelectorViewController: NetworkManagerDelegate {
