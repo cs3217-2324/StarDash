@@ -53,18 +53,9 @@ class LevelSelectorViewController: UIViewController {
 
             button.widthAnchor.constraint(equalToConstant: 300).isActive = true
             button.heightAnchor.constraint(equalToConstant: 300).isActive = true
-            //button.topAnchor.constraint(equalTo: levelStackView.topAnchor).isActive = true
-            //button.bottomAnchor.constraint(equalTo: levelStackView.bottomAnchor).isActive = true
-            //if let previous = previous {
-            //    button.leadingAnchor.constraint(equalTo: previous.trailingAnchor, constant: 20).isActive = true
-            //} else {
-            //    button.leadingAnchor.constraint(equalTo: levelStackView.leadingAnchor, constant: 20).isActive = true
-            //}
-            //previous = button
 
         }
-        //levelStackView.isScrollEnabled = true
-        //levelStackView.contentSize = CGSize(width: 400, height: 500)
+
     }
 
     private func createWaitingText() {
