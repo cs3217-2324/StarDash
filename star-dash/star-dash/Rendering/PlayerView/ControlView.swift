@@ -16,12 +16,14 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
     var controlViewDelegate: ControlViewDelegate?
     var jumpButton: UIButton?
     var hookButton: UIButton?
+    var rotatedBy: CGFloat = 0
+    
+ 
     func setupSubviews() {
         setupMovementControls()
         setupActionControls()
         setupGestureRecognizers()
     }
-    var rotatedBy: CGFloat = 0
 
     // MARK: Private methods for setup
 
