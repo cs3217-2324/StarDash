@@ -59,6 +59,7 @@ struct Database {
                 insertJsonData(filename: "level5")
                 insertJsonData(filename: "level6")
                 insertJsonData(filename: "level7")
+                insertJsonData(filename: "level8")
                 print("SQLiteDataStore init successfully at: \(dbPath) ")
             } catch {
                 print("SQLiteDataStore init error: \(error)")

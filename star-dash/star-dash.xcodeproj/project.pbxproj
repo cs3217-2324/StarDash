@@ -160,6 +160,7 @@
 		4EB7BF2F2BD3DA0A00FD70C7 /* level7.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EB7BF2C2BD3D91A00FD70C7 /* level7.json */; };
 		4EB7BF302BD3DA0C00FD70C7 /* level5.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EB7BF272BD3D89200FD70C7 /* level5.json */; };
 		4EB7BF312BD3DA0F00FD70C7 /* level4.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EB7BF242BD3A31500FD70C7 /* level4.json */; };
+		4EB7BF342BD3E97C00FD70C7 /* level8.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EB7BF322BD3E90E00FD70C7 /* level8.json */; };
 		4EC561E32BB1E98400166DDC /* PlayerObstacleContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC561E22BB1E98400166DDC /* PlayerObstacleContactEvent.swift */; };
 		4EDB58082BC3028900E4C4B2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDB58072BC3028900E4C4B2 /* NetworkManager.swift */; };
 		4EDB580A2BC3037600E4C4B2 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDB58092BC3037600E4C4B2 /* SocketManager.swift */; };
@@ -434,6 +435,7 @@
 		4EB7BF272BD3D89200FD70C7 /* level5.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = level5.json; sourceTree = "<group>"; };
 		4EB7BF2A2BD3D8DD00FD70C7 /* level6.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = level6.json; sourceTree = "<group>"; };
 		4EB7BF2C2BD3D91A00FD70C7 /* level7.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = level7.json; sourceTree = "<group>"; };
+		4EB7BF322BD3E90E00FD70C7 /* level8.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = level8.json; sourceTree = "<group>"; };
 		4EC561E22BB1E98400166DDC /* PlayerObstacleContactEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerObstacleContactEvent.swift; sourceTree = "<group>"; };
 		4EC561E42BB1E9A300166DDC /* PlayerToolContactEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerToolContactEvent.swift; sourceTree = "<group>"; };
 		4EDB58072BC3028900E4C4B2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -808,6 +810,7 @@
 				4EB7BF242BD3A31500FD70C7 /* level4.json */,
 				4EB7BF272BD3D89200FD70C7 /* level5.json */,
 				4EB7BF2C2BD3D91A00FD70C7 /* level7.json */,
+				4EB7BF322BD3E90E00FD70C7 /* level8.json */,
 				4EB7BF2A2BD3D8DD00FD70C7 /* level6.json */,
 			);
 			path = Data;
@@ -1306,6 +1309,7 @@
 				4EB7BF2F2BD3DA0A00FD70C7 /* level7.json in Resources */,
 				4EB7BF2E2BD3DA0700FD70C7 /* level6.json in Resources */,
 				4EAE2C2B2BBAECFE00D9E1DE /* Game.storyboard in Resources */,
+				4EB7BF342BD3E97C00FD70C7 /* level8.json in Resources */,
 				4E1A50D02BBC6495000B7900 /* level3.json in Resources */,
 				46BB142C2BBEB1EC001AE148 /* Achievements.storyboard in Resources */,
 				4E18DD0A2BBB053A00746ACC /* LevelSelector.storyboard in Resources */,
