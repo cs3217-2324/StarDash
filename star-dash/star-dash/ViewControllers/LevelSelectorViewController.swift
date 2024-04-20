@@ -22,11 +22,16 @@ class LevelSelectorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchLevelsFromDatabase()
-        createLevelButtons()
 
+        if playerIndex == nil || playerIndex == 0 {
+            createLevelButtons()
+        } else {
+            createWaitingText()
+        }
         guard let networkManager = networkManager else {
             return
         }
+
         networkManager.delegate = self
     }
 
@@ -62,16 +67,25 @@ class LevelSelectorViewController: UIViewController {
         levelScrollView.contentSize = CGSize(width: 400, height: 500)
     }
 
-    private func moveToGame(level: LevelPersistable) {
+    private func createWaitingText() {
+        let label = UILabel()
+        label.text = "Waiting for host to select a level"
+        label.font = UIFont.boldSystemFont(ofSize: 22)
+        label.textColor = .black
+        levelsStackView.addArrangedSubview(label)
+    }
+
+    private func moveToGameModeSelect(level: LevelPersistable) {
         guard let storageManager = storageManager else {
             return
         }
 
         DispatchQueue.main.async { [self] in
-            self.performSegue(withIdentifier: "PlaySegue",
+            self.performSegue(withIdentifier: "MoveToModeSelectSegue",
                               sender: GameData(level: level,
                                                numberOfPlayers: self.numberOfPlayers,
-                                               viewLayout: self.viewLayout, gameMode: LocalRaceMode(),
+                                               viewLayout: self.viewLayout,
+                                               gameMode: nil,
                                                storageManager: storageManager,
                                                networkManager: self.networkManager,
                                                playerIndex: self.playerIndex))
@@ -92,7 +106,7 @@ class LevelSelectorViewController: UIViewController {
         let level = levels[sender.tag]
         print(level)
         guard let networkManager = networkManager else {
-            moveToGame(level: level)
+            moveToGameModeSelect(level: level)
             return
         }
         print("have network")
@@ -104,8 +118,8 @@ class LevelSelectorViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "PlaySegue" {
-            if let destinationVC = segue.destination as? GameViewController {
+        if segue.identifier == "MoveToModeSelectSegue" {
+            if let destinationVC = segue.destination as? GameModeSelectorViewController {
                 if let data = sender as? GameData {
                     if let level = data.level {
                         destinationVC.level = level
@@ -175,7 +189,7 @@ class LevelSelectorViewController: UIViewController {
 extension LevelSelectorViewController: NetworkManagerDelegate {
     func networkManager(_ networkManager: NetworkManager, didReceiveEvent response: Data) {
         if let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkSelectLevelEvent {
-            moveToGame(level: event.level)
+            moveToGameModeSelect(level: event.level)
         }
     }
 

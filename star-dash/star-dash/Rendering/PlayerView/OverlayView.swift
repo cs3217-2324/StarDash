@@ -11,6 +11,7 @@ class OverlayView: UIView {
     let scoreLabel = UILabel()
     let healthLabel = UILabel()
     let healthBarView = HealthBarView()
+    let timeLabel = UILabel()
 
     func setupSubviews() {
         scoreLabel.numberOfLines = 1
@@ -27,17 +28,22 @@ class OverlayView: UIView {
         healthBarView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(healthBarView)
 
+        timeLabel.numberOfLines = 1
+        timeLabel.translatesAutoresizingMaskIntoConstraints = false
+        timeLabel.textColor = .black
+        addSubview(timeLabel)
+
         NSLayoutConstraint.activate([
             healthBarView.topAnchor.constraint(equalTo: self.topAnchor, constant: margin),
             healthBarView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -1 * margin),
-            healthBarView.widthAnchor.constraint(equalToConstant: 300),
-            healthBarView.heightAnchor.constraint(equalToConstant: 50)
+            healthBarView.widthAnchor.constraint(equalToConstant: 200),
+            healthBarView.heightAnchor.constraint(equalToConstant: 25)
         ])
 
         NSLayoutConstraint.activate([
             healthLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: margin),
             healthLabel.trailingAnchor.constraint(equalTo: healthBarView.leadingAnchor, constant: -1 * margin / 2),
-            healthLabel.heightAnchor.constraint(equalToConstant: 50)
+            healthLabel.heightAnchor.constraint(equalToConstant: 25)
         ])
 
         NSLayoutConstraint.activate([
@@ -45,11 +51,20 @@ class OverlayView: UIView {
             scoreLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -1 * margin),
             scoreLabel.leadingAnchor.constraint(greaterThanOrEqualTo: self.leadingAnchor, constant: margin)
         ])
-        update(score: 0, health: 100)
+
+        NSLayoutConstraint.activate([
+            timeLabel.topAnchor.constraint(equalTo: scoreLabel.topAnchor, constant: margin / 2),
+            timeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -1 * margin)
+        ])
+        update(score: 0, health: 100, time: 0)
     }
 
-    func update(score: Int, health: Int) {
+    func update(score: Int, health: Int, time: TimeInterval) {
         scoreLabel.text = "Score: \(score)"
         healthBarView.currentHealth = CGFloat(health)
+
+        let minutes = Int(time) / 60
+        let seconds = Int(time) % 60
+        timeLabel.text = "Time: \(String(format: "%02d:%02d", minutes, seconds))"
     }
 }

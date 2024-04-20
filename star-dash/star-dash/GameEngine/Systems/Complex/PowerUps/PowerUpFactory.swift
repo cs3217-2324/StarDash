@@ -39,7 +39,8 @@ class PowerUpFactory {
 
         EntityFactory.createAndAddHomingMissilePowerUp(to: entityManager,
                                                        position: missilePosition,
-                                                       impulse: CGVector(dx: 4_000, dy: 0))
+                                                       triggeredBy: playerId,
+                                                       impulse: CGVector(dx: 5_000, dy: 0))
     }
 
     private static func startEntityFlying(triggeredBy playerId: EntityId,

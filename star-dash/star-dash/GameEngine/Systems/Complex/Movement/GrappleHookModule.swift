@@ -97,6 +97,10 @@ class GrappleHookModule: MovementModule {
         return nil
     }
 
+    func cancelMovement(for entityId: EntityId) {
+        dispatcher?.add(event: ReleaseGrappleHookEvent(using: entityId))
+    }
+
     private func extendHook(of hookEntityId: EntityId) {
         guard let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
               let oldEndPoint = positionSystem.getPosition(of: hookEntityId),

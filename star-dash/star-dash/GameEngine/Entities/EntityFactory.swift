@@ -236,6 +236,7 @@ extension EntityFactory {
 
     static func createAndAddHomingMissilePowerUp(to entityManager: EntityManagerInterface,
                                                  position: CGPoint,
+                                                 triggeredBy entityId: EntityId,
                                                  impulse: CGVector) {
         let powerUpBuilder = EntityBuilder(entity: HomingMissile(id: UUID()), entityManager: entityManager)
 
@@ -252,7 +253,7 @@ extension EntityFactory {
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.homingMissile)
                 .configureAffectedByGravity(false)
                 .configureLinearDamping(0)
-            .withHomingMissile(impulse: impulse)
+            .withHomingMissile(sourceId: entityId, impulse: impulse)
             .addToGame()
     }
 }

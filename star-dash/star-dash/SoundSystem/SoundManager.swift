@@ -12,7 +12,10 @@ class SoundManager: SoundSystem {
         SoundEffect.playerJump: "player_jump",
         SoundEffect.playerDeath: "player_death",
         SoundEffect.monsterDeath: "monster_death",
-        SoundEffect.collectible: "collectible"
+        SoundEffect.collectible: "collectible",
+        SoundEffect.powerUp: "power_up",
+        SoundEffect.missile: "missile",
+        SoundEffect.plane: "plane"
     ]
 
     var backgroundMusicPlayer: AVAudioPlayer?

@@ -15,6 +15,7 @@ class LobbyViewController: UIViewController {
     var totalNumberOfPlayers: Int?
     @IBOutlet private var RoomCodeContainer: UIStackView!
 
+    @IBOutlet private var startButton: UIButton!
     @IBOutlet private var label: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +23,19 @@ class LobbyViewController: UIViewController {
             return
         }
         networkManager.delegate = self
-
+        if playerIndex != 0 {
+            disableStartButton()
+        }
         setUpCodeContainer()
         updateLabel()
     }
+
+    func disableStartButton() {
+        startButton.setTitle("Waiting for host to start", for: .disabled)
+        startButton.setTitleColor(UIColor.darkGray, for: .disabled)
+        startButton.isEnabled = false
+    }
+
     func setUpCodeContainer() {
         guard let roomCode = roomCode else {
             return
@@ -85,7 +95,7 @@ class LobbyViewController: UIViewController {
                               sender: GameData(level: nil,
                                                numberOfPlayers: totalNumberOfPlayers,
                                                viewLayout: 1,
-                                               gameMode: LocalRaceMode(),
+                                               gameMode: nil,
                                                storageManager: StorageManager(),
                                                networkManager: self.networkManager,
                                                playerIndex: playerIndex))

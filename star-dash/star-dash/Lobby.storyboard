@@ -298,7 +298,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="backButton:" destination="KjF-tb-21F" eventType="touchUpInside" id="hpq-qu-a2f"/>
-                                    <action selector="backButton:" destination="9UG-vN-zGx" eventType="touchUpInside" id="vpJ-Go-OZj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -312,6 +311,7 @@
                     <connections>
                         <outlet property="RoomCodeContainer" destination="eli-Qi-YUy" id="6rE-rz-8tL"/>
                         <outlet property="label" destination="t7N-xG-2X2" id="XvN-q9-OhT"/>
+                        <outlet property="startButton" destination="Rgk-4p-Lud" id="tY4-kn-Trh"/>
                         <segue destination="H20-uu-gS2" kind="presentation" identifier="MoveLevelSelection" modalPresentationStyle="fullScreen" id="iUD-uV-B1k"/>
                         <segue destination="Y6W-OH-hqX" kind="presentation" identifier="BackMenuSegue" modalPresentationStyle="fullScreen" id="EBR-0A-9aJ"/>
                     </connections>

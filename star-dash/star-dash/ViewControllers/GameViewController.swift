@@ -64,7 +64,7 @@ class GameViewController: UIViewController {
 
     private func createGameEngine() -> GameEngine {
         let levelSize = level?.size ?? RenderingConstants.defaultLevelSize
-        return GameEngine(mapSize: levelSize, gameMode: gameMode ?? SingleRaceMode(), resultsDelegate: self)
+        return GameEngine(mapSize: levelSize, gameMode: gameMode ?? RaceMode(), resultsDelegate: self)
     }
 
     private func createGameScene(of size: CGSize) -> GameScene {
@@ -167,15 +167,12 @@ extension GameViewController: SDSceneDelegate {
             timeSinceLastSync -= networkSyncInterval
         }
         guard let playerIndex = playerIndex,
-              let position = gameEngine?.getPositionOf(playerIndex: playerIndex) else {
+              let position = gameEngine?.getPositionOf(playerIndex: playerIndex),
+              let score = gameEngine?.getScoreOf(playerIndex: playerIndex) else {
             return
         }
-        do {
-            let json = try JSONEncoder().encode(position)
-            networkManager.sendEvent(event: NetworkSyncEvent(playerIndex: playerIndex, data: json))
-        } catch {
-            print("error in sending sync \(error)")
-        }
+        let playerData = NetworkPlayerData(playerIndex: playerIndex, position: position, score: score)
+        networkManager.sendEvent(event: NetworkSyncEvent(playerIndex: playerIndex, playerData: playerData))
 
     }
 
@@ -197,14 +194,9 @@ extension GameViewController: SDSceneDelegate {
     }
 
     func syncNetworkPlayer(event: NetworkSyncEvent) {
-        do {
-            let decoder = JSONDecoder()
-            let position = try decoder.decode(CGPoint.self, from: event.data)
-            gameEngine?.syncPosition(position: position, of: event.playerIndex)
-
-        } catch {
-            print("Error decoding: \(error)")
-        }
+        gameEngine?.syncPlayer(of: event.playerData.playerIndex,
+                               score: event.playerData.score,
+                               position: event.playerData.position)
     }
 
     func contactOccurred(objectA: SDObject, objectB: SDObject, contactPoint: CGPoint) {
@@ -268,7 +260,8 @@ extension GameViewController: ViewDelegate {
             score: gameInfo.playerScore,
             health: gameInfo.playerHealth,
             playersInfo: gameInfo.playersInfo,
-            mapSize: gameInfo.mapSize
+            mapSize: gameInfo.mapSize,
+            time: gameInfo.time
         )
     }
 }
