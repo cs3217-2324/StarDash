@@ -41,10 +41,13 @@ class GameEngine {
         EntityFactory.createAndAddWall(to: self,
                                        position: CGPoint(x: sceneSize.width / 2, y: sceneSize.height),
                                        size: CGSize(width: sceneSize.width, height: 1))
-        EntityFactory.createAndAddFinishLine(to: self,
-                                             position: CGPoint(
-                                                x: mapSize.width + PhysicsConstants.Dimensions.flag.width / 2,
-                                                y: 200))
+        if gameMode.hasFinishLine {
+            EntityFactory.createAndAddFinishLine(to: self,
+                                                 position: CGPoint(
+                                                    x: mapSize.width + PhysicsConstants.Dimensions.flag.width / 2,
+                                                    y: 200))
+        }
+
         entities.forEach({ $0.addTo(self) })
     }
 
@@ -61,7 +64,8 @@ class GameEngine {
             playerScore: score,
             playerHealth: health,
             playersInfo: playersInfo(),
-            mapSize: mapSize
+            mapSize: mapSize,
+            time: gameMode.time
         )
     }
 
@@ -188,9 +192,24 @@ class GameEngine {
 
     }
 
-    func syncPosition(position: CGPoint, of playerIndex: Int) {
-        guard let positionSystem = systemManager.system(ofType: PositionSystem.self),
+    func getScoreOf(playerIndex: Int) -> Int? {
+        guard let scoreSystem = systemManager.system(ofType: ScoreSystem.self),
               let playerSystem = systemManager.system(ofType: PlayerSystem.self) else {
+            return nil
+        }
+        guard let playerComponent = playerSystem.getPlayerComponent(of: playerIndex),
+              let score = scoreSystem.score(of: playerComponent.entityId) else {
+            return nil
+        }
+
+        return score
+
+    }
+
+    func syncPlayer(of playerIndex: Int, score: Int, position: CGPoint) {
+        guard let positionSystem = systemManager.system(ofType: PositionSystem.self),
+              let playerSystem = systemManager.system(ofType: PlayerSystem.self),
+              let scoreSystem = systemManager.system(ofType: ScoreSystem.self) else {
             return
         }
         guard let playerComponent = playerSystem.getPlayerComponent(of: playerIndex) else {
@@ -198,6 +217,7 @@ class GameEngine {
         }
 
         positionSystem.move(entityId: playerComponent.entityId, to: position)
+        scoreSystem.setScore(of: playerComponent.entityId, score: score)
 
     }
 }

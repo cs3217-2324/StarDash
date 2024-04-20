@@ -6,31 +6,33 @@
 //
 
 import Foundation
-struct NetworkPlayerPosition: Codable {
+
+struct NetworkPlayerData: Codable {
     let playerIndex: Int
     let position: CGPoint
+    let score: Int
 }
 
 class NetworkSyncEvent: NetworkEvent {
-    let data: Data
-    init(playerIndex: Int, data: Data) {
-        self.data = data
+    let playerData: NetworkPlayerData
+    init(playerIndex: Int, playerData: NetworkPlayerData) {
+        self.playerData = playerData
         super.init(event: .Sync, playerIndex: playerIndex, timestamp: Date.now)
 
     }
 
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        data = try container.decode(Data.self, forKey: .data)
+        playerData = try container.decode(NetworkPlayerData.self, forKey: .playerData)
         try super.init(from: decoder)
     }
     override func encode(to encoder: Encoder) throws {
         try super.encode(to: encoder) // Call super implementation first
 
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(data, forKey: .data)
+        try container.encode(playerData, forKey: .playerData)
     }
     private enum CodingKeys: String, CodingKey {
-        case data
+        case playerData
     }
 }
