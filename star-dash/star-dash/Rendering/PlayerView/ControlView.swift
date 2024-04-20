@@ -17,8 +17,7 @@ class ControlView: UIView, UIGestureRecognizerDelegate {
     var jumpButton: UIButton?
     var hookButton: UIButton?
     var rotatedBy: CGFloat = 0
-    
- 
+
     func setupSubviews() {
         setupMovementControls()
         setupActionControls()
