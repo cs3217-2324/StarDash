@@ -812,12 +812,12 @@
 				4E59E2572BAB3B5B007B3FA7 /* level1.json */,
 				4E18DD0D2BBB45AD00746ACC /* level2.json */,
 				4E1A50CD2BBC62D7000B7900 /* level3.json */,
-				4E59E2622BACB9E2007B3FA7 /* LevelData.swift */,
 				4EB7BF242BD3A31500FD70C7 /* level4.json */,
 				4EB7BF272BD3D89200FD70C7 /* level5.json */,
 				4EB7BF2C2BD3D91A00FD70C7 /* level7.json */,
 				4EB7BF322BD3E90E00FD70C7 /* level8.json */,
 				4EB7BF2A2BD3D8DD00FD70C7 /* level6.json */,
+				4E59E2622BACB9E2007B3FA7 /* LevelData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";

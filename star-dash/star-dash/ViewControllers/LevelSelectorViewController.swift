@@ -16,7 +16,7 @@ class LevelSelectorViewController: UIViewController {
     var gameMode: GameMode?
     var levels: [LevelPersistable] = []
 
-    @IBOutlet private var levelScrollView: UIScrollView!
+    @IBOutlet private var levelStackView: UIStackView!
     var networkManager: NetworkManager?
 
     override func viewDidLoad() {
@@ -43,28 +43,28 @@ class LevelSelectorViewController: UIViewController {
 
     private func createLevelButtons() {
         var previous: UIView?
-        levelScrollView.translatesAutoresizingMaskIntoConstraints = true
+        levelStackView.translatesAutoresizingMaskIntoConstraints = true
 
         for (index, level) in levels.enumerated() {
             let button = createLevelButton(name: level.name, imageName: level.background, index: index)
 
-            levelScrollView.addSubview(button)
+            levelStackView.addArrangedSubview(button)
             button.translatesAutoresizingMaskIntoConstraints = false
 
             button.widthAnchor.constraint(equalToConstant: 300).isActive = true
             button.heightAnchor.constraint(equalToConstant: 300).isActive = true
-            button.topAnchor.constraint(equalTo: levelScrollView.topAnchor).isActive = true
-            button.bottomAnchor.constraint(equalTo: levelScrollView.bottomAnchor).isActive = true
-            if let previous = previous {
-                button.leadingAnchor.constraint(equalTo: previous.trailingAnchor, constant: 20).isActive = true
-            } else {
-                button.leadingAnchor.constraint(equalTo: levelScrollView.leadingAnchor, constant: 20).isActive = true
-            }
-            previous = button
+            //button.topAnchor.constraint(equalTo: levelStackView.topAnchor).isActive = true
+            //button.bottomAnchor.constraint(equalTo: levelStackView.bottomAnchor).isActive = true
+            //if let previous = previous {
+            //    button.leadingAnchor.constraint(equalTo: previous.trailingAnchor, constant: 20).isActive = true
+            //} else {
+            //    button.leadingAnchor.constraint(equalTo: levelStackView.leadingAnchor, constant: 20).isActive = true
+            //}
+            //previous = button
 
         }
-        levelScrollView.isScrollEnabled = true
-        levelScrollView.contentSize = CGSize(width: 400, height: 500)
+        //levelStackView.isScrollEnabled = true
+        //levelStackView.contentSize = CGSize(width: 400, height: 500)
     }
 
     private func createWaitingText() {
@@ -72,7 +72,7 @@ class LevelSelectorViewController: UIViewController {
         label.text = "Waiting for host to select a level"
         label.font = UIFont.boldSystemFont(ofSize: 22)
         label.textColor = .black
-        levelsStackView.addArrangedSubview(label)
+        levelStackView.addSubview(label)
     }
 
     private func moveToGameModeSelect(level: LevelPersistable) {
