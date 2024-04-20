@@ -91,12 +91,12 @@
     },
     {
       "levelId": 1,
-      "position": [1900, 250],
+      "position": [1900, 200],
       "size": [100,100]
     },
     {
       "levelId": 1,
-      "position": [2000, 250],
+      "position": [2000, 200],
       "size": [100,100]
     },
     {
@@ -136,7 +136,7 @@
     },
     {
       "levelId": 1,
-      "position": [2800, 250],
+      "position": [2800, 200],
       "size": [100,100]
     },
     {
@@ -151,42 +151,42 @@
     },
     {
       "levelId": 1,
-      "position": [3300, 750],
+      "position": [3300, 700],
       "size": [100,100]
     },
     {
       "levelId": 1,
-      "position": [3300, 250],
+      "position": [3300, 200],
       "size": [100,100]
     },
     {
       "levelId": 1,
-      "position": [3600, 250],
+      "position": [3600, 200],
       "size": [100,100]
     },
     {
       "levelId": 1,
-      "position": [3900, 250],
+      "position": [3900, 200],
       "size": [100,100]
     },
     {
       "levelId": 1,
-      "position": [4200, 250],
+      "position": [4200, 200],
       "size": [100,100]
     },
     {
       "levelId": 1,
-      "position": [3600, 750],
+      "position": [3600, 700],
       "size": [100,100]
     },
     {
       "levelId": 1,
-      "position": [3900, 750],
+      "position": [3900, 700],
       "size": [100,100]
     },
     {
       "levelId": 1,
-      "position": [4200, 750],
+      "position": [4200, 700],
       "size": [100,100]
     },
     {
@@ -197,6 +197,11 @@
     {
       "levelId": 1,
       "position": [4600, 250],
+      "size": [100,100]
+    },
+    {
+      "levelId": 1,
+      "position": [4600, 150],
       "size": [100,100]
     },
     {
@@ -287,12 +292,12 @@
     },
     {
       "levelId": 1,
-      "position": [6500,250],
+      "position": [6500,200],
       "size": [100,100]
     },
     {
       "levelId": 1,
-      "position": [6700,250],
+      "position": [6700,200],
       "size": [100,100]
     },
     {
@@ -327,7 +332,7 @@
     },
     {
       "levelId": 1,
-      "position": [7700,250],
+      "position": [7700,150],
       "size": [100,100]
     },
     {
@@ -653,7 +658,16 @@
       },
   ],
   "walls": [
-      
+      {
+        "levelId": 1,
+        "position": [1000, 600],
+        "size": [10,10]
+      },
+      {
+        "levelId": 1,
+        "position": [1400, 600],
+        "size": [10,10]
+      },
   ],
   "powerUpBoxes": [
     {
@@ -697,6 +711,6 @@
         "position": [9200, 700],
         "size": [60,60],
         "type": "FlyingPowerUp"
-      }
+    }
   ]
 }

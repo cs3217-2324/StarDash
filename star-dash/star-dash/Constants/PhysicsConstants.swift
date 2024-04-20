@@ -29,6 +29,7 @@ struct PhysicsConstants {
         ^ CollisionCategory.hook
         ^ CollisionCategory.powerUpBox
         ^ CollisionCategory.homingMissile
+        ^ CollisionCategory.wall
         static let monster = CollisionCategory.player
         | CollisionCategory.floor
         | CollisionCategory.obstacle
