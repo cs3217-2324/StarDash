@@ -36,6 +36,7 @@ public class GameScene: SKScene {
             lastUpdateTime = currentTime
             return
         }
+
         let deltaTime = currentTime - lastUpdateTime
         self.lastUpdateTime = currentTime
 

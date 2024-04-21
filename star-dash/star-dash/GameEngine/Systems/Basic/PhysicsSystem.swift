@@ -100,6 +100,14 @@ class PhysicsSystem: System {
         physicsComponent.pinned = pinned
     }
 
+    func maxRunSpeed(of entityId: EntityId) -> CGFloat? {
+        guard let physicsComponent = getPhysicsComponent(of: entityId) else {
+            return nil
+        }
+
+        return physicsComponent.maxRunSpeed
+    }
+
     func setup() {}
 
     private func getPhysicsComponent(of entityId: EntityId) -> PhysicsComponent? {

@@ -35,6 +35,7 @@ class PlayerView {
         superview.addSubview(self.minimapView)
 
         self.controlView = ControlView(frame: superview.bounds, rotatedBy: rotation)
+        self.controlView.rotatedBy = rotation
         superview.addSubview(self.controlView)
     }
 
@@ -53,7 +54,7 @@ class PlayerView {
     }
 
     func update(_ overlayInfo: OverlayInfo) {
-        overlayView.update(score: overlayInfo.score, health: overlayInfo.health)
+        overlayView.update(score: overlayInfo.score, health: overlayInfo.health, time: overlayInfo.time)
         minimapView.update(playersInfo: overlayInfo.playersInfo, mapSize: overlayInfo.mapSize)
     }
 

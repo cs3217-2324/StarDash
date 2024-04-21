@@ -228,6 +228,18 @@ class EntityBuilder {
         physicsComponent.linearDamping = linearDamping
         return self
     }
+
+    func configureMaxRunSpeed(_ maxRunSpeed: CGFloat) -> Self {
+        let componentType = ObjectIdentifier(PhysicsComponent.self)
+
+        guard let physicsComponent = self.components[componentType] as? PhysicsComponent else {
+            return self
+        }
+
+        physicsComponent.maxRunSpeed = maxRunSpeed
+        return self
+    }
+
     func withPowerUpType(type: String) -> Self {
         let componentType = ObjectIdentifier(PowerUpComponent.self)
         let component = PowerUpComponent(entityId: entityId, type: type)
@@ -244,9 +256,9 @@ class EntityBuilder {
         return self
     }
 
-    func withHomingMissile(impulse: CGVector) -> Self {
+    func withHomingMissile(sourceId: EntityId, impulse: CGVector) -> Self {
         let componentType = ObjectIdentifier(HomingMissileComponent.self)
-        let component = HomingMissileComponent(entityId: entityId, targetId: nil, impulse: impulse)
+        let component = HomingMissileComponent(entityId: entityId, targetId: nil, sourceId: sourceId, impulse: impulse)
 
         self.components[componentType] = component
         return self

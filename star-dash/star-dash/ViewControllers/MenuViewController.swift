@@ -20,18 +20,27 @@ class MenuViewController: UIViewController {
     }
 
     @IBAction private func singlePlayer(_ sender: Any) {
-        let singleRaceMode = SingleRaceMode()
+        let singleRaceMode = TimedMode()
         performSegue(withIdentifier: "LevelSelectSegue", sender: GameData(level: nil,
+                                                                          numberOfPlayers: 1,
+                                                                          viewLayout: 1,
                                                                           gameMode: singleRaceMode,
-                                                                          storageManager: storageManager))
+                                                                          storageManager: storageManager,
+                                                                          networkManager: nil,
+                                                                          playerIndex: nil))
     }
 
     @IBAction private func localMultiplayer(_ sender: Any) {
-        let localRaceMode = LocalRaceMode()
+        let localRaceMode = RaceMode()
         performSegue(withIdentifier: "LevelSelectSegue",
                      sender: GameData(level: nil,
+                                      numberOfPlayers: 2,
+
+                                      viewLayout: 2,
                                       gameMode: localRaceMode,
-                                      storageManager: storageManager))
+                                      storageManager: storageManager,
+                                      networkManager: nil,
+                                      playerIndex: nil))
     }
 
     @IBAction private func viewAchievements(_ sender: Any) {
@@ -44,6 +53,8 @@ class MenuViewController: UIViewController {
                 if let data = sender as? GameData {
                     destinationVC.gameMode = data.gameMode
                     destinationVC.storageManager = data.storageManager
+                    destinationVC.viewLayout = data.viewLayout
+                    destinationVC.numberOfPlayers = data.numberOfPlayers
                 }
             }
         }

@@ -5,7 +5,7 @@ public class SDPhysicsBody {
 
     public init(rectangleOf size: CGSize) {
         body = SKPhysicsBody(rectangleOf: size)
-        body.friction = 0
+        body.friction = 0.2
         body.restitution = 0
     }
 

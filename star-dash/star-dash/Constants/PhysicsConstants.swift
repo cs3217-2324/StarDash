@@ -29,6 +29,7 @@ struct PhysicsConstants {
         ^ CollisionCategory.hook
         ^ CollisionCategory.powerUpBox
         ^ CollisionCategory.homingMissile
+        ^ CollisionCategory.wall
         static let monster = CollisionCategory.player
         | CollisionCategory.floor
         | CollisionCategory.obstacle
@@ -84,7 +85,8 @@ struct PhysicsConstants {
 
     static let jumpImpulse = CGVector(dx: 0, dy: 8_500)
     static let runSpeed: CGFloat = 20
-    static let maxRunSpeed: CGFloat = 150
+    static let maxPlayerRunSpeed: CGFloat = 250
+    static let maxMonsterRunSpeed: CGFloat = 100
 
     struct Monster {
         static let moveSpeed: Double = 100

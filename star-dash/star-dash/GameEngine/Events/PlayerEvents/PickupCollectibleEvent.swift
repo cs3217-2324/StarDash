@@ -8,17 +8,17 @@
 import Foundation
 
 class PickupCollectibleEvent: Event {
-    let timestamp: Date
     let playerId: EntityId
     let collectibleEntityId: EntityId
 
-    init(by playerId: EntityId, collectibleEntityId: EntityId) {
-        self.timestamp = Date.now
+    init(by playerId: EntityId, collectibleEntityId: EntityId, timestamp: Date) {
         self.playerId = playerId
         self.collectibleEntityId = collectibleEntityId
+        super.init(playerIdForEvent: playerId, timestamp: timestamp)
     }
 
-    var playerIdForEvent: EntityId? {
-        playerId
+    convenience init(by playerId: EntityId, collectibleEntityId: EntityId) {
+        self.init(by: playerId, collectibleEntityId: collectibleEntityId, timestamp: Date.now)
     }
+
 }

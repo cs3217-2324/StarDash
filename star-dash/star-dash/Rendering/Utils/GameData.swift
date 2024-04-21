@@ -9,6 +9,10 @@ import Foundation
 
 struct GameData {
     let level: LevelPersistable?
-    let gameMode: GameMode
+    let numberOfPlayers: Int
+    let viewLayout: Int
+    let gameMode: GameMode?
     let storageManager: StorageManager
+    let networkManager: NetworkManager?
+    let playerIndex: Int?
 }

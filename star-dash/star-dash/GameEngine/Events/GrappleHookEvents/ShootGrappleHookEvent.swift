@@ -8,15 +8,14 @@
 import Foundation
 
 class ShootGrappleHookEvent: Event {
-    let timestamp: Date
     let hookId: EntityId
 
-    init(using hookId: EntityId) {
-        self.timestamp = Date.now
+    init(using hookId: EntityId, timestamp: Date) {
         self.hookId = hookId
+        super.init(timestamp: timestamp)
     }
 
-    var playerIdForEvent: EntityId? {
-        nil
+    convenience init(using hookId: EntityId) {
+        self.init(using: hookId, timestamp: Date.now)
     }
 }
