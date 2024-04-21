@@ -78,11 +78,6 @@ struct Database {
             try db.run(monsterTable.drop())
             try db.run(powerUpBoxTable.drop())
             try db.run(wallTable.drop())
-
-            // Comment out below to test for persistency
-//            try db.run(twinkleStarAchievementTable.drop())
-//            try db.run(stellarCollectorAchievementTable.drop())
-//            try db.run(powerRangerAchievementTable.drop())
         } catch {
             print("Error deleting table \(error)")
         }
