@@ -23,12 +23,6 @@ public class SDPhysicsBody {
         set { body.velocity = newValue }
     }
 
-    public var force: CGVector {
-//         get { body.force }
-//         set { body.force = newValue }
-        CGVector(dx: 0, dy: 0)
-    }
-
     public var pinned: Bool {
         get { body.pinned }
         set { body.pinned = newValue }
