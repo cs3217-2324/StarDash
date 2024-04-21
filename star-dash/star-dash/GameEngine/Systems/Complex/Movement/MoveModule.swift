@@ -48,11 +48,11 @@ class MoveModule: MovementModule {
             return nil
         }
 
-        var newRunSpeed: CGFloat = 0
+        var newRunSpeed: CGFloat = event.toLeft ? -1 : 1
         if currentVelocity.dx > 0 && event.toLeft || !event.toLeft && currentVelocity.dx < 0 { // changed direction
-            newRunSpeed = PhysicsConstants.runSpeed
+            newRunSpeed *= PhysicsConstants.runSpeed
         } else {
-            newRunSpeed = (event.toLeft ? -1 : 1) * min(maxRunSpeed, abs(currentVelocity) + PhysicsConstants.runSpeed)
+            newRunSpeed *= min(maxRunSpeed, abs(currentVelocity.dx) + PhysicsConstants.runSpeed)
         }
 
         if let buffSystem = dispatcher?.system(ofType: BuffSystem.self),
