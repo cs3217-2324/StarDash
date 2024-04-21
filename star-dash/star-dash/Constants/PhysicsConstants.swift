@@ -20,6 +20,7 @@ struct PhysicsConstants {
         static let floor: UInt32 = 0b1 << 6
         static let hook: UInt32 = 0b1 << 7
         static let homingMissile: UInt32 = 0b1 << 8
+        static let boundary: UInt32 = 0b1 << 9
     }
 
     struct CollisionMask {
@@ -45,6 +46,7 @@ struct PhysicsConstants {
         ^ CollisionCategory.player
         ^ CollisionCategory.hook
         static let homingMissile = CollisionCategory.none
+        static let boundary = CollisionCategory.monster
     }
 
     struct ContactMask {
@@ -61,10 +63,10 @@ struct PhysicsConstants {
         static let floor = CollisionCategory.player | CollisionCategory.homingMissile
         static let hook = CollisionCategory.obstacle
         static let homingMissile = CollisionCategory.player | CollisionCategory.obstacle | CollisionMask.floor
+        static let boundary = CollisionCategory.monster
     }
 
     struct Dimensions {
-        // TODO: determine appropriate size for each
         static let player = CGSize(width: 70, height: 110)
         static let monster = CGSize(width: 100, height: 140)
         static let collectible = CGSize(width: 60, height: 60)

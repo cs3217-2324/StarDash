@@ -197,6 +197,20 @@ struct EntityFactory {
                         size: PhysicsConstants.Dimensions.flag)
             .addToGame()
     }
+
+    static func createAndAddBoundary(to entityManager: EntityManagerInterface, position: CGPoint, size: CGSize) {
+        let boundaryBuilder = EntityBuilder(entity: Boundary(id: UUID()), entityManager: entityManager)
+
+        boundaryBuilder
+            .withPosition(at: position)
+            .withPhysics(rectangleOf: size)
+                .configureCategoryBitMask(PhysicsConstants.CollisionCategory.boundary)
+                .configureContactTestMask(PhysicsConstants.ContactMask.boundary)
+                .configureCollisionBitMask(PhysicsConstants.CollisionMask.boundary)
+                .configureIsDynamic(false)
+                .configureRestitution(0.0)
+            .addToGame()
+    }
 }
 
 // MARK: Power-ups
