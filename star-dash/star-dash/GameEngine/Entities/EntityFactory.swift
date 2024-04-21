@@ -112,15 +112,15 @@ struct EntityFactory {
             .addToGame()
     }
 
-    static func createAndAddWall(to entityManager: EntityManagerInterface, position: CGPoint, size: CGSize) {
+    static func createAndAddMonsterWall(to entityManager: EntityManagerInterface, position: CGPoint, size: CGSize) {
         let wallBuilder = EntityBuilder(entity: Wall(id: UUID()), entityManager: entityManager)
 
         wallBuilder
             .withPosition(at: position)
             .withPhysics(rectangleOf: size)
-                .configureCategoryBitMask(PhysicsConstants.CollisionCategory.wall)
-                .configureContactTestMask(PhysicsConstants.ContactMask.wall)
-                .configureCollisionBitMask(PhysicsConstants.CollisionMask.wall)
+                .configureCategoryBitMask(PhysicsConstants.CollisionCategory.monsterWall)
+                .configureContactTestMask(PhysicsConstants.ContactMask.monsterWall)
+                .configureCollisionBitMask(PhysicsConstants.CollisionMask.monsterWall)
                 .configureIsDynamic(false)
                 .configureRestitution(0.0)
             .addToGame()
@@ -174,8 +174,8 @@ struct EntityFactory {
                         imageMode: "faceRight",
                         textureSet: nil,
                         textureAtlas: nil,
-                        size: CGSize(width: 20, height: 20))
-            .withPhysics(rectangleOf: CGSize(width: 20, height: 20))
+                        size: PhysicsConstants.Dimensions.hook)
+            .withPhysics(rectangleOf: PhysicsConstants.Dimensions.hook)
                 .configureCategoryBitMask(PhysicsConstants.CollisionCategory.hook)
                 .configureContactTestMask(PhysicsConstants.ContactMask.hook)
                 .configureCollisionBitMask(PhysicsConstants.CollisionMask.hook)
@@ -199,7 +199,7 @@ struct EntityFactory {
     }
 
     static func createAndAddBoundary(to entityManager: EntityManagerInterface, position: CGPoint, size: CGSize) {
-        let boundaryBuilder = EntityBuilder(entity: Boundary(id: UUID()), entityManager: entityManager)
+        let boundaryBuilder = EntityBuilder(entity: Wall(id: UUID()), entityManager: entityManager)
 
         boundaryBuilder
             .withPosition(at: position)

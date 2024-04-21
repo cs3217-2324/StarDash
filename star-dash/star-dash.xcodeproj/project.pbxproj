@@ -29,7 +29,6 @@
 		14970F502BA814D500CC1E8A /* ScoreComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14970F4F2BA814D500CC1E8A /* ScoreComponent.swift */; };
 		14970F522BA8159800CC1E8A /* ScoreComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14970F512BA8159800CC1E8A /* ScoreComponentTests.swift */; };
 		14970F562BA8177B00CC1E8A /* GameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14970F552BA8177B00CC1E8A /* GameConstants.swift */; };
-		14ACB8362BD5489C009E28DC /* Boundary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ACB8352BD5489C009E28DC /* Boundary.swift */; };
 		14C5044F2BCC33D700817F53 /* FinishSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C5044E2BCC33D700817F53 /* FinishSystem.swift */; };
 		14D14B732BA5A3CD00386C3B /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */; };
 		14D348ED2BBEFFA800515036 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D348EC2BBEFFA800515036 /* GameMode.swift */; };
@@ -304,7 +303,6 @@
 		14970F4F2BA814D500CC1E8A /* ScoreComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreComponent.swift; sourceTree = "<group>"; };
 		14970F512BA8159800CC1E8A /* ScoreComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreComponentTests.swift; sourceTree = "<group>"; };
 		14970F552BA8177B00CC1E8A /* GameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConstants.swift; sourceTree = "<group>"; };
-		14ACB8352BD5489C009E28DC /* Boundary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boundary.swift; sourceTree = "<group>"; };
 		14C5044E2BCC33D700817F53 /* FinishSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishSystem.swift; sourceTree = "<group>"; };
 		14D14B722BA5A3CD00386C3B /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		14D348EC2BBEFFA800515036 /* GameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
@@ -969,7 +967,6 @@
 				4E86605E2BA095E30035530D /* Collectible.swift */,
 				4E8660612BA0964A0035530D /* Obstacle.swift */,
 				46D418102BA5C88B0091A38B /* Wall.swift */,
-				14ACB8352BD5489C009E28DC /* Boundary.swift */,
 				46D418122BA5C9930091A38B /* Floor.swift */,
 				46C3B1C62BB596DE00F10574 /* GrappleHook.swift */,
 				46D3C5C62BB702BD008CC24F /* Rope.swift */,
@@ -1563,7 +1560,6 @@
 				46D049FF2BBA81140096D9F2 /* PlayerAchievements.swift in Sources */,
 				E69FDDE42BADC2F10089D5F3 /* SpriteConstants.swift in Sources */,
 				46F0ECE32BC685BB00687961 /* DeathTimerComponent.swift in Sources */,
-				14ACB8362BD5489C009E28DC /* Boundary.swift in Sources */,
 				E6B1CC5D2BB7E00600416BCD /* MonsterEntityPersistable.swift in Sources */,
 				14D348F12BBF00A700515036 /* RaceMode.swift in Sources */,
 				4E9B4A1F2BC3DD5100B096A0 /* NetworkEventType.swift in Sources */,
