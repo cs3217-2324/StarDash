@@ -24,6 +24,7 @@ class RaceMode: GameMode {
 
     func setTarget(_ target: GameModeModifiable) {
         self.target = target
+        self.time = 0
     }
 
     func setupGameMode() {

@@ -22,6 +22,7 @@ class TimedMode: GameMode {
 
     func setTarget(_ target: GameModeModifiable) {
         self.target = target
+        self.time = GameModeConstants.TimedMode.timeLimit
     }
 
     func setupGameMode() {
