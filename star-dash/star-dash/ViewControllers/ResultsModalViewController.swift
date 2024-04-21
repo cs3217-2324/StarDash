@@ -72,7 +72,7 @@ class PlayerResultView: UIView {
         addSubview(resultLabel)
 
         NSLayoutConstraint.activate([
-            rankingLabel.widthAnchor.constraint(equalToConstant: 50),
+            rankingLabel.widthAnchor.constraint(equalToConstant: 75),
             rankingLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             rankingLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
 
