@@ -29,7 +29,6 @@ class NetworkManager {
         self.init(serverAddress: NetworkConstants.serverUrl, serverPort: NetworkConstants.serverPort)
     }
     func createRoom() {
-        print("craeating room")
         self.performGETRequest(prefix: "/create_room")
     }
     func joinRoom(room: String) {
@@ -86,18 +85,6 @@ class NetworkManager {
         socketManager?.closeConnection()
     }
 }
-
-// extension NetworkManager: SocketManagerDelegate {
-//    func socketManager(_ socketManager: SocketManager, didReceiveMessage message: String) {
-//        print(message)
-//        delegate?.networkManager(self, didReceiveMessage: message)
-//    }
-//    
-//    func socketManager(_ socketManager: SocketManager, didEncounterError error: Error) {
-//        delegate?.networkManager(self, didEncounterError: error)
-//    }
-//    
-// }
 
 extension NetworkManager: SocketManagerDelegate {
     func socketManager(_ socketManager: SocketManager, didReceiveMessage message: Data) {

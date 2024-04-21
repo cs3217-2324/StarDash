@@ -47,14 +47,14 @@ class MoveModule: MovementModule {
               let maxRunSpeed = physicsSystem.maxRunSpeed(of: event.entityId) else {
             return nil
         }
-        let runSpeed = (event.toLeft ? -1 : 1) * PhysicsConstants.runSpeed
-        var newRunSpeed = currentVelocity.dx + runSpeed
-        if event.toLeft && newRunSpeed > 0 || !event.toLeft && newRunSpeed < 0 {
-            newRunSpeed = runSpeed
+
+        var newRunSpeed: CGFloat = event.toLeft ? -1 : 1
+        if currentVelocity.dx > 0 && event.toLeft || !event.toLeft && currentVelocity.dx < 0 { // changed direction
+            newRunSpeed *= PhysicsConstants.runSpeed
+        } else {
+            newRunSpeed *= min(maxRunSpeed, abs(currentVelocity.dx) + PhysicsConstants.runSpeed)
         }
-        if abs(newRunSpeed) > maxRunSpeed {
-            newRunSpeed = (event.toLeft ? -1 : 1) * maxRunSpeed
-        }
+
         if let buffSystem = dispatcher?.system(ofType: BuffSystem.self),
            let speedMultiplier = buffSystem.speedMultiplier(of: event.entityId) {
             newRunSpeed *= speedMultiplier
