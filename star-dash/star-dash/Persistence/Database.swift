@@ -60,7 +60,6 @@ struct Database {
                 insertJsonData(filename: "level6")
                 insertJsonData(filename: "level7")
                 insertJsonData(filename: "level8")
-                print("SQLiteDataStore init successfully at: \(dbPath) ")
             } catch {
                 print("SQLiteDataStore init error: \(error)")
             }
@@ -108,7 +107,6 @@ struct Database {
                 table.column(size)
                 table.column(background)
             })
-            print("Level table created")
         } catch {
             print("Error creating table \(error)")
         }
@@ -133,7 +131,6 @@ struct Database {
                 table.column(radius)
 
             })
-            print("Collectible table created")
         } catch {
             print("Error creating table \(error)")
         }
@@ -156,7 +153,6 @@ struct Database {
                 table.column(size)
 
             })
-            print("Obstacle table created")
         } catch {
             print("Error creating table \(error)")
         }
@@ -179,7 +175,6 @@ struct Database {
                 table.column(size)
 
             })
-            print("Wall table created")
         } catch {
             print("Error creating table \(error)")
         }
@@ -204,7 +199,6 @@ struct Database {
                 table.column(health)
 
             })
-            print("Monster table created")
         } catch {
             print("Error creating table \(error)")
         }
@@ -229,7 +223,6 @@ struct Database {
                 table.column(type)
 
             })
-            print("PowerUpBox table created")
         } catch {
             print("Error creating table \(error)")
         }
@@ -298,7 +291,6 @@ extension Database {
                 for persistable in levelData.walls {
                     insert(persistable: persistable)
                 }
-                print("Inserted \(filename)")
             } catch {
                 print("Error reading or decoding JSON: \(error)")
             }

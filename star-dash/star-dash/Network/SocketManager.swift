@@ -31,7 +31,6 @@ class SocketManager: NSObject, WebSocketDelegate {
         guard let url = URL(string: address) else {
             return
         }
-        print("Conecting to : \(address)")
         var request = URLRequest(url: url)
         request.timeoutInterval = 5
         socket = WebSocket(request: request)
