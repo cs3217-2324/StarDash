@@ -33,7 +33,7 @@ class RoomCreationViewController: UIViewController {
 }
 
 extension RoomCreationViewController: NetworkManagerDelegate {
-    
+
     func networkManager(_ networkManager: NetworkManager, didReceiveEvent response: Data) {
         if let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkCreateRoomEvent {
             moveToLobby(roomCode: event.roomCode)
@@ -43,6 +43,5 @@ extension RoomCreationViewController: NetworkManagerDelegate {
     func networkManager(_ networkManager: NetworkManager, didEncounterError error: Error) {
         print(error)
     }
-
 
 }

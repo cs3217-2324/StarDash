@@ -19,9 +19,9 @@ typealias NetworkErrorHandlerMap = [NetworkError: () -> Void ]
 class RoomJoiningViewController: UIViewController {
     let networkManager: NetworkManager = .init()
     var roomCode: String?
-    
+
     var networkErrorHandlerMap: NetworkErrorHandlerMap?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         networkManager.delegate = self

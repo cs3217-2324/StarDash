@@ -290,5 +290,4 @@ extension GameViewController: NetworkManagerDelegate {
         print(error)
     }
 
-
 }
