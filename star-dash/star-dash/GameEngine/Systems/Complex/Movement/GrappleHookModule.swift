@@ -206,7 +206,20 @@ class GrappleHookModule: MovementModule {
     private func handleSwingEvent(event: SwingGrappleHookEvent) -> Event? {
         guard let angleRemaining = angleLeftToSwing(of: event.hookId),
               angleRemaining > 0 else {
+            guard let playerIdOfHook = getHookOwner(of: event.hookId),
+                  let positionSystem = dispatcher?.system(ofType: PositionSystem.self),
+                  let physicsSystem = dispatcher?.system(ofType: PhysicsSystem.self) else {
+                return nil
+            }
+
             setHookState(of: event.hookId, to: .releasing)
+
+            let isLeft = positionSystem.isEntityFacingLeft(entityId: playerIdOfHook)
+            let impulseMagnitudeX = PhysicsConstants.impulseHookReleaseX * (isLeft ? -1 : 1)
+            let impulseMagnitudeY = PhysicsConstants.impulseHookReleaseY
+            let impulse = CGVector(dx: impulseMagnitudeX, dy: impulseMagnitudeY)
+            physicsSystem.applyImpulse(to: playerIdOfHook, impulse: impulse)
+
             return nil
         }
 

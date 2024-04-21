@@ -87,6 +87,8 @@ struct PhysicsConstants {
     static let runSpeed: CGFloat = 20
     static let maxPlayerRunSpeed: CGFloat = 250
     static let maxMonsterRunSpeed: CGFloat = 100
+    static let impulseHookReleaseX: CGFloat = 3_000
+    static let impulseHookReleaseY: CGFloat = 20_000
 
     struct Monster {
         static let moveSpeed: Double = 100
