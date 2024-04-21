@@ -184,16 +184,8 @@ extension LevelSelectorViewController: NetworkManagerDelegate {
         }
     }
 
-    func networkManager(_ networkManager: NetworkManager, didReceiveMessage message: String) {
-        print(message)
-    }
-
     func networkManager(_ networkManager: NetworkManager, didEncounterError error: Error) {
         print(error)
-    }
-
-    func networkManager(_ networkManager: NetworkManager, didReceiveAPIResponse response: Any) {
-
     }
 
 }

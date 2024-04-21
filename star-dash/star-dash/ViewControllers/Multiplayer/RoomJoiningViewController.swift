@@ -15,16 +15,23 @@ struct NetworkData {
     let totalNumberOfPlayers: Int
 }
 
+typealias NetworkErrorHandlerMap = [NetworkError: () -> Void ]
 class RoomJoiningViewController: UIViewController {
     let networkManager: NetworkManager = .init()
     var roomCode: String?
-
+    
+    var networkErrorHandlerMap: NetworkErrorHandlerMap?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         networkManager.delegate = self
         if let roomCode = roomCode {
             networkManager.joinRoom(room: roomCode)
         }
+        networkErrorHandlerMap = [
+           .RoomNotFound: handleRoomNotFound,
+           .RoomIsFull: handleRoomFull
+       ]
     }
     func moveToLobby(playerIndex: Int, totalNumberOfPlayers: Int) {
         guard let roomCode = roomCode else {
@@ -61,14 +68,24 @@ class RoomJoiningViewController: UIViewController {
     func handleRoomNotFound() {
         let alert = UIAlertController(title: "Oops!", message: "Theres no such room!", preferredStyle: .alert)
 
-                // You can add actions using the following code
         alert.addAction(UIAlertAction(title: "Back",
                                       style: .default,
                                       handler: { _ in
                 self.moveBackToJoinRoom()
             }))
 
-                // This part of code inits alert view
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    func handleRoomFull() {
+        let alert = UIAlertController(title: "Oops!", message: "The room is already full!", preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Back",
+                                      style: .default,
+                                      handler: { _ in
+                self.moveBackToJoinRoom()
+            }))
+
         self.present(alert, animated: true, completion: nil)
     }
 
@@ -82,23 +99,15 @@ extension RoomJoiningViewController: NetworkManagerDelegate {
         moveToLobby(playerIndex: event.playerIndex, totalNumberOfPlayers: event.totalNumberOfPlayers)
     }
 
-    func networkManager(_ networkManager: NetworkManager, didReceiveMessage message: String) {
-        print(message)
-
-    }
-
     func networkManager(_ networkManager: NetworkManager, didEncounterError error: Error) {
         guard let error = error as? NetworkError else {
             return
         }
-
-        if error == .RoomNotFound {
-            handleRoomNotFound()
+        guard let networkErrorHandlerMap = networkErrorHandlerMap else {
+            return
         }
-    }
-
-    func networkManager(_ networkManager: NetworkManager, didReceiveAPIResponse response: Any) {
-
+        let handler = networkErrorHandlerMap[error]
+        handler?()
     }
 
 }

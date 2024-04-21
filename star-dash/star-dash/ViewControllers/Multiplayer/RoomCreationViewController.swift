@@ -33,26 +33,16 @@ class RoomCreationViewController: UIViewController {
 }
 
 extension RoomCreationViewController: NetworkManagerDelegate {
+    
     func networkManager(_ networkManager: NetworkManager, didReceiveEvent response: Data) {
-
-    }
-
-    func networkManager(_ networkManager: NetworkManager, didReceiveMessage message: String) {
-        print(message)
+        if let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkCreateRoomEvent {
+            moveToLobby(roomCode: event.roomCode)
+        }
     }
 
     func networkManager(_ networkManager: NetworkManager, didEncounterError error: Error) {
         print(error)
     }
 
-    func networkManager(_ networkManager: NetworkManager, didReceiveAPIResponse response: Any) {
-        guard let response = response as? [String: Any] else {
-            return
-        }
-        guard let roomCode = response["room_code"] as? String else {
-            return
-        }
-        self.moveToLobby(roomCode: roomCode)
-    }
 
 }

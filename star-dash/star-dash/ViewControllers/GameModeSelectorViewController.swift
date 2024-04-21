@@ -170,23 +170,14 @@ class GameModeSelectorViewController: UIViewController {
 
 extension GameModeSelectorViewController: NetworkManagerDelegate {
     func networkManager(_ networkManager: NetworkManager, didReceiveEvent response: Data) {
-        print(response)
         if let event = NetworkEventFactory.decodeNetworkEvent(from: response) as? NetworkSelectGameModeEvent {
-            print(event)
             moveToGame(gameModeType: event.gameMode)
         }
-    }
-
-    func networkManager(_ networkManager: NetworkManager, didReceiveMessage message: String) {
-        print(message)
     }
 
     func networkManager(_ networkManager: NetworkManager, didEncounterError error: Error) {
         print(error)
     }
 
-    func networkManager(_ networkManager: NetworkManager, didReceiveAPIResponse response: Any) {
-
-    }
 
 }

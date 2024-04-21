@@ -163,6 +163,7 @@
 		4EB7BF302BD3DA0C00FD70C7 /* level5.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EB7BF272BD3D89200FD70C7 /* level5.json */; };
 		4EB7BF312BD3DA0F00FD70C7 /* level4.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EB7BF242BD3A31500FD70C7 /* level4.json */; };
 		4EB7BF342BD3E97C00FD70C7 /* level8.json in Resources */ = {isa = PBXBuildFile; fileRef = 4EB7BF322BD3E90E00FD70C7 /* level8.json */; };
+		4EB7BF362BD5242B00FD70C7 /* NetworkCreateRoomEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB7BF352BD5242B00FD70C7 /* NetworkCreateRoomEvent.swift */; };
 		4EC561E32BB1E98400166DDC /* PlayerObstacleContactEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC561E22BB1E98400166DDC /* PlayerObstacleContactEvent.swift */; };
 		4EDA68082BD2AA49004794C3 /* NetworkSelectGameModeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA68072BD2AA49004794C3 /* NetworkSelectGameModeEvent.swift */; };
 		4EDA680A2BD2AF36004794C3 /* GameModeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA68092BD2AF36004794C3 /* GameModeFactory.swift */; };
@@ -442,6 +443,7 @@
 		4EB7BF2A2BD3D8DD00FD70C7 /* level6.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = level6.json; sourceTree = "<group>"; };
 		4EB7BF2C2BD3D91A00FD70C7 /* level7.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = level7.json; sourceTree = "<group>"; };
 		4EB7BF322BD3E90E00FD70C7 /* level8.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = level8.json; sourceTree = "<group>"; };
+		4EB7BF352BD5242B00FD70C7 /* NetworkCreateRoomEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCreateRoomEvent.swift; sourceTree = "<group>"; };
 		4EC561E22BB1E98400166DDC /* PlayerObstacleContactEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerObstacleContactEvent.swift; sourceTree = "<group>"; };
 		4EC561E42BB1E9A300166DDC /* PlayerToolContactEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerToolContactEvent.swift; sourceTree = "<group>"; };
 		4EDA68072BD2AA49004794C3 /* NetworkSelectGameModeEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSelectGameModeEvent.swift; sourceTree = "<group>"; };
@@ -991,6 +993,7 @@
 				4E6154EB2BCCDB8B002EB42B /* NetworkSyncEvent.swift */,
 				4E5769CB2BCEE3C30030A3FC /* NetworkPlayerLeaveRoomEvent.swift */,
 				4EDA68072BD2AA49004794C3 /* NetworkSelectGameModeEvent.swift */,
+				4EB7BF352BD5242B00FD70C7 /* NetworkCreateRoomEvent.swift */,
 			);
 			path = NetworkEvents;
 			sourceTree = "<group>";
@@ -1461,6 +1464,7 @@
 				E6D45DC72BB6F8680004CBA2 /* PowerUpBox+Collidable.swift in Sources */,
 				4E3517122BD27D4200ED0132 /* TimedMode.swift in Sources */,
 				4E630EF62B9F7E070008F887 /* AppDelegate.swift in Sources */,
+				4EB7BF362BD5242B00FD70C7 /* NetworkCreateRoomEvent.swift in Sources */,
 				1443C9B92BCB7514006A3D81 /* FinishLine.swift in Sources */,
 				461148962BA1D53D0073E7E1 /* PositionSystem.swift in Sources */,
 				143AA38C2BA4D3E3009C28E7 /* JumpEvent.swift in Sources */,

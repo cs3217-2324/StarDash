@@ -16,8 +16,7 @@ class SocketManager: NSObject, WebSocketDelegate {
 
     let address: String
     var isConnected: Bool?
-//    private var manager: SocketManager?
-//
+
     private var socket: WebSocket?
     weak var delegate: SocketManagerDelegate?
     init(address: String) {
@@ -78,7 +77,6 @@ class SocketManager: NSObject, WebSocketDelegate {
 
     private func handleEvent(string: String) {
         if let data = string.data(using: .utf8) {
-            // Decode JSON into a generic Decodable type
             self.delegate?.socketManager(self, didReceiveMessage: data)
         }
 
@@ -91,9 +89,4 @@ class SocketManager: NSObject, WebSocketDelegate {
         }
         self.delegate?.socketManager(self, didEncounterError: networkError)
     }
-}
-
-enum SocketHelperError: Error {
-    case socketConnectionNotEstablished
-    // Add more errors as needed
 }
