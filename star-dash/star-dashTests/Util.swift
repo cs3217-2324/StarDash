@@ -17,5 +17,9 @@ func createEntityManager() -> EntityManager {
 }
 
 func createTextureSet() -> TextureSet {
-    TextureSet(run: "", runLeft: "", death: "")
+    TextureSet(run: "", runLeft: "", death: "", fly: "")
+}
+
+func createImageSet() -> ImageSet {
+    ImageSet(faceRight: "", faceLeft: "")
 }

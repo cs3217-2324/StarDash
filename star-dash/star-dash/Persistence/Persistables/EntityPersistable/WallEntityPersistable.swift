@@ -13,6 +13,6 @@ struct WallEntityPersistable: Codable, EntityPersistable {
     var size: CGSize
 
     func addTo(_ entityManager: EntityManagerInterface) {
-        EntityFactory.createAndAddWall(to: entityManager, position: position, size: size)
+        EntityFactory.createAndAddMonsterWall(to: entityManager, position: position, size: size)
     }
 }

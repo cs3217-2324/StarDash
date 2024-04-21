@@ -32,15 +32,15 @@ class GameEngine {
         EntityFactory.createAndAddFloor(to: self,
                                         position: CGPoint(x: sceneSize.width / 2, y: 100),
                                         size: CGSize(width: sceneSize.width, height: 1))
-        EntityFactory.createAndAddWall(to: self,
-                                       position: CGPoint(x: 0, y: sceneSize.height / 2),
-                                       size: CGSize(width: 1, height: sceneSize.height))
-        EntityFactory.createAndAddWall(to: self,
-                                       position: CGPoint(x: sceneSize.width, y: sceneSize.height / 2),
-                                       size: CGSize(width: 1, height: sceneSize.height))
-        EntityFactory.createAndAddWall(to: self,
-                                       position: CGPoint(x: sceneSize.width / 2, y: sceneSize.height),
-                                       size: CGSize(width: sceneSize.width, height: 1))
+        EntityFactory.createAndAddBoundary(to: self,
+                                           position: CGPoint(x: 0, y: sceneSize.height / 2),
+                                           size: CGSize(width: 1, height: sceneSize.height))
+        EntityFactory.createAndAddBoundary(to: self,
+                                           position: CGPoint(x: sceneSize.width, y: sceneSize.height / 2),
+                                           size: CGSize(width: 1, height: sceneSize.height))
+        EntityFactory.createAndAddBoundary(to: self,
+                                           position: CGPoint(x: sceneSize.width / 2, y: sceneSize.height),
+                                           size: CGSize(width: sceneSize.width, height: 1))
         if gameMode.hasFinishLine {
             EntityFactory.createAndAddFinishLine(to: self,
                                                  position: CGPoint(

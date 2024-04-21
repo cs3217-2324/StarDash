@@ -46,15 +46,12 @@ class RaceMode: GameMode {
     }
 
     func hasGameEnded() -> Bool {
-        guard let target = target else {
-            return false
-        }
-        return haveAllPlayerFinalScore()
+        haveAllPlayerFinalScore()
 
     }
 
     private func haveAllPlayerFinalScore() -> Bool {
-        for (playerId, hasFinishLineScore) in playerHasFinishLineScoreMap where !hasFinishLineScore {
+        for (_, hasFinishLineScore) in playerHasFinishLineScoreMap where !hasFinishLineScore {
             return false
         }
         return true

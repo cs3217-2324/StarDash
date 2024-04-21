@@ -42,7 +42,6 @@ class LevelSelectorViewController: UIViewController {
     }
 
     private func createLevelButtons() {
-        var previous: UIView?
         levelStackView.translatesAutoresizingMaskIntoConstraints = true
 
         for (index, level) in levels.enumerated() {
