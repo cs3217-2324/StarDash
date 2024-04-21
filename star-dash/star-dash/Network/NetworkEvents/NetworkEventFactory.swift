@@ -23,7 +23,8 @@ class NetworkEventFactory {
             "player-hook": { jsonData in try decoder.decode(NetworkPlayerHookEvent.self, from: jsonData) },
             "player-stop": { jsonData in try decoder.decode(NetworkPlayerStopEvent.self, from: jsonData) },
             "sync": { jsonData in try decoder.decode(NetworkSyncEvent.self, from: jsonData) },
-            "select-mode": { jsonData in try decoder.decode(NetworkSelectGameModeEvent.self, from: jsonData) }
+            "select-mode": { jsonData in try decoder.decode(NetworkSelectGameModeEvent.self, from: jsonData) },
+            "create-room": { jsonData in try decoder.decode(NetworkCreateRoomEvent.self, from: jsonData) }
         ]
 
         do {

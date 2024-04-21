@@ -8,11 +8,8 @@
 import Foundation
 
 protocol NetworkManagerDelegate: AnyObject {
-    func networkManager(_ networkManager: NetworkManager, didReceiveMessage message: String)
+    func networkManager(_ networkManager: NetworkManager, didReceiveEvent event: Data)
     func networkManager(_ networkManager: NetworkManager, didEncounterError error: Error)
-    func networkManager(_ networkManager: NetworkManager, didReceiveAPIResponse response: Any)
-    func networkManager(_ networkManager: NetworkManager, didReceiveEvent response: Data)
-
 }
 
 class NetworkManager {
@@ -35,7 +32,7 @@ class NetworkManager {
         self.socketManager = SocketManager(address: NetworkConstants.serverUrl + "/join_room/" + room)
         self.socketManager?.delegate = self
     }
-    func encodeNetworkEvent<T: Encodable>(_ event: T) throws -> Data {
+    private func encodeNetworkEvent<T: Encodable>(_ event: T) throws -> Data {
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .iso8601
 
@@ -50,12 +47,11 @@ class NetworkManager {
             print("error sending event \(error)")
         }
     }
-    func performGETRequest(prefix: String) {
+    private func performGETRequest(prefix: String) {
         guard let url = URL(string: self.serverAddress + prefix) else {
             delegate?.networkManager(self, didEncounterError: NetworkError.invalidURL)
             return
         }
-        // TODO: CLEAN UP
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
                 self.delegate?.networkManager(self, didEncounterError: error)
@@ -66,16 +62,7 @@ class NetworkManager {
                 self.delegate?.networkManager(self, didEncounterError: NetworkError.noDataReceived)
                 return
             }
-            do {
-                guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
-                    print("Failed to convert JSON data to [String: Any]")
-                    exit(1)
-                }
-                self.delegate?.networkManager(self, didReceiveAPIResponse: json)
-
-            } catch {
-
-            }
+                self.delegate?.networkManager(self, didReceiveEvent: data)
 
         }
         task.resume()

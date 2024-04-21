@@ -18,4 +18,5 @@ enum NetworkEventType: String, Codable {
     case SelectLevel = "select-level"
     case Sync = "sync"
     case SelectMode = "select-mode"
+    case CreateRoom = "create-room"
 }
